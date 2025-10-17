@@ -1,0 +1,143 @@
+Create a dark, luxurious SaaS landing page for Kaartx Cloud — a premium e-commerce automation and marketplace platform by Kaartx.
+
+Follow the visual and brand cues of seller.kaartx.com:
+- Full dark theme (black or deep charcoal) with white/off-white text.
+- Accent color: Kaartx pink (#FF385C) for buttons and highlights.
+- Clean modern sans-serif font (Inter or Poppins).
+- Minimal, premium, Apple-style layout with generous spacing and smooth fade animations.
+- Buttons: rounded, medium weight, hover glow, soft scale-up.
+- Code stack: Next.js 14 (App Router) + TypeScript + TailwindCSS + Framer Motion + shadcn/ui + lucide-react.
+- All text and brand name must always be spelled “Kaartx”.
+
+---
+
+### 1. Sections (complete 4-hour endless scroll layout)
+
+1. **Navbar (sticky)**  
+   Logo left (Kaartx), links right: Features | Pricing | Integrations | Docs | Contact | [Get Started]
+
+2. **Hero Section (impactful)**  
+   - H1: “Build, run, and scale your marketplace — with Kaartx Cloud.”  
+   - Subtext: “A premium, API-first commerce platform to launch branded marketplaces, onboard sellers, automate operations, and manage payouts.”  
+   - Buttons: “Get Started” (primary, pink), “Talk to Sales (WhatsApp)” (outline).  
+   - Animated background (gradient or subtle particles).  
+   - Mockup image placeholder for dashboard.
+
+3. **Stats Bar**  
+   4 metrics in a row: 99.99% uptime | 12-day payout control | GCC-ready | API-first.
+
+4. **Feature Overview (grid 4 columns)**  
+   - Seller Onboarding | Catalog & Variants | Orders & Logistics | Payments & Payouts.  
+   - Each with icons, titles, and 1-line descriptions.  
+   - Hover: slight raise + glow.
+
+5. **How It Works (timeline or 3-step visual)**  
+   - Steps: Onboard → Sync → Launch & Scale.  
+   - Minimal animation for transitions.
+
+6. **Deep Feature Sections (alternating image + text)**  
+   a) Marketplace OS — brand rules, category gating, approvals.  
+   b) Product Listing Flow — SKU, MPN, titles, translations, media, tax.  
+   c) Operations — labels, tracking, SLAs, returns (Asyad-ready).  
+   d) Finance — subscriptions, fees, invoices, 12-day payout cycle (TAP-ready).
+
+7. **Use Cases Tabs**  
+   Tabs: Sellers | Brands | Enterprises | Agencies.  
+   Each with quick text and benefits.
+
+8. **Integrations Marquee**  
+   Animated scrolling logos: Shopify, TAP, Firebase, Asyad, Vercel, Google Analytics.
+
+9. **Security Section**  
+   Headline: “Built for trust.”  
+   Bullets: Role-based access, audit logs, encrypted data, OAuth, backups.
+
+10. **API Section**  
+    Headline: “API-first by design.”  
+    Code preview block showing sample REST JSON (Next.js code block).  
+    CTA: “View Docs”.
+
+11. **Showcase / Screenshots**  
+    3 dashboard frames (payouts, analytics, listings). Smooth fade-on-scroll.
+
+12. **Testimonials (carousel)**  
+    3 user cards with avatars, company name, short quote.
+
+13. **Case Study Highlight**  
+    One wide card with KPIs (example: +40% seller growth, 2x faster onboarding).
+
+14. **Pricing Section**  
+    3 pricing cards — Starter / Growth / Enterprise.  
+    Pink highlight on middle card.  
+    Buttons: “Start Free” / “Contact Sales”.
+
+15. **FAQ Section (10 collapsible items)**  
+    Common SaaS questions and short answers.
+
+16. **Final CTA Section**  
+    Bold heading: “Your marketplace, your rules — powered by Kaartx.”  
+    CTA button: “Get Started with Kaartx Cloud”.
+
+17. **Footer**  
+    Dark minimal layout with Kaartx logo, quick links, contact email, social icons.
+
+---
+
+### 2. Design Tokens (Tailwind theme)
+colors:
+  brand-bg: "#0A0A0A"
+  brand-card: "#111113"
+  brand-text: "#F5F5F7"
+  brand-muted: "#A3A3AD"
+  brand-accent: "#FF385C"
+radius:
+  xl: "1.25rem"
+shadow:
+  soft: "0 10px 30px rgba(0,0,0,0.35)"
+fontFamily:
+  inter: ["Inter", "sans-serif"]
+
+---
+
+### 3. Animations
+- Fade-up on scroll (Framer Motion)
+- Hover scale on cards
+- Marquee slide for integrations
+- CTA glow hover
+- Smooth scroll nav links
+- Scroll-to-top button
+
+---
+
+### 4. SEO / Meta
+- Title: Kaartx Cloud — Build & Scale Your Marketplace
+- Description: Premium, API-first platform to create branded marketplaces, onboard sellers, manage operations and payouts.
+- OG/Twitter tags, favicon, sitemap, robots.txt
+- Analytics placeholder (NEXT_PUBLIC_GA_ID)
+
+---
+
+### 5. Performance / Accessibility
+- Semantic HTML, alt text, keyboard focus states
+- Lazy load images
+- Target Lighthouse 95+ Performance, 100 SEO/A11y
+
+---
+
+### 6. Extra
+- Floating WhatsApp button on mobile
+- Simple Contact form (client-only, no backend)
+- /api/health route returning { ok: true }
+
+---
+
+### 7. Output requirements
+- Generate full working **Next.js 14 project** with `app/` directory and all sections above.
+- All content in one scrollable `page.tsx`.
+- Components in `/components/` folder.
+- Must compile and show full “endless” landing page on `/`.
+- Include placeholder assets and icons.
+
+---
+
+Kaartx is a luxury, tech-driven marketplace ecosystem. The site must feel bold, minimal, premium, and futuristic — like Apple or Vercel. The accent pink (#FF385C) is the soul of the design. Keep everything consistent with the seller.kaartx.com style.
