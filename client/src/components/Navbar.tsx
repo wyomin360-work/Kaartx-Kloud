@@ -83,7 +83,7 @@ export default function Navbar() {
             </button>
             <Button
               onClick={() => scrollToSection('hero')}
-              className="shadow-glow hover:scale-105 transition-transform"
+              className="shadow-glow hover:scale-[1.02] transition-transform"
               data-testid="button-get-started"
             >
               Get Started
@@ -141,7 +141,7 @@ export default function Navbar() {
             >
               Contact
             </button>
-            <Button className="w-full hover:scale-105 transition-transform" data-testid="button-mobile-get-started">
+            <Button className="w-full hover:scale-[1.02] transition-transform" data-testid="button-mobile-get-started">
               Get Started
             </Button>
           </div>
