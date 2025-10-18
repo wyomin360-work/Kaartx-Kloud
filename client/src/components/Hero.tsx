@@ -4,10 +4,10 @@ import heroDashboard from '@assets/generated_images/Hero_dashboard_mockup_46c4a7
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function Hero() {
-  const titleAnimation = useScrollAnimation(0.1);
-  const subtitleAnimation = useScrollAnimation(0.1);
-  const buttonsAnimation = useScrollAnimation(0.1);
-  const dashboardAnimation = useScrollAnimation(0.1);
+  const titleAnimation = useScrollAnimation<HTMLHeadingElement>(0.1);
+  const subtitleAnimation = useScrollAnimation<HTMLParagraphElement>(0.1);
+  const buttonsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
+  const dashboardAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">

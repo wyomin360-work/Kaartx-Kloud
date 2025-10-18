@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function FinalCTA() {
-  const ctaAnimation = useScrollAnimation(0.2);
+  const ctaAnimation = useScrollAnimation<HTMLDivElement>(0.2);
 
   return (
     <section className="py-20 sm:py-32 bg-gradient-to-br from-primary/10 via-background to-background relative overflow-hidden">

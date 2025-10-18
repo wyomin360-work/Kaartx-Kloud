@@ -3,8 +3,8 @@ import { CreditCard, Package, ShoppingBag, Truck } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function IntegrationsMarquee() {
-  const titleAnimation = useScrollAnimation(0.2);
-  const marqueeAnimation = useScrollAnimation(0.2);
+  const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
+  const marqueeAnimation = useScrollAnimation<HTMLDivElement>(0.2);
 
   const integrations = [
     { name: 'TAP Payments', icon: CreditCard, featured: true },

@@ -4,8 +4,8 @@ import { Check } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function Pricing() {
-  const titleAnimation = useScrollAnimation(0.2);
-  const cardsAnimation = useScrollAnimation(0.1);
+  const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
+  const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
   const plans = [
     {

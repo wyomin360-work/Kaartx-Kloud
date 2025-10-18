@@ -8,7 +8,7 @@ export default function StatsBar() {
     { value: 'White-label', label: 'Ready' },
   ];
 
-  const sectionAnimation = useScrollAnimation(0.2);
+  const sectionAnimation = useScrollAnimation<HTMLDivElement>(0.2);
 
   return (
     <section className="py-16 gradient-bg-purple">

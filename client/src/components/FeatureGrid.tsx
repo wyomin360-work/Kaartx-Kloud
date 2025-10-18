@@ -26,8 +26,8 @@ export default function FeatureGrid() {
     },
   ];
 
-  const titleAnimation = useScrollAnimation(0.2);
-  const cardsAnimation = useScrollAnimation(0.1);
+  const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
+  const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
   return (
     <section id="features" className="py-20 sm:py-32">
