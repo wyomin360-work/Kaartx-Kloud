@@ -1,7 +1,11 @@
 import { SiShopify, SiFirebase, SiStripe } from 'react-icons/si';
 import { CreditCard, Package, ShoppingBag, Truck } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function IntegrationsMarquee() {
+  const titleAnimation = useScrollAnimation(0.2);
+  const marqueeAnimation = useScrollAnimation(0.2);
+
   const integrations = [
     { name: 'TAP Payments', icon: CreditCard, featured: true },
     { name: 'Asyad Shipping', icon: Package, featured: true },
@@ -16,7 +20,10 @@ export default function IntegrationsMarquee() {
   return (
     <section id="integrations" className="py-20 sm:py-32 border-y border-border/50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="text-center">
+        <div 
+          ref={titleAnimation.ref}
+          className={`text-center animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+        >
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-integrations-title">
             GCC-ready integrations
           </h2>
@@ -26,7 +33,10 @@ export default function IntegrationsMarquee() {
         </div>
       </div>
 
-      <div className="relative">
+      <div 
+        ref={marqueeAnimation.ref}
+        className={`relative animate-fade-in ${marqueeAnimation.isVisible ? 'visible' : ''}`}
+      >
         <div className="flex animate-marquee" style={{ animation: 'marquee 30s linear infinite' }}>
           {doubledIntegrations.map((integration, index) => {
             const Icon = integration.icon;

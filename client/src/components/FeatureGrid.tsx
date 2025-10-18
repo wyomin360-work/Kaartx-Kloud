@@ -1,5 +1,6 @@
 import { Users, ListChecks, CreditCard, Settings } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function FeatureGrid() {
   const features = [
@@ -25,10 +26,16 @@ export default function FeatureGrid() {
     },
   ];
 
+  const titleAnimation = useScrollAnimation(0.2);
+  const cardsAnimation = useScrollAnimation(0.1);
+
   return (
     <section id="features" className="py-20 sm:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div 
+          ref={titleAnimation.ref}
+          className={`text-center mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+        >
           <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-4" data-testid="text-features-title">
             Everything to run a <span className="gradient-text">marketplace</span>
           </h2>
@@ -37,14 +44,18 @@ export default function FeatureGrid() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div 
+          ref={cardsAnimation.ref}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {features.map((feature, index) => {
             const Icon = feature.icon;
             const gradients = ['gradient-bg-purple', 'gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue'];
+            const stagger = ['', 'stagger-1', 'stagger-2', 'stagger-3'];
             return (
               <Card
                 key={index}
-                className={`hover-elevate transition-all duration-300 hover:scale-105 rounded-2xl border-2 ${gradients[index]}`}
+                className={`hover-elevate transition-all duration-300 hover:scale-105 rounded-2xl border-2 ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
                 data-testid={`card-feature-${index}`}
               >
                 <CardHeader>

@@ -1,12 +1,18 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function FinalCTA() {
+  const ctaAnimation = useScrollAnimation(0.2);
+
   return (
     <section className="py-20 sm:py-32 bg-gradient-to-br from-primary/10 via-background to-background relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent opacity-50" />
       
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div 
+        ref={ctaAnimation.ref}
+        className={`relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll ${ctaAnimation.isVisible ? 'visible' : ''}`}
+      >
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6" data-testid="text-final-cta-title">
           Ready to launch your marketplace?
         </h2>

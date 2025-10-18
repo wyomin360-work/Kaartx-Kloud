@@ -1,8 +1,12 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Check } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function Pricing() {
+  const titleAnimation = useScrollAnimation(0.2);
+  const cardsAnimation = useScrollAnimation(0.1);
+
   const plans = [
     {
       name: 'Starter',
@@ -56,7 +60,10 @@ export default function Pricing() {
   return (
     <section id="pricing" className="py-20 sm:py-32 bg-card/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div 
+          ref={titleAnimation.ref}
+          className={`text-center mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+        >
           <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-4" data-testid="text-pricing-title">
             Flexible <span className="gradient-text">pricing</span> for every stage
           </h2>
@@ -65,17 +72,22 @@ export default function Pricing() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {plans.map((plan, index) => (
-            <Card
-              key={index}
-              className={`p-8 !rounded-3xl !border-2 ${
-                plan.highlighted
-                  ? 'gradient-border shadow-playful scale-105 gradient-bg-blue'
-                  : 'hover-elevate !border-border'
-              }`}
-              data-testid={`pricing-card-${index}`}
-            >
+        <div 
+          ref={cardsAnimation.ref}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+        >
+          {plans.map((plan, index) => {
+            const stagger = ['', 'stagger-1', 'stagger-2'];
+            return (
+              <Card
+                key={index}
+                className={`p-8 !rounded-3xl !border-2 ${
+                  plan.highlighted
+                    ? 'gradient-border shadow-playful scale-105 gradient-bg-blue'
+                    : 'hover-elevate !border-border'
+                } animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
+                data-testid={`pricing-card-${index}`}
+              >
               <div className="mb-6">
                 <h3 className="text-2xl font-black text-foreground mb-2" data-testid={`text-plan-name-${index}`}>
                   {plan.name}
@@ -111,7 +123,8 @@ export default function Pricing() {
                 {plan.cta}
               </Button>
             </Card>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
