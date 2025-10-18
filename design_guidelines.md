@@ -11,7 +11,7 @@
 - Card/Surface: `#FAFAFA` (off-white) with gradient overlays
 - Primary Text: `#1E1E1E` (near-black)
 - Muted Text: `#6B6B6B` (medium gray)
-- Brand Navy: `#131742` (Navy blue)
+- Brand Navy: `#2B3674` (Deep indigo-navy, extracted from Kaartx logo)
 - Vibrant Purple: `#4F46E5` (Indigo)
 - Vibrant Cyan: `#06B6D4` (Cyan)
 
