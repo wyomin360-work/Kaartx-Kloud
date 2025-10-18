@@ -11,10 +11,10 @@
 - Card/Surface: `#111113` (charcoal)
 - Primary Text: `#F5F5F7` (off-white)
 - Muted Text: `#A3A3AD` (gray)
-- Brand Accent: `#FF385C` (Kaartx pink) - THE SOUL of the design
+- Brand Accent: `#131742` (Navy blue) - THE SOUL of the design
 
 **Color Usage:**
-- Pink accent exclusively for CTAs, highlights, and hover states
+- Navy blue accent exclusively for CTAs, highlights, and hover states
 - White/off-white for all text content
 - Dark surfaces for cards with subtle elevation
 - No gradients except subtle animated background in hero
@@ -42,12 +42,12 @@
 
 **Navigation:**
 - Sticky header with dark backdrop blur
-- Logo left, links right, pink CTA button
+- Logo left, links right, navy blue CTA button
 - Smooth scroll anchors
 
 **Buttons:**
-- Primary: Pink fill, white text, medium roundedness
-- Outline: Pink border on dark, backdrop blur when over images
+- Primary: Navy blue fill, white text, medium roundedness
+- Outline: Navy blue border on dark, backdrop blur when over images
 - Hover: Soft glow effect + subtle scale (1.02)
 - No custom hover states on blurred buttons
 
@@ -60,11 +60,11 @@
 **Feature Grid:**
 - 4-column desktop, 2-column tablet, 1-column mobile
 - Icon + title + description pattern
-- Lucide-react icons in pink accent
+- Lucide-react icons in navy blue accent
 
 **Pricing Cards:**
 - 3-tier layout (Starter/Growth/Enterprise)
-- Middle card highlighted with pink accent
+- Middle card highlighted with navy blue accent
 - Clear feature lists with checkmarks
 
 **FAQ:**
@@ -74,7 +74,7 @@
 
 **Forms:**
 - Contact form: client-side only
-- Dark inputs with pink focus states
+- Dark inputs with navy blue focus states
 - Validation states clearly visible
 
 ### E. Animations
@@ -86,7 +86,7 @@
 **Hover Effects:**
 - Cards: Scale 1.02 + shadow lift
 - Buttons: Glow effect + scale 1.05
-- Links: Pink underline slide-in
+- Links: Navy blue underline slide-in
 
 **Special Animations:**
 - Marquee: Continuous scroll for integration logos
@@ -113,7 +113,7 @@
 
 **Integration Logos:**
 - Shopify, TAP, Firebase, Asyad, Vercel, Google Analytics
-- Grayscale with pink on hover
+- Grayscale with navy blue on hover
 - Animated marquee scroll
 
 **Testimonials:**
@@ -122,20 +122,20 @@
 
 ## Page Structure (17 Sections)
 
-1. **Sticky Navbar** - Dark with blur, pink CTA
+1. **Sticky Navbar** - Dark with blur, navy blue CTA
 2. **Hero** - Bold headline, dual CTAs, animated background, mockup
 3. **Stats Bar** - 4 metrics in row
 4. **Feature Grid** - 4 columns, icons, hover effects
 5. **How It Works** - 3-step timeline visual
 6. **Deep Features** - 4 alternating image/text sections
-7. **Use Cases** - Tabbed interface (4 tabs)
+7. **Use Cases** - Tabbed interface (5 tabs: Brands, Startups, Retail, Agencies, Enterprises)
 8. **Integrations** - Animated marquee
 9. **Security** - Trust badges and bullets
 10. **API Section** - Code preview with syntax highlighting
 11. **Showcase** - 3 dashboard screenshots
 12. **Testimonials** - Carousel with 3 cards
 13. **Case Study** - KPI highlight card
-14. **Pricing** - 3-tier cards, pink highlight
+14. **Pricing** - 3-tier cards, navy blue highlight
 15. **FAQ** - 10 collapsible items
 16. **Final CTA** - Bold conversion section
 17. **Footer** - Minimal dark with links/socials
@@ -153,4 +153,4 @@
 - Lazy load images below fold
 - Target: Lighthouse 95+ Performance, 100 SEO/A11y
 
-The essence: **Bold. Minimal. Premium. Futuristic.** Pink accent is the soul - use it decisively but not excessively. Every element must feel luxurious and tech-forward.
+The essence: **Bold. Minimal. Premium. Professional.** Navy blue accent is the soul - use it decisively but not excessively. Every element must feel luxurious and tech-forward.
