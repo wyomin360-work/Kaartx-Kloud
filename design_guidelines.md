@@ -6,18 +6,18 @@
 ## Core Design Elements
 
 ### A. Color Palette
-**Dark Theme Foundation:**
-- Background: `#0A0A0A` (deep black)
-- Card/Surface: `#111113` (charcoal)
-- Primary Text: `#F5F5F7` (off-white)
-- Muted Text: `#A3A3AD` (gray)
+**Light Theme Foundation:**
+- Background: `#FFFFFF` (pure white)
+- Card/Surface: `#FAFAFA` (off-white)
+- Primary Text: `#1E1E1E` (near-black)
+- Muted Text: `#6B6B6B` (medium gray)
 - Brand Accent: `#131742` (Navy blue) - THE SOUL of the design
 
 **Color Usage:**
 - Navy blue accent exclusively for CTAs, highlights, and hover states
-- White/off-white for all text content
-- Dark surfaces for cards with subtle elevation
-- No gradients except subtle animated background in hero
+- Dark text on white/light backgrounds for excellent readability
+- Light gray surfaces for cards with subtle elevation
+- Clean, minimal aesthetic with focus on content and navy blue accents
 
 ### B. Typography
 **Font Family:** Inter (primary) or Poppins
@@ -41,18 +41,18 @@
 ### D. Component Library
 
 **Navigation:**
-- Sticky header with dark backdrop blur
+- Sticky header with light backdrop blur
 - Logo left, links right, navy blue CTA button
 - Smooth scroll anchors
 
 **Buttons:**
 - Primary: Navy blue fill, white text, medium roundedness
-- Outline: Navy blue border on dark, backdrop blur when over images
+- Outline: Navy blue border, clean minimal style
 - Hover: Soft glow effect + subtle scale (1.02)
-- No custom hover states on blurred buttons
+- No custom hover states
 
 **Cards:**
-- Dark surface (`#111113`) with soft shadow
+- Light surface (`#FAFAFA`) with soft shadow
 - Border radius: `1.25rem`
 - Hover: Slight raise + glow effect
 - Clean typography hierarchy
@@ -74,7 +74,7 @@
 
 **Forms:**
 - Contact form: client-side only
-- Dark inputs with navy blue focus states
+- Clean inputs with navy blue focus states
 - Validation states clearly visible
 
 ### E. Animations
@@ -122,8 +122,8 @@
 
 ## Page Structure (17 Sections)
 
-1. **Sticky Navbar** - Dark with blur, navy blue CTA
-2. **Hero** - Bold headline, dual CTAs, animated background, mockup
+1. **Sticky Navbar** - Clean white with blur, navy blue CTA
+2. **Hero** - Bold headline, dual CTAs, clean white background, mockup
 3. **Stats Bar** - 4 metrics in row
 4. **Feature Grid** - 4 columns, icons, hover effects
 5. **How It Works** - 3-step timeline visual
@@ -138,7 +138,7 @@
 14. **Pricing** - 3-tier cards, navy blue highlight
 15. **FAQ** - 10 collapsible items
 16. **Final CTA** - Bold conversion section
-17. **Footer** - Minimal dark with links/socials
+17. **Footer** - Clean minimal footer with links/socials
 
 ## Special Elements
 - Floating WhatsApp button (mobile)
@@ -153,4 +153,4 @@
 - Lazy load images below fold
 - Target: Lighthouse 95+ Performance, 100 SEO/A11y
 
-The essence: **Bold. Minimal. Premium. Professional.** Navy blue accent is the soul - use it decisively but not excessively. Every element must feel luxurious and tech-forward.
+The essence: **Bold. Minimal. Premium. Professional.** Clean white background with navy blue accents creates a fresh, modern aesthetic. Navy blue is the soul - use it decisively but not excessively. Every element must feel luxurious and tech-forward.

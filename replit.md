@@ -4,7 +4,7 @@
 
 Kaartx Cloud is a premium SaaS platform for launching and managing multi-vendor marketplaces. The application is designed specifically for GCC markets with built-in integrations for TAP Payments and Asyad Shipping. It provides complete seller lifecycle management including onboarding, subscription billing, product listing workflows, order fulfillment, and automated 12-day payout cycles.
 
-The platform targets brands, startups, retailers, agencies, and enterprises looking to launch their own branded marketplaces without heavy development investment. The design follows Apple-style premium minimalism with a dark theme and navy blue (#131742) accent colors.
+The platform targets brands, startups, retailers, agencies, and enterprises looking to launch their own branded marketplaces without heavy development investment. The design follows Apple-style premium minimalism with a clean white background and navy blue (#131742) accent colors.
 
 ## User Preferences
 
@@ -23,7 +23,7 @@ Preferred communication style: Simple, everyday language.
 - Tailwind CSS for styling with custom design system
 
 **Design System:**
-- Dark theme foundation with deep blacks (#0A0A0A background)
+- Light theme with pure white background (#FFFFFF)
 - Navy blue (#131742) as primary brand accent
 - Inter font family for all typography
 - Generous Apple-style spacing (py-20 to py-32 sections)
