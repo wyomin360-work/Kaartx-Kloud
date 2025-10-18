@@ -34,11 +34,11 @@ export default function Hero() {
             ref={buttonsAnimation.ref}
             className={`flex flex-col sm:flex-row gap-4 justify-center items-center animate-on-scroll stagger-2 ${buttonsAnimation.isVisible ? 'visible' : ''}`}
           >
-            <Button size="lg" className="shadow-playful group text-lg px-8 py-6 rounded-2xl font-bold" data-testid="button-hero-get-started">
+            <Button size="lg" className="shadow-playful group text-lg px-8 py-6 rounded-2xl font-bold hover:scale-105 transition-transform" data-testid="button-hero-get-started">
               Start Building Your Marketplace
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline" className="backdrop-blur-sm text-lg px-8 py-6 rounded-2xl font-semibold border-2" data-testid="button-hero-whatsapp">
+            <Button size="lg" variant="outline" className="backdrop-blur-sm text-lg px-8 py-6 rounded-2xl font-semibold border-2 hover:scale-105 transition-transform" data-testid="button-hero-whatsapp">
               <MessageCircle className="mr-2 h-5 w-5" />
               Talk to Sales
             </Button>

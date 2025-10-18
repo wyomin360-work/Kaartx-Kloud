@@ -19,7 +19,7 @@ export default function FinalCTA() {
         <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto" data-testid="text-final-cta-subtitle">
           Join GCC businesses building the future of commerce with Kaartx Cloud
         </p>
-        <Button size="lg" className="shadow-glow group" data-testid="button-final-cta">
+        <Button size="lg" className="shadow-glow group hover:scale-105 transition-transform" data-testid="button-final-cta">
           Start Building Today
           <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
         </Button>

@@ -116,7 +116,7 @@ export default function Pricing() {
               </ul>
 
               <Button
-                className={`w-full rounded-2xl font-bold text-base py-6 ${plan.highlighted ? 'shadow-playful' : ''}`}
+                className={`w-full rounded-2xl font-bold text-base py-6 hover:scale-105 transition-transform ${plan.highlighted ? 'shadow-playful' : ''}`}
                 variant={plan.highlighted ? 'default' : 'outline'}
                 data-testid={`button-plan-${index}`}
               >
