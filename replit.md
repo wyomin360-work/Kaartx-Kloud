@@ -4,9 +4,17 @@
 
 Kaartx Cloud is a premium SaaS platform for launching and managing multi-vendor marketplaces. The application is designed specifically for GCC markets with built-in integrations for TAP Payments and Asyad Shipping. It provides complete seller lifecycle management including onboarding, subscription billing, product listing workflows, order fulfillment, and automated 12-day payout cycles.
 
-The platform targets brands, startups, retailers, agencies, and enterprises looking to launch their own branded marketplaces without heavy development investment. The design follows Apple-style premium minimalism with a clean white background and navy blue (#131742) accent colors.
+The platform targets brands, startups, retailers, agencies, and enterprises looking to launch their own branded marketplaces without heavy development investment. The design follows Apple-style premium minimalism with a clean white background and deep indigo-navy (#2B3674) accent colors extracted from the Kaartx logo.
 
 ## Recent Changes
+
+**October 18, 2025 - Logo Blue Color Update:**
+- Updated primary blue color to match Kaartx logo exactly: #2B3674 (deep indigo-navy)
+- Changed from previous #131742 to richer, more saturated #2B3674 (HSL: 228 46% 31%)
+- Updated all CSS color variables in both light and dark modes
+- Updated gradient effects: gradient-text, gradient-border, gradient-bg-blue
+- All buttons, icons, and accent colors now use logo-matched blue
+- E2e tested and verified across all sections
 
 **October 18, 2025 - Scroll Animations Added:**
 - Created useScrollAnimation hook with Intersection Observer API for detecting elements in viewport
@@ -42,7 +50,7 @@ Preferred communication style: Simple, everyday language.
 
 **Design System:**
 - Light theme with pure white background (#FFFFFF)
-- Navy blue (#131742) as primary brand accent
+- Deep indigo-navy (#2B3674) as primary brand accent (extracted from Kaartx logo)
 - Inter font family for all typography
 - Generous Apple-style spacing (py-20 to py-32 sections)
 - Custom CSS variables for theme tokens defined in index.css
