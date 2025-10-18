@@ -8,13 +8,13 @@ export default function FinalCTA() {
       
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6" data-testid="text-final-cta-title">
-          Your marketplace, your rules — powered by Kaartx
+          Ready to launch your marketplace?
         </h2>
         <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto" data-testid="text-final-cta-subtitle">
-          Join the future of e-commerce. Launch your marketplace today.
+          Join GCC businesses building the future of commerce with Kaartx Cloud
         </p>
         <Button size="lg" className="shadow-glow group" data-testid="button-final-cta">
-          Get Started with Kaartx Cloud
+          Start Building Today
           <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
         </Button>
       </div>

@@ -12,24 +12,24 @@ export default function Testimonials() {
 
   const testimonials = [
     {
-      quote: "Kaartx Cloud transformed how we run our marketplace. The automation features alone saved us 20 hours per week.",
-      author: "Sarah Johnson",
-      role: "CEO",
-      company: "MarketHub",
+      quote: "We launched our marketplace in 3 weeks. The seller subscription system and payout automation saved us months of development.",
+      author: "Ahmed Al-Said",
+      role: "Founder",
+      company: "Oman Fashion Hub",
       avatar: avatar1,
     },
     {
-      quote: "The API integration was seamless. We had our custom workflow up and running in just days, not weeks.",
-      author: "Michael Chen",
-      role: "CTO",
-      company: "BrandFlow",
+      quote: "The TAP and Asyad integrations were game-changers. Everything just works out of the box for GCC markets.",
+      author: "Fatima Al-Balushi",
+      role: "CEO",
+      company: "Gulf Retail Connect",
       avatar: avatar2,
     },
     {
-      quote: "Finally, a marketplace platform that actually understands what sellers need. Game changer for our business.",
-      author: "David Rodriguez",
-      role: "Founder",
-      company: "SellerOS",
+      quote: "As an agency, we've built 5 marketplaces on Kaartx Cloud. The white-label capabilities are perfect for our clients.",
+      author: "Omar Hassan",
+      role: "CTO",
+      company: "Digital Commerce Agency",
       avatar: avatar3,
     },
   ];
@@ -42,7 +42,7 @@ export default function Testimonials() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-testimonials-title">
-            Trusted by marketplace leaders
+            Trusted by marketplace builders
           </h2>
         </div>
 

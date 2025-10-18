@@ -1,21 +1,21 @@
-import { UserPlus, RefreshCw, Rocket } from 'lucide-react';
+import { Settings, Users, Rocket } from 'lucide-react';
 
 export default function HowItWorks() {
   const steps = [
     {
-      icon: UserPlus,
-      title: 'Onboard',
-      description: 'Set up your marketplace and invite sellers to join your platform',
+      icon: Settings,
+      title: 'Configure',
+      description: 'Set up your marketplace branding, categories, and seller subscription plans',
     },
     {
-      icon: RefreshCw,
-      title: 'Sync',
-      description: 'Connect systems, configure workflows, and sync your operations',
+      icon: Users,
+      title: 'Onboard Sellers',
+      description: 'Invite sellers, approve applications, and they start listing products',
     },
     {
       icon: Rocket,
-      title: 'Launch & Scale',
-      description: 'Go live and grow with automated operations and analytics',
+      title: 'Launch & Earn',
+      description: 'Go live and earn commissions while sellers manage their own stores',
     },
   ];
 
@@ -24,10 +24,10 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-how-it-works-title">
-            How It Works
+            Launch in 3 simple steps
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-how-it-works-subtitle">
-            Get your marketplace up and running in three simple steps
+            From zero to live marketplace faster than you think
           </p>
         </div>
 

@@ -4,22 +4,25 @@ import { ExternalLink } from 'lucide-react';
 
 export default function APISection() {
   const codeExample = `{
-  "marketplace": {
-    "id": "mktp_123abc",
-    "name": "Your Marketplace",
-    "sellers": 1250,
-    "products": 45000,
-    "orders": {
-      "total": 12500,
-      "pending": 45,
-      "processing": 120
+  "seller": {
+    "id": "sel_abc123",
+    "name": "Premium Electronics",
+    "subscription": {
+      "plan": "growth",
+      "status": "active",
+      "next_billing": "2025-11-18"
+    },
+    "stats": {
+      "total_products": 245,
+      "total_orders": 1520,
+      "pending_payout": 12450.00
     }
   },
   "payout": {
     "cycle": "12-day",
-    "next_payout": "2025-10-29",
-    "amount": 125000.00,
-    "currency": "USD"
+    "next_payout": "2025-10-30",
+    "amount": 12450.00,
+    "currency": "OMR"
   }
 }`;
 
@@ -28,20 +31,20 @@ export default function APISection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-api-title">
-            API-first by design
+            Built for developers
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-api-subtitle">
-            Build custom integrations and automate workflows with our comprehensive REST API
+            Comprehensive REST API to build custom integrations and automate your workflows
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
           <Card className="p-6 sm:p-8">
             <div className="mb-4 flex items-center justify-between">
-              <span className="text-sm text-muted-foreground font-mono">GET /api/marketplace/stats</span>
+              <span className="text-sm text-muted-foreground font-mono">GET /api/sellers/:id/stats</span>
               <Button variant="outline" size="sm" data-testid="button-view-docs">
                 <ExternalLink className="h-4 w-4 mr-2" />
-                View Docs
+                View API Docs
               </Button>
             </div>
             <pre className="bg-background p-6 rounded-lg overflow-x-auto">

@@ -1,31 +1,31 @@
-import { Shield, FileText, Settings, DollarSign } from 'lucide-react';
+import { ShoppingCart, FileText, Truck, Wallet } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 export default function DeepFeatures() {
   const features = [
     {
-      icon: Shield,
-      title: 'Marketplace OS',
-      description: 'Complete control over brand rules, category gating, and seller approvals. Build your marketplace exactly how you want it.',
-      features: ['Custom brand rules', 'Category management', 'Automated approvals', 'Seller verification'],
+      icon: ShoppingCart,
+      title: 'Seller Subscriptions',
+      description: 'Flexible subscription plans with automated billing via TAP. Track active, expired, and suspended sellers with full payment history.',
+      features: ['Monthly/yearly billing cycles', 'Auto-renewal with saved cards', 'Suspend/reactivate sellers', 'Payment retry logic'],
     },
     {
       icon: FileText,
-      title: 'Product Listing Flow',
-      description: 'Comprehensive product management with SKU, MPN, multi-language titles, rich media support, and automated tax calculations.',
-      features: ['SKU & MPN management', 'Multi-language support', 'Rich media galleries', 'Automated tax handling'],
+      title: 'Product Management',
+      description: 'Complete product listing workflow with variants, SKU generation, MPN support, and bulk uploads. Admin approval system included.',
+      features: ['None/One/Two variant support', 'Auto SKU generation', 'Image quality standards', 'Bulk upload via Excel'],
     },
     {
-      icon: Settings,
-      title: 'Operations',
-      description: 'Streamline fulfillment with automated labels, real-time tracking, SLA monitoring, and Asyad-ready returns management.',
-      features: ['Shipping labels', 'Real-time tracking', 'SLA monitoring', 'Returns management'],
+      icon: Truck,
+      title: 'Order & Fulfillment',
+      description: 'End-to-end order management with status tracking, shipping label generation, and automated alerts for delayed orders.',
+      features: ['Real-time order tracking', 'Asyad shipping integration', 'Return & refund handling', 'Auto-delay notifications'],
     },
     {
-      icon: DollarSign,
-      title: 'Finance',
-      description: 'Flexible subscription models, fee management, automated invoicing, and TAP-integrated 12-day payout cycles.',
-      features: ['Subscription billing', 'Fee management', 'Auto invoicing', '12-day payouts'],
+      icon: Wallet,
+      title: '12-Day Payouts',
+      description: 'Automated seller payouts every 12 days with commission deduction, TAP integration, and complete invoice management.',
+      features: ['12-day payout cycles', 'Commission auto-deduction', 'Invoice generation', 'Export payout reports'],
     },
   ];
 

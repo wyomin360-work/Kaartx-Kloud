@@ -9,43 +9,43 @@ export default function FAQ() {
   const faqs = [
     {
       question: 'How quickly can I launch my marketplace?',
-      answer: 'Most customers launch within 2-4 weeks. Our onboarding team helps you configure your marketplace, import sellers, and go live smoothly.',
+      answer: 'Most customers launch within 2-4 weeks. We help you configure branding, categories, seller plans, and integrations to get you live fast.',
     },
     {
-      question: 'Do you offer a free trial?',
-      answer: 'Yes! We offer a 14-day free trial on our Starter and Growth plans. No credit card required to start.',
+      question: 'What is the 12-day payout system?',
+      answer: 'Sellers receive automatic payouts 12 days after order completion. This gives you time for quality checks while maintaining fast payment cycles for sellers.',
     },
     {
-      question: 'Can I migrate from another platform?',
-      answer: 'Absolutely. We provide migration tools and dedicated support to help you transfer sellers, products, and data from your existing platform.',
-    },
-    {
-      question: 'What payment gateways do you support?',
-      answer: 'We integrate with TAP Payments, Stripe, PayPal, and can add custom payment gateways for Enterprise customers.',
-    },
-    {
-      question: 'Is there a setup fee?',
-      answer: 'No setup fees for Starter and Growth plans. Enterprise plans have custom pricing based on your requirements.',
-    },
-    {
-      question: 'How does the 12-day payout cycle work?',
-      answer: 'Sellers receive payouts 12 days after order completion, giving you time for quality checks while maintaining fast payment cycles.',
+      question: 'Do you support GCC payment gateways?',
+      answer: 'Yes! TAP Payments integration is built-in with support for OMR, AED, SAR, and other GCC currencies. We also support Stripe for global payments.',
     },
     {
       question: 'Can I white-label the platform?',
-      answer: 'Yes! All plans include basic branding. Enterprise customers get full white-label capabilities with custom domains.',
+      answer: 'Absolutely. All plans include basic branding customization. Growth and Enterprise plans get full white-label capabilities with custom domains.',
+    },
+    {
+      question: 'How does seller subscription management work?',
+      answer: 'You create subscription plans (monthly/yearly) and sellers pay via TAP. Auto-renewal handles recurring payments, and you can suspend/reactivate sellers as needed.',
+    },
+    {
+      question: 'Is Asyad shipping integrated?',
+      answer: 'Yes, Asyad integration is ready out of the box for Oman-based marketplaces. Shipping labels, tracking, and returns are all automated.',
+    },
+    {
+      question: 'Can sellers upload products in bulk?',
+      answer: 'Yes, sellers can download an Excel template and bulk upload products. All listings go through your admin approval workflow.',
     },
     {
       question: 'What kind of support do you offer?',
-      answer: 'Starter plans get email support, Growth plans get priority support, and Enterprise customers get dedicated account managers.',
+      answer: 'Starter plans get email support, Growth plans get priority support, and Enterprise customers get dedicated account managers with SLA guarantees.',
     },
     {
-      question: 'Is my data secure?',
-      answer: 'Yes. We use bank-level encryption, SOC 2 compliance, and regular security audits to protect your data.',
+      question: 'Can I manage multiple marketplaces?',
+      answer: 'Yes, Enterprise plans support multi-marketplace management from a single dashboard — perfect for agencies managing client marketplaces.',
     },
     {
-      question: 'Can I cancel anytime?',
-      answer: 'Yes, you can cancel your subscription anytime. No long-term contracts required for Starter and Growth plans.',
+      question: 'Do you provide API access?',
+      answer: 'Yes, comprehensive REST API access is included in all plans. Build custom integrations and automate workflows as needed.',
     },
   ];
 

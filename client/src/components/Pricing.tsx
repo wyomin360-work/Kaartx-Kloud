@@ -6,33 +6,33 @@ export default function Pricing() {
   const plans = [
     {
       name: 'Starter',
-      price: '$99',
-      period: '/month',
-      description: 'Perfect for getting started',
+      price: 'Contact',
+      period: '',
+      description: 'Perfect for new marketplaces',
       features: [
-        'Up to 50 sellers',
-        '1,000 products',
+        'Up to 100 sellers',
+        'Product listing management',
         'Basic analytics',
         'Email support',
-        'Standard API access',
+        '12-day payout cycles',
       ],
-      cta: 'Start Free',
+      cta: 'Get Started',
       highlighted: false,
     },
     {
       name: 'Growth',
-      price: '$299',
-      period: '/month',
-      description: 'For growing marketplaces',
+      price: 'Contact',
+      period: '',
+      description: 'For scaling marketplaces',
       features: [
-        'Up to 500 sellers',
-        'Unlimited products',
+        'Unlimited sellers',
         'Advanced analytics',
+        'TAP & Asyad integrations',
         'Priority support',
-        'Full API access',
-        'Custom integrations',
+        'White-label options',
+        'Custom workflows',
       ],
-      cta: 'Start Free',
+      cta: 'Talk to Sales',
       highlighted: true,
     },
     {
@@ -41,14 +41,14 @@ export default function Pricing() {
       period: '',
       description: 'For large-scale operations',
       features: [
-        'Unlimited sellers',
-        'Unlimited products',
-        'White-label solution',
-        'Dedicated support',
-        'Custom SLA',
-        'On-premise option',
+        'Everything in Growth',
+        'Dedicated infrastructure',
+        'Custom integrations',
+        'SLA guarantee',
+        'Dedicated account manager',
+        'Multi-marketplace support',
       ],
-      cta: 'Contact Sales',
+      cta: 'Contact Us',
       highlighted: false,
     },
   ];
@@ -58,10 +58,10 @@ export default function Pricing() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-pricing-title">
-            Simple, transparent pricing
+            Flexible pricing for every stage
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-pricing-subtitle">
-            Choose the plan that fits your marketplace needs
+            Start small and scale as your marketplace grows
           </p>
         </div>
 

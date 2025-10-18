@@ -3,9 +3,9 @@ import { TrendingUp, Users, Clock } from 'lucide-react';
 
 export default function CaseStudy() {
   const metrics = [
-    { icon: TrendingUp, label: 'Seller Growth', value: '+40%' },
-    { icon: Clock, label: 'Faster Onboarding', value: '2x' },
-    { icon: Users, label: 'Active Sellers', value: '1,250' },
+    { icon: TrendingUp, label: 'Revenue Growth', value: '+180%' },
+    { icon: Clock, label: 'Time to Launch', value: '3 weeks' },
+    { icon: Users, label: 'Active Sellers', value: '450+' },
   ];
 
   return (
@@ -15,10 +15,10 @@ export default function CaseStudy() {
           <div className="max-w-4xl mx-auto">
             <div className="mb-8">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-case-study-title">
-                How MarketHub scaled to 1,250 sellers
+                How Oman Fashion Hub scaled to 450+ sellers
               </h2>
               <p className="text-lg text-muted-foreground" data-testid="text-case-study-description">
-                By leveraging Kaartx Cloud's automation and API-first approach, MarketHub achieved unprecedented growth while reducing operational overhead.
+                Using Kaartx Cloud's automated seller onboarding and subscription management, they launched in 3 weeks and grew revenue by 180% in 6 months.
               </p>
             </div>
 

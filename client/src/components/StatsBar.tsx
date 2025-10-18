@@ -1,9 +1,9 @@
 export default function StatsBar() {
   const stats = [
-    { value: '99.99%', label: 'Uptime' },
-    { value: '12-day', label: 'Payout Control' },
+    { value: '12-day', label: 'Payout Cycles' },
     { value: 'GCC', label: 'Ready' },
-    { value: 'API', label: 'First' },
+    { value: '99.9%', label: 'Uptime' },
+    { value: 'White-label', label: 'Ready' },
   ];
 
   return (

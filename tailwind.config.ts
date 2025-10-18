@@ -89,7 +89,7 @@ export default {
       },
       boxShadow: {
         'soft': '0 10px 30px rgba(0,0,0,0.35)',
-        'glow': '0 0 20px rgba(255, 56, 92, 0.3)',
+        'glow': '0 0 20px rgba(19, 23, 66, 0.5)',
       },
       keyframes: {
         "accordion-down": {

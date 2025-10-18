@@ -11,20 +11,19 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight" data-testid="text-hero-title">
-            Build, run, and scale your marketplace — with{' '}
-            <span className="text-primary">Kaartx Cloud</span>.
+            Launch your own <span className="text-primary">multi-vendor marketplace</span> in days, not months
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto" data-testid="text-hero-subtitle">
-            A premium, API-first commerce platform to launch branded marketplaces, onboard sellers, automate operations, and manage payouts.
+            Complete marketplace platform with seller onboarding, product management, subscriptions, and 12-day payout cycles. Built for GCC markets with Tap & Asyad integrations ready out of the box.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button size="lg" className="shadow-glow group" data-testid="button-hero-get-started">
-              Get Started
+              Start Building Your Marketplace
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button size="lg" variant="outline" className="backdrop-blur-sm" data-testid="button-hero-whatsapp">
               <MessageCircle className="mr-2 h-4 w-4" />
-              Talk to Sales (WhatsApp)
+              Talk to Sales
             </Button>
           </div>
         </div>

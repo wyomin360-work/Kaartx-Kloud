@@ -3,9 +3,9 @@ import { Shield, Lock, FileCheck, Database, UserCheck } from 'lucide-react';
 export default function Security() {
   const features = [
     { icon: UserCheck, text: 'Role-based access control' },
-    { icon: FileCheck, text: 'Comprehensive audit logs' },
-    { icon: Lock, text: 'End-to-end encryption' },
-    { icon: Shield, text: 'OAuth 2.0 authentication' },
+    { icon: FileCheck, text: 'Seller approval workflows' },
+    { icon: Lock, text: 'Secure payment processing' },
+    { icon: Shield, text: 'Data encryption at rest' },
     { icon: Database, text: 'Automated daily backups' },
   ];
 
@@ -14,10 +14,10 @@ export default function Security() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-security-title">
-            Built for trust
+            Enterprise-grade security
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-security-subtitle">
-            Enterprise-grade security that protects your data and your customers
+            Your marketplace and seller data protected with bank-level security
           </p>
         </div>
 

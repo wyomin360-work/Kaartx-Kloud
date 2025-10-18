@@ -3,47 +3,57 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Card } from '@/components/ui/card';
 
 export default function UseCases() {
-  const [activeTab, setActiveTab] = useState('sellers');
+  const [activeTab, setActiveTab] = useState('brands');
 
   const useCases = {
-    sellers: {
-      title: 'For Sellers',
-      description: 'Expand your reach and manage multiple sales channels from one platform',
-      benefits: [
-        'Multi-channel inventory sync',
-        'Automated order processing',
-        'Real-time analytics dashboard',
-        'Integrated payment solutions',
-      ],
-    },
     brands: {
       title: 'For Brands',
-      description: 'Launch your own branded marketplace and control the customer experience',
+      description: 'Launch your own branded marketplace and sell alongside vetted partners',
       benefits: [
-        'White-label marketplace',
-        'Brand protection controls',
-        'Custom seller onboarding',
-        'Full data ownership',
+        'Full white-label control',
+        'Maintain brand standards with approval workflows',
+        'Earn commissions from partner sellers',
+        'Own your customer relationships',
       ],
     },
-    enterprises: {
-      title: 'For Enterprises',
-      description: 'Scale your marketplace operations with enterprise-grade infrastructure',
+    startups: {
+      title: 'For Startups',
+      description: 'Build your marketplace idea without massive upfront development costs',
       benefits: [
-        'Dedicated infrastructure',
-        'Advanced API access',
-        'Priority support',
-        'Custom integrations',
+        'Launch in days, not months',
+        'Subscription-based pricing',
+        'Scale as you grow',
+        'GCC payment integrations ready',
+      ],
+    },
+    retail: {
+      title: 'For Retailers',
+      description: 'Transform your retail business into a multi-vendor marketplace',
+      benefits: [
+        'Expand product range without inventory',
+        'Automated seller payouts',
+        'Tap & Asyad integrations included',
+        'Mobile-ready storefronts',
       ],
     },
     agencies: {
       title: 'For Agencies',
-      description: 'Build and manage marketplaces for your clients with ease',
+      description: 'Build and manage marketplaces for multiple clients with ease',
       benefits: [
-        'Multi-tenant management',
-        'White-label solutions',
-        'Revenue sharing models',
-        'Agency dashboard',
+        'Multi-tenant architecture',
+        'White-label for each client',
+        'Revenue sharing models built-in',
+        'Centralized client management',
+      ],
+    },
+    enterprises: {
+      title: 'For Enterprises',
+      description: 'Enterprise-grade marketplace infrastructure with full customization',
+      benefits: [
+        'Dedicated infrastructure',
+        'Custom integrations & workflows',
+        'Priority support & SLA',
+        'Advanced analytics & reporting',
       ],
     },
   };
@@ -56,16 +66,17 @@ export default function UseCases() {
             Built for everyone
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-use-cases-subtitle">
-            Whether you're a seller, brand, enterprise, or agency — we've got you covered
+            Whether you're a brand, startup, retailer, agency, or enterprise
           </p>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="max-w-4xl mx-auto">
-          <TabsList className="grid w-full grid-cols-4 mb-8" data-testid="tabs-use-cases">
-            <TabsTrigger value="sellers" data-testid="tab-sellers">Sellers</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-5 mb-8" data-testid="tabs-use-cases">
             <TabsTrigger value="brands" data-testid="tab-brands">Brands</TabsTrigger>
-            <TabsTrigger value="enterprises" data-testid="tab-enterprises">Enterprises</TabsTrigger>
+            <TabsTrigger value="startups" data-testid="tab-startups">Startups</TabsTrigger>
+            <TabsTrigger value="retail" data-testid="tab-retail">Retail</TabsTrigger>
             <TabsTrigger value="agencies" data-testid="tab-agencies">Agencies</TabsTrigger>
+            <TabsTrigger value="enterprises" data-testid="tab-enterprises">Enterprise</TabsTrigger>
           </TabsList>
 
           {Object.entries(useCases).map(([key, useCase]) => (

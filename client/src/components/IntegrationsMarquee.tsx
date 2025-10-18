@@ -1,14 +1,14 @@
-import { SiShopify, SiFirebase, SiVercel, SiGoogleanalytics } from 'react-icons/si';
-import { CreditCard, Package } from 'lucide-react';
+import { SiShopify, SiFirebase, SiStripe } from 'react-icons/si';
+import { CreditCard, Package, ShoppingBag, Truck } from 'lucide-react';
 
 export default function IntegrationsMarquee() {
   const integrations = [
+    { name: 'TAP Payments', icon: CreditCard, featured: true },
+    { name: 'Asyad Shipping', icon: Package, featured: true },
     { name: 'Shopify', icon: SiShopify },
-    { name: 'TAP', icon: CreditCard },
+    { name: 'Stripe', icon: SiStripe },
     { name: 'Firebase', icon: SiFirebase },
-    { name: 'Asyad', icon: Package },
-    { name: 'Vercel', icon: SiVercel },
-    { name: 'Analytics', icon: SiGoogleanalytics },
+    { name: 'Custom APIs', icon: Truck },
   ];
 
   const doubledIntegrations = [...integrations, ...integrations];
@@ -18,10 +18,10 @@ export default function IntegrationsMarquee() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-integrations-title">
-            Integrations you need
+            GCC-ready integrations
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-integrations-subtitle">
-            Connect with the tools and services you already use
+            TAP & Asyad integrated out of the box — plus easy connections to your existing tools
           </p>
         </div>
       </div>
@@ -36,7 +36,7 @@ export default function IntegrationsMarquee() {
                 className="flex items-center justify-center min-w-[200px] mx-8"
                 data-testid={`integration-${index}`}
               >
-                <div className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+                <div className={`flex items-center gap-3 ${integration.featured ? 'text-primary' : 'text-muted-foreground'} hover:text-primary transition-colors`}>
                   <Icon className="h-8 w-8" />
                   <span className="text-lg font-medium">{integration.name}</span>
                 </div>

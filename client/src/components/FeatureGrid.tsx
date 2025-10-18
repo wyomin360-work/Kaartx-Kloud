@@ -1,27 +1,27 @@
-import { Users, Package, Truck, CreditCard } from 'lucide-react';
+import { Users, ListChecks, CreditCard, Settings } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 export default function FeatureGrid() {
   const features = [
     {
       icon: Users,
-      title: 'Seller Onboarding',
-      description: 'Seamlessly onboard and manage sellers with automated workflows.',
+      title: 'Seller Management',
+      description: 'Complete seller onboarding with subscription plans, approval workflows, and performance tracking.',
     },
     {
-      icon: Package,
-      title: 'Catalog & Variants',
-      description: 'Powerful product management with unlimited variants and attributes.',
-    },
-    {
-      icon: Truck,
-      title: 'Orders & Logistics',
-      description: 'End-to-end order management with integrated shipping solutions.',
+      icon: ListChecks,
+      title: 'Product Listing Flow',
+      description: 'Advanced product management with SKU generation, variants, MPN support, and bulk uploads.',
     },
     {
       icon: CreditCard,
-      title: 'Payments & Payouts',
-      description: 'Automated payment processing with flexible payout schedules.',
+      title: '12-Day Payouts',
+      description: 'Automated seller payouts every 12 days with TAP payment integration and invoice management.',
+    },
+    {
+      icon: Settings,
+      title: 'Full Automation',
+      description: 'Order tracking, shipping labels, returns management, and real-time notifications built-in.',
     },
   ];
 
@@ -30,10 +30,10 @@ export default function FeatureGrid() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-features-title">
-            Everything you need to run a marketplace
+            Everything to run a marketplace
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-features-subtitle">
-            Built-in tools and integrations to power your entire commerce operation
+            From seller onboarding to payouts — all the tools you need in one platform
           </p>
         </div>
 
