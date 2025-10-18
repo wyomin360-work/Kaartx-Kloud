@@ -271,7 +271,8 @@
     position: relative;
     background: linear-gradient(white, white) padding-box,
                 linear-gradient(135deg, #131742, #4F46E5, #06B6D4) border-box;
-    border: 2px solid transparent;
+    border: 2px solid transparent !important;
+    border-radius: 1.5rem !important;
   }
 
   /* Playful Shadow */

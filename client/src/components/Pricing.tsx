@@ -69,10 +69,10 @@ export default function Pricing() {
           {plans.map((plan, index) => (
             <Card
               key={index}
-              className={`p-8 rounded-3xl border-2 ${
+              className={`p-8 !rounded-3xl !border-2 ${
                 plan.highlighted
                   ? 'gradient-border shadow-playful scale-105 gradient-bg-blue'
-                  : 'hover-elevate'
+                  : 'hover-elevate !border-border'
               }`}
               data-testid={`pricing-card-${index}`}
             >
