@@ -8,6 +8,14 @@ The platform targets brands, startups, retailers, agencies, and enterprises look
 
 ## Recent Changes
 
+**October 18, 2025 - Scroll Animations Added:**
+- Created useScrollAnimation hook with Intersection Observer API for detecting elements in viewport
+- Implemented smooth scroll-triggered animations: fadeInUp (slide-up + fade), fadeIn, scaleIn
+- Applied animations to all major sections: Hero, StatsBar, FeatureGrid, Pricing, IntegrationsMarquee, FinalCTA
+- Added staggered animation delays for card grids (0.1s, 0.2s, 0.3s intervals)
+- Performance optimized: observer disconnects after visibility is set, preventing memory leaks
+- TypeScript-safe: generic hook allows precise typing for all HTML element types
+
 **October 18, 2025 - Gen Z Modernization:**
 - Replaced "Kaartx" text with logo image in navbar (Logo_A_1760799119283.png), positioned flush left
 - Implemented Gen Z aesthetic throughout: gradient text effects (navy → purple → cyan), gradient backgrounds, playful shadows
