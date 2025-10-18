@@ -10,26 +10,26 @@ export default function Hero() {
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight" data-testid="text-hero-title">
-            Launch your own <span className="text-primary">multi-vendor marketplace</span> in days, not months
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-foreground mb-6 leading-[1.1]" data-testid="text-hero-title">
+            Launch your own <span className="gradient-text">multi-vendor marketplace</span> in days, not months
           </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto" data-testid="text-hero-subtitle">
+          <p className="text-xl sm:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto font-medium" data-testid="text-hero-subtitle">
             Complete marketplace platform with seller onboarding, product management, subscriptions, and 12-day payout cycles. Built for GCC markets with Tap & Asyad integrations ready out of the box.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="shadow-glow group" data-testid="button-hero-get-started">
+            <Button size="lg" className="shadow-playful group text-lg px-8 py-6 rounded-2xl font-bold" data-testid="button-hero-get-started">
               Start Building Your Marketplace
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button size="lg" variant="outline" className="backdrop-blur-sm" data-testid="button-hero-whatsapp">
-              <MessageCircle className="mr-2 h-4 w-4" />
+            <Button size="lg" variant="outline" className="backdrop-blur-sm text-lg px-8 py-6 rounded-2xl font-semibold border-2" data-testid="button-hero-whatsapp">
+              <MessageCircle className="mr-2 h-5 w-5" />
               Talk to Sales
             </Button>
           </div>
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <div className="relative rounded-xl overflow-hidden shadow-2xl border border-border/50">
+          <div className="relative rounded-3xl overflow-hidden shadow-playful gradient-border">
             <img
               src={heroDashboard}
               alt="Kaartx Cloud Dashboard"

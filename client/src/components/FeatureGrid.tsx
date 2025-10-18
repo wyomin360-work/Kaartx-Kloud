@@ -29,10 +29,10 @@ export default function FeatureGrid() {
     <section id="features" className="py-20 sm:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-features-title">
-            Everything to run a marketplace
+          <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-4" data-testid="text-features-title">
+            Everything to run a <span className="gradient-text">marketplace</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-features-subtitle">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-medium" data-testid="text-features-subtitle">
             From seller onboarding to payouts — all the tools you need in one platform
           </p>
         </div>
@@ -40,18 +40,19 @@ export default function FeatureGrid() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => {
             const Icon = feature.icon;
+            const gradients = ['gradient-bg-purple', 'gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue'];
             return (
               <Card
                 key={index}
-                className="hover-elevate transition-all duration-300 hover:scale-105"
+                className={`hover-elevate transition-all duration-300 hover:scale-105 rounded-2xl border-2 ${gradients[index]}`}
                 data-testid={`card-feature-${index}`}
               >
                 <CardHeader>
-                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                    <Icon className="h-6 w-6 text-primary" />
+                  <div className="h-14 w-14 rounded-2xl bg-white shadow-playful flex items-center justify-center mb-4">
+                    <Icon className="h-7 w-7 text-primary" />
                   </div>
-                  <CardTitle className="text-xl mb-2">{feature.title}</CardTitle>
-                  <CardDescription>{feature.description}</CardDescription>
+                  <CardTitle className="text-xl mb-2 font-bold">{feature.title}</CardTitle>
+                  <CardDescription className="font-medium">{feature.description}</CardDescription>
                 </CardHeader>
               </Card>
             );

@@ -57,10 +57,10 @@ export default function Pricing() {
     <section id="pricing" className="py-20 sm:py-32 bg-card/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-pricing-title">
-            Flexible pricing for every stage
+          <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-4" data-testid="text-pricing-title">
+            Flexible <span className="gradient-text">pricing</span> for every stage
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-pricing-subtitle">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-medium" data-testid="text-pricing-subtitle">
             Start small and scale as your marketplace grows
           </p>
         </div>
@@ -69,27 +69,27 @@ export default function Pricing() {
           {plans.map((plan, index) => (
             <Card
               key={index}
-              className={`p-8 ${
+              className={`p-8 rounded-3xl border-2 ${
                 plan.highlighted
-                  ? 'border-primary shadow-glow ring-2 ring-primary/20 scale-105'
-                  : ''
+                  ? 'gradient-border shadow-playful scale-105 gradient-bg-blue'
+                  : 'hover-elevate'
               }`}
               data-testid={`pricing-card-${index}`}
             >
               <div className="mb-6">
-                <h3 className="text-2xl font-bold text-foreground mb-2" data-testid={`text-plan-name-${index}`}>
+                <h3 className="text-2xl font-black text-foreground mb-2" data-testid={`text-plan-name-${index}`}>
                   {plan.name}
                 </h3>
-                <p className="text-muted-foreground text-sm" data-testid={`text-plan-description-${index}`}>
+                <p className="text-muted-foreground text-sm font-medium" data-testid={`text-plan-description-${index}`}>
                   {plan.description}
                 </p>
               </div>
 
               <div className="mb-6">
-                <span className="text-4xl font-bold text-foreground" data-testid={`text-plan-price-${index}`}>
+                <span className="text-5xl font-black gradient-text" data-testid={`text-plan-price-${index}`}>
                   {plan.price}
                 </span>
-                <span className="text-muted-foreground">{plan.period}</span>
+                <span className="text-muted-foreground font-medium">{plan.period}</span>
               </div>
 
               <ul className="space-y-3 mb-8">
@@ -104,7 +104,7 @@ export default function Pricing() {
               </ul>
 
               <Button
-                className={`w-full ${plan.highlighted ? 'shadow-glow' : ''}`}
+                className={`w-full rounded-2xl font-bold text-base py-6 ${plan.highlighted ? 'shadow-playful' : ''}`}
                 variant={plan.highlighted ? 'default' : 'outline'}
                 data-testid={`button-plan-${index}`}
               >

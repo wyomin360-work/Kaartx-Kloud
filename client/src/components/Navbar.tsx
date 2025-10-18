@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logoImage from '@assets/Logo_A_1760799119283.png';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,15 +29,19 @@ export default function Navbar() {
         isScrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto pr-4 sm:pr-6 lg:pr-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 -ml-4">
             <button
               onClick={() => scrollToSection('hero')}
-              className="text-2xl font-bold text-foreground hover-elevate px-3 py-1 rounded-md transition-colors"
+              className="hover-elevate p-2 rounded-md transition-all"
               data-testid="link-logo"
             >
-              Kaartx
+              <img 
+                src={logoImage} 
+                alt="Kaartx" 
+                className="h-8 w-auto"
+              />
             </button>
           </div>
 

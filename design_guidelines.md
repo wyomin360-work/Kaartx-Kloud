@@ -1,29 +1,36 @@
 # Kaartx Cloud - Design Guidelines
 
 ## Design Approach
-**Reference-Based Approach**: Inspired by seller.kaartx.com aesthetic - Apple-style premium minimalism meets Vercel's futuristic tech aesthetic. This is a luxury SaaS platform requiring bold, minimal, and premium visual language.
+**Gen Z Modern Aesthetic**: Bold, vibrant, and playful design that combines clean minimalism with gradient accents and glass morphism effects. This is a next-generation SaaS platform with dynamic typography, rounded elements, and micro-interactions that feel fresh and contemporary.
 
 ## Core Design Elements
 
 ### A. Color Palette
-**Light Theme Foundation:**
+**Light Theme Foundation with Gradient Accents:**
 - Background: `#FFFFFF` (pure white)
-- Card/Surface: `#FAFAFA` (off-white)
+- Card/Surface: `#FAFAFA` (off-white) with gradient overlays
 - Primary Text: `#1E1E1E` (near-black)
 - Muted Text: `#6B6B6B` (medium gray)
-- Brand Accent: `#131742` (Navy blue) - THE SOUL of the design
+- Brand Navy: `#131742` (Navy blue)
+- Vibrant Purple: `#4F46E5` (Indigo)
+- Vibrant Cyan: `#06B6D4` (Cyan)
 
 **Color Usage:**
-- Navy blue accent exclusively for CTAs, highlights, and hover states
-- Dark text on white/light backgrounds for excellent readability
-- Light gray surfaces for cards with subtle elevation
-- Clean, minimal aesthetic with focus on content and navy blue accents
+- Gradient text effects for key headlines (navy → purple → cyan)
+- Gradient backgrounds for sections (purple/blue tints at 10% opacity)
+- Navy blue for primary CTAs
+- Colorful card backgrounds with alternating gradients
+- Glass morphism effects with backdrop blur
+- Playful shadows with colored tints
 
 ### B. Typography
-**Font Family:** Inter (primary) or Poppins
-- Headings: Bold weight, generous line-height
-- Body: Regular weight, comfortable reading size
-- Code blocks: Monospace for API section
+**Font Family:** Inter (primary) - modern sans-serif
+- Headlines: **Extrabold/Black** (800-900 weight) with tight leading (1.1)
+- Subheadings: **Bold** (700 weight)
+- Body: **Medium** (500 weight) for better readability
+- Labels: **Semibold** (600 weight) with uppercase tracking
+- Gradient text on key phrases for visual hierarchy
+- Larger base sizes: 20-24px body, 48-80px headlines
 - All instances: "Kaartx" (exact spelling)
 
 ### C. Layout System
@@ -46,16 +53,20 @@
 - Smooth scroll anchors
 
 **Buttons:**
-- Primary: Navy blue fill, white text, medium roundedness
-- Outline: Navy blue border, clean minimal style
-- Hover: Soft glow effect + subtle scale (1.02)
-- No custom hover states
+- Primary: Navy blue fill, white text, **extra rounded** (`rounded-2xl`)
+- Larger padding: `px-8 py-6` for prominent CTAs
+- Bold/semibold text with slightly larger font
+- Playful colored shadows (not just gray)
+- Hover: Scale + vibrant glow effect
+- Border width: 2px for outline variants
 
 **Cards:**
-- Light surface (`#FAFAFA`) with soft shadow
-- Border radius: `1.25rem`
-- Hover: Slight raise + glow effect
-- Clean typography hierarchy
+- Light surface with gradient overlays (`gradient-bg-purple`, `gradient-bg-blue`)
+- Border radius: `rounded-2xl` or `rounded-3xl` (very rounded, Gen Z style)
+- Border width: 2px for more definition
+- Playful shadows with color tints
+- Hover: Scale (1.05) + shadow lift
+- Alternating gradient backgrounds in grids
 
 **Feature Grid:**
 - 4-column desktop, 2-column tablet, 1-column mobile
