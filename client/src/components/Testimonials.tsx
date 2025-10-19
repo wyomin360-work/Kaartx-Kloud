@@ -39,7 +39,7 @@ export default function Testimonials() {
 
   return (
     <section className="py-20 sm:py-32 bg-card/30">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-5 sm:px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-testimonials-title">
             Trusted by marketplace builders

@@ -31,7 +31,7 @@ export default function DeepFeatures() {
 
   return (
     <section className="py-20 sm:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6">
         <div className="space-y-24">
           {features.map((feature, index) => {
             const Icon = feature.icon;

@@ -21,7 +21,7 @@ export default function HowItWorks() {
 
   return (
     <section className="py-20 sm:py-32 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6">
         <div className="text-center mb-20">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-foreground mb-4" data-testid="text-how-it-works-title">
             Launch in 3 simple steps

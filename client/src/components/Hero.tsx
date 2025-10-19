@@ -14,7 +14,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-background to-background opacity-50" />
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-6 py-20 sm:py-32">
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h1 
             ref={titleAnimation.ref}

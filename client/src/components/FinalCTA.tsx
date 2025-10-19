@@ -11,7 +11,7 @@ export default function FinalCTA() {
       
       <div 
         ref={ctaAnimation.ref}
-        className={`relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll ${ctaAnimation.isVisible ? 'visible' : ''}`}
+        className={`relative max-w-4xl mx-auto px-5 sm:px-6 text-center animate-on-scroll ${ctaAnimation.isVisible ? 'visible' : ''}`}
       >
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6" data-testid="text-final-cta-title">
           Ready to launch your marketplace?

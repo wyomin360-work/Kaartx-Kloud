@@ -19,7 +19,7 @@ export default function IntegrationsMarquee() {
 
   return (
     <section id="integrations" className="py-20 sm:py-32 border-y border-border/50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 mb-12">
         <div 
           ref={titleAnimation.ref}
           className={`text-center animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}

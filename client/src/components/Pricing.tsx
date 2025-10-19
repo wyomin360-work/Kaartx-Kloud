@@ -59,7 +59,7 @@ export default function Pricing() {
 
   return (
     <section id="pricing" className="py-20 sm:py-32 bg-card/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6">
         <div 
           ref={titleAnimation.ref}
           className={`text-center mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
