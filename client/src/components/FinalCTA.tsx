@@ -6,8 +6,8 @@ export default function FinalCTA() {
   const ctaAnimation = useScrollAnimation<HTMLDivElement>(0.2);
 
   return (
-    <section className="py-20 sm:py-32 bg-gradient-to-br from-primary/10 via-background to-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent opacity-50" />
+    <section className="py-20 sm:py-32 bg-gradient-to-b from-background via-muted/20 to-muted/40 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent opacity-30" />
       
       <div 
         ref={ctaAnimation.ref}
