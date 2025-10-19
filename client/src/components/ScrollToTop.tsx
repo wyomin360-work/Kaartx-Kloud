@@ -31,8 +31,8 @@ export default function ScrollToTop() {
     <div
       style={{
         position: 'fixed',
-        bottom: '2rem',
-        right: '6.5rem',
+        bottom: '1.25rem',
+        right: '5.5rem',
         zIndex: 50
       }}
     >
