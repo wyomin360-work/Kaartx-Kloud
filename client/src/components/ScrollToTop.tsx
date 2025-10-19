@@ -32,7 +32,7 @@ export default function ScrollToTop() {
       onClick={scrollToTop}
       size="icon"
       variant="outline"
-      className="fixed bottom-28 right-8 h-12 w-12 rounded-full shadow-lg hover:shadow-xl z-50 transition-all duration-300"
+      className="fixed bottom-28 right-6 sm:right-8 h-12 w-12 rounded-full shadow-lg hover:shadow-xl z-50 transition-all duration-300"
       data-testid="button-scroll-to-top"
       aria-label="Scroll to top"
     >
