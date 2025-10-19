@@ -22,25 +22,25 @@ export default function Showcase() {
   ];
 
   return (
-    <section className="py-20 sm:py-32">
+    <section className="py-20 sm:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-5 sm:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-showcase-title">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-foreground mb-4" data-testid="text-showcase-title">
             Powerful dashboards
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-showcase-subtitle">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-medium" data-testid="text-showcase-subtitle">
             Everything you need at your fingertips
           </p>
         </div>
 
-        <div className="space-y-16">
+        <div className="space-y-24">
           {screenshots.map((screenshot, index) => (
-            <div key={index} className="max-w-5xl mx-auto" data-testid={`showcase-${index}`}>
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-semibold text-foreground mb-2">{screenshot.title}</h3>
-                <p className="text-muted-foreground">{screenshot.description}</p>
+            <div key={index} className="max-w-6xl mx-auto" data-testid={`showcase-${index}`}>
+              <div className="text-center mb-12">
+                <h3 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">{screenshot.title}</h3>
+                <p className="text-lg text-muted-foreground font-medium">{screenshot.description}</p>
               </div>
-              <div className="rounded-xl overflow-hidden shadow-2xl border border-border">
+              <div className="rounded-3xl overflow-hidden shadow-playful border-2 border-border">
                 <img
                   src={screenshot.image}
                   alt={screenshot.title}
