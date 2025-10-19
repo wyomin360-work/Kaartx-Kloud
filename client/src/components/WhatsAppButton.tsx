@@ -3,15 +3,17 @@ import { Button } from '@/components/ui/button';
 
 export default function WhatsAppButton() {
   const handleClick = () => {
-    console.log('WhatsApp button clicked');
+    // Replace with your WhatsApp number
+    window.open('https://wa.me/96812345678', '_blank');
   };
 
   return (
     <Button
       onClick={handleClick}
       size="icon"
-      className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-glow md:hidden z-40"
+      className="fixed bottom-8 right-8 h-14 w-14 rounded-full shadow-lg hover:shadow-xl z-50 transition-all duration-300"
       data-testid="button-whatsapp-float"
+      aria-label="Contact us on WhatsApp"
     >
       <MessageCircle className="h-6 w-6" />
     </Button>
