@@ -280,11 +280,11 @@
     box-shadow: 0 4px 20px rgba(79, 70, 229, 0.15), 0 8px 40px rgba(6, 182, 212, 0.1);
   }
 
-  /* Scroll Animations */
+  /* Professional Scroll Animations with refined easing curves */
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(24px);
     }
     to {
       opacity: 1;
@@ -304,7 +304,7 @@
   @keyframes scaleIn {
     from {
       opacity: 0;
-      transform: scale(0.95);
+      transform: scale(0.96);
     }
     to {
       opacity: 1;
@@ -312,45 +312,99 @@
     }
   }
 
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Professional cubic-bezier easing for smooth, natural motion */
   .animate-on-scroll {
     opacity: 0;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .animate-on-scroll.visible {
-    animation: fadeInUp 0.8s ease-out forwards;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .animate-fade-in {
     opacity: 0;
+    will-change: opacity;
   }
 
   .animate-fade-in.visible {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .animate-scale-in {
     opacity: 0;
+    will-change: opacity, transform;
   }
 
   .animate-scale-in.visible {
-    animation: scaleIn 0.6s ease-out forwards;
+    animation: scaleIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
+  .animate-slide-left {
+    opacity: 0;
+    will-change: opacity, transform;
+  }
+
+  .animate-slide-left.visible {
+    animation: slideInLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-right {
+    opacity: 0;
+    will-change: opacity, transform;
+  }
+
+  .animate-slide-right.visible {
+    animation: slideInRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Refined stagger delays for natural cascading effect */
   .stagger-1 {
-    animation-delay: 0.1s;
+    animation-delay: 0.08s;
   }
 
   .stagger-2 {
-    animation-delay: 0.2s;
+    animation-delay: 0.16s;
   }
 
   .stagger-3 {
-    animation-delay: 0.3s;
+    animation-delay: 0.24s;
   }
 
   .stagger-4 {
+    animation-delay: 0.32s;
+  }
+
+  .stagger-5 {
     animation-delay: 0.4s;
+  }
+
+  .stagger-6 {
+    animation-delay: 0.48s;
   }
 }
 
