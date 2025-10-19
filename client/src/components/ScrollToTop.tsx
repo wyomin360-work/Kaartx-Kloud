@@ -28,15 +28,24 @@ export default function ScrollToTop() {
   if (!isVisible) return null;
 
   return (
-    <Button
-      onClick={scrollToTop}
-      size="icon"
-      variant="outline"
-      className="fixed bottom-28 right-6 sm:right-8 h-12 w-12 rounded-full shadow-lg hover:shadow-xl z-50 transition-all duration-300"
-      data-testid="button-scroll-to-top"
-      aria-label="Scroll to top"
+    <div
+      style={{
+        position: 'fixed',
+        bottom: '7rem',
+        right: '2rem',
+        zIndex: 50
+      }}
     >
-      <ArrowUp className="h-5 w-5" />
-    </Button>
+      <Button
+        onClick={scrollToTop}
+        size="icon"
+        variant="outline"
+        className="h-12 w-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+        data-testid="button-scroll-to-top"
+        aria-label="Scroll to top"
+      >
+        <ArrowUp className="h-5 w-5" />
+      </Button>
+    </div>
   );
 }
