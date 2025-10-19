@@ -54,7 +54,7 @@ export default function ContactForm() {
   ];
 
   return (
-    <section id="contact" className="py-20 sm:py-32 bg-gradient-to-b from-background to-muted/30">
+    <section id="contact" className="py-20 sm:py-32 bg-gradient-to-b from-muted/40 to-muted/50">
       <div className="max-w-7xl mx-auto px-5 sm:px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-contact-title">
