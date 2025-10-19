@@ -1,28 +1,60 @@
 import { SiShopify, SiFirebase, SiStripe } from 'react-icons/si';
-import { CreditCard, Package, ShoppingBag, Truck } from 'lucide-react';
+import { CreditCard, Package, Boxes, Plug } from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function IntegrationsMarquee() {
   const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
-  const marqueeAnimation = useScrollAnimation<HTMLDivElement>(0.2);
+  const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.2);
 
   const integrations = [
-    { name: 'TAP Payments', icon: CreditCard, featured: true },
-    { name: 'Asyad Shipping', icon: Package, featured: true },
-    { name: 'Shopify', icon: SiShopify },
-    { name: 'Stripe', icon: SiStripe },
-    { name: 'Firebase', icon: SiFirebase },
-    { name: 'Custom APIs', icon: Truck },
+    { 
+      name: 'Asyad Shipping', 
+      icon: Package, 
+      featured: true,
+      description: 'Complete GCC shipping solution',
+      category: 'Logistics'
+    },
+    { 
+      name: 'Shopify', 
+      icon: SiShopify,
+      description: 'E-commerce platform integration',
+      category: 'Platform'
+    },
+    { 
+      name: 'Stripe', 
+      icon: SiStripe,
+      description: 'Global payment processing',
+      category: 'Payments'
+    },
+    { 
+      name: 'Firebase', 
+      icon: SiFirebase,
+      description: 'Backend & authentication',
+      category: 'Infrastructure'
+    },
+    { 
+      name: 'Custom APIs', 
+      icon: Plug,
+      description: 'Connect your existing tools',
+      category: 'Custom'
+    },
+    { 
+      name: 'TAP Payments', 
+      icon: CreditCard, 
+      featured: true,
+      description: 'MENA payment gateway',
+      category: 'Payments'
+    },
   ];
 
-  const doubledIntegrations = [...integrations, ...integrations];
-
   return (
-    <section id="integrations" className="py-20 sm:py-32 border-y border-border/50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 mb-12">
+    <section id="integrations" className="py-20 sm:py-32 border-y border-border/50 bg-muted/30">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6">
         <div 
           ref={titleAnimation.ref}
-          className={`text-center animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+          className={`text-center mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-integrations-title">
             GCC-ready integrations
@@ -31,41 +63,49 @@ export default function IntegrationsMarquee() {
             TAP & Asyad integrated out of the box — plus easy connections to your existing tools
           </p>
         </div>
-      </div>
 
-      <div 
-        ref={marqueeAnimation.ref}
-        className={`relative animate-fade-in ${marqueeAnimation.isVisible ? 'visible' : ''}`}
-      >
-        <div className="flex animate-marquee" style={{ animation: 'marquee 30s linear infinite' }}>
-          {doubledIntegrations.map((integration, index) => {
+        <div 
+          ref={cardsAnimation.ref}
+          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-on-scroll ${cardsAnimation.isVisible ? 'visible' : ''}`}
+        >
+          {integrations.map((integration, index) => {
             const Icon = integration.icon;
             return (
-              <div
+              <Card
                 key={index}
-                className="flex items-center justify-center min-w-[200px] mx-8"
-                data-testid={`integration-${index}`}
+                className="p-6 hover-elevate transition-all duration-300 border-border/50"
+                data-testid={`integration-card-${index}`}
               >
-                <div className={`flex items-center gap-3 ${integration.featured ? 'text-primary' : 'text-muted-foreground'} hover:text-primary transition-colors`}>
-                  <Icon className="h-8 w-8" />
-                  <span className="text-lg font-medium">{integration.name}</span>
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`p-3 rounded-md ${integration.featured ? 'bg-primary/10' : 'bg-muted'}`}>
+                    <Icon className={`h-6 w-6 ${integration.featured ? 'text-primary' : 'text-foreground'}`} />
+                  </div>
+                  {integration.featured && (
+                    <Badge variant="default" className="text-xs" data-testid={`badge-featured-${index}`}>
+                      Featured
+                    </Badge>
+                  )}
                 </div>
-              </div>
+                
+                <h3 className="text-lg font-semibold text-foreground mb-2" data-testid={`text-integration-name-${index}`}>
+                  {integration.name}
+                </h3>
+                
+                <p className="text-sm text-muted-foreground mb-3" data-testid={`text-integration-description-${index}`}>
+                  {integration.description}
+                </p>
+                
+                <div className="flex items-center gap-2">
+                  <Boxes className="h-3.5 w-3.5 text-muted-foreground" />
+                  <span className="text-xs text-muted-foreground" data-testid={`text-integration-category-${index}`}>
+                    {integration.category}
+                  </span>
+                </div>
+              </Card>
             );
           })}
         </div>
       </div>
-
-      <style>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-      `}</style>
     </section>
   );
 }
