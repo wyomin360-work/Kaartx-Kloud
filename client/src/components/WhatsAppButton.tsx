@@ -11,8 +11,8 @@ export default function WhatsAppButton() {
     <Button
       onClick={handleClick}
       size="icon"
-      className="fixed h-14 w-14 rounded-full shadow-lg hover:shadow-xl z-50 transition-all duration-300"
-      style={{ bottom: '1.25rem', right: '5.75rem' }}
+      className="fixed h-14 w-14 rounded-full shadow-lg hover:shadow-xl z-50 transition-all duration-300 bg-green-600 text-white border-0"
+      style={{ bottom: '1.25rem', right: '5.5rem' }}
       data-testid="button-whatsapp-float"
       aria-label="Contact us on WhatsApp"
     >
