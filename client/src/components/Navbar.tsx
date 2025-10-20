@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import logoImage from '@assets/Logo_A_1760799119283.png';
 
@@ -105,7 +105,7 @@ export default function Navbar() {
 
       {isMobileMenuOpen && (
         <div className="md:hidden bg-card border-t border-border shadow-lg">
-          <div className="px-5 py-5 space-y-2">
+          <div className="px-5 py-6 space-y-1">
             <button
               onClick={() => scrollToSection('features')}
               className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
@@ -141,9 +141,33 @@ export default function Navbar() {
             >
               Contact
             </button>
-            <Button className="w-full mt-3 h-12 text-base hover:scale-[1.02] transition-transform" data-testid="button-mobile-get-started">
-              Get Started
-            </Button>
+            
+            <div className="pt-6 space-y-3">
+              <Button 
+                onClick={() => scrollToSection('hero')}
+                className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
+                data-testid="button-mobile-get-started"
+              >
+                Get Started
+              </Button>
+              <Button 
+                onClick={() => scrollToSection('hero')}
+                className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
+                data-testid="button-mobile-start-building"
+              >
+                Start Building
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button 
+                onClick={() => scrollToSection('contact')}
+                variant="outline"
+                className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
+                data-testid="button-mobile-talk-sales"
+              >
+                <MessageCircle className="mr-2 h-5 w-5" />
+                Talk to Sales
+              </Button>
+            </div>
           </div>
         </div>
       )}
