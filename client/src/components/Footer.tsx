@@ -59,7 +59,7 @@ export default function Footer() {
                   Integrations
                 </button>
               </li>
-              <li>
+              {/* <li>
                 <button
                   onClick={() => scrollToSection('api')}
                   className="text-muted-foreground hover:text-foreground transition-colors"
@@ -67,7 +67,7 @@ export default function Footer() {
                 >
                   API Docs
                 </button>
-              </li>
+              </li> */}
             </ul>
           </div>
 

@@ -67,13 +67,13 @@ export default function Navbar() {
             >
               Integrations
             </button>
-            <button
+            {/* <button
               onClick={() => scrollToSection('api')}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               data-testid="link-docs"
             >
               Docs
-            </button>
+            </button> */}
             <button
               onClick={() => scrollToSection('contact')}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -127,13 +127,13 @@ export default function Navbar() {
             >
               Integrations
             </button>
-            <button
+            {/* <button
               onClick={() => scrollToSection('api')}
               className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
               data-testid="link-mobile-docs"
             >
               Docs
-            </button>
+            </button> */}
             <button
               onClick={() => scrollToSection('contact')}
               className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
