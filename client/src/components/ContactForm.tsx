@@ -36,7 +36,7 @@ export default function ContactForm() {
       icon: Phone,
       title: 'Call us',
       description: '+96898209353',
-      detail: 'Sunday-Thursday from 8am - 7pm'
+      detail: 'Sunday through Thursday, 8 AM to 7 PM'
     },
     {
       icon: Clock,
