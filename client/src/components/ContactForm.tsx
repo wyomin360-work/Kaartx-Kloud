@@ -30,13 +30,13 @@ export default function ContactForm() {
       icon: Mail,
       title: 'Email us',
       description: 'support@kaartx.com',
-      detail: 'Our team responds within 2 hours'
+      detail: 'We aim to respond as quickly as possible'
     },
     {
       icon: Phone,
       title: 'Call us',
       description: '+96898209353',
-      detail: 'Mon-Fri from 9am to 6pm'
+      detail: 'Sunday-Thursday from 8am - 7pm'
     },
     {
       icon: Clock,
