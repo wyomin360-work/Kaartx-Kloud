@@ -1,4 +1,4 @@
-import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
+import { Twitter, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   const scrollToSection = (id: string) => {
@@ -111,12 +111,6 @@ export default function Footer() {
             </a>
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-linkedin">
               <Linkedin className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-github">
-              <Github className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-mail">
-              <Mail className="h-5 w-5" />
             </a>
           </div>
         </div>
