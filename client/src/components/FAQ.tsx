@@ -50,24 +50,34 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="py-20 sm:py-32 bg-gradient-to-b from-card/30 to-background">
+    <section className="py-24 sm:py-32 bg-white">
       <div className="max-w-4xl mx-auto px-5 sm:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-faq-title">
+          <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-4 gradient-text" data-testid="text-faq-title">
             Frequently asked questions
           </h2>
-          <p className="text-lg text-muted-foreground" data-testid="text-faq-subtitle">
+          <p className="text-lg text-muted-foreground font-medium" data-testid="text-faq-subtitle">
             Everything you need to know about Kaartx Cloud
           </p>
         </div>
 
         <Accordion type="single" collapsible className="space-y-4" data-testid="accordion-faq">
           {faqs.map((faq, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-lg px-6">
-              <AccordionTrigger className="hover:no-underline" data-testid={`faq-question-${index}`}>
+            <AccordionItem 
+              key={index} 
+              value={`item-${index}`} 
+              className="border border-border/40 rounded-2xl px-6 bg-card/30 hover-elevate transition-all"
+            >
+              <AccordionTrigger 
+                className="hover:no-underline font-bold text-base py-5" 
+                data-testid={`faq-question-${index}`}
+              >
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground" data-testid={`faq-answer-${index}`}>
+              <AccordionContent 
+                className="text-muted-foreground font-medium leading-relaxed pb-5" 
+                data-testid={`faq-answer-${index}`}
+              >
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
