@@ -1,4 +1,5 @@
-import { Twitter, Linkedin } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
+import { SiX } from 'react-icons/si';
 
 export default function Footer() {
   const scrollToSection = (id: string) => {
@@ -106,11 +107,11 @@ export default function Footer() {
             © 2025 Kaartx Cloud. All rights reserved.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-twitter">
-              <Twitter className="h-5 w-5" />
-            </a>
             <a href="#" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-linkedin">
               <Linkedin className="h-5 w-5" />
+            </a>
+            <a href="#" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-twitter">
+              <SiX className="h-5 w-5" />
             </a>
           </div>
         </div>
