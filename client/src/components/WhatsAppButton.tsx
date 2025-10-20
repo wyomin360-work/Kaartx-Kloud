@@ -2,7 +2,7 @@ import { SiWhatsapp } from 'react-icons/si';
 
 export default function WhatsAppButton() {
   const handleClick = () => {
-    window.open('https://wa.me/96812345678', '_blank');
+    window.open('https://wa.me/96898209353', '_blank');
   };
 
   return (
