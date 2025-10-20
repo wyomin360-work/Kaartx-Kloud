@@ -53,7 +53,7 @@ export default function FAQ() {
     <section className="py-24 sm:py-32 bg-white">
       <div className="max-w-4xl mx-auto px-5 sm:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-4 gradient-text" data-testid="text-faq-title">
+          <h2 className="text-4xl sm:text-5xl font-black text-primary mb-4" data-testid="text-faq-title">
             Frequently asked questions
           </h2>
           <p className="text-lg text-muted-foreground font-medium" data-testid="text-faq-subtitle">

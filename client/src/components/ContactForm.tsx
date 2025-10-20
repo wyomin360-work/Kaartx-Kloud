@@ -58,7 +58,7 @@ export default function ContactForm() {
       <div className="max-w-7xl mx-auto px-5 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-4 gradient-text" data-testid="text-contact-title">
+          <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-4" data-testid="text-contact-title">
             Get in touch
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-medium" data-testid="text-contact-subtitle">
