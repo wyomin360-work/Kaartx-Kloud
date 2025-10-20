@@ -29,13 +29,13 @@ export default function ContactForm() {
     {
       icon: Mail,
       title: 'Email us',
-      description: 'sales@kaartx.com',
+      description: 'support@kaartx.com',
       detail: 'Our team responds within 2 hours'
     },
     {
       icon: Phone,
       title: 'Call us',
-      description: '+968 1234 5678',
+      description: '+96898209353',
       detail: 'Mon-Fri from 9am to 6pm'
     },
     {

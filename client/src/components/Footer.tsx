@@ -20,11 +20,11 @@ export default function Footer() {
               Launch and scale your multi-vendor marketplace with complete seller management, subscriptions, and GCC-ready integrations.
             </p>
             <a
-              href="mailto:hello@kaartx.com"
+              href="mailto:official@kaartx.com"
               className="text-primary hover:underline"
               data-testid="link-footer-email"
             >
-              hello@kaartx.com
+              official@kaartx.com
             </a>
           </div>
 
