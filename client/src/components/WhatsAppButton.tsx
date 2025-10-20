@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-react';
+import { SiWhatsapp } from 'react-icons/si';
 
 export default function WhatsAppButton() {
   const handleClick = () => {
@@ -12,8 +12,8 @@ export default function WhatsAppButton() {
       aria-label="Contact us on WhatsApp"
       style={{
         position: 'fixed',
-        bottom: '20px',
-        right: '88px',
+        bottom: '84px',
+        right: '20px',
         width: '56px',
         height: '56px',
         borderRadius: '50%',
@@ -36,7 +36,7 @@ export default function WhatsAppButton() {
         e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
       }}
     >
-      <MessageCircle style={{ color: 'white', width: '24px', height: '24px' }} />
+      <SiWhatsapp style={{ color: 'white', fontSize: '28px' }} />
     </button>
   );
 }
