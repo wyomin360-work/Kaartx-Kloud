@@ -7,7 +7,7 @@ import DeepFeatures from '@/components/DeepFeatures';
 import UseCases from '@/components/UseCases';
 import IntegrationsMarquee from '@/components/IntegrationsMarquee';
 import Security from '@/components/Security';
-import APISection from '@/components/APISection';
+// import APISection from '@/components/APISection';
 import Showcase from '@/components/Showcase';
 import Testimonials from '@/components/Testimonials';
 import CaseStudy from '@/components/CaseStudy';
@@ -31,7 +31,7 @@ export default function Home() {
       <UseCases />
       <IntegrationsMarquee />
       <Security />
-      <APISection />
+      {/* <APISection /> */}
       <Showcase />
       <Testimonials />
       <CaseStudy />
