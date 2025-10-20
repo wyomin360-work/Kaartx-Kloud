@@ -12,10 +12,10 @@ export default function WhatsAppButton() {
       aria-label="Contact us on WhatsApp"
       style={{
         position: 'fixed',
-        bottom: '84px',
+        bottom: '80px',
         right: '20px',
-        width: '56px',
-        height: '56px',
+        width: '48px',
+        height: '48px',
         borderRadius: '50%',
         backgroundColor: '#25D366',
         border: 'none',
@@ -36,7 +36,7 @@ export default function WhatsAppButton() {
         e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
       }}
     >
-      <SiWhatsapp style={{ color: 'white', fontSize: '28px' }} />
+      <SiWhatsapp style={{ color: 'white', fontSize: '24px' }} />
     </button>
   );
 }
