@@ -38,10 +38,10 @@ export default function Testimonials() {
   const prev = () => setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="py-20 sm:py-32 bg-card/30">
-      <div className="max-w-5xl mx-auto px-5 sm:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-testimonials-title">
+    <section className="py-12 sm:py-20 md:py-32 bg-card/30">
+      <div className="max-w-5xl mx-auto px-4 sm:px-5 md:px-6">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4" data-testid="text-testimonials-title">
             Trusted by marketplace builders
           </h2>
         </div>

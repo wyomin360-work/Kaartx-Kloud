@@ -27,13 +27,13 @@ export default function APISection() {
 }`;
 
   return (
-    <section id="api" className="py-20 sm:py-32 bg-card/30">
-      <div className="max-w-7xl mx-auto px-5 sm:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-api-title">
+    <section id="api" className="py-12 sm:py-20 md:py-32 bg-card/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4" data-testid="text-api-title">
             Built for developers
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-api-subtitle">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-api-subtitle">
             Comprehensive REST API to build custom integrations and automate your workflows
           </p>
         </div>

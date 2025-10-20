@@ -50,13 +50,13 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="py-24 sm:py-32 bg-white">
-      <div className="max-w-4xl mx-auto px-5 sm:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-black text-primary mb-4" data-testid="text-faq-title">
+    <section className="py-12 sm:py-20 md:py-32 bg-white">
+      <div className="max-w-4xl mx-auto px-4 sm:px-5 md:px-6">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-primary mb-3 sm:mb-4" data-testid="text-faq-title">
             Frequently asked questions
           </h2>
-          <p className="text-lg text-muted-foreground font-medium" data-testid="text-faq-subtitle">
+          <p className="text-base sm:text-lg text-muted-foreground font-medium" data-testid="text-faq-subtitle">
             Everything you need to know about Kaartx Cloud
           </p>
         </div>

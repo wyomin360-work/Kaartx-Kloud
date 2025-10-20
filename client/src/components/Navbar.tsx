@@ -104,44 +104,44 @@ export default function Navbar() {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-card border-t border-border">
-          <div className="px-4 py-4 space-y-3">
+        <div className="md:hidden bg-card border-t border-border shadow-lg">
+          <div className="px-5 py-5 space-y-2">
             <button
               onClick={() => scrollToSection('features')}
-              className="block w-full text-left px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover-elevate rounded-md transition-colors"
+              className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
               data-testid="link-mobile-features"
             >
               Features
             </button>
             <button
               onClick={() => scrollToSection('pricing')}
-              className="block w-full text-left px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover-elevate rounded-md transition-colors"
+              className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
               data-testid="link-mobile-pricing"
             >
               Pricing
             </button>
             <button
               onClick={() => scrollToSection('integrations')}
-              className="block w-full text-left px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover-elevate rounded-md transition-colors"
+              className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
               data-testid="link-mobile-integrations"
             >
               Integrations
             </button>
             <button
               onClick={() => scrollToSection('api')}
-              className="block w-full text-left px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover-elevate rounded-md transition-colors"
+              className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
               data-testid="link-mobile-docs"
             >
               Docs
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="block w-full text-left px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover-elevate rounded-md transition-colors"
+              className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
               data-testid="link-mobile-contact"
             >
               Contact
             </button>
-            <Button className="w-full hover:scale-[1.02] transition-transform" data-testid="button-mobile-get-started">
+            <Button className="w-full mt-3 h-12 text-base hover:scale-[1.02] transition-transform" data-testid="button-mobile-get-started">
               Get Started
             </Button>
           </div>

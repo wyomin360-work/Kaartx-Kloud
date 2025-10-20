@@ -54,26 +54,26 @@ export default function ContactForm() {
   ];
 
   return (
-    <section id="contact" className="py-24 sm:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-5 sm:px-6">
+    <section id="contact" className="py-12 sm:py-20 md:py-32 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-black text-foreground mb-4" data-testid="text-contact-title">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-3 sm:mb-4" data-testid="text-contact-title">
             Get in touch
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-medium" data-testid="text-contact-subtitle">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto font-medium" data-testid="text-contact-subtitle">
             Have questions? We'd love to hear from you. Our team is here to help you get started.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
           {/* Left Column - Contact Information */}
-          <div className="space-y-10">
+          <div className="space-y-6 sm:space-y-10">
             <div>
-              <h3 className="text-3xl font-extrabold text-foreground mb-4" data-testid="text-contact-info-title">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-foreground mb-3 sm:mb-4" data-testid="text-contact-info-title">
                 Let's talk about your marketplace
               </h3>
-              <p className="text-base text-muted-foreground leading-relaxed font-medium" data-testid="text-contact-info-description">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-medium" data-testid="text-contact-info-description">
                 Whether you're just getting started or ready to scale, our team is ready to help you build the perfect e-commerce solution for the GCC market.
               </p>
             </div>
@@ -130,8 +130,8 @@ export default function ContactForm() {
 
           {/* Right Column - Contact Form */}
           <div>
-            <Card className="p-8 lg:p-10 border-border/40 shadow-xl bg-card/80 backdrop-blur-sm">
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <Card className="p-6 sm:p-8 lg:p-10 border-border/40 shadow-xl bg-card/80 backdrop-blur-sm">
+              <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-bold text-foreground mb-2.5">

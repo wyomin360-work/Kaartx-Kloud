@@ -50,16 +50,16 @@ export default function IntegrationsMarquee() {
   ];
 
   return (
-    <section id="integrations" className="py-20 sm:py-32 bg-background">
-      <div className="max-w-7xl mx-auto px-5 sm:px-6">
+    <section id="integrations" className="py-12 sm:py-20 md:py-32 bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
         <div 
           ref={titleAnimation.ref}
-          className={`text-center mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+          className={`text-center mb-10 sm:mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="text-integrations-title">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4" data-testid="text-integrations-title">
             GCC-ready integrations
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-integrations-subtitle">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-integrations-subtitle">
             TAP & Asyad integrated out of the box — plus easy connections to your existing tools
           </p>
         </div>
