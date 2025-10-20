@@ -105,7 +105,7 @@ export default function Navbar() {
 
       {isMobileMenuOpen && (
         <div className="md:hidden bg-card border-t border-border shadow-lg">
-          <div className="px-5 py-6 space-y-1">
+          <div className="px-5 py-6 space-y-2">
             <button
               onClick={() => scrollToSection('features')}
               className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
