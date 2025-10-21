@@ -1,0 +1,214 @@
+PHASE 1 DELIVERABLES — Kaartx SaaS Management Module
+1️⃣ SaaS Management Section (Inside Kaartx Admin Dashboard)
+
+A new sidebar menu → “SaaS Management”
+
+Includes 4 sub-pages:
+
+Tenants – list & control all SaaS marketplaces
+
+Plans & Billing – manage subscription tiers & payment logic
+
+Usage – show active usage per tenant (orders, sellers, storage)
+
+Settings – global SaaS configuration (logo, emails, alerts etc.)
+
+2️⃣ Tenants Page
+Column	Description
+Marketplace Name	Tenant (sub-marketplace) name
+Owner Email	Registered admin email
+Plan	Starter / Growth / Pro
+Status	Active / Trial / Suspended
+Created On	Registration date
+Sellers / Orders	Usage count
+Payment Status	Success / Failed
+
+Buttons: View Details • Change Plan • Suspend/Resume • Delete
+
+Tenant Detail Tabs:
+
+Profile → name, logo, created date, trial info
+
+Subscription → plan, cycle, invoices, next renewal
+
+Usage → sellers / orders / storage (progress bars)
+
+Domain → subdomain + SSL status
+
+3️⃣ Public Signup Flow (“Create Your Marketplace” Page)
+
+Route: /create-marketplace
+
+Form fields: Company Name • Email • Password
+
+Flow logic:
+
+Creates new tenant subdomain (e.g. shine.kaartx.com)
+
+Auto-starts 14-day trial
+
+After trial → dashboard locks until payment is made
+
+4️⃣ TAP Payments Integration (Plans & Billing)
+
+3 plans: Starter / Growth / Pro
+
+Billing: Monthly or Yearly (recurring payments)
+
+Auto-suspend on failed payment
+
+Upgrade Plan button inside each tenant dashboard
+
+5️⃣ Automatic Marketplace Setup (for Each Tenant)
+
+When a new tenant signs up:
+
+System auto-creates subdomain (e.g. tenant.kaartx.com)
+
+Deploys its own:
+
+Frontend storefront
+
+Admin dashboard
+
+Seller dashboard
+
+Connects to existing Kaartx backend (API shared)
+
+Data isolated per tenant
+
+6️⃣ Usage Tracking System
+
+Per-tenant metrics:
+
+Number of sellers
+
+Orders per month
+
+SKUs listed
+
+Storage usage (GB)
+
+Automatic alert at 80 % limit
+
+Hard stop at 100 % limit
+
+7️⃣ Email Alerts / Notifications
+
+Trial starting and expiring notifications
+
+Payment success / failure emails
+
+Usage limit warnings (80 % / 100 %)
+
+✅ Phase 1 Deliverables Checklist
+#	Deliverable	Status Expected
+1	New SaaS Management menu in Admin Dashboard	Working UI + linked subpages
+2	Tenant listing and detail pages	Fully functional CRUD
+3	Public signup flow (/create-marketplace)	Functional + 14-day trial logic
+4	TAP Payments integration	Live payment + recurring billing
+5	Automatic tenant subdomain creation	Dynamic DNS/subdomain provisioning
+6	Usage tracking system	Accurate per-tenant stats + limits
+7	Email alerts for trial/payment updates	Connected to SMTP or API
+
+Would you like me to make this same deliverables list in a Builder.ai-friendly format (shorter, bullet style, ready to paste in their chat)?
+
+You said:
+wat to paste to builder.ai
+ChatGPT said:
+
+Perfect question, Finaz ✅
+
+Here’s your ready-to-paste message for Builder.ai — short, clear, and exactly how Natasha (their AI) understands project briefs best.
+
+💬 Message to Paste into Builder.ai Chat
+
+Project: Kaartx — Add SaaS Options (Not Full Conversion)
+
+We already have a complete Kaartx system (Admin Dashboard + Seller Dashboard + Storefront).
+We are not converting Kaartx into SaaS — we only need to add a new “SaaS Management” section inside the existing Kaartx Admin Dashboard.
+
+⚙️ Add These Features (Phase 1 Scope)
+1️⃣ SaaS Management Section (inside Admin Dashboard)
+
+New sidebar item: “SaaS Management”
+
+Sub-pages: Tenants, Plans & Billing, Usage, Settings
+
+Tenants Page:
+
+Columns → Marketplace Name, Owner Email, Plan, Status, Created On, Sellers/Orders, Payment Status
+
+Buttons → View Details • Change Plan • Suspend/Resume • Delete
+
+Tenant Detail Tabs → Profile, Subscription, Usage, Domain
+
+2️⃣ Public Signup Flow
+
+Page URL: /create-marketplace
+
+Form fields: Company Name, Email, Password
+
+Logic:
+
+Creates subdomain (e.g. shine.kaartx.com)
+
+14-day trial → locks after expiry until payment
+
+3️⃣ Plans & Billing ( via TAP Payments )
+
+Plans: Starter | Growth | Pro
+
+Billing: Monthly or Yearly (recurring)
+
+Auto-suspend on failed payment
+
+“Upgrade Plan” button inside each tenant dashboard
+
+4️⃣ Automatic Marketplace Setup
+
+Each new signup creates:
+
+Subdomain (tenant.kaartx.com)
+
+Separate Frontend, Admin, Seller dashboards
+
+Linked to existing Kaartx backend
+
+Data isolated per tenant
+
+5️⃣ Usage Tracking
+
+Track for each tenant: sellers count, orders/month, SKUs, storage (GB)
+
+Alert at 80 % usage
+
+Stop at 100 % limit
+
+6️⃣ Email Alerts
+
+Trial start / expiry
+
+Payment success / failure
+
+Usage limit warnings (80 % / 100 %)
+
+✅ Deliverables (Phase 1)
+
+SaaS Management section in Admin Dashboard
+
+Public Signup page (Create Marketplace)
+
+TAP subscription setup (trial + billing)
+
+Tenant creation with subdomains
+
+Usage tracking (basic)
+
+Email alerts for trial & payments
+
+⚠️ Clarification
+
+This does not convert Kaartx into SaaS.
+It only adds SaaS features for managing tenants and subscriptions inside Kaartx.
+Existing Kaartx (Admin, Seller, Storefront) remains untouched.
