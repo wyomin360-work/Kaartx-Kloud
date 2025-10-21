@@ -74,7 +74,7 @@ export default function BookingSection() {
   }, []);
 
   return (
-    <section id="booking" className="py-12 sm:py-20 md:py-32 bg-background scroll-mt-20">
+    <section id="booking" className="pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-20 md:pb-32 bg-background scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-16">
