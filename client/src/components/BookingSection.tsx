@@ -8,7 +8,7 @@ export default function BookingSection() {
       // Cal is already loaded, just reinitialize the widget
       (window as any).Cal('inline', {
         elementOrSelector: '#cal-booking-widget',
-        calLink: 'kaartx-demo/30min',
+        calLink: 'kaartx/30min',
         layout: 'month_view',
         config: {
           theme: 'auto',
@@ -60,7 +60,7 @@ export default function BookingSection() {
     // Set up the inline embed
     (window as any).Cal('inline', {
       elementOrSelector: '#cal-booking-widget',
-      calLink: 'kaartx-demo/30min',
+      calLink: 'kaartx/30min',
       layout: 'month_view',
       config: {
         theme: 'auto',
