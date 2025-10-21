@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { ArrowLeft, Rocket, CheckCircle2, Circle } from 'lucide-react';
-import { Link, useLocation } from 'wouter';
+import { CheckCircle2, Circle } from 'lucide-react';
+import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,7 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { useToast } from '@/hooks/use-toast';
 import { insertTenantSchema, type InsertTenant, type PublicTenant } from '@shared/schema';
 import { apiRequest } from '@/lib/queryClient';
-import logoImage from '@assets/Logo_A_1760799119283.png';
+import Navbar from '@/components/Navbar';
 
 export default function CreateMarketplace() {
   const [, setLocation] = useLocation();
@@ -54,8 +54,10 @@ export default function CreateMarketplace() {
 
   if (createdTenant) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center px-4 py-12">
-        <Card className="max-w-3xl w-full">
+      <>
+        <Navbar />
+        <div className="min-h-screen bg-background flex items-center justify-center px-4 py-12 pt-24">
+          <Card className="max-w-3xl w-full">
           <CardHeader className="text-center pb-8">
             <div className="mx-auto mb-6 w-20 h-20 bg-green-50 dark:bg-green-950 rounded-full flex items-center justify-center">
               <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
@@ -138,31 +140,16 @@ export default function CreateMarketplace() {
             </div>
           </CardContent>
         </Card>
-      </div>
+        </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <nav className="border-b border-border">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/">
-              <button className="hover-elevate p-2 rounded-md transition-all" data-testid="link-logo">
-                <img src={logoImage} alt="Kaartx" className="h-8 w-auto" />
-              </button>
-            </Link>
-            <Link href="/">
-              <Button variant="ghost" data-testid="button-back">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
-
-      <div className="max-w-2xl mx-auto px-4 py-12 sm:py-20">
+    <>
+      <Navbar />
+      <div className="min-h-screen bg-background pt-16">
+        <div className="max-w-2xl mx-auto px-4 py-12 sm:py-20">
         <div className="text-center mb-10">
           <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-3">
             Create Your Marketplace
@@ -292,7 +279,8 @@ export default function CreateMarketplace() {
             </Form>
           </CardContent>
         </Card>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

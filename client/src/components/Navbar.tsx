@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, MessageCircle } from 'lucide-react';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import logoImage from '@assets/Logo_A_1760799119283.png';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [location, setLocation] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +17,17 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsMobileMenuOpen(false);
+  const navigateToSection = (id: string) => {
+    setIsMobileMenuOpen(false);
+    
+    if (location !== '/') {
+      window.location.href = `/#${id}`;
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', `#${id}`);
+      }
     }
   };
 
@@ -34,7 +41,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <button
-              onClick={() => scrollToSection('hero')}
+              onClick={() => navigateToSection('hero')}
               className="hover-elevate p-2 rounded-md transition-all"
               data-testid="link-logo"
             >
@@ -48,35 +55,35 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center space-x-8">
             <button
-              onClick={() => scrollToSection('features')}
+              onClick={() => navigateToSection('features')}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               data-testid="link-features"
             >
               Features
             </button>
             <button
-              onClick={() => scrollToSection('pricing')}
+              onClick={() => navigateToSection('pricing')}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               data-testid="link-pricing"
             >
               Pricing
             </button>
             <button
-              onClick={() => scrollToSection('integrations')}
+              onClick={() => navigateToSection('integrations')}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               data-testid="link-integrations"
             >
               Integrations
             </button>
             {/* <button
-              onClick={() => scrollToSection('api')}
+              onClick={() => navigateToSection('api')}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               data-testid="link-docs"
             >
               Docs
             </button> */}
             <button
-              onClick={() => scrollToSection('booking')}
+              onClick={() => navigateToSection('booking')}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               data-testid="link-booking"
             >
@@ -109,35 +116,35 @@ export default function Navbar() {
         <div className="md:hidden bg-card border-t border-border shadow-lg">
           <div className="px-5 py-6 space-y-2">
             <button
-              onClick={() => scrollToSection('features')}
+              onClick={() => navigateToSection('features')}
               className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
               data-testid="link-mobile-features"
             >
               Features
             </button>
             <button
-              onClick={() => scrollToSection('pricing')}
+              onClick={() => navigateToSection('pricing')}
               className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
               data-testid="link-mobile-pricing"
             >
               Pricing
             </button>
             <button
-              onClick={() => scrollToSection('integrations')}
+              onClick={() => navigateToSection('integrations')}
               className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
               data-testid="link-mobile-integrations"
             >
               Integrations
             </button>
             {/* <button
-              onClick={() => scrollToSection('api')}
+              onClick={() => navigateToSection('api')}
               className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
               data-testid="link-mobile-docs"
             >
               Docs
             </button> */}
             <button
-              onClick={() => scrollToSection('booking')}
+              onClick={() => navigateToSection('booking')}
               className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
               data-testid="link-mobile-booking"
             >
@@ -165,7 +172,7 @@ export default function Navbar() {
                 </Button>
               </Link>
               <Button 
-                onClick={() => scrollToSection('booking')}
+                onClick={() => navigateToSection('booking')}
                 variant="outline"
                 className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
                 data-testid="button-mobile-talk-sales"
