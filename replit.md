@@ -8,6 +8,21 @@ The platform targets brands, startups, retailers, agencies, and enterprises look
 
 ## Recent Changes
 
+**October 21, 2025 - Unified Navbar with Cross-Page Navigation:**
+- Replaced custom navbar on /create-marketplace with full Navbar component from homepage
+- Implemented intelligent cross-page navigation: clicking navbar links from signup page navigates to homepage sections
+- Navigation logic: when NOT on homepage, uses window.location.href for full page navigation; when ON homepage, uses smooth scroll + history.pushState
+- Home component listens for location changes and automatically scrolls to hash anchors on mount
+- URL hash updates correctly for deep-linking support (e.g., /#features, /#pricing)
+- All navigation links (Features, Pricing, Integrations, Book a Call, Logo) work from both homepage and signup page
+- Browser back/forward/refresh maintain correct section position
+- Comprehensive e2e testing passed: verified cross-page navigation, hash updates, section visibility, mobile/desktop navigation
+
+**October 21, 2025 - Social Media Links Added:**
+- Added LinkedIn link to footer: https://linkedin.com/company/kaartx-official
+- Added Twitter link to footer: https://x.com/Kaartx_Official
+- Both links open in new tabs for better user experience
+
 **October 21, 2025 - Cal.com Booking Integration (LIVE):**
 - Replaced contact form with professional Cal.com booking widget for scheduling sales calls
 - Created BookingSection component with embedded Cal.com inline widget using real account: kaartx/30min
