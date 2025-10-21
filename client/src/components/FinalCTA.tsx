@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'wouter';
 
 export default function FinalCTA() {
   return (
@@ -13,14 +14,16 @@ export default function FinalCTA() {
         <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-2xl mx-auto font-medium leading-relaxed" data-testid="text-final-cta-subtitle">
           Join GCC businesses building the future of commerce with Kaartx Cloud
         </p>
-        <Button 
-          size="lg" 
-          className="shadow-playful group hover:scale-[1.02] transition-transform text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 rounded-2xl font-bold w-full sm:w-auto" 
-          data-testid="button-final-cta"
-        >
-          Start Building Today
-          <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-        </Button>
+        <Link href="/create-marketplace">
+          <Button 
+            size="lg" 
+            className="shadow-playful group hover:scale-[1.02] transition-transform text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 rounded-2xl font-bold w-full sm:w-auto" 
+            data-testid="button-final-cta"
+          >
+            Start Building Today
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          </Button>
+        </Link>
       </div>
     </section>
   );

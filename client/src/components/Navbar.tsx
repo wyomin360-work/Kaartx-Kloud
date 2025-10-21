@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, MessageCircle } from 'lucide-react';
+import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import logoImage from '@assets/Logo_A_1760799119283.png';
 
@@ -81,13 +82,14 @@ export default function Navbar() {
             >
               Contact
             </button>
-            <Button
-              onClick={() => scrollToSection('hero')}
-              className="shadow-glow hover:scale-[1.02] transition-transform"
-              data-testid="button-get-started"
-            >
-              Get Started
-            </Button>
+            <Link href="/create-marketplace">
+              <Button
+                className="shadow-glow hover:scale-[1.02] transition-transform"
+                data-testid="button-get-started"
+              >
+                Get Started
+              </Button>
+            </Link>
           </div>
 
           <div className="md:hidden">
@@ -143,21 +145,25 @@ export default function Navbar() {
             </button>
             
             <div className="pt-6 space-y-3">
-              <Button 
-                onClick={() => scrollToSection('hero')}
-                className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
-                data-testid="button-mobile-get-started"
-              >
-                Get Started
-              </Button>
-              <Button 
-                onClick={() => scrollToSection('hero')}
-                className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
-                data-testid="button-mobile-start-building"
-              >
-                Start Building
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              <Link href="/create-marketplace">
+                <Button 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
+                  data-testid="button-mobile-get-started"
+                >
+                  Get Started
+                </Button>
+              </Link>
+              <Link href="/create-marketplace">
+                <Button 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
+                  data-testid="button-mobile-start-building"
+                >
+                  Start Building
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
               <Button 
                 onClick={() => scrollToSection('contact')}
                 variant="outline"
