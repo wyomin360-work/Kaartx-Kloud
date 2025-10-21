@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { ArrowLeft, Rocket, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Rocket, CheckCircle2, Circle } from 'lucide-react';
 import { Link, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -54,34 +54,34 @@ export default function CreateMarketplace() {
 
   if (createdTenant) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center px-4">
-        <Card className="max-w-2xl w-full">
-          <CardHeader className="text-center">
-            <div className="mx-auto mb-4 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-              <CheckCircle2 className="w-8 h-8 text-primary" />
+      <div className="min-h-screen bg-background flex items-center justify-center px-4 py-12">
+        <Card className="max-w-3xl w-full">
+          <CardHeader className="text-center pb-8">
+            <div className="mx-auto mb-6 w-20 h-20 bg-green-50 dark:bg-green-950 rounded-full flex items-center justify-center">
+              <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
             </div>
-            <CardTitle className="text-3xl">Welcome to Kaartx Cloud!</CardTitle>
-            <CardDescription className="text-base mt-2">
-              Your marketplace has been created successfully
+            <CardTitle className="text-3xl sm:text-4xl mb-3">Welcome to Kaartx Cloud!</CardTitle>
+            <CardDescription className="text-base">
+              Your marketplace is ready to launch. Start building your multi-vendor platform today.
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="bg-card border border-border rounded-lg p-6 space-y-3">
-              <div>
-                <p className="text-sm text-muted-foreground">Marketplace Name</p>
-                <p className="text-lg font-semibold">{createdTenant.marketplaceName}</p>
+          <CardContent className="space-y-8">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="bg-muted/30 rounded-lg p-5">
+                <p className="text-sm text-muted-foreground mb-1">Marketplace Name</p>
+                <p className="text-lg font-semibold text-foreground">{createdTenant.marketplaceName}</p>
               </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Subdomain</p>
-                <p className="text-lg font-semibold text-primary">{createdTenant.subdomain}.kaartx.com</p>
+              <div className="bg-muted/30 rounded-lg p-5">
+                <p className="text-sm text-muted-foreground mb-1">Your Subdomain</p>
+                <p className="text-lg font-semibold text-primary break-all">{createdTenant.subdomain}.kaartx.com</p>
               </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Plan</p>
-                <p className="text-lg font-semibold">{createdTenant.plan} (14-day trial)</p>
+              <div className="bg-muted/30 rounded-lg p-5">
+                <p className="text-sm text-muted-foreground mb-1">Plan</p>
+                <p className="text-lg font-semibold text-foreground">{createdTenant.plan}</p>
               </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Trial Ends</p>
-                <p className="text-lg font-semibold">
+              <div className="bg-muted/30 rounded-lg p-5">
+                <p className="text-sm text-muted-foreground mb-1">Trial Period Ends</p>
+                <p className="text-lg font-semibold text-foreground">
                   {new Date(createdTenant.trialEndsAt).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
@@ -91,35 +91,46 @@ export default function CreateMarketplace() {
               </div>
             </div>
 
-            <div className="bg-primary/5 border border-primary/20 rounded-lg p-4">
-              <h3 className="font-semibold text-foreground mb-2">What's Next?</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span>Check your email for login credentials and setup instructions</span>
+            <div className="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-lg p-6">
+              <h3 className="font-semibold text-foreground mb-4 text-lg">Next Steps</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-foreground">Check Your Email</p>
+                    <p className="text-sm text-muted-foreground">We've sent login credentials and setup instructions to {createdTenant.ownerEmail}</p>
+                  </div>
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span>Access your dashboard at {createdTenant.subdomain}.kaartx.com</span>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-foreground">Access Your Dashboard</p>
+                    <p className="text-sm text-muted-foreground">Log in at {createdTenant.subdomain}.kaartx.com to configure your marketplace</p>
+                  </div>
                 </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                  <span>Start adding sellers and products to your marketplace</span>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-medium text-foreground">Start Onboarding Sellers</p>
+                    <p className="text-sm text-muted-foreground">Invite vendors to join your marketplace and begin listing products</p>
+                  </div>
                 </li>
               </ul>
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Button
                 onClick={() => setLocation('/')}
                 variant="outline"
                 className="flex-1"
+                size="lg"
                 data-testid="button-back-home"
               >
                 Back to Home
               </Button>
               <Button
                 className="flex-1"
+                size="lg"
                 data-testid="button-go-dashboard"
               >
                 Go to Dashboard
@@ -152,11 +163,11 @@ export default function CreateMarketplace() {
       </nav>
 
       <div className="max-w-2xl mx-auto px-4 py-12 sm:py-20">
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-            <Rocket className="w-8 h-8 text-primary" />
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-muted rounded-full mb-6">
+            <Rocket className="w-9 h-9 text-primary" />
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-3">
             Create Your Marketplace
           </h1>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
@@ -230,39 +241,55 @@ export default function CreateMarketplace() {
                   )}
                 />
 
-                <div className="bg-muted/50 border border-border rounded-lg p-4 space-y-2">
-                  <h4 className="font-semibold text-sm text-foreground">What's included:</h4>
-                  <ul className="space-y-1 text-sm text-muted-foreground">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-primary" />
-                      14-day free trial on Starter plan
+                <div className="bg-muted/30 rounded-lg p-5 space-y-3">
+                  <h4 className="font-semibold text-foreground">What's included:</h4>
+                  <ul className="space-y-2.5 text-sm text-foreground">
+                    <li className="flex items-start gap-3">
+                      <div className="relative flex-shrink-0 mt-0.5">
+                        <Circle className="w-5 h-5 text-muted-foreground" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-foreground absolute top-[3px] left-[3px]" />
+                      </div>
+                      <span>14-day free trial on Starter plan</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-primary" />
-                      Custom subdomain (yourname.kaartx.com)
+                    <li className="flex items-start gap-3">
+                      <div className="relative flex-shrink-0 mt-0.5">
+                        <Circle className="w-5 h-5 text-muted-foreground" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-foreground absolute top-[3px] left-[3px]" />
+                      </div>
+                      <span>Custom subdomain (yourname.kaartx.com)</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-primary" />
-                      Up to 10 sellers and unlimited products
+                    <li className="flex items-start gap-3">
+                      <div className="relative flex-shrink-0 mt-0.5">
+                        <Circle className="w-5 h-5 text-muted-foreground" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-foreground absolute top-[3px] left-[3px]" />
+                      </div>
+                      <span>Up to 10 sellers and unlimited products</span>
                     </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-primary" />
-                      TAP Payments & Asyad Shipping integration
+                    <li className="flex items-start gap-3">
+                      <div className="relative flex-shrink-0 mt-0.5">
+                        <Circle className="w-5 h-5 text-muted-foreground" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-foreground absolute top-[3px] left-[3px]" />
+                      </div>
+                      <span>TAP Payments & Asyad Shipping integration</span>
                     </li>
                   </ul>
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full"
+                  className="w-full h-11"
+                  size="lg"
                   disabled={createTenantMutation.isPending}
                   data-testid="button-create-marketplace"
                 >
-                  {createTenantMutation.isPending ? 'Creating...' : 'Create Marketplace'}
+                  {createTenantMutation.isPending ? 'Creating Your Marketplace...' : 'Create My Marketplace'}
                 </Button>
 
-                <p className="text-xs text-center text-muted-foreground">
-                  By creating an account, you agree to our Terms of Service and Privacy Policy
+                <p className="text-xs text-center text-muted-foreground mt-4">
+                  By creating an account, you agree to our{' '}
+                  <a href="#" className="text-foreground hover:underline">Terms of Service</a>
+                  {' '}and{' '}
+                  <a href="#" className="text-foreground hover:underline">Privacy Policy</a>
                 </p>
               </form>
             </Form>
