@@ -3,6 +3,25 @@ import { Calendar } from 'lucide-react';
 
 export default function BookingSection() {
   useEffect(() => {
+    // Guard against duplicate script injection
+    if ((window as any).Cal?.loaded) {
+      // Cal is already loaded, just reinitialize the widget
+      (window as any).Cal('inline', {
+        elementOrSelector: '#cal-booking-widget',
+        calLink: 'kaartx-demo/30min',
+        layout: 'month_view',
+        config: {
+          theme: 'auto',
+        },
+      });
+      
+      (window as any).Cal('ui', {
+        styles: { branding: { brandColor: '#1E2A5E' } },
+        hideEventTypeDetails: false,
+      });
+      return;
+    }
+
     // Load Cal.com embed script
     (function (C: any, A: string, L: string) {
       let p = function (a: any, ar: any) {
@@ -44,11 +63,11 @@ export default function BookingSection() {
       calLink: 'kaartx-demo/30min',
       layout: 'month_view',
       config: {
-        theme: 'light',
+        theme: 'auto',
       },
     });
 
-    // Prefill if needed
+    // Configure UI with brand colors
     (window as any).Cal('ui', {
       styles: { branding: { brandColor: '#1E2A5E' } },
       hideEventTypeDetails: false,
@@ -56,7 +75,7 @@ export default function BookingSection() {
   }, []);
 
   return (
-    <section id="booking" className="py-12 sm:py-20 md:py-32 bg-background">
+    <section id="booking" className="py-12 sm:py-20 md:py-32 bg-background scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-16">
