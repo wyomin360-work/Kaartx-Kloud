@@ -14,7 +14,7 @@ import CaseStudy from '@/components/CaseStudy';
 import Pricing from '@/components/Pricing';
 import FAQ from '@/components/FAQ';
 import FinalCTA from '@/components/FinalCTA';
-import ContactForm from '@/components/ContactForm';
+import BookingSection from '@/components/BookingSection';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -38,7 +38,7 @@ export default function Home() {
       <Pricing />
       <FAQ />
       <FinalCTA />
-      <ContactForm />
+      <BookingSection />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />
