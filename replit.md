@@ -2,6 +2,17 @@
 
 Kaartx Cloud is a premium SaaS platform designed for launching and managing multi-vendor marketplaces, specifically targeting GCC markets. It offers comprehensive seller lifecycle management, including onboarding, subscription billing, product listing, order fulfillment, and automated 12-day payout cycles. The platform aims to enable brands, startups, retailers, agencies, and enterprises to create their own branded marketplaces with minimal development effort. The design adheres to a minimalist aesthetic, featuring a clean white background and a very dark navy accent color (#1E2A5E) derived from the Kaartx logo.
 
+## Recent Changes
+
+**October 21, 2025 - Contact Information Added to Booking Section:**
+- Added contact information cards above the Cal.com booking widget for better accessibility
+- Three contact cards display: Email (support@kaartx.com), Phone (+96898209353), Response Time (< 24 hours)
+- Layout follows professional B2B pattern: contact info → booking widget → booking details
+- Contact cards provide alternative contact methods for users who prefer email/phone over calendar booking
+- All cards include icons, titles, values, and descriptive details for clarity
+- Booking detail cards (Duration, Meeting Type, Response Time) remain below the widget as originally designed
+- Comprehensive e2e testing passed: all contact information displays correctly with proper visual hierarchy
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
