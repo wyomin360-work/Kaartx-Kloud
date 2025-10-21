@@ -8,17 +8,17 @@ The platform targets brands, startups, retailers, agencies, and enterprises look
 
 ## Recent Changes
 
-**October 21, 2025 - Cal.com Booking Integration:**
+**October 21, 2025 - Cal.com Booking Integration (LIVE):**
 - Replaced contact form with professional Cal.com booking widget for scheduling sales calls
-- Created BookingSection component with embedded Cal.com inline widget (placeholder: kaartx-demo/30min)
+- Created BookingSection component with embedded Cal.com inline widget using real account: kaartx/30min
 - Updated all "Talk to Sales" buttons (Navbar, Hero, Pricing) to scroll to booking section
 - Configured Cal.com widget with auto theme (adapts to light/dark mode) and Kaartx brand color (#1E2A5E)
 - Added duplicate script injection guard to prevent Cal widget reinitialization on remounts
 - Added scroll-margin-top to booking section to account for fixed navbar
 - Booking section includes: Calendar icon header, "Book a Sales Call" title, widget container, and three info cards (Duration: 30 Minutes, Meeting Type: Video Call, Response Time: Instant)
 - Changed navbar link from "Contact" to "Book a Call" for clarity
-- User can replace placeholder Cal.com username with their actual account once created
-- Comprehensive e2e testing passed: all navigation buttons scroll correctly, booking section displays properly, widget container present
+- Widget now connected to live Cal.com account (username: kaartx) showing real "30 Min Meeting" event type
+- Comprehensive e2e testing passed: widget loads correctly, displays interactive booking slots, all navigation works perfectly
 
 **October 21, 2025 - Removed Rocket Icon from Signup:**
 - Removed rocket icon from /create-marketplace signup page per user request
