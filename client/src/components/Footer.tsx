@@ -110,7 +110,7 @@ export default function Footer() {
             <a href="https://linkedin.com/company/kaartx-official" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-linkedin">
               <Linkedin className="h-5 w-5" />
             </a>
-            <a href="https://x.com/home" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-twitter">
+            <a href="https://x.com/Kaartx_Official" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-twitter">
               <SiX className="h-5 w-5" />
             </a>
           </div>
