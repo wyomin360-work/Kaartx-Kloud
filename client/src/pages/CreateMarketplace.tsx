@@ -164,7 +164,7 @@ export default function CreateMarketplace() {
 
       <div className="max-w-2xl mx-auto px-4 py-12 sm:py-20">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-muted rounded-full mb-6">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 dark:bg-primary/20 rounded-full mb-6">
             <Rocket className="w-9 h-9 text-primary" />
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-3">
