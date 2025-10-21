@@ -112,7 +112,7 @@ export default function BookingSection() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
             <div className="text-center p-5 bg-muted/30 rounded-xl">
               <p className="text-sm text-muted-foreground mb-1">Duration</p>
-              <p className="text-lg font-bold text-foreground">30 Minutes</p>
+              <p className="text-lg font-bold text-foreground">15-30 Minutes</p>
             </div>
             <div className="text-center p-5 bg-muted/30 rounded-xl">
               <p className="text-sm text-muted-foreground mb-1">Meeting Type</p>
