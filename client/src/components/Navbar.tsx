@@ -1,13 +1,17 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, MessageCircle } from 'lucide-react';
-import { Link, useLocation } from 'wouter';
+import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import logoImage from '@assets/Logo_A_1760799119283.png';
 
-export default function Navbar() {
+interface NavbarProps {
+  onOpenSignup?: () => void;
+}
+
+export default function Navbar({ onOpenSignup }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [location, setLocation] = useLocation();
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -89,14 +93,13 @@ export default function Navbar() {
             >
               Book a Call
             </button>
-            <Link href="/create-marketplace">
-              <Button
-                className="shadow-glow hover:scale-[1.02] transition-transform"
-                data-testid="button-get-started"
-              >
-                Get Started
-              </Button>
-            </Link>
+            <Button
+              onClick={onOpenSignup}
+              className="shadow-glow hover:scale-[1.02] transition-transform"
+              data-testid="button-get-started"
+            >
+              Get Started
+            </Button>
           </div>
 
           <div className="md:hidden">
@@ -152,25 +155,27 @@ export default function Navbar() {
             </button>
             
             <div className="pt-6 space-y-3">
-              <Link href="/create-marketplace">
-                <Button 
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
-                  data-testid="button-mobile-get-started"
-                >
-                  Get Started
-                </Button>
-              </Link>
-              <Link href="/create-marketplace">
-                <Button 
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
-                  data-testid="button-mobile-start-building"
-                >
-                  Start Building
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
+              <Button 
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  onOpenSignup?.();
+                }}
+                className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
+                data-testid="button-mobile-get-started"
+              >
+                Get Started
+              </Button>
+              <Button 
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  onOpenSignup?.();
+                }}
+                className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
+                data-testid="button-mobile-start-building"
+              >
+                Start Building
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
               <Button 
                 onClick={() => navigateToSection('booking')}
                 variant="outline"

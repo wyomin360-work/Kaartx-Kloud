@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -20,9 +20,11 @@ import BookingSection from '@/components/BookingSection';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import ScrollToTop from '@/components/ScrollToTop';
+import SignupModal from '@/components/SignupModal';
 
 export default function Home() {
   const [location] = useLocation();
+  const [signupModalOpen, setSignupModalOpen] = useState(false);
 
   useEffect(() => {
     const hash = window.location.hash.replace('#', '');
@@ -36,8 +38,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
-      <Hero />
+      <Navbar onOpenSignup={() => setSignupModalOpen(true)} />
+      <Hero onOpenSignup={() => setSignupModalOpen(true)} />
       <StatsBar />
       <FeatureGrid />
       <HowItWorks />
@@ -49,13 +51,14 @@ export default function Home() {
       <Showcase />
       <Testimonials />
       <CaseStudy />
-      <Pricing />
+      <Pricing onOpenSignup={() => setSignupModalOpen(true)} />
       <FAQ />
-      <FinalCTA />
+      <FinalCTA onOpenSignup={() => setSignupModalOpen(true)} />
       <BookingSection />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />
+      <SignupModal open={signupModalOpen} onOpenChange={setSignupModalOpen} />
     </div>
   );
 }

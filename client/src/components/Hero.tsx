@@ -1,10 +1,13 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, MessageCircle } from 'lucide-react';
-import { Link } from 'wouter';
 import heroDashboard from '@assets/generated_images/Hero_dashboard_mockup_46c4a7c8.png';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
-export default function Hero() {
+interface HeroProps {
+  onOpenSignup?: () => void;
+}
+
+export default function Hero({ onOpenSignup }: HeroProps) {
   const titleAnimation = useScrollAnimation<HTMLHeadingElement>(0.1);
   const subtitleAnimation = useScrollAnimation<HTMLParagraphElement>(0.1);
   const buttonsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
@@ -42,13 +45,16 @@ export default function Hero() {
             ref={buttonsAnimation.ref}
             className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center animate-on-scroll stagger-2 ${buttonsAnimation.isVisible ? 'visible' : ''}`}
           >
-            <Link href="/create-marketplace">
-              <Button size="lg" className="shadow-playful group text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full sm:w-auto" data-testid="button-hero-get-started">
-                <span className="hidden sm:inline">Start Building Your Marketplace</span>
-                <span className="sm:hidden">Start Building</span>
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
+            <Button 
+              onClick={onOpenSignup}
+              size="lg" 
+              className="shadow-playful group text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full sm:w-auto" 
+              data-testid="button-hero-get-started"
+            >
+              <span className="hidden sm:inline">Start Building Your Marketplace</span>
+              <span className="sm:hidden">Start Building</span>
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
             <Button 
               size="lg" 
               variant="outline" 

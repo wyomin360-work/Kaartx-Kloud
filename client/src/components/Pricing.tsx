@@ -1,10 +1,13 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Check } from 'lucide-react';
-import { Link } from 'wouter';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
-export default function Pricing() {
+interface PricingProps {
+  onOpenSignup?: () => void;
+}
+
+export default function Pricing({ onOpenSignup }: PricingProps) {
   const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
   const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
@@ -123,26 +126,14 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              {plan.cta === 'Get Started' ? (
-                <Link href="/create-marketplace">
-                  <Button
-                    className={`w-full rounded-2xl font-bold text-sm sm:text-base py-5 sm:py-6 hover:scale-[1.02] transition-transform ${plan.highlighted ? 'shadow-playful' : ''}`}
-                    variant={plan.highlighted ? 'default' : 'outline'}
-                    data-testid={`button-plan-${index}`}
-                  >
-                    {plan.cta}
-                  </Button>
-                </Link>
-              ) : (
-                <Button
-                  onClick={scrollToBooking}
-                  className={`w-full rounded-2xl font-bold text-sm sm:text-base py-5 sm:py-6 hover:scale-[1.02] transition-transform ${plan.highlighted ? 'shadow-playful' : ''}`}
-                  variant={plan.highlighted ? 'default' : 'outline'}
-                  data-testid={`button-plan-${index}`}
-                >
-                  {plan.cta}
-                </Button>
-              )}
+              <Button
+                onClick={plan.cta === 'Get Started' ? onOpenSignup : scrollToBooking}
+                className={`w-full rounded-2xl font-bold text-sm sm:text-base py-5 sm:py-6 hover:scale-[1.02] transition-transform ${plan.highlighted ? 'shadow-playful' : ''}`}
+                variant={plan.highlighted ? 'default' : 'outline'}
+                data-testid={`button-plan-${index}`}
+              >
+                {plan.cta}
+              </Button>
             </Card>
             );
           })}
