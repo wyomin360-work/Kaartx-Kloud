@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { Calendar } from 'lucide-react';
 
 export default function BookingSection() {
   useEffect(() => {
@@ -79,9 +78,6 @@ export default function BookingSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-2xl mb-6">
-            <Calendar className="w-8 h-8 text-primary" />
-          </div>
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-3 sm:mb-4"
             data-testid="text-booking-title"
