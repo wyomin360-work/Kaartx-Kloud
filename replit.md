@@ -8,6 +8,19 @@ The platform targets brands, startups, retailers, agencies, and enterprises look
 
 ## Recent Changes
 
+**October 21, 2025 - Marketplace Tenant Signup Implementation:**
+- Implemented complete tenant signup flow at /create-marketplace route with professional form UI
+- Created data schema in shared/schema.ts: Tenant model with marketplace name, owner email, password, subdomain, plan, status, trial dates
+- Built signup form with Company Name, Email, and Password fields using react-hook-form and Zod validation
+- Implemented secure password hashing with Node.js crypto.scrypt and random per-user salt (format: scrypt:salt:hash)
+- Created PublicTenant type (Omit<Tenant, 'password'>) to ensure passwords never leak in API responses
+- Auto-generates URL-safe subdomain from marketplace name with uniqueness enforcement (adds -1, -2 if duplicate)
+- Enforces email uniqueness across all tenants (returns 400 on duplicate)
+- Sets 14-day free trial period automatically on signup with Trial status and Starter plan
+- Updated all CTA buttons (navbar "Get Started", hero "Start Building", pricing, final CTA) to navigate to /create-marketplace
+- Success page displays subdomain, trial end date, plan type, and account status
+- Comprehensive e2e testing passed: form validation, submission, success display, duplicate email handling, navigation flows
+
 **October 20, 2025 - Comprehensive Mobile Optimization:**
 - Implemented full mobile responsiveness across entire landing page while preserving desktop experience completely unchanged
 - Applied mobile-first spacing pattern to all sections: py-12 sm:py-20 md:py-32 (reduced padding on mobile, original on desktop)
