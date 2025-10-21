@@ -76,11 +76,11 @@ export default function Navbar() {
               Docs
             </button> */}
             <button
-              onClick={() => scrollToSection('contact')}
+              onClick={() => scrollToSection('booking')}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              data-testid="link-contact"
+              data-testid="link-booking"
             >
-              Contact
+              Book a Call
             </button>
             <Link href="/create-marketplace">
               <Button
@@ -137,11 +137,11 @@ export default function Navbar() {
               Docs
             </button> */}
             <button
-              onClick={() => scrollToSection('contact')}
+              onClick={() => scrollToSection('booking')}
               className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-              data-testid="link-mobile-contact"
+              data-testid="link-mobile-booking"
             >
-              Contact
+              Book a Call
             </button>
             
             <div className="pt-6 space-y-3">
@@ -165,7 +165,7 @@ export default function Navbar() {
                 </Button>
               </Link>
               <Button 
-                onClick={() => scrollToSection('contact')}
+                onClick={() => scrollToSection('booking')}
                 variant="outline"
                 className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
                 data-testid="button-mobile-talk-sales"

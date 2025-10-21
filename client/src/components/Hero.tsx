@@ -10,8 +10,8 @@ export default function Hero() {
   const buttonsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
   const dashboardAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
+  const scrollToBooking = () => {
+    const element = document.getElementById('booking');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -52,7 +52,7 @@ export default function Hero() {
             <Button 
               size="lg" 
               variant="outline" 
-              onClick={scrollToContact}
+              onClick={scrollToBooking}
               className="backdrop-blur-sm text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full sm:w-auto" 
               data-testid="button-hero-whatsapp"
             >

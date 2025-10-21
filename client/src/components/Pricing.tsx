@@ -8,8 +8,8 @@ export default function Pricing() {
   const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
   const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
+  const scrollToBooking = () => {
+    const element = document.getElementById('booking');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -135,7 +135,7 @@ export default function Pricing() {
                 </Link>
               ) : (
                 <Button
-                  onClick={scrollToContact}
+                  onClick={scrollToBooking}
                   className={`w-full rounded-2xl font-bold text-sm sm:text-base py-5 sm:py-6 hover:scale-[1.02] transition-transform ${plan.highlighted ? 'shadow-playful' : ''}`}
                   variant={plan.highlighted ? 'default' : 'outline'}
                   data-testid={`button-plan-${index}`}
