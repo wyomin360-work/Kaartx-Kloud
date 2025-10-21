@@ -1,6 +1,28 @@
 import { useEffect } from 'react';
+import { Mail, Phone, Clock } from 'lucide-react';
+import { Card } from '@/components/ui/card';
 
 export default function BookingSection() {
+  const contactInfo = [
+    {
+      icon: Mail,
+      title: 'Email us',
+      description: 'support@kaartx.com',
+      detail: 'We aim to respond as quickly as possible'
+    },
+    {
+      icon: Phone,
+      title: 'Call us',
+      description: '+96898209353',
+      detail: 'Sunday through Thursday, 8 AM to 7 PM'
+    },
+    {
+      icon: Clock,
+      title: 'Response time',
+      description: '< 24 hours',
+      detail: 'Average response time'
+    }
+  ];
   useEffect(() => {
     // Guard against duplicate script injection
     if ((window as any).Cal?.loaded) {
@@ -92,6 +114,37 @@ export default function BookingSection() {
           </p>
         </div>
 
+        {/* Contact Information Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 max-w-4xl mx-auto">
+          {contactInfo.map((info, index) => {
+            const Icon = info.icon;
+            return (
+              <Card
+                key={index}
+                className="p-5 hover-elevate transition-all border-border/40 bg-card/50 backdrop-blur-sm"
+                data-testid={`card-contact-info-${index}`}
+              >
+                <div className="flex flex-col items-center text-center gap-3">
+                  <div className="p-3 bg-primary/10 rounded-xl">
+                    <Icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-foreground mb-1.5 text-sm" data-testid={`text-contact-method-title-${index}`}>
+                      {info.title}
+                    </h4>
+                    <p className="text-foreground font-semibold mb-1 text-base" data-testid={`text-contact-method-value-${index}`}>
+                      {info.description}
+                    </p>
+                    <p className="text-xs text-muted-foreground font-medium" data-testid={`text-contact-method-detail-${index}`}>
+                      {info.detail}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            );
+          })}
+        </div>
+
         {/* Cal.com Booking Widget */}
         <div className="max-w-4xl mx-auto">
           <div
@@ -106,15 +159,15 @@ export default function BookingSection() {
 
           {/* Info Cards Below */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
-            <div className="text-center p-5 bg-muted/30 rounded-xl">
+            <div className="text-center p-5 bg-muted/30 rounded-xl" data-testid="card-booking-detail-0">
               <p className="text-sm text-muted-foreground mb-1">Duration</p>
               <p className="text-lg font-bold text-foreground">15-30 Minutes</p>
             </div>
-            <div className="text-center p-5 bg-muted/30 rounded-xl">
+            <div className="text-center p-5 bg-muted/30 rounded-xl" data-testid="card-booking-detail-1">
               <p className="text-sm text-muted-foreground mb-1">Meeting Type</p>
               <p className="text-lg font-bold text-foreground">Video Call</p>
             </div>
-            <div className="text-center p-5 bg-muted/30 rounded-xl">
+            <div className="text-center p-5 bg-muted/30 rounded-xl" data-testid="card-booking-detail-2">
               <p className="text-sm text-muted-foreground mb-1">Response Time</p>
               <p className="text-lg font-bold text-foreground">Instant</p>
             </div>
