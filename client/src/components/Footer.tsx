@@ -1,6 +1,5 @@
 import { Linkedin, Mail, Phone, Clock } from 'lucide-react';
 import { SiX } from 'react-icons/si';
-import { Card } from '@/components/ui/card';
 
 export default function Footer() {
   const contactInfo = [
@@ -123,33 +122,29 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Contact Information Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 pt-8 border-t border-border">
+        {/* Contact Information */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8 pt-8 border-t border-border">
           {contactInfo.map((info, index) => {
             const Icon = info.icon;
             return (
-              <Card
+              <div
                 key={index}
-                className="p-5 hover-elevate transition-all border-border/40 bg-card/50 backdrop-blur-sm"
+                className="flex flex-col items-center text-center gap-2"
                 data-testid={`card-contact-info-${index}`}
               >
-                <div className="flex flex-col items-center text-center gap-3">
-                  <div className="p-3 bg-primary/10 rounded-xl">
-                    <Icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-foreground mb-1.5 text-sm" data-testid={`text-contact-method-title-${index}`}>
-                      {info.title}
-                    </h4>
-                    <p className="text-foreground font-semibold mb-1 text-base" data-testid={`text-contact-method-value-${index}`}>
-                      {info.description}
-                    </p>
-                    <p className="text-xs text-muted-foreground font-medium" data-testid={`text-contact-method-detail-${index}`}>
-                      {info.detail}
-                    </p>
-                  </div>
+                <Icon className="h-5 w-5 text-muted-foreground mb-1" />
+                <div>
+                  <h4 className="font-semibold text-foreground mb-1 text-sm" data-testid={`text-contact-method-title-${index}`}>
+                    {info.title}
+                  </h4>
+                  <p className="text-foreground font-semibold mb-1" data-testid={`text-contact-method-value-${index}`}>
+                    {info.description}
+                  </p>
+                  <p className="text-xs text-muted-foreground" data-testid={`text-contact-method-detail-${index}`}>
+                    {info.detail}
+                  </p>
                 </div>
-              </Card>
+              </div>
             );
           })}
         </div>
