@@ -62,7 +62,11 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto" data-testid="dialog-signup">
+      <DialogContent 
+        className="max-w-2xl max-h-[90vh] overflow-y-auto" 
+        data-testid="dialog-signup"
+        onInteractOutside={(e) => e.preventDefault()}
+      >
         {createdTenant ? (
           // Success State
           <div className="py-6">

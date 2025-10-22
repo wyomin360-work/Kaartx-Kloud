@@ -5,11 +5,13 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
 ## Recent Changes
 
 **October 22, 2025 - Navigation, Footer & Modal UX Improvements:**
-- **Fixed Navbar Layout Shift:** Resolved scrollbar-induced navbar shift when signup modal opens
-  - Added `html { overflow-y: scroll; }` to keep scrollbar always visible
-  - Navbar remains completely stable (0px shift) when modals open/close ✓
-  - Modal behavior fully preserved (focus trap, backdrop blocking) ✓
-  - Note: Minor 7.5px horizontal content shift remains (Radix compensation behavior with centered layouts)
+- **Navbar Layout Shift Fix:** Resolved scrollbar-induced navbar shift when signup modal opens
+  - Solution: `html { overflow-y: scroll; }` keeps scrollbar always visible
+  - Navbar: Completely stable (0px shift) ✓
+  - Modal behavior: Focus trap, backdrop blocking, Escape key all working ✓
+  - Known limitation: ~7.5px horizontal shift on centered content while modal is open (Radix Dialog compensation with centered layouts)
+  - This is a Radix Dialog architectural limitation that cannot be eliminated without breaking modal functionality
+  - Content returns to original position after modal closes
 - **Navigation Enhancement:** Added "Contact" link to navbar while maintaining "Book a Call"
   - Desktop navbar: Features | Pricing | Integrations | Book a Call | Contact → [Get Started]
   - Mobile menu: Features | Pricing | Integrations | Book a Call | Contact

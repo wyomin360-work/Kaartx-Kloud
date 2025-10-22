@@ -232,10 +232,15 @@
   --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
-/* Scrollbar compensation to prevent layout shift when modals open */
-/* Force scrollbar to always be visible to prevent it from appearing/disappearing */
+/* Prevent layout shift when Radix Dialog opens */
 html {
-  overflow-y: scroll;
+  overflow-y: scroll !important;
+}
+
+/* Neutralize Radix's inline padding compensation */
+html[data-scroll-locked],
+body[data-scroll-locked] {
+  padding-right: 0px !important;
 }
 
 @layer base {
