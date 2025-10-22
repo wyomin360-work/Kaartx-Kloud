@@ -4,16 +4,18 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
 
 ## Recent Changes
 
-**October 22, 2025 - Footer Updates & Integrations Clarity:**
-- **Footer Email Clarification:** Added professional "Business Inquiries:" label above official@kaartx.com for clarity
+**October 22, 2025 - Navigation & Footer Optimization:**
+- **Contact Link Relocation:** Moved "Contact" link from footer to navbar for better accessibility
+  - Added to desktop navbar: Features | Pricing | Integrations | Contact
+  - Added to mobile menu navigation
+  - Removed redundant Contact link from footer Company section (contact info already visible below)
+- **Footer Email Clarification:** Added professional "Business Inquiries:" label above official@kaartx.com
 - **Email Differentiation:** official@kaartx.com (business/partnerships) vs support@kaartx.com (customer support)
 - **Contact Info Integration:** Redesigned contact section in footer with cleaner styling, removed Card backgrounds
 - **Integrations Accuracy:** Updated integrations section to accurately reflect current status:
   - TAP Payments & Asyad Shipping marked as "Featured" (currently integrated)
   - Shopify, Stripe, Firebase, and Custom APIs marked as "Coming Soon"
   - Reordered integrations to prioritize featured services
-- Contact info uses simple divs with subtle icons (h-5) matching footer aesthetic
-- Three contact items: Email (support@kaartx.com), Phone (+96898209353), Response Time (< 24 hours)
 - All functionality and test IDs preserved for compatibility
 - Comprehensive e2e testing passed for all updates
 
