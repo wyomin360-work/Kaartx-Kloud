@@ -4,7 +4,9 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
 
 ## Recent Changes
 
-**October 22, 2025 - Contact Information Blended Into Footer:**
+**October 22, 2025 - Footer Email Clarification & Contact Info Integration:**
+- Added professional "Business Inquiries:" label above official@kaartx.com in footer for clarity
+- Clear differentiation between two email addresses: official@kaartx.com (business/partnerships) and support@kaartx.com (customer support)
 - Redesigned contact information section in footer with cleaner, more integrated styling
 - Removed Card components and prominent styling (backgrounds, borders, hover effects) for better visual harmony
 - Contact info now uses simple divs with subtle icons matching footer aesthetic
