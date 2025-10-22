@@ -233,7 +233,7 @@
 }
 
 /* Scrollbar compensation to prevent layout shift when modals open */
-/* Force scrollbar to always be visible to prevent layout shifts */
+/* Force scrollbar to always be visible to prevent it from appearing/disappearing */
 html {
   overflow-y: scroll;
 }
