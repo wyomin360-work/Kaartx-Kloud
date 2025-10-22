@@ -232,6 +232,12 @@
   --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
+/* Scrollbar compensation to prevent layout shift when modals open */
+/* Force scrollbar to always be visible to prevent layout shifts */
+html {
+  overflow-y: scroll;
+}
+
 @layer base {
   * {
     @apply border-border;
