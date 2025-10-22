@@ -4,18 +4,18 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
 
 ## Recent Changes
 
-**October 22, 2025 - Footer Email Clarification & Contact Info Integration:**
-- Added professional "Business Inquiries:" label above official@kaartx.com in footer for clarity
-- Clear differentiation between two email addresses: official@kaartx.com (business/partnerships) and support@kaartx.com (customer support)
-- Redesigned contact information section in footer with cleaner, more integrated styling
-- Removed Card components and prominent styling (backgrounds, borders, hover effects) for better visual harmony
-- Contact info now uses simple divs with subtle icons matching footer aesthetic
-- Icons reduced to h-5 w-5 with muted-foreground color for subtler appearance
-- Maintained three contact items: Email (support@kaartx.com), Phone (+96898209353), Response Time (< 24 hours)
-- Layout matches footer navigation columns with consistent text hierarchy
+**October 22, 2025 - Footer Updates & Integrations Clarity:**
+- **Footer Email Clarification:** Added professional "Business Inquiries:" label above official@kaartx.com for clarity
+- **Email Differentiation:** official@kaartx.com (business/partnerships) vs support@kaartx.com (customer support)
+- **Contact Info Integration:** Redesigned contact section in footer with cleaner styling, removed Card backgrounds
+- **Integrations Accuracy:** Updated integrations section to accurately reflect current status:
+  - TAP Payments & Asyad Shipping marked as "Featured" (currently integrated)
+  - Shopify, Stripe, Firebase, and Custom APIs marked as "Coming Soon"
+  - Reordered integrations to prioritize featured services
+- Contact info uses simple divs with subtle icons (h-5) matching footer aesthetic
+- Three contact items: Email (support@kaartx.com), Phone (+96898209353), Response Time (< 24 hours)
 - All functionality and test IDs preserved for compatibility
-- Comprehensive e2e testing passed: contact info displays correctly with improved visual integration
-- BookingSection remains simplified: header → Cal.com widget → booking detail cards
+- Comprehensive e2e testing passed for all updates
 
 ## User Preferences
 
