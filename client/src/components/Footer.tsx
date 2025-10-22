@@ -112,15 +112,6 @@ export default function Footer() {
                   Careers
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                  data-testid="link-footer-contact"
-                >
-                  Contact
-                </button>
-              </li>
             </ul>
           </div>
         </div>
