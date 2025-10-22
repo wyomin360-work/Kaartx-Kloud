@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { CheckCircle2, Circle, X } from 'lucide-react';
+import { CheckCircle2, Circle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { CustomModal, CustomModalHeader, CustomModalTitle, CustomModalDescription } from '@/components/ui/custom-modal';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 import { insertTenantSchema, type InsertTenant, type PublicTenant } from '@shared/schema';
@@ -61,12 +61,13 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
   };
 
   return (
-    <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent 
-        className="max-w-2xl max-h-[90vh] overflow-y-auto" 
-        data-testid="dialog-signup"
-        onInteractOutside={(e) => e.preventDefault()}
-      >
+    <CustomModal 
+      open={open} 
+      onOpenChange={handleClose}
+      className="max-w-2xl max-h-[90vh] overflow-y-auto p-6"
+      preventOutsideClick={true}
+    >
+      <div data-testid="dialog-signup">
         {createdTenant ? (
           // Success State
           <div className="py-6">
@@ -74,10 +75,10 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
               <div className="mx-auto mb-6 w-20 h-20 bg-green-50 dark:bg-green-950 rounded-full flex items-center justify-center">
                 <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
               </div>
-              <DialogTitle className="text-3xl mb-3">Welcome to Kaartx Cloud!</DialogTitle>
-              <DialogDescription className="text-base">
+              <CustomModalTitle className="text-3xl mb-3">Welcome to Kaartx Cloud!</CustomModalTitle>
+              <CustomModalDescription className="text-base">
                 Your marketplace is ready to launch. Start building your multi-vendor platform today.
-              </DialogDescription>
+              </CustomModalDescription>
             </div>
 
             <div className="space-y-8">
@@ -156,12 +157,12 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
         ) : (
           // Signup Form
           <>
-            <DialogHeader>
-              <DialogTitle className="text-2xl">Create Your Marketplace</DialogTitle>
-              <DialogDescription>
+            <CustomModalHeader>
+              <CustomModalTitle className="text-2xl">Create Your Marketplace</CustomModalTitle>
+              <CustomModalDescription>
                 Start your 14-day free trial. No credit card required.
-              </DialogDescription>
-            </DialogHeader>
+              </CustomModalDescription>
+            </CustomModalHeader>
 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 pt-4">
@@ -275,7 +276,7 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
             </Form>
           </>
         )}
-      </DialogContent>
-    </Dialog>
+      </div>
+    </CustomModal>
   );
 }
