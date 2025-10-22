@@ -4,14 +4,14 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
 
 ## Recent Changes
 
-**October 21, 2025 - Contact Information Added to Booking Section:**
-- Added contact information cards above the Cal.com booking widget for better accessibility
-- Three contact cards display: Email (support@kaartx.com), Phone (+96898209353), Response Time (< 24 hours)
-- Layout follows professional B2B pattern: contact info → booking widget → booking details
-- Contact cards provide alternative contact methods for users who prefer email/phone over calendar booking
-- All cards include icons, titles, values, and descriptive details for clarity
-- Booking detail cards (Duration, Meeting Type, Response Time) remain below the widget as originally designed
-- Comprehensive e2e testing passed: all contact information displays correctly with proper visual hierarchy
+**October 22, 2025 - Contact Information Relocated to Footer:**
+- Moved contact information cards from BookingSection to Footer for better UX organization
+- Footer now displays three contact cards above social links: Email (support@kaartx.com), Phone (+96898209353), Response Time (< 24 hours)
+- BookingSection simplified to focus solely on booking: header → Cal.com widget → booking detail cards
+- Contact info in footer provides centralized access to support channels without cluttering the booking flow
+- All cards maintain consistent styling with icons, titles, values, and descriptive details
+- Comprehensive e2e testing passed: booking section contains 0 contact cards, footer contains 3 contact cards with correct information
+- Improved user flow: booking section cleaner and focused, contact information easily accessible at page bottom
 
 ## User Preferences
 
