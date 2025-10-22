@@ -4,7 +4,11 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
 
 ## Recent Changes
 
-**October 22, 2025 - Navigation & Footer Optimization:**
+**October 22, 2025 - Navigation, Footer & Modal UX Improvements:**
+- **Fixed Navbar Layout Shift:** Resolved scrollbar-induced layout shift when signup modal opens
+  - Added `overflow-y: scroll` to html element to keep scrollbar always visible
+  - Prevents navbar from shifting right/left when modals open/close
+  - Eliminates jarring 15px layout jump for better UX
 - **Navigation Enhancement:** Added "Contact" link to navbar while maintaining "Book a Call"
   - Desktop navbar: Features | Pricing | Integrations | Book a Call | Contact → [Get Started]
   - Mobile menu: Features | Pricing | Integrations | Book a Call | Contact
