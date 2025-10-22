@@ -8,7 +8,8 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
 - **Navigation Enhancement:** Added "Contact" link to navbar while maintaining "Book a Call"
   - Desktop navbar: Features | Pricing | Integrations | Book a Call | Contact → [Get Started]
   - Mobile menu: Features | Pricing | Integrations | Book a Call | Contact
-  - Both "Book a Call" and "Contact" navigate to the booking section (#booking)
+  - "Book a Call" navigates to the booking section (#booking) for Cal.com scheduling
+  - "Contact" navigates to the footer contact section (#contact) with email, phone, and response time
   - Removed redundant Contact link from footer Company section (contact info already visible below)
 - **Footer Email Clarification:** Added professional "Business Inquiries:" label above official@kaartx.com
 - **Email Differentiation:** official@kaartx.com (business/partnerships) vs support@kaartx.com (customer support)
