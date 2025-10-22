@@ -82,6 +82,13 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
             <button
               onClick={() => navigateToSection('booking')}
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              data-testid="link-booking"
+            >
+              Book a Call
+            </button>
+            <button
+              onClick={() => navigateToSection('booking')}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               data-testid="link-contact"
             >
               Contact
@@ -131,6 +138,13 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
               data-testid="link-mobile-integrations"
             >
               Integrations
+            </button>
+            <button
+              onClick={() => navigateToSection('booking')}
+              className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
+              data-testid="link-mobile-booking"
+            >
+              Book a Call
             </button>
             <button
               onClick={() => navigateToSection('booking')}
