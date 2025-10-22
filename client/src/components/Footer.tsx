@@ -40,13 +40,16 @@ export default function Footer() {
             <p className="text-muted-foreground mb-4 max-w-sm" data-testid="text-footer-description">
               Launch and scale your multi-vendor marketplace with complete seller management, subscriptions, and GCC-ready integrations.
             </p>
-            <a
-              href="mailto:official@kaartx.com"
-              className="text-primary hover:underline"
-              data-testid="link-footer-email"
-            >
-              official@kaartx.com
-            </a>
+            <div>
+              <p className="text-sm text-muted-foreground mb-1 font-medium" data-testid="text-footer-business-label">Business Inquiries:</p>
+              <a
+                href="mailto:official@kaartx.com"
+                className="text-primary hover:underline"
+                data-testid="link-footer-email"
+              >
+                official@kaartx.com
+              </a>
+            </div>
           </div>
 
           <div>
