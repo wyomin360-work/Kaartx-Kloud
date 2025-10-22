@@ -17,35 +17,39 @@ export default function IntegrationsMarquee() {
       category: 'Logistics'
     },
     { 
+      name: 'TAP Payments', 
+      icon: CreditCard, 
+      featured: true,
+      description: 'MENA payment gateway',
+      category: 'Payments'
+    },
+    { 
       name: 'Shopify', 
       icon: SiShopify,
+      comingSoon: true,
       description: 'E-commerce platform integration',
       category: 'Platform'
     },
     { 
       name: 'Stripe', 
       icon: SiStripe,
+      comingSoon: true,
       description: 'Global payment processing',
       category: 'Payments'
     },
     { 
       name: 'Firebase', 
       icon: SiFirebase,
+      comingSoon: true,
       description: 'Backend & authentication',
       category: 'Infrastructure'
     },
     { 
       name: 'Custom APIs', 
       icon: Plug,
+      comingSoon: true,
       description: 'Connect your existing tools',
       category: 'Custom'
-    },
-    { 
-      name: 'TAP Payments', 
-      icon: CreditCard, 
-      featured: true,
-      description: 'MENA payment gateway',
-      category: 'Payments'
     },
   ];
 
@@ -83,6 +87,11 @@ export default function IntegrationsMarquee() {
                   {integration.featured && (
                     <Badge variant="default" className="text-xs" data-testid={`badge-featured-${index}`}>
                       Featured
+                    </Badge>
+                  )}
+                  {integration.comingSoon && (
+                    <Badge variant="secondary" className="text-xs" data-testid={`badge-coming-soon-${index}`}>
+                      Coming Soon
                     </Badge>
                   )}
                 </div>
