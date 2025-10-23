@@ -2,9 +2,6 @@ import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CustomModal } from "@/components/ui/custom-modal";
-import yasirImage from "@assets/generated_images/Yasir_Al-Harthy_professional_headshot_0335692d.png";
-import laylaImage from "@assets/generated_images/Layla_Khan_professional_headshot_acea480c.png";
-import fahadImage from "@assets/generated_images/Fahad_Al-Mutairi_professional_headshot_3e0dbec8.png";
 
 const testimonials = [
   {
@@ -16,7 +13,6 @@ const testimonials = [
     tagline: "From WooCommerce to Kaartx Cloud in 14 days",
     blurb: "Muscat Luxe Store migrated from WooCommerce to Kaartx Cloud to simplify multi-seller operations. Within two weeks they onboarded 200+ sellers and began managing payouts from the Kaartx dashboard. They later connected TAP Payments to enable automated vendor payouts without manual transfers.",
     verifiedNote: "Quote confirmed 18 Apr 2025. Migration completed Mar 2025; TAP payout setup tested on 01 Apr 2025.",
-    image: yasirImage,
   },
   {
     quote: "The subscription plans and order tracking in Kaartx Cloud have been reliable. Our beauty sellers found onboarding and billing setup very smooth.",
@@ -27,7 +23,6 @@ const testimonials = [
     tagline: "Beauty marketplace live with 160 sellers in month one",
     blurb: "GlowHaus used Kaartx Cloud to power a beauty marketplace for local and regional brands. The built-in subscription system made managing recurring seller plans easy, and order tracking reduced support tickets by ~40%. Seller onboarding finished in under 10 days with no engineering dependency.",
     verifiedNote: "Confirmation received 02 May 2025. 160 sellers active in first month; onboarding screenshots verified.",
-    image: laylaImage,
   },
   {
     quote: "We built two client marketplaces on Kaartx Cloud this year. Setup time was under two weeks, and the seller dashboard plus commission reports make agency handover simple.",
@@ -38,7 +33,6 @@ const testimonials = [
     tagline: "Two client launches under 2 weeks each",
     blurb: "As an agency partner, NextPhase Digital delivered two retail marketplaces for clients in KSA and UAE using Kaartx Cloud. Each project went live in under two weeks. Their clients now manage vendors, payouts (via Kaartx's payout section with optional TAP automation), and brand listings without third-party plugins.",
     verifiedNote: "Partner status verified 12 Feb 2025. Two deployments completed Feb–Mar 2025; client approval letters archived.",
-    image: fahadImage,
   },
 ];
 
@@ -49,14 +43,6 @@ export default function Testimonials() {
 
   const next = () => setIndex((i) => (i + 1) % testimonials.length);
   const prev = () => setIndex((i) => (i === 0 ? testimonials.length - 1 : i - 1));
-
-  // Preload all testimonial images to prevent loading delay when switching
-  useEffect(() => {
-    testimonials.forEach((testimonial) => {
-      const img = new Image();
-      img.src = testimonial.image;
-    });
-  }, []);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -79,12 +65,6 @@ export default function Testimonials() {
               "{t.quote}"
             </p>
             <div className="mt-6 flex flex-col items-center">
-              <img 
-                src={t.image} 
-                alt={t.name} 
-                className="w-12 h-12 rounded-full mb-2 object-cover" 
-                data-testid={`img-testimonial-avatar-${index}`}
-              />
               <p className="font-semibold text-foreground" data-testid={`text-testimonial-author-${index}`}>
                 {t.name}
               </p>
