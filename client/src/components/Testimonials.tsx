@@ -115,7 +115,12 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <CustomModal open={open} onOpenChange={setOpen} showCloseButton={true}>
+      <CustomModal 
+        open={open} 
+        onOpenChange={setOpen} 
+        showCloseButton={true}
+        className="max-w-2xl w-full p-6"
+      >
         <div className="space-y-4" data-testid="modal-case-study">
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-2" data-testid="text-case-study-title">
