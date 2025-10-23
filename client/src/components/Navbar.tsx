@@ -93,15 +93,6 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
             >
               Contact
             </button>
-            <a
-              href="https://seller.kaartx.com/about-us"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              data-testid="link-about"
-            >
-              About
-            </a>
             <Button
               onClick={onOpenSignup}
               className="shadow-glow hover:scale-[1.02] transition-transform"
@@ -162,16 +153,6 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
             >
               Contact
             </button>
-            <a
-              href="https://seller.kaartx.com/about-us"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-              data-testid="link-mobile-about"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              About
-            </a>
             
             <div className="pt-6 space-y-3">
               <Button 
