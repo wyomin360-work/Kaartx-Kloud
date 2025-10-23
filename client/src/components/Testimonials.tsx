@@ -50,6 +50,14 @@ export default function Testimonials() {
   const next = () => setIndex((i) => (i + 1) % testimonials.length);
   const prev = () => setIndex((i) => (i === 0 ? testimonials.length - 1 : i - 1));
 
+  // Preload all testimonial images to prevent loading delay when switching
+  useEffect(() => {
+    testimonials.forEach((testimonial) => {
+      const img = new Image();
+      img.src = testimonial.image;
+    });
+  }, []);
+
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight") next();
