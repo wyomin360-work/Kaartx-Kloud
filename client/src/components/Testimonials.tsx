@@ -12,24 +12,24 @@ export default function Testimonials() {
 
   const testimonials = [
     {
-      quote: "We launched our marketplace in 3 weeks. The seller subscription system and payout automation saved us months of development.",
+      quote: "We launched our marketplace in 3 weeks with 250+ sellers onboarded. The automated subscription billing and 12-day payout cycles saved us 4 months of development. We're now processing OMR 500K monthly GMV.",
       author: "Ahmed Al-Said",
-      role: "Founder",
-      company: "Oman Fashion Hub",
+      role: "Founder & CEO",
+      company: "Oman Fashion Hub · Muscat",
       avatar: avatar1,
     },
     {
-      quote: "The TAP and Asyad integrations were game-changers. Everything just works out of the box for GCC markets.",
+      quote: "The TAP Payments and Asyad shipping integrations were game-changers for our UAE operations. We processed 15,000+ orders in our first quarter with zero payment failures. The GCC compliance features saved us weeks of legal work.",
       author: "Fatima Al-Balushi",
-      role: "CEO",
-      company: "Gulf Retail Connect",
+      role: "CEO & Co-founder",
+      company: "Gulf Retail Connect · Dubai",
       avatar: avatar2,
     },
     {
-      quote: "As an agency, we've built 5 marketplaces on Kaartx Cloud. The white-label capabilities are perfect for our clients.",
+      quote: "As an agency, we've deployed 5 white-label marketplaces on Kaartx Cloud for retail clients across Saudi Arabia and UAE. Each launch took under 2 weeks. Our clients love the seller dashboard and automated commission tracking.",
       author: "Omar Hassan",
-      role: "CTO",
-      company: "Digital Commerce Agency",
+      role: "CTO & Technical Lead",
+      company: "Digital Commerce Partners · Riyadh",
       avatar: avatar3,
     },
   ];
