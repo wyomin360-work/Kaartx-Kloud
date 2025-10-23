@@ -1,0 +1,74 @@
+Hey, I also need AI-generated profile photos and banner-style images for the testimonial section on the Kaartx Cloud landing page.
+
+These should look realistic, premium, and corporate, matching the SaaS look.
+
+Please generate them using Bing Image Creator, Leonardo.ai, or Midjourney.
+
+🧍‍♂️ Headshots (1:1 Square)
+
+These are the regular profile pictures used inside the testimonial cards.
+Generate 1:1 square images with professional lighting and realistic details.
+
+Save them in /public/avatars/ as:
+
+/public/avatars/yasir.jpg
+
+/public/avatars/layla.jpg
+
+/public/avatars/fahad.jpg
+
+Prompts:
+
+yasir.jpg
+
+photorealistic headshot of an Omani male entrepreneur in his early 30s, wearing a white dishdasha and kuma cap, friendly smile, well-groomed short beard, professional lighting, neutral background, corporate portrait for SaaS company founder profile, 1:1 aspect ratio
+
+layla.jpg
+
+photorealistic portrait of a South-Asian female entrepreneur in her late 20s, confident and stylish, wearing a pastel blazer, subtle makeup, smooth studio lighting, smiling, professional corporate headshot for tech startup founder, neutral gray background, 1:1 aspect ratio
+
+fahad.jpg
+
+photorealistic portrait of a Saudi male agency director in his 30s, wearing white thobe and black agal, confident look, light beard, warm lighting, professional corporate portrait for technology company website, clean background, 1:1 aspect ratio
+
+🖼️ Banner-Style Versions (16:9 Wide)
+
+These are wide landscape versions to use as optional background banners or for case-study modals.
+They should look like LinkedIn cover photos — realistic, modern, slightly blurred office background.
+
+Save them in /public/avatars/ as:
+
+/public/avatars/yasir-banner.jpg
+
+/public/avatars/layla-banner.jpg
+
+/public/avatars/fahad-banner.jpg
+
+Prompts:
+
+yasir-banner.jpg
+
+photorealistic wide portrait of an Omani male entrepreneur in his early 30s, wearing a white dishdasha and kuma cap, standing confidently in a modern office background with soft blur, warm daylight, cinematic lighting, professional corporate banner photo for SaaS founder profile, 16:9 aspect ratio
+
+layla-banner.jpg
+
+photorealistic wide portrait of a South-Asian female entrepreneur in her late 20s, confident and stylish, wearing a pastel blazer, standing in a bright modern workspace, blurred background, natural soft lighting, professional tech founder banner photo, 16:9 aspect ratio
+
+fahad-banner.jpg
+
+photorealistic wide portrait of a Saudi male agency director in his 30s, wearing white thobe and black agal, professional confident pose, warm neutral lighting, minimalistic modern office background, corporate cover photo for SaaS partner testimonial, 16:9 aspect ratio
+
+🏷️ Optional Caption Lines for Banners
+
+Use these 1-sentence taglines as subtle text overlays (white text, semi-bold, bottom-left corner).
+
+For Yasir (Oman) → “Empowering Gulf entrepreneurs with Kaartx Cloud.”
+
+For Layla (UAE) → “Simplifying beauty commerce through Kaartx Cloud.”
+
+For Fahad (KSA) → “Building next-gen marketplaces across the GCC.”
+
+Make sure all images look natural, premium, and realistic, not cartoonish or heavily stylized.
+Use soft shadows, clear lighting, and shallow depth of field.
+
+Once done, upload everything to /public/avatars/.
