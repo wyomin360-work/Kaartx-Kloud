@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { CustomModal } from "@/components/ui/custom-modal";
 import yasirImage from "@assets/generated_images/Yasir_Al-Harthy_professional_headshot_0335692d.png";
 import laylaImage from "@assets/generated_images/Layla_Khan_professional_headshot_acea480c.png";
 import fahadImage from "@assets/generated_images/Fahad_Al-Mutairi_professional_headshot_3e0dbec8.png";
@@ -115,17 +115,21 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent data-testid="modal-case-study">
-          <DialogHeader>
-            <DialogTitle data-testid="text-case-study-title">{t.tagline}</DialogTitle>
-            <DialogDescription data-testid="text-case-study-blurb">{t.blurb}</DialogDescription>
-          </DialogHeader>
-          <p className="text-sm text-muted-foreground mt-2" data-testid="text-case-study-verified">
+      <CustomModal open={open} onOpenChange={setOpen} showCloseButton={true}>
+        <div className="space-y-4" data-testid="modal-case-study">
+          <div>
+            <h3 className="text-lg font-semibold text-foreground mb-2" data-testid="text-case-study-title">
+              {t.tagline}
+            </h3>
+            <p className="text-sm text-muted-foreground" data-testid="text-case-study-blurb">
+              {t.blurb}
+            </p>
+          </div>
+          <p className="text-xs text-muted-foreground/80 pt-2 border-t border-border" data-testid="text-case-study-verified">
             {t.verifiedNote}
           </p>
-        </DialogContent>
-      </Dialog>
+        </div>
+      </CustomModal>
     </section>
   );
 }
