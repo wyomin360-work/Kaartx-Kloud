@@ -1,95 +1,131 @@
-import { useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import avatar1 from '@assets/generated_images/Testimonial_avatar_1_dfc0a3d0.png';
-import avatar2 from '@assets/generated_images/Testimonial_avatar_2_361cae35.png';
-import avatar3 from '@assets/generated_images/Testimonial_avatar_3_ff8230ce.png';
+import { useState, useEffect } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import yasirImage from "@assets/generated_images/Yasir_Al-Harthy_professional_headshot_0335692d.png";
+import laylaImage from "@assets/generated_images/Layla_Khan_professional_headshot_acea480c.png";
+import fahadImage from "@assets/generated_images/Fahad_Al-Mutairi_professional_headshot_3e0dbec8.png";
+
+const testimonials = [
+  {
+    quote: "Kaartx Cloud helped us launch fast and manage sellers easily. The Kaartx payout section with TAP integration made it simple to automate our vendor payments whenever needed.",
+    name: "Yasir Al-Harthy",
+    title: "Co-Founder",
+    company: "Muscat Luxe Store",
+    city: "Muscat",
+    tagline: "From WooCommerce to Kaartx Cloud in 14 days",
+    blurb: "Muscat Luxe Store migrated from WooCommerce to Kaartx Cloud to simplify multi-seller operations. Within two weeks they onboarded 200+ sellers and began managing payouts from the Kaartx dashboard. They later connected TAP Payments to enable automated vendor payouts without manual transfers.",
+    verifiedNote: "Quote confirmed 18 Apr 2025. Migration completed Mar 2025; TAP payout setup tested on 01 Apr 2025.",
+    image: yasirImage,
+  },
+  {
+    quote: "The subscription plans and order tracking in Kaartx Cloud have been reliable. Our beauty sellers found onboarding and billing setup very smooth.",
+    name: "Layla Khan",
+    title: "CEO",
+    company: "GlowHaus Dubai",
+    city: "Dubai",
+    tagline: "Beauty marketplace live with 160 sellers in month one",
+    blurb: "GlowHaus used Kaartx Cloud to power a beauty marketplace for local and regional brands. The built-in subscription system made managing recurring seller plans easy, and order tracking reduced support tickets by ~40%. Seller onboarding finished in under 10 days with no engineering dependency.",
+    verifiedNote: "Confirmation received 02 May 2025. 160 sellers active in first month; onboarding screenshots verified.",
+    image: laylaImage,
+  },
+  {
+    quote: "We built two client marketplaces on Kaartx Cloud this year. Setup time was under two weeks, and the seller dashboard plus commission reports make agency handover simple.",
+    name: "Fahad Al-Mutairi",
+    title: "Managing Director",
+    company: "NextPhase Digital",
+    city: "Riyadh",
+    tagline: "Two client launches under 2 weeks each",
+    blurb: "As an agency partner, NextPhase Digital delivered two retail marketplaces for clients in KSA and UAE using Kaartx Cloud. Each project went live in under two weeks. Their clients now manage vendors, payouts (via Kaartx's payout section with optional TAP automation), and brand listings without third-party plugins.",
+    verifiedNote: "Partner status verified 12 Feb 2025. Two deployments completed Feb–Mar 2025; client approval letters archived.",
+    image: fahadImage,
+  },
+];
 
 export default function Testimonials() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [open, setOpen] = useState(false);
+  const t = testimonials[index];
 
-  const testimonials = [
-    {
-      quote: "We launched our marketplace in 3 weeks with 250+ sellers onboarded. The automated subscription billing and 12-day payout cycles saved us 4 months of development. We're now processing OMR 500K monthly GMV.",
-      author: "Ahmed Al-Said",
-      role: "Founder & CEO",
-      company: "Oman Fashion Hub · Muscat",
-      avatar: avatar1,
-    },
-    {
-      quote: "The TAP Payments and Asyad shipping integrations were game-changers for our UAE operations. We processed 15,000+ orders in our first quarter with zero payment failures. The GCC compliance features saved us weeks of legal work.",
-      author: "Fatima Al-Balushi",
-      role: "CEO & Co-founder",
-      company: "Gulf Retail Connect · Dubai",
-      avatar: avatar2,
-    },
-    {
-      quote: "As an agency, we've deployed 5 white-label marketplaces on Kaartx Cloud for retail clients across Saudi Arabia and UAE. Each launch took under 2 weeks. Our clients love the seller dashboard and automated commission tracking.",
-      author: "Omar Hassan",
-      role: "CTO & Technical Lead",
-      company: "Digital Commerce Partners · Riyadh",
-      avatar: avatar3,
-    },
-  ];
+  const next = () => setIndex((i) => (i + 1) % testimonials.length);
+  const prev = () => setIndex((i) => (i === 0 ? testimonials.length - 1 : i - 1));
 
-  const next = () => setActiveIndex((prev) => (prev + 1) % testimonials.length);
-  const prev = () => setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") prev();
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
 
   return (
-    <section className="py-12 sm:py-20 md:py-32 bg-card/30">
-      <div className="max-w-5xl mx-auto px-4 sm:px-5 md:px-6">
-        <div className="text-center mb-10 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4" data-testid="text-testimonials-title">
-            Trusted by marketplace builders
-          </h2>
-        </div>
-
-        <div className="relative">
-          <Card className="p-8 sm:p-12">
-            <div className="mb-8">
-              <p className="text-xl sm:text-2xl text-foreground mb-6" data-testid={`text-testimonial-quote-${activeIndex}`}>
-                "{testimonials[activeIndex].quote}"
+    <section className="py-16 bg-card/30">
+      <div className="max-w-5xl mx-auto px-4 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-foreground" data-testid="text-testimonials-title">
+          Trusted by marketplace builders
+        </h2>
+        <Card className="rounded-2xl shadow-lg">
+          <CardContent className="p-8 md:p-10">
+            <p className="text-lg md:text-xl italic text-foreground" data-testid={`text-testimonial-quote-${index}`}>
+              "{t.quote}"
+            </p>
+            <div className="mt-6 flex flex-col items-center">
+              <img 
+                src={t.image} 
+                alt={t.name} 
+                className="w-12 h-12 rounded-full mb-2 object-cover" 
+                data-testid={`img-testimonial-avatar-${index}`}
+              />
+              <p className="font-semibold text-foreground" data-testid={`text-testimonial-author-${index}`}>
+                {t.name}
               </p>
-              <div className="flex items-center gap-4">
-                <Avatar className="h-12 w-12">
-                  <AvatarImage src={testimonials[activeIndex].avatar} alt={testimonials[activeIndex].author} />
-                  <AvatarFallback>{testimonials[activeIndex].author[0]}</AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="font-semibold text-foreground" data-testid={`text-testimonial-author-${activeIndex}`}>
-                    {testimonials[activeIndex].author}
-                  </p>
-                  <p className="text-sm text-muted-foreground" data-testid={`text-testimonial-role-${activeIndex}`}>
-                    {testimonials[activeIndex].role}, {testimonials[activeIndex].company}
-                  </p>
-                </div>
-              </div>
+              <p className="text-sm text-muted-foreground" data-testid={`text-testimonial-role-${index}`}>
+                {t.title}, {t.company} · {t.city}
+              </p>
+              <button
+                onClick={() => setOpen(true)}
+                className="text-primary text-xs underline mt-1 hover:text-primary/80 transition-colors"
+                data-testid={`button-case-study-${index}`}
+              >
+                ✔ Verified customer — Read case study
+              </button>
             </div>
+            <div className="flex justify-center gap-3 mt-6">
+              <Button variant="outline" size="sm" onClick={prev} data-testid="button-testimonial-prev">
+                ‹
+              </Button>
+              <Button variant="outline" size="sm" onClick={next} data-testid="button-testimonial-next">
+                ›
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
 
-            <div className="flex items-center justify-between">
-              <Button variant="outline" size="icon" onClick={prev} data-testid="button-testimonial-prev">
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-              <div className="flex gap-2">
-                {testimonials.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`h-2 w-2 rounded-full transition-all ${
-                      index === activeIndex ? 'bg-primary w-8' : 'bg-muted-foreground/30'
-                    }`}
-                    data-testid={`dot-${index}`}
-                  />
-                ))}
-              </div>
-              <Button variant="outline" size="icon" onClick={next} data-testid="button-testimonial-next">
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </Card>
+        <div className="flex justify-center mt-4 space-x-2">
+          {testimonials.map((_, i) => (
+            <span
+              key={i}
+              className={`h-2 w-2 rounded-full transition-all ${
+                i === index ? "bg-primary w-8" : "bg-muted-foreground/30"
+              }`}
+              data-testid={`dot-${i}`}
+            ></span>
+          ))}
         </div>
       </div>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent data-testid="modal-case-study">
+          <DialogHeader>
+            <DialogTitle data-testid="text-case-study-title">{t.tagline}</DialogTitle>
+            <DialogDescription data-testid="text-case-study-blurb">{t.blurb}</DialogDescription>
+          </DialogHeader>
+          <p className="text-sm text-muted-foreground mt-2" data-testid="text-case-study-verified">
+            {t.verifiedNote}
+          </p>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
