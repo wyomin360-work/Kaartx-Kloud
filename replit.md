@@ -20,14 +20,15 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
   - Premium glassmorphism cards: bg-card/60 backdrop-blur-md with layered gradient overlays
   - Dual-layer section backgrounds: linear gradient + radial focal gradient for depth
   - Enhanced card depth: border-2 border-primary/20, shadow-lg with hover:shadow-2xl
-  - Sophisticated hover interactions: translate-y lift with border color transition
+  - Stable hover interactions: shadow and border color transitions only (no vertical movement to prevent jitter)
   - Generous spacing: py-24 sm:py-32 md:py-40 with lg:gap-10 between cards
-  - Premium typography: text-3xl sm:text-4xl lg:text-5xl gradient values, extrabold uppercase labels
+  - Premium typography: text-2xl sm:text-3xl lg:text-4xl gradient values, extrabold uppercase labels
   - Optimized letter spacing (tracking-[0.15em]) for readability and luxury feel
   - Multiple gradient layers on cards for rich depth (from-primary/5, from-background/10)
   - Rounded-3xl corners with optimized padding (p-6 sm:p-7 lg:p-8) to prevent text truncation
   - Whitespace-nowrap on stat values ensures complete display of all text
-  - E2e tested and verified - all stats ("12-day", "GCC", "99.9%", "White-label") display completely without truncation
+  - Added overflow-visible to prevent any text clipping
+  - E2e tested and verified - all stats ("12-day", "GCC", "99.9%", "White-label") display completely without truncation, zero hover jitter (deltaY=0px confirmed)
 **November 2, 2025 - Professional UI Enhancements:**
 - **HowItWorks Section Ultra-Professional Redesign:** Complete overhaul for corporate-grade aesthetic
   - Removed Card component in favor of minimal div with ultra-subtle background (bg-card/30)
