@@ -31,7 +31,7 @@ export default function StatsBar() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/10 to-transparent rounded-3xl" />
                 
                 <div className="relative">
-                  <div className="text-5xl sm:text-6xl lg:text-7xl font-black gradient-text mb-4 leading-none tracking-tight" data-testid={`text-stat-value-${index}`}>
+                  <div className="text-4xl sm:text-5xl lg:text-6xl font-black gradient-text mb-4 leading-none tracking-tight whitespace-nowrap" data-testid={`text-stat-value-${index}`}>
                     {stat.value}
                   </div>
                   <div className="text-xs sm:text-sm font-extrabold text-foreground/70 uppercase tracking-[0.2em] leading-relaxed" data-testid={`text-stat-label-${index}`}>
