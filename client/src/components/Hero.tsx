@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, MessageCircle } from 'lucide-react';
-import heroDashboard from '@assets/image_1762104852286.png';
+import heroDashboard from '@assets/image_1762105179353.png';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface HeroProps {
