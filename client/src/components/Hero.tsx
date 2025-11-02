@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, MessageCircle } from 'lucide-react';
-import heroDashboard from '@assets/image_1762105179353.png';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface HeroProps {
@@ -11,7 +10,6 @@ export default function Hero({ onOpenSignup }: HeroProps) {
   const titleAnimation = useScrollAnimation<HTMLHeadingElement>(0.1);
   const subtitleAnimation = useScrollAnimation<HTMLParagraphElement>(0.1);
   const buttonsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
-  const dashboardAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
   const scrollToBooking = () => {
     const element = document.getElementById('booking');
@@ -65,21 +63,6 @@ export default function Hero({ onOpenSignup }: HeroProps) {
               <MessageCircle className="mr-2 h-5 w-5" />
               Talk to Sales
             </Button>
-          </div>
-        </div>
-
-        <div 
-          ref={dashboardAnimation.ref}
-          className={`max-w-5xl mx-auto animate-scale-in stagger-3 ${dashboardAnimation.isVisible ? 'visible' : ''}`}
-        >
-          <div className="relative rounded-3xl overflow-hidden shadow-playful gradient-border">
-            <img
-              src={heroDashboard}
-              alt="Kloud Dashboard"
-              className="w-full h-auto"
-              data-testid="img-hero-dashboard"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent pointer-events-none" />
           </div>
         </div>
       </div>
