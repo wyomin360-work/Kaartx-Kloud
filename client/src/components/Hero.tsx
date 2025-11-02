@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, MessageCircle } from 'lucide-react';
-import heroDashboard from '@assets/generated_images/Hero_dashboard_mockup_46c4a7c8.png';
+import heroDashboard from '@assets/generated_images/Kaartx_products_management_dashboard_e220a5a9.png';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface HeroProps {
