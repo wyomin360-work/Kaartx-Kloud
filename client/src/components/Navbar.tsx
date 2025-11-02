@@ -46,7 +46,7 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
           <div className="flex-shrink-0">
             <button
               onClick={() => navigateToSection('hero')}
-              className="hover-elevate p-2 rounded-md transition-all"
+              className="hover-elevate rounded-md transition-all"
               data-testid="link-logo"
             >
               <img 
