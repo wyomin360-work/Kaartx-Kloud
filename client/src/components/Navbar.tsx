@@ -52,7 +52,7 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
               <img 
                 src={logoImage} 
                 alt="Kloud" 
-                className="h-8 w-auto"
+                className="h-6 w-auto"
               />
             </button>
           </div>
@@ -95,6 +95,7 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
             </button>
             <Button
               onClick={onOpenSignup}
+              size="sm"
               className="shadow-glow hover:scale-[1.02] transition-transform"
               data-testid="button-get-started"
             >
