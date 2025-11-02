@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, MessageCircle } from 'lucide-react';
 import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
-import logoImage from '@assets/Logo_A_1760799119283.png';
+import logoImage from '@assets/Asset 4@4x_1762100909160.png';
 
 interface NavbarProps {
   onOpenSignup?: () => void;
@@ -51,7 +51,7 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
             >
               <img 
                 src={logoImage} 
-                alt="Kaartx" 
+                alt="Kloud" 
                 className="h-8 w-auto"
               />
             </button>

@@ -75,7 +75,7 @@ export default function Hero({ onOpenSignup }: HeroProps) {
           <div className="relative rounded-3xl overflow-hidden shadow-playful gradient-border">
             <img
               src={heroDashboard}
-              alt="Kaartx Cloud Dashboard"
+              alt="Kloud Dashboard"
               className="w-full h-auto"
               data-testid="img-hero-dashboard"
             />

@@ -35,7 +35,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-2xl font-bold text-foreground mb-3" data-testid="text-footer-logo">
-              Kaartx Cloud
+              Kloud
             </h3>
             <p className="text-muted-foreground mb-4 max-w-sm" data-testid="text-footer-description">
               Launch and scale your multi-vendor marketplace with complete seller management, subscriptions, and GCC-ready integrations.
@@ -151,7 +151,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground" data-testid="text-footer-copyright">
-            © 2025 Kaartx Cloud. All rights reserved.
+            © 2025 Kloud. All rights reserved.
           </p>
           <div className="flex gap-4">
             <a href="https://linkedin.com/company/kaartx-official" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-linkedin">
