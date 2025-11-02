@@ -41,7 +41,7 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
         isScrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent'
       }`}
     >
-      <div className="px-4">
+      <div className="px-3">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <button
