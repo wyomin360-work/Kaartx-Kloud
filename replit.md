@@ -4,6 +4,11 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
 
 ## Recent Changes
 
+**November 3, 2025 - Hero Subtitle Update:**
+- Updated hero subtitle to emphasize GCC-ready platform and Kaartx Cloud branding
+- New text: "Complete GCC-ready platform with seller onboarding, product management, subscription billing, and automated payouts — powered by Kaartx Cloud."
+- Maintains professional tone while highlighting key platform features
+
 **November 2, 2025 - Kloud Rebranding & Professional UI Enhancements:**
 - **Logo Replacement:** Complete rebrand from Kaartx Cloud to Kloud
   - Replaced navbar logo with new Kloud logo (colorful K with orange/turquoise accents)
