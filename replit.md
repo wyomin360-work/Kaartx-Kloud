@@ -4,7 +4,7 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
 
 ## Recent Changes
 
-**November 3, 2025 - Content Updates:**
+**November 3, 2025 - Content & Layout Updates:**
 - **Hero Subtitle:** Updated to emphasize GCC-ready platform and Kaartx Cloud branding
   - New text: "Complete GCC-ready platform with seller onboarding, product management, subscription billing, and automated payouts — powered by Kaartx Cloud."
   - Maintains professional tone while highlighting key platform features
@@ -12,6 +12,11 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
   - Emphasizes flexibility of payout schedules with cleaner, more professional phrasing
   - "Automated" provides punchy badge text that matches other stats
   - Subtitle clarifies the adjustable nature of payout cycles
+- **StatsBar Uniform Height Fix:** Enforced identical card heights across all 4 stats
+  - Applied h-40 fixed height class to all stat cards
+  - All cards now render at exactly 92px height (perfectly uniform)
+  - Inner content uses h-full for proper vertical centering
+  - E2e tested and verified - zero height variance across all 4 cards
 
 **November 2, 2025 - Kloud Rebranding & Professional UI Enhancements:**
 - **Logo Replacement:** Complete rebrand from Kaartx Cloud to Kloud
@@ -38,7 +43,6 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
   - Whitespace-nowrap on stat values ensures complete display of all text
   - Added overflow-visible to prevent any text clipping
   - E2e tested and verified - all stats ("Automated", "GCC", "99.9%", "White-label") display completely without truncation, zero hover jitter (deltaY=0px confirmed)
-  - Note: First card (92px) is slightly taller than others (72px) due to longer label text - natural content-driven layout
 **November 2, 2025 - Professional UI Enhancements:**
 - **HowItWorks Section Ultra-Professional Redesign:** Complete overhaul for corporate-grade aesthetic
   - Removed Card component in favor of minimal div with ultra-subtle background (bg-card/30)
