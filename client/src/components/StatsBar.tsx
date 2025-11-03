@@ -2,7 +2,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function StatsBar() {
   const stats = [
-    { value: 'Payout Engine', label: 'Adjustable payout cycles' },
+    { value: 'Automated', label: 'Adjustable payout cycles' },
     { value: 'GCC', label: 'Ready' },
     { value: '99.9%', label: 'Uptime' },
     { value: 'White-label', label: 'Ready' },
@@ -18,7 +18,7 @@ export default function StatsBar() {
       <div className="relative max-w-7xl mx-auto px-5 sm:px-6">
         <div 
           ref={sectionAnimation.ref}
-          className={`grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 animate-fade-in ${sectionAnimation.isVisible ? 'visible' : ''}`}
+          className={`grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 items-stretch animate-fade-in ${sectionAnimation.isVisible ? 'visible' : ''}`}
         >
           {stats.map((stat, index) => (
             <div 
@@ -26,7 +26,10 @@ export default function StatsBar() {
               className="text-center group relative overflow-visible" 
               data-testid={`stat-${index}`}
             >
-              <div className="relative bg-card/60 backdrop-blur-md rounded-3xl p-6 sm:p-7 lg:p-8 border-2 border-primary/20 shadow-lg hover:shadow-2xl hover:border-primary/30 transition-all duration-300 overflow-visible">
+              <div 
+                className="relative flex flex-col justify-center bg-card/60 backdrop-blur-md rounded-3xl p-6 sm:p-7 lg:p-8 border-2 border-primary/20 shadow-lg hover:shadow-2xl hover:border-primary/30 transition-all duration-300 overflow-visible"
+                style={{ minHeight: '128px' }}
+              >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent rounded-3xl" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/10 to-transparent rounded-3xl" />
                 

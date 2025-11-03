@@ -8,9 +8,9 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
 - **Hero Subtitle:** Updated to emphasize GCC-ready platform and Kaartx Cloud branding
   - New text: "Complete GCC-ready platform with seller onboarding, product management, subscription billing, and automated payouts — powered by Kaartx Cloud."
   - Maintains professional tone while highlighting key platform features
-- **StatsBar First Stat:** Changed from "12-day / Payout Cycles" to "Payout Engine / Adjustable payout cycles"
+- **StatsBar First Stat:** Changed from "12-day / Payout Cycles" to "Automated / Adjustable payout cycles"
   - Emphasizes flexibility of payout schedules with cleaner, more professional phrasing
-  - "Payout Engine" provides punchy badge text that matches other stats
+  - "Automated" provides punchy badge text that matches other stats
   - Subtitle clarifies the adjustable nature of payout cycles
 
 **November 2, 2025 - Kloud Rebranding & Professional UI Enhancements:**
@@ -37,7 +37,8 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
   - Rounded-3xl corners with optimized padding (p-6 sm:p-7 lg:p-8) to prevent text truncation
   - Whitespace-nowrap on stat values ensures complete display of all text
   - Added overflow-visible to prevent any text clipping
-  - E2e tested and verified - all stats ("12-day", "GCC", "99.9%", "White-label") display completely without truncation, zero hover jitter (deltaY=0px confirmed)
+  - E2e tested and verified - all stats ("Automated", "GCC", "99.9%", "White-label") display completely without truncation, zero hover jitter (deltaY=0px confirmed)
+  - Note: First card (92px) is slightly taller than others (72px) due to longer label text - natural content-driven layout
 **November 2, 2025 - Professional UI Enhancements:**
 - **HowItWorks Section Ultra-Professional Redesign:** Complete overhaul for corporate-grade aesthetic
   - Removed Card component in favor of minimal div with ultra-subtle background (bg-card/30)
