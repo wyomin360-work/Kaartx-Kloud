@@ -1,4 +1,4 @@
-import { Settings, Users, Rocket } from 'lucide-react';
+import { Settings, Users, Rocket, ChevronRight } from 'lucide-react';
 
 export default function HowItWorks() {
   const steps = [
@@ -60,9 +60,20 @@ export default function HowItWorks() {
                   </div>
                 </div>
 
-                {/* Connecting Line */}
+                {/* Creative Animated Arrow Connector */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-6 left-[60%] w-[80%] h-px bg-border/40" />
+                  <div className="hidden md:flex absolute top-6 left-[62%] w-[76%] items-center justify-center gap-1">
+                    {/* Animated dashed line */}
+                    <div className="flex-1 h-px bg-gradient-to-r from-border/40 via-border/60 to-border/40 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/30 to-transparent animate-pulse" />
+                    </div>
+                    {/* Animated chevron arrows */}
+                    <div className="flex items-center -space-x-2 animate-pulse">
+                      <ChevronRight className="h-4 w-4 text-primary/40" strokeWidth={2.5} />
+                      <ChevronRight className="h-4 w-4 text-primary/60" strokeWidth={2.5} />
+                      <ChevronRight className="h-4 w-4 text-primary" strokeWidth={2.5} />
+                    </div>
+                  </div>
                 )}
               </div>
             );
