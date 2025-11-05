@@ -1,4 +1,4 @@
-import { Settings, Users, Rocket } from 'lucide-react';
+import { Settings, Package, Rocket } from 'lucide-react';
 
 export default function HowItWorks() {
   const steps = [
@@ -8,9 +8,15 @@ export default function HowItWorks() {
       description: 'Set up your marketplace branding, categories, and pricing in minutes.',
     },
     {
-      icon: Users,
-      title: 'Onboard Sellers',
-      description: 'Invite sellers, approve them instantly, and start listing products.',
+      icon: Package,
+      title: 'Product Management',
+      description: 'End-to-end listing workflow with variants, SKUs, and bulk uploads.',
+      features: [
+        'One / two-variant support',
+        'Auto SKU generation',
+        'Image quality standards',
+        'Bulk editing tools'
+      ]
     },
     {
       icon: Rocket,
@@ -54,9 +60,21 @@ export default function HowItWorks() {
                     <h3 className="text-2xl font-semibold text-foreground mb-4 tracking-tight">{step.title}</h3>
                     
                     {/* Description */}
-                    <p className="text-base text-muted-foreground leading-relaxed font-normal">
+                    <p className="text-base text-muted-foreground leading-relaxed font-normal mb-5">
                       {step.description}
                     </p>
+
+                    {/* Features List (if available) */}
+                    {step.features && (
+                      <ul className="text-left space-y-2 mt-4">
+                        {step.features.map((feature, featureIndex) => (
+                          <li key={featureIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <span className="text-primary mt-0.5">•</span>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </div>
               </div>
