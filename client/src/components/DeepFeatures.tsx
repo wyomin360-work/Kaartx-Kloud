@@ -12,8 +12,8 @@ export default function DeepFeatures() {
     {
       icon: FileText,
       title: 'Product Management',
-      description: 'Complete product listing workflow with variants, SKU generation, MPN support, and bulk uploads. Admin approval system included.',
-      features: ['None/One/Two variant support', 'Auto SKU generation', 'Image quality standards', 'Bulk upload via Excel'],
+      description: 'End-to-end listing workflow with variants, SKUs, and bulk uploads.',
+      features: ['One / two-variant support', 'Auto SKU generation', 'Image quality standards', 'Bulk editing tools'],
     },
     {
       icon: Truck,
