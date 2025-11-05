@@ -12,7 +12,7 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
   - Professional typography: font-bold heading, font-semibold titles (text-2xl), optimized tracking
   - Sophisticated hover effects: subtle border darkening (border-border/60), shadow-lg, and gentle background transition
   - Refined icon containers: h-16 w-16 with shadow-sm and improved backgrounds
-  - Creative animated arrow connectors: gradient lines with triple chevron arrows and pulse animation between steps
+  - No connecting lines between steps - clean separation for minimal aesthetic
   - E2e tested and verified - professional appearance with smooth interactions
 
 **November 3, 2025 - Content & Layout Updates:**
