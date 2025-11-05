@@ -36,7 +36,7 @@ export default function HowItWorks() {
             const Icon = step.icon;
             return (
               <div key={index} className="relative h-full" data-testid={`step-${index}`}>
-                <div className="relative h-full bg-card/20 rounded-xl p-10 pt-20 border border-border/30 transition-all duration-300 hover:border-border/60 hover:shadow-lg hover:bg-card/30">
+                <div className="relative h-full bg-card rounded-xl p-10 pt-20 border border-border shadow-sm transition-all duration-300 hover:border-primary/20 hover:shadow-xl hover-elevate">
                   {/* Numbered Badge - Top Left */}
                   <div className="absolute -top-5 left-10 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold shadow-lg text-xl">
                     {index + 1}
@@ -45,7 +45,7 @@ export default function HowItWorks() {
                   <div className="text-center">
                     {/* Icon Container */}
                     <div className="inline-flex mb-7">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-background/90 border border-border/40 shadow-sm">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-primary/10 border border-primary/20">
                         <Icon className="h-8 w-8 text-primary" strokeWidth={1.75} />
                       </div>
                     </div>
