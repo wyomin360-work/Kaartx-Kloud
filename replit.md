@@ -13,7 +13,8 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
   - Sophisticated hover effects: subtle border darkening (border-border/60), shadow-lg, and gentle background transition
   - Refined icon containers: h-16 w-16 with shadow-sm and improved backgrounds
   - No connecting lines between steps - clean separation for minimal aesthetic
-  - E2e tested and verified - professional appearance with smooth interactions
+  - Equal card heights: grid items-stretch + h-full ensures all 3 cards are exactly 340px (zero variance)
+  - E2e tested and verified - professional appearance with smooth interactions and perfect uniformity
 
 **November 3, 2025 - Content & Layout Updates:**
 - **Hero Subtitle:** Updated to emphasize GCC-ready platform and Kaartx Cloud branding

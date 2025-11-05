@@ -31,12 +31,12 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12 relative max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12 relative max-w-6xl mx-auto items-stretch">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
-              <div key={index} className="relative" data-testid={`step-${index}`}>
-                <div className="relative bg-card/20 rounded-xl p-10 pt-20 border border-border/30 transition-all duration-300 hover:border-border/60 hover:shadow-lg hover:bg-card/30">
+              <div key={index} className="relative h-full" data-testid={`step-${index}`}>
+                <div className="relative h-full bg-card/20 rounded-xl p-10 pt-20 border border-border/30 transition-all duration-300 hover:border-border/60 hover:shadow-lg hover:bg-card/30">
                   {/* Numbered Badge - Top Left */}
                   <div className="absolute -top-5 left-10 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold shadow-lg text-xl">
                     {index + 1}
