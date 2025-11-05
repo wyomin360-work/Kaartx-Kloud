@@ -5,17 +5,17 @@ export default function HowItWorks() {
     {
       icon: Settings,
       title: 'Configure',
-      description: 'Set up your marketplace branding, categories, and seller subscription plans',
+      description: 'Set up your marketplace branding, categories, and pricing in minutes.',
     },
     {
       icon: Users,
       title: 'Onboard Sellers',
-      description: 'Invite sellers, approve applications, and they start listing products',
+      description: 'Invite sellers, approve them instantly, and start listing products.',
     },
     {
       icon: Rocket,
       title: 'Launch & Earn',
-      description: 'Go live and earn commissions while sellers manage their own stores',
+      description: 'Go live, earn commissions, and let sellers run their stores.',
     },
   ];
 
