@@ -7,22 +7,22 @@ export default function FeatureGrid() {
     {
       icon: Users,
       title: 'Seller Management',
-      description: 'Complete seller onboarding with subscription plans, approval workflows, and performance tracking.',
+      description: 'Onboard, verify, and manage sellers with built-in approvals, subscriptions, and performance tracking.',
     },
     {
       icon: ListChecks,
       title: 'Product Listing Flow',
-      description: 'Advanced product management with SKU generation, variants, MPN support, and bulk uploads.',
+      description: 'Streamlined product listing system with variants, SKUs, and bulk uploads — ready for any category.',
     },
     {
       icon: CreditCard,
-      title: '12-Day Payouts',
-      description: 'Automated seller payouts every 12 days with TAP payment integration and invoice management.',
+      title: 'Auto Payouts',
+      description: 'Built-in payout engine with customizable cycles and full TAP integration.',
     },
     {
       icon: Settings,
-      title: 'Full Automation',
-      description: 'Order tracking, shipping labels, returns management, and real-time notifications built-in.',
+      title: 'Smart Workflows',
+      description: 'Automate orders, returns, and tracking with real-time updates and smart notifications.',
     },
   ];
 
