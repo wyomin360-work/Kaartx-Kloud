@@ -9,7 +9,7 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
   - Enhanced spacing throughout: increased padding (p-10 pt-20), larger gaps (gap-10 lg:gap-12), expanded margins
   - **Prominent Card Backgrounds:** Solid bg-card backgrounds with clear borders for excellent visibility
   - Icon containers: bg-primary/10 with border-primary/20 for subtle brand color integration
-  - Larger numbered badges: h-14 w-14 with enhanced shadow-lg, positioned at left-6 for alignment with card edge
+  - Larger numbered badges: h-14 w-14 with enhanced shadow-lg, positioned at -left-2 to overlap card's left edge
   - Professional typography: font-bold heading, font-semibold titles (text-2xl), optimized tracking
   - Sophisticated hover effects: border-primary/20, shadow-xl, and hover-elevate for premium interaction
   - No connecting lines between steps - clean separation for minimal aesthetic
