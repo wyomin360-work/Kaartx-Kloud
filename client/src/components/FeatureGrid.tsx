@@ -1,4 +1,4 @@
-import { Users, Package, CreditCard, Settings } from 'lucide-react';
+import { Users, ListChecks, CreditCard, Settings } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -10,15 +10,9 @@ export default function FeatureGrid() {
       description: 'Onboard, verify, and manage sellers with built-in approvals, subscriptions, and performance tracking.',
     },
     {
-      icon: Package,
-      title: 'Product Management',
-      description: 'End-to-end listing workflow with variants, SKUs, and bulk uploads.',
-      features: [
-        'One / two-variant support',
-        'Auto SKU generation',
-        'Image quality standards',
-        'Bulk editing tools'
-      ]
+      icon: ListChecks,
+      title: 'Product Listing Flow',
+      description: 'Streamlined product listing system with variants, SKUs, and bulk uploads — ready for any category.',
     },
     {
       icon: CreditCard,
@@ -69,18 +63,7 @@ export default function FeatureGrid() {
                     <Icon className="h-7 w-7 text-primary" />
                   </div>
                   <CardTitle className="text-xl mb-2 font-bold">{feature.title}</CardTitle>
-                  <CardDescription className="font-medium mb-4">{feature.description}</CardDescription>
-                  
-                  {feature.features && (
-                    <ul className="space-y-2 mt-3">
-                      {feature.features.map((item, itemIndex) => (
-                        <li key={itemIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <span className="text-primary mt-0.5">•</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                  <CardDescription className="font-medium">{feature.description}</CardDescription>
                 </CardHeader>
               </Card>
             );
