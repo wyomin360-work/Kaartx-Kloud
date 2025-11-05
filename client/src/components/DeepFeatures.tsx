@@ -32,6 +32,14 @@ export default function DeepFeatures() {
   return (
     <section className="py-12 sm:py-20 md:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
+        <div className="text-center mb-16 sm:mb-20 md:mb-24">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-5 tracking-tight" data-testid="text-deep-features-title">
+            Powerful tools to manage your entire marketplace
+          </h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto font-normal" data-testid="text-deep-features-subtitle">
+            From seller subscriptions to shipping automation — everything your marketplace needs, already built in.
+          </p>
+        </div>
         <div className="space-y-12 sm:space-y-16 md:space-y-24">
           {features.map((feature, index) => {
             const Icon = feature.icon;
