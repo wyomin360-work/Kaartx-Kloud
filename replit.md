@@ -14,6 +14,10 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
   - Refined icon containers: h-16 w-16 with shadow-sm and improved backgrounds
   - No connecting lines between steps - clean separation for minimal aesthetic
   - Equal card heights: grid items-stretch + h-full ensures all 3 cards are exactly 340px (zero variance)
+  - **Updated Step Descriptions:** More concise, action-oriented copy emphasizing speed and simplicity
+    - Step 1: "Set up your marketplace branding, categories, and pricing in minutes."
+    - Step 2: "Invite sellers, approve them instantly, and start listing products."
+    - Step 3: "Go live, earn commissions, and let sellers run their stores."
   - E2e tested and verified - professional appearance with smooth interactions and perfect uniformity
 
 **November 3, 2025 - Content & Layout Updates:**
