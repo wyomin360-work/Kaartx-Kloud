@@ -38,7 +38,7 @@ export default function HowItWorks() {
               <div key={index} className="relative h-full" data-testid={`step-${index}`}>
                 <div className="relative h-full bg-card rounded-xl p-10 pt-20 border border-border shadow-sm transition-all duration-300 hover:border-primary/20 hover:shadow-xl hover-elevate">
                   {/* Numbered Badge - Top Left */}
-                  <div className="absolute -top-5 left-10 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold shadow-lg text-xl">
+                  <div className="absolute -top-5 left-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold shadow-lg text-xl">
                     {index + 1}
                   </div>
 
