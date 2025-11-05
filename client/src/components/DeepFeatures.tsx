@@ -40,38 +40,26 @@ export default function DeepFeatures() {
             From seller subscriptions to shipping automation — everything your marketplace needs, already built in.
           </p>
         </div>
-        <div className="space-y-12 sm:space-y-16 md:space-y-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
           {features.map((feature, index) => {
             const Icon = feature.icon;
-            const isEven = index % 2 === 0;
 
             return (
-              <div
-                key={index}
-                className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}
-                data-testid={`deep-feature-${index}`}
-              >
-                <div className="flex-1">
-                  <Card className="p-8">
-                    <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
-                      <Icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-4">{feature.title}</h3>
-                    <p className="text-muted-foreground mb-6">{feature.description}</p>
-                    <ul className="space-y-2">
-                      {feature.features.map((item, i) => (
-                        <li key={i} className="flex items-center text-sm text-muted-foreground">
-                          <div className="h-1.5 w-1.5 rounded-full bg-primary mr-3" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </Card>
+              <Card key={index} className="p-8" data-testid={`deep-feature-${index}`}>
+                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
+                  <Icon className="h-6 w-6 text-primary" />
                 </div>
-                <div className="flex-1">
-                  <div className="aspect-video rounded-xl bg-gradient-to-br from-primary/10 to-card border border-border" />
-                </div>
-              </div>
+                <h3 className="text-2xl font-bold text-foreground mb-4">{feature.title}</h3>
+                <p className="text-muted-foreground mb-6">{feature.description}</p>
+                <ul className="space-y-2">
+                  {feature.features.map((item, i) => (
+                    <li key={i} className="flex items-center text-sm text-muted-foreground">
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary mr-3" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
             );
           })}
         </div>
