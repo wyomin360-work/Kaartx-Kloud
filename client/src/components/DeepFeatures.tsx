@@ -1,4 +1,4 @@
-import { ShoppingCart, FileText, Truck, Wallet, Tag, BarChart3 } from 'lucide-react';
+import { ShoppingCart, FileText, Truck, Wallet, Tag, BarChart3, Check } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -9,36 +9,48 @@ export default function DeepFeatures() {
       title: 'Seller Subscriptions',
       description: 'Flexible subscription plans with automated billing via TAP. Track active, expired, and suspended sellers with full payment history.',
       features: ['Monthly/yearly billing cycles', 'Auto-renewal with saved cards', 'Suspend/reactivate sellers', 'Payment retry logic'],
+      badgeGradient: 'bg-gradient-to-br from-cyan-500 to-blue-600',
+      checkGradient: 'text-cyan-600',
     },
     {
       icon: FileText,
       title: 'Product Management',
       description: 'End-to-end listing workflow with variants, SKUs, and bulk uploads.',
       features: ['One / two-variant support', 'Auto SKU generation', 'Image quality standards', 'Bulk editing tools'],
+      badgeGradient: 'bg-gradient-to-br from-purple-500 to-indigo-600',
+      checkGradient: 'text-purple-600',
     },
     {
       icon: Truck,
       title: 'Order Management',
       description: 'Complete system for tracking and handling every order from purchase to delivery.',
       features: ['Centralized dashboard for order status, shipment tracking, and cancellations', 'Integrated refund and return request handling with admin control', 'Supports partial or full refunds via the payment gateway', 'Order data linked with invoice and shipping modules for accuracy'],
+      badgeGradient: 'bg-gradient-to-br from-cyan-500 to-blue-600',
+      checkGradient: 'text-cyan-600',
     },
     {
       icon: Wallet,
       title: 'Payout Management',
       description: 'Automated and transparent payout cycle for all sellers — directly connected to TAP Payments.',
       features: ['Default 12-day payout cycle after order completion', 'Auto ledger update with every transaction and commission', 'View seller payout history, pending payouts, and balances', 'Admin control to hold, release, or adjust payouts manually when needed'],
+      badgeGradient: 'bg-gradient-to-br from-purple-500 to-indigo-600',
+      checkGradient: 'text-purple-600',
     },
     {
       icon: Tag,
       title: 'Brand & Category Control',
       description: 'Structured approval system to maintain marketplace quality.',
       features: ['Global, Regional and Private brands', 'Manual approval for new brands and categories', 'File upload for brand verification', 'Category-based access for sellers'],
+      badgeGradient: 'bg-gradient-to-br from-cyan-500 to-blue-600',
+      checkGradient: 'text-cyan-600',
     },
     {
       icon: BarChart3,
       title: 'Analytics Dashboard',
       description: 'Monitor all seller and marketplace performance metrics in real time.',
       features: ['Total sales, orders, and revenue tracking', 'Seller-wise sales and commission reports', 'Product performance with quantity and value sold', 'Refund and cancellation summaries'],
+      badgeGradient: 'bg-gradient-to-br from-purple-500 to-indigo-600',
+      checkGradient: 'text-purple-600',
     },
   ];
 
@@ -73,11 +85,17 @@ export default function DeepFeatures() {
               <Card
                 key={index}
                 data-testid={`deep-feature-${index}`}
-                className={`hover-elevate transition-all duration-300 rounded-2xl border-2 overflow-visible ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
+                className={`group hover-elevate transition-all duration-300 rounded-2xl border-2 overflow-visible ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
                 tabIndex={0}
               >
                 <div className="relative p-8">
-                  <div className="h-14 w-14 rounded-2xl bg-white shadow-playful flex items-center justify-center mb-6">
+                  {/* Floating Number Badge - Top Right */}
+                  <div className={`absolute -top-3 -right-3 flex h-10 w-10 items-center justify-center rounded-full ${feature.badgeGradient} text-white font-bold shadow-lg text-sm`}>
+                    {index + 1}
+                  </div>
+
+                  {/* Icon with Hover Animation */}
+                  <div className="h-14 w-14 rounded-2xl bg-white shadow-playful flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
                     <Icon className="h-7 w-7 text-primary" aria-hidden="true" strokeWidth={1.75} />
                   </div>
                   
@@ -89,10 +107,11 @@ export default function DeepFeatures() {
                     {feature.description}
                   </p>
                   
+                  {/* Feature List with Checkmarks */}
                   <ul className="space-y-3">
                     {feature.features.map((item, i) => (
                       <li key={i} className="flex items-start text-sm text-muted-foreground leading-relaxed">
-                        <div className="h-1.5 w-1.5 rounded-full bg-primary mt-2 mr-3 flex-shrink-0" />
+                        <Check className={`h-4 w-4 ${feature.checkGradient} mt-0.5 mr-3 flex-shrink-0`} strokeWidth={3} />
                         <span>{item}</span>
                       </li>
                     ))}
