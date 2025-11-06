@@ -1,0 +1,44 @@
+Improve the styling of the existing “Powerful tools to manage your entire marketplace” section WITHOUT changing any text, order, or card count. Keep every heading, paragraph, and bullet EXACTLY as written.
+
+Constraints (must follow):
+- DO NOT edit or rephrase any copy.
+- DO NOT reorder or rename cards.
+- Keep the current Kaartx color palette and typography exactly as the rest of the page.
+
+What to do (style-only changes):
+1) Layout
+   - Arrange the 6 cards in 2 rows × 3 columns on desktop, 2 columns on tablet, 1 column on mobile.
+   - Make all cards equal height with consistent internal spacing (padding-lg).
+   - Keep section title + subtext centered with comfortable max-width.
+
+2) Card styling
+   - Use the existing Kaartx palette: white/off-white card background, subtle blue-violet accents, beige/gold highlights.
+   - Add a soft 20px border radius, light shadow at rest, slightly stronger shadow + 2–4px lift on hover.
+   - Optional: 1px gradient border (blue-violet → transparent) for a premium feel.
+   - Maintain current font (Poppins/Inter); headings semibold, body medium.
+
+3) Icons (non-textual)
+   - If icons already exist, keep them. If not, add thin-line SVG placeholders above titles using the Kaartx accent color. Icons must be decorative only (no text changes).
+
+4) Micro-interactions
+   - Add a gentle fade-up on scroll for the section and cards (staggered 80–120ms).
+   - Smooth hover transition (150–200ms) for lift/shadow.
+   - Respect reduced-motion preferences.
+
+5) Responsiveness
+   - Desktop: 3 columns with 24–32px gaps.
+   - Tablet: 2 columns with 20–24px gaps.
+   - Mobile: 1 column, full-width cards, increased vertical spacing.
+   - Ensure text wraps cleanly; no truncation.
+
+6) Accessibility
+   - Maintain 4.5:1 contrast for text.
+   - Cards keyboard-focusable with visible focus ring (accent color).
+   - Icons marked aria-hidden="true".
+
+Implementation notes:
+- Keep the existing HTML copy; adjust classes/wrappers only.
+- Use the site’s existing CSS/Tailwind tokens/utilities; do not introduce a new design system.
+- The result must feel seamlessly integrated with the current page.
+
+Output: updated HTML/CSS (or Tailwind class edits) for this section only, preserving all existing text verbatim.
