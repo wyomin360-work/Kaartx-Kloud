@@ -40,33 +40,32 @@ export default function HowItWorks() {
 
         <div 
           ref={cardsAnimation.ref}
-          className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12 relative max-w-6xl mx-auto items-stretch"
+          className="grid grid-cols-1 gap-6 relative max-w-3xl mx-auto"
         >
           {steps.map((step, index) => {
             const Icon = step.icon;
-            const gradients = ['gradient-bg-purple', 'gradient-bg-blue', 'gradient-bg-purple'];
             const stagger = ['', 'stagger-1', 'stagger-2'];
             return (
-              <div key={index} className="relative h-full" data-testid={`step-${index}`}>
-                <div className={`relative h-full rounded-2xl p-10 pt-20 border-2 shadow-sm transition-all duration-300 hover-elevate ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}>
+              <div key={index} className="relative" data-testid={`step-${index}`}>
+                <div className={`relative rounded-xl p-6 pt-14 border border-border bg-white shadow-sm transition-all duration-300 hover-elevate animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}>
                   {/* Numbered Badge - Top Left */}
-                  <div className="absolute -top-5 -left-2 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold shadow-lg text-xl">
+                  <div className="absolute -top-3 -left-2 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold shadow-lg text-lg">
                     {index + 1}
                   </div>
 
                   <div className="text-center">
                     {/* Icon Container */}
-                    <div className="inline-flex mb-7">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-playful">
-                        <Icon className="h-8 w-8 text-primary" strokeWidth={1.75} />
+                    <div className="inline-flex mb-5">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 border border-primary/20">
+                        <Icon className="h-7 w-7 text-primary" strokeWidth={1.75} />
                       </div>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-2xl font-semibold text-foreground mb-4 tracking-tight">{step.title}</h3>
+                    <h3 className="text-xl font-semibold text-foreground mb-3 tracking-tight">{step.title}</h3>
                     
                     {/* Description */}
-                    <p className="text-base text-muted-foreground leading-relaxed font-normal">
+                    <p className="text-sm text-muted-foreground leading-relaxed font-normal">
                       {step.description}
                     </p>
                   </div>
