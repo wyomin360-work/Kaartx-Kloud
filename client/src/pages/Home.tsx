@@ -10,7 +10,7 @@ import UseCases from '@/components/UseCases';
 import IntegrationsMarquee from '@/components/IntegrationsMarquee';
 import Security from '@/components/Security';
 // import APISection from '@/components/APISection';
-import Showcase from '@/components/Showcase';
+// import Showcase from '@/components/Showcase';
 import Testimonials from '@/components/Testimonials';
 import CaseStudy from '@/components/CaseStudy';
 import Pricing from '@/components/Pricing';
@@ -48,7 +48,7 @@ export default function Home() {
       <IntegrationsMarquee />
       <Security />
       {/* <APISection /> */}
-      <Showcase />
+      {/* <Showcase /> */}
       <Testimonials />
       <CaseStudy />
       <Pricing onOpenSignup={() => setSignupModalOpen(true)} />
