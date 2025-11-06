@@ -40,7 +40,7 @@ export default function HowItWorks() {
 
         <div 
           ref={cardsAnimation.ref}
-          className="grid grid-cols-1 gap-6 relative max-w-2xl mx-auto"
+          className="grid grid-cols-1 gap-6 relative max-w-[18rem] mx-auto"
         >
           {steps.map((step, index) => {
             const Icon = step.icon;
