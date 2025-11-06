@@ -47,7 +47,7 @@ export default function UseCases() {
       benefits: [
         'Multi-tenant architecture',
         'White-label for each client',
-        'Revenue sharing models built-in',
+        'Revenue sharing ready architecture',
         'Centralized client management',
       ],
     },
