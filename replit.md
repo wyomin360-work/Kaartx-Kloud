@@ -6,7 +6,7 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
 
 **November 6, 2025 - HowItWorks Vertical White Layout:**
 - **HowItWorks Section Redesign:** Changed from horizontal colorful cards to vertical white boxes
-  - Layout: Single vertical column (grid-cols-1) with max-w-2xl centered container (narrower)
+  - Layout: Single vertical column (grid-cols-1) with max-w-[18rem] centered container (~288px, matching FeatureGrid card width)
   - Background: Clean white boxes (bg-white) with primary blue borders (border border-primary)
   - Sizing: Compact design with reduced padding (p-6 pt-14)
   - Gap: Consistent 6-unit spacing between cards (gap-6)
@@ -14,8 +14,9 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
   - Icon containers: h-14 w-14 with bg-white shadow-sm border border-border
   - Typography: Smaller text (title: text-xl, description: text-sm)
   - Borders: Changed from rounded-2xl to rounded-xl
+  - Width matches single card from "Everything to run a marketplace" section for visual consistency
   - Maintains scroll animations, staggered delays, and hover-elevate interactions
-  - Architect-reviewed and verified - vertical layout with compact white boxes and brand blue borders
+  - Architect-reviewed and verified - vertical layout with compact white boxes, brand blue borders, and width aligned with FeatureGrid cards
 
 ## User Preferences
 
