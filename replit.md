@@ -26,10 +26,10 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
   - Maintains alternating gradient backgrounds and playful shadows
   - Architect-reviewed and verified - enhancements integrate cleanly, maintain dark-mode contrast, align with HowItWorks aesthetic
 - **Showcase Section Temporarily Hidden:** Commented out the Powerful Dashboards (Showcase) section from the landing page for future development
-- **UseCases Section Content Update:** Updated "For Agencies" use case benefits
-  - Changed third benefit from "Revenue sharing models built-in" to "Revenue sharing ready architecture" for clearer value proposition
-  - Final benefit order: Multi-tenant architecture, White-label for each client, Revenue sharing ready architecture, Centralized client management
-  - Maintains 2x2 grid layout for optimal mobile and desktop presentation
+- **UseCases Section Content Updates:**
+  - **For Agencies:** Changed third benefit from "Revenue sharing models built-in" to "Revenue sharing ready architecture" for clearer value proposition
+  - **For Enterprise:** Updated first benefit from "Dedicated infrastructure" to "Dedicated infrastructure (on request)" to clarify availability
+  - Maintains 2x2 grid layout for optimal mobile and desktop presentation across all use cases
 
 ## User Preferences
 
