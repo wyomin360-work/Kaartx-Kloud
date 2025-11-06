@@ -10,18 +10,18 @@ export default function IntegrationsMarquee() {
 
   const integrations = [
     { 
-      name: 'Asyad Express', 
-      icon: Package, 
-      featured: true,
-      description: 'Complete GCC shipping solution',
-      category: 'Logistics'
-    },
-    { 
       name: 'TAP Payments', 
       icon: CreditCard, 
       featured: true,
       description: 'MENA payment gateway',
       category: 'Payments'
+    },
+    { 
+      name: 'Asyad Express', 
+      icon: Package, 
+      featured: true,
+      description: 'Complete GCC shipping solution',
+      category: 'Logistics'
     },
     { 
       name: 'Shopify', 
