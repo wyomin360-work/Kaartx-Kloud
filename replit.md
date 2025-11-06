@@ -17,6 +17,7 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
   - Width matches single card from "Everything to run a marketplace" section for visual consistency
   - Maintains scroll animations, staggered delays, and hover-elevate interactions
   - Architect-reviewed and verified - vertical layout with compact white boxes, thick brand blue borders, and width aligned with FeatureGrid cards
+- **Showcase Section Temporarily Hidden:** Commented out the Powerful Dashboards (Showcase) section from the landing page for future development
 
 ## User Preferences
 
