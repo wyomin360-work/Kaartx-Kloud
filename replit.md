@@ -87,7 +87,7 @@ Preferred communication style: Simple, everyday language.
 - **Stripe:** Alternative for global payments (coming soon).
 
 **Shipping & Logistics:**
-- **Asyad:** Oman-based shipping integration for label generation, tracking, and returns.
+- **Asyad Express:** Oman-based shipping integration for label generation, tracking, and returns.
 
 **E-commerce Integrations:**
 - **Shopify:** For product catalog synchronization and import functionalities (coming soon).

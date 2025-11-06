@@ -254,7 +254,7 @@ export default function CreateMarketplace() {
                         <Circle className="w-5 h-5 text-muted-foreground" />
                         <CheckCircle2 className="w-3.5 h-3.5 text-foreground absolute top-[3px] left-[3px]" />
                       </div>
-                      <span>TAP Payments & Asyad Shipping integration</span>
+                      <span>TAP Payments & Asyad Express integration</span>
                     </li>
                   </ul>
                 </div>

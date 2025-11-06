@@ -10,7 +10,7 @@ export default function IntegrationsMarquee() {
 
   const integrations = [
     { 
-      name: 'Asyad Shipping', 
+      name: 'Asyad Express', 
       icon: Package, 
       featured: true,
       description: 'Complete GCC shipping solution',
