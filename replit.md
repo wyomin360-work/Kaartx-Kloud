@@ -30,6 +30,7 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
   - **For Agencies:** Changed third benefit from "Revenue sharing models built-in" to "Revenue sharing ready architecture" for clearer value proposition
   - **For Enterprise:** Updated first benefit from "Dedicated infrastructure" to "Dedicated infrastructure (on request)" to clarify availability
   - Maintains 2x2 grid layout for optimal mobile and desktop presentation across all use cases
+- **Branding Update - Asyad Express:** Changed all references from "Asyad Shipping" to "Asyad Express" across IntegrationsMarquee, SignupModal, CreateMarketplace, and documentation to match the official service name
 
 ## User Preferences
 
