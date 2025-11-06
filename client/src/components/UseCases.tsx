@@ -56,7 +56,7 @@ export default function UseCases() {
       icon: Building,
       description: 'Enterprise-grade marketplace infrastructure with full customization',
       benefits: [
-        'Dedicated infrastructure',
+        'Dedicated infrastructure (on request)',
         'Custom integrations & workflows',
         'Priority support & SLA',
         'Advanced analytics & reporting',
