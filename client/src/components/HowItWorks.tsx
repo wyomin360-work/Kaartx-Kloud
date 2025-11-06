@@ -40,14 +40,14 @@ export default function HowItWorks() {
 
         <div 
           ref={cardsAnimation.ref}
-          className="grid grid-cols-1 gap-6 relative max-w-3xl mx-auto"
+          className="grid grid-cols-1 gap-6 relative max-w-2xl mx-auto"
         >
           {steps.map((step, index) => {
             const Icon = step.icon;
             const stagger = ['', 'stagger-1', 'stagger-2'];
             return (
               <div key={index} className="relative" data-testid={`step-${index}`}>
-                <div className={`relative rounded-xl p-6 pt-14 border border-border bg-white shadow-sm transition-all duration-300 hover-elevate animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}>
+                <div className={`relative rounded-xl p-6 pt-14 border border-primary bg-white shadow-sm transition-all duration-300 hover-elevate animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}>
                   {/* Numbered Badge - Top Left */}
                   <div className="absolute -top-3 -left-2 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold shadow-lg text-lg">
                     {index + 1}
@@ -56,7 +56,7 @@ export default function HowItWorks() {
                   <div className="text-center">
                     {/* Icon Container */}
                     <div className="inline-flex mb-5">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 border border-primary/20">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white shadow-sm border border-border">
                         <Icon className="h-7 w-7 text-primary" strokeWidth={1.75} />
                       </div>
                     </div>
