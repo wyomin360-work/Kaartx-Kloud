@@ -64,7 +64,7 @@ export default function IntegrationsMarquee() {
             GCC-ready integrations
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-integrations-subtitle">
-            TAP & Asyad integrated out of the box — plus easy connections to your existing tools
+            TAP Payments and Asyad Express integrated out of the box — plus easy connections to your existing tools
           </p>
         </div>
 
