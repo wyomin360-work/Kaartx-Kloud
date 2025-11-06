@@ -17,15 +17,15 @@ export default function DeepFeatures() {
     },
     {
       icon: Truck,
-      title: 'Order & Fulfillment',
-      description: 'End-to-end order management with status tracking, shipping label generation, and automated alerts for delayed orders.',
-      features: ['Real-time order tracking', 'Asyad shipping integration', 'Return & refund handling', 'Auto-delay notifications'],
+      title: 'Order Management',
+      description: 'Complete system for tracking and handling every order from purchase to delivery.',
+      features: ['Centralized dashboard for order status, shipment tracking, and cancellations', 'Integrated refund and return request handling with admin control', 'Supports partial or full refunds via the payment gateway', 'Order data linked with invoice and shipping modules for accuracy'],
     },
     {
       icon: Wallet,
-      title: '12-Day Payouts',
-      description: 'Automated seller payouts every 12 days with commission deduction, TAP integration, and complete invoice management.',
-      features: ['12-day payout cycles', 'Commission auto-deduction', 'Invoice generation', 'Export payout reports'],
+      title: 'Payout Management',
+      description: 'Automated and transparent payout cycle for all sellers — directly connected to TAP Payments.',
+      features: ['Default 12-day payout cycle after order completion', 'Auto ledger update with every transaction and commission', 'View seller payout history, pending payouts, and balances', 'Admin control to hold, release, or adjust payouts manually when needed'],
     },
   ];
 
