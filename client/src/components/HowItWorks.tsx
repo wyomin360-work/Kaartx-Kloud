@@ -1,4 +1,4 @@
-import { Settings, Users, Rocket } from 'lucide-react';
+import { Settings, Users, Rocket, ArrowDown } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function HowItWorks() {
@@ -7,16 +7,22 @@ export default function HowItWorks() {
       icon: Settings,
       title: 'Configure',
       description: 'Set up your marketplace branding, categories, and pricing in minutes.',
+      badgeGradient: 'bg-gradient-to-br from-cyan-500 to-blue-600',
+      iconGradient: 'gradient-bg-blue',
     },
     {
       icon: Users,
       title: 'Onboard Sellers',
       description: 'Invite sellers, approve them instantly, and start listing products.',
+      badgeGradient: 'bg-gradient-to-br from-purple-500 to-indigo-600',
+      iconGradient: 'gradient-bg-purple',
     },
     {
       icon: Rocket,
       title: 'Launch & Earn',
       description: 'Go live, earn commissions, and let sellers run their stores.',
+      badgeGradient: 'bg-gradient-to-br from-blue-600 via-purple-600 to-cyan-500',
+      iconGradient: 'gradient-bg-blue',
     },
   ];
 
@@ -40,23 +46,23 @@ export default function HowItWorks() {
 
         <div 
           ref={cardsAnimation.ref}
-          className="grid grid-cols-1 gap-6 relative max-w-[18rem] mx-auto"
+          className="grid grid-cols-1 gap-2 relative max-w-[18rem] mx-auto"
         >
           {steps.map((step, index) => {
             const Icon = step.icon;
             const stagger = ['', 'stagger-1', 'stagger-2'];
             return (
               <div key={index} className="relative" data-testid={`step-${index}`}>
-                <div className={`relative rounded-xl p-6 pt-14 border-2 border-primary bg-white shadow-sm transition-all duration-300 hover-elevate animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}>
-                  {/* Numbered Badge - Top Left */}
-                  <div className="absolute -top-3 -left-2 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold shadow-lg text-lg">
+                <div className={`relative rounded-xl p-6 pt-14 border-2 border-primary bg-white shadow-playful transition-all duration-300 hover-elevate animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}>
+                  {/* Numbered Badge - Top Left with Gradient */}
+                  <div className={`absolute -top-3 -left-2 flex h-12 w-12 items-center justify-center rounded-full ${step.badgeGradient} text-white font-semibold shadow-lg text-lg`}>
                     {index + 1}
                   </div>
 
                   <div className="text-center">
-                    {/* Icon Container */}
+                    {/* Icon Container with Gradient Background */}
                     <div className="inline-flex mb-5">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white shadow-sm border border-border">
+                      <div className={`flex h-14 w-14 items-center justify-center rounded-xl ${step.iconGradient} shadow-sm border border-border`}>
                         <Icon className="h-7 w-7 text-primary" strokeWidth={1.75} />
                       </div>
                     </div>
@@ -70,6 +76,13 @@ export default function HowItWorks() {
                     </p>
                   </div>
                 </div>
+                
+                {/* Connecting Arrow - Between Steps */}
+                {index < steps.length - 1 && (
+                  <div className="flex justify-center py-3">
+                    <ArrowDown className="h-6 w-6 text-primary/40 animate-bounce" strokeWidth={2} />
+                  </div>
+                )}
               </div>
             );
           })}
