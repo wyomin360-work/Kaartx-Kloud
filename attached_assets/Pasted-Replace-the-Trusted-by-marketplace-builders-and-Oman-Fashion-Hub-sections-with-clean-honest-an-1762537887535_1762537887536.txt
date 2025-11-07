@@ -1,0 +1,24 @@
+Replace the “Trusted by marketplace builders” and “Oman Fashion Hub” sections with clean, honest, and professional blocks that fit Kaartx Cloud’s existing design, font, and color palette.
+
+Use two sections:
+
+1️⃣ Section Title: “Built for marketplace builders”
+   - Subtext: “From agencies to entrepreneurs — Kaartx Cloud gives you everything you need to launch and manage your own multi-vendor marketplace with ease.”
+   - Inside this section, include a centered white card with a subtle shadow and rounded corners.
+   - Add one quote line (keep it as written):
+     “Kaartx Cloud was created to empower the next generation of marketplace owners — fast setup, automated operations, and full control from one dashboard.”
+   - Below that, add a smaller caption in gray text:
+     “Coming soon: verified customer stories and success showcases from across the GCC.”
+   - Make sure it matches the same spacing, padding, and text alignment as other sections on the site.
+
+2️⃣ Section Title: “Scalable results — built for growth”
+   - Subtext: “Kaartx Cloud automates everything from seller onboarding to payouts, helping marketplaces across the GCC launch faster and grow smarter.”
+   - Below it, create three clean stat cards in a single row (responsive grid: 3 on desktop, 1 on mobile):
+     • +180% Faster Seller Growth — “Streamlined onboarding and automated subscriptions.”
+     • 3 Weeks Time to Launch — “Pre-built marketplace modules ready to deploy instantly.”
+     • 450+ Sellers Supported — “Robust infrastructure designed for scale.”
+   - Each card should have a white background, soft shadow, rounded corners, and a modern hover effect.
+   - Keep the fonts, gradients, and colors consistent with the rest of the Kaartx Cloud site (blue-violet accents, beige-gold highlights).
+   - Add smooth fade-up animations on scroll.
+
+Make sure the new sections blend seamlessly into the landing page’s existing layout, using Kaartx Cloud’s current color scheme and spacing. Do not change any other section or heading.
