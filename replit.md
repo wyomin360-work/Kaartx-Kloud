@@ -33,6 +33,17 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
 - **Branding Update - Asyad Express:** Changed all references from "Asyad Shipping" to "Asyad Express" across IntegrationsMarquee, SignupModal, CreateMarketplace, and documentation to match the official service name
 - **IntegrationsMarquee Subtitle Update:** Changed subtitle from "TAP & Asyad integrated out of the box" to "TAP Payments and Asyad Express integrated out of the box" to use full official service names for clarity and brand consistency
 - **IntegrationsMarquee Card Order:** Swapped TAP Payments and Asyad Express so TAP Payments displays first (position 1) and Asyad Express displays second (position 2) in the integrations grid
+- **Testimonials Section Replacement:** Replaced carousel testimonials with honest "Built for marketplace builders" section
+  - Single centered white card with company vision quote
+  - Subtitle explaining value proposition for agencies and entrepreneurs
+  - "Coming soon" disclaimer for verified customer stories and success showcases
+  - Maintains scroll animations and clean design aesthetic
+- **Case Study Section Replacement:** Replaced "Oman Fashion Hub" case study with transparent "Scalable results — built for growth" section
+  - Three capability cards in responsive grid (1 column mobile, 3 columns desktop)
+  - Platform capabilities: Faster Seller Growth, Weeks Not Months, Scale Ready
+  - Each card includes icon, value, label, and descriptive text about platform features
+  - White backgrounds with hover-elevate effects and staggered animations
+  - Honest messaging about platform capabilities without fabricated customer stories or unverified metrics
 
 ## User Preferences
 
