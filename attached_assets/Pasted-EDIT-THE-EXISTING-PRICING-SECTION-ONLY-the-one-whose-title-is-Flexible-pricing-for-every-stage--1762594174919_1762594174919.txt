@@ -1,0 +1,77 @@
+EDIT THE EXISTING PRICING SECTION ONLY (the one whose title is “Flexible pricing for every stage”). Keep all styles, gradients, icons, shadows, rounded corners, spacing, and the highlighted state of the middle card. Do not create a new section. Update copy, add a Monthly/Yearly toggle, and wire the prices.
+
+1) Section header:
+- Replace title with: “Plans & pricing for GCC”
+- Replace subtitle with: “Choose a plan, start a 14-day free trial, upgrade anytime.”
+
+2) Add a centered billing toggle above the cards (reuse existing button styles):
+[ Yearly (Save up to 25%) ]  [ Monthly ]
+- Default = Yearly.
+- Toggling should only swap the price numbers and the small “billed yearly / monthly” notes in each card (no layout shift).
+
+3) Replace the content of the three existing cards (keep card order, heights, icons, and CTA button styles). The middle card stays visually emphasized and shows a small badge “Most Popular”.
+
+YEARLY VIEW (default):
+Card 1 (Starter)
+- Price line: “OMR 290 / year (≈ OMR 24.17 / mo)”
+- Subhead: “For solo founders and small boutiques.”
+- Bullets:
+  • 1 marketplace (subdomain)
+  • Up to 100 sellers
+  • 1,000 orders / month
+  • Seller subscriptions (monthly/yearly)
+  • Product & order management
+  • Default 12-day payout cycle
+  • Email & WhatsApp support
+- CTA button text: “Start 14-day free trial”
+
+Card 2 (Growth)  — add a small pill badge “Most Popular”
+- Price line: “OMR 990 / year (≈ OMR 82.50 / mo)”
+- Subhead: “For agencies and fast-growing brands.”
+- Bullets:
+  • Up to 3 marketplaces
+  • Up to 500 sellers
+  • 10,000 orders / month
+  • Advanced analytics dashboards
+  • Payout cycles configurable
+  • Priority chat & WhatsApp support
+  • White-label domain (add-on)
+- CTA button text: “Upgrade to Growth”
+
+Card 3 (Pro / Enterprise)
+- Rename the card title to: “Pro (Enterprise)”
+- Price line: “OMR 2990 / year (≈ OMR 249.17 / mo)”
+- Subhead: “For large brands and franchises.”
+- Bullets:
+  • Unlimited marketplaces & sellers
+  • Unlimited orders
+  • Full white-label (domain included)
+  • AI & advanced analytics suite
+  • Dedicated account manager
+  • Custom integrations & SLA
+- CTA button text: “Talk to Sales”
+
+MONTHLY VIEW (when toggle = Monthly):
+- Starter price text becomes: “OMR 35 / month”
+- Growth price text becomes: “OMR 115 / month”
+- Pro (Enterprise) price text becomes: “OMR 349 / month”
+- Leave bullet lists and CTAs unchanged.
+
+4) Savings badges (shown only in Yearly view, small pill in top-right of each card):
+- Starter: “Save ~20%”
+- Growth: “Save ~25%”
+- Pro: “Save ~15%”
+
+5) Under the three cards, add an Add-ons row as pill chips (wrap on mobile; reuse existing chip/button styles):
+• Custom domain & SSL — OMR 10 / month
+• AI Insights Suite — OMR 15 / month
+• Extra marketplace instance — OMR 20 / month
+• Extra admin user (per seat) — OMR 5 / month
+
+6) Add a muted, centered footnote below add-ons:
+“Prices exclude VAT where applicable. Billing via TAP Payments.”
+
+7) Behavior notes:
+- Use minimal JS to toggle prices and the small (≈ OMR … / mo) helper text; do not alter the grid or card DOM structure so the current design remains intact.
+- Keep responsiveness exactly as is: 3 columns desktop, stack on mobile. Ensure equal card heights after text updates.
+- Do not modify any other section on the page.
