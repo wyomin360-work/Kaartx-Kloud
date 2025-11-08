@@ -45,6 +45,27 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
   - White backgrounds with hover-elevate effects and staggered animations
   - Honest messaging about platform capabilities without fabricated customer stories or unverified metrics
 
+**November 8, 2025 - Pricing Section Update with GCC-Focused Plans:**
+- **New Header:** Changed title to "Plans & pricing for GCC" with subtitle "Choose a plan, start a 14-day free trial, upgrade anytime"
+- **Billing Toggle:** Added Monthly/Yearly toggle above pricing cards
+  - Defaults to Yearly view with "Save up to 25%" label
+  - Toggles between yearly and monthly pricing without layout shifts
+  - Uses existing Button component with rounded-2xl styling
+- **Updated Plan Structure:** Three plans with specific OMR pricing for GCC market
+  - Starter: OMR 290/year (≈ OMR 24.17/mo) or OMR 35/month — for solo founders and small boutiques
+  - Growth: OMR 990/year (≈ OMR 82.50/mo) or OMR 115/month — for agencies and fast-growing brands (Most Popular)
+  - Pro (Enterprise): OMR 2990/year (≈ OMR 249.17/mo) or OMR 349/month — for large brands and franchises
+- **Badges:** "Most Popular" badge on Growth card (gradient cyan-blue), savings badges on all cards visible only in Yearly view ("Save ~20%", "Save ~25%", "Save ~15%")
+- **Feature Updates:** All plan features revised to match current offering (marketplace limits, seller counts, order volumes, analytics, support tiers, white-label options)
+- **Add-ons Section:** Four optional services displayed as pill badges below pricing cards
+  - Custom domain & SSL — OMR 10/month
+  - AI Insights Suite — OMR 15/month
+  - Extra marketplace instance — OMR 20/month
+  - Extra admin user (per seat) — OMR 5/month
+- **Footnote:** Added disclaimer "Prices exclude VAT where applicable. Billing via TAP Payments"
+- **Design Consistency:** Maintained gradient borders, playful shadows, scroll animations, and responsive grid layout (3 columns desktop, 1 column mobile)
+- **CTAs Updated:** "Start 14-day free trial", "Upgrade to Growth", "Talk to Sales" aligned with user journey
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
