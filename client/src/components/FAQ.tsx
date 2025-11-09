@@ -57,7 +57,7 @@ export default function FAQ() {
             Frequently asked questions
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground font-medium" data-testid="text-faq-subtitle">
-            Everything you need to know about Kaartx Cloud
+            Everything you need to know about Kaartx Kloud
           </p>
         </div>
 

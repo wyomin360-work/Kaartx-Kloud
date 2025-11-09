@@ -75,7 +75,7 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
               <div className="mx-auto mb-6 w-20 h-20 bg-green-50 dark:bg-green-950 rounded-full flex items-center justify-center">
                 <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
               </div>
-              <CustomModalTitle className="text-3xl mb-3">Welcome to Kaartx Cloud!</CustomModalTitle>
+              <CustomModalTitle className="text-3xl mb-3">Welcome to Kaartx Kloud!</CustomModalTitle>
               <CustomModalDescription className="text-base">
                 Your marketplace is ready to launch. Start building your multi-vendor platform today.
               </CustomModalDescription>

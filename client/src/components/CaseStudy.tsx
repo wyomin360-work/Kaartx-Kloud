@@ -38,7 +38,7 @@ export default function CaseStudy() {
             Scalable results — built for growth
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-case-study-subtitle">
-            Kaartx Cloud automates everything from seller onboarding to payouts, helping marketplaces across the GCC launch faster and grow smarter.
+            Kaartx Kloud automates everything from seller onboarding to payouts, helping marketplaces across the GCC launch faster and grow smarter.
           </p>
         </div>
 
