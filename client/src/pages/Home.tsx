@@ -53,8 +53,8 @@ export default function Home() {
       <CaseStudy />
       <Pricing onOpenSignup={() => setSignupModalOpen(true)} />
       <FAQ />
-      <FinalCTA onOpenSignup={() => setSignupModalOpen(true)} />
       <BookingSection />
+      <FinalCTA onOpenSignup={() => setSignupModalOpen(true)} />
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />
