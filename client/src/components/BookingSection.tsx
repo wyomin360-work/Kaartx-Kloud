@@ -1,29 +1,48 @@
 import { useEffect, useRef, useState } from 'react';
 
 export default function BookingSection() {
-  const [shouldLoadCal, setShouldLoadCal] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const checkHash = () => {
-      const hash = window.location.hash.replace('#', '');
-      // ONLY load Cal.com if hash is exactly 'booking'
-      if (hash === 'booking') {
-        setShouldLoadCal(true);
-      }
+    // Save original scroll functions
+    const originalScrollIntoView = Element.prototype.scrollIntoView;
+    const originalScrollTo = window.scrollTo;
+    let scrollRestored = false;
+    
+    // Restore scroll functions (can only happen once)
+    const restoreScroll = () => {
+      if (scrollRestored) return;
+      scrollRestored = true;
+      Element.prototype.scrollIntoView = originalScrollIntoView;
+      window.scrollTo = originalScrollTo;
     };
 
-    // Check on mount
-    checkHash();
-
-    // Listen for hash changes
-    window.addEventListener('hashchange', checkHash);
+    // Intercept scroll calls - only block those from Cal.com booking widget
+    // Restore immediately after first blocked call
+    Element.prototype.scrollIntoView = function(this: Element, arg?: boolean | ScrollIntoViewOptions) {
+      const bookingWidget = document.getElementById('cal-booking-widget');
+      if (bookingWidget && bookingWidget.contains(this)) {
+        // This is Cal.com trying to scroll - block it and restore
+        restoreScroll();
+        return;
+      }
+      // Allow other scroll calls
+      return originalScrollIntoView.call(this, arg);
+    };
     
-    return () => window.removeEventListener('hashchange', checkHash);
-  }, []);
+    window.scrollTo = ((...args: any[]) => {
+      // Block window.scrollTo during initialization, but restore after first attempt
+      if (!scrollRestored) {
+        restoreScroll();
+        return;
+      }
+      return (originalScrollTo as any).apply(window, args);
+    }) as typeof window.scrollTo;
 
-  useEffect(() => {
-    if (!shouldLoadCal) return;
+    // Load Cal.com immediately (always loaded)
+
+    // Safety timeout: restore after 5 seconds max (fallback)
+    const restoreTimeout = setTimeout(restoreScroll, 5000);
 
     // Guard against duplicate script injection
     if ((window as any).Cal?.loaded) {
@@ -41,7 +60,11 @@ export default function BookingSection() {
         styles: { branding: { brandColor: '#1E2A5E' } },
         hideEventTypeDetails: false,
       });
-      return;
+      
+      return () => {
+        clearTimeout(restoreTimeout);
+        restoreScroll();
+      };
     }
 
     // Load Cal.com embed script
@@ -94,7 +117,12 @@ export default function BookingSection() {
       styles: { branding: { brandColor: '#1E2A5E' } },
       hideEventTypeDetails: false,
     });
-  }, [shouldLoadCal]);
+
+    return () => {
+      clearTimeout(restoreTimeout);
+      restoreScroll();
+    };
+  }, []);
 
   return (
     <section ref={sectionRef} id="booking" className="pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-20 md:pb-32 bg-background scroll-mt-20">
