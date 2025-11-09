@@ -28,23 +28,23 @@ export default function CaseStudy() {
   ];
 
   return (
-    <section className="py-12 sm:py-20 md:py-32 bg-background">
+    <section className="py-16 sm:py-24 md:py-36 bg-card/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
         <div 
           ref={titleAnimation.ref}
-          className={`text-center mb-10 sm:mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+          className={`text-center mb-12 sm:mb-20 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4" data-testid="text-case-study-title">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-5" data-testid="text-case-study-title">
             Scalable results — built for growth
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto" data-testid="text-case-study-subtitle">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-case-study-subtitle">
             Kaartx Cloud automates everything from seller onboarding to payouts, helping marketplaces across the GCC launch faster and grow smarter.
           </p>
         </div>
 
         <div 
           ref={cardsAnimation.ref}
-          className={`grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 animate-on-scroll ${cardsAnimation.isVisible ? 'visible' : ''}`}
+          className={`grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-6xl mx-auto animate-on-scroll ${cardsAnimation.isVisible ? 'visible' : ''}`}
         >
           {metrics.map((metric, index) => {
             const Icon = metric.icon;
@@ -53,20 +53,22 @@ export default function CaseStudy() {
             return (
               <Card
                 key={index}
-                className={`p-6 sm:p-8 hover-elevate transition-all duration-300 ${stagger[index]}`}
+                className={`p-8 sm:p-10 bg-background border-border/60 !rounded-2xl transition-all duration-300 ${stagger[index]}`}
                 data-testid={`metric-card-${index}`}
               >
-                <div className="text-center space-y-4">
-                  <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                    <Icon className="h-7 w-7 text-primary" />
+                <div className="text-center space-y-5">
+                  <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-muted/50 border border-border/40">
+                    <Icon className="h-8 w-8 text-foreground/80" />
                   </div>
-                  <div className="text-3xl sm:text-4xl font-bold text-primary" data-testid={`text-metric-value-${index}`}>
-                    {metric.value}
+                  <div className="space-y-2">
+                    <div className="text-3xl sm:text-4xl font-black text-foreground tracking-tight" data-testid={`text-metric-value-${index}`}>
+                      {metric.value}
+                    </div>
+                    <div className="text-lg font-bold text-foreground/90" data-testid={`text-metric-label-${index}`}>
+                      {metric.label}
+                    </div>
                   </div>
-                  <div className="text-lg font-semibold text-foreground" data-testid={`text-metric-label-${index}`}>
-                    {metric.label}
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed" data-testid={`text-metric-description-${index}`}>
+                  <p className="text-sm text-muted-foreground leading-relaxed pt-1" data-testid={`text-metric-description-${index}`}>
                     {metric.description}
                   </p>
                 </div>
