@@ -80,10 +80,10 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
   ];
 
   const addons = [
-    { name: 'Custom domain & SSL', price: 10 },
-    { name: 'AI Insights Suite', price: 15 },
-    { name: 'Extra marketplace instance', price: 20 },
-    { name: 'Extra admin user (per seat)', price: 5 },
+    { name: 'Custom domain & SSL', price: 10, availability: 'Starter, Growth — Included in Pro' },
+    { name: 'AI Insights Suite', price: 15, availability: 'All plans' },
+    { name: 'Extra marketplace instance', price: 20, availability: 'Growth, Pro' },
+    { name: 'Extra admin user (per seat)', price: 5, availability: 'All plans' },
   ];
 
   return (
@@ -221,7 +221,8 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
                 className="px-4 py-2 text-sm font-medium hover-elevate"
                 data-testid={`badge-addon-${index}`}
               >
-                {addon.name} — OMR {addon.price} / month
+                {addon.name} — OMR {addon.price} / month{' '}
+                <span className="text-xs text-muted-foreground font-normal">({addon.availability})</span>
               </Badge>
             ))}
           </div>
