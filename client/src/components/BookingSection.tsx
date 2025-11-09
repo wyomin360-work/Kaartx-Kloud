@@ -8,6 +8,7 @@ export default function BookingSection() {
     const originalScrollIntoView = Element.prototype.scrollIntoView;
     const originalScrollTo = window.scrollTo;
     let scrollRestored = false;
+    let blockerActive = false;
     
     // Restore scroll functions (can only happen once)
     const restoreScroll = () => {
@@ -17,22 +18,28 @@ export default function BookingSection() {
       window.scrollTo = originalScrollTo;
     };
 
+    // Allow browser's initial hash navigation (100ms grace period)
+    // This ensures /#contact works on page refresh
+    setTimeout(() => {
+      blockerActive = true;
+    }, 100);
+
     // Intercept scroll calls - only block those from Cal.com booking widget
     // Restore immediately after first blocked call
     Element.prototype.scrollIntoView = function(this: Element, arg?: boolean | ScrollIntoViewOptions) {
       const bookingWidget = document.getElementById('cal-booking-widget');
-      if (bookingWidget && bookingWidget.contains(this)) {
+      if (blockerActive && bookingWidget && bookingWidget.contains(this)) {
         // This is Cal.com trying to scroll - block it and restore
         restoreScroll();
         return;
       }
-      // Allow other scroll calls
+      // Allow other scroll calls (including browser hash navigation)
       return originalScrollIntoView.call(this, arg);
     };
     
     window.scrollTo = ((...args: any[]) => {
-      // Block window.scrollTo during initialization, but restore after first attempt
-      if (!scrollRestored) {
+      // Only block after grace period to allow initial hash navigation
+      if (blockerActive && !scrollRestored) {
         restoreScroll();
         return;
       }
