@@ -13,7 +13,7 @@ export default function FAQ() {
     },
     {
       question: 'What is the 12-day payout system?',
-      answer: 'Sellers receive automatic payouts 12 days after order completion. This gives you time for quality checks while maintaining fast payment cycles for sellers.',
+      answer: 'Kaartx Kloud uses a default 12-day payout cycle, meaning sellers become eligible for payout 12 days after an order is successfully delivered. This window allows time for returns, disputes, and quality checks before funds are released. The 12-day period is default for all tenants, but Growth and Pro (Enterprise) users can customize their payout cycle duration from their admin settings.',
     },
     {
       question: 'Do you support GCC payment gateways?',
