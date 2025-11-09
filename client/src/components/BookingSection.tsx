@@ -1,7 +1,40 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function BookingSection() {
+  const [shouldLoadCal, setShouldLoadCal] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
   useEffect(() => {
+    // Load immediately if hash is #booking
+    const hash = window.location.hash.replace('#', '');
+    if (hash === 'booking') {
+      setShouldLoadCal(true);
+      return;
+    }
+
+    // Otherwise, only load when section comes into viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShouldLoadCal(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: '0px', threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!shouldLoadCal) return;
+
     // Guard against duplicate script injection
     if ((window as any).Cal?.loaded) {
       // Cal is already loaded, just reinitialize the widget
@@ -71,10 +104,10 @@ export default function BookingSection() {
       styles: { branding: { brandColor: '#1E2A5E' } },
       hideEventTypeDetails: false,
     });
-  }, []);
+  }, [shouldLoadCal]);
 
   return (
-    <section id="booking" className="pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-20 md:pb-32 bg-background scroll-mt-20">
+    <section ref={sectionRef} id="booking" className="pt-8 sm:pt-12 md:pt-16 pb-12 sm:pb-20 md:pb-32 bg-background scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-16">
