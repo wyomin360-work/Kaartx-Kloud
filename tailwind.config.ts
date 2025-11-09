@@ -114,8 +114,8 @@ export default {
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-        "accordion-up": "accordion-up 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+        "accordion-down": "accordion-down 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+        "accordion-up": "accordion-up 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
       },
     },
   },
