@@ -45,7 +45,7 @@ export default function FAQ() {
     },
     {
       question: 'Do you provide API access?',
-      answer: 'Yes, comprehensive REST API access is included in all plans. Build custom integrations and automate workflows as needed.',
+      answer: 'Not yet — API access is currently under development and will be available in future releases of Kaartx Kloud. Our goal is to offer REST API endpoints for integrations, automation, and custom workflows once the feature is launched.',
     },
   ];
 

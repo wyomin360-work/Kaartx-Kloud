@@ -80,13 +80,18 @@ Kaartx Cloud is a premium SaaS platform designed for launching and managing mult
 - **Design Consistency:** Maintained gradient borders, playful shadows, scroll animations, and responsive grid layout (3 columns desktop, 1 column mobile)
 - **CTAs Updated:** "Start 14-day free trial", "Upgrade to Growth", "Talk to Sales" aligned with user journey
 
-**November 9, 2025 - FAQ Section Payout Cycle Update:**
+**November 9, 2025 - FAQ Section Updates:**
 - **Payout Cycle Explanation:** Updated second FAQ question ("What is the 12-day payout system?") with comprehensive explanation
   - Clarified that 12-day payout cycle is default for all tenants
   - Explains sellers become eligible for payout 12 days after successful delivery
   - Notes window allows time for returns, disputes, and quality checks
   - Highlights that Growth and Pro (Enterprise) users can customize payout cycle duration from admin settings
   - Provides transparent, detailed information about platform's financial operations
+- **API Access Question:** Updated last FAQ question ("Do you provide API access?") with honest status
+  - Changed from stating API access is available to acknowledging it's under development
+  - Explains API access will be available in future releases
+  - Sets expectation for REST API endpoints for integrations, automation, and custom workflows
+  - Maintains transparency about current platform capabilities
 
 ## User Preferences
 
