@@ -209,16 +209,16 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
           })}
         </div>
 
-        <div className="max-w-4xl mx-auto mb-6">
-          <h3 className="text-center text-lg font-bold text-foreground mb-4" data-testid="text-addons-title">
+        <div className="max-w-5xl mx-auto mt-16 sm:mt-20 mb-10 sm:mb-12">
+          <h3 className="text-center text-xl sm:text-2xl font-bold text-foreground mb-6 sm:mb-8" data-testid="text-addons-title">
             Add-ons
           </h3>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-5">
             {addons.map((addon, index) => (
               <Badge
                 key={index}
                 variant="outline"
-                className="px-4 py-2 text-sm font-medium hover-elevate"
+                className="px-5 py-2.5 text-sm font-medium hover-elevate"
                 data-testid={`badge-addon-${index}`}
               >
                 {addon.name} — OMR {addon.price} / month{' '}
@@ -228,7 +228,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
           </div>
         </div>
 
-        <p className="text-center text-xs text-muted-foreground max-w-2xl mx-auto" data-testid="text-pricing-footnote">
+        <p className="text-center text-xs text-muted-foreground max-w-2xl mx-auto mt-8" data-testid="text-pricing-footnote">
           Prices exclude VAT where applicable. Billing via TAP Payments.
         </p>
       </div>
