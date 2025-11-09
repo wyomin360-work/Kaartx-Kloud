@@ -38,9 +38,9 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-300 ${
-        isScrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent'
+        isScrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent border-b border-transparent'
       }`}
-      style={{ transform: 'translateZ(0)' }}
+      style={{ transform: 'translateZ(0)', willChange: 'transform' }}
     >
       <div className="px-6">
         <div className="flex items-center justify-between h-16">
