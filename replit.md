@@ -4,15 +4,15 @@ Kaartx Kloud is a premium SaaS platform for launching and managing multi-vendor 
 
 ## Recent Changes
 
-**November 9, 2025 - Contact Navigation and Cal.com Fix:**
-- Fixed page jumping issue after refresh: Cal.com widget now lazy-loads only when needed
-- Cal.com only initializes when hash is #booking OR when BookingSection enters viewport (Intersection Observer with threshold 0.1)
-- Prevents Cal.com from interfering with navigation to other sections like #contact
-- Added delayed re-scroll (2.5s) in Home.tsx with center positioning for contact hash to ensure stable navigation
-- Contact link in navbar correctly scrolls to Footer section without Cal.com interference
+**November 9, 2025 - Cal.com Scroll Jumping Fix:**
+- **FIXED:** Page no longer jumps to booking section when scrolling to footer (user confirmed)
+- Cal.com now ONLY loads when hash is exactly #booking (no Intersection Observer)
+- Removed all scroll-based Cal.com loading - prevents interference with navigation
+- Users can scroll through entire page without triggering Cal.com
+- Cal.com loads only when clicking "Book a Call" link or navigating to /#booking
+- Added hashchange listener to BookingSection for proper Cal.com initialization
 - Footer has `id="contact"` and `scroll-mt-20` for proper scroll targeting
-- Removed duplicate ContactForm component from Home page
-- E2E tested and verified - no jumping, Cal.com loads only when appropriate
+- User-tested and verified - no jumping when scrolling to footer
 
 ## User Preferences
 
