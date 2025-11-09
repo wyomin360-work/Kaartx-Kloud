@@ -54,7 +54,7 @@ export default function IntegrationsMarquee() {
   ];
 
   return (
-    <section id="integrations" className="py-12 sm:py-20 md:py-32 bg-background">
+    <section id="integrations" className="py-12 sm:py-20 md:py-32 bg-background scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
         <div 
           ref={titleAnimation.ref}

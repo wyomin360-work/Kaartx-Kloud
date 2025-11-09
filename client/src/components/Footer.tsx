@@ -123,7 +123,7 @@ export default function Footer() {
         </div>
 
         {/* Contact Information */}
-        <div id="contact" className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8 pt-8 border-t border-border">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8 pt-8 border-t border-border">
           {contactInfo.map((info, index) => {
             const Icon = info.icon;
             return (
