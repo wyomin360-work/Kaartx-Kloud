@@ -5,57 +5,21 @@ export default function BookingSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const hash = window.location.hash.replace('#', '');
+    const checkHash = () => {
+      const hash = window.location.hash.replace('#', '');
+      // ONLY load Cal.com if hash is exactly 'booking'
+      if (hash === 'booking') {
+        setShouldLoadCal(true);
+      }
+    };
+
+    // Check on mount
+    checkHash();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', checkHash);
     
-    // Load immediately if hash is #booking
-    if (hash === 'booking') {
-      setShouldLoadCal(true);
-      return;
-    }
-
-    // Don't load during initial page load if navigating to another section
-    if (hash && hash !== 'booking') {
-      // User is navigating to a different section, don't set up observer yet
-      // Wait for them to manually scroll to booking section
-      const delayedObserver = setTimeout(() => {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                setShouldLoadCal(true);
-                observer.disconnect();
-              }
-            });
-          },
-          { rootMargin: '0px', threshold: 0.1 }
-        );
-
-        if (sectionRef.current) {
-          observer.observe(sectionRef.current);
-        }
-      }, 3000); // Wait 3 seconds before setting up observer
-
-      return () => clearTimeout(delayedObserver);
-    }
-
-    // No hash, or empty hash - set up observer normally
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setShouldLoadCal(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { rootMargin: '0px', threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
+    return () => window.removeEventListener('hashchange', checkHash);
   }, []);
 
   useEffect(() => {
