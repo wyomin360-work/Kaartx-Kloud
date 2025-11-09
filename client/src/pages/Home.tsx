@@ -28,6 +28,11 @@ export default function Home() {
   const isInitialMount = useRef(true);
 
   useEffect(() => {
+    // Disable browser's automatic scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
     const hash = window.location.hash.replace('#', '');
     if (hash) {
       const element = document.getElementById(hash);
