@@ -151,7 +151,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground" data-testid="text-footer-copyright">
-            © 2025 Kloud. All rights reserved.
+            © 2025 Kloud. All rights reserved. Powered by Kaartx.
           </p>
           <div className="flex gap-4">
             <a href="https://linkedin.com/company/kaartx-official" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" data-testid="link-footer-linkedin">
