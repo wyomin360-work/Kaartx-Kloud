@@ -2,6 +2,15 @@
 
 Kaartx Kloud is a premium SaaS platform for launching and managing multi-vendor marketplaces, specifically tailored for GCC markets. It provides comprehensive seller lifecycle management, including onboarding, subscription billing, product listing, order fulfillment, and automated payout cycles. The platform empowers businesses to create branded marketplaces with minimal development, adhering to a minimalist design with a clean white background, a dark navy accent (#1E2A5E), and Gen Z modernization elements like gradients, playful shadows, bold typography, and rounded corners. The brand name has been updated from "Kaartx Cloud" to "Kaartx Kloud" for consistency.
 
+## Recent Changes
+
+**November 9, 2025 - Contact Navigation Fix:**
+- Removed ContactForm component from Home page (was mistakenly added)
+- Contact link in navbar now correctly scrolls to Footer section
+- Added `id="contact"` and `scroll-mt-20` to Footer component for proper scroll targeting
+- Footer contains all contact information: support email, phone number, business hours, social links
+- E2E tested and verified - Contact navigation works smoothly without jumps
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
