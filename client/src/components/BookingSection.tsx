@@ -5,14 +5,40 @@ export default function BookingSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // Load immediately if hash is #booking
     const hash = window.location.hash.replace('#', '');
+    
+    // Load immediately if hash is #booking
     if (hash === 'booking') {
       setShouldLoadCal(true);
       return;
     }
 
-    // Otherwise, only load when section comes into viewport
+    // Don't load during initial page load if navigating to another section
+    if (hash && hash !== 'booking') {
+      // User is navigating to a different section, don't set up observer yet
+      // Wait for them to manually scroll to booking section
+      const delayedObserver = setTimeout(() => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                setShouldLoadCal(true);
+                observer.disconnect();
+              }
+            });
+          },
+          { rootMargin: '0px', threshold: 0.1 }
+        );
+
+        if (sectionRef.current) {
+          observer.observe(sectionRef.current);
+        }
+      }, 3000); // Wait 3 seconds before setting up observer
+
+      return () => clearTimeout(delayedObserver);
+    }
+
+    // No hash, or empty hash - set up observer normally
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

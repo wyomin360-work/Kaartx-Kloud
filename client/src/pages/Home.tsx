@@ -31,15 +31,12 @@ export default function Home() {
     if (hash) {
       const element = document.getElementById(hash);
       if (element) {
-        // Use 'center' for contact to ensure booking section is scrolled out
-        const scrollBlock = hash === 'contact' ? 'center' : 'start';
-        
         // Initial smooth scroll
-        element.scrollIntoView({ behavior: 'smooth', block: scrollBlock });
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         
-        // Forceful re-scroll after delay to override Cal.com
+        // Forceful re-scroll after delay to override any interference
         const timeoutId = setTimeout(() => {
-          element.scrollIntoView({ behavior: 'auto', block: scrollBlock });
+          element.scrollIntoView({ behavior: 'auto', block: 'start' });
         }, 2500);
         
         return () => clearTimeout(timeoutId);
