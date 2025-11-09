@@ -15,7 +15,7 @@ export default function FinalCTA({ onOpenSignup }: FinalCTAProps) {
           Ready to launch your marketplace?
         </h2>
         <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-2xl mx-auto font-medium leading-relaxed" data-testid="text-final-cta-subtitle">
-          Join GCC businesses building the future of commerce with Kaartx Cloud
+          Join GCC businesses building the future of eCommerce with Kaartx Kloud.
         </p>
         <Button 
           onClick={onOpenSignup}
