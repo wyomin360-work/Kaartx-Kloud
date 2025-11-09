@@ -37,7 +37,7 @@ export default function Hero({ onOpenSignup }: HeroProps) {
             className={`text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 sm:mb-10 max-w-3xl mx-auto font-medium animate-on-scroll stagger-1 ${subtitleAnimation.isVisible ? 'visible' : ''}`} 
             data-testid="text-hero-subtitle"
           >
-            Complete GCC-ready platform with seller onboarding, product management, subscription billing, and automated payouts — powered by Kaartx Cloud.
+            Complete GCC-ready platform with seller onboarding, product management, subscription billing, and automated payouts — powered by Kaartx Kloud.
           </p>
           <div 
             ref={buttonsAnimation.ref}
