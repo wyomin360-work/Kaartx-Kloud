@@ -17,7 +17,6 @@ import Pricing from '@/components/Pricing';
 import FAQ from '@/components/FAQ';
 import FinalCTA from '@/components/FinalCTA';
 import BookingSection from '@/components/BookingSection';
-import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -55,7 +54,6 @@ export default function Home() {
       <Pricing onOpenSignup={() => setSignupModalOpen(true)} />
       <FAQ />
       <BookingSection />
-      <ContactForm />
       <FinalCTA onOpenSignup={() => setSignupModalOpen(true)} />
       <Footer />
       <WhatsAppButton />
