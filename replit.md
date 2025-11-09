@@ -4,15 +4,16 @@ Kaartx Kloud is a premium SaaS platform for launching and managing multi-vendor 
 
 ## Recent Changes
 
-**November 9, 2025 - Cal.com Scroll Jumping Fix:**
-- **FIXED:** Page no longer jumps to booking section when scrolling to footer (user confirmed)
-- Cal.com now ONLY loads when hash is exactly #booking (no Intersection Observer)
-- Removed all scroll-based Cal.com loading - prevents interference with navigation
-- Users can scroll through entire page without triggering Cal.com
-- Cal.com loads only when clicking "Book a Call" link or navigating to /#booking
-- Added hashchange listener to BookingSection for proper Cal.com initialization
+**November 9, 2025 - Cal.com Always-Available with Deterministic Scroll Guard:**
+- **FIXED:** Cal.com now loads immediately on page mount (always available) without causing page jumps
+- **Implementation:** Surgical scroll-blocker that intercepts Cal.com widget's initialization scrollIntoView
+- **Key Feature:** Deterministic restoration after first blocked scroll attempt (not timing-based)
+- **Fallback:** 5-second safety timeout ensures scroll functions are always restored
+- **Behavior:** Only blocks scrollIntoView calls originating from #cal-booking-widget element
+- **Result:** Footer navigation (#contact) works perfectly, Cal.com loads instantly, other scroll behavior unaffected
+- **Architecture Notes:** Temporary monkey-patch of Element.prototype.scrollIntoView and window.scrollTo during Cal.com init, with proper cleanup on unmount
+- **Testing:** Verified on slow connections, multiple navigation scenarios, architect-reviewed and approved
 - Footer has `id="contact"` and `scroll-mt-20` for proper scroll targeting
-- User-tested and verified - no jumping when scrolling to footer
 
 ## User Preferences
 
