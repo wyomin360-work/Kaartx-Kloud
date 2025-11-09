@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -25,35 +25,13 @@ import SignupModal from '@/components/SignupModal';
 export default function Home() {
   const [location] = useLocation();
   const [signupModalOpen, setSignupModalOpen] = useState(false);
-  const isInitialMount = useRef(true);
 
   useEffect(() => {
-    // Disable browser's automatic scroll restoration
+    // Disable browser's automatic scroll restoration to prevent jumps on refresh
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
-
-    const hash = window.location.hash.replace('#', '');
-    if (hash) {
-      const element = document.getElementById(hash);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        
-        // Only do the delayed re-scroll on initial page load, not on subsequent navigations
-        if (isInitialMount.current) {
-          const timeoutId = setTimeout(() => {
-            element.scrollIntoView({ behavior: 'auto', block: 'start' });
-          }, 2500);
-          
-          return () => clearTimeout(timeoutId);
-        }
-      }
-    }
-    
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    }
-  }, [location]);
+  }, []);
 
   return (
     <div className="min-h-screen">
