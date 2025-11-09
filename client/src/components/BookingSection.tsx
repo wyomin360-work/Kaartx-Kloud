@@ -17,29 +17,33 @@ export default function BookingSection() {
       window.scrollTo = originalScrollTo;
     };
 
-    // Intercept scroll calls - only block those from Cal.com booking widget
-    // Restore immediately after first blocked call
-    Element.prototype.scrollIntoView = function(this: Element, arg?: boolean | ScrollIntoViewOptions) {
-      const bookingWidget = document.getElementById('cal-booking-widget');
-      if (bookingWidget && bookingWidget.contains(this)) {
-        // This is Cal.com trying to scroll - block it and restore
-        restoreScroll();
-        return;
-      }
-      // Allow other scroll calls
-      return originalScrollIntoView.call(this, arg);
-    };
+    // Only intercept scroll if Cal.com widget is being initialized
+    // Don't intercept on regular page loads/refreshes
+    const shouldInterceptScroll = window.location.hash === '#booking' || !(window as any).Cal?.loaded;
     
-    window.scrollTo = ((...args: any[]) => {
-      // Block window.scrollTo during initialization, but restore after first attempt
-      if (!scrollRestored) {
-        restoreScroll();
-        return;
-      }
-      return (originalScrollTo as any).apply(window, args);
-    }) as typeof window.scrollTo;
-
-    // Load Cal.com immediately (always loaded)
+    if (shouldInterceptScroll) {
+      // Intercept scroll calls - only block those from Cal.com booking widget
+      // Restore immediately after first blocked call
+      Element.prototype.scrollIntoView = function(this: Element, arg?: boolean | ScrollIntoViewOptions) {
+        const bookingWidget = document.getElementById('cal-booking-widget');
+        if (bookingWidget && bookingWidget.contains(this)) {
+          // This is Cal.com trying to scroll - block it and restore
+          restoreScroll();
+          return;
+        }
+        // Allow other scroll calls
+        return originalScrollIntoView.call(this, arg);
+      };
+      
+      window.scrollTo = ((...args: any[]) => {
+        // Block window.scrollTo during initialization, but restore after first attempt
+        if (!scrollRestored) {
+          restoreScroll();
+          return;
+        }
+        return (originalScrollTo as any).apply(window, args);
+      }) as typeof window.scrollTo;
+    }
 
     // Safety timeout: restore after 5 seconds max (fallback)
     const restoreTimeout = setTimeout(restoreScroll, 5000);
