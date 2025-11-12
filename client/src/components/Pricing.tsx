@@ -218,10 +218,15 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
               <Badge
                 key={index}
                 variant="outline"
-                className="px-5 py-2.5 text-sm font-medium hover-elevate"
+                className={`px-5 py-2.5 text-sm font-medium hover-elevate ${addon.comingSoon ? 'opacity-70' : ''}`}
                 data-testid={`badge-addon-${index}`}
               >
-                {addon.name} — OMR {addon.price} / month<span className="text-xs text-muted-foreground font-normal ml-1">({addon.availability})</span>
+                {addon.name} — {addon.comingSoon ? (
+                  <span className="text-primary font-semibold">Coming Soon</span>
+                ) : (
+                  <>OMR {addon.price} / month</>
+                )}
+                <span className="text-xs text-muted-foreground font-normal ml-1">({addon.availability})</span>
               </Badge>
             ))}
           </div>
