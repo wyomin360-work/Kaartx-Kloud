@@ -135,7 +135,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
             return (
               <Card
                 key={index}
-                className={`relative p-6 sm:p-8 !rounded-3xl !border-2 ${
+                className={`relative p-6 sm:p-8 !rounded-3xl !border-2 flex flex-col ${
                   plan.highlighted
                     ? 'gradient-border shadow-playful md:scale-105 gradient-bg-blue'
                     : 'hover-elevate !border-border'
@@ -185,7 +185,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
                   )}
                 </div>
 
-                <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
+                <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8 flex-1">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center gap-3" data-testid={`feature-${index}-${featureIndex}`}>
                       <div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
