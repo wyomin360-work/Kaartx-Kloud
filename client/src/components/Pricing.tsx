@@ -215,19 +215,25 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
           </h3>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-5">
             {addons.map((addon, index) => (
-              <Badge
+              <div
                 key={index}
-                variant="outline"
-                className={`px-5 py-2.5 text-sm font-medium hover-elevate ${addon.comingSoon ? 'opacity-70' : ''}`}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-background hover-elevate"
                 data-testid={`badge-addon-${index}`}
               >
-                {addon.name} — {addon.comingSoon ? (
-                  <span className="text-primary font-semibold">Coming Soon</span>
+                <span className="text-sm font-medium text-foreground">
+                  {addon.name} —
+                </span>
+                {addon.comingSoon ? (
+                  <Badge className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 font-bold shadow-sm no-default-hover-elevate">
+                    Coming Soon
+                  </Badge>
                 ) : (
-                  <>OMR {addon.price} / month</>
+                  <span className="text-sm font-medium text-foreground">
+                    OMR {addon.price} / month
+                  </span>
                 )}
-                <span className="text-xs text-muted-foreground font-normal ml-1">({addon.availability})</span>
-              </Badge>
+                <span className="text-xs text-muted-foreground font-normal">({addon.availability})</span>
+              </div>
             ))}
           </div>
         </div>
