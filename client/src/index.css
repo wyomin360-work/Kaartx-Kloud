@@ -536,9 +536,9 @@ body[data-scroll-locked] {
 
   /* Section title standardization - consistent typography across all main section headings */
   .section-title {
-    font-weight: 700;
-    font-size: clamp(1.8rem, 2vw, 2.4rem);
-    line-height: 1.3;
+    font-weight: 900;
+    font-size: clamp(1.875rem, 4vw, 3rem);
+    line-height: 1.2;
     text-align: center;
   }
 }
