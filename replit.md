@@ -4,6 +4,22 @@ Kaartx Kloud is a premium SaaS platform for launching and managing multi-vendor 
 
 ## Recent Changes
 
+**November 12, 2025 - Navbar Navigation Restructure:**
+- **Updated Navigation Order:** Features · Integrations · Pricing · FAQs · Contact · Login · Get Started
+- **Section ID Mapping:**
+  - Features → `id="features"` (DeepFeatures: "Powerful tools to manage your entire marketplace")
+  - Integrations → `id="integrations"` (IntegrationsMarquee: "GCC-ready integrations")
+  - Pricing → `id="pricing"` (Pricing: "Plans & pricing for GCC")
+  - FAQs → `id="faq"` (FAQ: "Frequently asked questions")
+  - Contact → `id="booking"` (BookingSection: "Book a Sales Call")
+  - Login → `/login` (external link to login page)
+- **Architecture Changes:**
+  - Created single source-of-truth `navItems` config array for consistent desktop/mobile menus
+  - Renamed FeatureGrid's ID from `features` to `feature-grid` (avoided duplicate IDs)
+  - Added `scroll-mt-20` to FAQ and DeepFeatures sections for proper scroll targeting
+  - Implemented `handleNavClick` helper to differentiate scroll targets vs. direct links
+- **Result:** Clean, maintainable navbar with correct navigation targets matching user expectations
+
 **November 9, 2025 - Cal.com Always-Available with Deterministic Scroll Guard:**
 - **FIXED:** Cal.com now loads immediately on page mount (always available) without causing page jumps
 - **Implementation:** Surgical scroll-blocker that intercepts Cal.com widget's initialization scrollIntoView

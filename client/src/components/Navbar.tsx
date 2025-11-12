@@ -3,15 +3,32 @@ import { Menu, X, ArrowRight, MessageCircle } from 'lucide-react';
 import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import logoImage from '@assets/Asset 4@4x_1762100909160.png';
+import { Link } from 'wouter';
 
 interface NavbarProps {
   onOpenSignup?: () => void;
 }
 
+type NavItem = {
+  label: string;
+  target: string;
+  type: 'scroll' | 'link';
+  testId: string;
+};
+
 export default function Navbar({ onOpenSignup }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [location] = useLocation();
+
+  const navItems: NavItem[] = [
+    { label: 'Features', target: 'features', type: 'scroll', testId: 'link-features' },
+    { label: 'Integrations', target: 'integrations', type: 'scroll', testId: 'link-integrations' },
+    { label: 'Pricing', target: 'pricing', type: 'scroll', testId: 'link-pricing' },
+    { label: 'FAQs', target: 'faq', type: 'scroll', testId: 'link-faq' },
+    { label: 'Contact', target: 'booking', type: 'scroll', testId: 'link-contact' },
+    { label: 'Login', target: '/login', type: 'link', testId: 'link-login' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +49,14 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         history.pushState(null, '', `#${id}`);
       }
+    }
+  };
+
+  const handleNavClick = (item: NavItem, e?: React.MouseEvent) => {
+    setIsMobileMenuOpen(false);
+    if (item.type === 'scroll') {
+      e?.preventDefault();
+      navigateToSection(item.target);
     }
   };
 
@@ -59,41 +84,27 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
-            <button
-              onClick={() => navigateToSection('features')}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              data-testid="link-features"
-            >
-              Features
-            </button>
-            <button
-              onClick={() => navigateToSection('pricing')}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              data-testid="link-pricing"
-            >
-              Pricing
-            </button>
-            <button
-              onClick={() => navigateToSection('integrations')}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              data-testid="link-integrations"
-            >
-              Integrations
-            </button>
-            <button
-              onClick={() => navigateToSection('booking')}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              data-testid="link-booking"
-            >
-              Book a Call
-            </button>
-            <button
-              onClick={() => navigateToSection('contact')}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              data-testid="link-contact"
-            >
-              Contact
-            </button>
+            {navItems.map((item) => (
+              item.type === 'link' ? (
+                <Link
+                  key={item.testId}
+                  href={item.target}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  data-testid={item.testId}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  key={item.testId}
+                  onClick={(e) => handleNavClick(item, e)}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  data-testid={item.testId}
+                >
+                  {item.label}
+                </button>
+              )
+            ))}
             <Button
               onClick={onOpenSignup}
               className="shadow-glow hover:scale-[1.02] transition-transform"
@@ -119,41 +130,28 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-card border-t border-border shadow-lg">
           <div className="px-5 py-6 space-y-2">
-            <button
-              onClick={() => navigateToSection('features')}
-              className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-              data-testid="link-mobile-features"
-            >
-              Features
-            </button>
-            <button
-              onClick={() => navigateToSection('pricing')}
-              className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-              data-testid="link-mobile-pricing"
-            >
-              Pricing
-            </button>
-            <button
-              onClick={() => navigateToSection('integrations')}
-              className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-              data-testid="link-mobile-integrations"
-            >
-              Integrations
-            </button>
-            <button
-              onClick={() => navigateToSection('booking')}
-              className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-              data-testid="link-mobile-booking"
-            >
-              Book a Call
-            </button>
-            <button
-              onClick={() => navigateToSection('contact')}
-              className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-              data-testid="link-mobile-contact"
-            >
-              Contact
-            </button>
+            {navItems.map((item) => (
+              item.type === 'link' ? (
+                <Link
+                  key={item.testId}
+                  href={item.target}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
+                  data-testid={`mobile-${item.testId}`}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  key={item.testId}
+                  onClick={(e) => handleNavClick(item, e)}
+                  className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
+                  data-testid={`mobile-${item.testId}`}
+                >
+                  {item.label}
+                </button>
+              )
+            ))}
             
             <div className="pt-6 space-y-3">
               <Button 

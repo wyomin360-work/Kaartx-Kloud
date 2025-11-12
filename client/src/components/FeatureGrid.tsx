@@ -30,7 +30,7 @@ export default function FeatureGrid() {
   const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
   return (
-    <section id="features" className="py-12 sm:py-20 md:py-32 scroll-mt-20">
+    <section id="feature-grid" className="py-12 sm:py-20 md:py-32 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
         <div 
           ref={titleAnimation.ref}
