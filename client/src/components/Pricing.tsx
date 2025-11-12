@@ -171,7 +171,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
 
                 <div className="mb-5 sm:mb-6">
                   <div className="flex items-baseline gap-1 flex-nowrap">
-                    <span className="text-4xl sm:text-5xl font-black gradient-text leading-none" data-testid={`text-plan-price-${index}`}>
+                    <span className="text-4xl sm:text-5xl font-black gradient-text leading-none whitespace-nowrap" data-testid={`text-plan-price-${index}`}>
                       OMR {price}
                     </span>
                     <span className="text-muted-foreground font-medium text-sm whitespace-nowrap">
