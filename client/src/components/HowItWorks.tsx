@@ -36,7 +36,7 @@ export default function HowItWorks() {
           ref={titleAnimation.ref}
           className={`text-center mb-20 sm:mb-24 md:mb-28 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-5 tracking-tight" data-testid="text-how-it-works-title">
+          <h2 className="section-title text-foreground mb-5 tracking-tight" data-testid="text-how-it-works-title">
             Launch in 3 simple steps
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto font-normal" data-testid="text-how-it-works-subtitle">

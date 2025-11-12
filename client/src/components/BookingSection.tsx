@@ -82,7 +82,7 @@ export default function BookingSection() {
         {/* Header */}
         <div className="text-center mb-10 sm:mb-16">
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-3 sm:mb-4"
+            className="section-title text-foreground mb-3 sm:mb-4"
             data-testid="text-booking-title"
           >
             Book a Sales Call

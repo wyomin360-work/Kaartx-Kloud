@@ -58,7 +58,7 @@ export default function DeepFeatures() {
           ref={titleAnimation.ref}
           className={`text-center mb-12 sm:mb-16 md:mb-20 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-5 tracking-tight" data-testid="text-deep-features-title">
+          <h2 className="section-title text-foreground mb-5 tracking-tight" data-testid="text-deep-features-title">
             Powerful tools to manage your entire marketplace
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto font-normal" data-testid="text-deep-features-subtitle">

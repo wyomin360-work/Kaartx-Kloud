@@ -36,7 +36,7 @@ export default function FeatureGrid() {
           ref={titleAnimation.ref}
           className={`text-center mb-10 sm:mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-foreground mb-3 sm:mb-4" data-testid="text-features-title">
+          <h2 className="section-title text-foreground mb-3 sm:mb-4" data-testid="text-features-title">
             Everything to run a <span className="gradient-text">marketplace</span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-medium" data-testid="text-features-subtitle">

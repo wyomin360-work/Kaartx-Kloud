@@ -14,7 +14,7 @@ export default function Security() {
     <section className="py-12 sm:py-20 md:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
         <div className="text-center mb-10 sm:mb-16 md:mb-20">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground mb-3 sm:mb-4" data-testid="text-security-title">
+          <h2 className="section-title text-foreground mb-3 sm:mb-4" data-testid="text-security-title">
             Enterprise-grade security
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto font-medium" data-testid="text-security-subtitle">

@@ -60,7 +60,7 @@ export default function IntegrationsMarquee() {
           ref={titleAnimation.ref}
           className={`text-center mb-10 sm:mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4" data-testid="text-integrations-title">
+          <h2 className="section-title text-foreground mb-3 sm:mb-4" data-testid="text-integrations-title">
             GCC-ready integrations
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-integrations-subtitle">

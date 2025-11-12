@@ -34,7 +34,7 @@ export default function CaseStudy() {
           ref={titleAnimation.ref}
           className={`text-center mb-12 sm:mb-20 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-5" data-testid="text-case-study-title">
+          <h2 className="section-title text-foreground mb-4 sm:mb-5" data-testid="text-case-study-title">
             Scalable results — built for growth
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-case-study-subtitle">

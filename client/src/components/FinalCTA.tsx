@@ -11,7 +11,7 @@ export default function FinalCTA({ onOpenSignup }: FinalCTAProps) {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent opacity-50" />
       
       <div className="relative max-w-4xl mx-auto px-4 sm:px-5 md:px-6 text-center">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-4 sm:mb-6 gradient-text" data-testid="text-final-cta-title">
+        <h2 className="section-title text-foreground mb-4 sm:mb-6 gradient-text" data-testid="text-final-cta-title">
           Ready to launch your marketplace?
         </h2>
         <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-2xl mx-auto font-medium leading-relaxed" data-testid="text-final-cta-subtitle">
