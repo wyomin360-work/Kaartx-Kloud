@@ -26,7 +26,7 @@ export default function Testimonials() {
         >
           <Card className="p-8 sm:p-10 md:p-12 shadow-lg rounded-xl" data-testid="card-builder-quote">
             <div className="text-center space-y-6">
-              <p className="text-lg sm:text-xl md:text-2xl text-foreground leading-relaxed" data-testid="text-builder-quote">
+              <p className="text-base sm:text-lg md:text-xl text-foreground leading-relaxed" data-testid="text-builder-quote">
                 "Kaartx Kloud was created to empower the next generation of marketplace owners — fast setup, automated operations, and full control from one dashboard."
               </p>
               <p className="text-sm text-muted-foreground" data-testid="text-coming-soon">

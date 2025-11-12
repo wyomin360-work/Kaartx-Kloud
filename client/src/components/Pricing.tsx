@@ -96,7 +96,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
           <h2 className="section-title text-foreground mb-3 sm:mb-4" data-testid="text-pricing-title">
             Plans & <span className="gradient-text">pricing</span> for GCC
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-medium" data-testid="text-pricing-subtitle">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto font-normal" data-testid="text-pricing-subtitle">
             Choose a plan, start a 14-day free trial, upgrade anytime.
           </p>
         </div>
@@ -161,7 +161,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
                 )}
 
                 <div className="mb-5 sm:mb-6 mt-4">
-                  <h3 className="text-xl sm:text-2xl font-black text-foreground mb-2" data-testid={`text-plan-name-${index}`}>
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2" data-testid={`text-plan-name-${index}`}>
                     {plan.name}
                   </h3>
                   <p className="text-muted-foreground text-sm font-medium" data-testid={`text-plan-description-${index}`}>
@@ -210,7 +210,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
         </div>
 
         <div className="max-w-5xl mx-auto mt-16 sm:mt-20 mb-10 sm:mb-12">
-          <h3 className="text-center text-xl sm:text-2xl font-bold text-foreground mb-6 sm:mb-8" data-testid="text-addons-title">
+          <h3 className="text-center text-lg sm:text-xl font-semibold text-foreground mb-6 sm:mb-8" data-testid="text-addons-title">
             Add-ons
           </h3>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-5">

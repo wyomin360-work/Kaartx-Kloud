@@ -37,7 +37,7 @@ export default function CaseStudy() {
           <h2 className="section-title text-foreground mb-4 sm:mb-5" data-testid="text-case-study-title">
             Scalable results — built for growth
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-case-study-subtitle">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed font-normal" data-testid="text-case-study-subtitle">
             Kaartx Kloud automates everything from seller onboarding to payouts, helping marketplaces across the GCC launch faster and grow smarter.
           </p>
         </div>

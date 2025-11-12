@@ -56,7 +56,7 @@ export default function FAQ() {
           <h2 className="section-title text-primary mb-3 sm:mb-4" data-testid="text-faq-title">
             Frequently asked questions
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground font-medium" data-testid="text-faq-subtitle">
+          <p className="text-base sm:text-lg text-muted-foreground font-normal" data-testid="text-faq-subtitle">
             Everything you need to know about Kaartx Kloud
           </p>
         </div>

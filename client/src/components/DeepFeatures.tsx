@@ -88,7 +88,7 @@ export default function DeepFeatures() {
                     <Icon className="h-7 w-7 text-primary" aria-hidden="true" strokeWidth={1.75} />
                   </div>
                   
-                  <h3 className="text-2xl font-semibold text-foreground mb-4 tracking-tight">
+                  <h3 className="text-xl font-semibold text-foreground mb-4 tracking-tight">
                     {feature.title}
                   </h3>
                   

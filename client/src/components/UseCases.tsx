@@ -71,7 +71,7 @@ export default function UseCases() {
           <h2 className="section-title text-foreground mb-3 sm:mb-4" data-testid="text-use-cases-title">
             Built for everyone
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto font-medium" data-testid="text-use-cases-subtitle">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto font-normal" data-testid="text-use-cases-subtitle">
             Whether you're a brand, startup, retailer, agency, or enterprise
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function UseCases() {
             <TabsContent key={key} value={key} data-testid={`tab-content-${key}`}>
               <Card className="p-6 sm:p-8 md:p-10 border-2">
                 <div className="mb-6 sm:mb-8">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3 sm:mb-4">For {useCase.title}</h3>
+                  <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-3 sm:mb-4">For {useCase.title}</h3>
                   <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{useCase.description}</p>
                 </div>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">

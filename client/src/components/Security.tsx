@@ -17,7 +17,7 @@ export default function Security() {
           <h2 className="section-title text-foreground mb-3 sm:mb-4" data-testid="text-security-title">
             Enterprise-grade security
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto font-medium" data-testid="text-security-subtitle">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto font-normal" data-testid="text-security-subtitle">
             Your marketplace and seller data protected with bank-level security
           </p>
         </div>

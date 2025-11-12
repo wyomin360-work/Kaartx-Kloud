@@ -39,7 +39,7 @@ export default function FeatureGrid() {
           <h2 className="section-title text-foreground mb-3 sm:mb-4" data-testid="text-features-title">
             Everything to run a <span className="gradient-text">marketplace</span>
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-medium" data-testid="text-features-subtitle">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto font-normal" data-testid="text-features-subtitle">
             From seller onboarding to payouts — all the tools you need in one platform
           </p>
         </div>
