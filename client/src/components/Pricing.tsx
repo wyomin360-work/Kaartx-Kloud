@@ -160,7 +160,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
                   </Badge>
                 )}
 
-                <div className="mb-5 sm:mb-6 mt-4">
+                <div className="mb-3 sm:mb-4 mt-4">
                   <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2" data-testid={`text-plan-name-${index}`}>
                     {plan.name}
                   </h3>
@@ -171,7 +171,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
 
                 <div className="mb-5 sm:mb-6">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl sm:text-5xl font-black gradient-text" data-testid={`text-plan-price-${index}`}>
+                    <span className="text-4xl sm:text-5xl font-black gradient-text leading-none" data-testid={`text-plan-price-${index}`}>
                       OMR {price}
                     </span>
                     <span className="text-muted-foreground font-medium text-sm">
@@ -179,7 +179,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
                     </span>
                   </div>
                   {monthlyEquivalent && (
-                    <p className="text-xs text-muted-foreground mt-1" data-testid={`text-monthly-equiv-${index}`}>
+                    <p className="text-xs text-muted-foreground mt-1.5" data-testid={`text-monthly-equiv-${index}`}>
                       (≈ OMR {monthlyEquivalent} / mo)
                     </p>
                   )}
