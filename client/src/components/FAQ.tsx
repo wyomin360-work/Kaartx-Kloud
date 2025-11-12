@@ -50,7 +50,7 @@ export default function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-12 sm:py-20 md:py-32 bg-white scroll-mt-20">
+    <section id="faq" className="py-12 sm:py-20 md:py-32 bg-background scroll-mt-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-5 md:px-6">
         <div className="text-center mb-10 sm:mb-16">
           <h2 className="section-title text-primary mb-3 sm:mb-4" data-testid="text-faq-title">
