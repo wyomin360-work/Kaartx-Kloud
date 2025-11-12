@@ -80,10 +80,10 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
   ];
 
   const addons = [
-    { name: 'Custom domain & SSL', price: 10, availability: 'Starter, Growth — Included in Pro' },
-    { name: 'AI Insights Suite', price: 15, availability: 'All plans' },
-    { name: 'Extra marketplace instance', price: 20, availability: 'Growth, Pro' },
-    { name: 'Extra admin user (per seat)', price: 5, availability: 'All plans' },
+    { name: 'Custom domain & SSL', price: 10, availability: 'Starter, Growth — Included in Pro', comingSoon: false },
+    { name: 'AI Insights Suite', price: 15, availability: 'All plans', comingSoon: true },
+    { name: 'Extra marketplace instance', price: 20, availability: 'Growth, Pro', comingSoon: false },
+    { name: 'Extra admin user (per seat)', price: 5, availability: 'All plans', comingSoon: false },
   ];
 
   return (
