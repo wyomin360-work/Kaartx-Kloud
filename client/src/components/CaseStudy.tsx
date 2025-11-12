@@ -61,10 +61,10 @@ export default function CaseStudy() {
                     <Icon className="h-8 w-8 text-foreground/80" />
                   </div>
                   <div className="space-y-2">
-                    <div className="text-3xl sm:text-4xl font-black text-foreground tracking-tight" data-testid={`text-metric-value-${index}`}>
+                    <div className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight" data-testid={`text-metric-value-${index}`}>
                       {metric.value}
                     </div>
-                    <div className="text-lg font-bold text-foreground/90" data-testid={`text-metric-label-${index}`}>
+                    <div className="text-base font-semibold text-foreground/90" data-testid={`text-metric-label-${index}`}>
                       {metric.label}
                     </div>
                   </div>
