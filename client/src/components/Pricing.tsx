@@ -84,6 +84,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
     { name: 'AI Insights Suite', price: 15, availability: 'All plans', comingSoon: true },
     { name: 'Extra marketplace instance', price: 20, availability: 'Growth, Pro', comingSoon: false },
     { name: 'Extra admin user (per seat)', price: 5, availability: 'All plans', comingSoon: false },
+    { name: 'Extra sellers (per 100 sellers)', price: 5, availability: 'Growth, Pro — Available on request for Starter', comingSoon: false },
   ];
 
   return (
