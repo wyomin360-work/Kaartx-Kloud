@@ -349,7 +349,8 @@ export default function Careers() {
               </p>
               <Button
                 asChild
-                className="w-full sm:w-auto"
+                size="lg"
+                className="text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full sm:w-auto"
                 data-testid="button-join-kaartx"
               >
                 <a href="mailto:careers@kaartx.com">Join Kaartx Kloud</a>
