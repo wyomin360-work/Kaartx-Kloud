@@ -1,8 +1,10 @@
 import { Linkedin, Mail, Phone, Clock } from 'lucide-react';
 import { SiX } from 'react-icons/si';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 
 export default function Footer() {
+  const [location] = useLocation();
+
   const contactInfo = [
     {
       icon: Mail,
@@ -23,10 +25,16 @@ export default function Footer() {
       detail: 'Average response time'
     }
   ];
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  
+  const navigateToSection = (id: string) => {
+    if (location !== '/') {
+      window.location.href = `/#${id}`;
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', `#${id}`);
+      }
     }
   };
 
@@ -58,7 +66,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <button
-                  onClick={() => scrollToSection('features')}
+                  onClick={() => navigateToSection('features')}
                   className="text-muted-foreground hover:text-foreground transition-colors"
                   data-testid="link-footer-features"
                 >
@@ -67,7 +75,7 @@ export default function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() => scrollToSection('pricing')}
+                  onClick={() => navigateToSection('pricing')}
                   className="text-muted-foreground hover:text-foreground transition-colors"
                   data-testid="link-footer-pricing"
                 >
@@ -76,7 +84,7 @@ export default function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() => scrollToSection('integrations')}
+                  onClick={() => navigateToSection('integrations')}
                   className="text-muted-foreground hover:text-foreground transition-colors"
                   data-testid="link-footer-integrations"
                 >

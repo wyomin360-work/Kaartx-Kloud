@@ -1,18 +1,21 @@
 import { Link } from 'wouter';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SignupModal from '@/components/SignupModal';
 
 export default function KaartxVsCustomDev() {
+  const [signupModalOpen, setSignupModalOpen] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <Navbar onOpenSignup={() => setSignupModalOpen(true)} />
       <div className="mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-10 sm:pt-40 sm:pb-12 md:pt-48 md:pb-16" style={{ maxWidth: '700px' }}>
         <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8" data-testid="link-back-to-blog">
           <ArrowLeft className="h-4 w-4" />
@@ -163,6 +166,7 @@ export default function KaartxVsCustomDev() {
         </article>
       </div>
       <Footer />
+      <SignupModal open={signupModalOpen} onOpenChange={setSignupModalOpen} />
     </div>
   );
 }

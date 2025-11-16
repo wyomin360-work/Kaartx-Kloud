@@ -1,0 +1,112 @@
+Blog & Article Pages Navbar + Footer Navigation (No Login Work)
+
+Do NOT change any visual design, layout, spacing, fonts, or content.
+Do NOT change button labels or add/remove items.
+
+Only fix how the navbar and footer links behave on:
+
+The Blog listing page (/blog)
+
+All Blog article pages (e.g. /blog/launch-multi-vendor-marketplace-gcc, etc.)
+
+1. Navbar: Make links behave EXACTLY like on the home page
+
+The blog pages currently reload the home page but do not navigate to the correct sections.
+Fix this so that the navbar on all blog pages works exactly like the navbar on the home page.
+
+Navbar items we care about:
+
+Features
+
+Integrations
+
+Pricing
+
+FAQs
+
+Contact
+
+Get Started (primary button)
+
+✅ Ignore Login for now. Do not touch it.
+
+Requirements:
+
+When these links are clicked from /blog or any /blog/... article page:
+
+They should navigate to the same route + anchor or same route + section used on the home page.
+
+If the home page uses section IDs (e.g. /#features, /#pricing, /#integrations, etc.), reuse those — do not invent new IDs.
+
+The behavior must match the home page:
+
+If the home navbar does smooth scrolling on the same page, do the same.
+
+If it navigates via the router to a route with a hash (e.g. / → /#pricing), do the same from blog pages.
+
+Get Started:
+
+From blog pages, Get Started must navigate to the same “primary CTA” route as on the home page (e.g. /get-started or /contact or a signup page).
+
+Use exactly the same navigation logic as the home navbar.
+
+Implement this without duplicating logic:
+
+Reuse the same navigation helpers/router functions used on the home page navbar.
+
+The only goal is that clicking any navbar item on a blog page behaves identically to clicking it on the home page.
+
+2. Footer: Make links use the same navigation as the home page
+
+On the blog listing page and on all article pages, the footer is visually correct but the links don’t navigate properly.
+
+Do not change the footer design.
+Only fix link behavior.
+
+Product section
+
+Features → navigate to the same route/anchor as the home navbar “Features”.
+
+Pricing → same route/anchor as the home navbar “Pricing”.
+
+Integrations → same route/anchor as the home navbar “Integrations”.
+
+Company section
+
+About → same route/anchor as the home navbar “About” (if present).
+
+Blog → navigate to /blog (the blog listing page).
+
+⚠️ Important:
+
+Do NOT modify “Careers” at all (no routing work needed for now).
+
+Do NOT remove or rename any footer items.
+
+Just ensure the links above trigger the same navigation behavior as the corresponding navbar links on the home page.
+
+Technical notes
+
+Do NOT use dummy href="#" or reload the whole page unnecessarily.
+
+If the app uses a router (React Router, Next.js, etc.), use the same <Link> / navigation API as used in the home navbar.
+
+Ensure navigation works both from:
+
+/blog
+
+any /blog/... article page
+
+3. Keep everything else exactly the same
+
+No changes to typography, colors, shadows, spacing, or card design.
+
+No changes to blog content, article layout, or CTA copy.
+
+No changes to Login or Careers.
+
+The only change should be that:
+
+Navbar links on all blog pages (Features, Integrations, Pricing, FAQs, Contact, Get Started) behave identically to the home page navbar.
+
+Footer links for Features, Pricing, Integrations, About, and Blog behave identically to the home page equivalents.
