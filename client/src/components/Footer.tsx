@@ -1,5 +1,6 @@
 import { Linkedin, Mail, Phone, Clock } from 'lucide-react';
 import { SiX } from 'react-icons/si';
+import { Link } from 'wouter';
 
 export default function Footer() {
   const contactInfo = [
@@ -109,9 +110,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <button className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-blog">
+                <Link href="/blog" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-blog">
                   Blog
-                </button>
+                </Link>
               </li>
               <li>
                 <button className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-careers">
