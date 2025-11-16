@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/Home";
 import CreateMarketplace from "@/pages/CreateMarketplace";
 import Blog from "@/pages/Blog";
+import Careers from "@/pages/Careers";
 import LaunchMarketplaceGCC from "@/pages/articles/LaunchMarketplaceGCC";
 import KaartxVsCustomDev from "@/pages/articles/KaartxVsCustomDev";
 import MarketplaceMistakes from "@/pages/articles/MarketplaceMistakes";
@@ -19,6 +20,7 @@ function Router() {
       <Route path="/" component={Home}/>
       <Route path="/create-marketplace" component={CreateMarketplace}/>
       <Route path="/blog" component={Blog}/>
+      <Route path="/careers" component={Careers}/>
       <Route path="/blog/launch-multi-vendor-marketplace-gcc" component={LaunchMarketplaceGCC}/>
       <Route path="/blog/kaartx-kloud-vs-custom-development" component={KaartxVsCustomDev}/>
       <Route path="/blog/marketplace-mistakes-to-avoid" component={MarketplaceMistakes}/>

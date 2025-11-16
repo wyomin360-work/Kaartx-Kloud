@@ -130,9 +130,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <button className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-careers">
+                <Link href="/careers" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-careers">
                   Careers
-                </button>
+                </Link>
               </li>
             </ul>
           </div>

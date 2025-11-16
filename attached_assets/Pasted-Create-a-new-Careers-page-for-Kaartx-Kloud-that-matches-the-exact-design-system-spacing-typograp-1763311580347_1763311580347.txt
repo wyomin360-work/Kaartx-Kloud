@@ -1,0 +1,202 @@
+Create a new “Careers” page for Kaartx Kloud that matches the exact design system, spacing, typography, cards, buttons, and responsiveness of the current Kloud landing page.
+
+IMPORTANT:
+- Keep the SAME NAV BAR used on the Home page (including Login + Get Started).
+- Keep the SAME FOOTER used on the Home page.
+- Do NOT modify the navbar or footer design.
+- Do NOT modify the Home, Blog, or Article pages.
+- Only ADD the new Careers page with the content below.
+
+ROUTE:
+Create a new route: /careers
+Connect the existing Footer “Careers” link to this page.
+
+-------------------------------------
+SECTION 1 — HERO (Top Section)
+-------------------------------------
+Full-width hero section similar to the Blog Hero style.
+
+H1:
+“Build the future of marketplaces with Kaartx Kloud”
+
+Subtext:
+“We’re creating the GCC’s most powerful multi-vendor marketplace platform — and we’re looking for smart, driven people who want to build fast, own major outcomes, and grow with us.”
+
+Add centered CTA buttons:
+Primary button: “View Open Roles” (scrolls down to the Open Roles section)
+Secondary button (outline style): “Email Your CV” → mailto:careers@kaartx.com
+
+-------------------------------------
+SECTION 2 — FOUNDER’S NOTE (KAARTX TONE)
+-------------------------------------
+Centered card section with soft shadow, same style as the Blog article CTA card.
+
+Heading:
+“A message from our Founder”
+
+Text (keep spacing and line breaks exactly):
+
+“Kaartx didn’t start as a company — it started as a mission.
+
+A mission to build the GCC’s most advanced marketplace ecosystem, and to give entrepreneurs the tools I never had when I started.
+
+If you join us, you’re not becoming ‘an employee’.
+
+You’re becoming a builder of the backbone that powers businesses across the region.
+
+This journey is not easy. It’s fast, intense, and full of ownership.
+
+But if you’re someone who wants to do meaningful work and grow 10x in your career — Kaartx Kloud is the right place.
+
+— Mohammed Finaz, Founder & CEO”
+
+-------------------------------------
+SECTION 3 — WHY WORK AT KAARTX KLOUD
+-------------------------------------
+Section title (H2):
+“Why work at Kaartx Kloud”
+
+Create a 3 or 4-column responsive card grid (same card style as Features cards):
+
+Card 1:
+Title: “Work that actually matters”
+ Body: “Everything you build impacts sellers and brands across the GCC.”
+
+Card 2:
+Title: “Extreme ownership”
+ Body: “No micromanagement. You lead, you solve, you grow.”
+
+Card 3:
+Title: “Fast execution culture”
+ Body: “We move with startup speed — with high clarity and zero chaos.”
+
+Card 4:
+Title: “Global product from Oman”
+ Body: “We build for GCC, scale internationally.”
+
+Card 5:
+Title: “Learn 5x faster”
+ Body: “Work across product, tech, design, and growth.”
+
+Use same spacing and hover effect as blog cards.
+
+-------------------------------------
+SECTION 4 — KAARTX CULTURE CODE
+-------------------------------------
+Section title (H2):
+“Kaartx Culture Code”
+
+Bullet list (clean, spaced, same typography as FAQ bullets):
+
+- Be obsessed with sellers & customers  
+- Keep things simple  
+- Move fast without breaking trust  
+- Communicate clearly & respectfully  
+- Own the outcome, not just the task  
+- Build for scale  
+- Stay humble, stay hungry  
+
+-------------------------------------
+SECTION 5 — HOW WE WORK
+-------------------------------------
+Two-column layout (stack on mobile).
+
+Left Column (paragraph):
+“Kaartx Kloud is still early. That means high impact, high visibility, and plenty of messy, interesting problems. We care more about bias-to-action and ownership than big CV names.”
+
+Right Column (bullets):
+- Small, product-obsessed team — everyone ships.  
+- Remote-friendly (Oman, GCC, India).  
+- Async-first communication.  
+- Clear decisions, no politics.  
+- Simple, reliable solutions over over-engineering.  
+
+-------------------------------------
+SECTION 6 — OPEN ROLES
+-------------------------------------
+Section title (H2):
+“Open Roles”
+
+Small subtitle below:
+“These are our current priority hires. If you don’t see your exact fit, you can still send an application.”
+
+Create role cards using the SAME design style as the blog article cards.
+
+Role Card #1:
+Title: “Frontend Developer (React / Next.js)”
+Subtitle: “Muscat / Remote · Full-time”
+Description:
+“Build fast, smooth UIs for marketplace admins, sellers, and customers.”
+CTA: “Apply Now” → mailto:careers@kaartx.com?subject=Frontend%20Developer%20Application
+
+Role Card #2:
+Title: “Backend Developer (Node.js / MongoDB / APIs)”
+Subtitle: “Remote (GCC / India) · Full-time”
+Description:
+“Work on reliability, integrations, and scalable marketplace logic.”
+CTA: “Apply Now” → mailto:careers@kaartx.com?subject=Backend%20Developer%20Application
+
+Role Card #3:
+Title: “UI/UX Designer”
+Subtitle: “Remote · Full-time”
+Description:
+“Design clean, conversion-focused dashboards and landing pages.”
+CTA: “Apply Now” → mailto:careers@kaartx.com?subject=UIUX%20Designer%20Application
+
+Role Card #4:
+Title: “Customer Success Specialist”
+Subtitle: “Muscat / Remote · Full-time”
+Description:
+“Guide brands and sellers through onboarding and support.”
+CTA: “Apply Now” → mailto:careers@kaartx.com?subject=Customer%20Success%20Application
+
+Role Card #5:
+Title: “Business Development Executive”
+Subtitle: “Muscat · Full-time”
+Description:
+“Bring sellers, brands, and partnerships to Kaartx Kloud.”
+CTA: “Apply Now” → mailto:careers@kaartx.com?subject=Business%20Development%20Application
+
+-------------------------------------
+SECTION 7 — DON’T SEE YOUR ROLE?
+-------------------------------------
+Centered section:
+Title: “Don’t see a role that fits?”
+Text:
+“We’re always open to meeting smart people who want to build the future of GCC ecommerce.”
+Button:
+“Send an Open Application” → mailto:careers@kaartx.com?subject=Open%20Application
+
+-------------------------------------
+SECTION 8 — FINAL CTA SECTION
+-------------------------------------
+Match the Blog Article CTA design style.
+
+Heading:
+“Ready to build something meaningful?”
+
+Paragraph:
+“Join a team that’s shaping the GCC’s marketplace ecosystem from the ground up.”
+
+Button:
+“Join Kaartx Kloud” → mailto:careers@kaartx.com
+
+-------------------------------------
+NAVBAR & FOOTER
+-------------------------------------
+- Use the SAME NAVBAR from the Home page (including Login + Get Started).
+- Use the SAME FOOTER from the Home page.
+- All navigation links must behave EXACTLY as the home page (scroll to sections).
+- Do NOT create any new buttons or links.
+- Ensure the Careers page fully inherits spacing, container width, and breakpoints.
+
+-------------------------------------
+RESPONSIVE RULES
+-------------------------------------
+- On desktop: proper multi-column layout.
+- On mobile: stack sections vertically with consistent spacing.
+- Cards must remain equal-height where applicable.
+
+-------------------------------------
+DO NOT CHANGE ANY EXISTING PAGE.
+Only add the new fully designed Careers page.
