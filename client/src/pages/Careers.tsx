@@ -128,7 +128,7 @@ export default function Careers() {
               <Button
                 onClick={scrollToRoles}
                 size="lg"
-                className="text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full sm:w-auto"
+                className="shadow-playful group text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full sm:w-auto"
                 data-testid="button-view-roles"
               >
                 View Open Roles
@@ -137,7 +137,7 @@ export default function Careers() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full sm:w-auto"
+                className="backdrop-blur-sm text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full sm:w-auto"
                 data-testid="button-email-cv"
               >
                 <a href="mailto:careers@kaartx.com">Email Your CV</a>
@@ -293,7 +293,7 @@ export default function Careers() {
                     <Button
                       asChild
                       size="lg"
-                      className="w-full mt-auto text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform"
+                      className="shadow-playful group w-full mt-auto text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform"
                       data-testid={`button-apply-${index}`}
                     >
                       <a href={`mailto:careers@kaartx.com?subject=${role.subject}`}>
@@ -321,7 +321,7 @@ export default function Careers() {
             variant="outline"
             size="lg"
             asChild
-            className="text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full sm:w-auto"
+            className="backdrop-blur-sm text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full sm:w-auto"
             data-testid="button-open-application"
           >
             <a href="mailto:careers@kaartx.com?subject=Open%20Application">
@@ -350,7 +350,7 @@ export default function Careers() {
               <Button
                 asChild
                 size="lg"
-                className="text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full sm:w-auto"
+                className="shadow-playful group text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full sm:w-auto"
                 data-testid="button-join-kaartx"
               >
                 <a href="mailto:careers@kaartx.com">Join Kaartx Kloud</a>
