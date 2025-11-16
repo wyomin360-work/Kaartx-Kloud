@@ -344,7 +344,6 @@ export default function Careers() {
                 Join a team that's shaping the GCC's marketplace ecosystem from the ground up.
               </p>
               <Button
-                size="lg"
                 asChild
                 className="w-full sm:w-auto"
                 data-testid="button-join-kaartx"
