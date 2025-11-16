@@ -10,21 +10,22 @@ export default function LaunchMarketplaceGCC() {
 
   return (
     <div className="min-h-screen bg-background">
-      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16" style={{ maxWidth: '700px' }}>
         <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8" data-testid="link-back-to-blog">
           <ArrowLeft className="h-4 w-4" />
           Back to all articles
         </Link>
 
-        <h1 className="section-title text-foreground mb-4 tracking-tight" data-testid="text-article-title">
-          How to launch a multi-vendor marketplace in the GCC
-        </h1>
+        <article>
+          <h1 className="section-title text-foreground mb-5 tracking-tight" data-testid="text-article-title">
+            How to launch a multi-vendor marketplace in the GCC
+          </h1>
 
-        <p className="text-sm text-muted-foreground mb-8" data-testid="text-article-meta">
-          Launching · 8 min read
-        </p>
+          <p className="text-sm text-muted-foreground mb-6" data-testid="text-article-meta">
+            Launching · 8 min read
+          </p>
 
-        <div className="prose prose-lg max-w-none">
+          <div className="prose prose-lg max-w-none">
           <p className="text-lg text-foreground leading-relaxed mb-8">
             Launching a full-scale marketplace in Oman, UAE, or the wider GCC doesn't have to take 18 months and a huge engineering team. In this guide, we'll walk through the fastest and most cost-efficient way to launch a GCC-ready multi-vendor marketplace using a SaaS approach like Kaartx Kloud.
           </p>
@@ -186,7 +187,8 @@ export default function LaunchMarketplaceGCC() {
             </Button>
           </a>
         </div>
-      </article>
+        </article>
+      </div>
     </div>
   );
 }

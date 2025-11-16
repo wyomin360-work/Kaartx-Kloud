@@ -10,21 +10,22 @@ export default function KaartxVsCustomDev() {
 
   return (
     <div className="min-h-screen bg-background">
-      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16" style={{ maxWidth: '700px' }}>
         <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8" data-testid="link-back-to-blog">
           <ArrowLeft className="h-4 w-4" />
           Back to all articles
         </Link>
 
-        <h1 className="section-title text-foreground mb-4 tracking-tight" data-testid="text-article-title">
-          Kaartx Kloud vs custom development: what's faster and more affordable?
-        </h1>
+        <article>
+          <h1 className="section-title text-foreground mb-5 tracking-tight" data-testid="text-article-title">
+            Kaartx Kloud vs custom development: what's faster and more affordable?
+          </h1>
 
-        <p className="text-sm text-muted-foreground mb-8" data-testid="text-article-meta">
-          Technology · 7 min read
-        </p>
+          <p className="text-sm text-muted-foreground mb-6" data-testid="text-article-meta">
+            Technology · 7 min read
+          </p>
 
-        <div className="prose prose-lg max-w-none">
+          <div className="prose prose-lg max-w-none">
           <p className="text-lg text-foreground leading-relaxed mb-8">
             Every marketplace founder eventually faces the same decision: should we build our own platform from scratch, or launch with a SaaS product like Kaartx Kloud? This article compares both paths on time, cost, flexibility, and risk—so you can choose with a clear head.
           </p>
@@ -152,7 +153,8 @@ export default function KaartxVsCustomDev() {
             </Button>
           </a>
         </div>
-      </article>
+        </article>
+      </div>
     </div>
   );
 }
