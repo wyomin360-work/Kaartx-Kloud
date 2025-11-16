@@ -1,0 +1,55 @@
+Bullet & List Spacing (Article Page Only)
+
+Do NOT change any of the following:
+
+Do not change any text, wording, or content.
+
+Do not change fonts, font sizes, colors, or font weights.
+
+Do not change the page layout, widths, alignment, or CTA card design.
+
+Do not change spacing on the blog listing page — only this single article view.
+
+Fix only the vertical spacing around bullet lists to make them consistent and professional throughout the article.
+
+1. Make spacing between bullet items consistent
+
+For every bullet list in the article (under Step 1–Step 7 and any “Use this data to:” or similar sections), ensure:
+
+The vertical gap between one bullet item and the next is small and consistent (around the same as line-height, not big jumps).
+
+All lists use the same item spacing, so no list looks tighter or looser than the others.
+
+If you need a reference, use the Step 7 list as the standard and match all other lists to that spacing.
+
+2. Align spacing before and after each bullet list
+
+For every list in the article:
+
+The space above a list (between the preceding paragraph and the first bullet)
+should match the space below the list (between the last bullet and the next paragraph/heading) — or be very close.
+
+Make this margin look lighter than a full section break, but clearly separated from normal paragraph lines.
+
+Use the spacing under “Step 3 – Onboard a small group of 'hero sellers' first” as your visual reference and apply it consistently to all bullet groups.
+
+3. Keep section spacing and hierarchy intact
+
+Do not change the spacing between:
+
+Main step headings (Step 1, Step 2, etc.) and their first paragraph.
+
+The final CTA card and the text above it.
+
+Only adjust:
+
+Margin/padding inside <ul> / <li> lists, and
+
+The top/bottom margin of the list block relative to the text immediately before and after it.
+
+4. Scope
+
+Apply these bullet-spacing adjustments only on blog article pages (single-article template), not on other parts of the site.
+
+Ensure that after your changes, all bullet lists in this article look visually consistent:
+same item spacing, same top/bottom spacing, no random extra gaps.

@@ -49,7 +49,7 @@ export default function PayoutCycles() {
           <p className="text-foreground leading-relaxed mb-4">
             Instant payouts sound great in theory. But they create serious risks:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li><strong>Refund windows:</strong> If a customer returns a product after the seller has been paid, you're stuck covering the refund yourself</li>
             <li><strong>Chargebacks:</strong> Payment gateways can reverse transactions days or weeks later if fraud is detected</li>
             <li><strong>COD settlements:</strong> Cash-on-delivery orders need time to be collected, verified, and reconciled</li>
@@ -140,7 +140,7 @@ export default function PayoutCycles() {
           <p className="text-foreground leading-relaxed mb-4">
             Kaartx Kloud automates the entire flow:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li><strong>Configurable payout frequency:</strong> Set weekly, bi-weekly, or monthly cycles—or even custom frequencies per seller plan</li>
             <li><strong>Clear transaction history:</strong> Sellers see every order, commission deduction, refund, and payout in one dashboard</li>
             <li><strong>Automatic balance calculations:</strong> The system tracks what's pending, what's on hold, and what's ready to release</li>

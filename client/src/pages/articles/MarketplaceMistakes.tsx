@@ -39,7 +39,7 @@ export default function MarketplaceMistakes() {
           <p className="text-foreground leading-relaxed mb-4">
             Bad sellers lead to:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li>Poor product listings (blurry images, vague descriptions, wrong pricing)</li>
             <li>Delayed shipments and unfulfilled orders</li>
             <li>Higher refund and complaint rates</li>
@@ -51,7 +51,7 @@ export default function MarketplaceMistakes() {
           <p className="text-foreground leading-relaxed mb-4">
             Set minimum standards before a seller goes live:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li><strong>KYC verification:</strong> Valid business registration, tax ID, contact details</li>
             <li><strong>Sample product review:</strong> Check at least 3–5 listings for quality before approval</li>
             <li><strong>Fulfilment capability:</strong> Confirm they can ship within your service areas</li>
@@ -70,7 +70,7 @@ export default function MarketplaceMistakes() {
           <p className="text-foreground leading-relaxed mb-4">
             We've seen marketplaces where:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li>Sellers wait 30+ days without updates</li>
             <li>Manual payout processing causes random delays</li>
             <li>No transparency into what's been paid vs what's pending</li>
@@ -84,7 +84,7 @@ export default function MarketplaceMistakes() {
           <p className="text-foreground leading-relaxed mb-4">
             Define a predictable payout cycle and stick to it:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li><strong>Standard cycle:</strong> Every 12–14 days is common in GCC markets</li>
             <li><strong>Transparent statements:</strong> Show sellers exactly what's being paid and what's on hold</li>
             <li><strong>Automation:</strong> Use a platform that automatically calculates and releases payouts</li>
@@ -103,7 +103,7 @@ export default function MarketplaceMistakes() {
           <p className="text-foreground leading-relaxed mb-4">
             Common problems:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li>Buyers complain about delayed shipments, but sellers claim they shipped on time</li>
             <li>Sellers ask when they'll get paid, but no one has visibility</li>
             <li>WhatsApp becomes the dumping ground for every issue</li>
@@ -114,7 +114,7 @@ export default function MarketplaceMistakes() {
           <p className="text-foreground leading-relaxed mb-4">
             Set up structured support from day one:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li><strong>Centralised ticketing:</strong> Use a system where all support requests are tracked and assigned</li>
             <li><strong>Clear SLAs:</strong> Define response times (e.g. 24 hours for seller queries, 48 hours for refunds)</li>
             <li><strong>Self-service portals:</strong> Let sellers check order statuses, payouts, and analytics themselves</li>
@@ -130,7 +130,7 @@ export default function MarketplaceMistakes() {
           <p className="text-foreground leading-relaxed mb-4">
             Many founders run their marketplace by feel instead of numbers. They don't track:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li>Which sellers consistently deliver on time</li>
             <li>Why orders get cancelled or refunded</li>
             <li>Which categories have the highest repeat purchase rates</li>
@@ -145,7 +145,7 @@ export default function MarketplaceMistakes() {
           <p className="text-foreground leading-relaxed mb-4">
             Use dashboards to track performance in real time:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li><strong>Seller performance:</strong> On-time delivery rates, refund rates, average order value</li>
             <li><strong>Category insights:</strong> Which products sell best, which have highest returns</li>
             <li><strong>Customer behavior:</strong> Repeat purchase rate, cart abandonment, payment failures</li>
@@ -170,7 +170,7 @@ export default function MarketplaceMistakes() {
           <p className="text-foreground leading-relaxed mb-4">
             Start focused, then expand based on demand:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li><strong>Pick 1–3 core categories</strong> where you can achieve real depth (e.g. "GCC fashion marketplace" not "everything marketplace")</li>
             <li><strong>Onboard enough sellers</strong> in those categories to give customers meaningful choice</li>
             <li><strong>Prove the model works</strong> with strong repeat purchase and seller retention</li>

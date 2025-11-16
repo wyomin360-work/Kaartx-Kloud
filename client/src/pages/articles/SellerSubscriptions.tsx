@@ -39,7 +39,7 @@ export default function SellerSubscriptions() {
           <p className="text-foreground leading-relaxed mb-4">
             The idea makes sense at first. It filters out non-serious sellers and brings in some early cash. But it creates two problems:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li><strong>Friction at signup:</strong> Serious sellers hesitate to pay a large upfront fee before seeing value</li>
             <li><strong>No recurring income:</strong> Once they've paid, you don't make any more money from them unless they sell products (and you take commission)</li>
           </ul>
@@ -56,7 +56,7 @@ export default function SellerSubscriptions() {
           <p className="text-foreground leading-relaxed mb-4">
             This gives you:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li><strong>Monthly recurring revenue (MRR)</strong> that's predictable and independent of order volume</li>
             <li><strong>Easier forecasting:</strong> You know how much income you'll have next month based on active sellers</li>
             <li><strong>Lower signup friction:</strong> OMR 15/month feels more approachable than OMR 500 upfront</li>
@@ -76,7 +76,7 @@ export default function SellerSubscriptions() {
           <p className="text-foreground leading-relaxed mb-2 font-semibold">
             Starter Plan – OMR 10–15/month
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li>Up to 50 product listings</li>
             <li>Basic analytics dashboard</li>
             <li>Standard support (48-hour response)</li>
@@ -89,7 +89,7 @@ export default function SellerSubscriptions() {
           <p className="text-foreground leading-relaxed mb-2 mt-6 font-semibold">
             Growth Plan – OMR 25–35/month
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li>Up to 250 product listings</li>
             <li>Advanced analytics (conversion rates, top products, traffic sources)</li>
             <li>Priority support (24-hour response)</li>
@@ -103,7 +103,7 @@ export default function SellerSubscriptions() {
           <p className="text-foreground leading-relaxed mb-2 mt-6 font-semibold">
             Pro Plan – OMR 50–75/month
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li>Unlimited product listings</li>
             <li>Full analytics suite with custom reports</li>
             <li>Dedicated account manager</li>
@@ -123,7 +123,7 @@ export default function SellerSubscriptions() {
           <p className="text-foreground leading-relaxed mb-4">
             You'll end up:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li>Chasing sellers via WhatsApp for overdue payments</li>
             <li>Manually pausing accounts when subscriptions lapse</li>
             <li>Sending invoices one by one</li>
@@ -132,7 +132,7 @@ export default function SellerSubscriptions() {
           <p className="text-foreground leading-relaxed mb-4">
             Automated billing solves this completely:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li><strong>Auto-renewal:</strong> Charges sellers' saved payment methods every month without manual work</li>
             <li><strong>Payment reminders:</strong> Automatic emails/SMS before the billing date</li>
             <li><strong>Graceful suspension:</strong> If payment fails, the system pauses their listings until they update their card</li>
@@ -148,7 +148,7 @@ export default function SellerSubscriptions() {
           <p className="text-foreground leading-relaxed mb-4">
             Kaartx Kloud is built with subscription billing at its core:
           </p>
-          <ul className="list-disc pl-6 mb-6 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
             <li><strong>Built-in monthly/yearly billing cycles:</strong> You define the plans, the system handles the rest</li>
             <li><strong>Auto-renewal with saved cards:</strong> Sellers enter their payment details once, and renewals happen automatically</li>
             <li><strong>Clear seller dashboards:</strong> Every seller can see their current plan, next billing date, and past invoices</li>
