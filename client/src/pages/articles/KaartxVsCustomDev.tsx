@@ -143,10 +143,10 @@ export default function KaartxVsCustomDev() {
         <div className="mt-20 mb-16 mx-auto" style={{ maxWidth: '960px' }}>
           <div className="py-12 px-16 bg-gradient-to-br from-[#F7F9FC] to-white rounded-3xl" style={{ boxShadow: '0px 4px 40px rgba(0, 0, 0, 0.06)' }}>
             <h3 className="text-4xl font-bold text-foreground mb-4 text-center">
-              Launch your GCC marketplace<br />faster with Kaartx Kloud
+              Skip custom development. Launch on Kaartx Kloud.
             </h3>
             <p className="text-lg text-foreground leading-relaxed mb-6 mx-auto" style={{ maxWidth: '640px', textAlign: 'center' }}>
-              Kaartx Kloud gives you seller onboarding, subscription billing, payouts, and GCC-ready integrations out of the box—so you can focus on growth, not infrastructure.
+              Custom builds drain time and money. Kaartx Kloud gives you a complete marketplace infrastructure—so you launch faster, reduce risk, and scale with confidence.
             </p>
             <div className="flex justify-center mt-8">
               <a href="/#booking">
