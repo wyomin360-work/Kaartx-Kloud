@@ -127,7 +127,7 @@ export default function Careers() {
             <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 justify-center items-center">
               <Button
                 onClick={scrollToRoles}
-                className="w-full sm:w-auto min-w-[220px] px-8 text-base sm:text-lg font-semibold"
+                className="w-full sm:w-auto min-w-[220px] px-8"
                 data-testid="button-view-roles"
               >
                 View Open Roles
@@ -135,7 +135,7 @@ export default function Careers() {
               <Button
                 variant="outline"
                 asChild
-                className="w-full sm:w-auto min-w-[220px] px-8 text-base sm:text-lg font-semibold"
+                className="w-full sm:w-auto min-w-[220px] px-8"
                 data-testid="button-email-cv"
               >
                 <a href="mailto:careers@kaartx.com">Email Your CV</a>
