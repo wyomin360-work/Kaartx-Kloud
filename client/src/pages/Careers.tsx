@@ -319,8 +319,9 @@ export default function Careers() {
           </p>
           <Button
             variant="outline"
+            size="lg"
             asChild
-            className="w-full sm:w-auto"
+            className="text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full sm:w-auto"
             data-testid="button-open-application"
           >
             <a href="mailto:careers@kaartx.com?subject=Open%20Application">
