@@ -3,6 +3,8 @@ import { Card } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useEffect } from 'react';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 export default function Blog() {
   const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
@@ -42,8 +44,9 @@ export default function Blog() {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar />
       {/* Hero Section */}
-      <section className="py-16 sm:py-24 md:py-32 bg-background">
+      <section className="pt-32 pb-16 sm:pt-40 sm:pb-24 md:pt-48 md:pb-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={titleAnimation.ref}
@@ -96,6 +99,7 @@ export default function Blog() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

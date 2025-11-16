@@ -1,0 +1,133 @@
+Add Navbar & Footer to All Blog Pages
+
+Do NOT write any new marketing copy or change any visual design.
+Reuse the existing layout from the Kaartx Kloud landing page.
+
+1. Goal
+
+Make the Blog listing page and all individual Blog article pages use the same top navbar and bottom footer as the main Kloud marketing pages.
+
+This should look and behave like a normal product page on the site, not like a separate “standalone” template.
+
+2. Reuse the existing Navbar
+
+Find the existing navbar component that is already used on the main Kloud pages
+(the one with: logo, Features, Integrations, Pricing, FAQs, Contact, Login, Get Started).
+
+Blog listing page (the page that shows the 5 article cards under
+“Insights for marketplace founders”):
+
+Add this same navbar at the very top of the page.
+
+It should appear above the “Insights for marketplace founders” heading.
+
+Make sure the Blog link in the navbar (if present) is styled the same as other items;
+no special “active” styling is required.
+
+Individual article pages (the pages opened when clicking “Read article”):
+
+Add the exact same navbar at the very top of each article page.
+
+It should appear above the back link (“← Back to all articles”) and the article title.
+
+Keep spacing consistent with how the navbar sits above headings on the main landing page
+(a comfortable vertical gap, not too large).
+
+Do not change:
+
+Navbar colors, fonts, logo, or menu items.
+
+Mobile behaviour (hamburger / responsive menu).
+Just reuse the existing component/layout.
+
+3. Reuse the existing Footer
+
+Find the existing footer component used on the main Kloud marketing page
+(with columns like: Kloud, Product, Company, etc., and the Blog link already in it).
+
+Blog listing page:
+
+Add the same footer at the bottom of the page, after the grid of 5 article cards.
+
+The vertical spacing above the footer should match other pages
+(a normal section gap, not an extra-large blank space).
+
+Individual article pages:
+
+Add the same footer at the very bottom of each article page, after the final CTA section
+(the “Launch your GCC marketplace faster with Kaartx Kloud” style box).
+
+Maintain a consistent vertical gap between the CTA card and the footer,
+similar to the gap between the last section and footer on the main page.
+
+Do not:
+
+Edit any footer text, links, or layout.
+
+Change the Blog link URL (it should still point to the Blog listing page).
+
+4. Routing / Behaviour Requirements
+
+When the user clicks “Blog” in the footer or navbar:
+
+They should be taken to the Blog listing page.
+
+The page must load from the very top, showing the navbar and
+“Insights for marketplace founders” at the top (no auto-scroll into the cards).
+
+When the user clicks “Read article” on any card:
+
+Open the corresponding article page with:
+
+Navbar at the top
+
+Back link (“← Back to all articles”)
+
+Article title, meta info (category + read time), and content
+
+Final CTA block
+
+Footer at the bottom
+
+The Back to all articles link should always return to the Blog listing page,
+and that page should again show from the top (navbar + intro + cards).
+
+5. Spacing & Style Rules
+
+Keep all typography, colors, card designs, and CTA design exactly as they are now.
+
+Only adjust vertical spacing if necessary to:
+
+Add a normal gap between navbar and page heading.
+
+Add a normal gap between last content/CTA and the footer.
+
+Do not change:
+
+Line heights
+
+Font sizes
+
+Card shadows or gradients
+
+CTA card styling
+
+6. Summary of Implementation
+
+Reuse the existing global navbar and global footer components.
+
+Apply them to:
+
+Blog listing page (top + bottom)
+
+All blog article pages (top + bottom)
+
+Ensure routing:
+
+Blog → Blog listing page (start at top)
+
+Read article → Article page with navbar + footer
+
+Back to all articles → Blog listing page (start at top)
+
+Make no other design or content changes beyond wiring in the navbar/footer and minimal spacing so everything feels consistent with the rest of the Kaartx Kloud site.

@@ -2,6 +2,8 @@ import { Link } from 'wouter';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect } from 'react';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 export default function LaunchMarketplaceGCC() {
   useEffect(() => {
@@ -10,7 +12,8 @@ export default function LaunchMarketplaceGCC() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16" style={{ maxWidth: '700px' }}>
+      <Navbar />
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-10 sm:pt-40 sm:pb-12 md:pt-48 md:pb-16" style={{ maxWidth: '700px' }}>
         <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8" data-testid="link-back-to-blog">
           <ArrowLeft className="h-4 w-4" />
           Back to all articles
@@ -193,6 +196,7 @@ export default function LaunchMarketplaceGCC() {
         </div>
         </article>
       </div>
+      <Footer />
     </div>
   );
 }
