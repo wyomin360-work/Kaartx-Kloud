@@ -45,6 +45,13 @@ export default function Footer() {
     }
   };
 
+  const handleCareersClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (location === '/careers') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer id="contact" className="scroll-mt-20 border-t border-border bg-card/30">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 py-12">
@@ -130,7 +137,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/careers" className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-careers">
+                <Link href="/careers" onClick={handleCareersClick} className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-careers">
                   Careers
                 </Link>
               </li>
