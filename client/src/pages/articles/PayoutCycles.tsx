@@ -151,18 +151,22 @@ export default function PayoutCycles() {
           </p>
         </div>
 
-        <div className="mt-16 p-8 bg-card rounded-2xl border-2">
-          <h3 className="text-2xl font-bold text-foreground mb-4">
-            Get payout cycles right from the start
-          </h3>
-          <p className="text-foreground leading-relaxed mb-6">
-            Define your payout policy clearly, configure it in Kaartx Kloud, and let automation handle the rest. Your sellers will trust you more, and your finance team will thank you.
-          </p>
-          <a href="/#booking">
-            <Button size="lg" className="font-semibold" data-testid="button-learn-more-payouts">
-              Learn more about payouts in Kaartx Kloud
-            </Button>
-          </a>
+        <div className="mt-20 mb-16 mx-auto" style={{ maxWidth: '960px' }}>
+          <div className="py-12 px-16 bg-gradient-to-br from-[#F7F9FC] to-white rounded-3xl" style={{ boxShadow: '0px 4px 40px rgba(0, 0, 0, 0.06)' }}>
+            <h3 className="text-4xl font-bold text-foreground mb-4 text-center">
+              Launch your GCC marketplace faster with Kaartx Kloud
+            </h3>
+            <p className="text-lg text-foreground leading-relaxed mb-6 mx-auto" style={{ maxWidth: '640px', textAlign: 'center' }}>
+              Kaartx Kloud gives you seller onboarding, subscription billing, payouts, and GCC-ready integrations out of the box—so you can focus on growth, not infrastructure.
+            </p>
+            <div className="flex justify-center mt-8">
+              <a href="/#booking">
+                <Button size="lg" className="font-semibold text-lg h-[52px] px-8" data-testid="button-get-started">
+                  Get Started with Kaartx Kloud
+                </Button>
+              </a>
+            </div>
+          </div>
         </div>
         </article>
       </div>

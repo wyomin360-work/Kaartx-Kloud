@@ -174,18 +174,22 @@ export default function LaunchMarketplaceGCC() {
           </ul>
         </div>
 
-        <div className="mt-16 p-8 bg-card rounded-2xl border-2">
-          <h3 className="text-2xl font-bold text-foreground mb-4">
-            Ready to launch your GCC marketplace faster?
-          </h3>
-          <p className="text-foreground leading-relaxed mb-6">
-            Kaartx Kloud gives you seller onboarding, subscription billing, payouts, and GCC-ready integrations out of the box—so you can focus on growth, not infrastructure.
-          </p>
-          <a href="/#booking">
-            <Button size="lg" className="font-semibold" data-testid="button-get-started">
-              Get Started with Kaartx Kloud
-            </Button>
-          </a>
+        <div className="mt-20 mb-16 mx-auto" style={{ maxWidth: '960px' }}>
+          <div className="py-12 px-16 bg-gradient-to-br from-[#F7F9FC] to-white rounded-3xl" style={{ boxShadow: '0px 4px 40px rgba(0, 0, 0, 0.06)' }}>
+            <h3 className="text-4xl font-bold text-foreground mb-4 text-center">
+              Launch your GCC marketplace faster with Kaartx Kloud
+            </h3>
+            <p className="text-lg text-foreground leading-relaxed mb-6 mx-auto" style={{ maxWidth: '640px', textAlign: 'center' }}>
+              Kaartx Kloud gives you seller onboarding, subscription billing, payouts, and GCC-ready integrations out of the box—so you can focus on growth, not infrastructure.
+            </p>
+            <div className="flex justify-center mt-8">
+              <a href="/#booking">
+                <Button size="lg" className="font-semibold text-lg h-[52px] px-8" data-testid="button-get-started">
+                  Get Started with Kaartx Kloud
+                </Button>
+              </a>
+            </div>
+          </div>
         </div>
         </article>
       </div>

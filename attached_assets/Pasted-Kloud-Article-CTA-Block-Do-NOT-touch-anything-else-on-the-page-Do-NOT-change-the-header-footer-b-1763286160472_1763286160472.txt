@@ -1,0 +1,112 @@
+Kloud Article CTA Block
+
+Do NOT touch anything else on the page.
+Do NOT change the header, footer, blog layout, or article content structure.
+
+Only update the final CTA section that currently looks like this:
+
+“Ready to launch your GCC marketplace faster?”
+[Kaartx Kloud gives you seller onboarding… not infrastructure.]
+[Get Started with Kaartx Kloud button]
+
+1️⃣ Content changes (text only inside the CTA)
+
+Replace the existing CTA texts with:
+
+Heading:
+Launch your GCC marketplace faster with Kaartx Kloud
+
+Sub-text (body):
+Kaartx Kloud gives you seller onboarding, subscription billing, payouts, and GCC-ready integrations out of the box—so you can focus on growth, not infrastructure.
+
+Button text:
+Keep the button label as:
+Get Started with Kaartx Kloud
+
+Do not change the button link / URL or behavior, only the label and visual style as described below.
+
+2️⃣ Visual design & layout for the CTA card
+
+Turn this section into a more premium, professional CTA card that matches the design language of the Kloud landing page.
+
+Apply these changes only to this CTA block:
+
+Card container
+
+Keep it centered on the page.
+
+Set a max-width of about 900–960px so it doesn’t stretch too wide.
+
+Add generous padding:
+padding-top/bottom ≈ 48px
+padding-left/right ≈ 64px
+
+Use rounded corners: border-radius ≈ 24px.
+
+Give it a soft light gradient background similar to the feature cards on the main Kloud page, e.g.:
+
+From #F7F9FC to #FFFFFF (top-to-bottom or left-to-right).
+
+Add a soft shadow for a premium card look, e.g.:
+
+box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.06);
+
+Heading styling (inside the CTA)
+
+Center or left-align (choose whichever matches the rest of the article styling, but keep it consistent).
+
+Font weight: bold / 700.
+
+Font size: around 32–36px on desktop.
+
+Add a little space below the heading:
+margin-bottom ≈ 12–16px.
+
+Sub-text styling
+
+Single paragraph under the heading.
+
+Font size: around 18px.
+
+Normal weight (400).
+
+Line-height comfortable for reading (around 1.5).
+
+Limit width so the text doesn’t stretch too far (if needed, max-width ~640px, centered or left-aligned).
+
+Button styling
+
+Button should visually match the main Kloud primary button style (same color, font, and corner radius as other primary buttons like “Get Started”).
+
+Increase the size slightly so it feels like a strong primary action:
+
+Height: around 52px.
+
+Horizontal padding: around 0 32px.
+
+Font size: about 18px, medium or semi-bold.
+
+Place the button under the text with spacing:
+margin-top ≈ 24px.
+
+Keep the button centered under the text if the card is centered.
+
+Spacing around the CTA card
+
+Keep enough top margin between the last article content and this CTA card (around 64–80px).
+
+Keep enough bottom margin between the CTA and page end (around 64px).
+
+Do NOT change spacing for any other sections on the page.
+
+3️⃣ What NOT to change
+
+Do NOT modify any other cards, headings, or sections in the blog or article pages.
+
+Do NOT change fonts globally, only adjust sizes/weights within this CTA block if necessary.
+
+Do NOT change colors of the site header, footer, or other buttons outside this CTA.
+
+Do NOT alter the article text, “Back to all articles” link, or reading-time label.
+
+The goal is only to make this final CTA section look like a premium, centered, gradient card that feels consistent with the main Kloud landing page design, with the updated heading and subtext provided above.
