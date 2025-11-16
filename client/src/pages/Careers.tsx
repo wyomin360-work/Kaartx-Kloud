@@ -292,7 +292,8 @@ export default function Careers() {
                     </div>
                     <Button
                       asChild
-                      className="w-full mt-auto"
+                      size="lg"
+                      className="w-full mt-auto text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform"
                       data-testid={`button-apply-${index}`}
                     >
                       <a href={`mailto:careers@kaartx.com?subject=${role.subject}`}>
