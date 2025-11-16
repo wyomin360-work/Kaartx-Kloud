@@ -52,7 +52,7 @@ export default function KaartxVsCustomDev() {
           <p className="text-foreground leading-relaxed mb-4">
             Strip away the noise, and every multi-vendor marketplace needs the same core workflows:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li><strong>Seller onboarding:</strong> Applications, approvals, KYC verification</li>
             <li><strong>Product listing flows:</strong> Categories, attributes, variants, SKUs, moderation</li>
             <li><strong>Order management:</strong> Processing, fulfillment tracking, returns, refunds</li>
@@ -73,7 +73,7 @@ export default function KaartxVsCustomDev() {
           <p className="text-foreground leading-relaxed mb-4">
             Instead of spending 12–18 months building, you configure what's already there:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li><strong>Seller onboarding workflows</strong> with KYC, document uploads, and approvals</li>
             <li><strong>Subscription & commission models</strong> built in—monthly seller plans, percentage-based commissions, or hybrid</li>
             <li><strong>Payout cycles</strong> you can configure (weekly, bi-weekly, monthly) without writing custom code</li>
@@ -95,7 +95,7 @@ export default function KaartxVsCustomDev() {
           <p className="text-foreground leading-relaxed mb-4">
             For the remaining 10–20% of edge cases, modern SaaS platforms offer:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li><strong>Add-ons and plugins</strong> for specific features</li>
             <li><strong>APIs and webhooks</strong> to integrate custom tools</li>
             <li><strong>Custom development options</strong> if you truly outgrow the platform</li>
@@ -110,7 +110,7 @@ export default function KaartxVsCustomDev() {
           <p className="text-foreground leading-relaxed mb-4">
             With custom development, you're assembling a dozen services yourself:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li>Payment gateway integrations</li>
             <li>SMS and email providers</li>
             <li>Hosting and infrastructure</li>
@@ -130,7 +130,7 @@ export default function KaartxVsCustomDev() {
           <p className="text-foreground leading-relaxed mb-4">
             We're not saying SaaS is always the answer. Custom builds make sense when:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li>You have an <strong>extremely unique use case</strong> that standard marketplaces can't handle</li>
             <li>You're building in a <strong>heavily regulated niche</strong> with non-standard compliance needs</li>
             <li>You have a <strong>large in-house engineering team</strong> and 12+ months to invest before revenue</li>

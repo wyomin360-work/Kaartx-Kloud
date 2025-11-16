@@ -36,7 +36,7 @@ export default function LaunchMarketplaceGCC() {
           <p className="text-foreground leading-relaxed mb-4">
             Before you touch any tech, define your model clearly:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li><strong>Category focus:</strong> Fashion, beauty, electronics, grocery, or all-in-one?</li>
             <li><strong>Geo focus:</strong> Oman only, GCC-wide, or specific cities?</li>
             <li><strong>Fulfilment model:</strong> FBM (fulfilled by merchants), FBK (fulfilled by Kaartx/you), or a mix?</li>
@@ -52,7 +52,7 @@ export default function LaunchMarketplaceGCC() {
           <p className="text-foreground leading-relaxed mb-4">
             Most founders lose a year building from scratch:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li>Hiring dev agencies</li>
             <li>Managing endless revisions</li>
             <li>Rebuilding features other marketplaces already solved</li>
@@ -60,7 +60,7 @@ export default function LaunchMarketplaceGCC() {
           <p className="text-foreground leading-relaxed mb-4">
             A SaaS marketplace platform like Kaartx Kloud gives you:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li>Ready-made seller onboarding & approvals</li>
             <li>Product listing workflows with variants, SKUs, and quality checks</li>
             <li>Built-in subscriptions and payout cycles</li>
@@ -79,7 +79,7 @@ export default function LaunchMarketplaceGCC() {
           <p className="text-foreground leading-relaxed mb-4">
             Look for:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li>Strong existing catalogues (good images, descriptions, pricing)</li>
             <li>Reasonable fulfilment capability (they can ship on time)</li>
             <li>Willingness to follow your marketplace standards</li>
@@ -87,7 +87,7 @@ export default function LaunchMarketplaceGCC() {
           <p className="text-foreground leading-relaxed mb-4">
             Use Kaartx Kloud's seller management tools to:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li>Invite them to your seller portal.</li>
             <li>Verify their details (KYC, documents, brand licenses).</li>
             <li>Set clear subscription plans and payout rules.</li>
@@ -103,7 +103,7 @@ export default function LaunchMarketplaceGCC() {
           <p className="text-foreground leading-relaxed mb-4">
             A practical structure for GCC marketplaces is:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li>Default payout every 12–14 days</li>
             <li>Clear holding periods for COD or high-risk categories</li>
             <li>Transparent payout statements visible to each seller</li>
@@ -111,7 +111,7 @@ export default function LaunchMarketplaceGCC() {
           <p className="text-foreground leading-relaxed mb-4">
             With a platform like Kaartx Kloud, you can configure:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li>Payout frequency (e.g. every 12 days)</li>
             <li>Minimum payout amount</li>
             <li>Merchant-level rules (some sellers can be weekly, others monthly)</li>
@@ -129,7 +129,7 @@ export default function LaunchMarketplaceGCC() {
           <p className="text-foreground leading-relaxed mb-4">
             Put in place:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li>Title guidelines (character limits, no spammy keywords)</li>
             <li>Mandatory attributes (brand, size, color, fabric, etc.)</li>
             <li>Image rules (plain backgrounds, minimum resolution, no watermarks)</li>
@@ -145,7 +145,7 @@ export default function LaunchMarketplaceGCC() {
           <p className="text-foreground leading-relaxed mb-4">
             Instead of a huge launch announcement, do a soft launch:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li>Open the marketplace to a small circle of real customers.</li>
             <li>Test the full journey: sign-up → browse → add to cart → pay → fulfillment → payout.</li>
             <li>Log every issue: missing notifications, confusing statuses, slow seller response.</li>
@@ -158,7 +158,7 @@ export default function LaunchMarketplaceGCC() {
           <p className="text-foreground leading-relaxed mb-4">
             Once orders start flowing, watch:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li>Top-selling categories and brands</li>
             <li>Sellers with best fulfilment performance</li>
             <li>Abandoned carts and failed payments</li>
@@ -167,7 +167,7 @@ export default function LaunchMarketplaceGCC() {
           <p className="text-foreground leading-relaxed mb-4">
             Use this data to:
           </p>
-          <ul className="list-disc pl-6 mb-4 space-y-2 text-foreground">
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
             <li>Decide which new sellers to onboard</li>
             <li>Negotiate better shipping or payment rates</li>
             <li>Prioritise features (e.g. COD, express delivery, loyalty)</li>
