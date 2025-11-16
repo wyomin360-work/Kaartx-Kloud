@@ -128,7 +128,7 @@ export default function Careers() {
               <Button
                 onClick={scrollToRoles}
                 size="lg"
-                className="shadow-playful group text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full sm:w-auto"
+                className="shadow-playful group text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full max-w-80"
                 data-testid="button-view-roles"
               >
                 View Open Roles
@@ -137,7 +137,7 @@ export default function Careers() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="backdrop-blur-sm text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full sm:w-auto"
+                className="backdrop-blur-sm text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full max-w-80"
                 data-testid="button-email-cv"
               >
                 <a href="mailto:careers@kaartx.com">Email Your CV</a>
@@ -293,7 +293,7 @@ export default function Careers() {
                     <Button
                       asChild
                       size="lg"
-                      className="shadow-playful group w-full mt-auto text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform"
+                      className="shadow-playful group w-full max-w-80 mx-auto mt-auto text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform"
                       data-testid={`button-apply-${index}`}
                     >
                       <a href={`mailto:careers@kaartx.com?subject=${role.subject}`}>
@@ -317,17 +317,19 @@ export default function Careers() {
           <p className="text-base sm:text-lg text-muted-foreground mb-7 sm:mb-8 leading-relaxed" data-testid="text-no-role-description">
             We're always open to meeting smart people who want to build the future of GCC ecommerce.
           </p>
-          <Button
-            variant="outline"
-            size="lg"
-            asChild
-            className="backdrop-blur-sm text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full sm:w-auto"
-            data-testid="button-open-application"
-          >
-            <a href="mailto:careers@kaartx.com?subject=Open%20Application">
-              Send an Open Application
-            </a>
-          </Button>
+          <div className="flex justify-center">
+            <Button
+              variant="outline"
+              size="lg"
+              asChild
+              className="backdrop-blur-sm text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full max-w-80"
+              data-testid="button-open-application"
+            >
+              <a href="mailto:careers@kaartx.com?subject=Open%20Application">
+                Send an Open Application
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -350,7 +352,7 @@ export default function Careers() {
               <Button
                 asChild
                 size="lg"
-                className="shadow-playful group text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full sm:w-auto"
+                className="shadow-playful group text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full max-w-80 mx-auto"
                 data-testid="button-join-kaartx"
               >
                 <a href="mailto:careers@kaartx.com">Join Kaartx Kloud</a>
