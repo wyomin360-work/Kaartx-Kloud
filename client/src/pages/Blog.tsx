@@ -2,10 +2,15 @@ import { Link } from 'wouter';
 import { Card } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useEffect } from 'react';
 
 export default function Blog() {
   const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
   const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const posts = [
     {
@@ -42,7 +47,7 @@ export default function Blog() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={titleAnimation.ref}
-            className={`text-center mb-12 sm:mb-16 md:mb-20 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+            className={`text-center mb-8 sm:mb-9 md:mb-10 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
           >
             <h1 className="section-title text-foreground mb-5 tracking-tight" data-testid="text-blog-title">
               Insights for marketplace founders
