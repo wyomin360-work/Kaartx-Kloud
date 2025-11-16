@@ -83,11 +83,11 @@ export default function Blog() {
                 >
                   <div className="relative p-8 flex flex-col justify-between h-full min-h-[320px]">
                     <div>
-                      <h3 className="text-xl font-bold text-foreground mb-4 tracking-tight leading-snug">
+                      <h3 className="text-xl font-bold text-foreground mb-4 tracking-tight leading-snug line-clamp-3 min-h-[5.25rem]">
                         {post.title}
                       </h3>
                       
-                      <p className="text-muted-foreground mb-6 leading-relaxed line-clamp-3">
+                      <p className="text-muted-foreground mb-6 leading-relaxed line-clamp-3 min-h-[4.5rem]">
                         {post.summary}
                       </p>
                     </div>
