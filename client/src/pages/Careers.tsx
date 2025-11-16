@@ -124,18 +124,20 @@ export default function Careers() {
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8" data-testid="text-careers-hero-subtitle">
               We're creating the GCC's most powerful multi-vendor marketplace platform — and we're looking for smart, driven people who want to build fast, own major outcomes, and grow with us.
             </p>
-            <div className="flex flex-col sm:flex-row gap-5 sm:gap-6 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center">
               <Button
                 onClick={scrollToRoles}
-                className="w-full sm:w-auto min-w-[220px] px-8"
+                size="lg"
+                className="text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full sm:w-auto"
                 data-testid="button-view-roles"
               >
                 View Open Roles
               </Button>
               <Button
                 variant="outline"
+                size="lg"
                 asChild
-                className="w-full sm:w-auto min-w-[220px] px-8"
+                className="text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full sm:w-auto"
                 data-testid="button-email-cv"
               >
                 <a href="mailto:careers@kaartx.com">Email Your CV</a>
