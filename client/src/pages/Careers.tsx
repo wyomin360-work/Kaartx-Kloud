@@ -315,7 +315,6 @@ export default function Careers() {
             We're always open to meeting smart people who want to build the future of GCC ecommerce.
           </p>
           <Button
-            size="lg"
             variant="outline"
             asChild
             className="w-full sm:w-auto"
