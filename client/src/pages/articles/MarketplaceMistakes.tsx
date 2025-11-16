@@ -10,7 +10,12 @@ export default function MarketplaceMistakes() {
   const [signupModalOpen, setSignupModalOpen] = useState(false);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Reset scroll restoration to auto for article pages
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'auto';
+    }
+    // Force scroll to top immediately with no smooth behavior
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, []);
 
   return (
