@@ -14,7 +14,7 @@ export default function Blog() {
 
   const posts = [
     {
-      slug: 'how-to-launch-multi-vendor-marketplace-gcc',
+      slug: 'launch-multi-vendor-marketplace-gcc',
       title: 'How to launch a multi-vendor marketplace in the GCC',
       summary: 'Learn the fastest and most cost-efficient way to launch a full-scale marketplace in Oman, UAE, and the GCC—without spending months on custom development.',
     },
@@ -24,7 +24,7 @@ export default function Blog() {
       summary: 'Discover why SaaS marketplaces reduce time, cost, and risk by up to 80% compared to building everything from scratch.',
     },
     {
-      slug: '5-mistakes-marketplace-owners-make',
+      slug: 'marketplace-mistakes-to-avoid',
       title: '5 mistakes every marketplace owner makes — and how to avoid them',
       summary: 'Most founders fail not because of technology, but workflow mistakes. Fix these five and you\'ll scale faster.',
     },
@@ -34,7 +34,7 @@ export default function Blog() {
       summary: 'Understand settlement cycles, seller payouts, escrow flow, and how Kaartx Kloud automates the entire process.',
     },
     {
-      slug: 'why-marketplace-needs-automated-seller-subscriptions',
+      slug: 'automated-seller-subscriptions',
       title: 'Why your marketplace needs automated seller subscriptions',
       summary: 'Recurring seller billing is the backbone of predictable revenue. Here\'s how Kaartx Kloud handles it seamlessly.',
     },
