@@ -26,7 +26,7 @@ export default function MarketplaceMistakes() {
           </p>
 
           <div className="prose prose-lg max-w-none">
-          <p className="text-lg text-foreground leading-relaxed mb-8">
+          <p className="text-lg text-foreground leading-relaxed mb-6">
             Most marketplaces don't fail because of bad ideas. They fail because of avoidable operational mistakes. Here are five common pitfalls we see across GCC marketplaces—and practical ways to avoid them.
           </p>
 

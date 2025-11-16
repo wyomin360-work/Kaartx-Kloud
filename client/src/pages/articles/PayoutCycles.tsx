@@ -26,7 +26,7 @@ export default function PayoutCycles() {
           </p>
 
           <div className="prose prose-lg max-w-none">
-          <p className="text-lg text-foreground leading-relaxed mb-8">
+          <p className="text-lg text-foreground leading-relaxed mb-6">
             Payout cycles might sound like a boring back-office detail, but they decide how much your sellers trust you—and how stable your cashflow feels. Let's unpack how marketplace payout cycles work and how Kaartx Kloud helps you manage them.
           </p>
 

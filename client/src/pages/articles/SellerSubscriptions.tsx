@@ -26,7 +26,7 @@ export default function SellerSubscriptions() {
           </p>
 
           <div className="prose prose-lg max-w-none">
-          <p className="text-lg text-foreground leading-relaxed mb-8">
+          <p className="text-lg text-foreground leading-relaxed mb-6">
             If your marketplace relies only on commission per order, you're leaving stable revenue on the table. Subscription plans for sellers—automatically billed and managed—can transform the way your marketplace grows.
           </p>
 

@@ -26,7 +26,7 @@ export default function KaartxVsCustomDev() {
           </p>
 
           <div className="prose prose-lg max-w-none">
-          <p className="text-lg text-foreground leading-relaxed mb-8">
+          <p className="text-lg text-foreground leading-relaxed mb-6">
             Every marketplace founder eventually faces the same decision: should we build our own platform from scratch, or launch with a SaaS product like Kaartx Kloud? This article compares both paths on time, cost, flexibility, and risk—so you can choose with a clear head.
           </p>
 
