@@ -11,11 +11,9 @@ export default function LaunchMarketplaceGCC() {
   return (
     <div className="min-h-screen bg-background">
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
-        <Link href="/blog">
-          <a className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8" data-testid="link-back-to-blog">
-            <ArrowLeft className="h-4 w-4" />
-            Back to all articles
-          </a>
+        <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8" data-testid="link-back-to-blog">
+          <ArrowLeft className="h-4 w-4" />
+          Back to all articles
         </Link>
 
         <h1 className="section-title text-foreground mb-4 tracking-tight" data-testid="text-article-title">
