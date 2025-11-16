@@ -112,7 +112,7 @@ export default function Careers() {
       <Navbar onOpenSignup={() => setSignupModalOpen(true)} />
 
       {/* SECTION 1 - Hero */}
-      <section className="pt-28 pb-8 sm:pt-32 sm:pb-10 md:pt-36 md:pb-12 bg-background">
+      <section className="pt-28 pb-12 sm:pt-32 sm:pb-20 md:pt-36 md:pb-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={heroAnimation.ref}
@@ -150,7 +150,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 2 - Founder's Note */}
-      <section className="py-12 sm:py-16 md:py-20 bg-background">
+      <section className="py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={founderAnimation.ref}
@@ -177,7 +177,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 3 - Why Work at Kaartx Kloud */}
-      <section className="py-12 sm:py-16 md:py-20 bg-background">
+      <section className="py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="section-title text-foreground mb-10 sm:mb-12 text-center" data-testid="text-why-work-title">
             Why work at Kaartx Kloud
@@ -207,7 +207,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 4 - Kaartx Culture Code */}
-      <section className="py-12 sm:py-16 md:py-20 bg-background">
+      <section className="py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={cultureAnimation.ref}
@@ -229,7 +229,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 5 - How We Work */}
-      <section className="py-12 sm:py-16 md:py-20 bg-background">
+      <section className="py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={howWeWorkAnimation.ref}
@@ -260,7 +260,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 6 - Open Roles */}
-      <section id="open-roles" className="scroll-mt-20 py-12 sm:py-16 md:py-20 bg-background">
+      <section id="open-roles" className="scroll-mt-20 py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="section-title text-foreground mb-4 text-center" data-testid="text-open-roles-title">
             Open Roles
@@ -311,7 +311,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 7 - Don't See Your Role */}
-      <section className="py-12 sm:py-16 md:py-20 bg-background">
+      <section className="py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 sm:mb-5" data-testid="text-no-role-title">
             Don't see a role that fits?
@@ -336,7 +336,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 8 - Final CTA */}
-      <section className="py-12 sm:py-16 md:py-20 bg-background">
+      <section className="py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={finalCTAAnimation.ref}
