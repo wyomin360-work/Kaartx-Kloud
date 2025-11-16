@@ -112,23 +112,23 @@ export default function Careers() {
       <Navbar onOpenSignup={() => setSignupModalOpen(true)} />
 
       {/* SECTION 1 - Hero */}
-      <section className="pt-32 pb-16 sm:pt-40 sm:pb-24 md:pt-48 md:pb-32 bg-background">
+      <section className="pt-28 pb-8 sm:pt-32 sm:pb-10 md:pt-36 md:pb-12 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={heroAnimation.ref}
-            className={`text-center mb-10 animate-on-scroll ${heroAnimation.isVisible ? 'visible' : ''}`}
+            className={`text-center animate-on-scroll ${heroAnimation.isVisible ? 'visible' : ''}`}
           >
-            <h1 className="section-title text-foreground mb-5 tracking-tight" data-testid="text-careers-hero-title">
+            <h1 className="section-title text-foreground mb-6 tracking-tight" data-testid="text-careers-hero-title">
               Build the future of marketplaces with Kaartx Kloud
             </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto font-normal mb-8" data-testid="text-careers-hero-subtitle">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8" data-testid="text-careers-hero-subtitle">
               We're creating the GCC's most powerful multi-vendor marketplace platform — and we're looking for smart, driven people who want to build fast, own major outcomes, and grow with us.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
                 onClick={scrollToRoles}
                 size="lg"
-                className="min-w-[200px]"
+                className="w-full sm:w-auto min-w-[200px]"
                 data-testid="button-view-roles"
               >
                 View Open Roles
@@ -137,7 +137,7 @@ export default function Careers() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="min-w-[200px]"
+                className="w-full sm:w-auto min-w-[200px]"
                 data-testid="button-email-cv"
               >
                 <a href="mailto:careers@kaartx.com">Email Your CV</a>
@@ -148,20 +148,19 @@ export default function Careers() {
       </section>
 
       {/* SECTION 2 - Founder's Note */}
-      <section className="py-16 sm:py-24 md:py-32 bg-background">
+      <section className="py-12 sm:py-16 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={founderAnimation.ref}
             className={`animate-on-scroll ${founderAnimation.isVisible ? 'visible' : ''}`}
           >
-            <Card className="max-w-4xl mx-auto p-12 sm:p-16 rounded-3xl border-2" style={{
+            <Card className="max-w-4xl mx-auto p-8 sm:p-12 md:p-16 rounded-2xl border shadow-lg" style={{
               background: 'linear-gradient(135deg, #F7F9FC 0%, #FFFFFF 100%)',
-              boxShadow: '0px 4px 40px rgba(0, 0, 0, 0.06)',
             }}>
-              <h2 className="text-3xl font-bold text-foreground mb-8 text-center" data-testid="text-founder-note-title">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 sm:mb-8 text-center" data-testid="text-founder-note-title">
                 A message from our Founder
               </h2>
-              <div className="space-y-6 text-foreground leading-relaxed text-lg" data-testid="text-founder-note-content">
+              <div className="space-y-5 text-foreground leading-relaxed text-base sm:text-lg" data-testid="text-founder-note-content">
                 <p>Kaartx didn't start as a company — it started as a mission.</p>
                 <p>A mission to build the GCC's most advanced marketplace ecosystem, and to give entrepreneurs the tools I never had when I started.</p>
                 <p>If you join us, you're not becoming 'an employee'.</p>
@@ -176,26 +175,26 @@ export default function Careers() {
       </section>
 
       {/* SECTION 3 - Why Work at Kaartx Kloud */}
-      <section className="py-16 sm:py-24 md:py-32 bg-background">
+      <section className="py-12 sm:py-16 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="section-title text-foreground mb-12 text-center" data-testid="text-why-work-title">
+          <h2 className="section-title text-foreground mb-10 sm:mb-12 text-center" data-testid="text-why-work-title">
             Why work at Kaartx Kloud
           </h2>
           <div
             ref={whyAnimation.ref}
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-8 animate-on-scroll ${whyAnimation.isVisible ? 'visible' : ''}`}
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch animate-on-scroll ${whyAnimation.isVisible ? 'visible' : ''}`}
           >
             {whyCards.map((card, index) => (
               <Card
                 key={index}
-                className="group hover-elevate transition-all duration-300 rounded-2xl border-2 overflow-visible h-full gradient-bg-blue"
+                className="group hover-elevate transition-all duration-300 rounded-2xl border shadow-sm flex flex-col h-full gradient-bg-blue"
                 data-testid={`card-why-work-${index}`}
               >
-                <div className="relative p-8 flex flex-col h-full">
-                  <h3 className="text-xl font-bold text-foreground mb-4 tracking-tight leading-snug">
+                <div className="relative p-6 sm:p-8 flex flex-col flex-1 min-h-[160px]">
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 tracking-tight leading-snug">
                     {card.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                     {card.body}
                   </p>
                 </div>
@@ -206,20 +205,20 @@ export default function Careers() {
       </section>
 
       {/* SECTION 4 - Kaartx Culture Code */}
-      <section className="py-16 sm:py-24 md:py-32 bg-background">
+      <section className="py-12 sm:py-16 md:py-20 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={cultureAnimation.ref}
             className={`animate-on-scroll ${cultureAnimation.isVisible ? 'visible' : ''}`}
           >
-            <h2 className="section-title text-foreground mb-12 text-center" data-testid="text-culture-code-title">
+            <h2 className="section-title text-foreground mb-10 sm:mb-12 text-center" data-testid="text-culture-code-title">
               Kaartx Culture Code
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-5">
               {culturePoints.map((point, index) => (
                 <div key={index} className="flex items-start gap-4" data-testid={`item-culture-${index}`}>
-                  <Check className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
-                  <p className="text-lg text-foreground leading-relaxed">{point}</p>
+                  <Check className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                  <p className="text-base sm:text-lg text-foreground leading-relaxed">{point}</p>
                 </div>
               ))}
             </div>
@@ -228,27 +227,27 @@ export default function Careers() {
       </section>
 
       {/* SECTION 5 - How We Work */}
-      <section className="py-16 sm:py-24 md:py-32 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 sm:py-16 md:py-20 bg-background">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={howWeWorkAnimation.ref}
             className={`animate-on-scroll ${howWeWorkAnimation.isVisible ? 'visible' : ''}`}
           >
-            <h2 className="section-title text-foreground mb-12 text-center" data-testid="text-how-we-work-title">
+            <h2 className="section-title text-foreground mb-10 sm:mb-12 text-center" data-testid="text-how-we-work-title">
               How We Work
             </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div>
-                <p className="text-lg text-foreground leading-relaxed" data-testid="text-how-we-work-description">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+              <div className="flex items-start">
+                <p className="text-base sm:text-lg text-foreground leading-relaxed" data-testid="text-how-we-work-description">
                   Kaartx Kloud is still early. That means high impact, high visibility, and plenty of messy, interesting problems. We care more about bias-to-action and ownership than big CV names.
                 </p>
               </div>
               <div>
-                <div className="space-y-4">
+                <div className="space-y-5">
                   {howWeWorkPoints.map((point, index) => (
                     <div key={index} className="flex items-start gap-4" data-testid={`item-how-we-work-${index}`}>
-                      <Check className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
-                      <p className="text-lg text-foreground leading-relaxed">{point}</p>
+                      <Check className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                      <p className="text-base sm:text-lg text-foreground leading-relaxed">{point}</p>
                     </div>
                   ))}
                 </div>
@@ -259,41 +258,41 @@ export default function Careers() {
       </section>
 
       {/* SECTION 6 - Open Roles */}
-      <section id="open-roles" className="scroll-mt-20 py-16 sm:py-24 md:py-32 bg-background">
+      <section id="open-roles" className="scroll-mt-20 py-12 sm:py-16 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="section-title text-foreground mb-4 text-center" data-testid="text-open-roles-title">
             Open Roles
           </h2>
-          <p className="text-lg text-muted-foreground text-center mb-12 max-w-3xl mx-auto" data-testid="text-open-roles-subtitle">
+          <p className="text-base sm:text-lg text-muted-foreground text-center mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed" data-testid="text-open-roles-subtitle">
             These are our current priority hires. If you don't see your exact fit, you can still send an application.
           </p>
           <div
             ref={rolesAnimation.ref}
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-8 animate-on-scroll ${rolesAnimation.isVisible ? 'visible' : ''}`}
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch animate-on-scroll ${rolesAnimation.isVisible ? 'visible' : ''}`}
           >
             {roles.map((role, index) => {
               const gradients = ['gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue'];
               return (
                 <Card
                   key={index}
-                  className={`group hover-elevate transition-all duration-300 rounded-2xl border-2 overflow-visible h-full ${gradients[index]}`}
+                  className={`group hover-elevate transition-all duration-300 rounded-2xl border shadow-sm flex flex-col h-full ${gradients[index]}`}
                   data-testid={`card-role-${index}`}
                 >
-                  <div className="relative p-8 flex flex-col justify-between h-full min-h-[280px]">
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground mb-2 tracking-tight leading-snug">
+                  <div className="relative p-6 sm:p-8 flex flex-col flex-1 min-h-[300px]">
+                    <div className="flex-1 space-y-3 mb-6">
+                      <h3 className="text-lg sm:text-xl font-bold text-foreground tracking-tight leading-snug">
                         {role.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground mb-4">
+                      <p className="text-sm text-muted-foreground">
                         {role.subtitle}
                       </p>
-                      <p className="text-muted-foreground mb-6 leading-relaxed">
+                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                         {role.description}
                       </p>
                     </div>
                     <Button
                       asChild
-                      className="w-full"
+                      className="w-full mt-auto"
                       data-testid={`button-apply-${index}`}
                     >
                       <a href={`mailto:careers@kaartx.com?subject=${role.subject}`}>
@@ -309,18 +308,19 @@ export default function Careers() {
       </section>
 
       {/* SECTION 7 - Don't See Your Role */}
-      <section className="py-16 sm:py-24 md:py-32 bg-background">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-foreground mb-4" data-testid="text-no-role-title">
+      <section className="py-12 sm:py-16 md:py-20 bg-background">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 sm:mb-5" data-testid="text-no-role-title">
             Don't see a role that fits?
           </h2>
-          <p className="text-lg text-muted-foreground mb-8" data-testid="text-no-role-description">
+          <p className="text-base sm:text-lg text-muted-foreground mb-7 sm:mb-8 leading-relaxed" data-testid="text-no-role-description">
             We're always open to meeting smart people who want to build the future of GCC ecommerce.
           </p>
           <Button
             size="lg"
             variant="outline"
             asChild
+            className="w-full sm:w-auto"
             data-testid="button-open-application"
           >
             <a href="mailto:careers@kaartx.com?subject=Open%20Application">
@@ -331,25 +331,25 @@ export default function Careers() {
       </section>
 
       {/* SECTION 8 - Final CTA */}
-      <section className="py-16 sm:py-24 md:py-32 bg-background">
+      <section className="py-12 sm:py-16 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={finalCTAAnimation.ref}
             className={`animate-on-scroll ${finalCTAAnimation.isVisible ? 'visible' : ''}`}
           >
-            <Card className="max-w-4xl mx-auto py-12 px-16 rounded-3xl border-2 text-center" style={{
+            <Card className="max-w-4xl mx-auto p-8 sm:p-12 md:p-16 rounded-2xl border shadow-lg text-center" style={{
               background: 'linear-gradient(135deg, #F7F9FC 0%, #FFFFFF 100%)',
-              boxShadow: '0px 4px 40px rgba(0, 0, 0, 0.06)',
             }}>
-              <h2 className="text-3xl font-bold text-foreground mb-6" data-testid="text-final-cta-title">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-5 sm:mb-6" data-testid="text-final-cta-title">
                 Ready to build something meaningful?
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto" data-testid="text-final-cta-description">
+              <p className="text-base sm:text-lg text-muted-foreground mb-7 sm:mb-8 max-w-2xl mx-auto leading-relaxed" data-testid="text-final-cta-description">
                 Join a team that's shaping the GCC's marketplace ecosystem from the ground up.
               </p>
               <Button
                 size="lg"
                 asChild
+                className="w-full sm:w-auto"
                 data-testid="button-join-kaartx"
               >
                 <a href="mailto:careers@kaartx.com">Join Kaartx Kloud</a>

@@ -1,0 +1,141 @@
+Kaartx Kloud Careers Page (Refine & Polish)
+
+Please refine the Careers page for Kaartx Kloud with the following requirements:
+
+1. Navbar & Footer
+
+Use the same navbar and footer layout, styling, and links as the homepage (Features, Integrations, Pricing, FAQs, Contact, Login, Get Started + the same footer structure).
+
+They should look and behave the same, so the Careers page still feels part of the main site.
+
+2. Overall Look & Feel
+
+The Careers page should look very professional and premium, but it does not need to copy the homepage layout.
+
+Keep it clearly in the same visual family:
+
+Same fonts
+
+Similar color palette
+
+Similar button styles
+
+Think: “careers microsite that matches the brand”, not a duplicate of the home.
+
+3. Spacing & Layout Polish
+
+Fix all inconsistent spacing between sections:
+
+Reduce the large white gap under the hero (“Build the future of marketplaces with Kaartx Kloud”).
+
+Make the vertical spacing between sections consistent: hero → founder message → why work → culture code → how we work → open roles → don’t see a role → final CTA.
+
+Ensure text blocks and headings are aligned in a clean grid.
+
+Avoid awkward empty white bands, especially:
+
+Above and below the “Don’t see a role that fits?” section.
+
+Around the “Ready to build something meaningful?” final CTA.
+
+4. Cards & Sections Consistency
+
+Unify all card-based sections:
+
+a) “Why work at Kaartx Kloud” cards
+
+All benefit cards must:
+
+Have the same height
+
+Same internal padding
+
+Same gradient/soft background
+
+Consistent title + body text styles
+
+Ensure the first row and second row feel evenly spaced and aligned.
+
+b) “Open Roles” cards
+
+All job cards (Frontend Developer, Backend Developer, UI/UX Designer, Customer Success Specialist, Business Development Executive) must:
+
+Be equal height
+
+Use the same padding and spacing between title, location/type text, description, and button
+
+Have “Apply Now” buttons aligned in the same vertical position across the row
+
+On smaller screens: cards should stack nicely without weird gaps.
+
+c) CTA / highlight cards
+
+The Founder message card and the final CTA card (“Ready to build something meaningful?”) should share:
+
+Similar border radius
+
+Similar shadow / subtle border
+
+Balanced padding on all sides
+
+Make them look like premium highlight blocks, not plain rectangles.
+
+5. Typography & Content Styling
+
+Make headings follow a clear hierarchy:
+
+Page title / big section titles (e.g., “Build the future of marketplaces…”, “Why work at Kaartx Kloud”, “Open Roles”) should visually match each other.
+
+Paragraph text should have:
+
+Comfortable line height
+
+Consistent font size across sections
+
+Bullet/checkmark lists:
+
+Equal vertical spacing between each bullet
+
+Align checkmarks and text cleanly in both “Kaartx Culture Code” and “How We Work”.
+
+6. “How We Work” & “Culture Code” Sections
+
+Culture Code:
+
+Align all checkmark rows vertically
+
+Make spacing between items consistent
+
+How We Work:
+
+Left column (paragraph) and right column (bullet list) should align visually:
+
+Same top alignment
+
+Balanced width on each side (not too much empty space on the left).
+
+7. “Don’t see a role that fits?” Section
+
+Center the content and button nicely.
+
+Reduce extra blank space above and below this section so it feels connected to the Open Roles and final CTA.
+
+Ensure the “Send an Open Application” button style matches other primary/secondary buttons on the site.
+
+8. Responsive / Mobile View
+
+On mobile & tablet:
+
+Cards should stack with comfortable spacing.
+
+Buttons should be full-width or nicely centered.
+
+No giant blank areas between sections.
+
+Check that text doesn’t become too wide or too squeezed on narrow screens.
+
+9. Final Finish
+
+Do not change the actual text content or role titles. Only polish layout, spacing, alignment, and styling.
+
+The goal: a very professional, premium Careers page that clearly belongs to the Kloud brand, but has its own strong structure as a careers hub.
