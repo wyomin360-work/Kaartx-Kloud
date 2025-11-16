@@ -79,18 +79,20 @@ export default function Blog() {
                 <Card
                   key={index}
                   data-testid={`blog-post-${index}`}
-                  className={`group hover-elevate transition-all duration-300 rounded-2xl border-2 overflow-visible ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
+                  className={`group hover-elevate transition-all duration-300 rounded-2xl border-2 overflow-visible h-full ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
                 >
-                  <div className="relative p-8 flex flex-col h-full">
-                    <h3 className="text-xl font-bold text-foreground mb-4 tracking-tight leading-snug">
-                      {post.title}
-                    </h3>
+                  <div className="relative p-8 flex flex-col justify-between h-full min-h-[320px]">
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground mb-4 tracking-tight leading-snug">
+                        {post.title}
+                      </h3>
+                      
+                      <p className="text-muted-foreground mb-6 leading-relaxed line-clamp-3">
+                        {post.summary}
+                      </p>
+                    </div>
                     
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                      {post.summary}
-                    </p>
-                    
-                    <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80 mt-auto" data-testid={`link-read-article-${index}`}>
+                    <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80" data-testid={`link-read-article-${index}`}>
                       Read article
                       <ArrowRight className="h-4 w-4" />
                     </Link>
