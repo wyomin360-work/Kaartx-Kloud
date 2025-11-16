@@ -179,7 +179,7 @@ export default function Careers() {
       {/* SECTION 3 - Why Work at Kaartx Kloud */}
       <section className="py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="section-title text-foreground mb-10 sm:mb-12 text-center" data-testid="text-why-work-title">
+          <h2 className="section-title text-foreground mb-10 sm:mb-12 tracking-tight" data-testid="text-why-work-title">
             Why work at Kaartx Kloud
           </h2>
           <div
@@ -213,7 +213,7 @@ export default function Careers() {
             ref={cultureAnimation.ref}
             className={`animate-on-scroll ${cultureAnimation.isVisible ? 'visible' : ''}`}
           >
-            <h2 className="section-title text-foreground mb-10 sm:mb-12 text-center" data-testid="text-culture-code-title">
+            <h2 className="section-title text-foreground mb-10 sm:mb-12 tracking-tight" data-testid="text-culture-code-title">
               Kaartx Culture Code
             </h2>
             <div className="space-y-5">
@@ -235,7 +235,7 @@ export default function Careers() {
             ref={howWeWorkAnimation.ref}
             className={`animate-on-scroll ${howWeWorkAnimation.isVisible ? 'visible' : ''}`}
           >
-            <h2 className="section-title text-foreground mb-10 sm:mb-12 text-center" data-testid="text-how-we-work-title">
+            <h2 className="section-title text-foreground mb-10 sm:mb-12 tracking-tight" data-testid="text-how-we-work-title">
               How We Work
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
@@ -262,7 +262,7 @@ export default function Careers() {
       {/* SECTION 6 - Open Roles */}
       <section id="open-roles" className="scroll-mt-20 py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="section-title text-foreground mb-4 text-center" data-testid="text-open-roles-title">
+          <h2 className="section-title text-foreground mb-4 tracking-tight" data-testid="text-open-roles-title">
             Open Roles
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground text-center mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed" data-testid="text-open-roles-subtitle">
@@ -313,7 +313,7 @@ export default function Careers() {
       {/* SECTION 7 - Don't See Your Role */}
       <section className="py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 sm:mb-5" data-testid="text-no-role-title">
+          <h2 className="section-title text-foreground mb-4 sm:mb-5 tracking-tight" data-testid="text-no-role-title">
             Don't see a role that fits?
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground mb-7 sm:mb-8 leading-relaxed" data-testid="text-no-role-description">
@@ -345,7 +345,7 @@ export default function Careers() {
             <Card className="max-w-4xl mx-auto p-8 sm:p-12 md:p-16 rounded-2xl border shadow-lg text-center" style={{
               background: 'linear-gradient(135deg, #F7F9FC 0%, #FFFFFF 100%)',
             }}>
-              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-5 sm:mb-6" data-testid="text-final-cta-title">
+              <h2 className="section-title text-foreground mb-5 sm:mb-6 tracking-tight" data-testid="text-final-cta-title">
                 Ready to build something meaningful?
               </h2>
               <p className="text-base sm:text-lg text-muted-foreground mb-7 sm:mb-8 max-w-2xl mx-auto leading-relaxed" data-testid="text-final-cta-description">
