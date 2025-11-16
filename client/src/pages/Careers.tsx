@@ -118,12 +118,14 @@ export default function Careers() {
             ref={heroAnimation.ref}
             className={`text-center animate-on-scroll ${heroAnimation.isVisible ? 'visible' : ''}`}
           >
-            <h1 className="section-title text-foreground mb-6 tracking-tight" data-testid="text-careers-hero-title">
-              Build the future of marketplaces with Kaartx Kloud
-            </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8" data-testid="text-careers-hero-subtitle">
-              We're creating the GCC's most powerful multi-vendor marketplace platform — and we're looking for smart, driven people who want to build fast, own major outcomes, and grow with us.
-            </p>
+            <div className="max-w-3xl mx-auto mb-8">
+              <h1 className="section-title text-foreground mb-6 tracking-tight" data-testid="text-careers-hero-title">
+                Build the future of marketplaces<br />with Kaartx Kloud
+              </h1>
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed" data-testid="text-careers-hero-subtitle">
+                We're creating the GCC's most powerful multi-vendor marketplace platform — and we're looking for smart, driven people who want to build fast, own major outcomes, and grow with us.
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center">
               <Button
                 onClick={scrollToRoles}
