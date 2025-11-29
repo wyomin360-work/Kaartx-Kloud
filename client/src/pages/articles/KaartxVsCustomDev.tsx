@@ -151,21 +151,19 @@ export default function KaartxVsCustomDev() {
           </p>
         </div>
 
-        <div className="mt-20 mb-16 mx-auto" style={{ maxWidth: '960px' }}>
-          <div className="py-12 px-16 bg-gradient-to-br from-[#F7F9FC] to-white rounded-3xl" style={{ boxShadow: '0px 4px 40px rgba(0, 0, 0, 0.06)' }}>
-            <h3 className="text-4xl font-bold text-foreground mb-4 text-center">
-              Skip custom development. Launch on Kaartx Kloud.
-            </h3>
-            <p className="text-lg text-foreground leading-relaxed mb-6 mx-auto" style={{ maxWidth: '640px', textAlign: 'center' }}>
-              Custom builds drain time and money. Kaartx Kloud gives you a complete marketplace infrastructure—so you launch faster, reduce risk, and scale with confidence.
-            </p>
-            <div className="flex justify-center mt-8">
-              <a href="/#booking">
-                <Button size="lg" className="font-semibold text-lg h-[52px] px-8" data-testid="button-get-started">
-                  Get Started with Kaartx Kloud
-                </Button>
-              </a>
-            </div>
+        <div className="mt-20 mb-16 mx-auto text-center" style={{ maxWidth: '960px' }}>
+          <h3 className="text-4xl font-bold text-foreground mb-4 text-center">
+            Skip custom development. Launch on Kaartx Kloud.
+          </h3>
+          <p className="text-lg text-foreground leading-relaxed mb-6 mx-auto" style={{ maxWidth: '640px', textAlign: 'center' }}>
+            Custom builds drain time and money. Kaartx Kloud gives you a complete marketplace infrastructure—so you launch faster, reduce risk, and scale with confidence.
+          </p>
+          <div className="flex justify-center mt-8">
+            <a href="/#booking">
+              <Button size="lg" className="font-semibold text-lg h-[52px] px-8" data-testid="button-get-started">
+                Get Started with Kaartx Kloud
+              </Button>
+            </a>
           </div>
         </div>
         </article>
