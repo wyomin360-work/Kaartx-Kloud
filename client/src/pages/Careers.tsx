@@ -208,21 +208,31 @@ export default function Careers() {
 
       {/* SECTION 4 - Kaartx Culture Code */}
       <section className="py-12 sm:py-20 md:py-32 bg-background">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={cultureAnimation.ref}
             className={`animate-on-scroll ${cultureAnimation.isVisible ? 'visible' : ''}`}
           >
-            <h2 className="section-title text-foreground mb-10 sm:mb-12 tracking-tight" data-testid="text-culture-code-title">
-              Kaartx Culture Code
-            </h2>
-            <div className="space-y-5">
-              {culturePoints.map((point, index) => (
-                <div key={index} className="flex items-start gap-4" data-testid={`item-culture-${index}`}>
-                  <Check className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                  <p className="text-base sm:text-lg text-foreground leading-relaxed">{point}</p>
-                </div>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+              {/* Left Column - Heading & Subtitle */}
+              <div>
+                <h2 className="section-title text-foreground tracking-tight text-left mb-4" data-testid="text-culture-code-title">
+                  Kaartx Culture Code
+                </h2>
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed" data-testid="text-culture-code-subtitle">
+                  The principles that guide how we work every day.
+                </p>
+              </div>
+
+              {/* Right Column - Culture Points */}
+              <div className="space-y-4">
+                {culturePoints.map((point, index) => (
+                  <div key={index} className="flex items-start gap-3" data-testid={`item-culture-${index}`}>
+                    <Check className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <p className="font-semibold text-base sm:text-lg text-foreground">{point}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
