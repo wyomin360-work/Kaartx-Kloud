@@ -271,44 +271,63 @@ export default function Careers() {
           <p className="text-base sm:text-lg text-muted-foreground text-center mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed" data-testid="text-open-roles-subtitle">
             These are our current priority hires. If you don't see your exact fit, you can still send an application.
           </p>
-          <div
-            ref={rolesAnimation.ref}
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch animate-on-scroll ${rolesAnimation.isVisible ? 'visible' : ''}`}
-          >
-            {roles.map((role, index) => {
-              const gradients = ['gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue'];
-              return (
-                <Card
-                  key={index}
-                  className={`group hover-elevate transition-all duration-300 rounded-2xl border shadow-sm flex flex-col h-full ${gradients[index]}`}
-                  data-testid={`card-role-${index}`}
-                >
-                  <div className="relative p-6 sm:p-8 flex flex-col flex-1 min-h-[300px]">
-                    <div className="flex-1 space-y-3 mb-6">
-                      <h3 className="text-lg sm:text-xl font-bold text-foreground tracking-tight leading-snug">
-                        {role.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {role.subtitle}
-                      </p>
-                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                        {role.description}
-                      </p>
-                    </div>
-                    <Button
-                      asChild
-                      size="lg"
-                      className="shadow-playful group w-full max-w-80 mx-auto mt-auto text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform"
-                      data-testid={`button-apply-${index}`}
-                    >
-                      <a href={`mailto:careers@kaartx.com?subject=${role.subject}`}>
+          <div className="relative">
+            <div
+              ref={rolesAnimation.ref}
+              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch animate-on-scroll blur-[6px] pointer-events-none select-none ${rolesAnimation.isVisible ? 'visible' : ''}`}
+            >
+              {roles.map((role, index) => {
+                const gradients = ['gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue'];
+                return (
+                  <Card
+                    key={index}
+                    className={`group transition-all duration-300 rounded-2xl border shadow-sm flex flex-col h-full ${gradients[index]}`}
+                    data-testid={`card-role-${index}`}
+                  >
+                    <div className="relative p-6 sm:p-8 flex flex-col flex-1 min-h-[300px]">
+                      <div className="flex-1 space-y-3 mb-6">
+                        <h3 className="text-lg sm:text-xl font-bold text-foreground tracking-tight leading-snug">
+                          {role.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {role.subtitle}
+                        </p>
+                        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                          {role.description}
+                        </p>
+                      </div>
+                      <Button
+                        size="lg"
+                        className="shadow-playful group w-full max-w-80 mx-auto mt-auto text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold"
+                        data-testid={`button-apply-${index}`}
+                      >
                         Apply Now
-                      </a>
-                    </Button>
-                  </div>
-                </Card>
-              );
-            })}
+                      </Button>
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="bg-background/90 backdrop-blur-sm rounded-2xl p-8 sm:p-12 text-center shadow-lg border max-w-md mx-4">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 tracking-tight" data-testid="text-roles-locked-title">
+                  Roles will unlock soon
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground mb-6 leading-relaxed" data-testid="text-roles-locked-subtitle">
+                  We're not hiring right now, but you can still send an open application.
+                </p>
+                <Button
+                  asChild
+                  size="lg"
+                  className="shadow-playful w-full max-w-60 text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform"
+                  data-testid="button-send-open-application"
+                >
+                  <a href="mailto:careers@kaartx.com?subject=Open%20Application">
+                    Send Application
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
