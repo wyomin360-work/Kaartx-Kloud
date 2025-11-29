@@ -151,14 +151,17 @@ export default function KaartxVsCustomDev() {
           </p>
         </div>
 
-        <div className="mt-20 mb-16 mx-auto text-center" style={{ maxWidth: '960px' }}>
-          <h3 className="text-4xl font-bold text-foreground mb-4 text-center">
+        <div className="mt-12 mb-16">
+          <p className="text-foreground leading-relaxed mb-4 italic">
+            Here's how Kaartx Kloud helps marketplace founders move faster:
+          </p>
+          <h3 className="text-2xl font-bold text-foreground mb-4">
             Skip custom development. Launch on Kaartx Kloud.
           </h3>
-          <p className="text-lg text-foreground leading-relaxed mb-6 mx-auto" style={{ maxWidth: '640px', textAlign: 'center' }}>
+          <p className="text-foreground leading-relaxed mb-6">
             Custom builds drain time and money. Kaartx Kloud gives you a complete marketplace infrastructure—so you launch faster, reduce risk, and scale with confidence.
           </p>
-          <div className="flex justify-center mt-8">
+          <div className="mt-6">
             <a href="/#booking">
               <Button size="lg" className="font-semibold text-lg h-[52px] px-8" data-testid="button-get-started">
                 Get Started with Kaartx Kloud
