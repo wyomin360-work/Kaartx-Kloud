@@ -27,7 +27,6 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
     { label: 'Pricing', target: 'pricing', type: 'scroll', testId: 'link-pricing' },
     { label: 'FAQs', target: 'faq', type: 'scroll', testId: 'link-faq' },
     { label: 'Contact', target: 'booking', type: 'scroll', testId: 'link-contact' },
-    { label: 'Login', target: '/login', type: 'link', testId: 'link-login' },
   ];
 
   useEffect(() => {
