@@ -15,7 +15,6 @@ export default function Careers() {
   const cultureAnimation = useScrollAnimation<HTMLDivElement>(0.1);
   const howWeWorkAnimation = useScrollAnimation<HTMLDivElement>(0.1);
   const rolesAnimation = useScrollAnimation<HTMLDivElement>(0.1);
-  const finalCTAAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
   useEffect(() => {
     // Reset scroll restoration to auto for careers page
@@ -338,35 +337,6 @@ export default function Careers() {
                 Send an Open Application
               </a>
             </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 8 - Final CTA */}
-      <section className="py-12 sm:py-20 md:py-32 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            ref={finalCTAAnimation.ref}
-            className={`animate-on-scroll ${finalCTAAnimation.isVisible ? 'visible' : ''}`}
-          >
-            <Card className="max-w-4xl mx-auto p-8 sm:p-12 md:p-16 rounded-2xl border shadow-lg text-center" style={{
-              background: 'linear-gradient(135deg, #F7F9FC 0%, #FFFFFF 100%)',
-            }}>
-              <h2 className="section-title text-foreground mb-5 sm:mb-6 tracking-tight" data-testid="text-final-cta-title">
-                Ready to build something meaningful?
-              </h2>
-              <p className="text-base sm:text-lg text-muted-foreground mb-7 sm:mb-8 max-w-2xl mx-auto leading-relaxed" data-testid="text-final-cta-description">
-                Join a team that's shaping the GCC's marketplace ecosystem from the ground up.
-              </p>
-              <Button
-                asChild
-                size="lg"
-                className="shadow-playful group text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full max-w-80 mx-auto"
-                data-testid="button-join-kaartx"
-              >
-                <a href="mailto:careers@kaartx.com">Join Kaartx Kloud</a>
-              </Button>
-            </Card>
           </div>
         </div>
       </section>
