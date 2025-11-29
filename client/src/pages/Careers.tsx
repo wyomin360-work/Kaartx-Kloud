@@ -219,13 +219,15 @@ export default function Careers() {
             <p className="text-base sm:text-lg text-muted-foreground text-center mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed" data-testid="text-culture-code-subtitle">
               The principles that guide how we work, make decisions, and grow together.
             </p>
-            <div className="space-y-5">
-              {culturePoints.map((point, index) => (
-                <div key={index} className="flex items-start gap-4" data-testid={`item-culture-${index}`}>
-                  <Check className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                  <p className="text-base sm:text-lg text-foreground leading-relaxed">{point}</p>
-                </div>
-              ))}
+            <div className="flex justify-center">
+              <div className="space-y-5 inline-flex flex-col">
+                {culturePoints.map((point, index) => (
+                  <div key={index} className="flex items-start gap-4" data-testid={`item-culture-${index}`}>
+                    <Check className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                    <p className="text-base sm:text-lg text-foreground leading-relaxed">{point}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
