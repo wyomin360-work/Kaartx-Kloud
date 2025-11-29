@@ -310,22 +310,9 @@ export default function Careers() {
             </div>
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="bg-background/90 backdrop-blur-sm rounded-2xl p-8 sm:p-12 text-center shadow-lg border max-w-md mx-4">
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 tracking-tight" data-testid="text-roles-locked-title">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight" data-testid="text-roles-locked-title">
                   Roles will unlock soon
                 </h3>
-                <p className="text-sm sm:text-base text-muted-foreground mb-6 leading-relaxed" data-testid="text-roles-locked-subtitle">
-                  We're not hiring right now, but you can still send an open application.
-                </p>
-                <Button
-                  asChild
-                  size="lg"
-                  className="shadow-playful w-full max-w-60 text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform"
-                  data-testid="button-send-open-application"
-                >
-                  <a href="mailto:careers@kaartx.com?subject=Open%20Application">
-                    Send Application
-                  </a>
-                </Button>
               </div>
             </div>
           </div>
