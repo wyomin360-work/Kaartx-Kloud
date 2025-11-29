@@ -203,6 +203,11 @@ export default function LaunchMarketplaceGCC() {
             </a>
           </div>
         </div>
+
+        <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mt-8" data-testid="link-back-to-blog-bottom">
+          <ArrowLeft className="h-4 w-4" />
+          Back to all articles
+        </Link>
         </article>
       </div>
       <Footer />
