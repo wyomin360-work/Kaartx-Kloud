@@ -309,11 +309,9 @@ export default function Careers() {
               })}
             </div>
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-background/90 backdrop-blur-sm rounded-2xl p-8 sm:p-12 text-center shadow-lg border max-w-md mx-4">
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight" data-testid="text-roles-locked-title">
-                  Roles will unlock soon
-                </h3>
-              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight" data-testid="text-roles-locked-title">
+                Roles will unlock soon
+              </h3>
             </div>
           </div>
         </div>
