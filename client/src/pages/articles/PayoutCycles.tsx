@@ -21,8 +21,8 @@ export default function PayoutCycles() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar onOpenSignup={() => setSignupModalOpen(true)} />
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-10 sm:pt-20 sm:pb-12 md:pt-20 md:pb-16" style={{ maxWidth: '700px' }}>
-        <div className="sticky top-20 z-40 bg-background py-3 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10 sm:pt-16 sm:pb-12 md:pt-16 md:pb-16" style={{ maxWidth: '700px' }}>
+        <div className="sticky top-16 z-40 bg-background py-2 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
           <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-back-to-blog">
             <ArrowLeft className="h-4 w-4" />
             Back to all articles
