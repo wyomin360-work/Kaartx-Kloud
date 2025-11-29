@@ -213,9 +213,12 @@ export default function Careers() {
             ref={cultureAnimation.ref}
             className={`animate-on-scroll ${cultureAnimation.isVisible ? 'visible' : ''}`}
           >
-            <h2 className="section-title text-foreground mb-10 sm:mb-12 tracking-tight" data-testid="text-culture-code-title">
+            <h2 className="section-title text-foreground mb-4 tracking-tight" data-testid="text-culture-code-title">
               Kaartx Culture Code
             </h2>
+            <p className="text-base sm:text-lg text-muted-foreground text-center mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed" data-testid="text-culture-code-subtitle">
+              The principles that guide how we work, make decisions, and grow together.
+            </p>
             <div className="space-y-5">
               {culturePoints.map((point, index) => (
                 <div key={index} className="flex items-start gap-4" data-testid={`item-culture-${index}`}>
