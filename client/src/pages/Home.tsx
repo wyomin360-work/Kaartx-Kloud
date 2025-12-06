@@ -19,7 +19,6 @@ import FinalCTA from '@/components/FinalCTA';
 import BookingSection from '@/components/BookingSection';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import ScrollToTop from '@/components/ScrollToTop';
 import SignupModal from '@/components/SignupModal';
 
 export default function Home() {
@@ -67,7 +66,6 @@ export default function Home() {
       <FinalCTA onOpenSignup={() => setSignupModalOpen(true)} />
       <Footer />
       <WhatsAppButton />
-      <ScrollToTop />
       <SignupModal open={signupModalOpen} onOpenChange={setSignupModalOpen} />
     </div>
   );
