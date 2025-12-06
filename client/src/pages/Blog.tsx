@@ -72,14 +72,14 @@ export default function Blog() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-8"
           >
             {posts.map((post, index) => {
-              const gradients = ['gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue'];
               const stagger = ['', 'stagger-1', 'stagger-2', 'stagger-3', 'stagger-4'];
 
               return (
                 <Card
                   key={index}
                   data-testid={`blog-post-${index}`}
-                  className={`group hover-elevate transition-all duration-300 rounded-2xl border-2 overflow-visible h-full ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
+                  className={`group hover-elevate transition-all duration-300 rounded-2xl border border-border bg-white overflow-visible h-full animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
+                  style={{ boxShadow: '0px 2px 12px rgba(0, 0, 0, 0.04)' }}
                 >
                   <div className="relative p-8 flex flex-col justify-between h-full min-h-[320px]">
                     <div>
