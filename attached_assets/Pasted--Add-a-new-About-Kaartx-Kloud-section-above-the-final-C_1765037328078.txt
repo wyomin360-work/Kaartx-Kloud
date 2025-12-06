@@ -1,0 +1,43 @@
+“Add a new ‘About Kaartx Kloud’ section above the final CTA (‘Ready to launch your marketplace?’).
+Match the exact styling, spacing, font sizes, and layout of the existing sections.
+Use the following content exactly as written.
+Do not modify or restyle any other part of the page.
+Do not change the hero, navbar, footer, or any other sections.
+Only add this new section and link the ‘About’ navbar item to scroll to it.
+
+Heading:
+
+About Kaartx Kloud
+
+Intro paragraph:
+
+Kaartx Kloud is a full-stack commerce infrastructure designed to help businesses launch, scale, and manage their own multi-vendor marketplaces with speed and confidence. We combine modern technology, intuitive design, and deep marketplace expertise to help founders build powerful commerce ecosystems—without the complexity of traditional development.
+
+Subheading: Our Mission
+
+Our mission is simple: empower the next generation of marketplace founders with a platform that’s fast, reliable, and built for scale.
+
+Subheading: Our Story
+
+Kaartx began as an internal project—built to power a next-generation marketplace in the GCC region. As we grew, we realized something important: every founder we met wanted to build a marketplace, but nobody had access to a complete, reliable, and scalable system.
+So we opened up our technology. What started as a single platform became a complete product—Kaartx Kloud—built with real-world marketplace experience, operational knowledge, seller lifecycle expertise, and deep understanding of the GCC market. Today, Kaartx Kloud reflects everything we learned building Kaartx: a system that is practical, powerful, and ready for real operations.
+
+Subheading: Our Vision
+
+We believe the future of commerce is multi-vendor. From fashion collectives to regional retail groups, more businesses are shifting toward marketplace models. Kaartx Kloud aims to become the technology backbone that helps these businesses compete, scale, and succeed—starting from the GCC and expanding globally.
+
+Subheading: The Road Ahead
+
+Kaartx Kloud is evolving rapidly, with a strong focus on improving marketplace performance, seller efficiency, and operational automation.
+Our upcoming roadmap includes:
+• deeper logistics and delivery integrations
+• enhanced payout automation and financial flows
+• advanced analytics for marketplace founders
+• more seller tools and workflow automations
+• improved subscription and billing capabilities
+• stronger integrations across the GCC commerce ecosystem
+
+This is just the beginning. We’re here to help founders build marketplaces that thrive across the GCC—with the stability, speed, and infrastructure they need to scale confidently.
+
+After adding this section, make the ‘About’ item in the navbar scroll smoothly to this section.
+Do not change any other sections or styles on the page.”

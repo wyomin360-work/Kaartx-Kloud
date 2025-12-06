@@ -15,6 +15,7 @@ import Testimonials from '@/components/Testimonials';
 import CaseStudy from '@/components/CaseStudy';
 import Pricing from '@/components/Pricing';
 import FAQ from '@/components/FAQ';
+import About from '@/components/About';
 import FinalCTA from '@/components/FinalCTA';
 import BookingSection from '@/components/BookingSection';
 import Footer from '@/components/Footer';
@@ -63,6 +64,7 @@ export default function Home() {
       <Pricing onOpenSignup={() => setSignupModalOpen(true)} />
       <FAQ />
       <BookingSection />
+      <About />
       <FinalCTA onOpenSignup={() => setSignupModalOpen(true)} />
       <Footer />
       <WhatsAppButton />
