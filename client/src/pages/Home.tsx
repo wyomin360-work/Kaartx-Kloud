@@ -32,7 +32,7 @@ export default function Home() {
       history.scrollRestoration = 'manual';
     }
 
-    // Scroll to section if there's a hash in the URL
+    // Scroll to section if there's a hash in the URL, otherwise scroll to top
     const hash = window.location.hash;
     if (hash) {
       const sectionId = hash.substring(1); // Remove the # character
@@ -43,6 +43,9 @@ export default function Home() {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 100);
+    } else {
+      // Always start at the top on page load/refresh
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     }
   }, []);
 
