@@ -1,10 +1,10 @@
+import { useEffect } from "react";
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ScrollToTop from "@/components/ScrollToTop";
-import { useScrollReset } from "@/hooks/useScrollReset";
 import Home from "@/pages/Home";
 import CreateMarketplace from "@/pages/CreateMarketplace";
 import Blog from "@/pages/Blog";
@@ -33,16 +33,17 @@ function Router() {
   );
 }
 
-function ScrollResetHandler() {
-  useScrollReset();
-  return null;
-}
-
 function App() {
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <ScrollResetHandler />
         <Toaster />
         <Router />
         <ScrollToTop />

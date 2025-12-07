@@ -20,50 +20,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script>
-      (function() {
-        if ('scrollRestoration' in history) {
-          history.scrollRestoration = 'manual';
-        }
-        
-        function forceScrollTop() {
-          window.scrollTo(0, 0);
-          document.documentElement.scrollTop = 0;
-          if (document.body) document.body.scrollTop = 0;
-        }
-        
-        forceScrollTop();
-        
-        var pollCount = 0;
-        var maxPolls = 20;
-        var pollInterval = setInterval(function() {
-          forceScrollTop();
-          pollCount++;
-          if (pollCount >= maxPolls) {
-            clearInterval(pollInterval);
-          }
-        }, 50);
-        
-        document.addEventListener('DOMContentLoaded', function() {
-          forceScrollTop();
-          setTimeout(forceScrollTop, 0);
-          setTimeout(forceScrollTop, 100);
-        });
-        
-        window.addEventListener('load', function() {
-          forceScrollTop();
-          setTimeout(forceScrollTop, 0);
-          setTimeout(forceScrollTop, 100);
-          setTimeout(forceScrollTop, 200);
-        });
-        
-        window.addEventListener('pageshow', function(event) {
-          if (event.persisted) {
-            forceScrollTop();
-          }
-        });
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>
