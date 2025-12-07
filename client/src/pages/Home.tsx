@@ -27,25 +27,16 @@ export default function Home() {
   const [signupModalOpen, setSignupModalOpen] = useState(false);
 
   useEffect(() => {
-    // Disable browser's automatic scroll restoration to prevent jumps on refresh
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
-
-    // Scroll to section if there's a hash in the URL, otherwise scroll to top
+    // Handle hash navigation (e.g., /#pricing)
     const hash = window.location.hash;
     if (hash) {
-      const sectionId = hash.substring(1); // Remove the # character
-      // Small delay to ensure the page is fully rendered
+      const sectionId = hash.substring(1);
       setTimeout(() => {
         const element = document.getElementById(sectionId);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 100);
-    } else {
-      // Always start at the top on page load/refresh
-      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     }
   }, []);
 
