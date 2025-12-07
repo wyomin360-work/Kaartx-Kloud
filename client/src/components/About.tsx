@@ -94,7 +94,7 @@ export default function About() {
 
         <div 
           ref={roadmapAnimation.ref}
-          className={`max-w-4xl mx-auto animate-on-scroll ${roadmapAnimation.isVisible ? 'visible' : ''}`}
+          className={`max-w-4xl mx-auto pt-6 animate-on-scroll ${roadmapAnimation.isVisible ? 'visible' : ''}`}
         >
           <div className="text-center mb-10">
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-4" data-testid="text-about-roadmap-heading">
