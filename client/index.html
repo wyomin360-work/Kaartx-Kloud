@@ -24,9 +24,8 @@
       if ('scrollRestoration' in history) {
         history.scrollRestoration = 'manual';
       }
-      window.addEventListener('beforeunload', function() {
-        window.scrollTo(0, 0);
-      });
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
     </script>
   </head>
   <body>
