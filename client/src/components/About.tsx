@@ -1,4 +1,4 @@
-import { Target, BookOpen, Eye, Rocket, Check } from 'lucide-react';
+import { Target, BookOpen, Eye, Check } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -97,9 +97,6 @@ export default function About() {
           className={`max-w-4xl mx-auto animate-on-scroll ${roadmapAnimation.isVisible ? 'visible' : ''}`}
         >
           <div className="text-center mb-10">
-            <div className="inline-flex h-16 w-16 rounded-full bg-gradient-to-br from-primary/10 to-primary/5 items-center justify-center mb-5 border border-primary/20">
-              <Rocket className="h-8 w-8 text-primary" strokeWidth={1.75} />
-            </div>
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-4" data-testid="text-about-roadmap-heading">
               The Road Ahead
             </h3>
