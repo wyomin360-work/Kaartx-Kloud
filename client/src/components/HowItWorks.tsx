@@ -30,7 +30,7 @@ export default function HowItWorks() {
   const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
   return (
-    <section className="py-20 sm:py-28 md:py-36 bg-background">
+    <section className="py-12 sm:py-20 md:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <div 
           ref={titleAnimation.ref}

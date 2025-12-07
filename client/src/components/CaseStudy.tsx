@@ -28,7 +28,7 @@ export default function CaseStudy() {
   ];
 
   return (
-    <section className="py-16 sm:py-24 md:py-36 bg-card/20">
+    <section className="py-12 sm:py-20 md:py-32 bg-card/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
         <div 
           ref={titleAnimation.ref}
