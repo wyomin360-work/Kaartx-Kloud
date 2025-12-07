@@ -1,4 +1,4 @@
-import { Target, BookOpen, Eye, Rocket, ArrowRight } from 'lucide-react';
+import { Target, BookOpen, Eye, Rocket, Check } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -96,37 +96,38 @@ export default function About() {
           ref={roadmapAnimation.ref}
           className={`max-w-4xl mx-auto animate-on-scroll ${roadmapAnimation.isVisible ? 'visible' : ''}`}
         >
-          <Card className="p-8 sm:p-10 bg-background border-border/60 !rounded-2xl">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-teal-500/10 flex items-center justify-center border border-border/40">
-                <Rocket className="h-7 w-7 text-emerald-600" strokeWidth={1.75} />
-              </div>
-              <h3 className="text-xl font-semibold text-foreground" data-testid="text-about-roadmap-heading">
-                The Road Ahead
-              </h3>
+          <div className="text-center mb-10">
+            <div className="inline-flex h-16 w-16 rounded-full bg-gradient-to-br from-primary/10 to-primary/5 items-center justify-center mb-5 border border-primary/20">
+              <Rocket className="h-8 w-8 text-primary" strokeWidth={1.75} />
             </div>
-            
-            <p className="text-muted-foreground leading-relaxed mb-6" data-testid="text-about-roadmap-intro">
-              Kaartx Kloud is evolving rapidly, with a strong focus on improving marketplace performance, seller efficiency, and operational automation. Our upcoming roadmap includes:
+            <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-4" data-testid="text-about-roadmap-heading">
+              The Road Ahead
+            </h3>
+            <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto" data-testid="text-about-roadmap-intro">
+              Kaartx Kloud is evolving rapidly, with a strong focus on improving marketplace performance, seller efficiency, and operational automation.
             </p>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-              {roadmapItems.map((item, index) => (
-                <div 
-                  key={index}
-                  className="flex items-start gap-3 p-3 rounded-xl bg-muted/30 border border-border/30"
-                  data-testid={`text-about-roadmap-item-${index}`}
-                >
-                  <ArrowRight className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
-                  <span className="text-sm text-muted-foreground leading-relaxed">{item}</span>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+            {roadmapItems.map((item, index) => (
+              <div 
+                key={index}
+                className="group flex items-start gap-4 p-5 rounded-2xl bg-background border border-border/50 hover-elevate transition-all duration-300"
+                data-testid={`text-about-roadmap-item-${index}`}
+              >
+                <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                  <Check className="h-4 w-4 text-primary" strokeWidth={3} />
                 </div>
-              ))}
-            </div>
-            
-            <p className="text-muted-foreground leading-relaxed pt-4 border-t border-border/40" data-testid="text-about-closing">
+                <span className="text-sm sm:text-base text-foreground/80 leading-relaxed pt-1">{item}</span>
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center">
+            <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto text-base sm:text-lg" data-testid="text-about-closing">
               This is just the beginning. We're here to help founders build marketplaces that thrive across the GCC—with the stability, speed, and infrastructure they need to scale confidently.
             </p>
-          </Card>
+          </div>
         </div>
       </div>
     </section>
