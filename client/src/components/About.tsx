@@ -1,4 +1,4 @@
-import { Target, BookOpen, Eye, Check } from 'lucide-react';
+import { Target, BookOpen, Eye } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -109,13 +109,10 @@ export default function About() {
             {roadmapItems.map((item, index) => (
               <div 
                 key={index}
-                className="group flex items-start gap-4 p-5 rounded-2xl bg-background border border-border/50 hover-elevate transition-all duration-300"
+                className="group p-5 rounded-2xl bg-background border border-border/50 hover-elevate transition-all duration-300"
                 data-testid={`text-about-roadmap-item-${index}`}
               >
-                <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                  <Check className="h-4 w-4 text-primary" strokeWidth={3} />
-                </div>
-                <span className="text-sm sm:text-base text-foreground/80 leading-relaxed pt-1">{item}</span>
+                <span className="text-sm sm:text-base text-foreground/80 leading-relaxed">{item}</span>
               </div>
             ))}
           </div>
