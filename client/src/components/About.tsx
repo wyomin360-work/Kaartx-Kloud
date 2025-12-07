@@ -1,94 +1,132 @@
+import { Target, BookOpen, Eye, Rocket, ArrowRight } from 'lucide-react';
+import { Card } from '@/components/ui/card';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function About() {
   const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
-  const contentAnimation = useScrollAnimation<HTMLDivElement>(0.1);
+  const introAnimation = useScrollAnimation<HTMLDivElement>(0.15);
+  const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
+  const roadmapAnimation = useScrollAnimation<HTMLDivElement>(0.1);
+
+  const sections = [
+    {
+      icon: Target,
+      title: 'Our Mission',
+      content: "Our mission is simple: empower the next generation of marketplace founders with a platform that's fast, reliable, and built for scale.",
+      gradient: 'from-blue-500/10 to-cyan-500/10',
+      iconColor: 'text-blue-600',
+    },
+    {
+      icon: BookOpen,
+      title: 'Our Story',
+      content: "Kaartx began as an internal project—built to power a next-generation marketplace in the GCC region. As we grew, we realized something important: every founder we met wanted to build a marketplace, but nobody had access to a complete, reliable, and scalable system. So we opened up our technology. What started as a single platform became a complete product—Kaartx Kloud—built with real-world marketplace experience, operational knowledge, seller lifecycle expertise, and deep understanding of the GCC market.",
+      gradient: 'from-purple-500/10 to-pink-500/10',
+      iconColor: 'text-purple-600',
+    },
+    {
+      icon: Eye,
+      title: 'Our Vision',
+      content: "We believe the future of commerce is multi-vendor. From fashion collectives to regional retail groups, more businesses are shifting toward marketplace models. Kaartx Kloud aims to become the technology backbone that helps these businesses compete, scale, and succeed—starting from the GCC and expanding globally.",
+      gradient: 'from-amber-500/10 to-orange-500/10',
+      iconColor: 'text-amber-600',
+    },
+  ];
 
   const roadmapItems = [
-    'deeper logistics and delivery integrations',
-    'enhanced payout automation and financial flows',
-    'advanced analytics for marketplace founders',
-    'more seller tools and workflow automations',
-    'improved subscription and billing capabilities',
-    'stronger integrations across the GCC commerce ecosystem',
+    'Deeper logistics and delivery integrations',
+    'Enhanced payout automation and financial flows',
+    'Advanced analytics for marketplace founders',
+    'More seller tools and workflow automations',
+    'Improved subscription and billing capabilities',
+    'Stronger integrations across the GCC commerce ecosystem',
   ];
 
   return (
-    <section id="about" className="py-12 sm:py-20 md:py-32 bg-background scroll-mt-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-5 md:px-6">
+    <section id="about" className="py-16 sm:py-24 md:py-32 bg-card/20 scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div 
           ref={titleAnimation.ref}
-          className={`text-center mb-10 sm:mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+          className={`text-center mb-12 sm:mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
-          <h2 className="section-title text-primary mb-3 sm:mb-4" data-testid="text-about-title">
+          <h2 className="section-title text-foreground mb-4 sm:mb-5" data-testid="text-about-title">
             About Kaartx Kloud
           </h2>
         </div>
 
         <div 
-          ref={contentAnimation.ref}
-          className={`space-y-10 sm:space-y-12 animate-on-scroll ${contentAnimation.isVisible ? 'visible' : ''}`}
+          ref={introAnimation.ref}
+          className={`max-w-4xl mx-auto mb-16 sm:mb-20 animate-on-scroll ${introAnimation.isVisible ? 'visible' : ''}`}
         >
-          <p className="text-base sm:text-lg text-muted-foreground font-normal leading-relaxed" data-testid="text-about-intro">
-            Kaartx Kloud is a full-stack commerce infrastructure designed to help businesses launch, scale, and manage their own multi-vendor marketplaces with speed and confidence. We combine modern technology, intuitive design, and deep marketplace expertise to help founders build powerful commerce ecosystems—without the complexity of traditional development.
-          </p>
+          <Card className="p-8 sm:p-10 bg-background border-border/60 !rounded-2xl">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed text-center" data-testid="text-about-intro">
+              Kaartx Kloud is a full-stack commerce infrastructure designed to help businesses launch, scale, and manage their own multi-vendor marketplaces with speed and confidence. We combine modern technology, intuitive design, and deep marketplace expertise to help founders build powerful commerce ecosystems—without the complexity of traditional development.
+            </p>
+          </Card>
+        </div>
 
-          <div>
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4" data-testid="text-about-mission-heading">
-              Our Mission
-            </h3>
-            <p className="text-base sm:text-lg text-muted-foreground font-normal leading-relaxed" data-testid="text-about-mission">
-              Our mission is simple: empower the next generation of marketplace founders with a platform that's fast, reliable, and built for scale.
-            </p>
-          </div>
+        <div 
+          ref={cardsAnimation.ref}
+          className={`grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-16 sm:mb-20 animate-on-scroll ${cardsAnimation.isVisible ? 'visible' : ''}`}
+        >
+          {sections.map((section, index) => {
+            const Icon = section.icon;
+            const stagger = ['', 'stagger-1', 'stagger-2'];
+            
+            return (
+              <Card
+                key={index}
+                className={`p-8 bg-background border-border/60 !rounded-2xl hover-elevate transition-all duration-300 ${stagger[index]}`}
+                data-testid={`about-card-${index}`}
+              >
+                <div className={`h-14 w-14 rounded-2xl bg-gradient-to-br ${section.gradient} flex items-center justify-center mb-6 border border-border/40`}>
+                  <Icon className={`h-7 w-7 ${section.iconColor}`} strokeWidth={1.75} />
+                </div>
+                <h3 className="text-xl font-semibold text-foreground mb-4" data-testid={`text-about-${section.title.toLowerCase().replace(' ', '-')}-heading`}>
+                  {section.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed" data-testid={`text-about-${section.title.toLowerCase().replace(' ', '-')}`}>
+                  {section.content}
+                </p>
+              </Card>
+            );
+          })}
+        </div>
 
-          <div>
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4" data-testid="text-about-story-heading">
-              Our Story
-            </h3>
-            <p className="text-base sm:text-lg text-muted-foreground font-normal leading-relaxed" data-testid="text-about-story">
-              Kaartx began as an internal project—built to power a next-generation marketplace in the GCC region. As we grew, we realized something important: every founder we met wanted to build a marketplace, but nobody had access to a complete, reliable, and scalable system.
+        <div 
+          ref={roadmapAnimation.ref}
+          className={`max-w-4xl mx-auto animate-on-scroll ${roadmapAnimation.isVisible ? 'visible' : ''}`}
+        >
+          <Card className="p-8 sm:p-10 bg-background border-border/60 !rounded-2xl">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-teal-500/10 flex items-center justify-center border border-border/40">
+                <Rocket className="h-7 w-7 text-emerald-600" strokeWidth={1.75} />
+              </div>
+              <h3 className="text-xl font-semibold text-foreground" data-testid="text-about-roadmap-heading">
+                The Road Ahead
+              </h3>
+            </div>
+            
+            <p className="text-muted-foreground leading-relaxed mb-6" data-testid="text-about-roadmap-intro">
+              Kaartx Kloud is evolving rapidly, with a strong focus on improving marketplace performance, seller efficiency, and operational automation. Our upcoming roadmap includes:
             </p>
-            <p className="text-base sm:text-lg text-muted-foreground font-normal leading-relaxed mt-4">
-              So we opened up our technology. What started as a single platform became a complete product—Kaartx Kloud—built with real-world marketplace experience, operational knowledge, seller lifecycle expertise, and deep understanding of the GCC market. Today, Kaartx Kloud reflects everything we learned building Kaartx: a system that is practical, powerful, and ready for real operations.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4" data-testid="text-about-vision-heading">
-              Our Vision
-            </h3>
-            <p className="text-base sm:text-lg text-muted-foreground font-normal leading-relaxed" data-testid="text-about-vision">
-              We believe the future of commerce is multi-vendor. From fashion collectives to regional retail groups, more businesses are shifting toward marketplace models. Kaartx Kloud aims to become the technology backbone that helps these businesses compete, scale, and succeed—starting from the GCC and expanding globally.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-4" data-testid="text-about-roadmap-heading">
-              The Road Ahead
-            </h3>
-            <p className="text-base sm:text-lg text-muted-foreground font-normal leading-relaxed" data-testid="text-about-roadmap-intro">
-              Kaartx Kloud is evolving rapidly, with a strong focus on improving marketplace performance, seller efficiency, and operational automation.
-            </p>
-            <p className="text-base sm:text-lg text-muted-foreground font-normal leading-relaxed mt-4">
-              Our upcoming roadmap includes:
-            </p>
-            <ul className="mt-4 space-y-2">
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
               {roadmapItems.map((item, index) => (
-                <li 
-                  key={index} 
-                  className="text-base sm:text-lg text-muted-foreground font-normal leading-relaxed flex items-start"
+                <div 
+                  key={index}
+                  className="flex items-start gap-3 p-3 rounded-xl bg-muted/30 border border-border/30"
                   data-testid={`text-about-roadmap-item-${index}`}
                 >
-                  <span className="mr-3 text-primary">•</span>
-                  <span>{item}</span>
-                </li>
+                  <ArrowRight className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" strokeWidth={2.5} />
+                  <span className="text-sm text-muted-foreground leading-relaxed">{item}</span>
+                </div>
               ))}
-            </ul>
-            <p className="text-base sm:text-lg text-muted-foreground font-normal leading-relaxed mt-6" data-testid="text-about-closing">
+            </div>
+            
+            <p className="text-muted-foreground leading-relaxed pt-4 border-t border-border/40" data-testid="text-about-closing">
               This is just the beginning. We're here to help founders build marketplaces that thrive across the GCC—with the stability, speed, and infrastructure they need to scale confidently.
             </p>
-          </div>
+          </Card>
         </div>
       </div>
     </section>
