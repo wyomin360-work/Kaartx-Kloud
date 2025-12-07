@@ -121,15 +121,13 @@ export default function Footer() {
             <h4 className="font-semibold text-foreground mb-4">Company</h4>
             <ul className="space-y-2">
               <li>
-                <a 
-                  href="https://seller.kaartx.com/about-us"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors" 
+                <button
+                  onClick={() => navigateToSection('about')}
+                  className="text-muted-foreground hover:text-foreground transition-colors"
                   data-testid="link-footer-about"
                 >
                   About
-                </a>
+                </button>
               </li>
               <li>
                 <Link href="/blog" onClick={handleBlogClick} className="text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-blog">
