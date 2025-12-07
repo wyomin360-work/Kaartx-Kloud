@@ -46,7 +46,7 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div 
           ref={titleAnimation.ref}
-          className={`text-center mb-12 sm:mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+          className={`text-center mb-12 sm:mb-14 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
           <h2 className="section-title text-foreground mb-4 sm:mb-5" data-testid="text-about-title">
             About Kaartx Kloud
@@ -55,7 +55,7 @@ export default function About() {
 
         <div 
           ref={introAnimation.ref}
-          className={`max-w-4xl mx-auto mb-16 sm:mb-20 animate-on-scroll ${introAnimation.isVisible ? 'visible' : ''}`}
+          className={`max-w-4xl mx-auto mb-12 sm:mb-14 animate-on-scroll ${introAnimation.isVisible ? 'visible' : ''}`}
         >
           <Card className="p-8 sm:p-10 bg-background border-border/60 !rounded-2xl">
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed text-center" data-testid="text-about-intro">
@@ -66,7 +66,7 @@ export default function About() {
 
         <div 
           ref={cardsAnimation.ref}
-          className={`grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-16 sm:mb-20 animate-on-scroll ${cardsAnimation.isVisible ? 'visible' : ''}`}
+          className={`grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-12 sm:mb-14 animate-on-scroll ${cardsAnimation.isVisible ? 'visible' : ''}`}
         >
           {sections.map((section, index) => {
             const Icon = section.icon;
