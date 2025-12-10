@@ -12,7 +12,7 @@ export default function About() {
     {
       icon: Target,
       title: 'Our Mission',
-      content: "Our mission is to empower the next generation of marketplace founders with a platform that's fast, reliable, and built for scale. We're committed to simplifying the complexity of multi-vendor commerce by offering the technology, workflows, and operational foundation founders need to succeed. By combining speed, stability, and real marketplace intelligence, we help entrepreneurs focus on growth—not on building infrastructure from scratch.",
+      content: "Our mission is to empower the next generation of marketplace founders with a platform that's fast, reliable, and built for scale. We're committed to simplifying the complexity of multi-vendor commerce by offering the technology, workflows, and operational foundation founders need to succeed. By combining speed, stability, and real marketplace intelligence, we help entrepreneurs focus on growth—not on building infrastructure from scratch. This foundation ensures that marketplace teams have the clarity and confidence to operate smoothly from day one. With stronger operational readiness, founders can accelerate growth without worrying about technical limitations.",
       gradient: 'from-blue-500/10 to-cyan-500/10',
       iconColor: 'text-blue-600',
     },
@@ -26,7 +26,7 @@ export default function About() {
     {
       icon: Eye,
       title: 'Our Vision',
-      content: "We believe the future of commerce is multi-vendor. From fashion collectives to regional retail groups, more businesses are shifting toward marketplace models. Kaartx Kloud aims to become the technology backbone that helps these businesses compete, scale, and succeed—starting from the GCC and expanding globally.",
+      content: "We believe the future of commerce is multi-vendor. From fashion collectives to regional retail groups, more businesses are shifting toward marketplace models. Kaartx Kloud aims to become the technology backbone that helps these businesses compete, scale, and succeed—starting from the GCC and expanding globally. We envision a marketplace ecosystem where technology removes friction, not creates it. By continuously evolving Kaartx Kloud, we aim to support founders as they expand into new regions and unlock new opportunities.",
       gradient: 'from-amber-500/10 to-orange-500/10',
       iconColor: 'text-amber-600',
     },
