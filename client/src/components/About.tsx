@@ -1,5 +1,4 @@
 import { Target, BookOpen, Eye } from 'lucide-react';
-import { Card } from '@/components/ui/card';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function About() {
@@ -13,22 +12,22 @@ export default function About() {
       icon: Target,
       title: 'Our Mission',
       content: "Our mission is to empower the next generation of marketplace founders with a platform that's fast, reliable, and built for scale. We're committed to simplifying the complexity of multi-vendor commerce by offering the technology, workflows, and operational foundation founders need to succeed. By combining speed, stability, and real marketplace intelligence, we help entrepreneurs focus on growth—not on building infrastructure from scratch. This foundation ensures that marketplace teams have the clarity and confidence to operate smoothly from day one. With stronger operational readiness, founders can accelerate growth without worrying about technical limitations.",
-      gradient: 'from-blue-500/10 to-cyan-500/10',
-      iconColor: 'text-blue-600',
+      iconBg: 'bg-blue-50',
+      iconColor: 'text-blue-500',
     },
     {
       icon: BookOpen,
       title: 'Our Story',
       content: "Kaartx began as an internal project—built to power a next-generation marketplace in the GCC region. As we grew, we realized something important: every founder we met wanted to build a marketplace, but nobody had access to a complete, reliable, and scalable system. So we opened up our technology. What started as a single platform became a complete product—Kaartx Kloud—built with real-world marketplace experience, operational knowledge, seller lifecycle expertise, and deep understanding of the GCC market.",
-      gradient: 'from-purple-500/10 to-pink-500/10',
-      iconColor: 'text-purple-600',
+      iconBg: 'bg-purple-50',
+      iconColor: 'text-purple-500',
     },
     {
       icon: Eye,
       title: 'Our Vision',
       content: "We believe the future of commerce is multi-vendor. From fashion collectives to regional retail groups, more businesses are shifting toward marketplace models. Kaartx Kloud aims to become the technology backbone that helps these businesses compete, scale, and succeed—starting from the GCC and expanding globally. We envision a marketplace ecosystem where technology removes friction, not creates it. By continuously evolving Kaartx Kloud, we aim to support founders as they expand into new regions and unlock new opportunities.",
-      gradient: 'from-amber-500/10 to-orange-500/10',
-      iconColor: 'text-amber-600',
+      iconBg: 'bg-amber-50',
+      iconColor: 'text-amber-500',
     },
   ];
 
@@ -42,7 +41,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-12 sm:py-20 md:py-32 bg-card/20 scroll-mt-20">
+    <section id="about" className="py-12 sm:py-20 md:py-32 bg-[#f8f9fb] scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div 
           ref={titleAnimation.ref}
@@ -57,37 +56,37 @@ export default function About() {
           ref={introAnimation.ref}
           className={`max-w-4xl mx-auto mb-12 sm:mb-14 animate-on-scroll ${introAnimation.isVisible ? 'visible' : ''}`}
         >
-          <Card className="p-8 sm:p-10 bg-background border-border/60 !rounded-2xl">
+          <div className="p-8 sm:p-10 bg-white rounded-2xl shadow-[0_2px_16px_rgba(0,0,0,0.06)]">
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed text-center" data-testid="text-about-intro">
               Kaartx Kloud is a full-stack commerce infrastructure designed to help businesses launch, scale, and manage their own multi-vendor marketplaces with speed and confidence. We combine modern technology, intuitive design, and deep marketplace expertise to help founders build powerful commerce ecosystems—without the complexity of traditional development.
             </p>
-          </Card>
+          </div>
         </div>
 
         <div 
           ref={cardsAnimation.ref}
-          className={`grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-12 sm:mb-14 animate-on-scroll ${cardsAnimation.isVisible ? 'visible' : ''}`}
+          className={`grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 mb-12 sm:mb-14 animate-on-scroll ${cardsAnimation.isVisible ? 'visible' : ''}`}
         >
           {sections.map((section, index) => {
             const Icon = section.icon;
             const stagger = ['', 'stagger-1', 'stagger-2'];
             
             return (
-              <Card
+              <div
                 key={index}
-                className={`p-8 bg-background border-border/60 !rounded-2xl hover-elevate transition-all duration-300 ${stagger[index]}`}
+                className={`p-8 bg-white rounded-2xl shadow-[0_2px_16px_rgba(0,0,0,0.06)] transition-all duration-300 ${stagger[index]}`}
                 data-testid={`about-card-${index}`}
               >
-                <div className={`h-14 w-14 rounded-2xl bg-gradient-to-br ${section.gradient} flex items-center justify-center mb-6 border border-border/40`}>
-                  <Icon className={`h-7 w-7 ${section.iconColor}`} strokeWidth={1.75} />
+                <div className={`h-12 w-12 rounded-xl ${section.iconBg} flex items-center justify-center mb-6`}>
+                  <Icon className={`h-6 w-6 ${section.iconColor}`} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-4" data-testid={`text-about-${section.title.toLowerCase().replace(' ', '-')}-heading`}>
+                <h3 className="text-lg font-bold text-foreground mb-4" data-testid={`text-about-${section.title.toLowerCase().replace(' ', '-')}-heading`}>
                   {section.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed" data-testid={`text-about-${section.title.toLowerCase().replace(' ', '-')}`}>
+                <p className="text-muted-foreground leading-relaxed text-[15px]" data-testid={`text-about-${section.title.toLowerCase().replace(' ', '-')}`}>
                   {section.content}
                 </p>
-              </Card>
+              </div>
             );
           })}
         </div>
@@ -109,10 +108,10 @@ export default function About() {
             {roadmapItems.map((item, index) => (
               <div 
                 key={index}
-                className="group p-5 rounded-2xl bg-background border border-border/50 hover-elevate transition-all duration-300"
+                className="group p-5 rounded-xl bg-white shadow-[0_2px_12px_rgba(0,0,0,0.04)] transition-all duration-300"
                 data-testid={`text-about-roadmap-item-${index}`}
               >
-                <span className="text-sm sm:text-base text-foreground/80 leading-relaxed">{item}</span>
+                <span className="text-sm sm:text-base text-muted-foreground leading-relaxed">{item}</span>
               </div>
             ))}
           </div>
