@@ -40,6 +40,22 @@ export default function CreateMarketplace() {
       });
     },
     onError: (error: Error) => {
+      // Try to parse field-specific error from the error message (format: "400: {json}")
+      const match = error.message.match(/^\d+:\s*(.+)$/);
+      if (match) {
+        try {
+          const errorData = JSON.parse(match[1]);
+          if (errorData?.field && errorData?.message) {
+            form.setError(errorData.field as 'marketplaceName' | 'ownerEmail' | 'password', {
+              type: 'server',
+              message: errorData.message,
+            });
+            return;
+          }
+        } catch {
+          // Not valid JSON, fall through to toast
+        }
+      }
       toast({
         title: 'Error',
         description: error.message || 'Failed to create marketplace',

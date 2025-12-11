@@ -14,7 +14,7 @@ export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  createTenant(tenant: InsertTenant): Promise<Tenant>;
+  createTenant(tenant: InsertTenant, subdomain: string): Promise<Tenant>;
   getTenantByEmail(email: string): Promise<Tenant | undefined>;
   getTenantBySubdomain(subdomain: string): Promise<Tenant | undefined>;
 }
@@ -45,25 +45,8 @@ export class MemStorage implements IStorage {
     return user;
   }
 
-  async createTenant(insertTenant: InsertTenant): Promise<Tenant> {
+  async createTenant(insertTenant: InsertTenant, subdomain: string): Promise<Tenant> {
     const id = randomUUID();
-    let subdomain = insertTenant.marketplaceName
-      .toLowerCase()
-      .replace(/[^a-z0-9]/g, '-')
-      .replace(/-+/g, '-')
-      .replace(/^-|-$/g, '');
-    
-    let existingSubdomain = await this.getTenantBySubdomain(subdomain);
-    let counter = 1;
-    while (existingSubdomain) {
-      subdomain = `${insertTenant.marketplaceName
-        .toLowerCase()
-        .replace(/[^a-z0-9]/g, '-')
-        .replace(/-+/g, '-')
-        .replace(/^-|-$/g, '')}-${counter}`;
-      existingSubdomain = await this.getTenantBySubdomain(subdomain);
-      counter++;
-    }
     
     const trialEndsAt = new Date();
     trialEndsAt.setDate(trialEndsAt.getDate() + 14);

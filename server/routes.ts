@@ -21,12 +21,28 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const tenantData = validationResult.data;
 
+      // Check for existing email
       const existingTenant = await storage.getTenantByEmail(tenantData.ownerEmail);
       if (existingTenant) {
-        return res.status(400).send('Email already registered');
+        return res.status(400).json({ field: 'ownerEmail', message: 'Email already registered' });
       }
 
-      const tenant = await storage.createTenant(tenantData);
+      // Generate subdomain and check for uniqueness
+      const subdomain = tenantData.marketplaceName
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, '-')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+
+      const existingSubdomain = await storage.getTenantBySubdomain(subdomain);
+      if (existingSubdomain) {
+        return res.status(400).json({ 
+          field: 'marketplaceName', 
+          message: 'This marketplace name is already taken. Please choose a different name.' 
+        });
+      }
+
+      const tenant = await storage.createTenant(tenantData, subdomain);
 
       const { password, ...tenantWithoutPassword } = tenant;
 
