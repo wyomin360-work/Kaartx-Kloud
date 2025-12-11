@@ -10,7 +10,7 @@ export default function About() {
     {
       icon: Target,
       title: 'Our Mission',
-      content: "Our mission is to empower the next generation of marketplace founders with a platform that's fast, reliable, and built for scale. We're committed to simplifying the complexity of multi-vendor commerce by offering the technology, workflows, and operational foundation founders need to succeed. By combining speed, stability, and real marketplace intelligence, we help entrepreneurs focus on growth—not on building infrastructure from scratch. This foundation ensures that marketplace teams have the clarity and confidence to operate smoothly from day one. With stronger operational readiness, founders can accelerate growth without worrying about technical limitations.",
+      content: "Our mission is to empower the next generation of marketplace founders with a platform that's fast, reliable, and built for scale. We're committed to simplifying the complexity of multi-vendor commerce by offering the technology, workflows, and operational foundation founders need to succeed. By combining speed, stability, and real marketplace intelligence, we help entrepreneurs focus on growth—not on building infrastructure from scratch.",
       accentColor: 'bg-primary',
     },
     {
