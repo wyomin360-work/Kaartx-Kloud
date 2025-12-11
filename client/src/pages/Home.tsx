@@ -58,28 +58,34 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen">
-      <Navbar onOpenSignup={() => setSignupModalOpen(true)} />
-      <Hero onOpenSignup={() => setSignupModalOpen(true)} />
-      <StatsBar />
-      <FeatureGrid />
-      <HowItWorks />
-      <DeepFeatures />
-      <UseCases />
-      <IntegrationsMarquee />
-      <Security />
-      {/* <APISection /> */}
-      {/* <Showcase /> */}
-      <Testimonials />
-      <CaseStudy />
-      <Pricing onOpenSignup={() => setSignupModalOpen(true)} />
-      <FAQ />
-      <BookingSection />
-      <About />
-      <FinalCTA onOpenSignup={() => setSignupModalOpen(true)} />
-      <Footer />
-      <WhatsAppButton />
+    <>
+      <div 
+        className={`min-h-screen transition-[filter] duration-200 ${
+          signupModalOpen ? 'blur-sm pointer-events-none' : ''
+        }`}
+      >
+        <Navbar onOpenSignup={() => setSignupModalOpen(true)} />
+        <Hero onOpenSignup={() => setSignupModalOpen(true)} />
+        <StatsBar />
+        <FeatureGrid />
+        <HowItWorks />
+        <DeepFeatures />
+        <UseCases />
+        <IntegrationsMarquee />
+        <Security />
+        {/* <APISection /> */}
+        {/* <Showcase /> */}
+        <Testimonials />
+        <CaseStudy />
+        <Pricing onOpenSignup={() => setSignupModalOpen(true)} />
+        <FAQ />
+        <BookingSection />
+        <About />
+        <FinalCTA onOpenSignup={() => setSignupModalOpen(true)} />
+        <Footer />
+        <WhatsAppButton />
+      </div>
       <SignupModal open={signupModalOpen} onOpenChange={setSignupModalOpen} />
-    </div>
+    </>
   );
 }
