@@ -42,6 +42,30 @@ export function CustomModal({
     }
   }, [open]);
 
+  // Lock background scroll when modal is open
+  useEffect(() => {
+    if (open) {
+      const originalBodyOverflow = document.body.style.overflow;
+      const originalHtmlOverflow = document.documentElement.style.overflow;
+      const scrollY = window.scrollY;
+      
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      
+      return () => {
+        document.body.style.overflow = originalBodyOverflow;
+        document.documentElement.style.overflow = originalHtmlOverflow;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [open]);
+
   if (!open) return null;
 
   const handleBackdropClick = (e: React.MouseEvent) => {
@@ -80,6 +104,7 @@ export function CustomModal({
             className={cn(
               "relative z-50 bg-background border rounded-lg shadow-lg",
               "animate-in fade-in-0 zoom-in-95 duration-200",
+              "[&_*:focus]:outline-none [&_*:focus-visible]:outline-none [&_*:focus]:ring-0 [&_*:focus-visible]:ring-0",
               className
             )}
             role="dialog"
@@ -89,7 +114,7 @@ export function CustomModal({
             {showCloseButton && (
               <button
                 onClick={() => onOpenChange(false)}
-                className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none"
+                className="absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-0 disabled:pointer-events-none"
                 aria-label="Close"
                 data-testid="button-close-modal"
               >
