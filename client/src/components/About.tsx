@@ -33,7 +33,7 @@ export default function About() {
     'Advanced analytics for marketplace founders',
     'More seller tools and workflow automations',
     'Improved subscription and billing capabilities',
-    'Stronger GCC commerce integrations',
+    'Stronger GCC commerce integrations framework',
   ];
 
   return (
