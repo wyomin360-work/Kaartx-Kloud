@@ -39,6 +39,8 @@ export function CustomModal({
   useEffect(() => {
     if (open && contentRef.current) {
       contentRef.current.focus();
+      // Reset scroll position when modal opens
+      contentRef.current.scrollTop = 0;
     }
   }, [open]);
 

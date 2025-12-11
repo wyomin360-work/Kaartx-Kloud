@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
@@ -19,6 +19,16 @@ interface SignupModalProps {
 export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
   const { toast } = useToast();
   const [createdTenant, setCreatedTenant] = useState<PublicTenant | null>(null);
+  // Scroll to top when success state is shown
+  useEffect(() => {
+    if (createdTenant) {
+      // Find the modal content element and scroll to top
+      const modalContent = document.querySelector('[role="dialog"]');
+      if (modalContent) {
+        modalContent.scrollTop = 0;
+      }
+    }
+  }, [createdTenant]);
 
   const form = useForm<InsertTenant>({
     resolver: zodResolver(insertTenantSchema),
