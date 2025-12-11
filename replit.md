@@ -73,6 +73,7 @@ Preferred communication style: Simple, everyday language.
 
 - **UI/UX Decisions:** Ultra-professional, premium designs with glassmorphism, layered gradients, minimalist aesthetics, and playful styling. Emphasizes consistent spacing, prominent card backgrounds, professional typography, and sophisticated hover effects.
 - **Modal-Based Signup:** Tenant signup via modal for improved conversion.
+- **Domain Structure:** Primary domain is `kloud.kaartx.com`. Marketplace subdomains follow the pattern `{slug}.kloud.kaartx.com` (e.g., `seviora.kloud.kaartx.com`). Email addresses remain `@kaartx.com`.
 - **Unified Navbar:** Consistent, fixed navbar with intelligent handling for homepage sections and smooth scroll navigation (`scroll-mt-20`).
 - **Cal.com Integration:** Embedded, branded Cal.com booking widget for sales calls.
 - **Mobile Optimization:** Full mobile responsiveness with mobile-first spacing and typography.

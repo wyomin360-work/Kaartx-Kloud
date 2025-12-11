@@ -75,7 +75,7 @@ export default function CreateMarketplace() {
               </div>
               <div className="bg-muted/30 rounded-lg p-5">
                 <p className="text-sm text-muted-foreground mb-1">Your Subdomain</p>
-                <p className="text-lg font-semibold text-primary break-all">{createdTenant.subdomain}.kaartxkloud.com</p>
+                <p className="text-lg font-semibold text-primary break-all">{createdTenant.subdomain}.kloud.kaartx.com</p>
               </div>
               <div className="bg-muted/30 rounded-lg p-5">
                 <p className="text-sm text-muted-foreground mb-1">Plan</p>
@@ -107,7 +107,7 @@ export default function CreateMarketplace() {
                   <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-foreground">Access Your Dashboard</p>
-                    <p className="text-sm text-muted-foreground">Log in at {createdTenant.subdomain}.kaartxkloud.com to configure your marketplace</p>
+                    <p className="text-sm text-muted-foreground">Log in at {createdTenant.subdomain}.kloud.kaartx.com to configure your marketplace</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -240,7 +240,7 @@ export default function CreateMarketplace() {
                         <Circle className="w-5 h-5 text-muted-foreground" />
                         <CheckCircle2 className="w-3.5 h-3.5 text-foreground absolute top-[3px] left-[3px]" />
                       </div>
-                      <span>Custom subdomain (yourname.kaartxkloud.com)</span>
+                      <span>Custom subdomain (yourname.kloud.kaartx.com)</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <div className="relative flex-shrink-0 mt-0.5">
