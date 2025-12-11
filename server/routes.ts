@@ -21,25 +21,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
       const tenantData = validationResult.data;
 
-      // Check for existing email
-      const existingTenant = await storage.getTenantByEmail(tenantData.ownerEmail);
-      if (existingTenant) {
-        return res.status(400).json({ field: 'ownerEmail', message: 'Email already registered' });
-      }
-
-      // Generate subdomain and check for uniqueness
+      // Generate subdomain for checking
       const subdomain = tenantData.marketplaceName
         .toLowerCase()
         .replace(/[^a-z0-9]/g, '-')
         .replace(/-+/g, '-')
         .replace(/^-|-$/g, '');
 
-      const existingSubdomain = await storage.getTenantBySubdomain(subdomain);
+      // Check both email and subdomain uniqueness in parallel
+      const [existingEmail, existingSubdomain] = await Promise.all([
+        storage.getTenantByEmail(tenantData.ownerEmail),
+        storage.getTenantBySubdomain(subdomain)
+      ]);
+
+      // Collect all validation errors
+      const errors: { field: string; message: string }[] = [];
+      
+      if (existingEmail) {
+        errors.push({ field: 'ownerEmail', message: 'Email already registered' });
+      }
+      
       if (existingSubdomain) {
-        return res.status(400).json({ 
+        errors.push({ 
           field: 'marketplaceName', 
           message: 'This marketplace name is already taken. Please choose a different name.' 
         });
+      }
+
+      // If there are any errors, return them all
+      if (errors.length > 0) {
+        return res.status(400).json({ errors });
       }
 
       const tenant = await storage.createTenant(tenantData, subdomain);

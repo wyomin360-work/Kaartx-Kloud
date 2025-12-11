@@ -40,11 +40,22 @@ export default function CreateMarketplace() {
       });
     },
     onError: (error: Error) => {
-      // Try to parse field-specific error from the error message (format: "400: {json}")
+      // Try to parse field-specific errors from the error message (format: "400: {json}")
       const match = error.message.match(/^\d+:\s*(.+)$/);
       if (match) {
         try {
           const errorData = JSON.parse(match[1]);
+          // Handle array of errors (new format)
+          if (errorData?.errors && Array.isArray(errorData.errors)) {
+            errorData.errors.forEach((err: { field: string; message: string }) => {
+              form.setError(err.field as 'marketplaceName' | 'ownerEmail' | 'password', {
+                type: 'server',
+                message: err.message,
+              });
+            });
+            return;
+          }
+          // Handle single error (legacy format)
           if (errorData?.field && errorData?.message) {
             form.setError(errorData.field as 'marketplaceName' | 'ownerEmail' | 'password', {
               type: 'server',
