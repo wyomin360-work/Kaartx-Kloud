@@ -64,11 +64,10 @@ export default function About() {
             return (
               <div
                 key={index}
-                className={`relative bg-background p-8 sm:p-10 ${stagger[index]}`}
+                className={`bg-background p-8 sm:p-10 ${stagger[index]}`}
                 data-testid={`about-card-${index}`}
               >
-                <div className={`absolute top-0 left-8 sm:left-10 w-12 h-1 ${section.accentColor} rounded-b-full`} />
-                <h3 className="text-xl font-bold text-foreground mb-5 mt-4" data-testid={`text-about-${section.title.toLowerCase().replace(' ', '-')}-heading`}>
+                <h3 className="text-xl font-bold text-foreground mb-5" data-testid={`text-about-${section.title.toLowerCase().replace(' ', '-')}-heading`}>
                   {section.title}
                 </h3>
                 <p className="text-muted-foreground leading-[1.8] text-[15px]" data-testid={`text-about-${section.title.toLowerCase().replace(' ', '-')}`}>
