@@ -32,17 +32,28 @@ export default function Home() {
       history.scrollRestoration = 'manual';
     }
 
-    // Scroll to section if there's a hash in the URL
-    const hash = window.location.hash;
-    if (hash) {
-      const sectionId = hash.substring(1); // Remove the # character
-      // Small delay to ensure the page is fully rendered
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
+    // Detect if this is a page reload vs. fresh navigation
+    const navEntries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+    const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
+
+    if (isReload) {
+      // On refresh: scroll to top and clear hash
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname);
+      }
+    } else {
+      // Fresh navigation: scroll to section if there's a hash
+      const hash = window.location.hash;
+      if (hash) {
+        const sectionId = hash.substring(1);
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      }
     }
   }, []);
 
