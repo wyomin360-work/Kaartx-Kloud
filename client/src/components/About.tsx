@@ -41,13 +41,13 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-12 sm:py-20 md:py-32 bg-[#f8f9fb] scroll-mt-20">
+    <section id="about" className="py-12 sm:py-20 md:py-32 bg-primary scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div 
           ref={titleAnimation.ref}
           className={`text-center mb-12 sm:mb-14 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
-          <h2 className="section-title text-foreground mb-4 sm:mb-5" data-testid="text-about-title">
+          <h2 className="section-title text-white mb-4 sm:mb-5" data-testid="text-about-title">
             About Kaartx Kloud
           </h2>
         </div>
@@ -96,10 +96,10 @@ export default function About() {
           className={`max-w-4xl mx-auto pt-6 animate-on-scroll ${roadmapAnimation.isVisible ? 'visible' : ''}`}
         >
           <div className="text-center mb-10">
-            <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-4" data-testid="text-about-roadmap-heading">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4" data-testid="text-about-roadmap-heading">
               The Road Ahead
             </h3>
-            <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto" data-testid="text-about-roadmap-intro">
+            <p className="text-white/80 leading-relaxed max-w-2xl mx-auto" data-testid="text-about-roadmap-intro">
               Kaartx Kloud is evolving rapidly, with a strong focus on improving marketplace performance, seller efficiency, and operational automation.
             </p>
           </div>
@@ -117,7 +117,7 @@ export default function About() {
           </div>
           
           <div className="text-center">
-            <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto text-base sm:text-lg" data-testid="text-about-closing">
+            <p className="text-white/80 leading-relaxed max-w-2xl mx-auto text-base sm:text-lg" data-testid="text-about-closing">
               This is just the beginning. We're here to help founders build marketplaces that thrive across the GCC—with the stability, speed, and infrastructure they need to scale confidently.
             </p>
           </div>
