@@ -46,7 +46,7 @@ export default function About() {
           <p className="text-sm font-semibold tracking-widest text-primary uppercase mb-4" data-testid="text-about-label">
             About Us
           </p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 tracking-tight" data-testid="text-about-title">
+          <h2 className="section-title text-foreground mb-6" data-testid="text-about-title">
             About Kaartx Kloud
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-about-intro">
