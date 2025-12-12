@@ -264,7 +264,7 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
                 />
 
                 {/* What's included - Light and minimal, matching Next Steps */}
-                <div className="pt-2 mb-4">
+                <div className="pt-2 mb-6">
                   <h3 className="text-sm font-semibold text-foreground mb-3">What's included</h3>
                   <ul className="space-y-2.5">
                     <li className="flex items-start gap-2.5">
