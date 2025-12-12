@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { CheckCircle2, Circle } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { CustomModal, CustomModalHeader, CustomModalTitle, CustomModalDescription } from '@/components/ui/custom-modal';
+import { CustomModal } from '@/components/ui/custom-modal';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 import { insertTenantSchema, type InsertTenant, type PublicTenant } from '@shared/schema';
@@ -19,16 +19,16 @@ interface SignupModalProps {
 export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
   const { toast } = useToast();
   const [createdTenant, setCreatedTenant] = useState<PublicTenant | null>(null);
-  // Scroll to top when success state is shown
+  // Scroll to top when modal opens or when success state is shown
   useEffect(() => {
-    if (createdTenant) {
+    if (open || createdTenant) {
       // Find the modal content element and scroll to top
       const modalContent = document.querySelector('[role="dialog"]');
       if (modalContent) {
         modalContent.scrollTop = 0;
       }
     }
-  }, [createdTenant]);
+  }, [open, createdTenant]);
 
   const form = useForm<InsertTenant>({
     resolver: zodResolver(insertTenantSchema),
@@ -101,7 +101,7 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
     <CustomModal 
       open={open} 
       onOpenChange={handleClose}
-      className={createdTenant ? "w-full max-w-[720px] max-h-[90vh] overflow-y-auto p-6 shadow-xl" : "max-w-2xl max-h-[90vh] overflow-y-auto p-6"}
+      className="w-full max-w-[720px] max-h-[90vh] overflow-y-auto p-6 shadow-xl"
       preventOutsideClick={true}
     >
       <div data-testid="dialog-signup">
@@ -192,26 +192,28 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
             </div>
           </div>
         ) : (
-          // Signup Form
-          <>
-            <CustomModalHeader>
-              <CustomModalTitle className="text-2xl">Create Your Marketplace</CustomModalTitle>
-              <CustomModalDescription>
+          // Signup Form - Premium redesign matching success modal
+          <div className="py-2">
+            {/* Header - Matching success modal style */}
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1.5">Create Your Marketplace</h2>
+              <p className="text-sm text-muted-foreground">
                 Start your 14-day free trial. No credit card required.
-              </CustomModalDescription>
-            </CustomModalHeader>
+              </p>
+            </div>
 
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 pt-4">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                 <FormField
                   control={form.control}
                   name="marketplaceName"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Marketplace Name</FormLabel>
+                    <FormItem className="space-y-1.5">
+                      <FormLabel className="text-xs font-medium text-muted-foreground">Marketplace Name</FormLabel>
                       <FormControl>
                         <Input
                           placeholder="e.g., Shine Boutique"
+                          className="h-10 border-border/60 rounded-md"
                           {...field}
                           data-testid="input-marketplace-name"
                         />
@@ -225,12 +227,13 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
                   control={form.control}
                   name="ownerEmail"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email Address</FormLabel>
+                    <FormItem className="space-y-1.5">
+                      <FormLabel className="text-xs font-medium text-muted-foreground">Email Address</FormLabel>
                       <FormControl>
                         <Input
                           type="email"
                           placeholder="you@company.com"
+                          className="h-10 border-border/60 rounded-md"
                           {...field}
                           data-testid="input-owner-email"
                         />
@@ -244,12 +247,13 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
                   control={form.control}
                   name="password"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Password</FormLabel>
+                    <FormItem className="space-y-1.5">
+                      <FormLabel className="text-xs font-medium text-muted-foreground">Password</FormLabel>
                       <FormControl>
                         <Input
                           type="password"
                           placeholder="Min. 8 characters"
+                          className="h-10 border-border/60 rounded-md"
                           {...field}
                           data-testid="input-password"
                         />
@@ -259,44 +263,32 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
                   )}
                 />
 
-                <div className="bg-muted/30 rounded-lg p-5 space-y-3">
-                  <h4 className="font-semibold text-foreground">What's included:</h4>
-                  <ul className="space-y-2.5 text-sm text-foreground">
-                    <li className="flex items-start gap-3">
-                      <div className="relative flex-shrink-0 mt-0.5">
-                        <Circle className="w-5 h-5 text-muted-foreground" />
-                        <CheckCircle2 className="w-3.5 h-3.5 text-foreground absolute top-[3px] left-[3px]" />
-                      </div>
-                      <span>14-day free trial on Starter plan</span>
+                {/* What's included - Light and minimal, matching Next Steps */}
+                <div className="pt-2 mb-2">
+                  <h3 className="text-sm font-semibold text-foreground mb-3">What's included</h3>
+                  <ul className="space-y-2.5">
+                    <li className="flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-foreground">14-day free trial on Starter plan</span>
                     </li>
-                    <li className="flex items-start gap-3">
-                      <div className="relative flex-shrink-0 mt-0.5">
-                        <Circle className="w-5 h-5 text-muted-foreground" />
-                        <CheckCircle2 className="w-3.5 h-3.5 text-foreground absolute top-[3px] left-[3px]" />
-                      </div>
-                      <span>Custom subdomain (yourname.kloud.kaartx.com)</span>
+                    <li className="flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-foreground">Custom subdomain (yourname.kloud.kaartx.com)</span>
                     </li>
-                    <li className="flex items-start gap-3">
-                      <div className="relative flex-shrink-0 mt-0.5">
-                        <Circle className="w-5 h-5 text-muted-foreground" />
-                        <CheckCircle2 className="w-3.5 h-3.5 text-foreground absolute top-[3px] left-[3px]" />
-                      </div>
-                      <span>Up to 10 sellers and unlimited products</span>
+                    <li className="flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-foreground">Up to 10 sellers and unlimited products</span>
                     </li>
-                    <li className="flex items-start gap-3">
-                      <div className="relative flex-shrink-0 mt-0.5">
-                        <Circle className="w-5 h-5 text-muted-foreground" />
-                        <CheckCircle2 className="w-3.5 h-3.5 text-foreground absolute top-[3px] left-[3px]" />
-                      </div>
-                      <span>TAP Payments & Asyad Express integration</span>
+                    <li className="flex items-start gap-2.5">
+                      <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-foreground">TAP Payments & Asyad Express integration</span>
                     </li>
                   </ul>
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full h-11"
-                  size="lg"
+                  className="w-full"
                   disabled={createTenantMutation.isPending}
                   data-testid="button-create-marketplace"
                 >
@@ -311,7 +303,7 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
                 </p>
               </form>
             </Form>
-          </>
+          </div>
         )}
       </div>
     </CustomModal>
