@@ -101,94 +101,94 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
     <CustomModal 
       open={open} 
       onOpenChange={handleClose}
-      className="max-w-2xl max-h-[90vh] overflow-y-auto p-6"
+      className={createdTenant ? "w-full max-w-[720px] max-h-[90vh] overflow-y-auto p-6 shadow-xl" : "max-w-2xl max-h-[90vh] overflow-y-auto p-6"}
       preventOutsideClick={true}
     >
       <div data-testid="dialog-signup">
         {createdTenant ? (
-          // Success State
-          <div className="py-6">
-            <div className="text-center mb-8">
-              <div className="mx-auto mb-6 w-20 h-20 bg-green-50 dark:bg-green-950 rounded-full flex items-center justify-center">
-                <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
+          // Success State - Premium redesign
+          <div className="py-2">
+            {/* Header - Compact and centered */}
+            <div className="text-center mb-6">
+              <div className="mx-auto mb-4 w-14 h-14 bg-green-50 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+                <CheckCircle2 className="w-7 h-7 text-green-600 dark:text-green-400" />
               </div>
-              <CustomModalTitle className="text-3xl mb-3">Welcome to Kaartx Kloud!</CustomModalTitle>
-              <CustomModalDescription className="text-base">
+              <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1.5">Welcome to Kaartx Kloud!</h2>
+              <p className="text-sm text-muted-foreground">
                 Your marketplace is ready to launch. Start building your multi-vendor platform today.
-              </CustomModalDescription>
+              </p>
             </div>
 
-            <div className="space-y-8">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="bg-muted/30 rounded-lg p-5">
-                  <p className="text-sm text-muted-foreground mb-1">Marketplace Name</p>
-                  <p className="text-lg font-semibold text-foreground">{createdTenant.marketplaceName}</p>
-                </div>
-                <div className="bg-muted/30 rounded-lg p-5">
-                  <p className="text-sm text-muted-foreground mb-1">Your Subdomain</p>
-                  <p className="text-lg font-semibold text-primary break-all">{createdTenant.subdomain}.kloud.kaartx.com</p>
-                </div>
-                <div className="bg-muted/30 rounded-lg p-5">
-                  <p className="text-sm text-muted-foreground mb-1">Plan</p>
-                  <p className="text-lg font-semibold text-foreground">{createdTenant.plan}</p>
-                </div>
-                <div className="bg-muted/30 rounded-lg p-5">
-                  <p className="text-sm text-muted-foreground mb-1">Trial Period Ends</p>
-                  <p className="text-lg font-semibold text-foreground">
-                    {new Date(createdTenant.trialEndsAt).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </p>
-                </div>
+            {/* Details Grid - Compact cards with subtle borders */}
+            <div className="grid grid-cols-2 gap-3 mb-6">
+              <div className="border border-border/60 rounded-md px-4 py-3">
+                <p className="text-xs text-muted-foreground mb-0.5">Marketplace Name</p>
+                <p className="text-sm font-semibold text-foreground">{createdTenant.marketplaceName}</p>
               </div>
+              <div className="border border-border/60 rounded-md px-4 py-3">
+                <p className="text-xs text-muted-foreground mb-0.5">Your Subdomain</p>
+                <p className="text-sm font-semibold text-primary break-all">{createdTenant.subdomain}.kloud.kaartx.com</p>
+              </div>
+              <div className="border border-border/60 rounded-md px-4 py-3">
+                <p className="text-xs text-muted-foreground mb-0.5">Plan</p>
+                <p className="text-sm font-semibold text-foreground">{createdTenant.plan}</p>
+              </div>
+              <div className="border border-border/60 rounded-md px-4 py-3">
+                <p className="text-xs text-muted-foreground mb-0.5">Trial Period Ends</p>
+                <p className="text-sm font-semibold text-foreground">
+                  {new Date(createdTenant.trialEndsAt).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </p>
+              </div>
+            </div>
 
-              <div className="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-lg p-6">
-                <h3 className="font-semibold text-foreground mb-4 text-lg">Next Steps</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-foreground">Check Your Email</p>
-                      <p className="text-sm text-muted-foreground">We've sent login credentials and setup instructions to {createdTenant.ownerEmail}</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-foreground">Access Your Dashboard</p>
-                      <p className="text-sm text-muted-foreground">Log in at {createdTenant.subdomain}.kloud.kaartx.com to configure your marketplace</p>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="font-medium text-foreground">Start Onboarding Sellers</p>
-                      <p className="text-sm text-muted-foreground">Invite vendors to join your marketplace and begin listing products</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+            {/* Next Steps - Light and minimal */}
+            <div className="mb-6">
+              <h3 className="text-sm font-semibold text-foreground mb-3">Next Steps</h3>
+              <ul className="space-y-2.5">
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-medium text-foreground">Check Your Email</p>
+                    <p className="text-xs text-muted-foreground">We've sent login credentials and setup instructions to {createdTenant.ownerEmail}</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-medium text-foreground">Access Your Dashboard</p>
+                    <p className="text-xs text-muted-foreground">Log in at {createdTenant.subdomain}.kloud.kaartx.com to configure your marketplace</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="text-sm font-medium text-foreground">Start Onboarding Sellers</p>
+                    <p className="text-xs text-muted-foreground">Invite vendors to join your marketplace and begin listing products</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
 
-              <div className="flex gap-3">
-                <Button
-                  onClick={handleClose}
-                  variant="outline"
-                  className="flex-1"
-                  size="lg"
-                  data-testid="button-close-success"
-                >
-                  Close
-                </Button>
-                <Button
-                  className="flex-1"
-                  size="lg"
-                  data-testid="button-go-dashboard"
-                >
-                  Go to Dashboard
-                </Button>
-              </div>
+            {/* Buttons */}
+            <div className="flex gap-3 pt-2">
+              <Button
+                onClick={handleClose}
+                variant="outline"
+                className="flex-1"
+                data-testid="button-close-success"
+              >
+                Close
+              </Button>
+              <Button
+                className="flex-1"
+                data-testid="button-go-dashboard"
+              >
+                Go to Dashboard
+              </Button>
             </div>
           </div>
         ) : (
