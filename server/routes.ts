@@ -53,13 +53,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ errors });
       }
 
-      const tenant = await storage.createTenant(tenantData, subdomain);
+      // Get plan from request body (default to Starter)
+      const plan = req.body.plan || 'Starter';
+      const tenant = await storage.createTenant(tenantData, subdomain, plan);
 
       const { password, ...tenantWithoutPassword } = tenant;
 
       res.status(201).json(tenantWithoutPassword);
     } catch (error: any) {
       console.error('Error creating tenant:', error);
+      res.status(500).send(error.message || 'Internal server error');
+    }
+  });
+
+  // Activate Growth plan after payment
+  app.patch('/api/tenants/:id/activate-growth', async (req, res) => {
+    try {
+      const { id } = req.params;
+      
+      const tenant = await storage.activateGrowthPlan(id);
+      
+      if (!tenant) {
+        return res.status(404).json({ message: 'Tenant not found' });
+      }
+
+      const { password, ...tenantWithoutPassword } = tenant;
+      res.json(tenantWithoutPassword);
+    } catch (error: any) {
+      console.error('Error activating Growth plan:', error);
       res.status(500).send(error.message || 'Internal server error');
     }
   });

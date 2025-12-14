@@ -25,6 +25,12 @@ import SignupModal from '@/components/SignupModal';
 export default function Home() {
   const [location] = useLocation();
   const [signupModalOpen, setSignupModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<'Starter' | 'Growth'>('Starter');
+
+  const handleOpenSignup = (plan: 'Starter' | 'Growth' = 'Starter') => {
+    setSelectedPlan(plan);
+    setSignupModalOpen(true);
+  };
 
   useEffect(() => {
     // Disable browser's automatic scroll restoration to prevent jumps on refresh
@@ -64,8 +70,8 @@ export default function Home() {
           signupModalOpen ? 'blur-sm pointer-events-none' : ''
         }`}
       >
-        <Navbar onOpenSignup={() => setSignupModalOpen(true)} />
-        <Hero onOpenSignup={() => setSignupModalOpen(true)} />
+        <Navbar onOpenSignup={() => handleOpenSignup('Starter')} />
+        <Hero onOpenSignup={() => handleOpenSignup('Starter')} />
         <StatsBar />
         <FeatureGrid />
         <HowItWorks />
@@ -77,15 +83,19 @@ export default function Home() {
         {/* <Showcase /> */}
         <Testimonials />
         <CaseStudy />
-        <Pricing onOpenSignup={() => setSignupModalOpen(true)} />
+        <Pricing onOpenSignup={handleOpenSignup} />
         <FAQ />
         <BookingSection />
         <About />
-        <FinalCTA onOpenSignup={() => setSignupModalOpen(true)} />
+        <FinalCTA onOpenSignup={() => handleOpenSignup('Starter')} />
         <Footer />
         <WhatsAppButton />
       </div>
-      <SignupModal open={signupModalOpen} onOpenChange={setSignupModalOpen} />
+      <SignupModal 
+        open={signupModalOpen} 
+        onOpenChange={setSignupModalOpen} 
+        selectedPlan={selectedPlan}
+      />
     </>
   );
 }

@@ -6,7 +6,7 @@ import { Check } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface PricingProps {
-  onOpenSignup?: () => void;
+  onOpenSignup?: (plan?: 'Starter' | 'Growth') => void;
 }
 
 export default function Pricing({ onOpenSignup }: PricingProps) {
@@ -57,7 +57,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
         'Priority chat & WhatsApp support',
         'Bulk product uploads + workflow automations',
       ],
-      cta: 'Upgrade to Growth',
+      cta: 'Choose Growth',
       highlighted: true,
       mostPopular: true,
       savingsPercent: '~25%',
@@ -202,7 +202,13 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
                 </ul>
 
                 <Button
-                  onClick={plan.cta === 'Start 14-day free trial' ? onOpenSignup : scrollToBooking}
+                  onClick={
+                    plan.name === 'Starter' 
+                      ? () => onOpenSignup?.('Starter')
+                      : plan.name === 'Growth'
+                        ? () => onOpenSignup?.('Growth')
+                        : scrollToBooking
+                  }
                   className={`w-full rounded-2xl font-bold text-sm sm:text-base py-5 sm:py-6 hover:scale-[1.02] transition-transform ${plan.highlighted ? 'shadow-playful' : ''}`}
                   variant={plan.highlighted ? 'default' : 'outline'}
                   data-testid={`button-plan-${index}`}

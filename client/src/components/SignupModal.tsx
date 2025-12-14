@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, CreditCard, Loader2, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { CustomModal } from '@/components/ui/custom-modal';
@@ -14,21 +14,36 @@ import { apiRequest } from '@/lib/queryClient';
 interface SignupModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  selectedPlan?: 'Starter' | 'Growth';
 }
 
-export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
+type ModalState = 'form' | 'payment' | 'success' | 'payment-error';
+
+export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starter' }: SignupModalProps) {
   const { toast } = useToast();
   const [createdTenant, setCreatedTenant] = useState<PublicTenant | null>(null);
-  // Scroll to top when modal opens or when success state is shown
+  const [modalState, setModalState] = useState<ModalState>('form');
+  const [paymentError, setPaymentError] = useState<string | null>(null);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+
+  // Scroll to top when modal opens or when state changes
   useEffect(() => {
-    if (open || createdTenant) {
-      // Find the modal content element and scroll to top
+    if (open || modalState !== 'form') {
       const modalContent = document.querySelector('[role="dialog"]');
       if (modalContent) {
         modalContent.scrollTop = 0;
       }
     }
-  }, [open, createdTenant]);
+  }, [open, modalState]);
+
+  // Reset state when modal closes or plan changes
+  useEffect(() => {
+    if (!open) {
+      setModalState('form');
+      setPaymentError(null);
+      setCreatedTenant(null);
+    }
+  }, [open]);
 
   const form = useForm<InsertTenant>({
     resolver: zodResolver(insertTenantSchema),
@@ -41,23 +56,29 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
 
   const createTenantMutation = useMutation({
     mutationFn: async (data: InsertTenant) => {
-      const response = await apiRequest('POST', '/api/tenants', data);
+      const payload = { ...data, plan: selectedPlan };
+      const response = await apiRequest('POST', '/api/tenants', payload);
       return await response.json() as PublicTenant;
     },
     onSuccess: (data) => {
       setCreatedTenant(data);
-      toast({
-        title: 'Marketplace Created!',
-        description: 'Your 14-day free trial has started.',
-      });
+      if (selectedPlan === 'Growth') {
+        // For Growth plan, go to payment step
+        setModalState('payment');
+      } else {
+        // For Starter plan, show success immediately
+        setModalState('success');
+        toast({
+          title: 'Marketplace Created!',
+          description: 'Your 14-day free trial has started.',
+        });
+      }
     },
     onError: (error: Error) => {
-      // Try to parse field-specific errors from the error message (format: "400: {json}")
       const match = error.message.match(/^\d+:\s*(.+)$/);
       if (match) {
         try {
           const errorData = JSON.parse(match[1]);
-          // Handle array of errors (new format)
           if (errorData?.errors && Array.isArray(errorData.errors)) {
             errorData.errors.forEach((err: { field: string; message: string }) => {
               form.setError(err.field as 'marketplaceName' | 'ownerEmail' | 'password', {
@@ -67,7 +88,6 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
             });
             return;
           }
-          // Handle single error (legacy format)
           if (errorData?.field && errorData?.message) {
             form.setError(errorData.field as 'marketplaceName' | 'ownerEmail' | 'password', {
               type: 'server',
@@ -87,15 +107,49 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
     },
   });
 
+  const handlePayment = async () => {
+    setIsProcessingPayment(true);
+    setPaymentError(null);
+    
+    try {
+      // Simulate TAP Payments checkout - in production this would redirect to TAP
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Update tenant plan to Growth active
+      if (createdTenant) {
+        await apiRequest('PATCH', `/api/tenants/${createdTenant.id}/activate-growth`, {});
+      }
+      setModalState('success');
+      toast({
+        title: 'Payment Successful!',
+        description: 'Your Growth plan is now active.',
+      });
+    } catch (error) {
+      setPaymentError(error instanceof Error ? error.message : 'Payment failed. Please try again.');
+      setModalState('payment-error');
+    } finally {
+      setIsProcessingPayment(false);
+    }
+  };
+
+  const handleRetryPayment = () => {
+    setPaymentError(null);
+    setModalState('payment');
+  };
+
   const onSubmit = (data: InsertTenant) => {
     createTenantMutation.mutate(data);
   };
 
   const handleClose = () => {
     setCreatedTenant(null);
+    setModalState('form');
+    setPaymentError(null);
     form.reset();
     onOpenChange(false);
   };
+
+  const isGrowthPlan = selectedPlan === 'Growth';
 
   return (
     <CustomModal 
@@ -105,10 +159,9 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
       preventOutsideClick={true}
     >
       <div data-testid="dialog-signup">
-        {createdTenant ? (
-          // Success State - Premium redesign
+        {/* Success State */}
+        {modalState === 'success' && createdTenant && (
           <div className="py-2">
-            {/* Header - Compact and centered */}
             <div className="text-center mb-6">
               <div className="mx-auto mb-4 w-14 h-14 bg-green-50 dark:bg-green-900/30 rounded-full flex items-center justify-center">
                 <CheckCircle2 className="w-7 h-7 text-green-600 dark:text-green-400" />
@@ -119,7 +172,6 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
               </p>
             </div>
 
-            {/* Details Grid - Compact cards with subtle borders */}
             <div className="grid grid-cols-2 gap-3 mb-6">
               <div className="border border-border/60 rounded-md px-4 py-3">
                 <p className="text-xs text-muted-foreground mb-0.5">Marketplace Name</p>
@@ -134,9 +186,9 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
                 <p className="text-sm font-semibold text-foreground">{createdTenant.plan}</p>
               </div>
               <div className="border border-border/60 rounded-md px-4 py-3">
-                <p className="text-xs text-muted-foreground mb-0.5">Trial Period Ends</p>
+                <p className="text-xs text-muted-foreground mb-0.5">{isGrowthPlan ? 'Billing Period' : 'Trial Period Ends'}</p>
                 <p className="text-sm font-semibold text-foreground">
-                  {new Date(createdTenant.trialEndsAt).toLocaleDateString('en-US', {
+                  {isGrowthPlan ? 'Monthly' : new Date(createdTenant.trialEndsAt).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
@@ -145,7 +197,6 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
               </div>
             </div>
 
-            {/* Next Steps - Light and minimal */}
             <div className="mb-6">
               <h3 className="text-sm font-semibold text-foreground mb-3">Next Steps</h3>
               <ul className="space-y-2.5">
@@ -173,7 +224,6 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
               </ul>
             </div>
 
-            {/* Buttons */}
             <div className="flex gap-3 pt-2">
               <Button
                 onClick={handleClose}
@@ -191,14 +241,129 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
               </Button>
             </div>
           </div>
-        ) : (
-          // Signup Form - Premium redesign matching success modal
+        )}
+
+        {/* Payment State */}
+        {modalState === 'payment' && createdTenant && (
           <div className="py-2">
-            {/* Header - Matching success modal style */}
+            <div className="text-center mb-6">
+              <div className="mx-auto mb-4 w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
+                <CreditCard className="w-7 h-7 text-primary" />
+              </div>
+              <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1.5">Complete Your Payment</h2>
+              <p className="text-sm text-muted-foreground">
+                Activate your Growth plan for {createdTenant.marketplaceName}
+              </p>
+            </div>
+
+            <div className="border border-border/60 rounded-md p-4 mb-6">
+              <div className="flex justify-between items-center mb-3">
+                <span className="text-sm font-medium text-foreground">Growth Plan</span>
+                <span className="text-sm font-semibold text-foreground">OMR 115 / month</span>
+              </div>
+              <div className="flex justify-between items-center text-xs text-muted-foreground">
+                <span>Billed monthly via TAP Payments</span>
+                <span>Cancel anytime</span>
+              </div>
+            </div>
+
+            <div className="space-y-4 mb-6">
+              <div>
+                <label className="text-xs font-medium text-muted-foreground mb-1.5 block">Card Number</label>
+                <Input 
+                  placeholder="4111 1111 1111 1111" 
+                  className="h-10 border-border/60 rounded-md"
+                  data-testid="input-card-number"
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-medium text-muted-foreground mb-1.5 block">Expiry</label>
+                  <Input 
+                    placeholder="MM/YY" 
+                    className="h-10 border-border/60 rounded-md"
+                    data-testid="input-card-expiry"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-medium text-muted-foreground mb-1.5 block">CVV</label>
+                  <Input 
+                    placeholder="123" 
+                    className="h-10 border-border/60 rounded-md"
+                    data-testid="input-card-cvv"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <Button
+              onClick={handlePayment}
+              className="w-full"
+              disabled={isProcessingPayment}
+              data-testid="button-pay-now"
+            >
+              {isProcessingPayment ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  Processing...
+                </>
+              ) : (
+                'Pay OMR 115'
+              )}
+            </Button>
+
+            <p className="text-xs text-center text-muted-foreground mt-4">
+              Secured by TAP Payments. Your card details are encrypted.
+            </p>
+          </div>
+        )}
+
+        {/* Payment Error State */}
+        {modalState === 'payment-error' && (
+          <div className="py-2">
+            <div className="text-center mb-6">
+              <div className="mx-auto mb-4 w-14 h-14 bg-red-50 dark:bg-red-900/30 rounded-full flex items-center justify-center">
+                <AlertCircle className="w-7 h-7 text-red-600 dark:text-red-400" />
+              </div>
+              <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1.5">Payment Failed</h2>
+              <p className="text-sm text-muted-foreground">
+                {paymentError || 'There was an issue processing your payment.'}
+              </p>
+            </div>
+
+            <div className="flex gap-3 pt-2">
+              <Button
+                onClick={handleRetryPayment}
+                className="flex-1"
+                data-testid="button-retry-payment"
+              >
+                Try Again
+              </Button>
+            </div>
+            
+            <p className="text-xs text-center text-muted-foreground mt-4">
+              Your marketplace has been created. You can retry the payment or{' '}
+              <button 
+                onClick={handleClose} 
+                className="text-foreground hover:underline"
+                data-testid="button-close-payment-error"
+              >
+                close and try later
+              </button>
+            </p>
+          </div>
+        )}
+
+        {/* Form State */}
+        {modalState === 'form' && (
+          <div className="py-2">
             <div className="text-center mb-6">
               <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1.5">Create Your Marketplace</h2>
               <p className="text-sm text-muted-foreground">
-                Start your 14-day free trial. No credit card required.
+                {isGrowthPlan 
+                  ? 'Set up your Growth plan marketplace. Payment on next step.'
+                  : 'Start your 14-day free trial. No credit card required.'
+                }
               </p>
             </div>
 
@@ -265,24 +430,49 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
 
                 {/* What's included - Light and minimal, matching Next Steps */}
                 <div className="pt-2 mb-6">
-                  <h3 className="text-sm font-semibold text-foreground mb-3">What's included</h3>
+                  <h3 className="text-sm font-semibold text-foreground mb-3">
+                    {isGrowthPlan ? 'Growth plan includes' : "What's included"}
+                  </h3>
                   <ul className="space-y-2.5">
-                    <li className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-foreground">14-day free trial on Starter plan</span>
-                    </li>
-                    <li className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-foreground">Custom subdomain (yourname.kloud.kaartx.com)</span>
-                    </li>
-                    <li className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-foreground">Up to 10 sellers and unlimited products</span>
-                    </li>
-                    <li className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-foreground">TAP Payments & Asyad Express integration</span>
-                    </li>
+                    {isGrowthPlan ? (
+                      <>
+                        <li className="flex items-start gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-foreground">Up to 3 marketplaces</span>
+                        </li>
+                        <li className="flex items-start gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-foreground">Up to 500 sellers and 10,000 orders/month</span>
+                        </li>
+                        <li className="flex items-start gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-foreground">Advanced analytics & priority support</span>
+                        </li>
+                        <li className="flex items-start gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-foreground">Configurable payout cycles</span>
+                        </li>
+                      </>
+                    ) : (
+                      <>
+                        <li className="flex items-start gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-foreground">14-day free trial on Starter plan</span>
+                        </li>
+                        <li className="flex items-start gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-foreground">Custom subdomain (yourname.kloud.kaartx.com)</span>
+                        </li>
+                        <li className="flex items-start gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-foreground">Up to 10 sellers and unlimited products</span>
+                        </li>
+                        <li className="flex items-start gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-foreground">TAP Payments & Asyad Express integration</span>
+                        </li>
+                      </>
+                    )}
                   </ul>
                 </div>
 
@@ -292,7 +482,12 @@ export default function SignupModal({ open, onOpenChange }: SignupModalProps) {
                   disabled={createTenantMutation.isPending}
                   data-testid="button-create-marketplace"
                 >
-                  {createTenantMutation.isPending ? 'Creating Your Marketplace...' : 'Create My Marketplace'}
+                  {createTenantMutation.isPending 
+                    ? 'Creating Your Marketplace...' 
+                    : isGrowthPlan 
+                      ? 'Continue to Payment'
+                      : 'Create My Marketplace'
+                  }
                 </Button>
 
                 <p className="text-xs text-center text-muted-foreground">
