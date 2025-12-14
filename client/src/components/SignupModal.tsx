@@ -47,6 +47,44 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [isResumingPayment, setIsResumingPayment] = useState(false);
   
+  // Card input states
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardExpiry, setCardExpiry] = useState('');
+  const [cardCvv, setCardCvv] = useState('');
+  
+  // Format card number with spaces (XXXX XXXX XXXX XXXX)
+  const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '').slice(0, 16);
+    const formatted = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+    setCardNumber(formatted);
+  };
+  
+  // Format expiry as MM / YY with validation
+  const handleExpiryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, '').slice(0, 4);
+    
+    // Validate month (01-12)
+    if (value.length >= 2) {
+      let month = parseInt(value.slice(0, 2), 10);
+      if (month > 12) month = 12;
+      if (month < 1 && value.slice(0, 2) !== '0' && value.slice(0, 2) !== '00') month = 1;
+      value = month.toString().padStart(2, '0') + value.slice(2);
+    }
+    
+    // Format with " / " separator
+    if (value.length > 2) {
+      setCardExpiry(`${value.slice(0, 2)} / ${value.slice(2)}`);
+    } else {
+      setCardExpiry(value);
+    }
+  };
+  
+  // CVV - numbers only, max 4 digits
+  const handleCvvChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '').slice(0, 4);
+    setCardCvv(value);
+  };
+  
   // Use provided plan or default to Starter monthly
   const plan = selectedPlan || defaultPlan;
   const isGrowthPlan = plan.planName === 'Growth';
@@ -74,6 +112,9 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
       setModalState('form');
       setPaymentError(null);
       setCreatedTenant(null);
+      setCardNumber('');
+      setCardExpiry('');
+      setCardCvv('');
     }
   }, [open]);
 
@@ -351,26 +392,39 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
               <div>
                 <label className="text-xs font-medium text-muted-foreground mb-1.5 block">Card Number</label>
                 <Input 
-                  placeholder="Card number" 
-                  className="h-10 border-border/60 rounded-md"
+                  placeholder="1234 5678 9012 3456"
+                  value={cardNumber}
+                  onChange={handleCardNumberChange}
+                  className="h-10 border-border/60 rounded-md font-mono tracking-wider"
                   data-testid="input-card-number"
+                  inputMode="numeric"
+                  autoComplete="cc-number"
                 />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1.5 block">Expiry</label>
+                  <label className="text-xs font-medium text-muted-foreground mb-1.5 block">Expiry Date</label>
                   <Input 
-                    placeholder="MM / YY" 
-                    className="h-10 border-border/60 rounded-md"
+                    placeholder="MM / YY"
+                    value={cardExpiry}
+                    onChange={handleExpiryChange}
+                    className="h-10 border-border/60 rounded-md font-mono tracking-wider"
                     data-testid="input-card-expiry"
+                    inputMode="numeric"
+                    autoComplete="cc-exp"
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-muted-foreground mb-1.5 block">CVV</label>
+                  <label className="text-xs font-medium text-muted-foreground mb-1.5 block">Security Code</label>
                   <Input 
-                    placeholder="CVV" 
-                    className="h-10 border-border/60 rounded-md"
+                    placeholder="CVV"
+                    value={cardCvv}
+                    onChange={handleCvvChange}
+                    className="h-10 border-border/60 rounded-md font-mono tracking-wider"
                     data-testid="input-card-cvv"
+                    inputMode="numeric"
+                    autoComplete="cc-csc"
+                    type="password"
                   />
                 </div>
               </div>
