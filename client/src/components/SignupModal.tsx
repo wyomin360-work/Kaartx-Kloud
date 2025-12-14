@@ -17,7 +17,11 @@ interface SignupModalProps {
   selectedPlan?: 'Starter' | 'Growth';
 }
 
-type ModalState = 'form' | 'payment' | 'success' | 'payment-error';
+type ModalState = 'form' | 'payment' | 'payment-resume' | 'success' | 'payment-error';
+
+interface TenantResponse extends PublicTenant {
+  resumePayment?: boolean;
+}
 
 export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starter' }: SignupModalProps) {
   const { toast } = useToast();
@@ -25,6 +29,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starte
   const [modalState, setModalState] = useState<ModalState>('form');
   const [paymentError, setPaymentError] = useState<string | null>(null);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  const [isResumingPayment, setIsResumingPayment] = useState(false);
 
   // Scroll to top when modal opens or when state changes
   useEffect(() => {
@@ -58,13 +63,22 @@ export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starte
     mutationFn: async (data: InsertTenant) => {
       const payload = { ...data, plan: selectedPlan };
       const response = await apiRequest('POST', '/api/tenants', payload);
-      return await response.json() as PublicTenant;
+      return await response.json() as TenantResponse;
     },
     onSuccess: (data) => {
-      setCreatedTenant(data);
+      const { resumePayment, ...tenantData } = data;
+      setCreatedTenant(tenantData);
+      
       if (selectedPlan === 'Growth') {
-        // For Growth plan, go to payment step
-        setModalState('payment');
+        if (resumePayment) {
+          // Existing pending signup found - show resume payment message
+          setIsResumingPayment(true);
+          setModalState('payment-resume');
+        } else {
+          // New signup - go to payment step
+          setIsResumingPayment(false);
+          setModalState('payment');
+        }
       } else {
         // For Starter plan, show success immediately
         setModalState('success');
@@ -243,6 +257,48 @@ export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starte
           </div>
         )}
 
+        {/* Resume Payment State - for users resuming pending checkout */}
+        {modalState === 'payment-resume' && createdTenant && (
+          <div className="py-2">
+            <div className="text-center mb-6">
+              <div className="mx-auto mb-4 w-14 h-14 bg-amber-50 dark:bg-amber-900/30 rounded-full flex items-center justify-center">
+                <CreditCard className="w-7 h-7 text-amber-600 dark:text-amber-400" />
+              </div>
+              <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1.5">Resume Your Payment</h2>
+              <p className="text-sm text-muted-foreground">
+                Looks like you started checkout earlier. Continue payment to activate your Growth plan.
+              </p>
+            </div>
+
+            <div className="border border-border/60 rounded-md p-4 mb-6">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-xs text-muted-foreground">Marketplace</span>
+                <span className="text-sm font-medium text-foreground">{createdTenant.marketplaceName}</span>
+              </div>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-xs text-muted-foreground">Subdomain</span>
+                <span className="text-sm font-medium text-primary">{createdTenant.subdomain}.kloud.kaartx.com</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-xs text-muted-foreground">Plan</span>
+                <span className="text-sm font-semibold text-foreground">Growth — OMR 115 / month</span>
+              </div>
+            </div>
+
+            <Button
+              onClick={() => setModalState('payment')}
+              className="w-full"
+              data-testid="button-resume-payment"
+            >
+              Resume Payment
+            </Button>
+
+            <p className="text-xs text-center text-muted-foreground mt-4">
+              Your marketplace is reserved. Complete payment to activate.
+            </p>
+          </div>
+        )}
+
         {/* Payment State */}
         {modalState === 'payment' && createdTenant && (
           <div className="py-2">
@@ -250,7 +306,9 @@ export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starte
               <div className="mx-auto mb-4 w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
                 <CreditCard className="w-7 h-7 text-primary" />
               </div>
-              <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1.5">Complete Your Payment</h2>
+              <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1.5">
+                {isResumingPayment ? 'Complete Your Payment' : 'Complete Your Payment'}
+              </h2>
               <p className="text-sm text-muted-foreground">
                 Activate your Growth plan for {createdTenant.marketplaceName}
               </p>
