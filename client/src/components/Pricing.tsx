@@ -4,9 +4,10 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Check } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import type { PlanSelection } from '@/components/SignupModal';
 
 interface PricingProps {
-  onOpenSignup?: (plan?: 'Starter' | 'Growth') => void;
+  onOpenSignup?: (plan: PlanSelection) => void;
 }
 
 export default function Pricing({ onOpenSignup }: PricingProps) {
@@ -203,11 +204,15 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
 
                 <Button
                   onClick={
-                    plan.name === 'Starter' 
-                      ? () => onOpenSignup?.('Starter')
-                      : plan.name === 'Growth'
-                        ? () => onOpenSignup?.('Growth')
-                        : scrollToBooking
+                    plan.name === 'Starter' || plan.name === 'Growth'
+                      ? () => onOpenSignup?.({
+                          planId: `${plan.name.toLowerCase()}-${billingPeriod}`,
+                          planName: plan.name as 'Starter' | 'Growth',
+                          billingCycle: billingPeriod,
+                          price: price,
+                          currency: 'OMR',
+                        })
+                      : scrollToBooking
                   }
                   className={`w-full rounded-2xl font-bold text-sm sm:text-base py-5 sm:py-6 hover:scale-[1.02] transition-transform ${plan.highlighted ? 'shadow-playful' : ''}`}
                   variant={plan.highlighted ? 'default' : 'outline'}

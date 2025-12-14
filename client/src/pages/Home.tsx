@@ -20,14 +20,22 @@ import FinalCTA from '@/components/FinalCTA';
 import BookingSection from '@/components/BookingSection';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import SignupModal from '@/components/SignupModal';
+import SignupModal, { type PlanSelection } from '@/components/SignupModal';
+
+const defaultStarterPlan: PlanSelection = {
+  planId: 'starter-monthly',
+  planName: 'Starter',
+  billingCycle: 'monthly',
+  price: 35,
+  currency: 'OMR',
+};
 
 export default function Home() {
   const [location] = useLocation();
   const [signupModalOpen, setSignupModalOpen] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<'Starter' | 'Growth'>('Starter');
+  const [selectedPlan, setSelectedPlan] = useState<PlanSelection>(defaultStarterPlan);
 
-  const handleOpenSignup = (plan: 'Starter' | 'Growth' = 'Starter') => {
+  const handleOpenSignup = (plan: PlanSelection) => {
     setSelectedPlan(plan);
     setSignupModalOpen(true);
   };
@@ -70,8 +78,8 @@ export default function Home() {
           signupModalOpen ? 'blur-sm pointer-events-none' : ''
         }`}
       >
-        <Navbar onOpenSignup={() => handleOpenSignup('Starter')} />
-        <Hero onOpenSignup={() => handleOpenSignup('Starter')} />
+        <Navbar onOpenSignup={() => handleOpenSignup(defaultStarterPlan)} />
+        <Hero onOpenSignup={() => handleOpenSignup(defaultStarterPlan)} />
         <StatsBar />
         <FeatureGrid />
         <HowItWorks />
@@ -87,7 +95,7 @@ export default function Home() {
         <FAQ />
         <BookingSection />
         <About />
-        <FinalCTA onOpenSignup={() => handleOpenSignup('Starter')} />
+        <FinalCTA onOpenSignup={() => handleOpenSignup(defaultStarterPlan)} />
         <Footer />
         <WhatsAppButton />
       </div>

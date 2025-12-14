@@ -11,25 +11,52 @@ import { useToast } from '@/hooks/use-toast';
 import { insertTenantSchema, type InsertTenant, type PublicTenant } from '@shared/schema';
 import { apiRequest } from '@/lib/queryClient';
 
+export interface PlanSelection {
+  planId: string;
+  planName: 'Starter' | 'Growth';
+  billingCycle: 'monthly' | 'yearly';
+  price: number;
+  currency: string;
+}
+
 interface SignupModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  selectedPlan?: 'Starter' | 'Growth';
+  selectedPlan?: PlanSelection;
 }
 
-type ModalState = 'form' | 'payment' | 'payment-resume' | 'success' | 'payment-error';
+type ModalState = 'form' | 'payment' | 'payment-resume' | 'success' | 'payment-error' | 'plan-error';
 
 interface TenantResponse extends PublicTenant {
   resumePayment?: boolean;
 }
 
-export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starter' }: SignupModalProps) {
+const defaultPlan: PlanSelection = {
+  planId: 'starter-monthly',
+  planName: 'Starter',
+  billingCycle: 'monthly',
+  price: 35,
+  currency: 'OMR',
+};
+
+export default function SignupModal({ open, onOpenChange, selectedPlan }: SignupModalProps) {
   const { toast } = useToast();
   const [createdTenant, setCreatedTenant] = useState<PublicTenant | null>(null);
   const [modalState, setModalState] = useState<ModalState>('form');
   const [paymentError, setPaymentError] = useState<string | null>(null);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [isResumingPayment, setIsResumingPayment] = useState(false);
+  
+  // Use provided plan or default to Starter monthly
+  const plan = selectedPlan || defaultPlan;
+  const isGrowthPlan = plan.planName === 'Growth';
+  const isYearly = plan.billingCycle === 'yearly';
+  
+  // Dynamic pricing labels
+  const priceLabel = `${plan.currency} ${plan.price} / ${isYearly ? 'year' : 'month'}`;
+  const billingText = isYearly ? 'Billed yearly via TAP Payments' : 'Billed monthly via TAP Payments';
+  const renewalText = isYearly ? 'Renews yearly. Cancel anytime to stop renewal.' : 'Renews monthly. Cancel anytime to stop renewal.';
+  const billingPeriodDisplay = isYearly ? 'Yearly' : 'Monthly';
 
   // Scroll to top when modal opens or when state changes
   useEffect(() => {
@@ -61,7 +88,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starte
 
   const createTenantMutation = useMutation({
     mutationFn: async (data: InsertTenant) => {
-      const payload = { ...data, plan: selectedPlan };
+      const payload = { ...data, plan: plan.planName, billingCycle: plan.billingCycle };
       const response = await apiRequest('POST', '/api/tenants', payload);
       return await response.json() as TenantResponse;
     },
@@ -69,7 +96,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starte
       const { resumePayment, ...tenantData } = data;
       setCreatedTenant(tenantData);
       
-      if (selectedPlan === 'Growth') {
+      if (isGrowthPlan) {
         if (resumePayment) {
           // Existing pending signup found - show resume payment message
           setIsResumingPayment(true);
@@ -163,8 +190,6 @@ export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starte
     onOpenChange(false);
   };
 
-  const isGrowthPlan = selectedPlan === 'Growth';
-
   return (
     <CustomModal 
       open={open} 
@@ -202,7 +227,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starte
               <div className="border border-border/60 rounded-md px-4 py-3">
                 <p className="text-xs text-muted-foreground mb-0.5">{isGrowthPlan ? 'Billing Period' : 'Trial Period Ends'}</p>
                 <p className="text-sm font-semibold text-foreground">
-                  {isGrowthPlan ? 'Monthly' : new Date(createdTenant.trialEndsAt).toLocaleDateString('en-US', {
+                  {isGrowthPlan ? billingPeriodDisplay : new Date(createdTenant.trialEndsAt).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
@@ -281,7 +306,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starte
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-xs text-muted-foreground">Plan</span>
-                <span className="text-sm font-semibold text-foreground">Growth — OMR 115 / month</span>
+                <span className="text-sm font-semibold text-foreground">{plan.planName} — {priceLabel}</span>
               </div>
             </div>
 
@@ -316,12 +341,12 @@ export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starte
 
             <div className="border border-border/60 rounded-md p-4 mb-6">
               <div className="flex justify-between items-center mb-3">
-                <span className="text-sm font-medium text-foreground">Growth Plan</span>
-                <span className="text-sm font-semibold text-foreground">OMR 115 / month</span>
+                <span className="text-sm font-medium text-foreground">{plan.planName} Plan</span>
+                <span className="text-sm font-semibold text-foreground">{priceLabel}</span>
               </div>
               <div className="flex justify-between items-center text-xs text-muted-foreground">
-                <span>Billed monthly via TAP Payments</span>
-                <span>Cancel anytime</span>
+                <span>{billingText}</span>
+                <span>{renewalText}</span>
               </div>
             </div>
 
@@ -329,7 +354,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starte
               <div>
                 <label className="text-xs font-medium text-muted-foreground mb-1.5 block">Card Number</label>
                 <Input 
-                  placeholder="4111 1111 1111 1111" 
+                  placeholder="Card number" 
                   className="h-10 border-border/60 rounded-md"
                   data-testid="input-card-number"
                 />
@@ -338,7 +363,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starte
                 <div>
                   <label className="text-xs font-medium text-muted-foreground mb-1.5 block">Expiry</label>
                   <Input 
-                    placeholder="MM/YY" 
+                    placeholder="MM / YY" 
                     className="h-10 border-border/60 rounded-md"
                     data-testid="input-card-expiry"
                   />
@@ -346,7 +371,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starte
                 <div>
                   <label className="text-xs font-medium text-muted-foreground mb-1.5 block">CVV</label>
                   <Input 
-                    placeholder="123" 
+                    placeholder="CVV" 
                     className="h-10 border-border/60 rounded-md"
                     data-testid="input-card-cvv"
                   />
@@ -366,7 +391,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan = 'Starte
                   Processing...
                 </>
               ) : (
-                'Pay OMR 115'
+                `Pay ${plan.currency} ${plan.price}`
               )}
             </Button>
 
