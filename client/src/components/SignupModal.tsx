@@ -327,12 +327,9 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
         {/* Payment State */}
         {modalState === 'payment' && createdTenant && (
           <div className="py-2">
-            <div className="text-center mb-6">
-              <div className="mx-auto mb-4 w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
-                <CreditCard className="w-7 h-7 text-primary" />
-              </div>
+            <div className="text-center mb-6 pt-2">
               <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1.5">
-                {isResumingPayment ? 'Complete Your Payment' : 'Complete Your Payment'}
+                Complete Your Payment
               </h2>
               <p className="text-sm text-muted-foreground">
                 Activate your Growth plan for {createdTenant.marketplaceName}
