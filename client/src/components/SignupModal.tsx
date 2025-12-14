@@ -344,9 +344,9 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
                 <span className="text-sm font-medium text-foreground">{plan.planName} Plan</span>
                 <span className="text-sm font-semibold text-foreground">{priceLabel}</span>
               </div>
-              <div className="flex justify-between items-center text-xs text-muted-foreground">
-                <span>{billingText}</span>
-                <span>{renewalText}</span>
+              <div className="space-y-1">
+                <p className="text-xs text-muted-foreground">{billingText}</p>
+                <p className="text-xs text-muted-foreground/70">{renewalText}</p>
               </div>
             </div>
 
