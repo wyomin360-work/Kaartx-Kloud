@@ -39,13 +39,9 @@ const defaultPlan: PlanSelection = {
   currency: 'OMR',
 };
 
-// Single source of truth for modal width (used by all modal states)
-// Fixed width with responsive fallback for smaller screens
-const MODAL_WIDTH_CLASS = "w-[720px] max-w-[calc(100vw-32px)]";
-
-// Complete modal container styling using the shared width constant
+// Single source of truth for modal container styling
 // Used by all modal states: form, payment, resume-payment, success, payment-error
-const MODAL_CONTAINER_CLASSES = `${MODAL_WIDTH_CLASS} max-h-[90vh] overflow-y-auto p-6 shadow-xl`;
+const MODAL_CONTAINER_CLASSES = "w-full max-w-[720px] max-h-[90vh] overflow-y-auto p-6 shadow-xl";
 
 export default function SignupModal({ open, onOpenChange, selectedPlan }: SignupModalProps) {
   const { toast } = useToast();
