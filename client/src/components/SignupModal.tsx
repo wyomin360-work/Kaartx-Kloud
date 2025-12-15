@@ -41,7 +41,8 @@ const defaultPlan: PlanSelection = {
 
 // Single source of truth for modal container styling
 // Used by all modal states: form, payment, resume-payment, success, payment-error
-const MODAL_CONTAINER_CLASSES = "w-full max-w-[720px] max-h-[90vh] overflow-y-auto p-6 shadow-xl";
+// min-w ensures all modals have same width on desktop, responsive on mobile
+const MODAL_CONTAINER_CLASSES = "w-full min-w-[480px] max-w-[720px] max-h-[90vh] overflow-y-auto p-6 shadow-xl sm:min-w-[560px]";
 
 export default function SignupModal({ open, onOpenChange, selectedPlan }: SignupModalProps) {
   const { toast } = useToast();
