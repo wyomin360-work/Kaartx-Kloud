@@ -115,18 +115,16 @@ export class MemStorage implements IStorage {
     const now = Date.now();
     const expiredIds: string[] = [];
     
-    for (const [id, tenant] of this.tenants.entries()) {
+    Array.from(this.tenants.entries()).forEach(([id, tenant]) => {
       if (
         tenant.status === 'Pending' &&
         (now - tenant.createdAt.getTime()) >= PENDING_SIGNUP_TIMEOUT
       ) {
         expiredIds.push(id);
       }
-    }
+    });
     
-    for (const id of expiredIds) {
-      this.tenants.delete(id);
-    }
+    expiredIds.forEach(id => this.tenants.delete(id));
   }
 
   async getTenantByEmail(email: string): Promise<Tenant | undefined> {

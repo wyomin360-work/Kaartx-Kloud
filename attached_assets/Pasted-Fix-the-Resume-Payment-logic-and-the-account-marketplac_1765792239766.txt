@@ -1,0 +1,53 @@
+Fix the “Resume Payment” logic and the account/marketplace rules:
+
+Define the rule clearly
+
+One email address = one marketplace only (for now). A user cannot create multiple marketplaces with the same email.
+
+A marketplace name must be globally unique.
+
+When to show “Resume Your Payment” modal
+
+Show Resume Your Payment ONLY when both match an existing PENDING_CHECKOUT record:
+
+email matches AND marketplaceName matches
+
+AND the checkout session is still valid (not expired)
+
+If only email matches but marketplace name is different → do NOT show Resume modal.
+
+What happens in each case
+
+Case A: email + marketplaceName match a pending checkout (not expired)
+→ Show “Resume Your Payment” modal and let them continue that same payment.
+
+Case B: email already exists with an ACTIVE marketplace
+→ Block creation. Show inline error under Email:
+“This email is already linked to a marketplace. Please log in instead.”
+Add a CTA button: “Go to Login” (or “Reset password”).
+
+Case C: email exists but has a pending checkout for a different marketplace name
+→ Block creation. Show inline error under Email:
+“You have an incomplete checkout for another marketplace. Please resume it or use a different email.”
+Provide button: “Resume Checkout” (opens the Resume modal tied to the email’s pending record) + secondary: “Use different email”.
+
+Case D: marketplace name already exists (taken)
+→ Inline error under Marketplace Name (normal).
+
+Case E: neither exists
+→ Normal flow (Create → Continue to Payment).
+
+Implement backend states + expiry
+
+Store a record: checkout_intent with fields:
+email, marketplaceName, plan, billingCycle, status(PENDING/PAID/EXPIRED/CANCELLED), createdAt, expiresAt, checkoutSessionId
+
+Set expiresAt (example: 30–60 minutes). After expiry, mark as EXPIRED and allow fresh attempt.
+
+Validation behavior
+
+On submit, run a single API call that returns all conflicts at once so both fields can show red together (email + marketplace name), not one-by-one.
+
+UI consistency
+
+Make “Resume Your Payment” modal use the same modal width/height constraints as “Create Your Marketplace” modal (same max-width, padding, border radius, and scroll behavior).
