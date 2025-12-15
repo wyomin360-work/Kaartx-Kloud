@@ -247,9 +247,6 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
         {modalState === 'success' && createdTenant && (
           <div className="py-2">
             <div className="text-center mb-6">
-              <div className="mx-auto mb-4 w-14 h-14 bg-green-50 dark:bg-green-900/30 rounded-full flex items-center justify-center">
-                <CheckCircle2 className="w-7 h-7 text-green-600 dark:text-green-400" />
-              </div>
               <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1.5">Welcome to Kaartx Kloud!</h2>
               <p className="text-sm text-muted-foreground">
                 Your marketplace is ready to launch. Start building your multi-vendor platform today.
