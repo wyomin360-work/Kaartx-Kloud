@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
-import { CheckCircle2, CreditCard, Loader2, AlertCircle } from 'lucide-react';
+import { CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { CustomModal } from '@/components/ui/custom-modal';
@@ -38,6 +38,10 @@ const defaultPlan: PlanSelection = {
   price: 35,
   currency: 'OMR',
 };
+
+// Single source of truth for modal container styling
+// Used by all modal states: form, payment, resume-payment, success, payment-error
+const MODAL_CONTAINER_CLASSES = "w-full max-w-[720px] max-h-[90vh] overflow-y-auto p-6 shadow-xl";
 
 export default function SignupModal({ open, onOpenChange, selectedPlan }: SignupModalProps) {
   const { toast } = useToast();
@@ -235,7 +239,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
     <CustomModal 
       open={open} 
       onOpenChange={handleClose}
-      className="w-full max-w-[720px] max-h-[90vh] overflow-y-auto p-6 shadow-xl"
+      className={MODAL_CONTAINER_CLASSES}
       preventOutsideClick={true}
     >
       <div data-testid="dialog-signup">
@@ -327,9 +331,6 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
         {modalState === 'payment-resume' && createdTenant && (
           <div className="py-2">
             <div className="text-center mb-6">
-              <div className="mx-auto mb-4 w-14 h-14 bg-amber-50 dark:bg-amber-900/30 rounded-full flex items-center justify-center">
-                <CreditCard className="w-7 h-7 text-amber-600 dark:text-amber-400" />
-              </div>
               <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1.5">Resume Your Payment</h2>
               <p className="text-sm text-muted-foreground">
                 Looks like you started checkout earlier. Continue payment to activate your Growth plan.
