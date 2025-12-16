@@ -563,7 +563,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
                 {/* What's included - Light and minimal, matching Next Steps */}
                 <div className="pt-2 mb-6">
                   <h3 className="text-sm font-semibold text-foreground mb-3">
-                    {isGrowthPlan ? 'Growth plan includes' : "What's included"}
+                    {isGrowthPlan ? 'Growth plan highlights' : "What's included"}
                   </h3>
                   <ul className="space-y-2.5">
                     {isGrowthPlan ? (
