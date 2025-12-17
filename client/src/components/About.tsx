@@ -54,20 +54,20 @@ export default function About() {
           </p>
         </div>
 
-        {/* How Kaartx Kloud Works Section */}
-        <div className="max-w-3xl mx-auto mb-20">
-          <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 text-center" data-testid="text-how-kaartx-works-title">
-            How Kaartx Kloud Works
+        {/* Our Delivery Model Section */}
+        <div className="max-w-[740px] mx-auto mb-20 mt-6">
+          <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 text-center" data-testid="text-delivery-model-title">
+            Our Delivery Model
           </h3>
           <div className="space-y-5 text-muted-foreground leading-[1.8] text-[15px] sm:text-base">
-            <p data-testid="text-how-kaartx-works-p1">
-              Kaartx Kloud is not a plug-and-play self-serve SaaS. Each marketplace is configured based on the founder's business model, seller structure, payout logic, logistics, and regional requirements.
+            <p data-testid="text-delivery-model-p1">
+              Kaartx Kloud is a guided marketplace infrastructure—configured around each founder's business model, seller structure, payout logic, logistics, and regional requirements.
             </p>
-            <p data-testid="text-how-kaartx-works-p2">
-              The platform is deeply optimized for the GCC region, with most operational, payment, and logistics workflows already in place. At the same time, Kaartx Kloud is flexible enough to be adapted for other regions based on specific business and regulatory needs.
+            <p data-testid="text-delivery-model-p2">
+              The platform is deeply optimized for the GCC region, with most operational, payment, and logistics workflows already in place. It can also be adapted for other regions based on local regulations and business needs.
             </p>
-            <p data-testid="text-how-kaartx-works-p3">
-              Instead of instant activation, our team reviews each request and sets up the marketplace correctly before launch—ensuring long-term stability, operational accuracy, and scalable growth.
+            <p data-testid="text-delivery-model-p3">
+              Instead of instant self-serve activation, every request is reviewed and set up by our team to ensure stability, compliance, and long-term scalability before launch.
             </p>
           </div>
         </div>
