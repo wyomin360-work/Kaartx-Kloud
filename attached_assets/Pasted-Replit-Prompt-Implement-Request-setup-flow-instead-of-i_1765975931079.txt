@@ -1,0 +1,90 @@
+Replit Prompt (Implement “Request setup” flow instead of instant trial/payment)
+
+Update the Kaartx Kloud landing page plan buttons to follow a guided setup (not self-serve SaaS) flow.
+
+1) Pricing cards CTA text
+
+Replace current CTAs with:
+
+Starter card button: “Request Starter Marketplace”
+
+Growth card button: “Request Growth Marketplace”
+
+Pro card button: “Talk to Sales” (keep)
+
+No mention of “14-day free trial” anywhere (remove trial badges/copy if present).
+
+2) After clicking Starter or Growth
+
+Open the same “Create Your Marketplace” modal (same width/spacing as other modals), but it should dynamically adapt based on selected plan.
+
+Modal header:
+
+Title: “Create Your Marketplace”
+
+Subtitle (Starter): “Set up your Starter plan marketplace. We’ll review and activate it after confirmation.”
+
+Subtitle (Growth): “Set up your Growth plan marketplace. We’ll review requirements and proceed with activation.”
+
+Fields in modal:
+
+Marketplace Name (required)
+
+Email Address (required)
+
+Password (required)
+
+Hidden/internal field: selectedPlan = starter or growth
+
+Section title above bullet points:
+Replace “Growth plan includes” with “Key highlights” (same for Starter if used).
+
+Bullet points:
+Show only 4–5 key highlights (not the full list from the pricing card) to keep modal short.
+
+Primary button in modal:
+
+Starter: “Submit Request”
+
+Growth: “Submit Request”
+
+3) On submit (no payment)
+
+On successful submit, DO NOT open payment modal.
+Instead show a success modal/page with:
+
+Title: “Request received”
+Body: “Your {Starter/Growth} marketplace request has been submitted. Our team will review and contact you shortly to proceed with activation.”
+Optional small text: “Activation timelines vary based on configuration.”
+
+4) Backend/status logic
+
+When submitting, create a marketplace record with:
+
+status = PENDING_REVIEW
+
+plan = starter|growth
+
+paymentStatus = NOT_REQUIRED_YET (or similar)
+Return a success response even if activation isn’t done yet.
+
+5) Remove/disable resume-payment flow for now
+
+Since payment is not part of this flow yet:
+
+Disable “Resume Payment” modal triggers
+
+Don’t reserve marketplace names as “already taken” due to incomplete payment.
+Only mark name/email as taken if the marketplace is ACTIVE (or manually approved), not pending.
+
+6) UI consistency
+
+Ensure the Create modal and Success modal share:
+
+Same fixed width as existing Create modal (use same max-width)
+
+Same padding, border radius, typography
+
+No payment/card icon at top anywhere in this flow
+
+Implement cleanly in React (or current stack), keeping current styling system.

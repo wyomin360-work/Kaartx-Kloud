@@ -61,8 +61,8 @@ export class MemStorage implements IStorage {
 
     const hashedPassword = hashPassword(insertTenant.password);
 
-    // For Growth plan, status is 'Pending' until payment is confirmed
-    const status = plan === 'Growth' ? 'Pending' : 'Trial';
+    // All new marketplaces start with PENDING_REVIEW status
+    const status = 'PENDING_REVIEW';
 
     const tenant: Tenant = {
       ...insertTenant,
@@ -102,7 +102,7 @@ export class MemStorage implements IStorage {
     return Array.from(this.tenants.values()).find(
       (tenant) => 
         tenant.ownerEmail === email && 
-        tenant.status === 'Pending' &&
+        tenant.status === 'PENDING_REVIEW' &&
         (now - tenant.createdAt.getTime()) < PENDING_SIGNUP_TIMEOUT
     );
   }
@@ -112,19 +112,7 @@ export class MemStorage implements IStorage {
   }
 
   async cleanupExpiredPendingSignups(): Promise<void> {
-    const now = Date.now();
-    const expiredIds: string[] = [];
-    
-    Array.from(this.tenants.entries()).forEach(([id, tenant]) => {
-      if (
-        tenant.status === 'Pending' &&
-        (now - tenant.createdAt.getTime()) >= PENDING_SIGNUP_TIMEOUT
-      ) {
-        expiredIds.push(id);
-      }
-    });
-    
-    expiredIds.forEach(id => this.tenants.delete(id));
+    // No longer cleanup pending signups - they stay until manually approved or rejected
   }
 
   async getTenantByEmail(email: string): Promise<Tenant | undefined> {

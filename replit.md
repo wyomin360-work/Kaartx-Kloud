@@ -4,6 +4,27 @@ Kaartx Kloud is a premium SaaS platform for launching and managing multi-vendor 
 
 ## Recent Changes
 
+**December 17, 2025 - Request Setup Flow Implementation:**
+- **Changed from self-serve to guided setup flow** - No more instant trial or payment
+- **Pricing CTAs Updated:**
+  - Starter: "Request Starter Marketplace"
+  - Growth: "Request Growth Marketplace"
+  - Pro: "Talk to Sales" (unchanged)
+- **SignupModal Updated:**
+  - Subtitle: Plan-specific review messaging (no trial/payment mentions)
+  - Section title: "Key highlights" for both plans
+  - Button: "Submit Request" for both plans
+  - Success modal: "Request received" with review messaging
+- **Backend Changes:**
+  - All new tenants get `status = 'PENDING_REVIEW'`
+  - Only ACTIVE tenants block name/email conflicts
+  - Payment modal and resume-payment flows removed
+- **Files Modified:**
+  - `client/src/components/Pricing.tsx` - Updated CTAs and subtitle
+  - `client/src/components/SignupModal.tsx` - New request flow
+  - `server/storage.ts` - PENDING_REVIEW status for all signups
+  - `server/routes.ts` - Updated uniqueness validation
+
 **November 12, 2025 - Navbar Navigation Restructure:**
 - **Updated Navigation Order:** Features · Integrations · Pricing · FAQs · Contact · Login · Get Started
 - **Section ID Mapping:**

@@ -39,7 +39,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
         'Email & WhatsApp support',
         'Seller subscriptions (monthly/yearly)',
       ],
-      cta: 'Start 14-day free trial',
+      cta: 'Request Starter Marketplace',
       highlighted: false,
       savingsPercent: '~20%',
     },
@@ -58,7 +58,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
         'Priority chat & WhatsApp support',
         'Bulk product uploads + workflow automations',
       ],
-      cta: 'Choose Growth',
+      cta: 'Request Growth Marketplace',
       highlighted: true,
       mostPopular: true,
       savingsPercent: '~25%',
@@ -103,7 +103,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
             Plans & <span className="gradient-text">pricing</span> for GCC
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto font-normal" data-testid="text-pricing-subtitle">
-            Choose a plan, start a 14-day free trial, upgrade anytime.
+            Choose a plan that fits your needs. Upgrade anytime.
           </p>
         </div>
 

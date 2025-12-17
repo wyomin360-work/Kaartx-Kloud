@@ -22,18 +22,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const tenantData = validationResult.data;
       const plan = req.body.plan || 'Starter';
 
-      // Cleanup expired pending signups first
-      await storage.cleanupExpiredPendingSignups();
-
-      // For Growth plan, check if there's an existing pending signup to resume
-      if (plan === 'Growth') {
-        const pendingTenant = await storage.findPendingTenantByEmail(tenantData.ownerEmail);
-        if (pendingTenant) {
-          // Return the pending tenant with resumePayment flag
-          const { password, ...tenantWithoutPassword } = pendingTenant;
-          return res.status(200).json({ ...tenantWithoutPassword, resumePayment: true });
-        }
-      }
 
       // Generate subdomain for checking
       const subdomain = tenantData.marketplaceName
@@ -48,14 +36,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
         storage.getTenantBySubdomain(subdomain)
       ]);
 
-      // Collect all validation errors (only for active/non-pending tenants)
+      // Collect all validation errors (only for ACTIVE tenants - pending requests don't block)
       const errors: { field: string; message: string }[] = [];
       
-      if (existingEmail && existingEmail.status !== 'Pending') {
+      if (existingEmail && existingEmail.status === 'ACTIVE') {
         errors.push({ field: 'ownerEmail', message: 'Email already registered' });
       }
       
-      if (existingSubdomain && existingSubdomain.status !== 'Pending') {
+      if (existingSubdomain && existingSubdomain.status === 'ACTIVE') {
         errors.push({ 
           field: 'marketplaceName', 
           message: 'This marketplace name is already taken. Please choose a different name.' 
@@ -68,10 +56,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       // Delete any existing pending tenant with same email before creating new one
-      if (existingEmail && existingEmail.status === 'Pending') {
+      if (existingEmail && existingEmail.status === 'PENDING_REVIEW') {
         await storage.deleteTenant(existingEmail.id);
       }
-      if (existingSubdomain && existingSubdomain.status === 'Pending' && existingSubdomain.id !== existingEmail?.id) {
+      if (existingSubdomain && existingSubdomain.status === 'PENDING_REVIEW' && existingSubdomain.id !== existingEmail?.id) {
         await storage.deleteTenant(existingSubdomain.id);
       }
 
