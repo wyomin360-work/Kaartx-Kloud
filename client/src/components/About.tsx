@@ -112,15 +112,15 @@ export default function About() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-12">
             {roadmapItems.map((item, index) => (
               <div 
                 key={index}
-                className="flex items-start gap-4 p-5 rounded-xl border border-border/60 bg-card/30"
+                className="flex items-center gap-4 p-6 rounded-md bg-muted/40 border border-border/30 hover-elevate transition-colors"
                 data-testid={`text-about-roadmap-item-${index}`}
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 flex-shrink-0" />
-                <span className="text-[15px] text-foreground/80 leading-relaxed">{item}</span>
+                <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
+                <span className="text-[15px] text-foreground leading-relaxed font-medium">{item}</span>
               </div>
             ))}
           </div>
