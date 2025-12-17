@@ -127,7 +127,7 @@ export default function About() {
           
           <div className="text-center pt-4">
             <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto text-base sm:text-lg" data-testid="text-about-closing">
-              This is just the beginning. We're here to help founders build marketplaces that thrive across the GCC—with the stability, speed, and infrastructure they need to scale confidently.
+              This is just the beginning. We help founders build marketplaces that thrive globally—starting with deep expertise in the GCC.
             </p>
           </div>
         </div>
