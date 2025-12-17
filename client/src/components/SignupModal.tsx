@@ -37,9 +37,22 @@ const defaultPlan: PlanSelection = {
   currency: 'OMR',
 };
 
-// Single source of truth for modal container styling
-// Used by all modal states: form, success
-const MODAL_CONTAINER_CLASSES = "w-full max-w-[720px] max-h-[90vh] overflow-y-auto p-6 shadow-xl";
+/**
+ * MODAL_CONTAINER_CLASSES - Single source of truth for ALL modal container styling
+ * 
+ * Used by: SignupModal (form + success states), and any future modals
+ * 
+ * Standardized properties:
+ * - max-width: 720px (fixed)
+ * - max-height: 90vh (fixed)
+ * - padding: p-6 (1.5rem / 24px)
+ * - overflow: overflow-y-auto for content scrolling
+ * - shadow: shadow-xl for elevation
+ * - border-radius: rounded-lg (inherited from CustomModal base)
+ * 
+ * DO NOT create custom modal wrappers - reuse this constant for consistency.
+ */
+export const MODAL_CONTAINER_CLASSES = "w-full max-w-[720px] max-h-[90vh] overflow-y-auto p-6 shadow-xl";
 
 export default function SignupModal({ open, onOpenChange, selectedPlan }: SignupModalProps) {
   const { toast } = useToast();
