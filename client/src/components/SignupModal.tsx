@@ -43,7 +43,8 @@ const defaultPlan: PlanSelection = {
  * Used by: SignupModal (form + success states), and any future modals
  * 
  * Standardized properties:
- * - max-width: 720px (fixed)
+ * - width: 100% on mobile, fixed 600px on sm+ screens
+ * - max-width: 720px (safety cap)
  * - max-height: 90vh (fixed)
  * - padding: p-6 (1.5rem / 24px)
  * - overflow: overflow-y-auto for content scrolling
@@ -52,7 +53,7 @@ const defaultPlan: PlanSelection = {
  * 
  * DO NOT create custom modal wrappers - reuse this constant for consistency.
  */
-export const MODAL_CONTAINER_CLASSES = "w-full max-w-[720px] max-h-[90vh] overflow-y-auto p-6 shadow-xl";
+export const MODAL_CONTAINER_CLASSES = "w-full sm:w-[600px] max-w-[720px] max-h-[90vh] overflow-y-auto p-6 shadow-xl";
 
 export default function SignupModal({ open, onOpenChange, selectedPlan }: SignupModalProps) {
   const { toast } = useToast();
