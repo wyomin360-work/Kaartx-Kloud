@@ -116,7 +116,7 @@ export default function About() {
             {roadmapItems.map((item, index) => (
               <div 
                 key={index}
-                className="flex items-center gap-4 p-6 rounded-md bg-muted/40 border border-border/30 hover-elevate transition-colors"
+                className="flex items-center gap-4 p-6 rounded-md bg-card/30 border border-border/30 hover-elevate transition-colors"
                 data-testid={`text-about-roadmap-item-${index}`}
               >
                 <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
