@@ -14,14 +14,14 @@ export default function DeepFeatures() {
     {
       icon: FileText,
       title: 'Product Management',
-      description: 'End-to-end listing workflow with variants, SKUs, and bulk uploads.',
+      description: 'End-to-end listing workflow with variants, SKUs, and bulk uploads—designed to maintain consistency, accuracy, and operational efficiency at scale.',
       features: ['One / two-variant support', 'Auto SKU generation', 'Image quality standards', 'Bulk editing tools'],
       checkGradient: 'text-purple-600',
     },
     {
       icon: Truck,
       title: 'Order Management',
-      description: 'Complete system for tracking and handling every order from purchase to delivery.',
+      description: 'Complete system for tracking and handling every order from purchase to delivery, with centralized controls for accuracy, visibility, and smooth operations.',
       features: ['Centralized dashboard for order status, shipment tracking, and cancellations', 'Integrated refund and return request handling with admin control', 'Supports partial or full refunds via the payment gateway', 'Order data linked with invoice and shipping modules for accuracy'],
       checkGradient: 'text-cyan-600',
     },
