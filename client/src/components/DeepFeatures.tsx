@@ -79,36 +79,32 @@ export default function DeepFeatures() {
               <Card
                 key={index}
                 data-testid={`deep-feature-${index}`}
-                className={`group hover-elevate transition-all duration-300 rounded-2xl border-2 overflow-visible h-full ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
+                className={`group hover-elevate transition-all duration-300 rounded-2xl border-2 overflow-visible ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
                 tabIndex={0}
               >
-                <div className="relative p-8 flex flex-col h-full">
-                  <div>
-                    {/* Icon with Hover Animation */}
-                    <div className="h-14 w-14 rounded-2xl bg-white shadow-playful flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
-                      <Icon className="h-7 w-7 text-primary" aria-hidden="true" strokeWidth={1.75} />
-                    </div>
-                    
-                    <h3 className="text-xl font-semibold text-foreground mb-4 tracking-tight">
-                      {feature.title}
-                    </h3>
-                    
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                      {feature.description}
-                    </p>
+                <div className="relative p-8">
+                  {/* Icon with Hover Animation */}
+                  <div className="h-14 w-14 rounded-2xl bg-white shadow-playful flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
+                    <Icon className="h-7 w-7 text-primary" aria-hidden="true" strokeWidth={1.75} />
                   </div>
                   
+                  <h3 className="text-xl font-semibold text-foreground mb-4 tracking-tight">
+                    {feature.title}
+                  </h3>
+                  
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {feature.description}
+                  </p>
+                  
                   {/* Feature List with Checkmarks */}
-                  <div className="flex-1 flex flex-col justify-end">
-                    <ul className="space-y-3">
-                      {feature.features.map((item, i) => (
-                        <li key={i} className="flex items-start text-sm text-muted-foreground leading-relaxed">
-                          <Check className={`h-4 w-4 ${feature.checkGradient} mt-0.5 mr-3 flex-shrink-0`} strokeWidth={3} />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <ul className="space-y-3">
+                    {feature.features.map((item, i) => (
+                      <li key={i} className="flex items-start text-sm text-muted-foreground leading-relaxed">
+                        <Check className={`h-4 w-4 ${feature.checkGradient} mt-0.5 mr-3 flex-shrink-0`} strokeWidth={3} />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </Card>
             );
