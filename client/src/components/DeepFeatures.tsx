@@ -21,7 +21,7 @@ export default function DeepFeatures() {
     {
       icon: Truck,
       title: 'Order Management',
-      description: 'Complete system for managing every order from purchase to delivery with centralized controls that ensure accuracy, visibility, and smooth operations.',
+      description: 'A complete system to manage every order from purchase to delivery, with clear controls that improve accuracy, visibility, and smooth operations.',
       features: ['Centralized dashboard for order status, shipment tracking, and cancellations', 'Integrated refund and return request handling with admin control', 'Supports partial or full refunds via the payment gateway', 'Order data linked with invoice and shipping modules for accuracy'],
       checkGradient: 'text-cyan-600',
     },
