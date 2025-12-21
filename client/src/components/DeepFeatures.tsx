@@ -22,7 +22,7 @@ export default function DeepFeatures() {
       icon: Truck,
       title: 'Order Management',
       description: 'A complete system to manage every order from purchase to delivery, with clear controls that improve accuracy, visibility, and smooth operations.',
-      features: ['Centralized dashboard for order status & tracking', 'Integrated refund & return handling', 'Partial/full refunds via payment gateway', 'Order data linked with invoice & shipping'],
+      features: ['Centralized dashboard for order tracking', 'Integrated refund & return handling', 'Partial/full refunds via payment gateway', 'Order data linked with invoice & shipping'],
       checkGradient: 'text-cyan-600',
     },
     {
