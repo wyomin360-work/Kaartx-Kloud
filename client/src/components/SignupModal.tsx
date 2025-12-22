@@ -233,10 +233,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
             <div className="text-center mb-6">
               <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1.5">Create Your Marketplace</h2>
               <p className="text-sm text-muted-foreground">
-                {isGrowthPlan 
-                  ? "Set up your Growth plan marketplace. We'll review requirements and proceed with activation."
-                  : "Set up your Starter plan marketplace. We'll review and activate it after confirmation."
-                }
+                Submit your request to begin your marketplace setup. Our team will review and activate your account with the right configuration.
               </p>
             </div>
 
