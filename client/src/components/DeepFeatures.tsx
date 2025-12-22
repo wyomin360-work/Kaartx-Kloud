@@ -28,22 +28,22 @@ export default function DeepFeatures() {
     {
       icon: Wallet,
       title: 'Payout Management',
-      description: 'Automated and transparent payout cycle for all sellers — directly connected to TAP Payments.',
-      features: ['Default 12-day payout cycle after order completion', 'Auto ledger update with every transaction and commission', 'View seller payout history, pending payouts, and balances', 'Admin control to hold, release, or adjust payouts manually when needed'],
+      description: 'Automated payout cycle with full visibility for sellers, connected directly to TAP Payments for seamless and secure operations.',
+      features: ['Default 12-day payout cycle', 'Auto ledger updates', 'View payout history & balances', 'Manual payout control'],
       checkGradient: 'text-purple-600',
     },
     {
       icon: Tag,
       title: 'Brand & Category Control',
-      description: 'Structured approval system to maintain marketplace quality.',
-      features: ['Global, Regional and Private brands', 'Manual approval for new brands and categories', 'File upload for brand verification', 'Category-based access for sellers'],
+      description: 'Approval workflows that maintain marketplace quality, with structured controls for managing brands, categories, and seller access efficiently.',
+      features: ['Support for all brand types', 'Manual approval for new brands', 'File upload for verification', 'Category-based permissions'],
       checkGradient: 'text-cyan-600',
     },
     {
       icon: BarChart3,
       title: 'Analytics Dashboard',
-      description: 'Monitor all seller and marketplace performance metrics in real time.',
-      features: ['Total sales, orders, and revenue tracking', 'Seller-wise sales and commission reports', 'Product performance with quantity and value sold', 'Refund and cancellation summaries'],
+      description: 'Real-time performance analytics for sellers and marketplaces, delivering accurate insights on sales, revenue, and operational metrics.',
+      features: ['Sales, orders & revenue tracking', 'Seller-wise performance reports', 'Product insights & trends', 'Refund & cancellation summaries'],
       checkGradient: 'text-purple-600',
     },
   ];
