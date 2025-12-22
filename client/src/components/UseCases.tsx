@@ -96,7 +96,7 @@ export default function UseCases() {
 
           {Object.entries(useCases).map(([key, useCase]) => (
             <TabsContent key={key} value={key} data-testid={`tab-content-${key}`}>
-              <Card className="p-6 sm:p-8 md:p-10 border-2">
+              <Card className="p-6 sm:p-8 md:p-10 border-2 bg-card/30">
                 <div className="mb-6 sm:mb-8">
                   <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-3 sm:mb-4">For {useCase.title}</h3>
                   <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{useCase.description}</p>
