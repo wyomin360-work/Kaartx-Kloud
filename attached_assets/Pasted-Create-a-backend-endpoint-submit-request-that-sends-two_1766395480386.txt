@@ -1,0 +1,169 @@
+Create a backend endpoint /submit-request that sends two automated emails every time a user submits the “Create Your Marketplace” form on the Kaartx Kloud website.
+
+📌 FUNCTIONAL REQUIREMENTS
+1️⃣ API Endpoint
+
+Create an API endpoint:
+
+POST /submit-request
+
+
+It will accept:
+
+{
+  "marketplaceName": "string",
+  "email": "string",
+  "password": "string",
+  "plan": "Starter"
+}
+
+2️⃣ Email Sending System
+
+Use Nodemailer with SMTP (Gmail / Brevo / Outlook / custom SMTP).
+
+Install:
+
+npm install express nodemailer cors body-parser
+
+3️⃣ Email #1 — Send to USER
+Subject:
+
+Your Kaartx Kloud Marketplace Request Has Been Received
+
+Body (HTML):
+Hello,
+
+Thank you for submitting your marketplace setup request. Our onboarding team has received your details and will contact you shortly to complete the setup.
+
+A team member will reach out within 24–48 hours to discuss your requirements and activate your marketplace.
+
+Details submitted:
+- Marketplace Name: {{marketplaceName}}
+- Email: {{email}}
+- Plan: Starter
+
+Thank you,
+Kaartx Kloud Team
+
+4️⃣ Email #2 — Send to ADMIN (you)
+Subject:
+
+New Marketplace Setup Request Received
+
+Body (HTML):
+A new marketplace setup request was submitted.
+
+Marketplace Name: {{marketplaceName}}
+User Email: {{email}}
+Plan: Starter
+Submission Time: {{timestamp}}
+
+Please review and schedule a meeting.
+
+
+Admin email:
+➡️ support@kaartx.com (replace with your actual admin email)
+
+5️⃣ Save Each Request
+
+Save incoming requests in a requests.json file or SQLite database.
+
+Example JSON entry:
+
+{
+  "id": "uuid",
+  "marketplaceName": "",
+  "email": "",
+  "plan": "Starter",
+  "status": "Pending Review",
+  "timestamp": "2025-01-01T10:00:00Z"
+}
+
+6️⃣ API RESPONSE
+
+Return:
+
+{
+  "success": true,
+  "message": "Request submitted successfully."
+}
+
+📌 7️⃣ SAMPLE BACKEND CODE (Replit-ready)
+
+(This will be automatically generated if you feed the above prompt, but adding here for clarity.)
+
+const express = require("express");
+const nodemailer = require("nodemailer");
+const fs = require("fs");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
+const ADMIN_EMAIL = "support@kaartx.com"; // CHANGE THIS
+const SMTP_USER = "your-smtp-email";
+const SMTP_PASS = "your-smtp-password";
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: SMTP_USER,
+    pass: SMTP_PASS
+  }
+});
+
+app.post("/submit-request", async (req, res) => {
+  const { marketplaceName, email, password, plan } = req.body;
+
+  const entry = {
+    id: Date.now(),
+    marketplaceName,
+    email,
+    plan,
+    status: "Pending Review",
+    timestamp: new Date()
+  };
+
+  // Save in file
+  const data = JSON.parse(fs.readFileSync("requests.json"));
+  data.push(entry);
+  fs.writeFileSync("requests.json", JSON.stringify(data, null, 2));
+
+  // Email to User
+  await transporter.sendMail({
+    from: SMTP_USER,
+    to: email,
+    subject: "Your Kaartx Kloud Marketplace Request Has Been Received",
+    html: `
+      <p>Hello,</p>
+      <p>Thank you for submitting your marketplace setup request. Our onboarding team has received your details and will contact you shortly to complete the setup.</p>
+      <p><strong>Marketplace Name:</strong> ${marketplaceName}<br/>
+         <strong>Email:</strong> ${email}<br/>
+         <strong>Plan:</strong> ${plan}</p>
+      <p>Thank you,<br/>Kaartx Kloud Team</p>
+    `
+  });
+
+  // Email to Admin
+  await transporter.sendMail({
+    from: SMTP_USER,
+    to: ADMIN_EMAIL,
+    subject: "New Marketplace Setup Request Received",
+    html: `
+      <h3>New Marketplace Request</h3>
+      <p><strong>Marketplace Name:</strong> ${marketplaceName}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Plan:</strong> ${plan}</p>
+      <p><strong>Timestamp:</strong> ${new Date()}</p>
+    `
+  });
+
+  return res.json({
+    success: true,
+    message: "Request submitted successfully."
+  });
+});
+
+app.listen(3000, () => console.log("Server running on port 3000"));
