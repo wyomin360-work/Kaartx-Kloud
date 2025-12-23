@@ -4,6 +4,19 @@ Kaartx Kloud is a premium SaaS platform for launching and managing multi-vendor 
 
 ## Recent Changes
 
+**December 23, 2025 - Email Notifications for Marketplace Requests:**
+- **Implemented automated email system** using Nodemailer with Zoho SMTP
+- **Two emails sent on form submission:**
+  - User confirmation email with request details
+  - Admin notification email to support@kaartx.com
+- **SMTP Configuration:**
+  - Host: smtppro.zoho.in (port 465, SSL)
+  - From address: noreply@kloud.kaartx.com
+  - Password stored in Secrets (SMTP_PASSWORD)
+- **Environment Variables:** SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_SECURE, ADMIN_EMAIL
+- **Files Added:** `server/email.ts` - Email service with HTML templates
+- **Files Modified:** `server/routes.ts` - Integrated email sending on tenant creation
+
 **December 17, 2025 - Request Setup Flow Implementation:**
 - **Changed from self-serve to guided setup flow** - No more instant trial or payment
 - **Pricing CTAs Updated:**

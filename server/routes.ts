@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertTenantSchema } from "@shared/schema";
+import { sendMarketplaceRequestEmails } from "./email";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Health check endpoint
@@ -64,6 +65,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       const tenant = await storage.createTenant(tenantData, subdomain, plan);
+
+      // Send confirmation emails (don't block the response)
+      sendMarketplaceRequestEmails({
+        marketplaceName: tenantData.marketplaceName,
+        email: tenantData.ownerEmail,
+        plan,
+      }).catch(err => console.error('Failed to send emails:', err));
 
       const { password, ...tenantWithoutPassword } = tenant;
 

@@ -37,3 +37,12 @@ author = "agent"
 task = "shell.exec"
 args = "npm run dev"
 waitForPort = 5000
+
+[userenv]
+
+[userenv.shared]
+SMTP_HOST = "smtppro.zoho.in"
+SMTP_PORT = "465"
+SMTP_USER = "noreply@kloud.kaartx.com"
+SMTP_SECURE = "true"
+ADMIN_EMAIL = "support@kaartx.com"
