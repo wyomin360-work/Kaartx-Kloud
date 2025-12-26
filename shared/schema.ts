@@ -17,31 +17,27 @@ export const insertUserSchema = createInsertSchema(users).pick({
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 
-export const tenants = pgTable("tenants", {
+export const marketplaceRequests = pgTable("marketplace_requests", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   marketplaceName: text("marketplace_name").notNull(),
-  ownerEmail: text("owner_email").notNull().unique(),
+  email: text("email").notNull(),
   password: text("password").notNull(),
-  subdomain: text("subdomain").notNull().unique(),
   plan: text("plan").notNull().default("Starter"),
-  status: text("status").notNull().default("Trial"),
+  status: text("status").notNull().default("pending"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
-  trialEndsAt: timestamp("trial_ends_at").notNull(),
 });
 
-export const insertTenantSchema = createInsertSchema(tenants).omit({
+export const insertMarketplaceRequestSchema = createInsertSchema(marketplaceRequests).omit({
   id: true,
   createdAt: true,
-  trialEndsAt: true,
-  subdomain: true,
-  plan: true,
   status: true,
+  plan: true,
 }).extend({
   marketplaceName: z.string().min(2, "Marketplace name must be at least 2 characters"),
-  ownerEmail: z.string().email("Invalid email address"),
+  email: z.string().email("Invalid email address"),
   password: z.string().min(8, "Password must be at least 8 characters"),
 });
 
-export type InsertTenant = z.infer<typeof insertTenantSchema>;
-export type Tenant = typeof tenants.$inferSelect;
-export type PublicTenant = Omit<Tenant, 'password'>;
+export type InsertMarketplaceRequest = z.infer<typeof insertMarketplaceRequestSchema>;
+export type MarketplaceRequest = typeof marketplaceRequests.$inferSelect;
+export type PublicMarketplaceRequest = Omit<MarketplaceRequest, 'password'>;

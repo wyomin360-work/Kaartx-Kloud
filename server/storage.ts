@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type Tenant, type InsertTenant } from "@shared/schema";
+import { type User, type InsertUser, type MarketplaceRequest, type InsertMarketplaceRequest } from "@shared/schema";
 import { randomUUID, randomBytes, scryptSync } from "crypto";
 
 function hashPassword(password: string): string {
@@ -7,33 +7,22 @@ function hashPassword(password: string): string {
   return `scrypt:${salt}:${hash}`;
 }
 
-// modify the interface with any CRUD methods
-// you might need
-
-// Pending signup timeout in milliseconds (30 minutes)
-const PENDING_SIGNUP_TIMEOUT = 30 * 60 * 1000;
-
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  createTenant(tenant: InsertTenant, subdomain: string, plan?: string): Promise<Tenant>;
-  getTenantByEmail(email: string): Promise<Tenant | undefined>;
-  getTenantBySubdomain(subdomain: string): Promise<Tenant | undefined>;
-  getTenantById(id: string): Promise<Tenant | undefined>;
-  activateGrowthPlan(id: string): Promise<Tenant | undefined>;
-  findPendingTenantByEmail(email: string): Promise<Tenant | undefined>;
-  deleteTenant(id: string): Promise<void>;
-  cleanupExpiredPendingSignups(): Promise<void>;
+  createMarketplaceRequest(request: InsertMarketplaceRequest, plan: string): Promise<MarketplaceRequest>;
+  getRequestByEmail(email: string): Promise<MarketplaceRequest | undefined>;
+  getRequestByMarketplaceName(name: string): Promise<MarketplaceRequest | undefined>;
 }
 
 export class MemStorage implements IStorage {
   private users: Map<string, User>;
-  private tenants: Map<string, Tenant>;
+  private marketplaceRequests: Map<string, MarketplaceRequest>;
 
   constructor() {
     this.users = new Map();
-    this.tenants = new Map();
+    this.marketplaceRequests = new Map();
   }
 
   async getUser(id: string): Promise<User | undefined> {
@@ -53,77 +42,33 @@ export class MemStorage implements IStorage {
     return user;
   }
 
-  async createTenant(insertTenant: InsertTenant, subdomain: string, plan: string = 'Starter'): Promise<Tenant> {
+  async createMarketplaceRequest(insertRequest: InsertMarketplaceRequest, plan: string): Promise<MarketplaceRequest> {
     const id = randomUUID();
-    
-    const trialEndsAt = new Date();
-    trialEndsAt.setDate(trialEndsAt.getDate() + 14);
+    const hashedPassword = hashPassword(insertRequest.password);
 
-    const hashedPassword = hashPassword(insertTenant.password);
-
-    // All new marketplaces start with PENDING_REVIEW status
-    const status = 'PENDING_REVIEW';
-
-    const tenant: Tenant = {
-      ...insertTenant,
-      password: hashedPassword,
+    const request: MarketplaceRequest = {
       id,
-      subdomain,
+      marketplaceName: insertRequest.marketplaceName,
+      email: insertRequest.email,
+      password: hashedPassword,
       plan,
-      status,
+      status: "pending",
       createdAt: new Date(),
-      trialEndsAt,
     };
 
-    this.tenants.set(id, tenant);
-    return tenant;
+    this.marketplaceRequests.set(id, request);
+    return request;
   }
 
-  async getTenantById(id: string): Promise<Tenant | undefined> {
-    return this.tenants.get(id);
-  }
-
-  async activateGrowthPlan(id: string): Promise<Tenant | undefined> {
-    const tenant = this.tenants.get(id);
-    if (!tenant) return undefined;
-
-    const updatedTenant: Tenant = {
-      ...tenant,
-      plan: 'Growth',
-      status: 'Active',
-    };
-    
-    this.tenants.set(id, updatedTenant);
-    return updatedTenant;
-  }
-
-  async findPendingTenantByEmail(email: string): Promise<Tenant | undefined> {
-    const now = Date.now();
-    return Array.from(this.tenants.values()).find(
-      (tenant) => 
-        tenant.ownerEmail === email && 
-        tenant.status === 'PENDING_REVIEW' &&
-        (now - tenant.createdAt.getTime()) < PENDING_SIGNUP_TIMEOUT
+  async getRequestByEmail(email: string): Promise<MarketplaceRequest | undefined> {
+    return Array.from(this.marketplaceRequests.values()).find(
+      (request) => request.email === email,
     );
   }
 
-  async deleteTenant(id: string): Promise<void> {
-    this.tenants.delete(id);
-  }
-
-  async cleanupExpiredPendingSignups(): Promise<void> {
-    // No longer cleanup pending signups - they stay until manually approved or rejected
-  }
-
-  async getTenantByEmail(email: string): Promise<Tenant | undefined> {
-    return Array.from(this.tenants.values()).find(
-      (tenant) => tenant.ownerEmail === email,
-    );
-  }
-
-  async getTenantBySubdomain(subdomain: string): Promise<Tenant | undefined> {
-    return Array.from(this.tenants.values()).find(
-      (tenant) => tenant.subdomain === subdomain,
+  async getRequestByMarketplaceName(name: string): Promise<MarketplaceRequest | undefined> {
+    return Array.from(this.marketplaceRequests.values()).find(
+      (request) => request.marketplaceName.toLowerCase() === name.toLowerCase(),
     );
   }
 }

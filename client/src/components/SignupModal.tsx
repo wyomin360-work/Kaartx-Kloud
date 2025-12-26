@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { CustomModal } from '@/components/ui/custom-modal';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { insertTenantSchema, type InsertTenant, type PublicTenant } from '@shared/schema';
+import { insertMarketplaceRequestSchema, type InsertMarketplaceRequest, type PublicMarketplaceRequest } from '@shared/schema';
 import { apiRequest } from '@/lib/queryClient';
 
 export interface PlanSelection {
@@ -27,7 +27,7 @@ interface SignupModalProps {
 
 type ModalState = 'form' | 'success';
 
-interface TenantResponse extends PublicTenant {}
+interface RequestResponse extends PublicMarketplaceRequest {}
 
 const defaultPlan: PlanSelection = {
   planId: 'starter-monthly',
@@ -57,7 +57,7 @@ export const MODAL_CONTAINER_CLASSES = "w-full sm:w-[600px] max-w-[720px] max-h-
 
 export default function SignupModal({ open, onOpenChange, selectedPlan }: SignupModalProps) {
   const { toast } = useToast();
-  const [createdTenant, setCreatedTenant] = useState<PublicTenant | null>(null);
+  const [createdRequest, setCreatedRequest] = useState<PublicMarketplaceRequest | null>(null);
   const [modalState, setModalState] = useState<ModalState>('form');
   
   // Use provided plan or default to Starter monthly
@@ -78,27 +78,27 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
   useEffect(() => {
     if (!open) {
       setModalState('form');
-      setCreatedTenant(null);
+      setCreatedRequest(null);
     }
   }, [open]);
 
-  const form = useForm<InsertTenant>({
-    resolver: zodResolver(insertTenantSchema),
+  const form = useForm<InsertMarketplaceRequest>({
+    resolver: zodResolver(insertMarketplaceRequestSchema),
     defaultValues: {
       marketplaceName: '',
-      ownerEmail: '',
+      email: '',
       password: '',
     },
   });
 
-  const createTenantMutation = useMutation({
-    mutationFn: async (data: InsertTenant) => {
+  const createRequestMutation = useMutation({
+    mutationFn: async (data: InsertMarketplaceRequest) => {
       const payload = { ...data, plan: plan.planName, billingCycle: plan.billingCycle };
-      const response = await apiRequest('POST', '/api/tenants', payload);
-      return await response.json() as TenantResponse;
+      const response = await apiRequest('POST', '/api/marketplace-requests', payload);
+      return await response.json() as RequestResponse;
     },
     onSuccess: (data) => {
-      setCreatedTenant(data);
+      setCreatedRequest(data);
       setModalState('success');
       toast({
         title: 'Request Submitted!',
@@ -112,7 +112,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
           const errorData = JSON.parse(match[1]);
           if (errorData?.errors && Array.isArray(errorData.errors)) {
             errorData.errors.forEach((err: { field: string; message: string }) => {
-              form.setError(err.field as 'marketplaceName' | 'ownerEmail' | 'password', {
+              form.setError(err.field as 'marketplaceName' | 'email' | 'password', {
                 type: 'server',
                 message: err.message,
               });
@@ -120,7 +120,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
             return;
           }
           if (errorData?.field && errorData?.message) {
-            form.setError(errorData.field as 'marketplaceName' | 'ownerEmail' | 'password', {
+            form.setError(errorData.field as 'marketplaceName' | 'email' | 'password', {
               type: 'server',
               message: errorData.message,
             });
@@ -132,18 +132,18 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
       }
       toast({
         title: 'Error',
-        description: error.message || 'Failed to create marketplace',
+        description: error.message || 'Failed to submit request',
         variant: 'destructive',
       });
     },
   });
 
-  const onSubmit = (data: InsertTenant) => {
-    createTenantMutation.mutate(data);
+  const onSubmit = (data: InsertMarketplaceRequest) => {
+    createRequestMutation.mutate(data);
   };
 
   const handleClose = () => {
-    setCreatedTenant(null);
+    setCreatedRequest(null);
     setModalState('form');
     form.reset();
     onOpenChange(false);
@@ -158,31 +158,27 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
     >
       <div data-testid="dialog-signup">
         {/* Success State - Request Received */}
-        {modalState === 'success' && createdTenant && (
+        {modalState === 'success' && createdRequest && (
           <div className="py-2">
             <div className="text-center mb-6">
               <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1.5">Request received</h2>
               <p className="text-sm text-muted-foreground">
-                Your {createdTenant.plan} marketplace request has been submitted. Our team will review and contact you shortly to proceed with activation.
+                Your {createdRequest.plan} marketplace request has been submitted. Our team will review and contact you shortly to proceed with activation.
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-3 mb-6">
               <div className="border border-border/60 rounded-md px-4 py-3">
                 <p className="text-xs text-muted-foreground mb-0.5">Marketplace Name</p>
-                <p className="text-sm font-semibold text-foreground">{createdTenant.marketplaceName}</p>
-              </div>
-              <div className="border border-border/60 rounded-md px-4 py-3">
-                <p className="text-xs text-muted-foreground mb-0.5">Your Subdomain</p>
-                <p className="text-sm font-semibold text-primary break-all">{createdTenant.subdomain}.kloud.kaartx.com</p>
+                <p className="text-sm font-semibold text-foreground">{createdRequest.marketplaceName}</p>
               </div>
               <div className="border border-border/60 rounded-md px-4 py-3">
                 <p className="text-xs text-muted-foreground mb-0.5">Plan</p>
-                <p className="text-sm font-semibold text-foreground">{createdTenant.plan}</p>
+                <p className="text-sm font-semibold text-foreground">{createdRequest.plan}</p>
               </div>
-              <div className="border border-border/60 rounded-md px-4 py-3">
+              <div className="col-span-2 border border-border/60 rounded-md px-4 py-3">
                 <p className="text-xs text-muted-foreground mb-0.5">Email</p>
-                <p className="text-sm font-semibold text-foreground break-all">{createdTenant.ownerEmail}</p>
+                <p className="text-sm font-semibold text-foreground break-all">{createdRequest.email}</p>
               </div>
             </div>
 
@@ -200,7 +196,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
                   <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-sm font-medium text-foreground">You'll receive a confirmation email</p>
-                    <p className="text-xs text-muted-foreground">We'll send details to {createdTenant.ownerEmail} once approved</p>
+                    <p className="text-xs text-muted-foreground">We'll send details to {createdRequest.email} once approved</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-2.5">
@@ -260,7 +256,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
 
                 <FormField
                   control={form.control}
-                  name="ownerEmail"
+                  name="email"
                   render={({ field }) => (
                     <FormItem className="space-y-1.5">
                       <FormLabel className="text-xs font-medium text-muted-foreground">Email Address</FormLabel>
@@ -270,7 +266,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
                           placeholder="you@company.com"
                           className="h-10 border-border/60 rounded-md"
                           {...field}
-                          data-testid="input-owner-email"
+                          data-testid="input-email"
                         />
                       </FormControl>
                       <FormMessage />
@@ -349,10 +345,10 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
                 <Button
                   type="submit"
                   className="w-full"
-                  disabled={createTenantMutation.isPending}
+                  disabled={createRequestMutation.isPending}
                   data-testid="button-create-marketplace"
                 >
-                  {createTenantMutation.isPending 
+                  {createRequestMutation.isPending 
                     ? 'Submitting...' 
                     : 'Submit Request'
                   }

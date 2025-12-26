@@ -9,55 +9,52 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { insertTenantSchema, type InsertTenant, type PublicTenant } from '@shared/schema';
+import { insertMarketplaceRequestSchema, type InsertMarketplaceRequest, type PublicMarketplaceRequest } from '@shared/schema';
 import { apiRequest } from '@/lib/queryClient';
 import Navbar from '@/components/Navbar';
 
 export default function CreateMarketplace() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
-  const [createdTenant, setCreatedTenant] = useState<PublicTenant | null>(null);
+  const [createdRequest, setCreatedRequest] = useState<PublicMarketplaceRequest | null>(null);
 
-  const form = useForm<InsertTenant>({
-    resolver: zodResolver(insertTenantSchema),
+  const form = useForm<InsertMarketplaceRequest>({
+    resolver: zodResolver(insertMarketplaceRequestSchema),
     defaultValues: {
       marketplaceName: '',
-      ownerEmail: '',
+      email: '',
       password: '',
     },
   });
 
-  const createTenantMutation = useMutation({
-    mutationFn: async (data: InsertTenant) => {
-      const response = await apiRequest('POST', '/api/tenants', data);
-      return await response.json() as PublicTenant;
+  const createRequestMutation = useMutation({
+    mutationFn: async (data: InsertMarketplaceRequest) => {
+      const response = await apiRequest('POST', '/api/marketplace-requests', data);
+      return await response.json() as PublicMarketplaceRequest;
     },
     onSuccess: (data) => {
-      setCreatedTenant(data);
+      setCreatedRequest(data);
       toast({
-        title: 'Marketplace Created!',
-        description: 'Your 14-day free trial has started.',
+        title: 'Request Submitted!',
+        description: 'Your marketplace request has been received.',
       });
     },
     onError: (error: Error) => {
-      // Try to parse field-specific errors from the error message (format: "400: {json}")
       const match = error.message.match(/^\d+:\s*(.+)$/);
       if (match) {
         try {
           const errorData = JSON.parse(match[1]);
-          // Handle array of errors (new format)
           if (errorData?.errors && Array.isArray(errorData.errors)) {
             errorData.errors.forEach((err: { field: string; message: string }) => {
-              form.setError(err.field as 'marketplaceName' | 'ownerEmail' | 'password', {
+              form.setError(err.field as 'marketplaceName' | 'email' | 'password', {
                 type: 'server',
                 message: err.message,
               });
             });
             return;
           }
-          // Handle single error (legacy format)
           if (errorData?.field && errorData?.message) {
-            form.setError(errorData.field as 'marketplaceName' | 'ownerEmail' | 'password', {
+            form.setError(errorData.field as 'marketplaceName' | 'email' | 'password', {
               type: 'server',
               message: errorData.message,
             });
@@ -69,17 +66,17 @@ export default function CreateMarketplace() {
       }
       toast({
         title: 'Error',
-        description: error.message || 'Failed to create marketplace',
+        description: error.message || 'Failed to submit request',
         variant: 'destructive',
       });
     },
   });
 
-  const onSubmit = (data: InsertTenant) => {
-    createTenantMutation.mutate(data);
+  const onSubmit = (data: InsertMarketplaceRequest) => {
+    createRequestMutation.mutate(data);
   };
 
-  if (createdTenant) {
+  if (createdRequest) {
     return (
       <>
         <Navbar />
@@ -89,80 +86,53 @@ export default function CreateMarketplace() {
             <div className="mx-auto mb-6 w-20 h-20 bg-green-50 dark:bg-green-950 rounded-full flex items-center justify-center">
               <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
             </div>
-            <CardTitle className="text-3xl sm:text-4xl mb-3">Welcome to Kaartx Kloud!</CardTitle>
+            <CardTitle className="text-3xl sm:text-4xl mb-3">Request Received!</CardTitle>
             <CardDescription className="text-base">
-              Your marketplace is ready to launch. Start building your multi-vendor platform today.
+              Your marketplace request has been submitted. Our team will review and activate your marketplace shortly.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-8">
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="bg-muted/30 rounded-lg p-5">
                 <p className="text-sm text-muted-foreground mb-1">Marketplace Name</p>
-                <p className="text-lg font-semibold text-foreground">{createdTenant.marketplaceName}</p>
-              </div>
-              <div className="bg-muted/30 rounded-lg p-5">
-                <p className="text-sm text-muted-foreground mb-1">Your Subdomain</p>
-                <p className="text-lg font-semibold text-primary break-all">{createdTenant.subdomain}.kloud.kaartx.com</p>
+                <p className="text-lg font-semibold text-foreground">{createdRequest.marketplaceName}</p>
               </div>
               <div className="bg-muted/30 rounded-lg p-5">
                 <p className="text-sm text-muted-foreground mb-1">Plan</p>
-                <p className="text-lg font-semibold text-foreground">{createdTenant.plan}</p>
+                <p className="text-lg font-semibold text-foreground">{createdRequest.plan}</p>
               </div>
-              <div className="bg-muted/30 rounded-lg p-5">
-                <p className="text-sm text-muted-foreground mb-1">Trial Period Ends</p>
-                <p className="text-lg font-semibold text-foreground">
-                  {new Date(createdTenant.trialEndsAt).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </p>
+              <div className="sm:col-span-2 bg-muted/30 rounded-lg p-5">
+                <p className="text-sm text-muted-foreground mb-1">Email</p>
+                <p className="text-lg font-semibold text-foreground">{createdRequest.email}</p>
               </div>
             </div>
 
             <div className="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-lg p-6">
-              <h3 className="font-semibold text-foreground mb-4 text-lg">Next Steps</h3>
+              <h3 className="font-semibold text-foreground mb-4 text-lg">What Happens Next</h3>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium text-foreground">Check Your Email</p>
-                    <p className="text-sm text-muted-foreground">We've sent login credentials and setup instructions to {createdTenant.ownerEmail}</p>
-                  </div>
+                  <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                  <span className="text-foreground">Our team will review your marketplace request</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium text-foreground">Access Your Dashboard</p>
-                    <p className="text-sm text-muted-foreground">Log in at {createdTenant.subdomain}.kloud.kaartx.com to configure your marketplace</p>
-                  </div>
+                  <Circle className="w-5 h-5 text-muted-foreground mt-0.5 flex-shrink-0" />
+                  <span className="text-muted-foreground">You'll receive a confirmation email once activated</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium text-foreground">Start Onboarding Sellers</p>
-                    <p className="text-sm text-muted-foreground">Invite vendors to join your marketplace and begin listing products</p>
-                  </div>
+                  <Circle className="w-5 h-5 text-muted-foreground mt-0.5 flex-shrink-0" />
+                  <span className="text-muted-foreground">Start configuring your marketplace and onboarding sellers</span>
                 </li>
               </ul>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <Button
-                onClick={() => setLocation('/')}
-                variant="outline"
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button 
+                onClick={() => setLocation('/')} 
+                variant="outline" 
                 className="flex-1"
-                size="lg"
                 data-testid="button-back-home"
               >
                 Back to Home
-              </Button>
-              <Button
-                className="flex-1"
-                size="lg"
-                data-testid="button-go-dashboard"
-              >
-                Go to Dashboard
               </Button>
             </div>
           </CardContent>
@@ -175,27 +145,17 @@ export default function CreateMarketplace() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-background pt-16">
-        <div className="max-w-2xl mx-auto px-4 py-12 sm:py-20">
-        <div className="text-center mb-10">
-          <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-3">
-            Create Your Marketplace
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            Start your 14-day free trial. No credit card required.
-          </p>
-        </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Get Started in Minutes</CardTitle>
+      <div className="min-h-screen bg-background flex items-center justify-center px-4 py-12 pt-24">
+        <Card className="max-w-md w-full">
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl sm:text-3xl">Request Your Marketplace</CardTitle>
             <CardDescription>
-              Fill in your details below to launch your multi-vendor marketplace
+              Submit your request and our team will activate your marketplace.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                 <FormField
                   control={form.control}
                   name="marketplaceName"
@@ -216,7 +176,7 @@ export default function CreateMarketplace() {
 
                 <FormField
                   control={form.control}
-                  name="ownerEmail"
+                  name="email"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Email Address</FormLabel>
@@ -225,7 +185,7 @@ export default function CreateMarketplace() {
                           type="email"
                           placeholder="you@company.com"
                           {...field}
-                          data-testid="input-owner-email"
+                          data-testid="input-email"
                         />
                       </FormControl>
                       <FormMessage />
@@ -252,61 +212,18 @@ export default function CreateMarketplace() {
                   )}
                 />
 
-                <div className="bg-muted/30 rounded-lg p-5 space-y-3">
-                  <h4 className="font-semibold text-foreground">What's included:</h4>
-                  <ul className="space-y-2.5 text-sm text-foreground">
-                    <li className="flex items-start gap-3">
-                      <div className="relative flex-shrink-0 mt-0.5">
-                        <Circle className="w-5 h-5 text-muted-foreground" />
-                        <CheckCircle2 className="w-3.5 h-3.5 text-foreground absolute top-[3px] left-[3px]" />
-                      </div>
-                      <span>14-day free trial on Starter plan</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="relative flex-shrink-0 mt-0.5">
-                        <Circle className="w-5 h-5 text-muted-foreground" />
-                        <CheckCircle2 className="w-3.5 h-3.5 text-foreground absolute top-[3px] left-[3px]" />
-                      </div>
-                      <span>Custom subdomain (yourname.kloud.kaartx.com)</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="relative flex-shrink-0 mt-0.5">
-                        <Circle className="w-5 h-5 text-muted-foreground" />
-                        <CheckCircle2 className="w-3.5 h-3.5 text-foreground absolute top-[3px] left-[3px]" />
-                      </div>
-                      <span>Up to 10 sellers and unlimited products</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <div className="relative flex-shrink-0 mt-0.5">
-                        <Circle className="w-5 h-5 text-muted-foreground" />
-                        <CheckCircle2 className="w-3.5 h-3.5 text-foreground absolute top-[3px] left-[3px]" />
-                      </div>
-                      <span>TAP Payments & Asyad Express integration</span>
-                    </li>
-                  </ul>
-                </div>
-
                 <Button
                   type="submit"
-                  className="w-full h-11"
-                  size="lg"
-                  disabled={createTenantMutation.isPending}
-                  data-testid="button-create-marketplace"
+                  className="w-full"
+                  disabled={createRequestMutation.isPending}
+                  data-testid="button-submit-request"
                 >
-                  {createTenantMutation.isPending ? 'Creating Your Marketplace...' : 'Create My Marketplace'}
+                  {createRequestMutation.isPending ? 'Submitting...' : 'Submit Request'}
                 </Button>
-
-                <p className="text-xs text-center text-muted-foreground mt-4">
-                  By creating an account, you agree to our{' '}
-                  <a href="#" className="text-foreground hover:underline">Terms of Service</a>
-                  {' '}and{' '}
-                  <a href="#" className="text-foreground hover:underline">Privacy Policy</a>
-                </p>
               </form>
             </Form>
           </CardContent>
         </Card>
-        </div>
       </div>
     </>
   );

@@ -1,102 +1,61 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertTenantSchema } from "@shared/schema";
+import { insertMarketplaceRequestSchema } from "@shared/schema";
 import { sendMarketplaceRequestEmails } from "./email";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Health check endpoint
   app.get('/api/health', (req, res) => {
     res.json({ ok: true });
   });
 
-  // Create new marketplace tenant
-  app.post('/api/tenants', async (req, res) => {
+  app.post('/api/marketplace-requests', async (req, res) => {
     try {
-      const validationResult = insertTenantSchema.safeParse(req.body);
+      const validationResult = insertMarketplaceRequestSchema.safeParse(req.body);
       
       if (!validationResult.success) {
         const firstError = validationResult.error.errors[0];
         return res.status(400).send(firstError.message);
       }
 
-      const tenantData = validationResult.data;
+      const requestData = validationResult.data;
       const plan = req.body.plan || 'Starter';
 
-
-      // Generate subdomain for checking
-      const subdomain = tenantData.marketplaceName
-        .toLowerCase()
-        .replace(/[^a-z0-9]/g, '-')
-        .replace(/-+/g, '-')
-        .replace(/^-|-$/g, '');
-
-      // Check both email and subdomain uniqueness in parallel
-      const [existingEmail, existingSubdomain] = await Promise.all([
-        storage.getTenantByEmail(tenantData.ownerEmail),
-        storage.getTenantBySubdomain(subdomain)
+      const [existingEmail, existingName] = await Promise.all([
+        storage.getRequestByEmail(requestData.email),
+        storage.getRequestByMarketplaceName(requestData.marketplaceName)
       ]);
 
-      // Collect all validation errors (only for ACTIVE tenants - pending requests don't block)
       const errors: { field: string; message: string }[] = [];
       
-      if (existingEmail && existingEmail.status === 'ACTIVE') {
-        errors.push({ field: 'ownerEmail', message: 'Email already registered' });
+      if (existingEmail) {
+        errors.push({ field: 'email', message: 'A request with this email already exists' });
       }
       
-      if (existingSubdomain && existingSubdomain.status === 'ACTIVE') {
+      if (existingName) {
         errors.push({ 
           field: 'marketplaceName', 
-          message: 'This marketplace name is already taken. Please choose a different name.' 
+          message: 'A request with this marketplace name already exists' 
         });
       }
 
-      // If there are any errors, return them all
       if (errors.length > 0) {
         return res.status(400).json({ errors });
       }
 
-      // Delete any existing pending tenant with same email before creating new one
-      if (existingEmail && existingEmail.status === 'PENDING_REVIEW') {
-        await storage.deleteTenant(existingEmail.id);
-      }
-      if (existingSubdomain && existingSubdomain.status === 'PENDING_REVIEW' && existingSubdomain.id !== existingEmail?.id) {
-        await storage.deleteTenant(existingSubdomain.id);
-      }
+      const request = await storage.createMarketplaceRequest(requestData, plan);
 
-      const tenant = await storage.createTenant(tenantData, subdomain, plan);
-
-      // Send confirmation emails (don't block the response)
       sendMarketplaceRequestEmails({
-        marketplaceName: tenantData.marketplaceName,
-        email: tenantData.ownerEmail,
+        marketplaceName: requestData.marketplaceName,
+        email: requestData.email,
         plan,
       }).catch(err => console.error('Failed to send emails:', err));
 
-      const { password, ...tenantWithoutPassword } = tenant;
+      const { password, ...requestWithoutPassword } = request;
 
-      res.status(201).json(tenantWithoutPassword);
+      res.status(201).json(requestWithoutPassword);
     } catch (error: any) {
-      console.error('Error creating tenant:', error);
-      res.status(500).send(error.message || 'Internal server error');
-    }
-  });
-
-  // Activate Growth plan after payment
-  app.patch('/api/tenants/:id/activate-growth', async (req, res) => {
-    try {
-      const { id } = req.params;
-      
-      const tenant = await storage.activateGrowthPlan(id);
-      
-      if (!tenant) {
-        return res.status(404).json({ message: 'Tenant not found' });
-      }
-
-      const { password, ...tenantWithoutPassword } = tenant;
-      res.json(tenantWithoutPassword);
-    } catch (error: any) {
-      console.error('Error activating Growth plan:', error);
+      console.error('Error creating marketplace request:', error);
       res.status(500).send(error.message || 'Internal server error');
     }
   });
