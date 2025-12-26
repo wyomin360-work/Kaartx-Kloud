@@ -17,54 +17,60 @@ interface MarketplaceRequestData {
 }
 
 export async function sendUserAcknowledgmentEmail(data: MarketplaceRequestData): Promise<void> {
-  const { email } = data;
+  const { email, marketplaceName } = data;
+  const userName = marketplaceName;
 
   await transporter.sendMail({
     from: `"Kaartx Kloud" <${process.env.SMTP_USER || 'noreply@kloud.kaartx.com'}>`,
     to: email,
-    subject: 'Your Marketplace Request Has Been Received',
+    subject: 'Your Kaartx Kloud Marketplace Request Has Been Received',
     html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #1E2A5E;">Thank You for Your Request</h2>
-        <p>Your request has been received. Our team will activate your marketplace shortly.</p>
-        <p>We will contact you within 24-48 hours to complete your marketplace setup.</p>
-        <p style="margin-top: 30px;">Best regards,<br/><strong>Kaartx Kloud Team</strong></p>
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+        <p>Hi ${userName},</p>
+        
+        <p>Thank you for submitting your marketplace request!</p>
+        
+        <p>Our team has received your details and will reach out shortly to understand your business needs and help you begin your Kaartx Kloud setup.</p>
+        
+        <p><strong>What happens next?</strong></p>
+        <ul style="margin: 10px 0; padding-left: 20px;">
+          <li>Our team reviews your submitted information</li>
+          <li>We schedule a short call to understand your goals</li>
+          <li>We configure your marketplace according to your requirements</li>
+        </ul>
+        
+        <p>You do not need to take any additional steps right now. We will contact you soon.</p>
+        
+        <p style="margin-top: 30px;">Welcome to Kaartx Kloud.<br/>— Team Kaartx<br/>support@kaartx.com</p>
       </div>
     `,
   });
 }
 
 export async function sendAdminNotificationEmail(data: MarketplaceRequestData): Promise<void> {
-  const { marketplaceName, email, plan } = data;
-  const timestamp = new Date().toISOString();
+  const { marketplaceName, email } = data;
+  const timestamp = new Date().toLocaleString('en-US', {
+    dateStyle: 'full',
+    timeStyle: 'long',
+  });
 
   await transporter.sendMail({
     from: `"Kaartx Kloud" <${process.env.SMTP_USER || 'noreply@kloud.kaartx.com'}>`,
     to: 'support@kaartx.com',
-    subject: 'New Marketplace Setup Request',
+    subject: `New Marketplace Request Submitted – ${marketplaceName}`,
     html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #1E2A5E;">New Marketplace Request</h2>
-        <p>A new marketplace setup request has been submitted.</p>
-        <table style="border-collapse: collapse; width: 100%; margin-top: 20px;">
-          <tr>
-            <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Marketplace Name</strong></td>
-            <td style="padding: 10px; border: 1px solid #ddd;">${marketplaceName}</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Email</strong></td>
-            <td style="padding: 10px; border: 1px solid #ddd;">${email}</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Plan</strong></td>
-            <td style="padding: 10px; border: 1px solid #ddd;">${plan}</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9;"><strong>Submitted</strong></td>
-            <td style="padding: 10px; border: 1px solid #ddd;">${timestamp}</td>
-          </tr>
-        </table>
-        <p style="margin-top: 20px;">Please review and manually activate this marketplace.</p>
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+        <p>A new marketplace request has been submitted.</p>
+        
+        <p><strong>Marketplace Name:</strong> ${marketplaceName}<br/>
+        <strong>Email Address:</strong> ${email}<br/>
+        <strong>Password (Encrypted/Hashed):</strong> Stored securely in database<br/>
+        <strong>Submitted At:</strong> ${timestamp}</p>
+        
+        <p>This user has requested onboarding for Kaartx Kloud.<br/>
+        Please reach out to them to discuss requirements and begin setup.</p>
+        
+        <p style="margin-top: 30px;">— Kaartx Kloud Automated System<br/>noreply@kloud.kaartx.com</p>
       </div>
     `,
   });
