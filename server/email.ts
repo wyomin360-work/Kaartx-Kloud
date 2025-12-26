@@ -14,6 +14,7 @@ interface MarketplaceRequestData {
   marketplaceName: string;
   email: string;
   plan: string;
+  billingCycle: string;
 }
 
 export async function sendUserAcknowledgmentEmail(data: MarketplaceRequestData): Promise<void> {
@@ -48,7 +49,7 @@ export async function sendUserAcknowledgmentEmail(data: MarketplaceRequestData):
 }
 
 export async function sendAdminNotificationEmail(data: MarketplaceRequestData): Promise<void> {
-  const { marketplaceName, email } = data;
+  const { marketplaceName, email, plan, billingCycle } = data;
   const timestamp = new Date().toLocaleString('en-US', {
     dateStyle: 'full',
     timeStyle: 'long',
@@ -57,20 +58,18 @@ export async function sendAdminNotificationEmail(data: MarketplaceRequestData): 
   await transporter.sendMail({
     from: `"Kaartx Kloud" <${process.env.SMTP_USER || 'noreply@kloud.kaartx.com'}>`,
     to: 'support@kaartx.com',
-    subject: `New Marketplace Request Submitted – ${marketplaceName}`,
+    subject: 'New Marketplace Request – Action Required',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
         <p>A new marketplace request has been submitted.</p>
         
         <p><strong>Marketplace Name:</strong> ${marketplaceName}<br/>
-        <strong>Email Address:</strong> ${email}<br/>
-        <strong>Password (Encrypted/Hashed):</strong> Stored securely in database<br/>
+        <strong>Owner Email:</strong> ${email}<br/>
+        <strong>Plan Selected:</strong> ${plan}<br/>
+        <strong>Billing Cycle:</strong> ${billingCycle}<br/>
         <strong>Submitted At:</strong> ${timestamp}</p>
         
-        <p>This user has requested onboarding for Kaartx Kloud.<br/>
-        Please reach out to them to discuss requirements and begin setup.</p>
-        
-        <p style="margin-top: 30px;">— Kaartx Kloud Automated System<br/>noreply@kloud.kaartx.com</p>
+        <p>Please review this request and proceed with configuration and activation.</p>
       </div>
     `,
   });

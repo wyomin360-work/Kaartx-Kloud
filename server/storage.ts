@@ -11,7 +11,7 @@ export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  createMarketplaceRequest(request: InsertMarketplaceRequest, plan: string): Promise<MarketplaceRequest>;
+  createMarketplaceRequest(request: InsertMarketplaceRequest): Promise<MarketplaceRequest>;
   getRequestByEmail(email: string): Promise<MarketplaceRequest | undefined>;
   getRequestByMarketplaceName(name: string): Promise<MarketplaceRequest | undefined>;
 }
@@ -42,7 +42,7 @@ export class MemStorage implements IStorage {
     return user;
   }
 
-  async createMarketplaceRequest(insertRequest: InsertMarketplaceRequest, plan: string): Promise<MarketplaceRequest> {
+  async createMarketplaceRequest(insertRequest: InsertMarketplaceRequest): Promise<MarketplaceRequest> {
     const id = randomUUID();
     const hashedPassword = hashPassword(insertRequest.password);
 
@@ -51,7 +51,8 @@ export class MemStorage implements IStorage {
       marketplaceName: insertRequest.marketplaceName,
       email: insertRequest.email,
       password: hashedPassword,
-      plan,
+      plan: insertRequest.plan || "Starter",
+      billingCycle: insertRequest.billingCycle || "monthly",
       status: "pending",
       createdAt: new Date(),
     };

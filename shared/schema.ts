@@ -23,6 +23,7 @@ export const marketplaceRequests = pgTable("marketplace_requests", {
   email: text("email").notNull(),
   password: text("password").notNull(),
   plan: text("plan").notNull().default("Starter"),
+  billingCycle: text("billing_cycle").notNull().default("monthly"),
   status: text("status").notNull().default("pending"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
@@ -31,11 +32,12 @@ export const insertMarketplaceRequestSchema = createInsertSchema(marketplaceRequ
   id: true,
   createdAt: true,
   status: true,
-  plan: true,
 }).extend({
   marketplaceName: z.string().min(2, "Marketplace name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
   password: z.string().min(8, "Password must be at least 8 characters"),
+  plan: z.string().default("Starter"),
+  billingCycle: z.enum(["monthly", "yearly"]).default("monthly"),
 });
 
 export type InsertMarketplaceRequest = z.infer<typeof insertMarketplaceRequestSchema>;

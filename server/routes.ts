@@ -19,7 +19,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
 
       const requestData = validationResult.data;
-      const plan = req.body.plan || 'Starter';
 
       const [existingEmail, existingName] = await Promise.all([
         storage.getRequestByEmail(requestData.email),
@@ -43,12 +42,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ errors });
       }
 
-      const request = await storage.createMarketplaceRequest(requestData, plan);
+      const request = await storage.createMarketplaceRequest(requestData);
 
       sendMarketplaceRequestEmails({
         marketplaceName: requestData.marketplaceName,
         email: requestData.email,
-        plan,
+        plan: requestData.plan || 'Starter',
+        billingCycle: requestData.billingCycle || 'monthly',
       }).catch(err => console.error('Failed to send emails:', err));
 
       const { password, ...requestWithoutPassword } = request;
