@@ -52,8 +52,8 @@ export default function DeepFeatures() {
   const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
   return (
-    <section id="features" className="py-12 sm:py-20 md:py-32 bg-background scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="features" className="py-10 sm:py-20 md:py-32 bg-background scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
         <div 
           ref={titleAnimation.ref}
           className={`text-center mb-12 sm:mb-16 md:mb-20 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
@@ -82,7 +82,7 @@ export default function DeepFeatures() {
                 className={`group hover-elevate transition-all duration-300 rounded-2xl border-2 overflow-visible ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
                 tabIndex={0}
               >
-                <div className="relative p-8">
+                <div className="relative p-5 sm:p-8">
                   {/* Icon with Hover Animation */}
                   <div className="h-14 w-14 rounded-2xl bg-white shadow-playful flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
                     <Icon className="h-7 w-7 text-primary" aria-hidden="true" strokeWidth={1.75} />

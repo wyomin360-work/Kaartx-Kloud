@@ -54,8 +54,8 @@ export default function IntegrationsMarquee() {
   ];
 
   return (
-    <section id="integrations" className="py-12 sm:py-20 md:py-32 bg-background scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
+    <section id="integrations" className="py-10 sm:py-20 md:py-32 bg-background scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-5 md:px-6">
         <div 
           ref={titleAnimation.ref}
           className={`text-center mb-10 sm:mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
@@ -77,7 +77,7 @@ export default function IntegrationsMarquee() {
             return (
               <Card
                 key={index}
-                className="p-6 hover-elevate transition-all duration-300 border-border/50"
+                className="p-5 sm:p-6 hover-elevate transition-all duration-300 border-border/50"
                 data-testid={`integration-card-${index}`}
               >
                 <div className="flex items-start justify-between mb-4">
