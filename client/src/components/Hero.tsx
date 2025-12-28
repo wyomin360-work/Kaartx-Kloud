@@ -46,7 +46,7 @@ export default function Hero({ onOpenSignup }: HeroProps) {
             <Button 
               onClick={onOpenSignup}
               size="lg" 
-              className="shadow-playful group text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full sm:w-auto" 
+              className="shadow-playful group text-base sm:text-lg px-6 sm:px-8 min-h-[48px] sm:min-h-[56px] rounded-2xl font-bold hover:scale-[1.02] transition-transform w-full sm:w-auto" 
               data-testid="button-hero-get-started"
             >
               <span className="hidden sm:inline">Start Building Your Marketplace</span>
@@ -57,7 +57,7 @@ export default function Hero({ onOpenSignup }: HeroProps) {
               size="lg" 
               variant="outline" 
               onClick={scrollToBooking}
-              className="backdrop-blur-sm text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full sm:w-auto" 
+              className="backdrop-blur-sm text-base sm:text-lg px-6 sm:px-8 min-h-[48px] sm:min-h-[56px] rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full sm:w-auto" 
               data-testid="button-hero-whatsapp"
             >
               <MessageCircle className="mr-2 h-5 w-5" />
