@@ -542,3 +542,95 @@ body[data-scroll-locked] {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   MOBILE-SPECIFIC STYLES (≤768px)
+   These styles ONLY affect mobile devices. Desktop remains untouched.
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Mobile Typography - comfortable reading sizes */
+  .section-title {
+    font-size: 1.75rem;
+    line-height: 1.25;
+  }
+
+  /* Mobile Section Spacing - reduced padding */
+  section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Mobile Container Padding */
+  .max-w-7xl,
+  .max-w-6xl,
+  .max-w-5xl,
+  .max-w-4xl,
+  .max-w-3xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Mobile Cards - ensure single column and proper spacing */
+  .grid {
+    gap: 1rem;
+  }
+
+  /* Mobile Modal - full width with proper scrolling */
+  [role="dialog"] {
+    max-width: calc(100vw - 2rem) !important;
+    max-height: calc(100vh - 2rem) !important;
+    margin: 1rem;
+  }
+
+  [role="dialog"] > div {
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+
+  /* Lock background scroll when modal is open */
+  body:has([role="dialog"][data-state="open"]) {
+    overflow: hidden;
+  }
+
+  /* Mobile buttons - larger touch targets */
+  button:not([data-size="icon"]) {
+    min-height: 44px;
+  }
+
+  /* Mobile form inputs - larger touch targets */
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+
+  /* Mobile Badge sizing */
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  /* Mobile navigation menu - full screen overlay feel */
+  nav + div[class*="md:hidden"] {
+    min-height: calc(100vh - 4rem);
+  }
+}
+
+/* Extra small screens (≤480px) */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  /* Tighter padding on very small screens */
+  .max-w-7xl,
+  .max-w-6xl,
+  .max-w-5xl,
+  .max-w-4xl,
+  .max-w-3xl {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}

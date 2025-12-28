@@ -1,0 +1,104 @@
+Replit Instruction — Mobile-Only Redesign (Desktop Must Remain Untouched)
+
+Current issue:
+On mobile devices, the site feels like a shrunk desktop screen. This is not a true mobile experience.
+
+🔒 Non-Negotiable Rule
+
+DO NOT change anything for large screens (desktop / big screens).
+Desktop UI, spacing, font sizes, layout, and behavior are already finalized and must remain exactly the same.
+
+All changes must be mobile-only.
+
+✅ What You Must Do (Mobile ≤ 768px Only)
+1. Mobile-First Layout (Without Affecting Desktop)
+
+Implement mobile-specific styles using media queries only
+
+Do not refactor or touch desktop CSS
+
+Use breakpoints like:
+
+max-width: 768px
+
+max-width: 480px
+
+2. True Mobile Design (Not Scaling)
+
+Do not scale or shrink desktop layout
+
+Build a separate mobile layout
+
+Mobile must feel intentionally designed
+
+3. Layout Rules
+
+One-column layout only
+
+All sections must stack vertically
+
+No side-by-side elements on mobile
+
+4. Typography (Mobile-Specific)
+
+Define separate font sizes for mobile
+
+No zoomed-out text
+
+Comfortable reading sizes with proper line height
+
+5. Spacing & Padding
+
+Reduce excessive desktop spacing
+
+Re-define padding specifically for mobile
+
+Content should feel clean and touch-friendly
+
+6. Buttons & Touch Targets
+
+Buttons must be larger and thumb-friendly
+
+Prefer full-width or near full-width buttons
+
+No tiny desktop-sized buttons on mobile
+
+7. Cards, Grids & Pricing
+
+One card per row only
+
+Equal height cards
+
+No compressed multi-column grids
+
+8. Mobile Navigation
+
+Use hamburger menu
+
+Vertical menu items
+
+No desktop navbar shrinking
+
+9. Modals on Mobile
+
+Mobile-optimized modal width
+
+Internal scrolling inside modal
+
+Lock background scroll
+
+🚫 Explicitly Not Allowed
+
+Any desktop layout change
+
+Any desktop font/spacing change
+
+“Fixing” desktop while adjusting mobile
+
+Desktop regression in any form
+
+✅ Final Instruction
+
+Keep desktop exactly as it is.
+Fix only mobile with proper mobile-first design.
+Test on real mobile devices, not just browser resize.
