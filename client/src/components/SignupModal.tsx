@@ -53,7 +53,7 @@ const defaultPlan: PlanSelection = {
  * 
  * DO NOT create custom modal wrappers - reuse this constant for consistency.
  */
-export const MODAL_CONTAINER_CLASSES = "w-full sm:w-[600px] max-w-[720px] max-h-[85vh] sm:max-h-[90vh] overflow-y-auto p-4 sm:p-6 shadow-xl";
+export const MODAL_CONTAINER_CLASSES = "w-full sm:w-[600px] max-w-[720px] max-h-[90vh] overflow-y-auto p-6 shadow-xl";
 
 export default function SignupModal({ open, onOpenChange, selectedPlan }: SignupModalProps) {
   const { toast } = useToast();
