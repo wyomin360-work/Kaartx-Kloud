@@ -3,6 +3,19 @@ import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
+
+// Production-only redirect: *.replit.app → kloud.kaartx.com
+if (process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    const host = req.get('host') || '';
+    if (host.endsWith('.replit.app')) {
+      const targetUrl = `https://kloud.kaartx.com${req.originalUrl}`;
+      return res.redirect(301, targetUrl);
+    }
+    next();
+  });
+}
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
