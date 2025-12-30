@@ -207,11 +207,10 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
                   </div>
                 </li>
               </ul>
+              <p className="text-[11px] text-muted-foreground/80 mt-3">
+                Activation timelines may vary depending on configuration.
+              </p>
             </div>
-
-            <p className="text-xs text-center text-muted-foreground mb-4">
-              Activation timelines may vary depending on configuration.
-            </p>
 
             <Button
               onClick={handleClose}
