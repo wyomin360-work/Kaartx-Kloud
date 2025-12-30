@@ -207,7 +207,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
                   </div>
                 </li>
               </ul>
-              <p className="text-[11px] text-muted-foreground/80 mt-3">
+              <p className="text-[11px] text-muted-foreground/80 mt-3 pl-[26px]">
                 Activation timelines may vary depending on configuration.
               </p>
             </div>
