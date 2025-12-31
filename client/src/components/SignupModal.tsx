@@ -293,17 +293,10 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
                   )}
                 />
 
-                {/* Static plan indicator for header/footer CTAs only */}
-                {!selectedPlan && (
-                  <p className="text-sm font-semibold text-foreground mt-1">
-                    This request is for the Starter plan
-                  </p>
-                )}
-
                 {/* Key highlights - Light and minimal */}
                 <div className="pt-1 mb-4">
                   <h3 className="text-sm font-semibold text-foreground mb-2">
-                    Key highlights
+                    {!selectedPlan ? 'Key highlights (Starter plan)' : 'Key highlights'}
                   </h3>
                   <ul className="space-y-2">
                     {isGrowthPlan ? (
