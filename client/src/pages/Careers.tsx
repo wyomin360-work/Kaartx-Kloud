@@ -55,7 +55,7 @@ export default function Careers() {
     },
     {
       title: 'Founder-driven mindset',
-      body: 'Work closely with founders and leadership. Decisions are fast, clear, and impact-driven.',
+      body: 'Work closely with founders.\nFast, clear decision-making.',
     },
   ];
 
@@ -199,7 +199,7 @@ export default function Careers() {
                   <h3 className="text-lg sm:text-xl font-bold text-foreground mb-3 tracking-tight leading-snug">
                     {card.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed whitespace-pre-line">
                     {card.body}
                   </p>
                 </div>
