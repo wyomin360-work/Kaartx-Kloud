@@ -47,7 +47,7 @@ export default function Careers() {
     },
     {
       title: 'Global product from Oman',
-      body: 'We build for GCC, scale internationally.',
+      body: 'Built for GCC markets, scaling confidently across global regions worldwide.',
     },
     {
       title: 'Learn 5x faster',
