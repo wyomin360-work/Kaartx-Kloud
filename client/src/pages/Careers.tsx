@@ -53,6 +53,10 @@ export default function Careers() {
       title: 'Learn 5x faster',
       body: 'Work across product, tech, design, and growth.',
     },
+    {
+      title: 'Founder-driven mindset',
+      body: 'Work closely with founders and leadership. Decisions are fast, clear, and impact-driven.',
+    },
   ];
 
   const culturePoints = [
