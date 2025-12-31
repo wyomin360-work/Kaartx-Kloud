@@ -246,7 +246,7 @@ export default function Careers() {
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
               <div className="flex items-start">
-                <p className="text-base sm:text-lg text-foreground leading-relaxed max-w-md" data-testid="text-how-we-work-description">
+                <p className="text-base sm:text-lg text-foreground leading-loose max-w-md" data-testid="text-how-we-work-description">
                   Kaartx Kloud is still early. That means high impact, high visibility, and plenty of messy, interesting problems. We care more about bias-to-action and ownership than big CV names. We value curiosity, speed, and accountability in daily work. Ownership matters more than titles or years of experience. You will see the impact of your work clearly and quickly. Progress beats perfection every time.
                 </p>
               </div>
