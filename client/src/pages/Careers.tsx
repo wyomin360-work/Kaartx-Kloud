@@ -141,7 +141,7 @@ export default function Careers() {
                 className="backdrop-blur-sm text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full max-w-80"
                 data-testid="button-email-cv"
               >
-                <a href="mailto:official@kaartx.com?subject=CV%20-%20Kaartx%20Kloud&body=Hi%20Kaartx%20Kloud%20team%2C%0A%0AMy%20name%20is%20%5BYour%20Name%5D%20and%20I%27d%20like%20to%20share%20my%20CV%20for%20your%20future%20hiring%20rounds.%0A%0A%E2%80%A2%20Role%20%2F%20area%20of%20interest%3A%0A%E2%80%A2%20Current%20location%3A%0A%E2%80%A2%20LinkedIn%20profile%3A%0A%0AI%27ve%20attached%20my%20CV%20for%20your%20reference.%0A%0AThanks%2C%0A%5BYour%20Name%5D">Email Your CV</a>
+                <a href="mailto:official@kloud.kaartx.com?subject=CV%20-%20Kaartx%20Kloud&body=Hi%20Kaartx%20Kloud%20team%2C%0A%0AMy%20name%20is%20%5BYour%20Name%5D%20and%20I%27d%20like%20to%20share%20my%20CV%20for%20your%20future%20hiring%20rounds.%0A%0A%E2%80%A2%20Role%20%2F%20area%20of%20interest%3A%0A%E2%80%A2%20Current%20location%3A%0A%E2%80%A2%20LinkedIn%20profile%3A%0A%0AI%27ve%20attached%20my%20CV%20for%20your%20reference.%0A%0AThanks%2C%0A%5BYour%20Name%5D">Email Your CV</a>
               </Button>
             </div>
           </div>
@@ -333,7 +333,7 @@ export default function Careers() {
               className="backdrop-blur-sm text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-semibold border-2 hover:scale-[1.02] transition-transform w-full max-w-80"
               data-testid="button-open-application"
             >
-              <a href="mailto:official@kaartx.com?subject=Open%20Application%20-%20Kaartx%20Kloud%20Careers&body=Hi%20Kaartx%20Kloud%20team%2C%0A%0AI%27d%20like%20to%20submit%20an%20open%20application%20to%20join%20Kaartx%20Kloud.%0A%0A%E2%80%A2%20Roles%20I%27m%20interested%20in%3A%0A%E2%80%A2%20Experience%20summary%3A%0A%E2%80%A2%20Current%20location%3A%0A%E2%80%A2%20LinkedIn%20profile%3A%0A%0AI%27ve%20attached%20my%20CV%20for%20your%20review.%0A%0AThanks%2C%0A%5BYour%20Name%5D">
+              <a href="mailto:official@kloud.kaartx.com?subject=Open%20Application%20-%20Kaartx%20Kloud%20Careers&body=Hi%20Kaartx%20Kloud%20team%2C%0A%0AI%27d%20like%20to%20submit%20an%20open%20application%20to%20join%20Kaartx%20Kloud.%0A%0A%E2%80%A2%20Roles%20I%27m%20interested%20in%3A%0A%E2%80%A2%20Experience%20summary%3A%0A%E2%80%A2%20Current%20location%3A%0A%E2%80%A2%20LinkedIn%20profile%3A%0A%0AI%27ve%20attached%20my%20CV%20for%20your%20review.%0A%0AThanks%2C%0A%5BYour%20Name%5D">
                 Send an Open Application
               </a>
             </Button>

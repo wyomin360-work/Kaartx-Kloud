@@ -17,7 +17,7 @@ Kaartx Kloud is a premium SaaS platform for launching and managing multi-vendor 
   - If marketplaceName already exists in marketplace_requests → return error
   - If email already exists → return error
 - **Email notifications:**
-  - Admin notification sent to support@kaartx.com
+  - Admin notification sent to support@kloud.kaartx.com
   - Simple user acknowledgment: "Your request has been received. Our team will activate your marketplace shortly."
 - **Files Modified:**
   - `shared/schema.ts` - New marketplace_requests table schema
@@ -125,7 +125,7 @@ Preferred communication style: Simple, everyday language.
 
 - **UI/UX Decisions:** Ultra-professional, premium designs with glassmorphism, layered gradients, minimalist aesthetics, and playful styling. Emphasizes consistent spacing, prominent card backgrounds, professional typography, and sophisticated hover effects.
 - **Modal-Based Signup:** Tenant signup via modal for improved conversion.
-- **Domain Structure:** Primary domain is `kloud.kaartx.com`. Marketplace subdomains follow the pattern `{slug}.kloud.kaartx.com` (e.g., `seviora.kloud.kaartx.com`). Email addresses remain `@kaartx.com`.
+- **Domain Structure:** Primary domain is `kloud.kaartx.com`. Marketplace subdomains follow the pattern `{slug}.kloud.kaartx.com` (e.g., `seviora.kloud.kaartx.com`). Email addresses use `@kloud.kaartx.com` (e.g., support@kloud.kaartx.com, official@kloud.kaartx.com).
 - **Unified Navbar:** Consistent, fixed navbar with intelligent handling for homepage sections and smooth scroll navigation (`scroll-mt-20`).
 - **Cal.com Integration:** Embedded, branded Cal.com booking widget for sales calls.
 - **Mobile Optimization:** Full mobile responsiveness with mobile-first spacing and typography.

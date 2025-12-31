@@ -41,7 +41,7 @@ export async function sendUserAcknowledgmentEmail(data: MarketplaceRequestData):
         
         <p>You do not need to take any additional steps right now. We will contact you soon.</p>
         
-        <p style="margin-top: 30px;">Welcome to Kaartx Kloud.<br/>— Team Kaartx<br/>support@kaartx.com</p>
+        <p style="margin-top: 30px;">Welcome to Kaartx Kloud.<br/>— Team Kaartx<br/>support@kloud.kaartx.com</p>
       </div>
     `,
   });
@@ -56,7 +56,7 @@ export async function sendAdminNotificationEmail(data: MarketplaceRequestData): 
 
   await transporter.sendMail({
     from: `"Kaartx Kloud" <${process.env.SMTP_USER || 'noreply@kloud.kaartx.com'}>`,
-    to: 'support@kaartx.com',
+    to: 'support@kloud.kaartx.com',
     subject: 'New Marketplace Request – Action Required',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">

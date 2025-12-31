@@ -66,11 +66,11 @@ export default function Footer() {
             <div>
               <p className="text-sm text-muted-foreground mb-1 font-medium" data-testid="text-footer-business-label">Business Inquiries:</p>
               <a
-                href="mailto:official@kaartx.com"
+                href="mailto:official@kloud.kaartx.com"
                 className="text-primary hover:underline"
                 data-testid="link-footer-email"
               >
-                official@kaartx.com
+                official@kloud.kaartx.com
               </a>
             </div>
           </div>
