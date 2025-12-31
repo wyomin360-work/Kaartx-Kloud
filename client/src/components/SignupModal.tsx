@@ -224,16 +224,16 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
 
         {/* Form State */}
         {modalState === 'form' && (
-          <div className="py-2">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1.5">Create Your Marketplace</h2>
+          <div className="py-1">
+            <div className="text-center mb-4">
+              <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1">Create Your Marketplace</h2>
               <p className="text-sm text-muted-foreground">
                 Submit your request to begin your marketplace setup. Our team will review and activate your account with the right configuration.
               </p>
             </div>
 
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
                 <FormField
                   control={form.control}
                   name="marketplaceName"
@@ -295,17 +295,17 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
 
                 {/* Static plan indicator for header/footer CTAs only */}
                 {!selectedPlan && (
-                  <p className="text-[13px] font-medium text-[#6B7280] leading-[1.4] mt-2.5 mb-4">
+                  <p className="text-sm font-semibold text-foreground mt-1">
                     This request is for the Starter plan
                   </p>
                 )}
 
                 {/* Key highlights - Light and minimal */}
-                <div className="pt-2 mb-6">
-                  <h3 className="text-sm font-semibold text-foreground mb-3">
+                <div className="pt-1 mb-4">
+                  <h3 className="text-sm font-semibold text-foreground mb-2">
                     Key highlights
                   </h3>
-                  <ul className="space-y-2.5">
+                  <ul className="space-y-2">
                     {isGrowthPlan ? (
                       <>
                         <li className="flex items-start gap-2.5">
