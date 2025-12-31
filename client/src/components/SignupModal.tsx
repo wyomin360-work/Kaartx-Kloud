@@ -293,6 +293,13 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
                   )}
                 />
 
+                {/* Static plan indicator for header/footer CTAs only */}
+                {!selectedPlan && (
+                  <p className="text-sm text-muted-foreground mb-4">
+                    This request is for the Starter plan
+                  </p>
+                )}
+
                 {/* Key highlights - Light and minimal */}
                 <div className="pt-2 mb-6">
                   <h3 className="text-sm font-semibold text-foreground mb-3">
