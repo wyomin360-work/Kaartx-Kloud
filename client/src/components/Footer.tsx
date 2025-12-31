@@ -9,7 +9,7 @@ export default function Footer() {
     {
       icon: Mail,
       title: 'Email us',
-      description: 'support@kaartx.com',
+      description: 'support@kloud.kaartx.com',
       detail: 'We aim to respond as quickly as possible'
     },
     {

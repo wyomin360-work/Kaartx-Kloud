@@ -114,7 +114,7 @@ export default function TermsOfService() {
           <section>
             <h2 className="text-xl font-semibold mb-3">12. Contact</h2>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              For any questions regarding these Terms, contact: <a href="mailto:support@kaartx.com" className="text-primary hover:underline">support@kaartx.com</a>
+              For any questions regarding these Terms, contact: <a href="mailto:support@kloud.kaartx.com" className="text-primary hover:underline">support@kloud.kaartx.com</a>
             </p>
           </section>
         </div>
