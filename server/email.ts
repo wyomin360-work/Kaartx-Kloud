@@ -18,8 +18,7 @@ interface MarketplaceRequestData {
 }
 
 export async function sendUserAcknowledgmentEmail(data: MarketplaceRequestData): Promise<void> {
-  const { email, marketplaceName } = data;
-  const userName = marketplaceName;
+  const { email } = data;
 
   await transporter.sendMail({
     from: `"Kaartx Kloud" <${process.env.SMTP_USER || 'noreply@kloud.kaartx.com'}>`,
@@ -27,7 +26,7 @@ export async function sendUserAcknowledgmentEmail(data: MarketplaceRequestData):
     subject: 'Your Kaartx Kloud Marketplace Request Has Been Received',
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
-        <p>Hi ${userName},</p>
+        <p>Hi there,</p>
         
         <p>Thank you for submitting your marketplace request!</p>
         
