@@ -51,7 +51,7 @@ export default function Careers() {
     },
     {
       title: 'Learn 5x faster',
-      body: 'Work across product, tech, design, and growth.',
+      body: 'Work across product, tech, design, and growth teams globally.',
     },
     {
       title: 'Founder-driven mindset',
