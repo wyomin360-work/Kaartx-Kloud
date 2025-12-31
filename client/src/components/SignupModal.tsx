@@ -295,7 +295,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
 
                 {/* Static plan indicator for header/footer CTAs only */}
                 {!selectedPlan && (
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <p className="text-[13px] font-medium text-[#6B7280] leading-[1.4] mt-2.5 mb-4">
                     This request is for the Starter plan
                   </p>
                 )}
