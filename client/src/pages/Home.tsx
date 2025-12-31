@@ -33,9 +33,9 @@ const defaultStarterPlan: PlanSelection = {
 export default function Home() {
   const [location] = useLocation();
   const [signupModalOpen, setSignupModalOpen] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<PlanSelection>(defaultStarterPlan);
+  const [selectedPlan, setSelectedPlan] = useState<PlanSelection | undefined>(undefined);
 
-  const handleOpenSignup = (plan: PlanSelection) => {
+  const handleOpenSignup = (plan?: PlanSelection) => {
     setSelectedPlan(plan);
     setSignupModalOpen(true);
   };
@@ -78,8 +78,8 @@ export default function Home() {
           signupModalOpen ? 'blur-sm pointer-events-none' : ''
         }`}
       >
-        <Navbar onOpenSignup={() => handleOpenSignup(defaultStarterPlan)} />
-        <Hero onOpenSignup={() => handleOpenSignup(defaultStarterPlan)} />
+        <Navbar onOpenSignup={() => handleOpenSignup()} />
+        <Hero onOpenSignup={() => handleOpenSignup()} />
         <StatsBar />
         <FeatureGrid />
         <HowItWorks />
@@ -95,7 +95,7 @@ export default function Home() {
         <FAQ />
         <BookingSection />
         <About />
-        <FinalCTA onOpenSignup={() => handleOpenSignup(defaultStarterPlan)} />
+        <FinalCTA onOpenSignup={() => handleOpenSignup()} />
         <Footer />
         <WhatsAppButton />
       </div>
