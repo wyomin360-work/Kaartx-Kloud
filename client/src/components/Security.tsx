@@ -1,4 +1,4 @@
-import { Shield, Lock, FileCheck, Database, UserCheck } from 'lucide-react';
+import { Shield, Lock, FileCheck, Database, UserCheck, Server } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 export default function Security() {
@@ -8,6 +8,7 @@ export default function Security() {
     { icon: Lock, text: 'Secure payment processing' },
     { icon: Shield, text: 'Data encryption at rest' },
     { icon: Database, text: 'Automated daily backups' },
+    { icon: Server, text: 'High availability architecture' },
   ];
 
   return (
