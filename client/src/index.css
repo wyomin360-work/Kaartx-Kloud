@@ -1183,9 +1183,14 @@ body[data-scroll-locked] {
     margin-bottom: 32px !important;
   }
 
-  /* Pricing cards - compact mobile layout */
+  /* Pricing cards - compact mobile layout with clear separation */
+  #pricing .grid {
+    gap: 20px !important;
+  }
+
   [data-testid^="pricing-card-"] {
     padding: 20px !important;
+    margin-top: 0 !important;
   }
 
   /* Plan name block - reduce margins */
