@@ -821,4 +821,59 @@ body[data-scroll-locked] {
     width: 12px !important;
     margin-right: 8px !important;
   }
+
+  /* UseCases section - compact mobile layout */
+  [data-testid="tabs-use-cases"] {
+    margin-bottom: 16px !important;
+    padding: 4px !important;
+    gap: 4px !important;
+  }
+
+  [data-testid="tabs-use-cases"] button {
+    padding: 8px 6px !important;
+    min-height: 48px !important;
+    gap: 4px !important;
+  }
+
+  [data-testid="tabs-use-cases"] button svg {
+    height: 14px !important;
+    width: 14px !important;
+  }
+
+  [data-testid="tabs-use-cases"] button span {
+    font-size: 0.65rem !important;
+  }
+
+  /* Compact content card */
+  [data-testid^="tab-content-"] .p-6 {
+    padding: 16px !important;
+  }
+
+  [data-testid^="tab-content-"] .mb-6 {
+    margin-bottom: 12px !important;
+  }
+
+  [data-testid^="tab-content-"] .text-xl {
+    font-size: 1rem !important;
+    margin-bottom: 6px !important;
+  }
+
+  [data-testid^="tab-content-"] .text-base {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Compact checklist */
+  [data-testid^="tab-content-"] .gap-3 {
+    gap: 8px !important;
+  }
+
+  [data-testid^="tab-content-"] .h-5 {
+    height: 14px !important;
+    width: 14px !important;
+  }
+
+  [data-testid^="tab-content-"] .text-sm {
+    font-size: 0.8rem !important;
+  }
 }
