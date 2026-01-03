@@ -948,4 +948,17 @@ body[data-scroll-locked] {
   [data-testid^="security-feature-"] .text-base {
     font-size: 0.875rem !important;
   }
+
+  /* Testimonials section - compact mobile layout */
+  [data-testid="card-builder-quote"] {
+    padding: 16px !important;
+  }
+
+  [data-testid="card-builder-quote"] .space-y-6 {
+    gap: 12px !important;
+  }
+
+  [data-testid="card-builder-quote"] .space-y-6 > * + * {
+    margin-top: 12px !important;
+  }
 }
