@@ -616,4 +616,13 @@ body[data-scroll-locked] {
     font-size: 1.25rem !important;
     line-height: 1.3 !important;
   }
+
+  /* Add-ons section - consistent row heights on mobile */
+  [data-testid^="badge-addon-"] {
+    min-height: 48px !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    line-height: 1.4 !important;
+    align-items: center !important;
+  }
 }
