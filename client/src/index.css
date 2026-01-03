@@ -1135,4 +1135,31 @@ body[data-scroll-locked] {
   #about .text-center.pt-4 p {
     line-height: 1.8 !important;
   }
+
+  /* Final CTA section - proper mobile spacing */
+  [data-testid="text-final-cta-title"] {
+    margin-bottom: 12px !important;
+  }
+
+  [data-testid="text-final-cta-subtitle"] {
+    margin-bottom: 24px !important;
+  }
+
+  /* Add margin below CTA section to separate from footer */
+  section:has([data-testid="text-final-cta-title"]) {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Footer - add top padding/margin for clear separation */
+  #contact {
+    margin-top: 48px !important;
+    padding-top: 32px !important;
+  }
+
+  #contact > div {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
 }
