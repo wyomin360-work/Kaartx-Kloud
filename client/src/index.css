@@ -1162,4 +1162,10 @@ body[data-scroll-locked] {
     padding-top: 24px !important;
     padding-bottom: 24px !important;
   }
+
+  /* Mobile navbar logo - reduce size */
+  [data-testid="link-logo"] img {
+    height: 1.5rem !important;
+    width: auto !important;
+  }
 }
