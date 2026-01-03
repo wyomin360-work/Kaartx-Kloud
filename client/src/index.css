@@ -649,6 +649,14 @@ body[data-scroll-locked] {
     min-height: 28px !important;
   }
 
+  /* Make Coming Soon badge consistent with price text */
+  .addon-price-slot .bg-gradient-to-r {
+    font-size: 0.65rem !important;
+    padding: 4px 8px !important;
+    height: auto !important;
+    line-height: 1.2 !important;
+  }
+
   .addon-availability {
     text-align: right !important;
   }
