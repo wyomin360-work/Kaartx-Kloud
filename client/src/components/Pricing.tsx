@@ -229,26 +229,28 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
           <h3 className="text-center text-lg sm:text-xl font-semibold text-foreground mb-6 sm:mb-8" data-testid="text-addons-title">
             Add-ons
           </h3>
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-5">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-5 addon-container">
             {addons.map((addon, index) => (
               <div
                 key={index}
                 className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-background hover-elevate"
                 data-testid={`badge-addon-${index}`}
               >
-                <span className="text-sm font-medium text-foreground">
-                  {addon.name} —
+                <span className="addon-title text-sm font-medium text-foreground">
+                  {addon.name}
                 </span>
-                {addon.comingSoon ? (
-                  <Badge className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 font-bold shadow-sm no-default-hover-elevate">
-                    Coming Soon
-                  </Badge>
-                ) : (
-                  <span className="text-sm font-medium text-foreground">
-                    OMR {addon.price} / month
-                  </span>
-                )}
-                <span className="text-xs text-muted-foreground font-normal">({addon.availability})</span>
+                <div className="addon-price-slot flex items-center justify-center">
+                  {addon.comingSoon ? (
+                    <Badge className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 font-bold shadow-sm no-default-hover-elevate">
+                      Coming Soon
+                    </Badge>
+                  ) : (
+                    <span className="text-sm font-medium text-foreground whitespace-nowrap">
+                      OMR {addon.price} / month
+                    </span>
+                  )}
+                </div>
+                <span className="addon-availability text-xs text-muted-foreground font-normal">({addon.availability})</span>
               </div>
             ))}
           </div>
