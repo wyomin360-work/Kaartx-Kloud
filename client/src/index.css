@@ -619,9 +619,8 @@ body[data-scroll-locked] {
 
   /* Add-ons section - consistent row heights on mobile */
   [data-testid^="badge-addon-"] {
-    min-height: 48px !important;
-    padding-top: 12px !important;
-    padding-bottom: 12px !important;
+    min-height: 100px !important;
+    padding: 16px 20px !important;
     line-height: 1.4 !important;
     align-items: center !important;
   }
