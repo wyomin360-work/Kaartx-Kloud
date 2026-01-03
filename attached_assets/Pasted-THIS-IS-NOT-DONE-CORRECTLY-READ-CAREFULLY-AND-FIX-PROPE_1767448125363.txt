@@ -1,0 +1,53 @@
+THIS IS NOT DONE CORRECTLY. READ CAREFULLY AND FIX PROPERLY.
+
+You are STILL applying the “standard gap” only to SOME sections and ignoring others.
+This is NOT acceptable.
+
+RULES (NON-NEGOTIABLE):
+1) DESKTOP MUST REMAIN 100% UNCHANGED.
+2) ALL spacing changes MUST be MOBILE-ONLY (inside mobile media queries).
+3) The SAME STANDARD GAP must appear AFTER EVERY SECTION — NO EXCEPTIONS.
+4) Do NOT cherry-pick sections. This applies to ALL sections across the page.
+
+DEFINITION:
+“Standard gap” = the exact vertical spacing already used correctly between:
+→ the top stat cards section
+→ and the “Everything to run a marketplace” section.
+That gap is the ONLY reference. Match it exactly everywhere.
+
+CURRENT PROBLEM:
+You fixed spacing ONLY in some sections and ignored others.
+This is wrong.
+
+SECTIONS WHERE THE STANDARD GAP IS STILL MISSING (MOBILE):
+- After **Built for marketplace builders**
+- After **Scalable results** (section ends with the “Scale” card)
+- After **Plans & pricing for GCC** (section ends with “Add-ons”)
+- After **Frequently Asked Questions**
+- After **Book a sales call**
+- After **About us**
+- Before the final **Ready to launch your marketplace** CTA
+
+EVERY ONE OF THE ABOVE MUST HAVE THE SAME STANDARD GAP.
+
+WHAT TO DO (TECHNICALLLY):
+- Identify the mobile STANDARD GAP value once.
+- Apply it consistently using ONE approach:
+  → mobile-only `section { margin-bottom: STANDARD_GAP; }`
+  OR
+  → a shared mobile-only section wrapper spacing rule.
+- Remove or override any smaller margins that are collapsing spacing
+  (especially margin-bottom on last cards or margin-top on next headings).
+
+DO NOT:
+- Do NOT hardcode spacing per section.
+- Do NOT fix only the sections I mention and ignore the rest.
+- Do NOT touch desktop CSS.
+- Do NOT guess spacing values.
+
+FINAL CHECK:
+On mobile, scrolling the page should feel rhythmically consistent.
+Every section end → same breathing space → next section starts.
+If ONE section breaks this rule, the task is FAILED.
+
+Fix it globally. Fix it properly. No shortcuts.
