@@ -542,3 +542,24 @@ body[data-scroll-locked] {
     text-align: center;
   }
 }
+
+/* ========================================
+   MOBILE-ONLY OVERRIDES (max-width: 768px)
+   DO NOT modify desktop styles above
+   ======================================== */
+@media (max-width: 768px) {
+  /* Header logo - reduced size for mobile */
+  [data-testid="link-logo"] img {
+    width: 130px !important;
+    height: auto !important;
+  }
+
+  /* Hero CTA buttons - compact sizing for mobile */
+  [data-testid="button-hero-get-started"],
+  [data-testid="button-hero-whatsapp"] {
+    min-height: 48px !important;
+    height: auto !important;
+    padding: 12px 20px !important;
+    font-size: 16px !important;
+  }
+}
