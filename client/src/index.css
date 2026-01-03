@@ -925,4 +925,27 @@ body[data-scroll-locked] {
     height: 12px !important;
     width: 12px !important;
   }
+
+  /* Security section - compact mobile cards */
+  [data-testid^="security-feature-"] {
+    padding: 12px 14px !important;
+    gap: 12px !important;
+  }
+
+  /* Smaller icon container */
+  [data-testid^="security-feature-"] .h-14 {
+    height: 40px !important;
+    width: 40px !important;
+    border-radius: 12px !important;
+  }
+
+  [data-testid^="security-feature-"] .h-14 svg {
+    height: 20px !important;
+    width: 20px !important;
+  }
+
+  /* Smaller text */
+  [data-testid^="security-feature-"] .text-base {
+    font-size: 0.875rem !important;
+  }
 }
