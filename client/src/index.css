@@ -775,4 +775,50 @@ body[data-scroll-locked] {
     height: 16px !important;
     width: 16px !important;
   }
+
+  /* DeepFeatures section - compact mobile cards */
+  [data-testid^="deep-feature-"] > div {
+    padding: 16px !important;
+  }
+
+  /* Smaller icon container */
+  [data-testid^="deep-feature-"] .h-14 {
+    height: 40px !important;
+    width: 40px !important;
+    margin-bottom: 12px !important;
+  }
+
+  [data-testid^="deep-feature-"] .h-14 svg {
+    height: 20px !important;
+    width: 20px !important;
+  }
+
+  /* Tighter title spacing */
+  [data-testid^="deep-feature-"] .text-xl {
+    font-size: 1rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Tighter description spacing */
+  [data-testid^="deep-feature-"] .mb-6:not(.h-14) {
+    margin-bottom: 12px !important;
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Compact checklist spacing */
+  [data-testid^="deep-feature-"] .space-y-3 > * + * {
+    margin-top: 6px !important;
+  }
+
+  [data-testid^="deep-feature-"] .space-y-3 li {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+  }
+
+  [data-testid^="deep-feature-"] .space-y-3 .h-4 {
+    height: 12px !important;
+    width: 12px !important;
+    margin-right: 8px !important;
+  }
 }
