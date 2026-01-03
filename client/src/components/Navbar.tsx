@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight, MessageCircle } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import logoImage from '@assets/Asset 4@4x_1762100909160.png';
@@ -128,15 +128,15 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-card border-t border-border shadow-lg">
-          <div className="px-5 py-6 space-y-2">
+        <div className="md:hidden bg-card/95 backdrop-blur-sm border-t border-border shadow-md">
+          <div className="px-5 py-4 space-y-1">
             {navItems.map((item) => (
               item.type === 'link' ? (
                 <Link
                   key={item.testId}
                   href={item.target}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
+                  className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
                   data-testid={`mobile-${item.testId}`}
                 >
                   {item.label}
@@ -145,46 +145,13 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
                 <button
                   key={item.testId}
                   onClick={(e) => handleNavClick(item, e)}
-                  className="block w-full text-left px-4 py-3 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
+                  className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
                   data-testid={`mobile-${item.testId}`}
                 >
                   {item.label}
                 </button>
               )
             ))}
-            
-            <div className="pt-6 space-y-3">
-              <Button 
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onOpenSignup?.();
-                }}
-                className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
-                data-testid="button-mobile-get-started"
-              >
-                Get Started
-              </Button>
-              <Button 
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onOpenSignup?.();
-                }}
-                className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
-                data-testid="button-mobile-start-building"
-              >
-                Start Building
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button 
-                onClick={() => navigateToSection('booking')}
-                variant="outline"
-                className="w-full h-12 text-base hover:scale-[1.02] transition-transform" 
-                data-testid="button-mobile-talk-sales"
-              >
-                <MessageCircle className="mr-2 h-5 w-5" />
-                Talk to Sales
-              </Button>
-            </div>
           </div>
         </div>
       )}
