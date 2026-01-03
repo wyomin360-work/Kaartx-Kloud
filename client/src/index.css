@@ -577,10 +577,17 @@ body[data-scroll-locked] {
     margin-bottom: 48px !important;
   }
 
-  /* Hero section - remove flex centering, add standard gap above */
+  /* Hero section - remove flex centering, add standard gap above, pure white background */
   #hero {
     display: block !important;
     margin-top: 96px !important; /* Standard section gap ABOVE hero (48px gap + navbar offset) */
+    background: #ffffff !important;
+  }
+
+  /* Hide hero gradient overlays on mobile */
+  #hero > div:first-child,
+  #hero > div:nth-child(2) {
+    display: none !important;
   }
 
   /* Hero inner container - reset padding to let section padding handle it */
