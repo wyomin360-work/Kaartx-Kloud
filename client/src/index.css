@@ -606,10 +606,11 @@ body[data-scroll-locked] {
     margin-bottom: 0 !important;
   }
 
-  /* Stats bar cards - allow text wrapping on mobile */
+  /* Stats bar cards - allow text wrapping between words only on mobile */
   [data-testid^="stat-"] [data-testid^="text-stat-value-"] {
     white-space: normal !important;
-    word-break: break-word !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
     overflow: visible !important;
     text-overflow: unset !important;
   }
