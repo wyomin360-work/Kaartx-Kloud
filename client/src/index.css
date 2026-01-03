@@ -605,4 +605,12 @@ body[data-scroll-locked] {
   section:last-of-type {
     margin-bottom: 0 !important;
   }
+
+  /* Stats bar cards - allow text wrapping on mobile */
+  [data-testid^="stat-"] [data-testid^="text-stat-value-"] {
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+  }
 }
