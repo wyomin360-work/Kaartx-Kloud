@@ -563,21 +563,6 @@ body[data-scroll-locked] {
     font-size: 16px !important;
   }
 
-  /* Hero section - remove min-height and reduce bottom spacing to match reference */
-  #hero {
-    min-height: auto !important;
-  }
-
-  /* Hero inner container - reduce bottom padding on mobile */
-  #hero > div:nth-child(3) {
-    padding-bottom: 48px !important;
-  }
-
-  /* Hero text container - reduce bottom margin on mobile */
-  #hero > div:nth-child(3) > div {
-    margin-bottom: 0 !important;
-  }
-
   /* ========================================
      UNIFORM SECTION SPACING (mobile only)
      Standard gap applied GLOBALLY to ALL sections
@@ -586,9 +571,26 @@ body[data-scroll-locked] {
 
   /* Global rule: Apply standard gap to ALL sections on mobile */
   section {
+    min-height: auto !important;
     padding-top: 48px !important;
     padding-bottom: 48px !important;
     margin-bottom: 48px !important;
+  }
+
+  /* Hero section - remove flex centering that creates extra space */
+  #hero {
+    display: block !important;
+  }
+
+  /* Hero inner container - reset padding to let section padding handle it */
+  #hero > div:nth-child(3) {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Hero text container - remove margin-bottom */
+  #hero > div:nth-child(3) > div {
+    margin-bottom: 0 !important;
   }
 
   /* Remove margin from last section before footer to avoid extra gap */
