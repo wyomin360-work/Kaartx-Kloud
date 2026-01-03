@@ -607,11 +607,13 @@ body[data-scroll-locked] {
   }
 
   /* Stats bar cards - allow text wrapping between words only on mobile */
-  [data-testid^="stat-"] [data-testid^="text-stat-value-"] {
+  [data-testid^="stat-"] .gradient-text {
     white-space: normal !important;
     word-break: normal !important;
     overflow-wrap: break-word !important;
     overflow: visible !important;
     text-overflow: unset !important;
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
   }
 }
