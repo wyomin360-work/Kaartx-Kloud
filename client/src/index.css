@@ -580,6 +580,7 @@ body[data-scroll-locked] {
   /* Hero section - remove flex centering that creates extra space */
   #hero {
     display: block !important;
+    padding-top: 80px !important; /* Restore original spacing above heading (pt-16 + py-12) */
   }
 
   /* Hero inner container - reset padding to let section padding handle it */
