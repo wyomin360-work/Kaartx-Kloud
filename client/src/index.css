@@ -577,10 +577,10 @@ body[data-scroll-locked] {
     margin-bottom: 48px !important;
   }
 
-  /* Hero section - remove flex centering that creates extra space */
+  /* Hero section - remove flex centering, use standard section spacing */
   #hero {
     display: block !important;
-    padding-top: 80px !important; /* Restore original spacing above heading (pt-16 + py-12) */
+    padding-top: 48px !important; /* Same standard spacing as all other sections */
   }
 
   /* Hero inner container - reset padding to let section padding handle it */
