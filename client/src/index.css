@@ -563,9 +563,18 @@ body[data-scroll-locked] {
     font-size: 16px !important;
   }
 
-  /* Hero section - remove min-height to eliminate extra space below CTAs */
+  /* Hero section - remove min-height and reduce bottom spacing to match reference */
   #hero {
     min-height: auto !important;
-    padding-bottom: 24px !important;
+  }
+
+  /* Hero inner container - reduce bottom padding on mobile */
+  #hero > div:nth-child(3) {
+    padding-bottom: 48px !important;
+  }
+
+  /* Hero text container - reduce bottom margin on mobile */
+  #hero > div:nth-child(3) > div {
+    margin-bottom: 0 !important;
   }
 }
