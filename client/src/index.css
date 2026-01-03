@@ -1019,4 +1019,33 @@ body[data-scroll-locked] {
     font-size: 0.8rem !important;
     line-height: 1.5 !important;
   }
+
+  /* Booking section - constrain widget height on mobile */
+  #booking {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  #booking > div > div:first-child {
+    margin-bottom: 20px !important;
+  }
+
+  [data-testid="container-booking-widget"] {
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  #cal-booking-widget {
+    min-height: 500px !important;
+  }
+
+  /* Compact info cards */
+  [data-testid^="card-booking-detail-"] {
+    padding: 12px !important;
+  }
+
+  [data-testid^="card-booking-detail-"] .text-lg {
+    font-size: 0.95rem !important;
+  }
 }
