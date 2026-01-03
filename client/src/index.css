@@ -876,4 +876,53 @@ body[data-scroll-locked] {
   [data-testid^="tab-content-"] .text-sm {
     font-size: 0.8rem !important;
   }
+
+  /* IntegrationsMarquee section - compact mobile cards */
+  [data-testid^="integration-card-"] {
+    padding: 14px !important;
+  }
+
+  /* Tighter header row */
+  [data-testid^="integration-card-"] > div:first-child {
+    margin-bottom: 10px !important;
+  }
+
+  /* Smaller icon container */
+  [data-testid^="integration-card-"] .p-3 {
+    padding: 8px !important;
+  }
+
+  [data-testid^="integration-card-"] .h-6 {
+    height: 18px !important;
+    width: 18px !important;
+  }
+
+  /* Smaller badges */
+  [data-testid^="integration-card-"] .text-xs {
+    font-size: 0.65rem !important;
+    padding: 2px 6px !important;
+  }
+
+  /* Tighter title */
+  [data-testid^="integration-card-"] .text-lg {
+    font-size: 0.95rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* Tighter description */
+  [data-testid^="integration-card-"] .text-sm {
+    font-size: 0.8rem !important;
+    margin-bottom: 8px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Smaller category row */
+  [data-testid^="integration-card-"] .gap-2 {
+    gap: 4px !important;
+  }
+
+  [data-testid^="integration-card-"] .h-3\.5 {
+    height: 12px !important;
+    width: 12px !important;
+  }
 }
