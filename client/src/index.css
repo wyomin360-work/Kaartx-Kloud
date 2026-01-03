@@ -577,10 +577,10 @@ body[data-scroll-locked] {
     margin-bottom: 48px !important;
   }
 
-  /* Hero section - remove flex centering, use standard section spacing */
+  /* Hero section - remove flex centering, add standard gap above */
   #hero {
     display: block !important;
-    padding-top: 48px !important; /* Same standard spacing as all other sections */
+    margin-top: 48px !important; /* Standard section gap ABOVE hero */
   }
 
   /* Hero inner container - reset padding to let section padding handle it */
