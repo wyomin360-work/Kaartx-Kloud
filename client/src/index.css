@@ -580,51 +580,56 @@ body[data-scroll-locked] {
 
   /* ========================================
      UNIFORM SECTION SPACING (mobile only)
-     Reference gap: 48px bottom padding per section
+     Standard gap = 96px (matching reference: stat cards → FeatureGrid)
+     Applied as: 48px padding + 48px margin-bottom on each section
      ======================================== */
 
   /* FeatureGrid - Everything to run a marketplace */
   #feature-grid {
     padding-top: 48px !important;
     padding-bottom: 48px !important;
+    margin-bottom: 48px !important;
   }
 
   /* HowItWorks - Launch in 3 simple steps */
-  [data-testid="text-how-it-works-title"] {
-    /* Ensure parent section uses standard spacing */
-  }
   section:has([data-testid="text-how-it-works-title"]) {
     padding-top: 48px !important;
     padding-bottom: 48px !important;
+    margin-bottom: 48px !important;
   }
 
   /* DeepFeatures - Powerful tools to manage your entire marketplace */
   #features {
     padding-top: 48px !important;
     padding-bottom: 48px !important;
+    margin-bottom: 48px !important;
   }
 
   /* UseCases - Built for everyone */
   section:has([data-testid="text-use-cases-title"]) {
     padding-top: 48px !important;
     padding-bottom: 48px !important;
+    margin-bottom: 48px !important;
   }
 
   /* IntegrationsMarquee - GCC-ready integrations */
   #integrations {
     padding-top: 48px !important;
     padding-bottom: 48px !important;
+    margin-bottom: 48px !important;
   }
 
   /* Security - Enterprise-grade security */
   section:has([data-testid="text-security-title"]) {
     padding-top: 48px !important;
     padding-bottom: 48px !important;
+    margin-bottom: 48px !important;
   }
 
   /* Testimonials - Built for marketplace builders */
   section:has([data-testid="text-testimonials-title"]) {
     padding-top: 48px !important;
     padding-bottom: 48px !important;
+    margin-bottom: 48px !important;
   }
 }

@@ -1,0 +1,33 @@
+FIX MOBILE SECTION SPACING — DO NOT TOUCH DESKTOP
+
+Problem:
+On MOBILE, the “standard gap” between sections is inconsistent.
+Example:
+- The gap between the 4 top stat cards and the “Everything to run a marketplace” heading is the correct STANDARD GAP.
+- But the gap between “Smart Workflows” (last card of that section) and the next section heading “Launch in 3 simple steps” is still too small (tiny gap). This must match the STANDARD GAP exactly.
+
+Rules (VERY IMPORTANT):
+1) Desktop / tablet styling MUST NOT CHANGE at all.
+2) All spacing fixes MUST be inside mobile-only media queries.
+3) Do not edit desktop classes or base styles. Only override for mobile.
+
+What to do:
+- Identify the exact vertical spacing value used in the correct example (the STANDARD GAP).
+- Apply that SAME spacing after EVERY section on mobile:
+  • After the last card of “Everything to run a marketplace” (Smart Workflows) BEFORE “Launch in 3 simple steps”
+  • After the last card of “Launch in 3 simple steps” (Launch and earn) BEFORE next section
+  • After the last card of “Powerful tools…” (Analytics dashboard) BEFORE next section
+  • After “Built for everyone” BEFORE next section
+  • After “GCC ready integrations” (Custom APIs) BEFORE next section
+  • After “Enterprise-grade security” BEFORE next section
+  • After “Built for marketplace builders” BEFORE next section
+  • And so on — after every section.
+
+Implementation requirement:
+- Do this by adding consistent mobile-only margin/padding between section wrappers, not random per-element hacks.
+- If sections are built as separate <section> blocks, add the STANDARD GAP as margin-bottom on each section (mobile only), and ensure the next section doesn’t have a conflicting margin-top that cancels it.
+- If needed, remove/override any smaller mobile margins currently applied to the “Launch in 3 simple steps” section start.
+
+Deliverable:
+After your change, the gap between “Smart Workflows” and “Launch in 3 simple steps” must be identical to the gap shown in the correct screenshot (stat cards → “Everything to run a marketplace”).
+Again: MOBILE ONLY. DESKTOP MUST REMAIN EXACTLY THE SAME.
