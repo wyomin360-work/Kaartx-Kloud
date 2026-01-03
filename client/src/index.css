@@ -1169,4 +1169,17 @@ body[data-scroll-locked] {
     height: 1.5rem !important;
     width: auto !important;
   }
+
+  /* FAQ section - improved header spacing */
+  [data-testid="text-faq-title"] {
+    margin-bottom: 12px !important;
+  }
+
+  [data-testid="text-faq-subtitle"] {
+    margin-bottom: 8px !important;
+  }
+
+  #faq .text-center.mb-10 {
+    margin-bottom: 32px !important;
+  }
 }
