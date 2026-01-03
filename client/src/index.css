@@ -689,4 +689,36 @@ body[data-scroll-locked] {
     line-height: 1.4 !important;
     padding-top: 0 !important;
   }
+
+  /* FeatureGrid section - compact mobile tiles */
+  [data-testid^="card-feature-"] {
+    padding: 0 !important;
+  }
+
+  [data-testid^="card-feature-"] > div {
+    padding: 16px !important;
+  }
+
+  /* Smaller icon container */
+  [data-testid^="card-feature-"] .h-14 {
+    height: 40px !important;
+    width: 40px !important;
+    margin-bottom: 8px !important;
+  }
+
+  [data-testid^="card-feature-"] .h-14 svg {
+    height: 20px !important;
+    width: 20px !important;
+  }
+
+  /* Tighter text spacing */
+  [data-testid^="card-feature-"] .text-xl {
+    font-size: 1rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  [data-testid^="card-feature-"] .font-medium {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+  }
 }
