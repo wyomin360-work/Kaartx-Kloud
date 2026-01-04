@@ -1178,6 +1178,11 @@ body[data-scroll-locked] {
     overflow: visible !important;
   }
 
+  /* Remove ALL gradient overlays from section background on mobile */
+  section:has([data-testid="stat-0"]) > div.absolute {
+    display: none !important;
+  }
+
   section:has([data-testid="stat-0"]) > div {
     overflow: visible !important;
   }
