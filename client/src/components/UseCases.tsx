@@ -77,7 +77,7 @@ export default function UseCases() {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="max-w-5xl mx-auto">
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 mb-8 sm:mb-10 h-auto p-1 sm:p-1.5 bg-white" data-testid="tabs-use-cases">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 mb-0 h-auto p-3 sm:p-4 bg-card/30 border-2 border-b-0 rounded-b-none" data-testid="tabs-use-cases">
             {Object.entries(useCases).map(([key, useCase]) => {
               const Icon = useCase.icon;
               return (
@@ -96,7 +96,7 @@ export default function UseCases() {
 
           {Object.entries(useCases).map(([key, useCase]) => (
             <TabsContent key={key} value={key} data-testid={`tab-content-${key}`}>
-              <Card className="p-6 sm:p-8 md:p-10 border-2 bg-card/30">
+              <Card className="p-6 sm:p-8 md:p-10 border-2 border-t-0 rounded-t-none bg-card/30">
                 <div className="mb-6 sm:mb-8">
                   <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-3 sm:mb-4">For {useCase.title}</h3>
                   <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{useCase.description}</p>
