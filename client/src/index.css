@@ -1216,9 +1216,17 @@ body[data-scroll-locked] {
     scrollbar-width: none !important;
   }
 
-  /* Remove shadows from stat cards on mobile to prevent bleeding */
+  /* Remove shadows and backdrop blur from stat cards on mobile */
   [data-testid^="stat-"] > div {
     box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: hsl(var(--card)) !important;
+  }
+
+  /* Remove inner gradient overlays that cause blur effect */
+  [data-testid^="stat-"] > div > div.absolute {
+    display: none !important;
   }
 
   /* FAQ section - improved header spacing */
