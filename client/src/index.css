@@ -1234,6 +1234,104 @@ body[data-scroll-locked] {
     display: none !important;
   }
 
+  /* ========================================
+     FeatureGrid - Premium Mobile Redesign
+     ======================================== */
+  
+  /* Section container */
+  #feature-grid {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  /* Cards grid - single column */
+  #feature-grid .grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  /* Feature cards - clean premium style */
+  [data-testid^="card-feature-"] {
+    background: hsl(var(--card)) !important;
+    border: 1px solid hsl(var(--border) / 0.5) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+    padding: 20px !important;
+    position: relative !important;
+  }
+
+  /* Remove gradient backgrounds */
+  [data-testid^="card-feature-"].gradient-bg-purple,
+  [data-testid^="card-feature-"].gradient-bg-blue {
+    background: hsl(var(--card)) !important;
+  }
+
+  /* Card header adjustments */
+  [data-testid^="card-feature-"] > div {
+    padding: 0 !important;
+    padding-left: 48px !important;
+  }
+
+  /* Feature index numbers - positioned top-left */
+  [data-testid="card-feature-0"]::before,
+  [data-testid="card-feature-1"]::before,
+  [data-testid="card-feature-2"]::before,
+  [data-testid="card-feature-3"]::before {
+    position: absolute !important;
+    top: 20px !important;
+    left: 20px !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    color: hsl(var(--primary)) !important;
+    opacity: 0.6 !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  [data-testid="card-feature-0"]::before { content: "01" !important; }
+  [data-testid="card-feature-1"]::before { content: "02" !important; }
+  [data-testid="card-feature-2"]::before { content: "03" !important; }
+  [data-testid="card-feature-3"]::before { content: "04" !important; }
+
+  /* Icon container - subtle accent background */
+  [data-testid^="card-feature-"] > div > div:first-child {
+    height: 44px !important;
+    width: 44px !important;
+    border-radius: 12px !important;
+    background: hsl(var(--primary) / 0.08) !important;
+    box-shadow: none !important;
+    margin-bottom: 12px !important;
+  }
+
+  [data-testid^="card-feature-"] > div > div:first-child svg {
+    height: 22px !important;
+    width: 22px !important;
+    color: hsl(var(--primary)) !important;
+  }
+
+  /* Title - more prominent */
+  [data-testid^="card-feature-"] h3 {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    color: hsl(var(--foreground)) !important;
+    margin-bottom: 6px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Description - lighter */
+  [data-testid^="card-feature-"] p {
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    color: hsl(var(--muted-foreground)) !important;
+    line-height: 1.5 !important;
+    opacity: 0.85 !important;
+  }
+
+  /* Disable hover scale on mobile */
+  [data-testid^="card-feature-"]:hover {
+    transform: none !important;
+  }
+
   /* FAQ section - improved header spacing */
   [data-testid="text-faq-title"] {
     margin-bottom: 12px !important;
