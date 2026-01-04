@@ -35,7 +35,7 @@ export default function StatsBar() {
   );
 
   return (
-    <section className="relative py-24 sm:py-32 md:py-40 overflow-hidden" data-testid="stats-section">
+    <section className="relative py-24 sm:py-32 md:pt-24 md:pb-40 overflow-hidden" data-testid="stats-section">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/10 to-background" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/15 via-transparent to-transparent opacity-60" />
       
