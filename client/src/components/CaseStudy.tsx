@@ -57,7 +57,7 @@ export default function CaseStudy() {
                 data-testid={`metric-card-${index}`}
               >
                 <div className="text-center space-y-5">
-                  <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-muted/50 border border-border/40">
+                  <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-white border border-border/40">
                     <Icon className="h-8 w-8 text-foreground/80" />
                   </div>
                   <div className="space-y-2">
