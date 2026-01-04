@@ -1142,6 +1142,14 @@ body[data-scroll-locked] {
     padding-bottom: 20px !important;
   }
 
+  /* Primary CTA buttons - compact on mobile */
+  [data-testid="button-hero-get-started"],
+  [data-testid="button-final-cta"] {
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+    font-size: 0.95rem !important;
+  }
+
   /* Footer - minimal gap from CTA */
   #contact {
     margin-top: 12px !important;
