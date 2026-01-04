@@ -13,68 +13,49 @@ export default function StatsBar() {
   // Duplicate stats for seamless looping on mobile
   const allStats = [...stats, ...stats];
 
+  const StatCard = ({ stat, index, isMobile = false }: { stat: typeof stats[0], index: number, isMobile?: boolean }) => (
+    <div 
+      className={`text-center group relative overflow-visible ${isMobile ? 'flex-shrink-0 stat-card-mobile' : ''}`}
+      data-testid={`stat-${index % 4}`}
+    >
+      <div className={`relative h-40 flex flex-col justify-center bg-card/60 ${!isMobile ? 'backdrop-blur-md' : ''} rounded-3xl p-6 ${!isMobile ? 'sm:p-7 lg:p-8' : ''} border-2 border-primary/20 shadow-lg ${!isMobile ? 'hover:shadow-2xl hover:border-primary/30' : ''} transition-all duration-300 overflow-visible`}>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent rounded-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/10 to-transparent rounded-3xl" />
+        
+        <div className="relative h-full flex flex-col justify-center overflow-visible">
+          <div className={`${isMobile ? 'text-2xl' : 'text-2xl sm:text-3xl lg:text-4xl'} font-black gradient-text mb-3 leading-none tracking-tight whitespace-nowrap overflow-visible`}>
+            {stat.value}
+          </div>
+          <div className={`${isMobile ? 'text-xs' : 'text-xs sm:text-sm'} font-extrabold text-foreground/70 uppercase tracking-[0.15em] leading-relaxed`}>
+            {stat.label}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <section className="relative py-24 sm:py-32 md:py-40 overflow-hidden" data-testid="stats-section">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/10 to-background" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/15 via-transparent to-transparent opacity-60" />
       
       <div className="relative max-w-7xl mx-auto px-5 sm:px-6">
+        {/* Desktop: 4-column grid */}
         <div 
           ref={sectionAnimation.ref}
-          className={`grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 items-stretch animate-fade-in ${sectionAnimation.isVisible ? 'visible' : ''}`}
-          data-testid="stats-grid"
+          className={`hidden md:grid grid-cols-4 gap-6 sm:gap-8 lg:gap-10 items-stretch animate-fade-in ${sectionAnimation.isVisible ? 'visible' : ''}`}
+          data-testid="stats-grid-desktop"
         >
-          {/* Desktop: show first 4 cards only */}
           {stats.map((stat, index) => (
-            <div 
-              key={index} 
-              className="text-center group relative overflow-visible md:block hidden" 
-              data-testid={`stat-desktop-${index}`}
-            >
-              <div className="relative h-40 flex flex-col justify-center bg-card/60 backdrop-blur-md rounded-3xl p-6 sm:p-7 lg:p-8 border-2 border-primary/20 shadow-lg hover:shadow-2xl hover:border-primary/30 transition-all duration-300 overflow-visible">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent rounded-3xl" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/10 to-transparent rounded-3xl" />
-                
-                <div className="relative h-full flex flex-col justify-center overflow-visible">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black gradient-text mb-3 leading-none tracking-tight whitespace-nowrap overflow-visible">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs sm:text-sm font-extrabold text-foreground/70 uppercase tracking-[0.15em] leading-relaxed">
-                    {stat.label}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <StatCard key={index} stat={stat} index={index} />
           ))}
         </div>
 
-        {/* Mobile: marquee with duplicated cards */}
-        <div className="md:hidden overflow-visible" data-testid="stats-marquee-wrapper">
-          <div 
-            className="flex gap-3 stats-marquee"
-            data-testid="stats-marquee"
-          >
+        {/* Mobile: auto-scroll marquee with ALL cards in ONE track */}
+        <div className="md:hidden auto-scroll-wrapper" data-testid="stats-marquee-wrapper">
+          <div className="auto-scroll-track" data-testid="stats-marquee-track">
             {allStats.map((stat, index) => (
-              <div 
-                key={index} 
-                className="text-center group relative overflow-visible flex-shrink-0" 
-                style={{ width: '75%' }}
-                data-testid={`stat-${index % 4}`}
-              >
-                <div className="relative h-40 flex flex-col justify-center bg-card/60 rounded-3xl p-6 border-2 border-primary/20 shadow-lg overflow-visible">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent rounded-3xl" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/10 to-transparent rounded-3xl" />
-                  
-                  <div className="relative h-full flex flex-col justify-center overflow-visible">
-                    <div className="text-2xl font-black gradient-text mb-3 leading-none tracking-tight whitespace-nowrap overflow-visible">
-                      {stat.value}
-                    </div>
-                    <div className="text-xs font-extrabold text-foreground/70 uppercase tracking-[0.15em] leading-relaxed">
-                      {stat.label}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <StatCard key={index} stat={stat} index={index} isMobile={true} />
             ))}
           </div>
         </div>

@@ -1173,23 +1173,29 @@ body[data-scroll-locked] {
   }
 
   /* StatsBar - auto-scrolling marquee on mobile */
-  /* Parent section - allow overflow */
-  [data-testid="stats-section"] {
-    overflow: visible !important;
-  }
-
   /* Remove section gradient overlays on mobile */
   [data-testid="stats-section"] > div.absolute {
     display: none !important;
   }
 
-  /* Marquee wrapper */
-  [data-testid="stats-marquee-wrapper"] {
-    overflow: visible !important;
+  /* Auto-scroll wrapper - contains the track */
+  .auto-scroll-wrapper {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    width: 100% !important;
+  }
+
+  /* Auto-scroll track - holds ALL cards, animates */
+  .auto-scroll-track {
+    display: flex !important;
+    width: max-content !important;
+    gap: 12px !important;
+    animation: scrollX 16s linear infinite !important;
+    will-change: transform !important;
   }
 
   /* Marquee animation keyframes */
-  @keyframes stats-marquee-scroll {
+  @keyframes scrollX {
     0% {
       transform: translateX(0);
     }
@@ -1198,21 +1204,16 @@ body[data-scroll-locked] {
     }
   }
 
-  .stats-marquee {
-    animation: stats-marquee-scroll 20s linear infinite !important;
-    will-change: transform !important;
-  }
-
   /* Pause animation on touch/hover */
-  .stats-marquee:hover,
-  .stats-marquee:active {
+  .auto-scroll-track:hover,
+  .auto-scroll-track:active {
     animation-play-state: paused !important;
   }
 
-  /* StatsBar cards - clean styling */
-  [data-testid^="stat-"] > div {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+  /* Mobile stat cards - fixed width for consistent sizing */
+  .stat-card-mobile {
+    width: 70vw !important;
+    min-width: 70vw !important;
   }
 
   /* ========================================
