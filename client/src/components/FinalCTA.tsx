@@ -20,7 +20,7 @@ export default function FinalCTA({ onOpenSignup }: FinalCTAProps) {
         <Button 
           onClick={onOpenSignup}
           size="lg" 
-          className="shadow-playful group hover:scale-[1.02] transition-transform text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 rounded-2xl font-bold w-full sm:w-auto" 
+          className="shadow-playful group hover:scale-[1.02] transition-transform text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold w-full sm:w-auto" 
           data-testid="button-final-cta"
         >
           Start Building Today
