@@ -96,18 +96,18 @@ export default function UseCases() {
 
           {Object.entries(useCases).map(([key, useCase]) => (
             <TabsContent key={key} value={key} data-testid={`tab-content-${key}`}>
-              <Card className="p-6 sm:p-8 md:p-10 border-2 border-t-0 rounded-t-none bg-card/30">
-                <div className="mb-6 sm:mb-8">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-foreground mb-3 sm:mb-4">For {useCase.title}</h3>
-                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">{useCase.description}</p>
+              <Card className="p-5 sm:p-6 md:p-8 border-2 border-t-0 rounded-t-none bg-card/30">
+                <div className="mb-5 sm:mb-6">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground mb-2">For {useCase.title}</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl">{useCase.description}</p>
                 </div>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6">
                   {useCase.benefits.map((benefit, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <div className="flex-shrink-0 mt-1.5">
-                        <div className="h-2 w-2 rounded-full bg-black" />
+                    <li key={index} className="flex items-baseline gap-2.5">
+                      <div className="flex-shrink-0">
+                        <div className="h-1.5 w-1.5 rounded-full bg-black" />
                       </div>
-                      <span className="text-sm sm:text-base text-foreground font-medium">{benefit}</span>
+                      <span className="text-sm text-foreground leading-snug">{benefit}</span>
                     </li>
                   ))}
                 </ul>
