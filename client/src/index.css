@@ -1192,15 +1192,19 @@ body[data-scroll-locked] {
     gap: 12px !important;
     animation: scrollX 16s linear infinite !important;
     will-change: transform !important;
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    perspective: 1000px !important;
+    transform-style: preserve-3d !important;
   }
 
-  /* Marquee animation keyframes */
+  /* Marquee animation keyframes - GPU accelerated */
   @keyframes scrollX {
     0% {
-      transform: translateX(0);
+      transform: translate3d(0, 0, 0);
     }
     100% {
-      transform: translateX(-50%);
+      transform: translate3d(-50%, 0, 0);
     }
   }
 
