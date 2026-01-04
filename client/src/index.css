@@ -1221,17 +1221,17 @@ body[data-scroll-locked] {
     scrollbar-width: none !important;
   }
 
-  /* Remove shadows and backdrop blur from stat cards on mobile */
+  /* StatsBar cards - clean styling without backdrop blur */
   [data-testid^="stat-"] > div {
-    box-shadow: none !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    background: hsl(var(--card)) !important;
+    background: hsl(var(--card) / 0.6) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
   }
 
-  /* Remove inner gradient overlays that cause blur effect */
+  /* Keep inner gradient overlays for soft glow effect */
   [data-testid^="stat-"] > div > div.absolute {
-    display: none !important;
+    display: block !important;
   }
 
   /* ========================================
@@ -1270,18 +1270,38 @@ body[data-scroll-locked] {
     display: none !important;
   }
 
-  /* Feature cards - clean premium style with horizontal scroll */
+  /* Feature cards - match StatsBar card style */
   [data-testid^="card-feature-"] {
     flex: 0 0 80% !important;
     min-width: 80% !important;
     scroll-snap-align: start !important;
-    background: hsl(var(--card)) !important;
-    border: 1px solid hsl(var(--border) / 0.4) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03) !important;
-    padding: 20px !important;
+    background: hsl(var(--card) / 0.6) !important;
+    border: 2px solid hsl(var(--primary) / 0.2) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+    padding: 24px !important;
     position: relative !important;
     min-height: 140px !important;
+    overflow: hidden !important;
+  }
+
+  /* Inner gradient overlay - matches StatsBar cards */
+  [data-testid^="card-feature-"]::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(to bottom right, hsl(var(--primary) / 0.05), transparent, transparent) !important;
+    border-radius: 24px !important;
+    pointer-events: none !important;
+  }
+
+  [data-testid^="card-feature-"]::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(to top, hsl(var(--background) / 0.1), transparent) !important;
+    border-radius: 24px !important;
+    pointer-events: none !important;
   }
 
   /* Last card - add margin at end */
