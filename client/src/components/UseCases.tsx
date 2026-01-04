@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Card } from '@/components/ui/card';
-import { Check, Building2, Rocket, ShoppingBag, Users, Building } from 'lucide-react';
+import { Building2, Rocket, ShoppingBag, Users, Building } from 'lucide-react';
 
 export default function UseCases() {
   const [activeTab, setActiveTab] = useState('brands');
@@ -104,8 +104,8 @@ export default function UseCases() {
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                   {useCase.benefits.map((benefit, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <div className="flex-shrink-0 mt-0.5">
-                        <Check className="h-5 w-5 text-primary" strokeWidth={3} />
+                      <div className="flex-shrink-0 mt-1.5">
+                        <div className="h-2 w-2 rounded-full bg-foreground/40" />
                       </div>
                       <span className="text-sm sm:text-base text-foreground font-medium">{benefit}</span>
                     </li>
