@@ -1161,6 +1161,11 @@ body[data-scroll-locked] {
     width: auto !important;
   }
 
+  /* Hide back-to-top button on mobile */
+  [data-testid="button-scroll-to-top"] {
+    display: none !important;
+  }
+
   /* FAQ section - improved header spacing */
   [data-testid="text-faq-title"] {
     margin-bottom: 12px !important;
