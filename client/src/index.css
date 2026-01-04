@@ -1166,6 +1166,12 @@ body[data-scroll-locked] {
     display: none !important;
   }
 
+  /* Move WhatsApp button to back-to-top position on mobile */
+  [data-testid="button-whatsapp-float"] {
+    bottom: 1.25rem !important;
+    right: 1.25rem !important;
+  }
+
   /* FAQ section - improved header spacing */
   [data-testid="text-faq-title"] {
     margin-bottom: 12px !important;
