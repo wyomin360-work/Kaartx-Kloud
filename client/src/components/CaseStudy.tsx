@@ -35,7 +35,7 @@ export default function CaseStudy() {
           className={`text-center mb-12 sm:mb-20 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
           <h2 className="section-title text-foreground mb-4 sm:mb-5" data-testid="text-case-study-title">
-            Scalable results — built for growth
+            Scalable results — optimized for growth
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed font-normal" data-testid="text-case-study-subtitle">
             Kaartx Kloud automates everything from seller onboarding to payouts, helping marketplaces across the GCC launch faster and grow smarter.
