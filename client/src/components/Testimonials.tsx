@@ -13,7 +13,7 @@ export default function Testimonials() {
           className={`text-center mb-8 sm:mb-12 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
           <h2 className="section-title text-foreground mb-3 sm:mb-4" data-testid="text-testimonials-title">
-            Built for marketplace builders
+            Designed for marketplace builders
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto" data-testid="text-testimonials-subtitle">
             From agencies to entrepreneurs — Kaartx Kloud gives you everything you need to launch and manage your own multi-vendor marketplace with ease.
