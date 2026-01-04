@@ -1173,12 +1173,13 @@ body[data-scroll-locked] {
   }
 
   /* StatsBar - horizontal scroll on mobile */
-  [data-testid="stat-0"] {
-    /* Parent grid container */
+  /* Parent section - allow overflow for cards */
+  section:has([data-testid="stat-0"]) {
+    overflow: visible !important;
   }
 
-  [data-testid^="stat-"]:first-child {
-    margin-left: 0 !important;
+  section:has([data-testid="stat-0"]) > div {
+    overflow: visible !important;
   }
 
   /* Target the stats grid container */
@@ -1187,11 +1188,12 @@ body[data-scroll-locked] {
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
-    overflow-y: hidden !important;
+    overflow-y: visible !important;
     -webkit-overflow-scrolling: touch !important;
     scroll-snap-type: x mandatory !important;
     gap: 12px !important;
-    padding-bottom: 8px !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
   }
 
   .grid:has([data-testid="stat-0"]) > [data-testid^="stat-"] {
@@ -1212,6 +1214,11 @@ body[data-scroll-locked] {
   .grid:has([data-testid="stat-0"]) {
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
+  }
+
+  /* Remove shadows from stat cards on mobile to prevent bleeding */
+  [data-testid^="stat-"] > div {
+    box-shadow: none !important;
   }
 
   /* FAQ section - improved header spacing */
