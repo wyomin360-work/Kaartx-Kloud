@@ -1220,6 +1220,11 @@ body[data-scroll-locked] {
     min-width: 70vw !important;
   }
 
+  /* Remove outer shadow from stat cards on mobile */
+  .stat-card-mobile > div {
+    box-shadow: none !important;
+  }
+
   /* ========================================
      FeatureGrid - Premium Mobile Redesign
      ======================================== */
