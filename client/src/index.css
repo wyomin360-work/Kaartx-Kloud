@@ -1402,12 +1402,16 @@ body[data-scroll-locked] {
      Match Home page mobile spacing/rhythm
      ======================================== */
 
-  /* Hero section - proper top spacing */
+  /* Hero section - proper top spacing above heading */
+  .careers-hero-section {
+    padding-top: 140px !important;
+    padding-bottom: 48px !important;
+  }
+
   [data-testid="text-careers-hero-title"] {
     font-size: 1.75rem !important;
     line-height: 1.2 !important;
     margin-bottom: 12px !important;
-    margin-top: 24px !important;
   }
 
   [data-testid="text-careers-hero-subtitle"] {

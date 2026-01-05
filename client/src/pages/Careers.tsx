@@ -115,7 +115,7 @@ export default function Careers() {
       <Navbar onOpenSignup={() => setSignupModalOpen(true)} />
 
       {/* SECTION 1 - Hero */}
-      <section className="pt-28 pb-12 sm:pt-32 sm:pb-20 md:pt-36 md:pb-32 bg-background">
+      <section className="careers-hero-section pt-28 pb-12 sm:pt-32 sm:pb-20 md:pt-36 md:pb-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={heroAnimation.ref}
