@@ -1402,11 +1402,12 @@ body[data-scroll-locked] {
      Match Home page mobile spacing/rhythm
      ======================================== */
 
-  /* Hero section - tighter spacing */
+  /* Hero section - proper top spacing */
   [data-testid="text-careers-hero-title"] {
     font-size: 1.75rem !important;
     line-height: 1.2 !important;
     margin-bottom: 12px !important;
+    margin-top: 24px !important;
   }
 
   [data-testid="text-careers-hero-subtitle"] {
@@ -1415,14 +1416,21 @@ body[data-scroll-locked] {
     margin-bottom: 0 !important;
   }
 
-  /* Hero buttons - match Home page mobile */
+  /* Hero buttons - compact mobile sizing */
   [data-testid="button-view-roles"],
   [data-testid="button-email-cv"] {
-    padding: 14px 20px !important;
-    font-size: 0.95rem !important;
-    border-radius: 12px !important;
-    min-height: 48px !important;
+    padding: 10px 16px !important;
+    font-size: 0.875rem !important;
+    border-radius: 10px !important;
+    min-height: 40px !important;
     height: auto !important;
+  }
+
+  /* Hero buttons container - proper alignment */
+  .careers-hero-buttons {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    gap: 10px !important;
   }
 
   /* Founder card - compact mobile */
