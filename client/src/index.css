@@ -1655,12 +1655,19 @@ body[data-scroll-locked] {
     max-width: none !important;
   }
 
-  /* Roles locked overlay - compact card on mobile */
+  /* Roles locked overlay - compact badge on mobile */
   .roles-locked-card {
-    background: hsl(var(--card) / 0.95) !important;
-    backdrop-filter: blur(8px) !important;
-    border: 1px solid hsl(var(--border)) !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    background: hsl(var(--muted) / 0.9) !important;
+    backdrop-filter: blur(6px) !important;
+    border: 1px solid hsl(var(--border) / 0.5) !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) !important;
+    padding: 8px 16px !important;
+    border-radius: 20px !important;
+  }
+
+  .roles-locked-card h3 {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
   }
 
   /* View all roles button positioning */
