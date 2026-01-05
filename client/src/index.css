@@ -1615,9 +1615,15 @@ body[data-scroll-locked] {
     gap: 12px !important;
   }
 
-  /* Hide role cards beyond first 2 on mobile */
+  /* Hide role cards beyond first 2 on mobile - with animation */
+  .role-card {
+    transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease !important;
+  }
+
   .role-card.mobile-hidden {
     display: none !important;
+    opacity: 0;
+    transform: translateY(-10px);
   }
 
   /* Role cards - compact on mobile */

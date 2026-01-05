@@ -312,17 +312,29 @@ export default function Careers() {
                 );
               })}
             </div>
-            {/* Mobile: View all roles button */}
-            {!showAllRoles && roles.length > 2 && (
+            {/* Mobile: View all roles toggle button */}
+            {roles.length > 2 && (
               <div className="view-all-roles-btn mt-4 md:hidden">
                 <Button
                   variant="outline"
-                  onClick={() => setShowAllRoles(true)}
+                  onClick={() => {
+                    if (showAllRoles) {
+                      setShowAllRoles(false);
+                      setTimeout(() => {
+                        const section = document.getElementById('open-roles');
+                        if (section) {
+                          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }, 100);
+                    } else {
+                      setShowAllRoles(true);
+                    }
+                  }}
                   className="w-full flex items-center justify-center gap-2 h-10 text-sm font-medium rounded-xl"
                   data-testid="button-view-all-roles"
                 >
-                  View all open roles
-                  <ChevronDown className="h-4 w-4" />
+                  {showAllRoles ? 'Hide open roles' : 'View all open roles'}
+                  <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${showAllRoles ? 'rotate-180' : ''}`} />
                 </Button>
               </div>
             )}
