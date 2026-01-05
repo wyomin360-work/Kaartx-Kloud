@@ -1615,30 +1615,52 @@ body[data-scroll-locked] {
     gap: 12px !important;
   }
 
-  /* Role cards */
-  [data-testid^="card-role-"] > div {
-    padding: 16px !important;
-    min-height: 200px !important;
+  /* Hide role cards beyond first 2 on mobile */
+  .role-card.mobile-hidden {
+    display: none !important;
   }
 
-  [data-testid^="card-role-"] h3 {
-    font-size: 1rem !important;
+  /* Role cards - compact on mobile */
+  .role-card > div {
+    padding: 14px !important;
+    min-height: auto !important;
   }
 
-  [data-testid^="card-role-"] p {
-    font-size: 0.85rem !important;
+  .role-card .flex-1.space-y-3 {
+    margin-bottom: 12px !important;
   }
 
-  /* Apply buttons in role cards */
-  [data-testid^="button-apply-"] {
-    padding: 12px 16px !important;
-    font-size: 0.9rem !important;
-    border-radius: 12px !important;
+  .role-card h3 {
+    font-size: 0.95rem !important;
   }
 
-  /* Roles locked title */
-  [data-testid="text-roles-locked-title"] {
-    font-size: 1.125rem !important;
+  .role-card p {
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Apply buttons - smaller mobile-optimized size */
+  .role-apply-btn {
+    height: 36px !important;
+    min-height: 36px !important;
+    padding: 0 16px !important;
+    font-size: 0.8rem !important;
+    border-radius: 10px !important;
+    max-width: none !important;
+  }
+
+  /* Roles locked overlay - compact card on mobile */
+  .roles-locked-card {
+    background: hsl(var(--card) / 0.95) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid hsl(var(--border)) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* View all roles button positioning */
+  .view-all-roles-btn {
+    position: relative;
+    z-index: 10;
   }
 
   /* Don't See Role section - standard mobile spacing */

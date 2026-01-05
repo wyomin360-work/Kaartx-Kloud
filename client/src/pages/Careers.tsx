@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Check } from 'lucide-react';
+import { Check, ChevronDown } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -9,6 +9,7 @@ import SignupModal from '@/components/SignupModal';
 
 export default function Careers() {
   const [signupModalOpen, setSignupModalOpen] = useState(false);
+  const [showAllRoles, setShowAllRoles] = useState(false);
   const heroAnimation = useScrollAnimation<HTMLDivElement>(0.2);
   const founderAnimation = useScrollAnimation<HTMLDivElement>(0.1);
   const whyAnimation = useScrollAnimation<HTMLDivElement>(0.1);
@@ -284,7 +285,7 @@ export default function Careers() {
                 return (
                   <Card
                     key={index}
-                    className={`group transition-all duration-300 rounded-2xl border shadow-sm flex flex-col h-full ${gradients[index]}`}
+                    className={`role-card group transition-all duration-300 rounded-2xl border shadow-sm flex flex-col h-full ${gradients[index]} ${!showAllRoles && index >= 2 ? 'mobile-hidden' : ''}`}
                     data-testid={`card-role-${index}`}
                   >
                     <div className="relative p-6 sm:p-8 flex flex-col flex-1 min-h-[300px]">
@@ -301,7 +302,7 @@ export default function Careers() {
                       </div>
                       <Button
                         size="lg"
-                        className="shadow-playful group w-full max-w-80 mx-auto mt-auto text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold"
+                        className="role-apply-btn shadow-playful group w-full max-w-80 mx-auto mt-auto text-base sm:text-lg px-6 sm:px-8 py-6 rounded-2xl font-bold"
                         data-testid={`button-apply-${index}`}
                       >
                         Apply Now
@@ -311,10 +312,27 @@ export default function Careers() {
                 );
               })}
             </div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <h3 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight" data-testid="text-roles-locked-title">
-                Roles will unlock soon
-              </h3>
+            {/* Mobile: View all roles button */}
+            {!showAllRoles && roles.length > 2 && (
+              <div className="view-all-roles-btn mt-4 md:hidden">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowAllRoles(true)}
+                  className="w-full flex items-center justify-center gap-2 h-10 text-sm font-medium rounded-xl"
+                  data-testid="button-view-all-roles"
+                >
+                  View all open roles
+                  <ChevronDown className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
+            {/* Roles locked overlay - compact on mobile */}
+            <div className="roles-locked-overlay absolute inset-0 flex items-center justify-center">
+              <Card className="roles-locked-card md:bg-transparent md:border-0 md:shadow-none bg-card/95 backdrop-blur-sm border shadow-sm px-6 py-4 rounded-xl">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground tracking-tight text-center" data-testid="text-roles-locked-title">
+                  Roles will unlock soon
+                </h3>
+              </Card>
             </div>
           </div>
         </div>
