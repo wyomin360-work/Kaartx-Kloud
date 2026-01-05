@@ -1528,23 +1528,47 @@ body[data-scroll-locked] {
     margin-bottom: 20px !important;
   }
 
+  /* Culture Code section - standard mobile spacing */
+  .culture-code-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+    margin-bottom: 48px !important;
+  }
+
+  /* Culture Code bullet list - tighter spacing */
+  .culture-code-list {
+    gap: 10px !important;
+  }
+
+  .culture-code-list > div {
+    margin-bottom: 0 !important;
+  }
+
   /* Culture/How We Work check items */
   [data-testid^="item-culture-"],
   [data-testid^="item-how-we-work-"] {
-    gap: 12px !important;
+    gap: 10px !important;
   }
 
-  [data-testid^="item-culture-"] svg,
+  /* Culture icons - smaller and lighter */
+  [data-testid^="item-culture-"] svg {
+    height: 14px !important;
+    width: 14px !important;
+    margin-top: 3px !important;
+    opacity: 0.7 !important;
+  }
+
+  /* How We Work icons - standard size */
   [data-testid^="item-how-we-work-"] svg {
-    height: 18px !important;
-    width: 18px !important;
+    height: 16px !important;
+    width: 16px !important;
     margin-top: 2px !important;
   }
 
   [data-testid^="item-culture-"] p,
   [data-testid^="item-how-we-work-"] p {
     font-size: 0.9rem !important;
-    line-height: 1.5 !important;
+    line-height: 1.45 !important;
   }
 
   /* How We Work description */

@@ -210,7 +210,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 4 - Kaartx Culture Code */}
-      <section className="py-12 sm:py-20 md:py-32 bg-background">
+      <section className="culture-code-section py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={cultureAnimation.ref}
@@ -222,7 +222,7 @@ export default function Careers() {
             <p className="text-base sm:text-lg text-muted-foreground text-center mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed" data-testid="text-culture-code-subtitle">
               The principles that guide how we work, make decisions, and grow together.
             </p>
-            <div className="space-y-5 max-w-3xl mx-auto">
+            <div className="culture-code-list space-y-5 max-w-3xl mx-auto">
               {culturePoints.map((point, index) => (
                 <div key={index} className="flex items-start gap-4" data-testid={`item-culture-${index}`}>
                   <Check className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
