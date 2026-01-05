@@ -266,7 +266,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 6 - Open Roles */}
-      <section id="open-roles" className="scroll-mt-20 py-12 sm:py-20 md:py-32 bg-background">
+      <section id="open-roles" className="open-roles-section scroll-mt-20 py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="section-title text-foreground mb-4 tracking-tight" data-testid="text-open-roles-title">
             Open Roles
@@ -277,7 +277,7 @@ export default function Careers() {
           <div className="relative">
             <div
               ref={rolesAnimation.ref}
-              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch animate-on-scroll blur-[6px] pointer-events-none select-none ${rolesAnimation.isVisible ? 'visible' : ''}`}
+              className={`open-roles-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch animate-on-scroll blur-[6px] pointer-events-none select-none ${rolesAnimation.isVisible ? 'visible' : ''}`}
             >
               {roles.map((role, index) => {
                 const gradients = ['gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue'];

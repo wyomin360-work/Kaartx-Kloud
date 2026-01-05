@@ -1598,6 +1598,23 @@ body[data-scroll-locked] {
     line-height: 1.6 !important;
   }
 
+  /* Open Roles section - standard mobile spacing */
+  .open-roles-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+    margin-bottom: 48px !important;
+  }
+
+  .open-roles-section > div {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Open Roles grid - tighter gaps, full-width cards */
+  .open-roles-grid {
+    gap: 12px !important;
+  }
+
   /* Role cards */
   [data-testid^="card-role-"] > div {
     padding: 16px !important;
