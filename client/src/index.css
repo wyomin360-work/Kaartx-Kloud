@@ -1641,15 +1641,32 @@ body[data-scroll-locked] {
     font-size: 1.125rem !important;
   }
 
-  /* No role section */
+  /* Don't See Role section - standard mobile spacing */
+  .no-role-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+    margin-bottom: 48px !important;
+  }
+
+  .no-role-section > div {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* No role section text */
   [data-testid="text-no-role-description"] {
     font-size: 0.9rem !important;
     margin-bottom: 20px !important;
   }
 
+  /* Open Application button - match Home page CTA sizing */
   [data-testid="button-open-application"] {
-    padding: 14px 20px !important;
-    font-size: 0.95rem !important;
-    border-radius: 12px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    padding: 0 20px !important;
+    font-size: 0.875rem !important;
+    border-radius: 10px !important;
+    max-width: 100% !important;
+    width: auto !important;
   }
 }

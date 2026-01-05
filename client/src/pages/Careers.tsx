@@ -321,7 +321,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 7 - Don't See Your Role */}
-      <section className="py-12 sm:py-20 md:py-32 bg-background">
+      <section className="no-role-section py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="section-title text-foreground mb-4 sm:mb-5 tracking-tight" data-testid="text-no-role-title">
             Don't see a role that fits?
