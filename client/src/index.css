@@ -1473,24 +1473,41 @@ body[data-scroll-locked] {
     padding: 20px !important;
   }
 
+  /* Why Work section - standard mobile spacing */
+  .why-work-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+    margin-bottom: 48px !important;
+  }
+
+  /* Why Work section title - standard top margin */
+  [data-testid="text-why-work-title"] {
+    margin-bottom: 20px !important;
+  }
+
+  /* Why Work cards grid - tighter gap */
+  .why-work-grid {
+    gap: 12px !important;
+  }
+
   /* Why Work cards - compact */
   [data-testid^="card-why-work-"] {
     min-height: auto !important;
   }
 
   [data-testid^="card-why-work-"] > div {
-    padding: 16px !important;
-    min-height: 120px !important;
+    padding: 14px !important;
+    min-height: 100px !important;
   }
 
   [data-testid^="card-why-work-"] h3 {
     font-size: 1rem !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 6px !important;
   }
 
   [data-testid^="card-why-work-"] p {
     font-size: 0.85rem !important;
-    line-height: 1.5 !important;
+    line-height: 1.45 !important;
   }
 
   /* Section titles - consistent sizing */

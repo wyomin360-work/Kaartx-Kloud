@@ -180,14 +180,14 @@ export default function Careers() {
       </section>
 
       {/* SECTION 3 - Why Work at Kaartx Kloud */}
-      <section className="py-12 sm:py-20 md:py-32 bg-background">
+      <section className="why-work-section py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="section-title text-foreground mb-10 sm:mb-12 tracking-tight" data-testid="text-why-work-title">
             Why work at Kaartx Kloud
           </h2>
           <div
             ref={whyAnimation.ref}
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch animate-on-scroll ${whyAnimation.isVisible ? 'visible' : ''}`}
+            className={`why-work-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch animate-on-scroll ${whyAnimation.isVisible ? 'visible' : ''}`}
           >
             {whyCards.map((card, index) => (
               <Card
