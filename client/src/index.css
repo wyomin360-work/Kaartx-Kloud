@@ -1400,13 +1400,19 @@ body[data-scroll-locked] {
   /* ========================================
      Careers Page - Mobile Optimization
      Match Home page mobile spacing/rhythm
+     Uses same 48px section spacing as Home page
      ======================================== */
 
-  /* Hero section - proper top spacing above heading */
+  /* Hero section - account for navbar offset + standard spacing */
   .careers-hero-section {
     padding-top: 140px !important;
     padding-bottom: 48px !important;
+    margin-bottom: 48px !important;
   }
+
+  /* All other Careers sections - match Home page standard */
+  /* Note: The global section rule already applies 48px padding/margin */
+  /* These are explicit to ensure no overrides from Tailwind classes */
 
   [data-testid="text-careers-hero-title"] {
     font-size: 1.75rem !important;
