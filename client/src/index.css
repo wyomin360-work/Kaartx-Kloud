@@ -1446,16 +1446,31 @@ body[data-scroll-locked] {
   /* Founder card - compact mobile */
   [data-testid="text-founder-note-title"] {
     font-size: 1.25rem !important;
-    margin-bottom: 16px !important;
+    margin-bottom: 14px !important;
   }
 
   [data-testid="text-founder-note-content"] {
     font-size: 0.9rem !important;
-    line-height: 1.65 !important;
+    line-height: 1.55 !important;
   }
 
   [data-testid="text-founder-note-content"] > p {
-    margin-bottom: 12px !important;
+    margin-bottom: 10px !important;
+  }
+
+  [data-testid="text-founder-note-content"] > p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Founder card container - reduce internal padding */
+  [data-testid="text-founder-note-title"],
+  [data-testid="text-founder-note-content"] {
+    /* These are inside the card */
+  }
+
+  /* Target the founder card wrapper for reduced padding */
+  .founder-card-mobile {
+    padding: 20px !important;
   }
 
   /* Why Work cards - compact */

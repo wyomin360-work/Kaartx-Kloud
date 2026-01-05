@@ -159,7 +159,7 @@ export default function Careers() {
             ref={founderAnimation.ref}
             className={`animate-on-scroll ${founderAnimation.isVisible ? 'visible' : ''}`}
           >
-            <Card className="max-w-4xl mx-auto p-8 sm:p-12 md:p-16 rounded-2xl border shadow-lg" style={{
+            <Card className="founder-card-mobile max-w-4xl mx-auto p-8 sm:p-12 md:p-16 rounded-2xl border shadow-lg" style={{
               background: 'linear-gradient(135deg, #F7F9FC 0%, #FFFFFF 100%)',
             }}>
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6 sm:mb-8 text-center" data-testid="text-founder-note-title">
