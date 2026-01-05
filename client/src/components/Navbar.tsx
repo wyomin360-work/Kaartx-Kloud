@@ -30,6 +30,12 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
     { label: 'About', target: 'about', type: 'scroll', testId: 'link-about' },
   ];
 
+  // Mobile-only additional nav items (placed after About)
+  const mobileOnlyNavItems: NavItem[] = [
+    { label: 'Blog', target: '/blog', type: 'link', testId: 'link-blog' },
+    { label: 'Careers', target: '/careers', type: 'link', testId: 'link-careers' },
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -151,6 +157,18 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
                   {item.label}
                 </button>
               )
+            ))}
+            {/* Mobile-only: Blog and Careers links */}
+            {mobileOnlyNavItems.map((item) => (
+              <Link
+                key={item.testId}
+                href={item.target}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
+                data-testid={`mobile-${item.testId}`}
+              >
+                {item.label}
+              </Link>
             ))}
           </div>
         </div>
