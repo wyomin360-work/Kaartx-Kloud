@@ -235,7 +235,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 5 - How We Work */}
-      <section className="py-12 sm:py-20 md:py-32 bg-background">
+      <section className="how-we-work-section py-12 sm:py-20 md:py-32 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={howWeWorkAnimation.ref}
@@ -251,7 +251,7 @@ export default function Careers() {
                 </p>
               </div>
               <div>
-                <div className="space-y-5">
+                <div className="how-we-work-list space-y-5">
                   {howWeWorkPoints.map((point, index) => (
                     <div key={index} className="flex items-start gap-4" data-testid={`item-how-we-work-${index}`}>
                       <Check className="h-6 w-6 text-primary flex-shrink-0 mt-1" />

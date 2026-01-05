@@ -1571,6 +1571,27 @@ body[data-scroll-locked] {
     line-height: 1.45 !important;
   }
 
+  /* How We Work section - standard mobile spacing */
+  .how-we-work-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+    margin-bottom: 48px !important;
+  }
+
+  .how-we-work-section > div {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* How We Work bullet list - tighter spacing */
+  .how-we-work-list {
+    gap: 10px !important;
+  }
+
+  .how-we-work-list > div {
+    margin-bottom: 0 !important;
+  }
+
   /* How We Work description */
   [data-testid="text-how-we-work-description"] {
     font-size: 0.9rem !important;
