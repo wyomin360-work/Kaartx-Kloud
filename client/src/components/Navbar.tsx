@@ -37,9 +37,22 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    const getScrollPosition = () => {
+      // When modal is open, body has position: fixed and top: -scrollY
+      // In that case, window.scrollY reads as 0, so we read from body.style.top
+      if (document.body.style.position === 'fixed') {
+        return Math.abs(parseInt(document.body.style.top || '0', 10));
+      }
+      return window.scrollY;
     };
+
+    const handleScroll = () => {
+      setIsScrolled(getScrollPosition() > 20);
+    };
+
+    // Check initial state
+    handleScroll();
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
