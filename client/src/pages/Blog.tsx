@@ -48,7 +48,7 @@ export default function Blog() {
     <div className="min-h-screen bg-background">
       <Navbar onOpenSignup={() => setSignupModalOpen(true)} />
       {/* Hero Section */}
-      <section className="pt-32 pb-16 sm:pt-40 sm:pb-24 md:pt-48 md:pb-32 bg-background">
+      <section className="blog-hero-section pt-32 pb-16 sm:pt-40 sm:pb-24 md:pt-48 md:pb-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={titleAnimation.ref}
@@ -65,11 +65,11 @@ export default function Blog() {
       </section>
 
       {/* Blog Posts Grid */}
-      <section className="pb-16 sm:pb-24 md:pb-32 bg-background">
+      <section className="blog-posts-section pb-16 sm:pb-24 md:pb-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={cardsAnimation.ref}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-8"
+            className="blog-posts-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-8"
           >
             {posts.map((post, index) => {
               const stagger = ['', 'stagger-1', 'stagger-2', 'stagger-3', 'stagger-4'];
