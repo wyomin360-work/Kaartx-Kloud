@@ -44,26 +44,59 @@ export function CustomModal({
     }
   }, [open]);
 
-  // Lock background scroll when modal is open
+  // Lock background scroll when modal is open - prevent layout shift
   useEffect(() => {
     if (open) {
-      const originalBodyOverflow = document.body.style.overflow;
-      const originalHtmlOverflow = document.documentElement.style.overflow;
       const scrollY = window.scrollY;
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      const isMobile = window.innerWidth <= 768;
       
+      // Store original styles
+      const originalStyles = {
+        overflow: document.body.style.overflow,
+        position: document.body.style.position,
+        top: document.body.style.top,
+        width: document.body.style.width,
+        paddingRight: document.body.style.paddingRight,
+        htmlOverflow: document.documentElement.style.overflow,
+      };
+      
+      // Apply scroll lock
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
+      
+      if (isMobile) {
+        // Mobile: use position fixed to fully lock scroll
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
+        document.body.style.paddingRight = '0px';
+      } else {
+        // Desktop: compensate for scrollbar removal
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
+      
+      // Store scroll position for restoration
+      document.body.dataset.scrollY = String(scrollY);
       
       return () => {
-        document.body.style.overflow = originalBodyOverflow;
-        document.documentElement.style.overflow = originalHtmlOverflow;
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        window.scrollTo(0, scrollY);
+        const savedScrollY = parseInt(document.body.dataset.scrollY || '0', 10);
+        
+        // Restore all original styles
+        document.body.style.overflow = originalStyles.overflow;
+        document.body.style.position = originalStyles.position;
+        document.body.style.top = originalStyles.top;
+        document.body.style.width = originalStyles.width;
+        document.body.style.paddingRight = originalStyles.paddingRight;
+        document.documentElement.style.overflow = originalStyles.htmlOverflow;
+        
+        // Clear data attribute
+        delete document.body.dataset.scrollY;
+        
+        // Restore scroll position on mobile
+        if (isMobile) {
+          window.scrollTo(0, savedScrollY);
+        }
       };
     }
   }, [open]);
