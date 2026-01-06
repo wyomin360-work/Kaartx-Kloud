@@ -1776,12 +1776,13 @@ body[data-scroll-locked] {
 
   /* ========================================
      BLOG ARTICLE PAGE - Mobile Optimization
+     Compact, scroll-friendly reading experience
      ======================================== */
 
-  /* Article section - standard mobile spacing */
+  /* Article section - reduced top spacing */
   .article-section {
-    padding-top: 120px !important;
-    padding-bottom: 48px !important;
+    padding-top: 100px !important;
+    padding-bottom: 32px !important;
   }
 
   .article-section > div {
@@ -1791,41 +1792,41 @@ body[data-scroll-locked] {
     overflow-x: hidden !important;
   }
 
-  /* Back to blog button */
+  /* Back to blog button - compact */
   [data-testid="button-back-to-blog"] {
-    height: 36px !important;
-    min-height: 36px !important;
-    padding: 0 12px !important;
-    font-size: 0.8rem !important;
-    margin-bottom: 16px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 0 10px !important;
+    font-size: 0.75rem !important;
+    margin-bottom: 12px !important;
     margin-left: 0 !important;
   }
 
   [data-testid="button-back-to-blog"] svg {
-    height: 14px !important;
-    width: 14px !important;
+    height: 12px !important;
+    width: 12px !important;
   }
 
-  /* Article header */
+  /* Article header - tighter */
   .article-header {
-    margin-bottom: 20px !important;
+    margin-bottom: 14px !important;
   }
 
-  /* Article title - largest text, clear hierarchy */
+  /* Article title - largest but compact */
   [data-testid="text-article-title"] {
-    font-size: 1.5rem !important;
+    font-size: 1.25rem !important;
     line-height: 1.2 !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 6px !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
     letter-spacing: -0.02em !important;
     font-weight: 700 !important;
   }
 
-  /* Article date/meta */
+  /* Article date/meta - small */
   [data-testid="text-article-date"] {
-    font-size: 0.75rem !important;
-    line-height: 1.4 !important;
+    font-size: 0.7rem !important;
+    line-height: 1.3 !important;
     font-weight: 400 !important;
   }
 
@@ -1835,11 +1836,11 @@ body[data-scroll-locked] {
     overflow-x: hidden !important;
   }
 
-  /* Article body paragraphs - base text size */
+  /* Article body paragraphs - compact */
   .article-content p {
-    font-size: 0.85rem !important;
-    line-height: 1.6 !important;
-    margin-bottom: 14px !important;
+    font-size: 0.8rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 10px !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
     font-weight: 400 !important;
@@ -1849,94 +1850,94 @@ body[data-scroll-locked] {
     word-break: break-word !important;
   }
 
-  /* Section headings - clear hierarchy below title */
+  /* Section headings - scaled down, clear hierarchy */
   .article-content h2 {
-    font-size: 1.2rem !important;
-    line-height: 1.25 !important;
-    margin-top: 28px !important;
-    margin-bottom: 12px !important;
-    font-weight: 600 !important;
-  }
-
-  /* Sub-section headings */
-  .article-content h3 {
     font-size: 1.05rem !important;
-    line-height: 1.3 !important;
-    margin-top: 22px !important;
-    margin-bottom: 10px !important;
-    font-weight: 600 !important;
-  }
-
-  /* Step/minor headings */
-  .article-content h4 {
-    font-size: 0.95rem !important;
-    line-height: 1.35 !important;
+    line-height: 1.2 !important;
     margin-top: 18px !important;
     margin-bottom: 8px !important;
     font-weight: 600 !important;
   }
 
-  .article-content h5 {
-    font-size: 0.9rem !important;
-    line-height: 1.4 !important;
+  /* Sub-section headings */
+  .article-content h3 {
+    font-size: 0.95rem !important;
+    line-height: 1.25 !important;
     margin-top: 14px !important;
     margin-bottom: 6px !important;
     font-weight: 600 !important;
   }
 
-  .article-content h6 {
-    font-size: 0.85rem !important;
-    line-height: 1.4 !important;
+  /* Step/minor headings */
+  .article-content h4 {
+    font-size: 0.875rem !important;
+    line-height: 1.3 !important;
     margin-top: 12px !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 5px !important;
     font-weight: 600 !important;
   }
 
-  /* Lists - tighter spacing */
+  .article-content h5 {
+    font-size: 0.825rem !important;
+    line-height: 1.3 !important;
+    margin-top: 10px !important;
+    margin-bottom: 4px !important;
+    font-weight: 600 !important;
+  }
+
+  .article-content h6 {
+    font-size: 0.8rem !important;
+    line-height: 1.35 !important;
+    margin-top: 8px !important;
+    margin-bottom: 4px !important;
+    font-weight: 600 !important;
+  }
+
+  /* Lists - compact spacing */
   .article-content ul,
   .article-content ol {
-    margin-top: 12px !important;
-    margin-bottom: 14px !important;
-    padding-left: 20px !important;
+    margin-top: 8px !important;
+    margin-bottom: 10px !important;
+    padding-left: 18px !important;
   }
 
   .article-content li {
-    font-size: 0.875rem !important;
-    line-height: 1.5 !important;
-    margin-bottom: 6px !important;
+    font-size: 0.8rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 4px !important;
   }
 
-  /* Blockquotes */
+  /* Blockquotes - compact */
   .article-content blockquote {
-    padding: 12px 14px !important;
-    margin: 16px 0 !important;
-    font-size: 0.875rem !important;
-    line-height: 1.5 !important;
+    padding: 10px 12px !important;
+    margin: 10px 0 !important;
+    font-size: 0.8rem !important;
+    line-height: 1.45 !important;
   }
 
-  /* Code blocks */
+  /* Code blocks - compact */
   .article-content pre,
   .article-content code {
-    font-size: 0.8rem !important;
+    font-size: 0.75rem !important;
   }
 
   .article-content pre {
-    padding: 12px !important;
-    margin: 14px 0 !important;
+    padding: 10px !important;
+    margin: 10px 0 !important;
     overflow-x: auto !important;
   }
 
-  /* Images in article */
+  /* Images in article - tighter */
   .article-content img {
-    margin: 16px 0 !important;
-    border-radius: 8px !important;
+    margin: 12px 0 !important;
+    border-radius: 6px !important;
   }
 
-  /* CTA sections in article */
+  /* CTA sections in article - compact */
   .article-content .cta-section,
   .article-cta {
-    padding: 24px 16px !important;
-    margin: 32px 0 48px 0 !important;
+    padding: 16px 14px !important;
+    margin: 20px 0 32px 0 !important;
     text-align: center !important;
   }
 
@@ -1947,19 +1948,19 @@ body[data-scroll-locked] {
     align-items: center !important;
     justify-content: center !important;
     width: auto !important;
-    min-width: 160px !important;
-    max-width: 280px !important;
-    height: 40px !important;
-    min-height: 40px !important;
-    padding: 0 24px !important;
-    font-size: 0.85rem !important;
-    border-radius: 10px !important;
+    min-width: 140px !important;
+    max-width: 240px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    padding: 0 18px !important;
+    font-size: 0.78rem !important;
+    border-radius: 8px !important;
     margin: 0 auto !important;
   }
 
   /* Back to blog CTA link styling */
   [data-testid="link-back-to-blog-articles"],
   [data-testid="link-features"] {
-    font-size: 0.85rem !important;
+    font-size: 0.8rem !important;
   }
 }
