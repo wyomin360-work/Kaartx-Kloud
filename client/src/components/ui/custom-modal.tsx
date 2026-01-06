@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useLayoutEffect } from 'react';
 import * as Portal from '@radix-ui/react-portal';
 import { FocusScope } from '@radix-ui/react-focus-scope';
 import { X } from 'lucide-react';
@@ -13,17 +13,85 @@ interface CustomModalProps {
   preventOutsideClick?: boolean;
 }
 
-// Store original styles outside component to persist across renders
-interface OriginalStyles {
-  bodyOverflow: string;
-  bodyPosition: string;
-  bodyTop: string;
-  bodyWidth: string;
-  bodyPaddingRight: string;
-  bodyTouchAction: string;
-  htmlOverflow: string;
-  htmlPaddingRight: string;
+// Global scroll lock state - persists outside React lifecycle
+let scrollLockState: {
   scrollY: number;
+  bodyStyles: Record<string, string>;
+  htmlStyles: Record<string, string>;
+  isMobile: boolean;
+} | null = null;
+
+function lockScroll() {
+  if (scrollLockState) return; // Already locked
+  
+  const scrollY = window.scrollY;
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  
+  // Store current inline styles
+  scrollLockState = {
+    scrollY,
+    isMobile,
+    bodyStyles: {
+      overflow: document.body.style.overflow,
+      position: document.body.style.position,
+      top: document.body.style.top,
+      left: document.body.style.left,
+      right: document.body.style.right,
+      width: document.body.style.width,
+      paddingRight: document.body.style.paddingRight,
+      touchAction: document.body.style.touchAction,
+    },
+    htmlStyles: {
+      overflow: document.documentElement.style.overflow,
+      paddingRight: document.documentElement.style.paddingRight,
+    },
+  };
+  
+  if (isMobile) {
+    // MOBILE: Position fixed technique - zero layout shift
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    document.body.style.touchAction = 'none';
+    document.documentElement.style.overflow = 'hidden';
+  } else {
+    // DESKTOP: Just overflow hidden + scrollbar compensation
+    document.body.style.overflow = 'hidden';
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.paddingRight = `${scrollbarWidth}px`;
+  }
+}
+
+function unlockScroll() {
+  if (!scrollLockState) return;
+  
+  const { scrollY, isMobile, bodyStyles, htmlStyles } = scrollLockState;
+  
+  // Restore body styles
+  document.body.style.overflow = bodyStyles.overflow;
+  document.body.style.position = bodyStyles.position;
+  document.body.style.top = bodyStyles.top;
+  document.body.style.left = bodyStyles.left;
+  document.body.style.right = bodyStyles.right;
+  document.body.style.width = bodyStyles.width;
+  document.body.style.paddingRight = bodyStyles.paddingRight;
+  document.body.style.touchAction = bodyStyles.touchAction;
+  
+  // Restore html styles
+  document.documentElement.style.overflow = htmlStyles.overflow;
+  document.documentElement.style.paddingRight = htmlStyles.paddingRight;
+  
+  // CRITICAL: Restore scroll position SYNCHRONOUSLY on mobile
+  if (isMobile) {
+    window.scrollTo(0, scrollY);
+  }
+  
+  scrollLockState = null;
 }
 
 export function CustomModal({
@@ -35,7 +103,6 @@ export function CustomModal({
   preventOutsideClick = false,
 }: CustomModalProps) {
   const contentRef = useRef<HTMLDivElement>(null);
-  const originalStylesRef = useRef<OriginalStyles | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -57,65 +124,12 @@ export function CustomModal({
     }
   }, [open]);
 
-  // Lock background scroll when modal is open - zero layout shift
-  useEffect(() => {
+  // Use useLayoutEffect for synchronous DOM updates - zero layout shift
+  useLayoutEffect(() => {
     if (open) {
-      const scrollY = window.scrollY;
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      const isMobile = window.matchMedia('(max-width: 768px)').matches;
-      
-      // Cache original styles in ref (persists across renders)
-      originalStylesRef.current = {
-        bodyOverflow: document.body.style.overflow,
-        bodyPosition: document.body.style.position,
-        bodyTop: document.body.style.top,
-        bodyWidth: document.body.style.width,
-        bodyPaddingRight: document.body.style.paddingRight,
-        bodyTouchAction: document.body.style.touchAction,
-        htmlOverflow: document.documentElement.style.overflow,
-        htmlPaddingRight: document.documentElement.style.paddingRight,
-        scrollY: scrollY,
-      };
-      
-      // Apply scroll lock to both body and html
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
-      
-      // Compensate for scrollbar width on both body and html
-      const compensation = isMobile ? '0px' : `${scrollbarWidth}px`;
-      document.body.style.paddingRight = compensation;
-      document.documentElement.style.paddingRight = compensation;
-      
-      if (isMobile) {
-        // Mobile: position fixed to fully lock scroll
-        document.body.style.position = 'fixed';
-        document.body.style.top = `-${scrollY}px`;
-        document.body.style.width = '100%';
-      }
-      
+      lockScroll();
       return () => {
-        const cached = originalStylesRef.current;
-        if (!cached) return;
-        
-        // Restore ALL original styles
-        document.body.style.overflow = cached.bodyOverflow;
-        document.body.style.position = cached.bodyPosition;
-        document.body.style.top = cached.bodyTop;
-        document.body.style.width = cached.bodyWidth;
-        document.body.style.paddingRight = cached.bodyPaddingRight;
-        document.body.style.touchAction = cached.bodyTouchAction;
-        document.documentElement.style.overflow = cached.htmlOverflow;
-        document.documentElement.style.paddingRight = cached.htmlPaddingRight;
-        
-        // Restore scroll position in next frame to avoid flash
-        if (isMobile) {
-          requestAnimationFrame(() => {
-            window.scrollTo(0, cached.scrollY);
-          });
-        }
-        
-        originalStylesRef.current = null;
+        unlockScroll();
       };
     }
   }, [open]);
