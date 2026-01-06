@@ -14,7 +14,7 @@ export default function Article() {
 
   return (
     <div className="min-h-screen bg-background">
-      <article className="py-16 sm:py-24 md:py-32">
+      <article className="article-section py-16 sm:py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back Button */}
           <Link href="/blog">
@@ -31,7 +31,7 @@ export default function Article() {
           </Link>
 
           {/* Article Header */}
-          <header className="mb-12">
+          <header className="article-header mb-12">
             <h1 className="section-title text-foreground mb-6 tracking-tight" data-testid="text-article-title">
               {title}
             </h1>
@@ -41,7 +41,7 @@ export default function Article() {
           </header>
 
           {/* Article Content Placeholder */}
-          <div className="prose prose-lg max-w-none">
+          <div className="article-content prose prose-lg max-w-none">
             <p className="text-muted-foreground leading-relaxed mb-6">
               This article is currently being prepared. Check back soon for the full content.
             </p>
