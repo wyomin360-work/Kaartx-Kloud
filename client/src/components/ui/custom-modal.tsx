@@ -13,48 +13,22 @@ interface CustomModalProps {
   preventOutsideClick?: boolean;
 }
 
-// Global scroll position - persists outside React lifecycle
-let savedScrollY = 0;
-
-function lockBodyScroll() {
+// DESKTOP ONLY: Simple scroll lock (mobile uses CSS-only approach)
+function lockBodyScrollDesktop() {
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  if (isMobile) return; // Do NOTHING on mobile - CSS handles it
   
-  if (isMobile) {
-    // MOBILE ONLY: Position fixed technique
-    savedScrollY = window.scrollY;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${savedScrollY}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
-    document.body.style.width = '100%';
-  } else {
-    // DESKTOP: Just overflow hidden + scrollbar compensation
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.body.style.overflow = 'hidden';
-    document.body.style.paddingRight = `${scrollbarWidth}px`;
-    document.documentElement.style.overflow = 'hidden';
-    document.documentElement.style.paddingRight = `${scrollbarWidth}px`;
-  }
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  document.body.style.overflow = 'hidden';
+  document.body.style.paddingRight = `${scrollbarWidth}px`;
 }
 
-function unlockBodyScroll() {
+function unlockBodyScrollDesktop() {
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  if (isMobile) return; // Do NOTHING on mobile
   
-  if (isMobile) {
-    // MOBILE ONLY: Restore position and scroll
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.left = '';
-    document.body.style.right = '';
-    document.body.style.width = '';
-    window.scrollTo(0, savedScrollY);
-  } else {
-    // DESKTOP: Restore overflow
-    document.body.style.overflow = '';
-    document.body.style.paddingRight = '';
-    document.documentElement.style.overflow = '';
-    document.documentElement.style.paddingRight = '';
-  }
+  document.body.style.overflow = '';
+  document.body.style.paddingRight = '';
 }
 
 export function CustomModal({
@@ -87,12 +61,12 @@ export function CustomModal({
     }
   }, [open]);
 
-  // Use useLayoutEffect for synchronous DOM updates - zero layout shift
+  // DESKTOP ONLY: Lock body scroll (mobile uses CSS-only approach - no body manipulation)
   useLayoutEffect(() => {
     if (open) {
-      lockBodyScroll();
+      lockBodyScrollDesktop();
       return () => {
-        unlockBodyScroll();
+        unlockBodyScrollDesktop();
       };
     }
   }, [open]);
