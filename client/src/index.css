@@ -1935,14 +1935,31 @@ body[data-scroll-locked] {
   /* CTA sections in article */
   .article-content .cta-section,
   .article-cta {
-    padding: 20px 16px !important;
-    margin: 24px 0 !important;
+    padding: 24px 16px !important;
+    margin: 32px 0 48px 0 !important;
+    text-align: center !important;
   }
 
   .article-content .cta-section button,
-  .article-cta button {
-    width: 100% !important;
+  .article-cta button,
+  .article-content a[data-testid*="cta"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    min-width: 160px !important;
+    max-width: 280px !important;
     height: 40px !important;
+    min-height: 40px !important;
+    padding: 0 24px !important;
+    font-size: 0.85rem !important;
+    border-radius: 10px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Back to blog CTA link styling */
+  [data-testid="link-back-to-blog-articles"],
+  [data-testid="link-features"] {
     font-size: 0.85rem !important;
   }
 }
