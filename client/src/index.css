@@ -1738,6 +1738,7 @@ body[data-scroll-locked] {
   .blog-posts-section {
     padding-top: 0 !important;
     padding-bottom: 48px !important;
+    margin-bottom: 48px !important;
   }
 
   .blog-posts-section > div {
