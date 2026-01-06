@@ -2151,10 +2151,16 @@ body[data-scroll-locked] {
     margin-top: 12px !important;
   }
 
-  /* Terms text */
+  /* Terms text - single line, no wrap, centered */
+  [data-testid="text-terms-agreement"],
   [data-testid="dialog-signup"] form > p {
-    font-size: 10px !important;
+    font-size: 9px !important;
     margin-top: 10px !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
   }
 
   /* Success state grid */

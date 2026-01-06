@@ -353,10 +353,10 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
                   }
                 </Button>
 
-                <p className="text-xs text-center text-muted-foreground">
-                  By creating an account, you agree to our{' '}
-                  <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline">Terms of Service</a>
-                  {' '}and{' '}
+                <p className="text-xs text-center text-muted-foreground" data-testid="text-terms-agreement">
+                  By submitting, you agree to our{' '}
+                  <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline">Terms</a>
+                  {' '}&{' '}
                   <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline">Privacy Policy</a>
                 </p>
               </form>
