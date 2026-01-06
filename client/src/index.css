@@ -1775,188 +1775,239 @@ body[data-scroll-locked] {
   }
 
   /* ========================================
-     BLOG ARTICLE PAGE - Mobile Optimization
-     Strict sizing per user specs
+     BLOG ARTICLE PAGE - HARD MOBILE OVERRIDE
+     Force mobile typography with max specificity
      ======================================== */
 
-  /* Article section - reduced top padding */
+  /* Article section container */
+  article.article-section,
   .article-section {
-    padding-top: 90px !important;
-    padding-bottom: 32px !important;
+    padding-top: 80px !important;
+    padding-bottom: 24px !important;
   }
 
+  article.article-section > div,
   .article-section > div {
     padding-left: 16px !important;
     padding-right: 16px !important;
     max-width: 100% !important;
+    width: 100% !important;
     overflow-x: hidden !important;
   }
 
-  /* Back to blog button - meta size */
+  /* Back button */
+  button[data-testid="button-back-to-blog"],
   [data-testid="button-back-to-blog"] {
     height: 36px !important;
     min-height: 36px !important;
-    padding: 0 16px !important;
-    font-size: 13px !important;
-    margin-bottom: 12px !important;
+    max-height: 36px !important;
+    padding: 0 12px !important;
+    font-size: 12px !important;
+    margin-bottom: 10px !important;
     margin-left: 0 !important;
   }
 
   [data-testid="button-back-to-blog"] svg {
-    height: 14px !important;
-    width: 14px !important;
+    height: 12px !important;
+    width: 12px !important;
   }
 
-  /* Article header - tight */
+  /* Article header */
+  header.article-header,
   .article-header {
-    margin-bottom: 12px !important;
+    margin-bottom: 10px !important;
   }
 
-  /* Article title (H1) - 20-22px max */
-  [data-testid="text-article-title"] {
-    font-size: 21px !important;
-    line-height: 1.28 !important;
-    margin-bottom: 6px !important;
+  /* ARTICLE TITLE (H1) - 18-20px HARD OVERRIDE */
+  h1[data-testid="text-article-title"],
+  [data-testid="text-article-title"],
+  .article-section h1,
+  .article-header h1,
+  article h1 {
+    font-size: 19px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 5px !important;
+    margin-top: 0 !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
     letter-spacing: -0.01em !important;
   }
 
-  /* Article date/meta - 12-13px */
-  [data-testid="text-article-date"] {
+  /* META TEXT - 12px */
+  p[data-testid="text-article-date"],
+  [data-testid="text-article-date"],
+  .article-header p {
     font-size: 12px !important;
     line-height: 1.4 !important;
   }
 
   /* Article content container */
-  .article-content {
+  div.article-content,
+  .article-content,
+  .prose {
     max-width: 100% !important;
+    width: 100% !important;
     overflow-x: hidden !important;
   }
 
-  /* Body paragraphs - 14px */
-  .article-content p {
-    font-size: 14px !important;
+  /* BODY TEXT - 13-14px */
+  .article-content p,
+  .prose p,
+  article p:not([data-testid="text-article-date"]) {
+    font-size: 13px !important;
     line-height: 1.45 !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 8px !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
   }
 
-  .article-content a {
+  .article-content a,
+  .prose a {
     word-break: break-word !important;
+    font-size: 13px !important;
   }
 
-  /* Section headings (H2) - 16-17px, smaller than title */
-  .article-content h2 {
-    font-size: 17px !important;
+  /* SECTION HEADINGS (H2) - 15-16px */
+  .article-content h2,
+  .prose h2,
+  article h2 {
+    font-size: 15px !important;
     line-height: 1.3 !important;
-    margin-top: 16px !important;
-    margin-bottom: 8px !important;
-    font-weight: 600 !important;
-  }
-
-  /* Sub-section headings (H3) */
-  .article-content h3 {
-    font-size: 16px !important;
-    line-height: 1.35 !important;
     margin-top: 14px !important;
     margin-bottom: 6px !important;
     font-weight: 600 !important;
   }
 
-  /* Step/minor headings (H4) */
-  .article-content h4 {
-    font-size: 15px !important;
+  /* SUBHEADINGS (H3) - 14-15px */
+  .article-content h3,
+  .prose h3,
+  article h3 {
+    font-size: 14px !important;
     line-height: 1.35 !important;
     margin-top: 12px !important;
     margin-bottom: 5px !important;
     font-weight: 600 !important;
   }
 
-  .article-content h5 {
-    font-size: 14px !important;
-    line-height: 1.4 !important;
+  /* H4-H6 */
+  .article-content h4,
+  .prose h4,
+  article h4 {
+    font-size: 13px !important;
+    line-height: 1.35 !important;
     margin-top: 10px !important;
     margin-bottom: 4px !important;
     font-weight: 600 !important;
   }
 
-  .article-content h6 {
-    font-size: 14px !important;
+  .article-content h5,
+  .article-content h6,
+  .prose h5,
+  .prose h6,
+  article h5,
+  article h6 {
+    font-size: 13px !important;
     line-height: 1.4 !important;
     margin-top: 8px !important;
     margin-bottom: 4px !important;
     font-weight: 600 !important;
   }
 
-  /* Lists - 14px, 1.45 line-height */
+  /* LISTS - 13-14px */
   .article-content ul,
-  .article-content ol {
-    margin-top: 8px !important;
-    margin-bottom: 10px !important;
-    padding-left: 18px !important;
+  .article-content ol,
+  .prose ul,
+  .prose ol,
+  article ul,
+  article ol {
+    margin-top: 6px !important;
+    margin-bottom: 8px !important;
+    padding-left: 16px !important;
   }
 
-  .article-content li {
-    font-size: 14px !important;
+  .article-content li,
+  .prose li,
+  article li {
+    font-size: 13px !important;
     line-height: 1.45 !important;
-    margin-bottom: 4px !important;
+    margin-bottom: 3px !important;
   }
 
   /* Blockquotes */
-  .article-content blockquote {
-    padding: 10px 12px !important;
-    margin: 10px 0 !important;
-    font-size: 14px !important;
+  .article-content blockquote,
+  .prose blockquote,
+  article blockquote {
+    padding: 8px 10px !important;
+    margin: 8px 0 !important;
+    font-size: 13px !important;
     line-height: 1.45 !important;
   }
 
-  /* Code blocks */
+  /* Code */
   .article-content pre,
-  .article-content code {
-    font-size: 13px !important;
+  .article-content code,
+  .prose pre,
+  .prose code {
+    font-size: 12px !important;
   }
 
-  .article-content pre {
-    padding: 10px !important;
-    margin: 10px 0 !important;
+  .article-content pre,
+  .prose pre {
+    padding: 8px !important;
+    margin: 8px 0 !important;
     overflow-x: auto !important;
   }
 
   /* Images */
-  .article-content img {
-    margin: 12px 0 !important;
+  .article-content img,
+  .prose img,
+  article img {
+    margin: 10px 0 !important;
     border-radius: 6px !important;
   }
 
   /* CTA sections */
   .article-content .cta-section,
   .article-cta {
-    padding: 14px !important;
-    margin: 16px 0 24px 0 !important;
+    padding: 12px !important;
+    margin: 14px 0 20px 0 !important;
     text-align: center !important;
   }
 
-  /* Buttons - 40px height, 16px padding, 14px font */
-  .article-content .cta-section button,
-  .article-cta button,
+  /* ALL BUTTONS - 36-40px height, 12-16px padding, 13-14px font */
+  .article-section button,
   .article-content button,
-  .article-section button:not([data-testid="button-back-to-blog"]) {
+  article button,
+  .article-cta button {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    height: 40px !important;
-    min-height: 40px !important;
-    max-height: 40px !important;
-    padding: 0 16px !important;
-    font-size: 14px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    padding: 0 14px !important;
+    font-size: 13px !important;
     border-radius: 8px !important;
   }
 
-  /* In-content links - meta size */
+  /* In-content links - 12px */
+  a[data-testid="link-back-to-blog-articles"],
+  a[data-testid="link-features"],
   [data-testid="link-back-to-blog-articles"],
   [data-testid="link-features"] {
+    font-size: 12px !important;
+  }
+
+  /* Override section-title class */
+  .article-section .section-title,
+  article .section-title {
+    font-size: 19px !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Override prose-lg */
+  .prose-lg {
     font-size: 13px !important;
+    line-height: 1.45 !important;
   }
 }
