@@ -13,22 +13,80 @@ interface CustomModalProps {
   preventOutsideClick?: boolean;
 }
 
-// DESKTOP ONLY: Simple scroll lock (mobile uses CSS-only approach)
+// Store scroll position for mobile
+let scrollY = 0;
+let touchMoveHandler: ((e: TouchEvent) => void) | null = null;
+
+// DESKTOP: Simple scroll lock with scrollbar compensation
 function lockBodyScrollDesktop() {
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
-  if (isMobile) return; // Do NOTHING on mobile - CSS handles it
-  
   const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
   document.body.style.overflow = 'hidden';
   document.body.style.paddingRight = `${scrollbarWidth}px`;
 }
 
 function unlockBodyScrollDesktop() {
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
-  if (isMobile) return; // Do NOTHING on mobile
-  
   document.body.style.overflow = '';
   document.body.style.paddingRight = '';
+}
+
+// MOBILE: Full scroll lock - prevents all background scrolling
+function lockBodyScrollMobile() {
+  // Save current scroll position
+  scrollY = window.scrollY;
+  
+  // Add class to html element for CSS-based lock
+  document.documentElement.classList.add('modal-open-mobile');
+  document.body.classList.add('modal-open-mobile');
+  
+  // Set body position to preserve visual position
+  document.body.style.top = `-${scrollY}px`;
+  
+  // Prevent touchmove on body (but allow on modal content)
+  touchMoveHandler = (e: TouchEvent) => {
+    const target = e.target as HTMLElement;
+    // Allow scroll inside modal content
+    if (target.closest('[data-modal-content]')) {
+      return;
+    }
+    e.preventDefault();
+  };
+  document.addEventListener('touchmove', touchMoveHandler, { passive: false });
+}
+
+function unlockBodyScrollMobile() {
+  // Remove classes
+  document.documentElement.classList.remove('modal-open-mobile');
+  document.body.classList.remove('modal-open-mobile');
+  
+  // Clear body styles
+  document.body.style.top = '';
+  
+  // Restore scroll position
+  window.scrollTo(0, scrollY);
+  
+  // Remove touch handler
+  if (touchMoveHandler) {
+    document.removeEventListener('touchmove', touchMoveHandler);
+    touchMoveHandler = null;
+  }
+}
+
+function lockBodyScroll() {
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  if (isMobile) {
+    lockBodyScrollMobile();
+  } else {
+    lockBodyScrollDesktop();
+  }
+}
+
+function unlockBodyScroll() {
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  if (isMobile) {
+    unlockBodyScrollMobile();
+  } else {
+    unlockBodyScrollDesktop();
+  }
 }
 
 export function CustomModal({
@@ -61,12 +119,12 @@ export function CustomModal({
     }
   }, [open]);
 
-  // DESKTOP ONLY: Lock body scroll (mobile uses CSS-only approach - no body manipulation)
+  // Lock body scroll for both mobile and desktop
   useLayoutEffect(() => {
     if (open) {
-      lockBodyScrollDesktop();
+      lockBodyScroll();
       return () => {
-        unlockBodyScrollDesktop();
+        unlockBodyScroll();
       };
     }
   }, [open]);
@@ -106,6 +164,7 @@ export function CustomModal({
         <FocusScope trapped loop>
           <div
             ref={contentRef}
+            data-modal-content
             className={cn(
               "relative z-50 bg-background border rounded-lg shadow-lg",
               "animate-in fade-in-0 zoom-in-95 duration-200",
