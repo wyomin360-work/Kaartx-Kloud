@@ -101,6 +101,20 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
     }
   };
 
+  // Force scroll to top when clicking logo - always goes to homepage top
+  const navigateToHome = () => {
+    setIsMobileMenuOpen(false);
+    
+    if (location !== '/') {
+      // Navigate to homepage and scroll to top
+      window.location.href = '/';
+    } else {
+      // Already on homepage - force scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.pushState(null, '', '/');
+    }
+  };
+
   const handleNavClick = (item: NavItem, e?: React.MouseEvent) => {
     setIsMobileMenuOpen(false);
     if (item.type === 'scroll') {
@@ -120,7 +134,7 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <button
-              onClick={() => navigateToSection('hero')}
+              onClick={navigateToHome}
               className="hover-elevate rounded-md transition-all"
               data-testid="link-logo"
             >
