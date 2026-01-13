@@ -16,6 +16,23 @@ type NavItem = {
   testId: string;
 };
 
+// Mobile menu scroll lock
+let mobileMenuScrollY = 0;
+
+function lockScrollForMobileMenu() {
+  mobileMenuScrollY = window.scrollY;
+  document.documentElement.classList.add('mobile-menu-open');
+  document.body.classList.add('mobile-menu-open');
+  document.body.style.top = `-${mobileMenuScrollY}px`;
+}
+
+function unlockScrollForMobileMenu() {
+  document.documentElement.classList.remove('mobile-menu-open');
+  document.body.classList.remove('mobile-menu-open');
+  document.body.style.top = '';
+  window.scrollTo(0, mobileMenuScrollY);
+}
+
 export default function Navbar({ onOpenSignup }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -38,10 +55,11 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      // When modal is open on mobile, body has position: fixed and window.scrollY is 0
+      // When modal or mobile menu is open, body has position: fixed and window.scrollY is 0
       // Read the actual scroll position from body.style.top (stored as negative value)
       let scrollPosition = window.scrollY;
-      if (document.body.classList.contains('modal-open-mobile')) {
+      if (document.body.classList.contains('modal-open-mobile') || 
+          document.body.classList.contains('mobile-menu-open')) {
         const bodyTop = document.body.style.top;
         if (bodyTop) {
           scrollPosition = Math.abs(parseInt(bodyTop, 10));
@@ -56,6 +74,18 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Handle mobile menu scroll lock
+  useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (!isMobile) return;
+
+    if (isMobileMenuOpen) {
+      lockScrollForMobileMenu();
+    } else {
+      unlockScrollForMobileMenu();
+    }
+  }, [isMobileMenuOpen]);
 
   const navigateToSection = (id: string) => {
     setIsMobileMenuOpen(false);
@@ -146,8 +176,12 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
         </div>
       </div>
 
+      {/* Mobile menu - fixed overlay below navbar */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-card/95 backdrop-blur-sm border-t border-border shadow-md">
+        <div 
+          className="md:hidden fixed left-0 right-0 top-16 bg-card/95 backdrop-blur-sm border-t border-border shadow-md z-40"
+          data-testid="mobile-menu-overlay"
+        >
           <div className="px-5 py-4 space-y-1">
             {navItems.map((item) => (
               item.type === 'link' ? (
