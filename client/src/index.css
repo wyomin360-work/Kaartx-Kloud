@@ -1780,9 +1780,9 @@ body.mobile-menu-open {
      BLOG PAGE - Mobile Optimization
      ======================================== */
 
-  /* Blog hero section - standard mobile spacing */
+  /* Blog hero section - tighter top spacing for mobile */
   .blog-hero-section {
-    padding-top: 140px !important;
+    padding-top: 96px !important;
     padding-bottom: 48px !important;
     margin-bottom: 0 !important;
   }
