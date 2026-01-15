@@ -4,6 +4,7 @@ import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import logoImage from '@assets/Asset 4@4x_1762100909160.png';
 import { Link } from 'wouter';
+import * as Portal from '@radix-ui/react-portal';
 
 interface NavbarProps {
   onOpenSignup?: () => void;
@@ -190,60 +191,84 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
         </div>
       </div>
 
-      {/* Mobile menu - fixed overlay with backdrop */}
-      {isMobileMenuOpen && (
-        <>
-          {/* Backdrop - click to close */}
-          <div 
-            className="md:hidden fixed inset-0 top-16 bg-black/50 z-30"
-            onClick={() => setIsMobileMenuOpen(false)}
-            data-testid="mobile-menu-backdrop"
-            aria-hidden="true"
-          />
-          {/* Menu panel */}
-          <div 
-            className="md:hidden fixed left-0 right-0 top-16 bg-card/95 backdrop-blur-sm border-t border-border shadow-md z-40"
-            data-testid="mobile-menu-overlay"
-          >
-            <div className="px-5 py-4 space-y-1">
-              {navItems.map((item) => (
-                item.type === 'link' ? (
-                  <Link
-                    key={item.testId}
-                    href={item.target}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-                    data-testid={`mobile-${item.testId}`}
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <button
-                    key={item.testId}
-                    onClick={(e) => handleNavClick(item, e)}
-                    className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-                    data-testid={`mobile-${item.testId}`}
-                  >
-                    {item.label}
-                  </button>
-                )
-              ))}
-              {/* Mobile-only: Blog and Careers links */}
-              {mobileOnlyNavItems.map((item) => (
-                <Link
-                  key={item.testId}
-                  href={item.target}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-                  data-testid={`mobile-${item.testId}`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </>
-      )}
+      <MobileMenuOverlay
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        navItems={navItems}
+        mobileOnlyNavItems={mobileOnlyNavItems}
+        onNavClick={handleNavClick}
+      />
     </nav>
+  );
+}
+
+// Mobile menu rendered via Portal for proper z-index stacking
+function MobileMenuOverlay({
+  isOpen,
+  onClose,
+  navItems,
+  mobileOnlyNavItems,
+  onNavClick,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  navItems: NavItem[];
+  mobileOnlyNavItems: NavItem[];
+  onNavClick: (item: NavItem, e?: React.MouseEvent) => void;
+}) {
+  if (!isOpen) return null;
+
+  return (
+    <Portal.Root>
+      {/* Backdrop - click to close */}
+      <div 
+        className="md:hidden fixed inset-0 top-16 bg-black/50 z-[100]"
+        onClick={onClose}
+        data-testid="mobile-menu-backdrop"
+        aria-hidden="true"
+      />
+      {/* Menu panel */}
+      <div 
+        className="md:hidden fixed left-0 right-0 top-16 bg-card/95 backdrop-blur-sm border-t border-border shadow-md z-[101]"
+        data-testid="mobile-menu-overlay"
+      >
+        <div className="px-5 py-4 space-y-1">
+          {navItems.map((item) => (
+            item.type === 'link' ? (
+              <Link
+                key={item.testId}
+                href={item.target}
+                onClick={onClose}
+                className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
+                data-testid={`mobile-${item.testId}`}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <button
+                key={item.testId}
+                onClick={(e) => onNavClick(item, e)}
+                className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
+                data-testid={`mobile-${item.testId}`}
+              >
+                {item.label}
+              </button>
+            )
+          ))}
+          {/* Mobile-only: Blog and Careers links */}
+          {mobileOnlyNavItems.map((item) => (
+            <Link
+              key={item.testId}
+              href={item.target}
+              onClick={onClose}
+              className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
+              data-testid={`mobile-${item.testId}`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </Portal.Root>
   );
 }
