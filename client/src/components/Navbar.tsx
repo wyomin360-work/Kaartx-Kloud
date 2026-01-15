@@ -190,15 +190,46 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
         </div>
       </div>
 
-      {/* Mobile menu - fixed overlay below navbar */}
+      {/* Mobile menu - fixed overlay with backdrop */}
       {isMobileMenuOpen && (
-        <div 
-          className="md:hidden fixed left-0 right-0 top-16 bg-card/95 backdrop-blur-sm border-t border-border shadow-md z-40"
-          data-testid="mobile-menu-overlay"
-        >
-          <div className="px-5 py-4 space-y-1">
-            {navItems.map((item) => (
-              item.type === 'link' ? (
+        <>
+          {/* Backdrop - click to close */}
+          <div 
+            className="md:hidden fixed inset-0 top-16 bg-black/50 z-30"
+            onClick={() => setIsMobileMenuOpen(false)}
+            data-testid="mobile-menu-backdrop"
+            aria-hidden="true"
+          />
+          {/* Menu panel */}
+          <div 
+            className="md:hidden fixed left-0 right-0 top-16 bg-card/95 backdrop-blur-sm border-t border-border shadow-md z-40"
+            data-testid="mobile-menu-overlay"
+          >
+            <div className="px-5 py-4 space-y-1">
+              {navItems.map((item) => (
+                item.type === 'link' ? (
+                  <Link
+                    key={item.testId}
+                    href={item.target}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
+                    data-testid={`mobile-${item.testId}`}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={item.testId}
+                    onClick={(e) => handleNavClick(item, e)}
+                    className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
+                    data-testid={`mobile-${item.testId}`}
+                  >
+                    {item.label}
+                  </button>
+                )
+              ))}
+              {/* Mobile-only: Blog and Careers links */}
+              {mobileOnlyNavItems.map((item) => (
                 <Link
                   key={item.testId}
                   href={item.target}
@@ -208,31 +239,10 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
                 >
                   {item.label}
                 </Link>
-              ) : (
-                <button
-                  key={item.testId}
-                  onClick={(e) => handleNavClick(item, e)}
-                  className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-                  data-testid={`mobile-${item.testId}`}
-                >
-                  {item.label}
-                </button>
-              )
-            ))}
-            {/* Mobile-only: Blog and Careers links */}
-            {mobileOnlyNavItems.map((item) => (
-              <Link
-                key={item.testId}
-                href={item.target}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-                data-testid={`mobile-${item.testId}`}
-              >
-                {item.label}
-              </Link>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </nav>
   );
