@@ -28,10 +28,17 @@ function lockScrollForMobileMenu() {
 }
 
 function unlockScrollForMobileMenu() {
+  // Only restore scroll if the lock is still active
+  const isLocked = document.body.classList.contains('mobile-menu-open');
   document.documentElement.classList.remove('mobile-menu-open');
   document.body.classList.remove('mobile-menu-open');
   document.body.style.top = '';
-  window.scrollTo(0, mobileMenuScrollY);
+  
+  // Only restore scroll position if we were actually locked
+  // (handleNavClick may have already unlocked for navigation)
+  if (isLocked) {
+    window.scrollTo(0, mobileMenuScrollY);
+  }
 }
 
 export default function Navbar({ onOpenSignup }: NavbarProps) {
@@ -117,7 +124,18 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   };
 
   const handleNavClick = (item: NavItem, e?: React.MouseEvent) => {
+    // For scroll navigation, unlock scroll first without restoring position
+    // so navigateToSection can scroll to the target
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile && isMobileMenuOpen) {
+      // Remove scroll lock classes but DON'T restore scroll position
+      document.documentElement.classList.remove('mobile-menu-open');
+      document.body.classList.remove('mobile-menu-open');
+      document.body.style.top = '';
+    }
+    
     setIsMobileMenuOpen(false);
+    
     if (item.type === 'scroll') {
       e?.preventDefault();
       navigateToSection(item.target);
