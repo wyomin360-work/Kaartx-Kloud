@@ -636,6 +636,13 @@ body.mobile-menu-open {
     height: auto !important;
   }
 
+  /* Feature carousel - snap to center on mobile */
+  .feature-carousel {
+    scroll-padding-inline: 10vw !important;
+    padding-inline: 10vw !important;
+    margin-inline: -10vw !important;
+  }
+
   /* Hero CTA buttons - compact sizing for mobile */
   [data-testid="button-hero-get-started"],
   [data-testid="button-hero-whatsapp"] {

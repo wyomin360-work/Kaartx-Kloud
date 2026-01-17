@@ -46,7 +46,7 @@ export default function FeatureGrid() {
 
         <div 
           ref={cardsAnimation.ref}
-          className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 -mx-4 pb-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:px-0 md:-mx-0 md:pb-0 md:overflow-visible"
+          className="feature-carousel flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:pb-0 md:overflow-visible scrollbar-hide"
         >
           {features.map((feature, index) => {
             const Icon = feature.icon;
