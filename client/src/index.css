@@ -874,10 +874,15 @@ body.mobile-menu-open {
      - Second card: only 8-12px peek
      - Cards 3+: completely hidden
      - Never absolute on first card
-     - Wrapper has min-height, not fixed height
+     - Standard section spacing only
      ======================================== */
   
-  /* Stack wrapper: relative, overflow hidden, proper height */
+  /* Section: reduced mobile padding for standard gap */
+  #features {
+    padding-bottom: 24px !important;
+  }
+
+  /* Stack wrapper: no extra margins */
   #features .grid,
   [data-testid="deep-features-container"] {
     display: flex !important;
@@ -886,7 +891,7 @@ body.mobile-menu-open {
     padding: 0 !important;
     border: none !important;
     position: relative !important;
-    margin-bottom: 32px !important;
+    margin: 0 !important;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
 
@@ -933,12 +938,13 @@ body.mobile-menu-open {
   }
 
   /* ===== COLLAPSED STATE ===== */
-  /* Second card: position relative, show only 10px peek of top edge */
+  /* Second card: show only 10px peek, no extra margin */
   [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-1"] {
     position: relative !important;
-    height: auto !important;
-    margin-top: 10px !important;
-    clip-path: inset(0 0 calc(100% - 10px) 0) !important;
+    height: 10px !important;
+    margin-top: 8px !important;
+    margin-bottom: 0 !important;
+    overflow: hidden !important;
     z-index: 9 !important;
     opacity: 0.6 !important;
     pointer-events: none !important;
