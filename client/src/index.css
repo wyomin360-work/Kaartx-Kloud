@@ -709,22 +709,14 @@ body.mobile-menu-open {
   /* Regular add-on cards */
   [data-testid^="badge-addon-"]:not([data-testid^="badge-addon-upcoming-"]) {
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr) 115px minmax(0, 1fr) !important;
+    grid-template-columns: 1fr 100px 1fr !important;
     align-items: center !important;
     min-height: 56px !important;
-    padding: 10px 16px !important;
+    padding: 10px 14px !important;
     line-height: 1.4 !important;
     border-radius: 16px !important;
     width: 100% !important;
-    gap: 4px !important;
-    box-sizing: border-box !important;
-    overflow: hidden !important;
-  }
-
-  /* Force all addon card children to not overflow */
-  [data-testid^="badge-addon-"]:not([data-testid^="badge-addon-upcoming-"]) > * {
-    overflow: hidden !important;
-    min-width: 0 !important;
+    gap: 8px !important;
   }
 
   /* Upcoming add-on cards - full width, centered content */
@@ -757,10 +749,8 @@ body.mobile-menu-open {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    min-width: 110px !important;
+    min-width: 100px !important;
     min-height: 24px !important;
-    overflow: visible !important;
-    padding: 0 4px !important;
   }
 
   /* Make Coming Soon badge consistent with price text */
@@ -773,10 +763,6 @@ body.mobile-menu-open {
 
   .addon-availability {
     text-align: right !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    word-break: break-word !important;
-    hyphens: auto !important;
   }
 
   /* CaseStudy section - compact mobile tiles */
