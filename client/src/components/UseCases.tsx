@@ -77,21 +77,42 @@ export default function UseCases() {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="max-w-5xl mx-auto">
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 mb-0 h-auto p-3 sm:p-4 bg-card/30 border-2 border-b-0 rounded-b-none" data-testid="tabs-use-cases">
-            {Object.entries(useCases).map(([key, useCase]) => {
+          <TabsList className="flex flex-col md:grid md:grid-cols-5 w-full gap-0 md:gap-2 mb-0 h-auto p-3 sm:p-4 bg-card/30 border-2 border-b-0 rounded-b-none" data-testid="tabs-use-cases">
+            {/* 2x2 grid for first 4 items on mobile, part of 5-col grid on desktop */}
+            <div className="grid grid-cols-2 md:contents gap-2 w-full">
+              {Object.entries(useCases).slice(0, 4).map(([key, useCase]) => {
+                const Icon = useCase.icon;
+                return (
+                  <TabsTrigger 
+                    key={key}
+                    value={key} 
+                    data-testid={`tab-${key}`}
+                    className="flex flex-col items-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-2 data-[state=active]:bg-background data-[state=active]:shadow-sm min-h-[60px] sm:min-h-0"
+                  >
+                    <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <span className="text-xs sm:text-sm font-semibold leading-tight text-center">{useCase.title}</span>
+                  </TabsTrigger>
+                );
+              })}
+            </div>
+            {/* Enterprise: full-width centered on mobile, part of grid on desktop */}
+            {(() => {
+              const enterpriseEntry = Object.entries(useCases).find(([key]) => key === 'enterprises');
+              if (!enterpriseEntry) return null;
+              const [key, useCase] = enterpriseEntry;
               const Icon = useCase.icon;
               return (
                 <TabsTrigger 
                   key={key}
                   value={key} 
                   data-testid={`tab-${key}`}
-                  className="flex flex-col items-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-2 data-[state=active]:bg-background data-[state=active]:shadow-sm min-h-[60px] sm:min-h-0"
+                  className="flex flex-col items-center justify-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-2 data-[state=active]:bg-background data-[state=active]:shadow-sm min-h-[60px] sm:min-h-0 mt-2 md:mt-0 w-full md:w-auto"
                 >
                   <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   <span className="text-xs sm:text-sm font-semibold leading-tight text-center">{useCase.title}</span>
                 </TabsTrigger>
               );
-            })}
+            })()}
           </TabsList>
 
           {Object.entries(useCases).map(([key, useCase]) => (
