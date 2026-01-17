@@ -868,88 +868,99 @@ body.mobile-menu-open {
   }
 
   /* ========================================
-     DeepFeatures - Ticket-Style Stacked Cards (Mobile)
-     Full-width horizontal cards, icon left, text right
+     DeepFeatures - Stacked Overlapping Cards (Mobile)
+     Cards overlap like physical stacked tickets
+     Top card dominates, lower cards progressively recede
      ======================================== */
   
-  /* Container: remove grid gap for flush stacking */
+  /* Container: stack with overlap spacing */
   #features .grid {
     display: flex !important;
     flex-direction: column !important;
     gap: 0 !important;
-    border-radius: 16px !important;
-    overflow: hidden !important;
-    border: 1px solid hsl(var(--border)) !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    border: none !important;
   }
 
-  /* Card: horizontal layout, white bg, no gradients/shadows */
+  /* Card: white bg, rounded corners, overlap effect */
   [data-testid^="deep-feature-"],
   [data-testid^="deep-feature-"].gradient-bg-blue,
   [data-testid^="deep-feature-"].gradient-bg-purple {
     background: #ffffff !important;
     background-color: #ffffff !important;
     background-image: none !important;
-    border: none !important;
-    border-radius: 0 !important;
-    border-bottom: 1px solid hsl(var(--border)) !important;
+    border: 1px solid hsl(var(--border)) !important;
+    border-radius: 16px !important;
     box-shadow: none !important;
     overflow: visible !important;
+    position: relative !important;
   }
 
-  /* Remove border from last card */
-  [data-testid^="deep-feature-"]:last-child {
-    border-bottom: none !important;
+  /* First card (top): highest z-index, subtle shadow */
+  [data-testid="deep-feature-0"] {
+    z-index: 6 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
   }
 
-  /* Inner container: horizontal flex layout */
+  /* Subsequent cards: overlap behind previous, lower z-index */
+  [data-testid="deep-feature-1"] {
+    margin-top: -45px !important;
+    z-index: 5 !important;
+  }
+
+  [data-testid="deep-feature-2"] {
+    margin-top: -45px !important;
+    z-index: 4 !important;
+  }
+
+  [data-testid="deep-feature-3"] {
+    margin-top: -45px !important;
+    z-index: 3 !important;
+  }
+
+  [data-testid="deep-feature-4"] {
+    margin-top: -45px !important;
+    z-index: 2 !important;
+  }
+
+  [data-testid="deep-feature-5"] {
+    margin-top: -45px !important;
+    z-index: 1 !important;
+  }
+
+  /* Inner container: vertical text-only layout */
   [data-testid^="deep-feature-"] > div {
     display: flex !important;
-    flex-direction: row !important;
+    flex-direction: column !important;
     align-items: flex-start !important;
-    padding: 16px !important;
-    gap: 14px !important;
+    padding: 20px !important;
+    gap: 0 !important;
   }
 
-  /* Icon container: left side, compact */
+  /* Hide icons completely */
   [data-testid^="deep-feature-"] .h-14 {
-    height: 44px !important;
-    width: 44px !important;
-    min-width: 44px !important;
-    margin-bottom: 0 !important;
-    border-radius: 12px !important;
-    box-shadow: none !important;
-    background: hsl(var(--muted)) !important;
-    flex-shrink: 0 !important;
+    display: none !important;
   }
 
-  [data-testid^="deep-feature-"] .h-14 svg {
-    height: 22px !important;
-    width: 22px !important;
-  }
-
-  /* Disable hover animation on icon */
-  [data-testid^="deep-feature-"]:hover .h-14,
-  [data-testid^="deep-feature-"]:focus .h-14 {
-    transform: none !important;
-  }
-
-  /* Title: compact, right side */
+  /* Title: prominent, left-aligned */
   [data-testid^="deep-feature-"] .text-xl {
-    font-size: 0.95rem !important;
+    font-size: 1rem !important;
     font-weight: 600 !important;
-    margin-bottom: 4px !important;
+    margin-bottom: 6px !important;
     line-height: 1.3 !important;
+    color: hsl(var(--foreground)) !important;
   }
 
-  /* Description: compact, right side */
+  /* Description: compact */
   [data-testid^="deep-feature-"] .mb-6:not(.h-14) {
     margin-bottom: 0 !important;
-    font-size: 0.8rem !important;
-    line-height: 1.45 !important;
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
     color: hsl(var(--muted-foreground)) !important;
   }
 
-  /* Hide feature checklist on mobile for compact ticket style */
+  /* Hide feature checklist on mobile */
   [data-testid^="deep-feature-"] .space-y-3 {
     display: none !important;
   }
