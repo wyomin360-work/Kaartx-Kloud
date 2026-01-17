@@ -655,6 +655,13 @@ body.mobile-menu-open {
     scroll-snap-align: center !important;
   }
 
+  /* Feature section subheading - proper padding on mobile */
+  #feature-grid .text-center p {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    max-width: calc(100vw - 32px) !important;
+  }
+
   /* Hero CTA buttons - compact sizing for mobile */
   [data-testid="button-hero-get-started"],
   [data-testid="button-hero-whatsapp"] {
