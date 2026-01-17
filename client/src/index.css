@@ -763,6 +763,10 @@ body.mobile-menu-open {
 
   .addon-availability {
     text-align: right !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    word-break: break-word !important;
+    hyphens: auto !important;
   }
 
   /* CaseStudy section - compact mobile tiles */
