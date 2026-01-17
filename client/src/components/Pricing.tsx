@@ -86,10 +86,13 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
 
   const addons = [
     { name: 'Custom domain & SSL', price: 10, availability: 'Starter, Growth — Included in Pro', comingSoon: false },
-    { name: 'AI Insights Suite', price: 15, availability: 'All plans', comingSoon: true },
     { name: 'Extra marketplace instance', price: 20, availability: 'Growth, Pro', comingSoon: false },
     { name: 'Extra admin user (per seat)', price: 5, availability: 'All plans', comingSoon: false },
     { name: 'Extra sellers (per 100 sellers)', price: 5, availability: 'Growth, Pro — Available on request for Starter', comingSoon: false },
+  ];
+
+  const upcomingAddons = [
+    { name: 'AI Insights Suite', price: 15, availability: 'All plans', comingSoon: true },
   ];
 
   return (
@@ -240,17 +243,29 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
                   {addon.name}
                 </span>
                 <div className="addon-price-slot flex items-center justify-center">
-                  {addon.comingSoon ? (
-                    <Badge className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 font-bold shadow-sm no-default-hover-elevate">
-                      Coming Soon
-                    </Badge>
-                  ) : (
-                    <span className="text-sm font-medium text-foreground whitespace-nowrap">
-                      OMR {addon.price} / month
-                    </span>
-                  )}
+                  <span className="text-sm font-medium text-foreground whitespace-nowrap">
+                    OMR {addon.price} / month
+                  </span>
                 </div>
                 <span className="addon-availability text-xs text-muted-foreground font-normal">({addon.availability})</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Upcoming add-ons - visually separated */}
+          <div className="flex justify-center mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-border/50">
+            {upcomingAddons.map((addon, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-dashed border-muted-foreground/30 bg-muted/30"
+                data-testid={`badge-addon-upcoming-${index}`}
+              >
+                <span className="text-sm font-medium text-muted-foreground">
+                  {addon.name}
+                </span>
+                <Badge className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 font-bold shadow-sm no-default-hover-elevate">
+                  Coming Soon
+                </Badge>
               </div>
             ))}
           </div>
