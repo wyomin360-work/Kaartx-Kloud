@@ -236,7 +236,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
             {addons.map((addon, index) => (
               <div
                 key={index}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-background hover-elevate"
+                className="flex items-center gap-4 md:gap-2 px-5 py-2.5 rounded-full border border-border bg-background hover-elevate"
                 data-testid={`badge-addon-${index}`}
               >
                 <span className="addon-title text-sm font-medium text-foreground">
