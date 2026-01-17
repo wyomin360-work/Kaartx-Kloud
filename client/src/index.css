@@ -1138,9 +1138,11 @@ body.mobile-menu-open {
     margin-bottom: 10px !important;
   }
 
-  /* Smaller icon container */
+  /* Icon container - remove tinted background on mobile */
   [data-testid^="integration-card-"] .p-3 {
     padding: 8px !important;
+    background: transparent !important;
+    background-color: transparent !important;
   }
 
   [data-testid^="integration-card-"] .h-6 {
