@@ -144,8 +144,8 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[100] transition-[background-color,backdrop-filter,border-color] duration-300 ${
-        isScrolled || isMobileMenuOpen ? 'bg-background/95 backdrop-blur-lg border-b border-border' : 'bg-transparent border-b border-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-300 ${
+        isScrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent border-b border-transparent'
       }`}
       style={{ transform: 'translateZ(0)', willChange: 'transform' }}
     >
@@ -238,16 +238,16 @@ function MobileMenuOverlay({
 
   return (
     <Portal.Root>
-      {/* Backdrop - covers ENTIRE viewport for consistent dimming, click to close */}
+      {/* Backdrop - click to close */}
       <div 
-        className="md:hidden fixed inset-0 bg-black/50 z-[99]"
+        className="md:hidden fixed inset-0 top-16 bg-black/50 z-[100]"
         onClick={onClose}
         data-testid="mobile-menu-backdrop"
         aria-hidden="true"
       />
-      {/* Menu panel - positioned below fixed header (64px = h-16) */}
+      {/* Menu panel */}
       <div 
-        className="md:hidden fixed left-0 right-0 top-16 bg-card/95 backdrop-blur-sm border-t border-border shadow-lg z-[101]"
+        className="md:hidden fixed left-0 right-0 top-16 bg-card/95 backdrop-blur-sm border-t border-border shadow-md z-[101]"
         data-testid="mobile-menu-overlay"
       >
         <div className="px-5 py-4 space-y-1">

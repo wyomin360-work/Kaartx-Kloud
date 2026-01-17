@@ -581,7 +581,7 @@ body.mobile-menu-open {
     overscroll-behavior: none !important;
   }
 
-  /* Fixed navigation at top on mobile - never scrolls away, above backdrop */
+  /* Fixed navigation at top on mobile - never scrolls away */
   nav,
   header,
   .navbar {
@@ -590,7 +590,7 @@ body.mobile-menu-open {
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
-    z-index: 100 !important;
+    z-index: 50 !important;
     transform: none !important;
     transition: background-color 0.3s, backdrop-filter 0.3s, border-color 0.3s !important;
   }
