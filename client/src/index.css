@@ -868,12 +868,16 @@ body.mobile-menu-open {
   }
 
   /* ========================================
-     DeepFeatures - Collapsed/Expanded Stack (Mobile)
-     Accordion-style interaction: tap to expand/collapse
-     Premium compact stack with minimal peek of second card
+     DeepFeatures - Stacked Cards with Accordion (Mobile)
+     STRICT RULES:
+     - First card always visible, height: auto
+     - Second card: only 8-12px peek
+     - Cards 3+: completely hidden
+     - Never absolute on first card
+     - Wrapper has min-height, not fixed height
      ======================================== */
   
-  /* Container: stack layout with overflow control */
+  /* Stack wrapper: relative, overflow hidden, proper height */
   #features .grid,
   [data-testid="deep-features-container"] {
     display: flex !important;
@@ -882,20 +886,21 @@ body.mobile-menu-open {
     padding: 0 !important;
     border: none !important;
     position: relative !important;
-    margin-bottom: 28px !important;
+    margin-bottom: 32px !important;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
 
-  /* Collapsed container: clip hidden cards, reserve proper height */
+  /* Collapsed: overflow hidden to clip cards 3+ */
   [data-testid="deep-features-container"][data-expanded="false"] {
     overflow: hidden !important;
   }
 
-  /* Expanded container: allow content to flow naturally */
+  /* Expanded: natural flow */
   [data-testid="deep-features-container"][data-expanded="true"] {
     overflow: visible !important;
   }
 
-  /* Card: white bg, rounded corners, smooth transitions */
+  /* Base card styles: white, rounded, transitions */
   [data-testid^="deep-feature-"],
   [data-testid^="deep-feature-"].gradient-bg-blue,
   [data-testid^="deep-feature-"].gradient-bg-purple {
@@ -906,15 +911,20 @@ body.mobile-menu-open {
     border-radius: 16px !important;
     box-shadow: none !important;
     overflow: hidden !important;
-    position: relative !important;
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
 
-  /* First card: always fully visible, clickable, shadow */
+  /* ===== FIRST CARD: ALWAYS VISIBLE ===== */
+  /* position: relative (NEVER absolute), height: auto, full opacity */
   [data-testid="deep-feature-0"] {
+    position: relative !important;
     z-index: 10 !important;
+    height: auto !important;
+    opacity: 1 !important;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
     cursor: pointer !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 
   /* Show expand indicator on first card */
@@ -922,41 +932,46 @@ body.mobile-menu-open {
     display: block !important;
   }
 
-  /* ===== COLLAPSED STATE (default) ===== */
-  /* Second card: show only bottom 10px peek */
+  /* ===== COLLAPSED STATE ===== */
+  /* Second card: position relative, show only 10px peek of top edge */
   [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-1"] {
     position: relative !important;
-    margin-top: -100% !important;
-    transform: translateY(calc(100% + 10px)) !important;
+    height: auto !important;
+    margin-top: 10px !important;
+    clip-path: inset(0 0 calc(100% - 10px) 0) !important;
     z-index: 9 !important;
-    opacity: 0.7 !important;
+    opacity: 0.6 !important;
     pointer-events: none !important;
   }
 
-  /* Third card onwards: completely hidden */
+  /* Cards 3-6: completely hidden via clip-path and opacity */
   [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-2"],
   [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-3"],
   [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-4"],
   [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-5"] {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
+    position: relative !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
+    clip-path: inset(100% 0 0 0) !important;
     z-index: 1 !important;
   }
 
   /* ===== EXPANDED STATE ===== */
-  /* All cards fully visible, stacked vertically with gap */
+  /* All cards visible, vertical list with spacing */
   [data-testid="deep-features-container"][data-expanded="true"] [data-testid^="deep-feature-"] {
     position: relative !important;
+    height: auto !important;
     margin-top: 12px !important;
-    transform: translateY(0) !important;
+    clip-path: none !important;
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
+    border: 1px solid hsl(var(--border)) !important;
   }
 
   /* First card in expanded: no top margin */
@@ -964,7 +979,7 @@ body.mobile-menu-open {
     margin-top: 0 !important;
   }
 
-  /* Progressive z-index in expanded state */
+  /* Progressive z-index in expanded */
   [data-testid="deep-features-container"][data-expanded="true"] [data-testid="deep-feature-1"] { z-index: 9 !important; }
   [data-testid="deep-features-container"][data-expanded="true"] [data-testid="deep-feature-2"] { z-index: 8 !important; }
   [data-testid="deep-features-container"][data-expanded="true"] [data-testid="deep-feature-3"] { z-index: 7 !important; }
