@@ -81,7 +81,7 @@ export default function IntegrationsMarquee() {
                 data-testid={`integration-card-${index}`}
               >
                 <div className="flex items-start justify-between mb-4">
-                  <div className={`p-3 rounded-md ${integration.featured ? 'bg-primary/10' : 'bg-muted'}`}>
+                  <div className="p-3 rounded-md">
                     <Icon className={`h-6 w-6 ${integration.featured ? 'text-primary' : 'text-foreground'}`} />
                   </div>
                   {integration.featured && (
