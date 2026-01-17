@@ -12,7 +12,8 @@ import Security from '@/components/Security';
 // import APISection from '@/components/APISection';
 // import Showcase from '@/components/Showcase';
 import Testimonials from '@/components/Testimonials';
-import CaseStudy from '@/components/CaseStudy';
+// TEMPORARILY HIDDEN – TO REVISIT
+// import CaseStudy from '@/components/CaseStudy';
 import Pricing from '@/components/Pricing';
 import FAQ from '@/components/FAQ';
 import About from '@/components/About';
@@ -90,7 +91,8 @@ export default function Home() {
         {/* <APISection /> */}
         {/* <Showcase /> */}
         <Testimonials />
-        <CaseStudy />
+        {/* TEMPORARILY HIDDEN – TO REVISIT */}
+        {/* <CaseStudy /> */}
         <Pricing onOpenSignup={handleOpenSignup} />
         <FAQ />
         <BookingSection />
