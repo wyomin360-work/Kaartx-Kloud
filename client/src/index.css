@@ -638,9 +638,19 @@ body.mobile-menu-open {
 
   /* Feature carousel - snap to center on mobile */
   .feature-carousel {
-    scroll-padding-inline: 10vw !important;
-    padding-inline: 10vw !important;
-    margin-inline: -10vw !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    padding-left: calc(50vw - 40vw) !important;
+    padding-right: calc(50vw - 40vw) !important;
+    scroll-padding-left: calc(50vw - 40vw) !important;
+    scroll-padding-right: calc(50vw - 40vw) !important;
+    width: calc(100% + 32px) !important;
+  }
+  
+  .feature-carousel > * {
+    scroll-snap-align: center !important;
   }
 
   /* Hero CTA buttons - compact sizing for mobile */
