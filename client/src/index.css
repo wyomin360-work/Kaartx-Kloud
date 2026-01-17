@@ -1185,11 +1185,13 @@ body.mobile-menu-open {
     gap: 12px !important;
   }
 
-  /* Smaller icon container */
+  /* Icon container - remove tinted background on mobile */
   [data-testid^="security-feature-"] .h-14 {
     height: 40px !important;
     width: 40px !important;
     border-radius: 12px !important;
+    background: transparent !important;
+    background-color: transparent !important;
   }
 
   [data-testid^="security-feature-"] .h-14 svg {
