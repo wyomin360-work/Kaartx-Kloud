@@ -718,6 +718,13 @@ body.mobile-menu-open {
     width: 100% !important;
     gap: 6px !important;
     box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  /* Force all addon card children to not overflow */
+  [data-testid^="badge-addon-"]:not([data-testid^="badge-addon-upcoming-"]) > * {
+    overflow: hidden !important;
+    min-width: 0 !important;
   }
 
   /* Upcoming add-on cards - full width, centered content */
