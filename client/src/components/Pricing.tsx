@@ -252,15 +252,15 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
             ))}
           </div>
 
-          {/* Upcoming add-ons - visually separated */}
-          <div className="flex justify-center mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-border/50">
+          {/* Upcoming add-ons */}
+          <div className="flex justify-center mt-4 sm:mt-5">
             {upcomingAddons.map((addon, index) => (
               <div
                 key={index}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-dashed border-muted-foreground/30 bg-muted/30"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-background"
                 data-testid={`badge-addon-upcoming-${index}`}
               >
-                <span className="text-sm font-medium text-muted-foreground">
+                <span className="text-sm font-medium text-foreground">
                   {addon.name}
                 </span>
                 <Badge className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 font-bold shadow-sm no-default-hover-elevate">
