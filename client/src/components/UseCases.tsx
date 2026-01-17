@@ -87,7 +87,7 @@ export default function UseCases() {
                     key={key}
                     value={key} 
                     data-testid={`tab-${key}`}
-                    className="flex flex-col items-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-2 border border-border data-[state=active]:bg-background data-[state=active]:shadow-sm data-[state=active]:border-2 data-[state=active]:border-muted-foreground/40 min-h-[60px] sm:min-h-0"
+                    className="flex flex-col items-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-2 border-2 border-transparent data-[state=active]:bg-background data-[state=active]:shadow-sm data-[state=active]:border-muted-foreground/40 min-h-[60px] sm:min-h-0"
                   >
                     <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                     <span className="text-xs sm:text-sm font-semibold leading-tight text-center">{useCase.title}</span>
@@ -106,7 +106,7 @@ export default function UseCases() {
                   key={key}
                   value={key} 
                   data-testid={`tab-${key}`}
-                  className="flex flex-col items-center justify-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-2 border border-border data-[state=active]:bg-background data-[state=active]:shadow-sm data-[state=active]:border-2 data-[state=active]:border-muted-foreground/40 min-h-[60px] sm:min-h-0 w-full md:w-auto"
+                  className="flex flex-col items-center justify-center gap-1.5 sm:gap-2 py-2.5 sm:py-3 px-2 border-2 border-transparent data-[state=active]:bg-background data-[state=active]:shadow-sm data-[state=active]:border-muted-foreground/40 min-h-[60px] sm:min-h-0 w-full md:w-auto"
                 >
                   <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   <span className="text-xs sm:text-sm font-semibold leading-tight text-center">{useCase.title}</span>
