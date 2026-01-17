@@ -17,28 +17,16 @@ type NavItem = {
   testId: string;
 };
 
-// Mobile menu scroll lock
-let mobileMenuScrollY = 0;
-
+// Mobile menu scroll lock - simple overflow: hidden approach
+// Content stays visible at current scroll position
 function lockScrollForMobileMenu() {
-  mobileMenuScrollY = window.scrollY;
   document.documentElement.classList.add('mobile-menu-open');
   document.body.classList.add('mobile-menu-open');
-  document.body.style.top = `-${mobileMenuScrollY}px`;
 }
 
 function unlockScrollForMobileMenu() {
-  // Only restore scroll if the lock is still active
-  const isLocked = document.body.classList.contains('mobile-menu-open');
   document.documentElement.classList.remove('mobile-menu-open');
   document.body.classList.remove('mobile-menu-open');
-  document.body.style.top = '';
-  
-  // Only restore scroll position if we were actually locked
-  // (handleNavClick may have already unlocked for navigation)
-  if (isLocked) {
-    window.scrollTo(0, mobileMenuScrollY);
-  }
 }
 
 export default function Navbar({ onOpenSignup }: NavbarProps) {
@@ -63,11 +51,10 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      // When modal or mobile menu is open, body has position: fixed and window.scrollY is 0
+      // When modal is open, body has position: fixed and window.scrollY is 0
       // Read the actual scroll position from body.style.top (stored as negative value)
       let scrollPosition = window.scrollY;
-      if (document.body.classList.contains('modal-open-mobile') || 
-          document.body.classList.contains('mobile-menu-open')) {
+      if (document.body.classList.contains('modal-open-mobile')) {
         const bodyTop = document.body.style.top;
         if (bodyTop) {
           scrollPosition = Math.abs(parseInt(bodyTop, 10));
@@ -124,16 +111,6 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   };
 
   const handleNavClick = (item: NavItem, e?: React.MouseEvent) => {
-    // For scroll navigation, unlock scroll first without restoring position
-    // so navigateToSection can scroll to the target
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if (isMobile && isMobileMenuOpen) {
-      // Remove scroll lock classes but DON'T restore scroll position
-      document.documentElement.classList.remove('mobile-menu-open');
-      document.body.classList.remove('mobile-menu-open');
-      document.body.style.top = '';
-    }
-    
     setIsMobileMenuOpen(false);
     
     if (item.type === 'scroll') {
