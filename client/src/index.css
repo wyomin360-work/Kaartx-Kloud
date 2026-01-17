@@ -905,7 +905,7 @@ body.mobile-menu-open {
     overflow: visible !important;
   }
 
-  /* Base card styles: white, rounded, transitions */
+  /* Base card styles: white, rounded, NO transitions on non-first cards */
   [data-testid^="deep-feature-"],
   [data-testid^="deep-feature-"].gradient-bg-blue,
   [data-testid^="deep-feature-"].gradient-bg-purple {
@@ -916,10 +916,42 @@ body.mobile-menu-open {
     border-radius: 16px !important;
     box-shadow: none !important;
     overflow: hidden !important;
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transition: none !important;
   }
 
-  /* ===== FIRST CARD: ALWAYS VISIBLE ===== */
+  /* Disable ALL interactive states on non-first cards */
+  [data-testid="deep-feature-1"],
+  [data-testid="deep-feature-2"],
+  [data-testid="deep-feature-3"],
+  [data-testid="deep-feature-4"],
+  [data-testid="deep-feature-5"] {
+    pointer-events: none !important;
+    outline: none !important;
+  }
+
+  /* Prevent focus/hover/active states on non-first cards */
+  [data-testid="deep-feature-1"]:focus,
+  [data-testid="deep-feature-1"]:hover,
+  [data-testid="deep-feature-1"]:active,
+  [data-testid="deep-feature-2"]:focus,
+  [data-testid="deep-feature-2"]:hover,
+  [data-testid="deep-feature-2"]:active,
+  [data-testid="deep-feature-3"]:focus,
+  [data-testid="deep-feature-3"]:hover,
+  [data-testid="deep-feature-3"]:active,
+  [data-testid="deep-feature-4"]:focus,
+  [data-testid="deep-feature-4"]:hover,
+  [data-testid="deep-feature-4"]:active,
+  [data-testid="deep-feature-5"]:focus,
+  [data-testid="deep-feature-5"]:hover,
+  [data-testid="deep-feature-5"]:active {
+    border: 1px solid hsl(var(--border)) !important;
+    box-shadow: none !important;
+    outline: none !important;
+    transform: none !important;
+  }
+
+  /* ===== FIRST CARD: ALWAYS VISIBLE, INTERACTIVE ===== */
   /* position: relative (NEVER absolute), height: auto, full opacity */
   [data-testid="deep-feature-0"] {
     position: relative !important;
@@ -930,6 +962,8 @@ body.mobile-menu-open {
     cursor: pointer !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
+    pointer-events: auto !important;
+    transition: box-shadow 0.2s ease !important;
   }
 
   /* Show expand indicator on first card */
