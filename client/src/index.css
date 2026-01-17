@@ -870,17 +870,29 @@ body.mobile-menu-open {
   /* ========================================
      DeepFeatures - Collapsed/Expanded Stack (Mobile)
      Accordion-style interaction: tap to expand/collapse
+     Premium compact stack with minimal peek of second card
      ======================================== */
   
-  /* Container: stack layout */
+  /* Container: stack layout with overflow control */
   #features .grid,
   [data-testid="deep-features-container"] {
     display: flex !important;
     flex-direction: column !important;
     gap: 0 !important;
     padding: 0 !important;
-    overflow: visible !important;
     border: none !important;
+    position: relative !important;
+    margin-bottom: 28px !important;
+  }
+
+  /* Collapsed container: clip hidden cards, reserve proper height */
+  [data-testid="deep-features-container"][data-expanded="false"] {
+    overflow: hidden !important;
+  }
+
+  /* Expanded container: allow content to flow naturally */
+  [data-testid="deep-features-container"][data-expanded="true"] {
+    overflow: visible !important;
   }
 
   /* Card: white bg, rounded corners, smooth transitions */
@@ -911,11 +923,14 @@ body.mobile-menu-open {
   }
 
   /* ===== COLLAPSED STATE (default) ===== */
-  /* Second card: show only top edge (15%) */
+  /* Second card: show only bottom 10px peek */
   [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-1"] {
-    margin-top: -70px !important;
+    position: relative !important;
+    margin-top: -100% !important;
+    transform: translateY(calc(100% + 10px)) !important;
     z-index: 9 !important;
-    opacity: 0.9 !important;
+    opacity: 0.7 !important;
+    pointer-events: none !important;
   }
 
   /* Third card onwards: completely hidden */
@@ -923,22 +938,25 @@ body.mobile-menu-open {
   [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-3"],
   [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-4"],
   [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-5"] {
-    margin-top: -100% !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
     opacity: 0 !important;
     visibility: hidden !important;
-    height: 0 !important;
-    padding: 0 !important;
-    border: none !important;
+    pointer-events: none !important;
     z-index: 1 !important;
   }
 
   /* ===== EXPANDED STATE ===== */
   /* All cards fully visible, stacked vertically with gap */
   [data-testid="deep-features-container"][data-expanded="true"] [data-testid^="deep-feature-"] {
+    position: relative !important;
     margin-top: 12px !important;
+    transform: translateY(0) !important;
     opacity: 1 !important;
     visibility: visible !important;
-    height: auto !important;
+    pointer-events: auto !important;
   }
 
   /* First card in expanded: no top margin */
