@@ -24,7 +24,7 @@ export default function FAQ() {
       answer: 'Absolutely. All plans include basic branding customization. Growth and Enterprise plans get full white-label capabilities with custom domains.',
     },
     {
-      question: 'How does seller subscription management work?',
+      question: 'How does seller subscription work?',
       answer: 'You create subscription plans (monthly/yearly) and sellers pay via TAP. Auto-renewal handles recurring payments, and you can suspend/reactivate sellers as needed.',
     },
     {
