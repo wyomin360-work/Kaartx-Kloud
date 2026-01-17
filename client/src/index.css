@@ -640,13 +640,15 @@ body.mobile-menu-open {
   .feature-carousel {
     scroll-snap-type: x mandatory !important;
     -webkit-overflow-scrolling: touch !important;
+    /* Match page margins: 16px on each side */
     margin-left: -16px !important;
     margin-right: -16px !important;
-    padding-left: calc(50vw - 40vw) !important;
-    padding-right: calc(50vw - 40vw) !important;
-    scroll-padding-left: calc(50vw - 40vw) !important;
-    scroll-padding-right: calc(50vw - 40vw) !important;
-    width: calc(100% + 32px) !important;
+    width: 100vw !important;
+    /* Symmetrical padding matching page margins */
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    scroll-padding-left: calc((100vw - 80vw) / 2) !important;
+    scroll-padding-right: calc((100vw - 80vw) / 2) !important;
   }
   
   .feature-carousel > * {
