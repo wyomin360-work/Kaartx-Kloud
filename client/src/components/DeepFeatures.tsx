@@ -1,8 +1,11 @@
-import { ShoppingCart, FileText, Truck, Wallet, Tag, BarChart3, Check } from 'lucide-react';
+import { useState } from 'react';
+import { ShoppingCart, FileText, Truck, Wallet, Tag, BarChart3, Check, ChevronDown } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function DeepFeatures() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const features = [
     {
       icon: ShoppingCart,
@@ -69,11 +72,21 @@ export default function DeepFeatures() {
         <div 
           ref={cardsAnimation.ref}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-8"
+          data-expanded={isExpanded}
+          data-testid="deep-features-container"
         >
           {features.map((feature, index) => {
             const Icon = feature.icon;
             const gradients = ['gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue', 'gradient-bg-purple'];
             const stagger = ['', 'stagger-1', 'stagger-2', 'stagger-3', 'stagger-4', 'stagger-5'];
+
+            // First card is clickable on mobile to toggle expansion
+            const isFirstCard = index === 0;
+            const handleCardClick = () => {
+              if (isFirstCard && window.matchMedia('(max-width: 768px)').matches) {
+                setIsExpanded(!isExpanded);
+              }
+            };
 
             return (
               <Card
@@ -81,6 +94,9 @@ export default function DeepFeatures() {
                 data-testid={`deep-feature-${index}`}
                 className={`group hover-elevate transition-all duration-300 rounded-2xl border-2 overflow-visible ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
                 tabIndex={0}
+                onClick={handleCardClick}
+                role={isFirstCard ? 'button' : undefined}
+                aria-expanded={isFirstCard ? isExpanded : undefined}
               >
                 <div className="relative p-8">
                   {/* Icon with Hover Animation */}
@@ -105,6 +121,15 @@ export default function DeepFeatures() {
                       </li>
                     ))}
                   </ul>
+
+                  {/* Mobile expand indicator on first card */}
+                  {isFirstCard && (
+                    <div className="deep-features-expand-indicator absolute bottom-3 left-1/2 -translate-x-1/2 hidden">
+                      <ChevronDown 
+                        className={`h-5 w-5 text-muted-foreground transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} 
+                      />
+                    </div>
+                  )}
                 </div>
               </Card>
             );
