@@ -46,7 +46,7 @@ export default function FeatureGrid() {
 
         <div 
           ref={cardsAnimation.ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 -mx-4 pb-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:px-0 md:-mx-0 md:pb-0 md:overflow-visible"
         >
           {features.map((feature, index) => {
             const Icon = feature.icon;
@@ -55,7 +55,7 @@ export default function FeatureGrid() {
             return (
               <Card
                 key={index}
-                className={`hover-elevate transition-all duration-300 hover:scale-105 rounded-2xl border-2 ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
+                className={`flex-shrink-0 w-[80vw] snap-center md:w-auto md:flex-shrink hover-elevate transition-all duration-300 hover:scale-105 rounded-2xl border-2 ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
                 data-testid={`card-feature-${index}`}
               >
                 <CardHeader>
