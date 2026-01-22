@@ -1334,26 +1334,59 @@ body.mobile-menu-open {
     line-height: 1.5 !important;
   }
 
-  /* Smooth accordion animation on mobile */
+  /* ========================================
+     ULTRA SMOOTH FAQ ACCORDION - Mobile Only
+     Premium buttery-smooth open/close animation
+     ======================================== */
+
+  /* Force GPU compositing on accordion items */
   [data-testid="accordion-faq"] [data-radix-collection-item] {
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
+    contain: layout style;
   }
 
-  [data-testid="accordion-faq"] [data-state="open"] > [role="region"],
-  [data-testid="accordion-faq"] [data-state="closed"] > [role="region"] {
-    will-change: height, opacity;
+  /* Override Radix default animation - use max-height approach */
+  [data-testid="accordion-faq"] [role="region"] {
+    /* Disable Radix height animation */
+    animation: none !important;
+    /* Use max-height transition instead */
+    overflow: hidden !important;
+    transition: max-height 300ms cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 300ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+    will-change: max-height, opacity;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
 
+  /* Closed state - collapsed */
+  [data-testid="accordion-faq"] [data-state="closed"] > [role="region"] {
+    max-height: 0 !important;
+    opacity: 0 !important;
+  }
+
+  /* Open state - expanded with generous max-height */
+  [data-testid="accordion-faq"] [data-state="open"] > [role="region"] {
+    max-height: 500px !important;
+    opacity: 1 !important;
+  }
+
   /* Smoother chevron rotation */
   [data-testid^="faq-question-"] svg {
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1) !important;
     will-change: transform;
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
+  }
+
+  [data-testid="accordion-faq"] [data-state="open"] [data-testid^="faq-question-"] svg {
+    transform: translateZ(0) rotate(180deg) !important;
+  }
+
+  [data-testid="accordion-faq"] [data-state="closed"] [data-testid^="faq-question-"] svg {
+    transform: translateZ(0) rotate(0deg) !important;
   }
 
   /* Booking section - constrain widget height on mobile */
