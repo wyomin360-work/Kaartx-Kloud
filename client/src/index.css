@@ -556,6 +556,15 @@ body.modal-open-mobile {
   -webkit-overflow-scrolling: none !important;
 }
 
+/* Freeze navbar visually during modal open - no transitions */
+.modal-open-mobile nav,
+.modal-open-mobile header,
+.modal-open-mobile .navbar,
+html.modal-open-mobile nav,
+body.modal-open-mobile nav {
+  transition: none !important;
+}
+
 /* Mobile menu scroll lock - simpler approach, just prevent scrolling
    without position: fixed so content stays visible at current scroll */
 html.mobile-menu-open,
