@@ -221,7 +221,7 @@ function MobileMenuOverlay({
       />
       {/* Menu panel */}
       <div 
-        className="md:hidden fixed left-0 right-0 top-16 bg-card/95 backdrop-blur-sm border-t border-border shadow-md z-[101]"
+        className="md:hidden fixed left-0 right-0 top-16 bg-background border-t border-border shadow-md z-[101]"
         data-testid="mobile-menu-overlay"
       >
         <div className="px-5 py-4 space-y-1">
