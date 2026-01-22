@@ -115,12 +115,13 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-300 ${
-        isScrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent border-b border-transparent'
-      }`}
-      style={{ transform: 'translate3d(0,0,0)' }}
-    >
+    <Portal.Root>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-300 ${
+          isScrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent border-b border-transparent'
+        }`}
+        style={{ transform: 'translate3d(0,0,0)' }}
+      >
       <div className="px-6">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
@@ -188,7 +189,8 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
         mobileOnlyNavItems={mobileOnlyNavItems}
         onNavClick={handleNavClick}
       />
-    </nav>
+      </nav>
+    </Portal.Root>
   );
 }
 

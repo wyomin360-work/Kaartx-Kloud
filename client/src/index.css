@@ -554,23 +554,33 @@ body.modal-open-mobile {
   overflow: hidden !important;
   touch-action: none !important;
   -webkit-overflow-scrolling: none !important;
+  /* Ensure no margin/padding changes */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure root div doesn't shift */
+html.modal-open-mobile #root,
+body.modal-open-mobile #root {
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
 }
 
 /* Freeze navbar completely during modal open - absolute lock */
-.modal-open-mobile nav,
-.modal-open-mobile header,
-.modal-open-mobile .navbar,
 html.modal-open-mobile nav,
-body.modal-open-mobile nav {
+body.modal-open-mobile nav,
+.modal-open-mobile nav {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
+  margin: 0 !important;
+  padding-top: 0 !important;
   transform: translate3d(0, 0, 0) !important;
   -webkit-transform: translate3d(0, 0, 0) !important;
   transition: none !important;
   animation: none !important;
-  will-change: auto !important;
 }
 
 /* Disable modal zoom animation on mobile to prevent layout shifts */
