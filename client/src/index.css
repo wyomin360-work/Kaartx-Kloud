@@ -548,11 +548,9 @@ body[data-scroll-locked] {
    Applied via JS only on mobile devices
    ======================================== */
 
-/* Modal scroll lock - uses position fixed to freeze at scroll position */
+/* Modal scroll lock - NO position changes to prevent header jitter */
 html.modal-open-mobile,
 body.modal-open-mobile {
-  position: fixed !important;
-  width: 100% !important;
   overflow: hidden !important;
   touch-action: none !important;
   -webkit-overflow-scrolling: none !important;
@@ -619,30 +617,11 @@ body.mobile-menu-open {
     right: 0 !important;
     width: 100% !important;
     z-index: 50 !important;
-    /* GPU-accelerated layer prevents repositioning during modal transitions */
+    /* GPU-accelerated layer for stable rendering */
     transform: translateZ(0) !important;
     -webkit-transform: translateZ(0) !important;
-    -webkit-backface-visibility: hidden !important;
-    backface-visibility: hidden !important;
     /* Only animate visual properties, never position */
     transition: background-color 0.3s, backdrop-filter 0.3s, border-color 0.3s !important;
-    /* Ensure stable during body position changes */
-    contain: layout style !important;
-  }
-
-  /* Lock navbar position during modal open - prevent any movement */
-  .modal-open-mobile nav,
-  .modal-open-mobile header,
-  .modal-open-mobile .navbar,
-  html.modal-open-mobile nav,
-  html.modal-open-mobile header,
-  body.modal-open-mobile nav,
-  body.modal-open-mobile header {
-    position: fixed !important;
-    top: 0 !important;
-    transform: translateZ(0) !important;
-    -webkit-transform: translateZ(0) !important;
-    will-change: auto !important;
   }
 
   /* Modal must NOT affect page layout - fixed overlay with internal scroll */

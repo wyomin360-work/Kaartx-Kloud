@@ -29,17 +29,14 @@ function unlockBodyScrollDesktop() {
   document.body.style.paddingRight = '';
 }
 
-// MOBILE: Full scroll lock - prevents all background scrolling
+// MOBILE: Scroll lock WITHOUT position changes - prevents header jitter
 function lockBodyScrollMobile() {
   // Save current scroll position
   scrollY = window.scrollY;
   
-  // Add class to html element for CSS-based lock
+  // Add class for CSS-based lock (NO position: fixed on body)
   document.documentElement.classList.add('modal-open-mobile');
   document.body.classList.add('modal-open-mobile');
-  
-  // Set body position to preserve visual position
-  document.body.style.top = `-${scrollY}px`;
   
   // Prevent touchmove on body (but allow on modal content)
   touchMoveHandler = (e: TouchEvent) => {
@@ -54,27 +51,15 @@ function lockBodyScrollMobile() {
 }
 
 function unlockBodyScrollMobile() {
-  // Cache scroll position before any changes
-  const savedScrollY = scrollY;
-  
-  // Remove touch handler first
+  // Remove touch handler
   if (touchMoveHandler) {
     document.removeEventListener('touchmove', touchMoveHandler);
     touchMoveHandler = null;
   }
   
-  // Batch all DOM changes in a single frame to prevent header jitter
-  requestAnimationFrame(() => {
-    // Clear body styles first
-    document.body.style.top = '';
-    
-    // Remove classes
-    document.documentElement.classList.remove('modal-open-mobile');
-    document.body.classList.remove('modal-open-mobile');
-    
-    // Restore scroll position immediately in same frame
-    window.scrollTo({ top: savedScrollY, behavior: 'instant' });
-  });
+  // Remove classes - no scroll restoration needed since we didn't change position
+  document.documentElement.classList.remove('modal-open-mobile');
+  document.body.classList.remove('modal-open-mobile');
 }
 
 function lockBodyScroll() {
