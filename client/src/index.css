@@ -952,12 +952,12 @@ body.mobile-menu-open {
     overflow: visible !important;
   }
 
-  /* Base card styles: white, rounded, NO transitions on non-first cards */
+  /* Base card styles: match FeatureGrid card background, rounded, NO transitions on non-first cards */
   [data-testid^="deep-feature-"],
   [data-testid^="deep-feature-"].gradient-bg-blue,
   [data-testid^="deep-feature-"].gradient-bg-purple {
-    background: #ffffff !important;
-    background-color: #ffffff !important;
+    background: hsl(var(--card)) !important;
+    background-color: hsl(var(--card)) !important;
     background-image: none !important;
     border: 1px solid hsl(var(--border)) !important;
     border-radius: 16px !important;
