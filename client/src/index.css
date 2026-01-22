@@ -1521,10 +1521,11 @@ body.mobile-menu-open {
     }
   }
 
-  /* Pause animation on touch/hover */
-  .auto-scroll-track:hover,
-  .auto-scroll-track:active {
-    animation-play-state: paused !important;
+  /* Pause animation on hover - ONLY for devices with true hover (not touch) */
+  @media (hover: hover) {
+    .auto-scroll-track:hover {
+      animation-play-state: paused !important;
+    }
   }
 
   /* Mobile stat cards - fixed width for consistent sizing */
