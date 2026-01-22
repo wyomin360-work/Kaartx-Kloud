@@ -1334,6 +1334,28 @@ body.mobile-menu-open {
     line-height: 1.5 !important;
   }
 
+  /* Smooth accordion animation on mobile */
+  [data-testid="accordion-faq"] [data-radix-collection-item] {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  [data-testid="accordion-faq"] [data-state="open"] > [role="region"],
+  [data-testid="accordion-faq"] [data-state="closed"] > [role="region"] {
+    will-change: height, opacity;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* Smoother chevron rotation */
+  [data-testid^="faq-question-"] svg {
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
   /* Booking section - constrain widget height on mobile */
   #booking {
     padding-top: 48px !important;
