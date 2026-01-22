@@ -573,6 +573,26 @@ body.mobile-menu-open {
    ======================================== */
 @media (max-width: 768px) {
   /* ========================================
+     FIX STICKY HOVER/ACTIVE STATES ON TOUCH
+     Prevents "stuck" states after touch ends
+     ======================================== */
+
+  /* Disable hover effects on touch devices */
+  @media (hover: none) {
+    .hover-elevate:hover::after,
+    .hover-elevate-2:hover::after {
+      background-color: transparent !important;
+    }
+    
+    /* Reset button/interactive hover states */
+    button:hover,
+    a:hover,
+    [role="button"]:hover {
+      filter: none !important;
+    }
+  }
+
+  /* ========================================
      PREVENT LAYOUT SHIFT - Critical Fixes
      Zero JS body manipulation on mobile
      ======================================== */
