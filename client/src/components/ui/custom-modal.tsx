@@ -54,21 +54,27 @@ function lockBodyScrollMobile() {
 }
 
 function unlockBodyScrollMobile() {
-  // Remove classes
-  document.documentElement.classList.remove('modal-open-mobile');
-  document.body.classList.remove('modal-open-mobile');
+  // Cache scroll position before any changes
+  const savedScrollY = scrollY;
   
-  // Clear body styles
-  document.body.style.top = '';
-  
-  // Restore scroll position
-  window.scrollTo(0, scrollY);
-  
-  // Remove touch handler
+  // Remove touch handler first
   if (touchMoveHandler) {
     document.removeEventListener('touchmove', touchMoveHandler);
     touchMoveHandler = null;
   }
+  
+  // Batch all DOM changes in a single frame to prevent header jitter
+  requestAnimationFrame(() => {
+    // Clear body styles first
+    document.body.style.top = '';
+    
+    // Remove classes
+    document.documentElement.classList.remove('modal-open-mobile');
+    document.body.classList.remove('modal-open-mobile');
+    
+    // Restore scroll position immediately in same frame
+    window.scrollTo({ top: savedScrollY, behavior: 'instant' });
+  });
 }
 
 function lockBodyScroll() {

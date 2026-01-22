@@ -619,8 +619,30 @@ body.mobile-menu-open {
     right: 0 !important;
     width: 100% !important;
     z-index: 50 !important;
-    transform: none !important;
+    /* GPU-accelerated layer prevents repositioning during modal transitions */
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+    /* Only animate visual properties, never position */
     transition: background-color 0.3s, backdrop-filter 0.3s, border-color 0.3s !important;
+    /* Ensure stable during body position changes */
+    contain: layout style !important;
+  }
+
+  /* Lock navbar position during modal open - prevent any movement */
+  .modal-open-mobile nav,
+  .modal-open-mobile header,
+  .modal-open-mobile .navbar,
+  html.modal-open-mobile nav,
+  html.modal-open-mobile header,
+  body.modal-open-mobile nav,
+  body.modal-open-mobile header {
+    position: fixed !important;
+    top: 0 !important;
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    will-change: auto !important;
   }
 
   /* Modal must NOT affect page layout - fixed overlay with internal scroll */
