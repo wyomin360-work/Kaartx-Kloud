@@ -824,12 +824,14 @@ body.mobile-menu-open {
     display: grid !important;
     grid-template-columns: 1fr 100px 1fr !important;
     align-items: center !important;
-    min-height: 56px !important;
+    height: 64px !important;
+    min-height: 64px !important;
     padding: 10px 14px !important;
-    line-height: 1.4 !important;
+    line-height: 1.3 !important;
     border-radius: 16px !important;
     width: 100% !important;
     gap: 8px !important;
+    box-sizing: border-box !important;
   }
 
   /* Upcoming add-on cards - match regular add-on card styling exactly */
@@ -838,9 +840,10 @@ body.mobile-menu-open {
     flex-direction: row !important;
     justify-content: center !important;
     align-items: center !important;
-    min-height: 56px !important;
+    height: 64px !important;
+    min-height: 64px !important;
     padding: 10px 14px !important;
-    line-height: 1.4 !important;
+    line-height: 1.3 !important;
     border-radius: 16px !important;
     width: 100% !important;
     gap: 8px !important;
