@@ -832,7 +832,7 @@ body.mobile-menu-open {
     gap: 8px !important;
   }
 
-  /* Upcoming add-on cards - full width, centered content */
+  /* Upcoming add-on cards - match regular add-on card styling exactly */
   [data-testid^="badge-addon-upcoming-"] {
     display: flex !important;
     flex-direction: row !important;
@@ -844,12 +844,21 @@ body.mobile-menu-open {
     border-radius: 16px !important;
     width: 100% !important;
     gap: 8px !important;
+    box-sizing: border-box !important;
   }
 
-  /* Upcoming add-ons container - full width on mobile */
+  /* Upcoming add-ons container - full width on mobile, match addon-container gap */
   .addon-container + div {
     width: 100% !important;
     margin-top: 8px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  /* Ensure upcoming add-on inner content matches */
+  [data-testid^="badge-addon-upcoming-"] > span {
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
   }
 
   .addon-title {
