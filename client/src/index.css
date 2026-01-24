@@ -288,6 +288,13 @@ body[data-scroll-locked] {
     background-color: #ffffff !important;
   }
 
+  /* Desktop: icon container blends into card (no separate background) */
+  .deep-feature-card .h-14.w-14 {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
   /* Animated Gradient Border */
   .gradient-border {
     position: relative;
