@@ -293,6 +293,11 @@ body[data-scroll-locked] {
     display: none !important;
   }
 
+  /* Desktop: blue border matching HowItWorks cards (border-2 border-primary) */
+  .deep-feature-card {
+    border: 2px solid hsl(var(--primary)) !important;
+  }
+
   /* Animated Gradient Border */
   .gradient-border {
     position: relative;
