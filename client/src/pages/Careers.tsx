@@ -317,19 +317,7 @@ export default function Careers() {
               <div className="view-all-roles-btn mt-4 md:hidden">
                 <Button
                   variant="outline"
-                  onClick={() => {
-                    if (showAllRoles) {
-                      setShowAllRoles(false);
-                      setTimeout(() => {
-                        const section = document.getElementById('open-roles');
-                        if (section) {
-                          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }
-                      }, 100);
-                    } else {
-                      setShowAllRoles(true);
-                    }
-                  }}
+                  onClick={() => setShowAllRoles(!showAllRoles)}
                   className="w-full flex items-center justify-center gap-2 h-10 text-sm font-medium rounded-xl"
                   data-testid="button-view-all-roles"
                 >
