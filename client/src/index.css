@@ -282,10 +282,17 @@ body[data-scroll-locked] {
   }
 
   /* DeepFeatures cards background control */
-  /* Desktop: pure white background */
-  .deep-feature-card {
-    background: #ffffff !important;
-    background-color: #ffffff !important;
+  /* Desktop: match FeatureGrid gradient backgrounds (alternating purple/blue) */
+  [data-testid="deep-feature-0"],
+  [data-testid="deep-feature-2"],
+  [data-testid="deep-feature-4"] {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(30, 42, 94, 0.05) 100%) !important;
+  }
+  
+  [data-testid="deep-feature-1"],
+  [data-testid="deep-feature-3"],
+  [data-testid="deep-feature-5"] {
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%) !important;
   }
 
   /* Desktop: hide icons completely */
