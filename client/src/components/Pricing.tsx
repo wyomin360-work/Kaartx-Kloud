@@ -275,18 +275,18 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
           Prices exclude VAT where applicable. Billing via TAP Payments.
         </p>
 
-        <p className="text-center text-xs text-muted-foreground max-w-2xl mx-auto mt-6" data-testid="text-pricing-bridge-cta">
-          Looking for a fully branded, dedicated deployment?{' '}
+        <div className="text-center text-xs text-muted-foreground max-w-2xl mx-auto mt-6 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-0" data-testid="text-pricing-bridge-cta">
+          <span>Looking for a fully branded, dedicated deployment?</span>
           <a 
             href="https://wa.me/96898209353" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-primary font-medium cursor-pointer hover:underline transition-colors"
+            className="text-primary font-medium cursor-pointer hover:underline transition-colors sm:ml-1 py-2 sm:py-0 px-4 sm:px-0"
             data-testid="link-talk-to-us"
           >
             Talk to us
           </a>
-        </p>
+        </div>
       </div>
     </section>
   );
