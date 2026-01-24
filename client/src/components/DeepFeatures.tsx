@@ -77,7 +77,6 @@ export default function DeepFeatures() {
         >
           {features.map((feature, index) => {
             const Icon = feature.icon;
-            const gradients = ['gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue', 'gradient-bg-purple'];
             const stagger = ['', 'stagger-1', 'stagger-2', 'stagger-3', 'stagger-4', 'stagger-5'];
 
             // First card is clickable on mobile to toggle expansion
@@ -92,7 +91,7 @@ export default function DeepFeatures() {
               <Card
                 key={index}
                 data-testid={`deep-feature-${index}`}
-                className={`group hover-elevate transition-all duration-300 rounded-2xl border-2 overflow-visible ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
+                className={`group hover-elevate transition-all duration-300 rounded-2xl border-2 border-primary/20 overflow-visible bg-card/60 animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
                 tabIndex={0}
                 onClick={handleCardClick}
                 role={isFirstCard ? 'button' : undefined}
