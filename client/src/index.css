@@ -282,42 +282,10 @@ body[data-scroll-locked] {
   }
 
   /* DeepFeatures cards background control */
-  /* Desktop: match StatsBar metric card background (bg-card/60 with gradient overlays) */
+  /* Desktop: pure white background */
   .deep-feature-card {
-    background: hsl(var(--card) / 0.6) !important;
-    background-color: hsl(var(--card) / 0.6) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    position: relative !important;
-    overflow: hidden !important;
-  }
-
-  /* Gradient overlay 1: from-primary/5 via-transparent to-transparent */
-  .deep-feature-card::before {
-    content: '' !important;
-    position: absolute !important;
-    inset: 0 !important;
-    background: linear-gradient(to bottom right, hsl(var(--primary) / 0.05), transparent, transparent) !important;
-    border-radius: inherit !important;
-    pointer-events: none !important;
-    z-index: 0 !important;
-  }
-
-  /* Gradient overlay 2: from-background/10 to-transparent */
-  .deep-feature-card::after {
-    content: '' !important;
-    position: absolute !important;
-    inset: 0 !important;
-    background: linear-gradient(to top, hsl(var(--background) / 0.1), transparent) !important;
-    border-radius: inherit !important;
-    pointer-events: none !important;
-    z-index: 0 !important;
-  }
-
-  /* Ensure card content stays above overlays */
-  .deep-feature-card > * {
-    position: relative !important;
-    z-index: 1 !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
   }
 
   /* Desktop: hide icons completely */
