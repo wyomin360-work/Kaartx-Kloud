@@ -293,6 +293,44 @@ body[data-scroll-locked] {
     background: transparent !important;
     background-color: transparent !important;
     box-shadow: none !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Desktop: icon and title on same row */
+  .deep-feature-card .relative.p-8 {
+    display: grid !important;
+    grid-template-columns: auto 1fr !important;
+    grid-template-rows: auto auto auto !important;
+    column-gap: 1rem !important;
+    align-items: start !important;
+  }
+
+  /* Icon: positioned in first column, first row, vertically centered with title */
+  .deep-feature-card .h-14.w-14 {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    align-self: center !important;
+  }
+
+  /* Title: positioned in second column, first row */
+  .deep-feature-card .text-xl {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    align-self: center !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Description: spans full width below icon/title row */
+  .deep-feature-card .text-muted-foreground.mb-6 {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    margin-top: 1rem !important;
+  }
+
+  /* Feature list: spans full width at bottom */
+  .deep-feature-card .space-y-3 {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
   }
 
   /* Animated Gradient Border */
