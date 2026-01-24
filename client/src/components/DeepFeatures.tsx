@@ -91,7 +91,7 @@ export default function DeepFeatures() {
               <Card
                 key={index}
                 data-testid={`deep-feature-${index}`}
-                className={`group hover-elevate transition-all duration-300 rounded-2xl border-2 border-primary/20 overflow-visible bg-card/60 animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
+                className={`group hover-elevate transition-all duration-300 rounded-2xl border-2 border-primary/20 overflow-visible deep-feature-card animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
                 tabIndex={0}
                 onClick={handleCardClick}
                 role={isFirstCard ? 'button' : undefined}

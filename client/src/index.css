@@ -281,12 +281,11 @@ body[data-scroll-locked] {
     border: 1px solid rgba(255, 255, 255, 0.3);
   }
 
-  /* Desktop: DeepFeatures cards use pure white background (matching HowItWorks cards) */
-  @media (min-width: 769px) {
-    [data-testid^="deep-feature-"] {
-      background: white !important;
-      background-color: white !important;
-    }
+  /* DeepFeatures cards background control */
+  /* Desktop: pure white (matching HowItWorks cards) */
+  .deep-feature-card {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
   }
 
   /* Animated Gradient Border */
@@ -1025,8 +1024,7 @@ body.mobile-menu-open {
 
   /* Base card styles: match FeatureGrid card background & border, NO transitions on non-first cards */
   [data-testid^="deep-feature-"],
-  [data-testid^="deep-feature-"].gradient-bg-blue,
-  [data-testid^="deep-feature-"].gradient-bg-purple {
+  .deep-feature-card {
     background: hsl(var(--card) / 0.6) !important;
     background-color: hsl(var(--card) / 0.6) !important;
     background-image: none !important;
