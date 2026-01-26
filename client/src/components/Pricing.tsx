@@ -55,7 +55,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
         'Advanced analytics dashboards',
         'White-label via Custom Domain + SSL (add-on)',
         'Configurable payout cycles',
-        'Priority chat & WhatsApp support',
+        'Priority email & WhatsApp support',
         'Bulk product uploads + workflow automations',
       ],
       cta: 'Request Growth Setup',
