@@ -37,7 +37,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
         'Basic branding (logo + colors)',
         'Default 12-day payout cycle',
         'Email & WhatsApp support',
-        'Seller subscriptions (monthly/yearly)',
+        'Seller subscriptions (monthly/yearly billing support)',
       ],
       cta: 'Request Starter Setup',
       highlighted: false,
