@@ -197,7 +197,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
                 <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8 flex-1">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center gap-3" data-testid={`feature-${index}-${featureIndex}`}>
-                      <div className="h-5 w-5 rounded-full bg-card flex items-center justify-center flex-shrink-0">
+                      <div className="h-5 w-5 rounded-full bg-card border border-primary flex items-center justify-center flex-shrink-0">
                         <Check className="h-3 w-3 text-primary" />
                       </div>
                       <span className="text-sm text-muted-foreground">{feature}</span>
