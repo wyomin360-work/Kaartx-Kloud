@@ -153,7 +153,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
               >
                 {billingPeriod === 'yearly' && (
                   <Badge 
-                    className="absolute top-4 right-4 bg-primary/10 text-primary border-primary/20 font-bold no-default-hover-elevate"
+                    className="absolute top-4 right-4 bg-card text-primary border-primary/20 font-bold no-default-hover-elevate"
                     data-testid={`badge-savings-${index}`}
                   >
                     Save {plan.savingsPercent}
