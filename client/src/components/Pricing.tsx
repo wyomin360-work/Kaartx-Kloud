@@ -53,7 +53,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
         'Up to 500 sellers',
         'Up to 10,000 orders / month',
         'Advanced analytics dashboards',
-        'White-label via Custom Domain + SSL (add-on)',
+        'White-label (Custom Domain + SSL)',
         'Configurable payout cycles',
         'Priority email & WhatsApp support',
         'Bulk product uploads + workflow automations',
