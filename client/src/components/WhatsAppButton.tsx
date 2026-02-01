@@ -2,7 +2,7 @@ import { SiWhatsapp } from 'react-icons/si';
 
 export default function WhatsAppButton() {
   const handleClick = () => {
-    window.open('https://wa.me/96898209353', '_blank');
+    window.open('https://wa.me/96898209353?text=Hi%20I%20want%20to%20know%20more%20about%20Kaartx%20Kloud', '_blank');
   };
 
   return (

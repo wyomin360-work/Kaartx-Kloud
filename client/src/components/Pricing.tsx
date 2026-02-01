@@ -278,7 +278,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
         <div className="text-center text-xs text-muted-foreground max-w-2xl mx-auto mt-6 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-0" data-testid="text-pricing-bridge-cta">
           <span>Looking for a fully branded, dedicated deployment?</span>
           <a 
-            href="https://wa.me/96898209353" 
+            href="https://wa.me/96898209353?text=Hi%20I%20want%20to%20know%20more%20about%20Kaartx%20Kloud" 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-primary font-medium cursor-pointer hover:underline transition-colors sm:ml-1 py-2 sm:py-0 px-4 sm:px-0"
