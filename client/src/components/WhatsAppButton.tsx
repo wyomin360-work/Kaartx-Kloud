@@ -2,7 +2,13 @@ import { SiWhatsapp } from 'react-icons/si';
 
 export default function WhatsAppButton() {
   const handleClick = () => {
-    window.open('https://wa.me/96898209353?text=Hi%20I%20want%20to%20know%20more%20about%20Kaartx%20Kloud', '_blank');
+    const message = 'Hi%20I%20want%20to%20know%20more%20about%20Kaartx%20Kloud';
+    const phone = '96898209353';
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const url = isMobile 
+      ? `https://wa.me/${phone}?text=${message}`
+      : `https://web.whatsapp.com/send?phone=${phone}&text=${message}`;
+    window.open(url, '_blank');
   };
 
   return (
