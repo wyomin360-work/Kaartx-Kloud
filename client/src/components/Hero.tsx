@@ -30,14 +30,14 @@ export default function Hero({ onOpenSignup }: HeroProps) {
             className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-foreground mb-4 sm:mb-6 leading-[1.15] sm:leading-[1.1] animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`} 
             data-testid="text-hero-title"
           >
-            Launch your own <span className="gradient-text">multi-vendor marketplace</span> in days, not months
+            Launch your own <span className="gradient-text">marketplace or branded store</span> in days, not months
           </h1>
           <p 
             ref={subtitleAnimation.ref}
             className={`text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 sm:mb-10 max-w-3xl mx-auto font-medium animate-on-scroll stagger-1 ${subtitleAnimation.isVisible ? 'visible' : ''}`} 
             data-testid="text-hero-subtitle"
           >
-            Complete GCC-ready platform with seller onboarding, product management, subscription billing, and automated payouts — powered by Kaartx Kloud.
+            Complete GCC-ready commerce platform for brands and marketplaces — with product management, subscriptions, automated payouts, and scalable workflows.
           </p>
           <div 
             ref={buttonsAnimation.ref}
