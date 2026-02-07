@@ -65,7 +65,7 @@ export default function DeepFeatures() {
             Powerful tools to manage<br />your entire ecosystem
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto font-normal" data-testid="text-deep-features-subtitle">
-            From subscriptions to shipping automation — everything you need, already built in.
+            From subscriptions to shipping automation — everything you need, built-in.
           </p>
         </div>
         
