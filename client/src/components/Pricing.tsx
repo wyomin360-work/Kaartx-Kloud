@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Check } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import type { PlanSelection } from '@/components/SignupModal';
+import { getWhatsAppUrl } from '@/components/WhatsAppButton';
 
 interface PricingProps {
   onOpenSignup?: (plan: PlanSelection) => void;
@@ -15,16 +16,6 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
   const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
   const toggleAnimation = useScrollAnimation<HTMLDivElement>(0.1);
   const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
-
-  const openWhatsApp = () => {
-    const message = 'Hi%20I%20want%20to%20know%20more%20about%20Kaartx%20Kloud';
-    const phone = '96898209353';
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const url = isMobile 
-      ? `https://wa.me/${phone}?text=${message}`
-      : `https://web.whatsapp.com/send?phone=${phone}&text=${message}`;
-    window.open(url, '_blank');
-  };
 
   const scrollToBooking = () => {
     const element = document.getElementById('booking');
@@ -287,13 +278,16 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
 
         <div className="text-center text-xs text-muted-foreground max-w-2xl mx-auto mt-6 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-0" data-testid="text-pricing-bridge-cta">
           <span>Looking for a fully branded, dedicated deployment?</span>
-          <button 
-            onClick={openWhatsApp}
-            className="text-primary font-medium cursor-pointer hover:underline transition-colors sm:ml-1 py-2 sm:py-0 px-4 sm:px-0 bg-transparent border-none"
+          <a 
+            href="https://wa.me/96898209353?text=Hi%20I%20want%20to%20know%20more%20about%20Kaartx%20Kloud"
+            onClick={(e) => { e.preventDefault(); window.location.href = getWhatsAppUrl(); }}
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-primary font-medium cursor-pointer hover:underline transition-colors sm:ml-1 py-2 sm:py-0 px-4 sm:px-0"
             data-testid="link-talk-to-us"
           >
             Talk to us
-          </button>
+          </a>
         </div>
       </div>
     </section>

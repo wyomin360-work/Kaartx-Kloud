@@ -1,19 +1,27 @@
 import { SiWhatsapp } from 'react-icons/si';
 
-export default function WhatsAppButton() {
-  const handleClick = () => {
-    const message = 'Hi%20I%20want%20to%20know%20more%20about%20Kaartx%20Kloud';
-    const phone = '96898209353';
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const url = isMobile 
-      ? `https://wa.me/${phone}?text=${message}`
-      : `https://web.whatsapp.com/send?phone=${phone}&text=${message}`;
-    window.open(url, '_blank');
-  };
+const message = 'Hi%20I%20want%20to%20know%20more%20about%20Kaartx%20Kloud';
+const phone = '96898209353';
 
+function getWhatsAppUrl() {
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  return isMobile 
+    ? `https://wa.me/${phone}?text=${message}`
+    : `https://web.whatsapp.com/send?phone=${phone}&text=${message}`;
+}
+
+export { getWhatsAppUrl };
+
+export default function WhatsAppButton() {
   return (
-    <button
-      onClick={handleClick}
+    <a
+      href={`https://wa.me/${phone}?text=${message}`}
+      onClick={(e) => {
+        e.preventDefault();
+        window.location.href = getWhatsAppUrl();
+      }}
+      target="_blank"
+      rel="noopener noreferrer"
       data-testid="button-whatsapp-float"
       aria-label="Contact us on WhatsApp"
       style={{
@@ -32,6 +40,7 @@ export default function WhatsAppButton() {
         justifyContent: 'center',
         zIndex: 9999,
         transition: 'all 0.3s ease',
+        textDecoration: 'none',
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = 'scale(1.1)';
@@ -43,6 +52,6 @@ export default function WhatsAppButton() {
       }}
     >
       <SiWhatsapp style={{ color: 'white', fontSize: '24px' }} />
-    </button>
+    </a>
   );
 }
