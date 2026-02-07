@@ -32,10 +32,10 @@ export default function UseCases() {
     retail: {
       title: 'Retailers',
       icon: ShoppingBag,
-      description: 'Transform your retail business into a multi-vendor marketplace',
+      description: 'Expand your retail business with a flexible commerce platform',
       benefits: [
         'Expand product range without inventory',
-        'Automated seller payouts',
+        'Automated payments & settlements',
         'Tap & Asyad integrations included',
         'Mobile-ready storefronts',
       ],
