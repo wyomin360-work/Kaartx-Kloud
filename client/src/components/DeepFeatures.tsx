@@ -62,10 +62,10 @@ export default function DeepFeatures() {
           className={`text-center mb-12 sm:mb-16 md:mb-20 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
           <h2 className="section-title text-foreground mb-5 tracking-tight" data-testid="text-deep-features-title">
-            Powerful tools to manage<br />your entire ecosystem
+            Powerful tools to manage<br />your entire marketplace
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto font-normal" data-testid="text-deep-features-subtitle">
-            From subscriptions to shipping automation — everything you need, already built in.
+            From seller subscriptions to shipping automation — everything your marketplace needs, already built in.
           </p>
         </div>
         

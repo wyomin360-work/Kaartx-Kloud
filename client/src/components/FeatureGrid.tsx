@@ -37,10 +37,10 @@ export default function FeatureGrid() {
           className={`text-center mb-10 sm:mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
           <h2 className="section-title text-foreground mb-3 sm:mb-4" data-testid="text-features-title">
-            Powerful tools to manage your entire <span className="gradient-text">ecosystem</span>
+            Everything to run your <span className="gradient-text">commerce business</span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto font-normal" data-testid="text-features-subtitle">
-            From subscriptions to shipping automation — everything you need, already built in.
+            From product management to payouts — all the tools you need in one platform
           </p>
         </div>
 
