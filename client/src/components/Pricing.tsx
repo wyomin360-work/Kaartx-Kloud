@@ -210,7 +210,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
                       <div className="h-5 w-5 rounded-full bg-card flex items-center justify-center flex-shrink-0">
                         <Check className="h-3 w-3 text-primary" />
                       </div>
-                      <span className="text-sm text-muted-foreground">{feature}</span>
+                      <span className={`text-sm text-muted-foreground${feature.startsWith('White-label') ? ' whitespace-nowrap' : ''}`}>{feature}</span>
                     </li>
                   ))}
                 </ul>
