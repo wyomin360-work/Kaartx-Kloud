@@ -21,11 +21,11 @@ export default function UseCases() {
     startups: {
       title: 'Startups',
       icon: Rocket,
-      description: 'Build your marketplace idea without massive upfront development costs',
+      description: 'Turn your concept into a live business without massive upfront development costs',
       benefits: [
         'Launch in days, not months',
         'Subscription-based pricing',
-        'Scale as you grow',
+        'Grow without re-platforming',
         'GCC payment integrations ready',
       ],
     },
