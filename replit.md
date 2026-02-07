@@ -59,7 +59,7 @@ Kaartx Kloud is a premium SaaS platform for launching and managing multi-vendor 
 **November 12, 2025 - Navbar Navigation Restructure:**
 - **Updated Navigation Order:** Features · Integrations · Pricing · FAQs · Contact · Login · Get Started
 - **Section ID Mapping:**
-  - Features → `id="features"` (DeepFeatures: "Powerful tools to manage your entire marketplace")
+  - Features → `id="features"` (DeepFeatures: "Powerful tools to manage your entire ecosystem")
   - Integrations → `id="integrations"` (IntegrationsMarquee: "GCC-ready integrations")
   - Pricing → `id="pricing"` (Pricing: "Plans & pricing for GCC")
   - FAQs → `id="faq"` (FAQ: "Frequently asked questions")
