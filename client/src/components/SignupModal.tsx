@@ -186,21 +186,21 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
               <h3 className="text-sm font-semibold text-foreground mb-3">What happens next</h3>
               <ul className="space-y-2.5">
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
                   <div>
                     <p className="text-sm font-medium text-foreground">We'll review your request</p>
                     <p className="text-xs text-muted-foreground">Our team will review your marketplace setup requirements.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
                   <div>
                     <p className="text-sm font-medium text-foreground">You'll receive a confirmation email</p>
                     <p className="text-xs text-muted-foreground">We'll contact you at {createdRequest.email} once your request has been reviewed.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-1 flex-shrink-0" />
                   <div>
                     <p className="text-sm font-medium text-foreground">Your marketplace will be set up by our team</p>
                     <p className="text-xs text-muted-foreground">Our team will configure and activate your marketplace based on your approved requirements.</p>
@@ -301,39 +301,39 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
                   <ul className="space-y-2">
                     {isGrowthPlan ? (
                       <>
-                        <li className="flex items-start gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <li className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
                           <span className="text-sm text-foreground">Up to 3 marketplaces</span>
                         </li>
-                        <li className="flex items-start gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <li className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
                           <span className="text-sm text-foreground">Up to 500 sellers and 10,000 orders/month</span>
                         </li>
-                        <li className="flex items-start gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <li className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
                           <span className="text-sm text-foreground">Advanced analytics & priority support</span>
                         </li>
-                        <li className="flex items-start gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <li className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
                           <span className="text-sm text-foreground">Configurable payout cycles</span>
                         </li>
                       </>
                     ) : (
                       <>
-                        <li className="flex items-start gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <li className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
                           <span className="text-sm text-foreground">Custom subdomain (yourname.kloud.kaartx.com)</span>
                         </li>
-                        <li className="flex items-start gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <li className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
                           <span className="text-sm text-foreground">Up to 100 sellers</span>
                         </li>
-                        <li className="flex items-start gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <li className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
                           <span className="text-sm text-foreground">Up to 1,000 orders per month</span>
                         </li>
-                        <li className="flex items-start gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                        <li className="flex items-center gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
                           <span className="text-sm text-foreground">TAP Payments & Asyad Express integration</span>
                         </li>
                       </>

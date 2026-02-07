@@ -124,7 +124,7 @@ export default function UseCases() {
                 </div>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6">
                   {useCase.benefits.map((benefit, index) => (
-                    <li key={index} className="flex items-baseline gap-2.5">
+                    <li key={index} className="flex items-center gap-2.5">
                       <div className="flex-shrink-0">
                         <div className="h-1.5 w-1.5 rounded-full bg-black" />
                       </div>

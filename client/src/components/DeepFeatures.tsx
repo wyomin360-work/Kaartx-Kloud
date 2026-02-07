@@ -114,8 +114,8 @@ export default function DeepFeatures() {
                   {/* Feature List with Checkmarks */}
                   <ul className="space-y-3">
                     {feature.features.map((item, i) => (
-                      <li key={i} className="flex items-start text-sm text-muted-foreground leading-relaxed">
-                        <Check className={`h-4 w-4 ${feature.checkGradient} mt-0.5 mr-3 flex-shrink-0`} strokeWidth={3} />
+                      <li key={i} className="flex items-center text-sm text-muted-foreground leading-relaxed">
+                        <Check className={`h-4 w-4 ${feature.checkGradient} mr-3 flex-shrink-0`} strokeWidth={3} />
                         <span>{item}</span>
                       </li>
                     ))}

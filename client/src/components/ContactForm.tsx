@@ -119,8 +119,8 @@ export default function ContactForm() {
               </h4>
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start gap-3.5" data-testid={`benefit-item-${index}`}>
-                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div key={index} className="flex items-center gap-3.5" data-testid={`benefit-item-${index}`}>
+                    <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
                     <span className="text-foreground font-medium leading-relaxed">{benefit}</span>
                   </div>
                 ))}
