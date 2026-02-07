@@ -6,8 +6,8 @@ export default function FeatureGrid() {
   const features = [
     {
       icon: Users,
-      title: 'Seller Management',
-      description: 'Onboard, verify, and manage sellers with built-in approvals, subscriptions, and performance tracking.',
+      title: 'Store & Seller Management',
+      description: 'Manage your store or onboard sellers with built-in approvals, subscriptions, and performance tracking.',
     },
     {
       icon: ListChecks,
