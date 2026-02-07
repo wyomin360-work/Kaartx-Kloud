@@ -54,7 +54,7 @@ export default function UseCases() {
     enterprises: {
       title: 'Enterprise',
       icon: Building,
-      description: 'Enterprise-grade marketplace infrastructure with full customization',
+      description: 'Enterprise-grade commerce infrastructure with full customization',
       benefits: [
         'Dedicated infrastructure (on request)',
         'Custom integrations & workflows',
