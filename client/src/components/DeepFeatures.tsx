@@ -32,7 +32,7 @@ export default function DeepFeatures() {
       icon: Wallet,
       title: 'Payments & Payouts',
       description: 'Automated payout cycle with full visibility for sellers, connected directly to TAP Payments for seamless and secure operations.',
-      features: ['Default 12-day payout cycle', 'Auto ledger updates', 'View payout history & balances', 'Manual payout control'],
+      features: ['Configurable payout cycles', 'Auto ledger updates', 'View payout history & balances', 'Manual payout control'],
       checkGradient: 'text-purple-600',
     },
     {
