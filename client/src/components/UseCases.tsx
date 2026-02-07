@@ -43,11 +43,11 @@ export default function UseCases() {
     agencies: {
       title: 'Agencies',
       icon: Users,
-      description: 'Build and manage marketplaces for multiple clients with ease',
+      description: 'Build and manage commerce platforms for multiple clients with ease',
       benefits: [
         'Multi-tenant architecture',
         'White-label for each client',
-        'Revenue sharing ready architecture',
+        'Revenue sharing & commission-ready architecture',
         'Centralized client management',
       ],
     },
