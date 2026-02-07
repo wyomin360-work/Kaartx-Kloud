@@ -20,7 +20,7 @@ export default function HowItWorks() {
     {
       icon: Rocket,
       title: 'Launch & Earn',
-      description: 'Go live, start selling, earn revenue, and manage payouts seamlessly.',
+      description: <>Go live, start selling,<br />earn revenue, and manage<br />payouts seamlessly.</>,
       badgeGradient: 'bg-gradient-to-br from-blue-600 via-purple-600 to-cyan-500',
       iconGradient: 'gradient-bg-blue',
     },
