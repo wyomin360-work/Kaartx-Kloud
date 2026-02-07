@@ -2,7 +2,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function StatsBar() {
   const stats = [
-    { value: 'Automated', label: 'Adjustable payout cycles' },
+    { value: 'Automated', label: 'Payouts & Settlements' },
     { value: 'GCC', label: 'Ready' },
     { value: '99.9%', label: 'Uptime' },
     { value: 'White-label', label: 'Ready' },
