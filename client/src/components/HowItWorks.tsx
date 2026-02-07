@@ -40,7 +40,7 @@ export default function HowItWorks() {
             Launch in 3 simple steps
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto font-normal" data-testid="text-how-it-works-subtitle">
-            From zero to live marketplace faster than you think
+            From idea to live store faster than you think
           </p>
         </div>
 
