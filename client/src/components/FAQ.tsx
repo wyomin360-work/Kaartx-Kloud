@@ -69,7 +69,7 @@ export default function FAQ() {
               className="border border-border/40 rounded-2xl px-6 bg-card/30 hover-elevate transition-all"
             >
               <AccordionTrigger 
-                className="hover:no-underline font-bold text-base py-5" 
+                className="hover:no-underline font-bold text-base py-5 text-left" 
                 data-testid={`faq-question-${index}`}
               >
                 {faq.question}
