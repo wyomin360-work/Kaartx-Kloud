@@ -35,7 +35,7 @@ export default function Security() {
                 <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 border-2 border-primary/20">
                   <Icon className="h-7 w-7 text-primary" strokeWidth={2.5} />
                 </div>
-                <p className="text-base font-semibold text-foreground">{feature.text}</p>
+                <p className="text-base font-semibold text-foreground whitespace-nowrap">{feature.text}</p>
               </Card>
             );
           })}
