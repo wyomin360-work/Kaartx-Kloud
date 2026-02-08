@@ -27,7 +27,7 @@ export default function IntegrationsMarquee() {
       name: 'Shopify', 
       icon: SiShopify,
       comingSoon: true,
-      description: 'E-commerce platform integration',
+      description: 'Single-brand & catalog sync integration',
       category: 'Platform'
     },
     { 
@@ -48,7 +48,7 @@ export default function IntegrationsMarquee() {
       name: 'Custom APIs', 
       icon: Plug,
       comingSoon: true,
-      description: 'Connect your existing tools',
+      description: 'Connect ERPs, CRMs, and internal systems',
       category: 'Custom'
     },
   ];
@@ -64,7 +64,7 @@ export default function IntegrationsMarquee() {
             GCC-ready integrations
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-integrations-subtitle">
-            TAP Payments and Asyad Express integrated out of the box — plus easy connections to your existing tools
+            Payments and logistics integrations built for GCC commerce — ready out of the box
           </p>
         </div>
 
