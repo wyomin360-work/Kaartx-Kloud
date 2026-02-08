@@ -61,13 +61,13 @@ export default function About() {
           </h3>
           <div className="space-y-5 text-muted-foreground leading-[1.8] text-[15px] sm:text-base">
             <p data-testid="text-delivery-model-p1">
-              Kaartx Kloud is a guided marketplace infrastructure—configured around each founder's business model, seller structure, payout logic, logistics, and regional requirements.
+              Kaartx Kloud is a guided commerce infrastructure, configured around each founder's business model—whether you're launching a single-brand store or building a multi-vendor marketplace. Every setup is tailored to your seller structure, payout logic, logistics flow, and regional requirements.
             </p>
             <p data-testid="text-delivery-model-p2">
-              The platform is deeply optimized for the GCC region, with most operational, payment, and logistics workflows already in place. It can also be adapted for other regions based on local regulations and business needs.
+              The platform is deeply optimized for the GCC region, with core operational, payment, and logistics workflows already in place. At the same time, Kaartx Kloud is designed to adapt for other regions based on local regulations, currencies, and business needs.
             </p>
             <p data-testid="text-delivery-model-p3">
-              Instead of instant self-serve activation, every request is reviewed and set up by our team to ensure stability, compliance, and long-term scalability before launch.
+              Instead of instant, unconfigured self-serve activation, every deployment is carefully reviewed and set up by our team—whether it's a store or a marketplace—to ensure stability, regulatory compliance, and long-term scalability before launch.
             </p>
           </div>
         </div>
