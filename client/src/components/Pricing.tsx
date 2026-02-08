@@ -40,12 +40,12 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
       monthlyPrice: 35,
       description: 'Best for solo founders & small boutiques',
       features: [
-        '1 marketplace (subdomain)',
+        '1 store or marketplace (subdomain)',
         'Up to 100 sellers',
         'Up to 1,000 orders / month',
         'Basic analytics dashboards',
         'Basic branding (logo + colors)',
-        'Default 12-day payout cycle',
+        'Standard payout cycle',
         'Email & WhatsApp support',
         'Seller subscriptions (monthly/yearly billing support)',
       ],
@@ -79,7 +79,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
       monthlyPrice: 349,
       description: 'For large brands & franchises',
       features: [
-        'Unlimited marketplaces',
+        'Unlimited stores & marketplaces',
         'Unlimited sellers',
         'Unlimited orders',
         'Advanced + enterprise analytics',
