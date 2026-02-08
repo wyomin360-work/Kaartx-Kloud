@@ -25,7 +25,7 @@ export default function FAQ() {
     },
     {
       question: 'How does seller subscription work?',
-      answer: 'If you run a marketplace, you can create seller subscription plans (monthly or yearly) and collect payments via TAP. Auto-renewals are handled automatically, and you can suspend or reactivate sellers as needed.\n\nIf you\'re running a single store, seller subscriptions are simply not used.',
+      answer: 'If you run a marketplace, you can create seller subscription plans (monthly or yearly) and collect payments via TAP. Auto-renewals are handled automatically, and you can suspend or reactivate sellers as needed. If you\'re running a single store, seller subscriptions are simply not used.',
     },
     {
       question: 'Is Asyad shipping integrated?',
