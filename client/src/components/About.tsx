@@ -67,7 +67,7 @@ export default function About() {
               The platform is deeply optimized for the GCC region, with core operational, payment, and logistics workflows already in place. At the same time, Kaartx Kloud is designed to adapt for other regions based on local regulations, currencies, and business needs.
             </p>
             <p data-testid="text-delivery-model-p3">
-              Instead of instant, unconfigured self-serve activation, every deployment is carefully reviewed and set up by our team—whether it's a store or a marketplace—to ensure stability, regulatory compliance, and long-term scalability before launch.
+              Instead of instant, unconfigured self-serve activation, every deployment is carefully reviewed and set up by our team—whether it's a store or a marketplace—to ensure stability, regulatory compliance, and long-term scalability before&nbsp;launch.
             </p>
           </div>
         </div>
