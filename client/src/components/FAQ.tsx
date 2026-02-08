@@ -8,8 +8,8 @@ import {
 export default function FAQ() {
   const faqs = [
     {
-      question: 'How quickly can I launch my marketplace?',
-      answer: 'Most customers launch within 2-4 weeks. We help you configure branding, categories, seller plans, and integrations to get you live fast.',
+      question: 'How quickly can I launch my store or marketplace?',
+      answer: 'Most customers launch within 2–4 weeks. Whether you\'re launching a single-brand store or a full marketplace, we help you configure branding, categories, seller setup if applicable, and integrations to go live fast.',
     },
     {
       question: 'What is the 12-day payout system?',
