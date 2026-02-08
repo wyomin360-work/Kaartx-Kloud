@@ -41,7 +41,7 @@ export default function FAQ() {
     },
     {
       question: 'Can I manage multiple marketplaces?',
-      answer: 'Yes, Enterprise plans support multi-marketplace management from a single dashboard — perfect for agencies managing client marketplaces.',
+      answer: 'Yes. Enterprise plans support managing multiple marketplaces or stores from a single dashboard. This is especially useful for agencies, franchises, and businesses operating multiple brands.',
     },
     {
       question: 'Do you provide API access?',
