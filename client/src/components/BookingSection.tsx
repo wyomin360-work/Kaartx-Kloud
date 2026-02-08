@@ -91,7 +91,7 @@ export default function BookingSection() {
             className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto font-normal"
             data-testid="text-booking-subtitle"
           >
-            Schedule a personalized demo with our team. We'll show you how Kaartx Kloud can transform your marketplace vision into reality.
+            Schedule a personalized demo with our team. See how Kaartx Kloud adapts to your business—whether you're launching a store, a marketplace, or both.
           </p>
         </div>
 
