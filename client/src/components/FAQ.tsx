@@ -33,7 +33,7 @@ export default function FAQ() {
     },
     {
       question: 'Can sellers upload products in bulk?',
-      answer: 'Yes, sellers can download an Excel template and bulk upload products. All listings go through your admin approval workflow.',
+      answer: 'Yes. In marketplaces, sellers can download an Excel template and bulk upload products. All listings pass through your admin approval workflow.\n\nStore owners can also use bulk uploads to manage large product catalogs internally.',
     },
     {
       question: 'What kind of support do you offer?',
@@ -78,7 +78,9 @@ export default function FAQ() {
                 className="text-muted-foreground font-medium leading-relaxed pb-5" 
                 data-testid={`faq-answer-${index}`}
               >
-                {faq.answer}
+                {faq.answer.split('\n\n').map((paragraph, i) => (
+                  <p key={i} className={i > 0 ? 'mt-3' : ''}>{paragraph}</p>
+                ))}
               </AccordionContent>
             </AccordionItem>
           ))}
