@@ -21,7 +21,7 @@ export default function FAQ() {
     },
     {
       question: 'Can I white-label the platform?',
-      answer: 'Absolutely. All plans include basic branding customization. Growth and Enterprise plans get full white-label capabilities with custom domains.',
+      answer: 'Absolutely. All plans include basic branding customization. Growth and Enterprise plans offer full white-labeling, including custom domains, whether you\'re running a standalone store or a multi-vendor marketplace.',
     },
     {
       question: 'How does seller subscription work?',
