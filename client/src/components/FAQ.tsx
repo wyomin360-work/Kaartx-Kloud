@@ -29,7 +29,7 @@ export default function FAQ() {
     },
     {
       question: 'Is Asyad shipping integrated?',
-      answer: 'Yes, Asyad integration is ready out of the box for Oman-based marketplaces. Shipping labels, tracking, and returns are all automated.',
+      answer: 'Yes. Asyad shipping is ready out of the box for Oman-based businesses. It supports both store orders and marketplace orders, with automated shipping labels, tracking, and returns.',
     },
     {
       question: 'Can sellers upload products in bulk?',
