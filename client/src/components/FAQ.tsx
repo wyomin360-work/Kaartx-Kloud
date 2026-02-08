@@ -45,7 +45,7 @@ export default function FAQ() {
     },
     {
       question: 'Do you provide API access?',
-      answer: 'Not yet — API access is currently under development and will be available in future releases of Kaartx Kloud. Our goal is to offer REST API endpoints for integrations, automation, and custom workflows once the feature is launched.',
+      answer: 'Not yet. API access is under development and will be available in future releases. The goal is to offer REST APIs for integrations, automation, and custom workflows across both stores and marketplaces.',
     },
   ];
 
