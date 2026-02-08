@@ -37,7 +37,7 @@ export default function FAQ() {
     },
     {
       question: 'What kind of support do you offer?',
-      answer: 'Starter plans get email support, Growth plans get priority support, and Enterprise customers get dedicated account managers with SLA guarantees.',
+      answer: 'Starter plans include email and WhatsApp support. Growth plans get priority email and WhatsApp support with faster response times. Enterprise customers receive a dedicated account manager with SLA-backed support.',
     },
     {
       question: 'Can I manage multiple marketplaces?',
