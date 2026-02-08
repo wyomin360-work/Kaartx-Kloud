@@ -5,7 +5,7 @@ export default function Security() {
   const features = [
     { icon: UserCheck, text: 'Role-based access control' },
     { icon: FileCheck, text: 'Seller approval workflows' },
-    { icon: Lock, text: 'Secure payment processing' },
+    { icon: Lock, text: 'Payment security & compliance' },
     { icon: Shield, text: 'Data encryption at rest' },
     { icon: Database, text: 'Automated daily backups' },
     { icon: Server, text: 'High availability architecture' },
@@ -19,7 +19,7 @@ export default function Security() {
             Enterprise-grade security
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto font-normal" data-testid="text-security-subtitle">
-            Your marketplace and seller data protected with bank-level security
+            Built with hardened infrastructure, access controls, and compliance-ready architecture
           </p>
         </div>
 
