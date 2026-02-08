@@ -17,7 +17,7 @@ export default function FAQ() {
     },
     {
       question: 'Do you support GCC payment gateways?',
-      answer: 'Yes! TAP Payments integration is built-in with support for OMR, AED, SAR, and other GCC currencies. We also support Stripe for global payments.',
+      answer: 'Yes! TAP Payments integration is built-in with support for OMR, AED, SAR, and other GCC currencies.',
     },
     {
       question: 'Can I white-label the platform?',
