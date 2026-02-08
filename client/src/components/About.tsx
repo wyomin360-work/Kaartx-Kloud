@@ -55,7 +55,7 @@ export default function About() {
         </div>
 
         {/* Our Delivery Model Section */}
-        <div className="max-w-[740px] mx-auto mb-20 mt-6">
+        <div className="max-w-[740px] mx-auto mb-20 mt-6 px-4 sm:px-5 md:px-6">
           <h3 className="text-xl font-bold text-foreground mb-5 text-center" data-testid="text-delivery-model-title">
             Our Delivery Model
           </h3>
