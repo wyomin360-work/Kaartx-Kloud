@@ -50,7 +50,7 @@ export default function About() {
             About Kaartx Kloud
           </h2>
           <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-about-intro">
-            A full-stack commerce infrastructure designed to help businesses launch, scale, and manage multi-vendor marketplaces with speed and confidence.
+            A full-stack commerce infrastructure designed to help businesses launch stores, scale operations, and evolve into multi-vendor marketplaces with speed and confidence.
           </p>
         </div>
 
