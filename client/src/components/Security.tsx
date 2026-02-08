@@ -5,7 +5,7 @@ export default function Security() {
   const features = [
     { icon: UserCheck, text: 'Role-based access control' },
     { icon: FileCheck, text: 'Seller approval workflows' },
-    { icon: Lock, text: 'Payment security & compliance' },
+    { icon: Lock, text: 'Secure payment processing' },
     { icon: Shield, text: 'Data encryption at rest' },
     { icon: Database, text: 'Automated daily backups' },
     { icon: Server, text: 'High availability architecture' },
