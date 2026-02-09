@@ -303,11 +303,11 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
                       <>
                         <li className="flex items-center gap-2.5">
                           <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
-                          <span className="text-sm text-foreground">Up to 3 marketplaces</span>
+                          <span className="text-sm text-foreground">Up to 3 stores or marketplaces</span>
                         </li>
                         <li className="flex items-center gap-2.5">
                           <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
-                          <span className="text-sm text-foreground">Up to 500 sellers and 10,000 orders/month</span>
+                          <span className="text-sm text-foreground">Up to 600 sellers and 10,000 orders/month</span>
                         </li>
                         <li className="flex items-center gap-2.5">
                           <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
