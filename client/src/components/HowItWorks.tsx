@@ -6,7 +6,7 @@ export default function HowItWorks() {
     {
       icon: Settings,
       title: 'Configure',
-      description: <>Set up your store branding,<span className="mobile-br" /> products, categories, and<span className="mobile-br" /> pricing in minutes.</>,
+      description: <>Set up branding, products,<span className="mobile-br" /> categories, and pricing—fast.</>,
       badgeGradient: 'bg-gradient-to-br from-cyan-500 to-blue-600',
       iconGradient: 'gradient-bg-blue',
     },
