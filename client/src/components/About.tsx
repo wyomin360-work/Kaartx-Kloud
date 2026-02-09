@@ -31,7 +31,7 @@ export default function About() {
     'Deeper logistics and delivery integrations',
     'Enhanced payout automation and financial flows',
     'Advanced analytics for founders and operators',
-    'More seller and operations tools with workflow automation',
+    'Seller & operations tools with automation',
     'Improved subscription and billing capabilities',
     'Stronger GCC commerce integrations framework',
   ];
