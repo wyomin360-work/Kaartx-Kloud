@@ -12,7 +12,7 @@ export default function FinalCTA({ onOpenSignup }: FinalCTAProps) {
       
       <div className="relative max-w-4xl mx-auto px-4 sm:px-5 md:px-6 text-center">
         <h2 className="section-title text-foreground mb-4 sm:mb-6 gradient-text" data-testid="text-final-cta-title">
-          Ready to launch your marketplace?
+          Ready to launch your store or marketplace?
         </h2>
         <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 max-w-2xl mx-auto font-normal leading-relaxed" data-testid="text-final-cta-subtitle">
           Join GCC businesses building the future of eCommerce with Kaartx Kloud.
