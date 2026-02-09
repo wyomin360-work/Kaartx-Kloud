@@ -10,7 +10,7 @@ export default function UseCases() {
     brands: {
       title: 'Brands',
       icon: Building2,
-      description: "Operate your brand's store or marketplace with complete control",
+      description: "Run your brand's store or marketplace with full control from day one",
       benefits: [
         'Full white-label control',
         'Maintain brand standards with approval workflows',
