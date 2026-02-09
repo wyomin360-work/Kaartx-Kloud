@@ -22,7 +22,7 @@ export default function About() {
     {
       icon: Eye,
       title: 'Our Vision',
-      content: "We believe the future of e-commerce is flexible and scalable. Businesses should be able to start with a single online store and grow into a marketplace when the time is right. Kaartx Kloud exists to support founders and brands at every stage—helping them launch, operate, and scale with confidence. Starting from the GCC and expanding globally, we aim to build a commerce ecosystem where technology removes friction and adapts to each business's needs.",
+      content: "We believe the future of e-commerce is flexible and scalable. Businesses should be able to start with a single online store and grow into a marketplace when the time is right. Kaartx Kloud exists to support founders and brands at every stage—helping them launch, operate, and scale with confidence. Starting from the GCC and expanding globally, we aim to build a commerce ecosystem where technology removes friction and adapts to each business's needs over time.",
       accentColor: 'bg-primary',
     },
   ];
