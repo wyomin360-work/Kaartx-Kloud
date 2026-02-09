@@ -226,9 +226,9 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
         {modalState === 'form' && (
           <div className="py-1">
             <div className="text-center mb-4">
-              <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1">Create Your Marketplace</h2>
+              <h2 className="text-2xl font-bold text-foreground tracking-tight mb-1">Create Your Store or Marketplace</h2>
               <p className="text-sm text-muted-foreground">
-                Submit your request to begin your marketplace setup. Our team will review and activate your account with the right configuration.
+                Submit your request to begin your store or marketplace setup. Our team will review and activate your account with the right configuration.
               </p>
             </div>
 
@@ -326,7 +326,7 @@ export default function SignupModal({ open, onOpenChange, selectedPlan }: Signup
                         </li>
                         <li className="flex items-center gap-2.5">
                           <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
-                          <span className="text-sm text-foreground">Up to 100 sellers</span>
+                          <span className="text-sm text-foreground">Up to 200 sellers</span>
                         </li>
                         <li className="flex items-center gap-2.5">
                           <CheckCircle2 className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
