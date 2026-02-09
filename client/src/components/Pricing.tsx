@@ -41,7 +41,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
       description: 'Best for solo founders & small boutiques',
       features: [
         '1 store or marketplace (subdomain)',
-        'Up to 100 sellers',
+        'Up to 200 sellers',
         'Up to 1,000 orders / month',
         'Basic analytics dashboards',
         'Basic branding (logo + colors)',
@@ -60,7 +60,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
       description: 'For agencies & fast-growing brands',
       features: [
         'Up to 3 stores or marketplaces',
-        'Up to 500 sellers',
+        'Up to 600 sellers',
         'Up to 10,000 orders / month',
         'Advanced analytics dashboards',
         'White-label (Domain + SSL add-on)',
