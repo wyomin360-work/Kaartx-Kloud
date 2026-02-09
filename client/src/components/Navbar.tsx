@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
-import logoImage from '@assets/Asset 4@4x_1762100909160.png';
+import logoImage from '@assets/kloud_plain_blue_1770616738294.png';
 import { Link } from 'wouter';
 import * as Portal from '@radix-ui/react-portal';
 
