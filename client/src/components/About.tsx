@@ -16,7 +16,7 @@ export default function About() {
     {
       icon: BookOpen,
       title: 'Our Story',
-      content: "Kaartx began as an internal project—built to power a next-generation marketplace in the GCC region. As we grew, we realized something important: every founder we met wanted to build a marketplace, but nobody had access to a complete, reliable, and scalable system. So we opened up our technology. What started as a single platform became a complete product—Kaartx Kloud—built with real-world marketplace experience, operational knowledge, seller lifecycle expertise, and deep understanding of the GCC market.",
+      content: "Kaartx began as an internal platform built by the founder to run his own business as a multi-vendor marketplace in the GCC. While operating it, we saw a clear problem—founders wanted to launch reliable online stores or marketplaces but lacked a complete, scalable system they could trust. So we opened up what we built. That internal platform evolved into Kaartx Kloud, shaped by real operational experience and a deep understanding of how commerce works in the GCC.",
       accentColor: 'bg-primary',
     },
     {
