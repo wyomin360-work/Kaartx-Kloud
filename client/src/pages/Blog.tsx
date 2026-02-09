@@ -55,10 +55,10 @@ export default function Blog() {
             className={`text-center mb-8 sm:mb-9 md:mb-10 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
           >
             <h1 className="section-title text-foreground mb-5 tracking-tight" data-testid="text-blog-title">
-              Insights for marketplace founders
+              Insights for modern commerce builders
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto font-normal" data-testid="text-blog-subtitle">
-              Strategies, guides, and updates to help you launch, manage, and scale your multi-vendor marketplace using Kaartx Kloud.
+              Practical guides, strategies, and updates to help you launch, manage, and grow stores and marketplaces with Kaartx Kloud.
             </p>
           </div>
         </div>
