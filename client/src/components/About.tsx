@@ -22,7 +22,7 @@ export default function About() {
     {
       icon: Eye,
       title: 'Our Vision',
-      content: "We believe the future of commerce is multi-vendor. From fashion collectives to regional retail groups, more businesses are shifting toward marketplace models. Kaartx Kloud aims to become the technology backbone that helps these businesses compete, scale, and succeed—starting from the GCC and expanding globally. We envision a marketplace ecosystem where technology removes friction, not creates it. By continuously evolving Kaartx Kloud, we aim to support founders as they expand into new regions and unlock new opportunities.",
+      content: "We believe the future of e-commerce is flexible and scalable. Businesses should be able to start with a single online store and grow into a marketplace when the time is right. Kaartx Kloud exists to support founders and brands at every stage—helping them launch, operate, and scale with confidence. Starting from the GCC and expanding globally, we aim to build a commerce ecosystem where technology removes friction and adapts to each business's needs.",
       accentColor: 'bg-primary',
     },
   ];
