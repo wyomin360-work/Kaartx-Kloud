@@ -13,7 +13,7 @@ export default function HowItWorks() {
     {
       icon: Users,
       title: 'Onboard Sellers',
-      description: <>Add your own products or<span className="mobile-br" /> onboard sellers, approve them<span className="mobile-br" /> instantly, and start listing.</>,
+      description: <>Add products or onboard sellers,<span className="mobile-br" /> approve instantly and start listing.</>,
       badgeGradient: 'bg-gradient-to-br from-purple-500 to-indigo-600',
       iconGradient: 'gradient-bg-purple',
     },
