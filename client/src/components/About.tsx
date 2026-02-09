@@ -108,7 +108,7 @@ export default function About() {
               The Road Ahead
             </h3>
             <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto" data-testid="text-about-roadmap-intro">
-              Kaartx Kloud is evolving rapidly, with a strong focus on improving marketplace performance, seller efficiency, and operational automation.
+              Kaartx Kloud is evolving rapidly, with a strong focus on improving platform performance, seller efficiency, and operational automation.
             </p>
           </div>
           
@@ -127,7 +127,7 @@ export default function About() {
           
           <div className="text-center pt-4">
             <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto text-base sm:text-lg" data-testid="text-about-closing">
-              This is just the beginning. We help founders build marketplaces that thrive globally—starting with deep expertise in the GCC.
+              This is just the beginning. We help founders build scalable commerce platforms that thrive globally—starting with deep expertise in the GCC.
             </p>
           </div>
         </div>
