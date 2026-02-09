@@ -30,8 +30,8 @@ export default function About() {
   const roadmapItems = [
     'Deeper logistics and delivery integrations',
     'Enhanced payout automation and financial flows',
-    'Advanced analytics for marketplace founders',
-    'More seller tools and workflow automations',
+    'Advanced analytics for founders and operators',
+    'More seller and operations tools with workflow automation',
     'Improved subscription and billing capabilities',
     'Stronger GCC commerce integrations framework',
   ];
