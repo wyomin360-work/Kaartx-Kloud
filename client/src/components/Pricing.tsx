@@ -59,7 +59,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
       monthlyPrice: 115,
       description: 'For agencies & fast-growing brands',
       features: [
-        'Up to 3 marketplaces',
+        'Up to 3 stores or marketplaces',
         'Up to 500 sellers',
         'Up to 10,000 orders / month',
         'Advanced analytics dashboards',
