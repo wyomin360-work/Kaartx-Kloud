@@ -10,11 +10,9 @@ export default function KaartxVsCustomDev() {
   const [signupModalOpen, setSignupModalOpen] = useState(false);
 
   useEffect(() => {
-    // Reset scroll restoration to auto for article pages
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'auto';
     }
-    // Force scroll to top immediately with no smooth behavior
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, []);
 
@@ -29,137 +27,118 @@ export default function KaartxVsCustomDev() {
 
         <article>
           <h1 className="section-title text-foreground mb-5 tracking-tight" data-testid="text-article-title">
-            Kaartx Kloud vs custom development: what's faster and more affordable?
+            How to launch your own branded eCommerce store with full control
           </h1>
 
           <p className="text-sm text-muted-foreground mb-6" data-testid="text-article-meta">
-            Technology · 7 min read
+            Launching · 7 min read
           </p>
 
           <div className="prose prose-lg max-w-none">
           <p className="text-lg text-foreground leading-relaxed mb-6">
-            Every marketplace founder eventually faces the same decision: should we build our own platform from scratch, or launch with a SaaS product like Kaartx Kloud? This article compares both paths on time, cost, flexibility, and risk—so you can choose with a clear head.
+            Launching a branded eCommerce store today is easier than ever—but building one with full operational and strategic control requires clarity from day one. In this guide, we'll walk through what "full control" really means and how to structure your store so it scales without limitations.
           </p>
 
           <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            The real cost of "we'll just build it ourselves"
+            Understand what "full control" actually means
           </h2>
           <p className="text-foreground leading-relaxed mb-4">
-            Custom development sounds empowering at first. You get to design every feature exactly as you imagine it. But reality sets in fast.
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            First, there's hiring. You'll need a dev agency or an in-house team with experience in multi-vendor marketplaces. That alone can take 2–4 months and cost anywhere from OMR 15,000 to OMR 50,000+ depending on scope and quality.
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            Then comes the discovery phase: endless meetings, wireframes, prototypes, and revisions. Features you thought were simple (like "seller payout cycles" or "product approval workflows") turn into multi-week engineering sprints.
-          </p>
-          <p className="text-foreground leading-relaxed mb-6">
-            And here's the trap: even after launch, the costs don't stop. You're now responsible for ongoing maintenance, bug fixes, security patches, and scaling infrastructure as you grow. Many founders underestimate this by 3–5x.
-          </p>
-
-          <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            What you actually need on day one
-          </h2>
-          <p className="text-foreground leading-relaxed mb-4">
-            Strip away the noise, and every multi-vendor marketplace needs the same core workflows:
+            Before choosing any platform, define your priorities clearly:
           </p>
           <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li><strong>Seller onboarding:</strong> Applications, approvals, KYC verification</li>
-            <li><strong>Product listing flows:</strong> Categories, attributes, variants, SKUs, moderation</li>
-            <li><strong>Order management:</strong> Processing, fulfillment tracking, returns, refunds</li>
-            <li><strong>Notifications:</strong> Email and SMS alerts for sellers, buyers, and admins</li>
-            <li><strong>Payouts and reconciliation:</strong> Transparent seller settlements with clear timelines</li>
-            <li><strong>Admin dashboards:</strong> Visibility into orders, revenue, seller performance</li>
+            <li>Customer data ownership</li>
+            <li>Checkout flexibility and customization</li>
+            <li>Custom pricing logic and promotional control</li>
+            <li>Shipping and tax configurations</li>
+            <li>Future expansion plans</li>
           </ul>
           <p className="text-foreground leading-relaxed mb-6">
-            These aren't unique. They're table stakes. Reinventing them from scratch is like building your own email client before launching a startup.
+            Many founders think control means design flexibility. In reality, control means operational independence and long-term scalability.
           </p>
 
           <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            How Kaartx Kloud accelerates your launch
+            Avoid building on temporary tools
           </h2>
           <p className="text-foreground leading-relaxed mb-4">
-            Kaartx Kloud gives you all the core marketplace workflows pre-built and specifically tuned for GCC markets.
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            Instead of spending 12–18 months building, you configure what's already there:
+            At the beginning, almost any platform feels sufficient. But as your brand grows, limitations become visible:
           </p>
           <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li><strong>Seller onboarding workflows</strong> with KYC, document uploads, and approvals</li>
-            <li><strong>Subscription & commission models</strong> built in—monthly seller plans, percentage-based commissions, or hybrid</li>
-            <li><strong>Payout cycles</strong> you can configure (weekly, bi-weekly, monthly) without writing custom code</li>
-            <li><strong>White-label branding</strong> so your marketplace, not Kaartx, is what customers see</li>
+            <li>Heavy dependency on third-party plugins</li>
+            <li>Limited checkout customization</li>
+            <li>Fragmented reporting and analytics</li>
+            <li>Performance issues during traffic spikes</li>
+            <li>Platform-level restrictions on payment or shipping logic</li>
           </ul>
           <p className="text-foreground leading-relaxed mb-6">
-            You're not locked into rigid templates. You're working with a foundation designed to flex with your business model.
+            A store built on scattered tools becomes harder to manage over time—and more expensive to scale.
           </p>
 
           <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            Flexibility: will SaaS limit you later?
+            Structure your backend from day one
           </h2>
           <p className="text-foreground leading-relaxed mb-4">
-            This is the most common objection: "What if we need something custom later?"
+            Your store is not just a storefront—it's an operating system.
           </p>
           <p className="text-foreground leading-relaxed mb-4">
-            Here's the truth: 80–90% of marketplace logic is standard across industries. The workflows that make Amazon, Noon, and your local GCC marketplace function are fundamentally the same. What differs is branding, categories, and business rules—all of which are configurable in Kaartx Kloud.
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            For the remaining 10–20% of edge cases, modern SaaS platforms offer:
+            Make sure your system supports:
           </p>
           <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li><strong>Add-ons and plugins</strong> for specific features</li>
-            <li><strong>APIs and webhooks</strong> to integrate custom tools</li>
-            <li><strong>Custom development options</strong> if you truly outgrow the platform</li>
+            <li>Clean SKU and inventory structure</li>
+            <li>Defined product attribute standards</li>
+            <li>Integrated payment and settlement logic</li>
+            <li>Shipping workflows aligned with your region</li>
+            <li>Clear refund and return processes</li>
           </ul>
           <p className="text-foreground leading-relaxed mb-6">
-            And if you do eventually need full custom, you'll have real data, real revenue, and real leverage to build it properly—instead of gambling on assumptions.
+            An infrastructure-first platform like Kaartx Kloud allows you to configure these systems natively—rather than patching them together later.
           </p>
 
           <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            Risk comparison: one platform vs many moving parts
+            Protect your cashflow and operations early
           </h2>
           <p className="text-foreground leading-relaxed mb-4">
-            With custom development, you're assembling a dozen services yourself:
+            Control also means financial predictability.
+          </p>
+          <p className="text-foreground leading-relaxed mb-4">
+            Define early:
           </p>
           <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li>Payment gateway integrations</li>
-            <li>SMS and email providers</li>
-            <li>Hosting and infrastructure</li>
-            <li>Security and compliance</li>
-            <li>Database management and backups</li>
+            <li>Payment settlement timelines</li>
+            <li>Refund approval workflows</li>
+            <li>Inventory tracking frequency</li>
+            <li>COD handling (especially in GCC markets)</li>
+            <li>Automated order and invoice records</li>
           </ul>
-          <p className="text-foreground leading-relaxed mb-4">
-            Each one is a potential point of failure. And when something breaks, you're responsible for fixing it—fast.
-          </p>
           <p className="text-foreground leading-relaxed mb-6">
-            With Kaartx Kloud, you're riding on hardened infrastructure that's been stress-tested across multiple marketplaces. Uptime, security, and performance are managed for you, so you can focus on sellers and growth.
+            Operational clarity prevents scaling problems and accounting confusion later.
           </p>
 
           <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            When custom development does make sense
+            Design for expansion—even if you're starting small
           </h2>
           <p className="text-foreground leading-relaxed mb-4">
-            We're not saying SaaS is always the answer. Custom builds make sense when:
+            Even as a single-brand store, consider where you're heading:
           </p>
           <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li>You have an <strong>extremely unique use case</strong> that standard marketplaces can't handle</li>
-            <li>You're building in a <strong>heavily regulated niche</strong> with non-standard compliance needs</li>
-            <li>You have a <strong>large in-house engineering team</strong> and 12+ months to invest before revenue</li>
+            <li>Will you expand into multiple countries?</li>
+            <li>Will you introduce subscription models?</li>
+            <li>Will you add multiple brands in the future?</li>
+            <li>Will you evolve into a marketplace model?</li>
           </ul>
           <p className="text-foreground leading-relaxed mb-6">
-            But for most founders launching their first or second marketplace in the GCC, a SaaS platform like Kaartx Kloud is the faster, cheaper, and safer bet.
+            Launching with scalable architecture ensures you don't rebuild your system when growth arrives.
           </p>
         </div>
 
         <div className="mt-12 mb-16">
           <p className="text-foreground leading-relaxed mb-4 italic">
-            Here's how Kaartx Kloud helps marketplace founders move faster:
+            Launch your branded store with full control using Kaartx Kloud:
           </p>
           <h3 className="text-2xl font-bold text-foreground mb-4">
-            Skip custom development. Launch on Kaartx Kloud.
+            Launch your branded store with full control
           </h3>
           <p className="text-foreground leading-relaxed mb-6">
-            Custom builds drain time and money. Kaartx Kloud gives you a complete marketplace infrastructure—so you launch faster, reduce risk, and scale with confidence.
+            Kaartx Kloud provides structured product workflows, integrated payments, scalable backend systems, and expansion-ready infrastructure—so you stay in control as your brand grows.
           </p>
           <div className="mt-6">
             <a href="/#booking">
