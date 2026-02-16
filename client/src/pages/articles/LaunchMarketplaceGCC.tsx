@@ -38,7 +38,7 @@ export default function LaunchMarketplaceGCC() {
 
           <div className="prose prose-lg max-w-none">
           <p className="text-lg text-foreground leading-relaxed mb-6">
-            Launching a full-scale marketplace in Oman, UAE, or the wider GCC doesn't have to take 18 months and a huge engineering team. In this guide, we'll walk through the fastest and most cost-efficient way to launch a GCC-ready multi-vendor marketplace using a SaaS approach like Kaartx Kloud.
+            Building a multi-vendor marketplace in Oman, the UAE, or across the wider GCC doesn't require 18 months of development or a large engineering team. With the right infrastructure in place, you can launch faster, reduce risk, and focus on acquiring sellers and customers—not rebuilding technology from scratch.
           </p>
 
           <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
