@@ -36,7 +36,7 @@ export default function MarketplaceMistakes() {
 
           <div className="prose prose-lg max-w-none">
           <p className="text-lg text-foreground leading-relaxed mb-6">
-            Launching an eCommerce store or marketplace today is easier than ever. But many founders don't fail because of technology—they struggle because of workflow decisions, structural gaps, and scaling mistakes made early on. In this guide, we'll break down five common mistakes and how to avoid them before they slow your growth.
+            Building an eCommerce store or marketplace today is more accessible than ever. Yet many founders don't struggle because of technology—they struggle because of workflow decisions, structural gaps, and scaling mistakes made early on. In this guide, we'll break down five common mistakes and how to avoid them before they slow your growth.
           </p>
 
           <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
