@@ -30,7 +30,7 @@ export default function Blog() {
     {
       slug: 'marketplace-mistakes-to-avoid',
       title: '5 eCommerce mistakes founders make — and how to avoid them',
-      summary: 'Avoid costly workflow and scaling mistakes whether you\'re building a brand store or marketplace.',
+      summary: 'Launching an eCommerce store or marketplace today is easier than ever. But many founders don\'t fail because of technology—they struggle because of workflow decisions, structural gaps, and scaling mistakes made early on.',
     },
     {
       slug: 'how-payout-cycles-work',

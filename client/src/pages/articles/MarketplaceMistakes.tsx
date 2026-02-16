@@ -10,11 +10,9 @@ export default function MarketplaceMistakes() {
   const [signupModalOpen, setSignupModalOpen] = useState(false);
 
   useEffect(() => {
-    // Reset scroll restoration to auto for article pages
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'auto';
     }
-    // Force scroll to top immediately with no smooth behavior
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, []);
 
@@ -29,178 +27,164 @@ export default function MarketplaceMistakes() {
 
         <article>
           <h1 className="section-title text-foreground mb-5 tracking-tight" data-testid="text-article-title">
-            5 mistakes every marketplace owner makes — and how to avoid them
+            5 eCommerce mistakes founders make — and how to avoid them
           </h1>
 
           <p className="text-sm text-muted-foreground mb-6" data-testid="text-article-meta">
-            Operations · 6 min read
+            Strategy · 6 min read
           </p>
 
           <div className="prose prose-lg max-w-none">
           <p className="text-lg text-foreground leading-relaxed mb-6">
-            Most marketplaces don't fail because of bad ideas. They fail because of avoidable operational mistakes. Here are five common pitfalls we see across GCC marketplaces—and practical ways to avoid them.
+            Launching an eCommerce store or marketplace today is easier than ever. But many founders don't fail because of technology—they struggle because of workflow decisions, structural gaps, and scaling mistakes made early on. In this guide, we'll break down five common mistakes and how to avoid them before they slow your growth.
           </p>
 
           <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            Mistake 1 – Onboarding "any seller who says yes"
+            Mistake 1 — Building without a clear revenue model
           </h2>
           <p className="text-foreground leading-relaxed mb-4">
-            In the rush to launch, many founders onboard any seller who's willing to join. The problem? Low-quality sellers damage your brand faster than you can fix it.
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            Bad sellers lead to:
+            Many founders jump into development before answering basic business questions:
           </p>
           <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li>Poor product listings (blurry images, vague descriptions, wrong pricing)</li>
-            <li>Delayed shipments and unfulfilled orders</li>
-            <li>Higher refund and complaint rates</li>
-            <li>More support tickets that drain your team's time</li>
+            <li>Are you charging commission, subscription, or both?</li>
+            <li>Who handles fulfillment?</li>
+            <li>What are your margins after payment and shipping fees?</li>
+            <li>How will payouts be structured?</li>
+          </ul>
+          <p className="text-foreground leading-relaxed mb-4">
+            Without clarity here, everything else becomes reactive.
+          </p>
+          <p className="text-foreground leading-relaxed mb-4">
+            <strong>How to avoid it:</strong>
+          </p>
+          <p className="text-foreground leading-relaxed mb-6">
+            Define your revenue model first. Write down your pricing structure, payout cycles, and fulfillment flow before touching any tech. The platform should support your model—not define it for you.
+          </p>
+
+          <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
+            Mistake 2 — Trying to build everything from scratch
+          </h2>
+          <p className="text-foreground leading-relaxed mb-4">
+            Custom development sounds powerful. In reality, it often means:
+          </p>
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
+            <li>Endless revisions</li>
+            <li>Feature rebuilding</li>
+            <li>Delays of 6–12 months</li>
+            <li>High burn before revenue</li>
+          </ul>
+          <p className="text-foreground leading-relaxed mb-4">
+            Most marketplaces and brand stores need similar infrastructure: product workflows, payments, order management, analytics, and payout systems.
+          </p>
+          <p className="text-foreground leading-relaxed mb-4">
+            <strong>How to avoid it:</strong>
+          </p>
+          <p className="text-foreground leading-relaxed mb-6">
+            Use a structured platform that already supports these workflows. Focus your time on growth, partnerships, and acquisition instead of engineering rebuilds.
+          </p>
+
+          <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
+            Mistake 3 — Onboarding too many sellers too early
+          </h2>
+          <p className="text-foreground leading-relaxed mb-4">
+            Marketplace founders often believe volume equals success. So they rush to onboard 100+ sellers immediately.
+          </p>
+          <p className="text-foreground leading-relaxed mb-4">
+            The result?
+          </p>
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
+            <li>Poor product quality</li>
+            <li>Inconsistent descriptions</li>
+            <li>Slow fulfillment</li>
+            <li>Bad customer experience</li>
+          </ul>
+          <p className="text-foreground leading-relaxed mb-4">
+            <strong>How to avoid it:</strong>
+          </p>
+          <p className="text-foreground leading-relaxed mb-6">
+            Start small. Onboard a controlled group of high-quality sellers first. Standardize listing rules and operational expectations before scaling vendor count.
+          </p>
+
+          <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
+            Mistake 4 — Ignoring payout and cashflow structure
+          </h2>
+          <p className="text-foreground leading-relaxed mb-4">
+            Cashflow confusion kills trust—both for founders and sellers.
+          </p>
+          <p className="text-foreground leading-relaxed mb-4">
+            Common issues include:
+          </p>
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
+            <li>Unclear payout timelines</li>
+            <li>No holding period for COD orders</li>
+            <li>Poor visibility into seller statements</li>
+            <li>Manual reconciliation errors</li>
           </ul>
           <p className="text-foreground leading-relaxed mb-4">
             <strong>How to avoid it:</strong>
           </p>
           <p className="text-foreground leading-relaxed mb-4">
-            Set minimum standards before a seller goes live:
+            Set predictable payout cycles from day one. Make statements transparent. Automate settlement logic so sellers always know when funds will arrive.
           </p>
-          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li><strong>KYC verification:</strong> Valid business registration, tax ID, contact details</li>
-            <li><strong>Sample product review:</strong> Check at least 3–5 listings for quality before approval</li>
-            <li><strong>Fulfilment capability:</strong> Confirm they can ship within your service areas</li>
-            <li><strong>Clear agreements:</strong> Signed seller terms covering returns, quality, and payout rules</li>
-          </ul>
           <p className="text-foreground leading-relaxed mb-6">
-            Use a seller onboarding flow (like the one in Kaartx Kloud) that enforces these checks automatically, so no low-quality seller slips through.
+            Predictability builds trust.
           </p>
 
           <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            Mistake 2 – No clear payout rules
+            Mistake 5 — Scaling based on assumptions, not data
           </h2>
           <p className="text-foreground leading-relaxed mb-4">
-            Sellers need to know when they'll get paid. When payout timing is vague or inconsistent, trust erodes fast.
+            Once traffic starts coming in, founders often guess instead of measuring.
           </p>
           <p className="text-foreground leading-relaxed mb-4">
-            We've seen marketplaces where:
+            They don't track:
           </p>
           <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li>Sellers wait 30+ days without updates</li>
-            <li>Manual payout processing causes random delays</li>
-            <li>No transparency into what's been paid vs what's pending</li>
+            <li>Abandoned carts</li>
+            <li>Top-selling categories</li>
+            <li>Seller performance</li>
+            <li>Regional order density</li>
+            <li>Payment failure rates</li>
           </ul>
           <p className="text-foreground leading-relaxed mb-4">
-            This creates constant WhatsApp messages, disputes, and eventually, seller churn.
+            Growth becomes random instead of strategic.
           </p>
           <p className="text-foreground leading-relaxed mb-4">
             <strong>How to avoid it:</strong>
           </p>
           <p className="text-foreground leading-relaxed mb-4">
-            Define a predictable payout cycle and stick to it:
+            Build with analytics from the start. Use real order data to:
           </p>
           <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li><strong>Standard cycle:</strong> Every 12–14 days is common in GCC markets</li>
-            <li><strong>Transparent statements:</strong> Show sellers exactly what's being paid and what's on hold</li>
-            <li><strong>Automation:</strong> Use a platform that automatically calculates and releases payouts</li>
-            <li><strong>Written policy:</strong> Document holding periods for refunds, COD settlements, and high-risk categories</li>
+            <li>Prioritize categories</li>
+            <li>Negotiate better shipping rates</li>
+            <li>Improve conversion</li>
+            <li>Decide which sellers to onboard next</li>
           </ul>
           <p className="text-foreground leading-relaxed mb-6">
-            Kaartx Kloud lets you configure payout frequency, minimum thresholds, and seller-specific rules—so payouts happen like clockwork.
+            Scaling without data leads to wasted spend.
           </p>
 
           <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            Mistake 3 – Treating support as an afterthought
+            The real reason most founders struggle
           </h2>
           <p className="text-foreground leading-relaxed mb-4">
-            Marketplaces have three layers of support: buyer support, seller support, and logistics support. Most founders underestimate how much coordination this requires.
+            It's rarely about effort.
           </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            Common problems:
-          </p>
-          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li>Buyers complain about delayed shipments, but sellers claim they shipped on time</li>
-            <li>Sellers ask when they'll get paid, but no one has visibility</li>
-            <li>WhatsApp becomes the dumping ground for every issue</li>
-          </ul>
-          <p className="text-foreground leading-relaxed mb-4">
-            <strong>How to avoid it:</strong>
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            Set up structured support from day one:
-          </p>
-          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li><strong>Centralised ticketing:</strong> Use a system where all support requests are tracked and assigned</li>
-            <li><strong>Clear SLAs:</strong> Define response times (e.g. 24 hours for seller queries, 48 hours for refunds)</li>
-            <li><strong>Self-service portals:</strong> Let sellers check order statuses, payouts, and analytics themselves</li>
-            <li><strong>Automated notifications:</strong> Keep buyers and sellers updated at every step (order confirmed, shipped, delivered)</li>
-          </ul>
           <p className="text-foreground leading-relaxed mb-6">
-            The better your systems handle routine queries, the more time you have for real growth work.
-          </p>
-
-          <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            Mistake 4 – Ignoring data until it's too late
-          </h2>
-          <p className="text-foreground leading-relaxed mb-4">
-            Many founders run their marketplace by feel instead of numbers. They don't track:
-          </p>
-          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li>Which sellers consistently deliver on time</li>
-            <li>Why orders get cancelled or refunded</li>
-            <li>Which categories have the highest repeat purchase rates</li>
-            <li>Where abandoned carts spike</li>
-          </ul>
-          <p className="text-foreground leading-relaxed mb-4">
-            Without this data, you're guessing. And guessing leads to wasted ad spend, bad seller decisions, and slow growth.
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            <strong>How to avoid it:</strong>
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            Use dashboards to track performance in real time:
-          </p>
-          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li><strong>Seller performance:</strong> On-time delivery rates, refund rates, average order value</li>
-            <li><strong>Category insights:</strong> Which products sell best, which have highest returns</li>
-            <li><strong>Customer behavior:</strong> Repeat purchase rate, cart abandonment, payment failures</li>
-            <li><strong>Revenue breakdowns:</strong> Subscription income vs commission income, monthly growth trends</li>
-          </ul>
-          <p className="text-foreground leading-relaxed mb-6">
-            Kaartx Kloud gives you built-in analytics so you can make decisions based on what's actually happening—not what you think is happening.
-          </p>
-
-          <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            Mistake 5 – Launching too big, too fast
-          </h2>
-          <p className="text-foreground leading-relaxed mb-4">
-            The temptation is to launch with every category imaginable: fashion, electronics, beauty, groceries, home goods, and more. The result? Shallow inventory, confused positioning, and no real depth anywhere.
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            Customers don't come to marketplaces for breadth. They come for selection within the categories they care about.
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            <strong>How to avoid it:</strong>
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            Start focused, then expand based on demand:
-          </p>
-          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li><strong>Pick 1–3 core categories</strong> where you can achieve real depth (e.g. "GCC fashion marketplace" not "everything marketplace")</li>
-            <li><strong>Onboard enough sellers</strong> in those categories to give customers meaningful choice</li>
-            <li><strong>Prove the model works</strong> with strong repeat purchase and seller retention</li>
-            <li><strong>Then expand</strong> into adjacent categories based on what customers are asking for</li>
-          </ul>
-          <p className="text-foreground leading-relaxed mb-6">
-            Depth wins. Breadth comes later.
+            It's about structure. When workflows are unclear, systems are manual, and infrastructure isn't built for scale, even strong brands hit operational ceilings.
           </p>
         </div>
 
         <div className="mt-12 mb-16">
           <p className="text-foreground leading-relaxed mb-4 italic">
-            Here's how Kaartx Kloud helps marketplace founders move faster:
+            Here's how Kaartx Kloud helps founders avoid these mistakes:
           </p>
           <h3 className="text-2xl font-bold text-foreground mb-4">
-            Avoid costly marketplace mistakes with Kaartx Kloud
+            Build smarter. Scale with structure.
           </h3>
           <p className="text-foreground leading-relaxed mb-6">
-            Kaartx Kloud enforces best-practice workflows for listings, payouts, onboarding, and operations—helping you avoid the mistakes that slow most marketplaces down.
+            Kaartx Kloud provides structured product workflows, integrated payments, automated subscriptions, payout logic, and scalable backend infrastructure—so founders can focus on growth instead of fixing operational gaps.
           </p>
           <div className="mt-6">
             <a href="/#booking">
