@@ -40,7 +40,7 @@ export default function Blog() {
     {
       slug: 'automated-seller-subscriptions',
       title: 'From single store to full-scale marketplace expansion',
-      summary: 'Start as a brand. Expand into a marketplace later without rebuilding your system.',
+      summary: 'Most founders start with a single brand store. It\'s simpler, more controlled, and easier to launch. But as the business grows, many begin thinking bigger — more categories, more sellers, more inventory, and a larger ecosystem.',
     },
   ];
 
