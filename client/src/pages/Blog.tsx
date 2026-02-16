@@ -20,7 +20,7 @@ export default function Blog() {
     {
       slug: 'launch-multi-vendor-marketplace-gcc',
       title: 'How to launch a multi-vendor marketplace in the GCC',
-      summary: 'Learn the fastest and most cost-efficient way to launch a full-scale marketplace in Oman, UAE, and the GCC—without spending months on custom development.',
+      summary: 'Build a multi-vendor marketplace in the GCC without 18 months of development or a massive engineering team.',
     },
     {
       slug: 'kaartx-kloud-vs-custom-development',
