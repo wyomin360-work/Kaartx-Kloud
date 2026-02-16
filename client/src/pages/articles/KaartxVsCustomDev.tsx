@@ -132,13 +132,13 @@ export default function KaartxVsCustomDev() {
 
         <div className="mt-12 mb-16">
           <p className="text-foreground leading-relaxed mb-4 italic">
-            Launch your branded store with full control using Kaartx Kloud:
+            Here's how Kaartx Kloud helps brand founders scale with confidence:
           </p>
           <h3 className="text-2xl font-bold text-foreground mb-4">
-            Launch your branded store with full control
+            Build and scale your brand on infrastructure that grows with you
           </h3>
           <p className="text-foreground leading-relaxed mb-6">
-            Kaartx Kloud provides structured product workflows, integrated payments, scalable backend systems, and expansion-ready infrastructure—so you stay in control as your brand grows.
+            Kaartx Kloud provides structured product workflows, integrated payments, scalable backend systems, and expansion-ready architecture—so you stay in control as your brand grows.
           </p>
           <div className="mt-6">
             <a href="/#booking">
