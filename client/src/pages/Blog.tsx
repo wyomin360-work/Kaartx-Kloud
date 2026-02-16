@@ -39,7 +39,7 @@ export default function Blog() {
     },
     {
       slug: 'automated-seller-subscriptions',
-      title: 'From single store to full marketplace expansion',
+      title: 'From single store to full-scale marketplace expansion',
       summary: 'Start as a brand. Expand into a marketplace later without rebuilding your system.',
     },
   ];
