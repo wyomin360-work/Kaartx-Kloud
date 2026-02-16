@@ -25,7 +25,7 @@ export default function Blog() {
     {
       slug: 'kaartx-kloud-vs-custom-development',
       title: 'How to launch your own branded eCommerce store with full control',
-      summary: 'Launching a branded eCommerce store is easy—but building one with full operational and strategic control requires clarity from day one.',
+      summary: 'Launching a branded eCommerce store today is easier than ever—but building one with full operational and strategic control requires clarity from day one. In this guide, we\'ll walk through what "full control" really means and how to structure your store so it scales without limitations.',
     },
     {
       slug: 'marketplace-mistakes-to-avoid',
