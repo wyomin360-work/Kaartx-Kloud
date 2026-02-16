@@ -34,12 +34,12 @@ export default function Blog() {
     },
     {
       slug: 'how-payout-cycles-work',
-      title: 'How payout cycles and settlements work in eCommerce platforms',
+      title: 'How eCommerce payouts and settlements work',
       summary: 'Understand revenue flow, commissions, and automated payouts for brands and multi-vendor platforms.',
     },
     {
       slug: 'automated-seller-subscriptions',
-      title: 'From single store to full marketplace — scaling the smart way',
+      title: 'From single store to full marketplace',
       summary: 'Start as a brand. Expand into a marketplace later without rebuilding your system.',
     },
   ];
