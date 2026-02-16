@@ -20,7 +20,7 @@ export default function Blog() {
     {
       slug: 'launch-multi-vendor-marketplace-gcc',
       title: 'How to launch a multi-vendor marketplace in the GCC',
-      summary: 'Building a multi-vendor marketplace in Oman, the UAE, or across the wider GCC doesn\'t require 18 months of development or a large engineering team. With the right infrastructure in place, you can launch faster and reduce risk...',
+      summary: 'Building a multi-vendor marketplace in Oman, the UAE, or across the wider GCC doesn\'t require 18 months of development...',
     },
     {
       slug: 'kaartx-kloud-vs-custom-development',
