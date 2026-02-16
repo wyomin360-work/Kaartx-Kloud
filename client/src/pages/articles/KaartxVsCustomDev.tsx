@@ -141,11 +141,9 @@ export default function KaartxVsCustomDev() {
             Kaartx Kloud provides structured product workflows, integrated payments, scalable backend systems, and expansion-ready architecture—so you stay in control as your brand grows.
           </p>
           <div className="mt-6">
-            <a href="/#booking">
-              <Button size="lg" className="font-semibold text-lg h-[52px] px-8" data-testid="button-get-started">
-                Get Started with Kaartx Kloud
-              </Button>
-            </a>
+            <Button size="lg" className="font-semibold text-lg h-[52px] px-8" data-testid="button-get-started" onClick={() => setSignupModalOpen(true)}>
+              Get Started with Kaartx Kloud
+            </Button>
           </div>
         </div>
 

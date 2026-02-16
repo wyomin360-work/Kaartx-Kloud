@@ -171,11 +171,9 @@ export default function SellerSubscriptions() {
             Kaartx Kloud is designed to support both single-brand eCommerce stores and full-scale multi-vendor marketplaces within the same architecture. Whether you're launching your first store or expanding into a platform ecosystem, the infrastructure is already built to grow with you.
           </p>
           <div className="mt-6">
-            <a href="/#booking">
-              <Button size="lg" className="font-semibold text-lg h-[52px] px-8" data-testid="button-get-started">
-                Get Started with Kaartx Kloud
-              </Button>
-            </a>
+            <Button size="lg" className="font-semibold text-lg h-[52px] px-8" data-testid="button-get-started" onClick={() => setSignupModalOpen(true)}>
+              Get Started with Kaartx Kloud
+            </Button>
           </div>
         </div>
 

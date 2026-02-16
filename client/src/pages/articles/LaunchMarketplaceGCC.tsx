@@ -196,11 +196,9 @@ export default function LaunchMarketplaceGCC() {
             Kaartx Kloud gives you seller onboarding, subscription billing, payouts, and GCC-ready integrations out of the box—so you can focus on growth, not infrastructure.
           </p>
           <div className="mt-6">
-            <a href="/#booking">
-              <Button size="lg" className="font-semibold text-lg h-[52px] px-8" data-testid="button-get-started">
-                Get Started with Kaartx Kloud
-              </Button>
-            </a>
+            <Button size="lg" className="font-semibold text-lg h-[52px] px-8" data-testid="button-get-started" onClick={() => setSignupModalOpen(true)}>
+              Get Started with Kaartx Kloud
+            </Button>
           </div>
         </div>
 

@@ -187,11 +187,9 @@ export default function MarketplaceMistakes() {
             Kaartx Kloud provides structured product workflows, integrated payments, automated subscriptions, payout logic, and scalable backend infrastructure—so founders can focus on growth instead of fixing operational gaps.
           </p>
           <div className="mt-6">
-            <a href="/#booking">
-              <Button size="lg" className="font-semibold text-lg h-[52px] px-8" data-testid="button-get-started">
-                Get Started with Kaartx Kloud
-              </Button>
-            </a>
+            <Button size="lg" className="font-semibold text-lg h-[52px] px-8" data-testid="button-get-started" onClick={() => setSignupModalOpen(true)}>
+              Get Started with Kaartx Kloud
+            </Button>
           </div>
         </div>
 
