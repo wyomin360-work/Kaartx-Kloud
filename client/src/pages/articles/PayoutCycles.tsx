@@ -10,11 +10,9 @@ export default function PayoutCycles() {
   const [signupModalOpen, setSignupModalOpen] = useState(false);
 
   useEffect(() => {
-    // Reset scroll restoration to auto for article pages
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'auto';
     }
-    // Force scroll to top immediately with no smooth behavior
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, []);
 
@@ -29,148 +27,167 @@ export default function PayoutCycles() {
 
         <article>
           <h1 className="section-title text-foreground mb-5 tracking-tight" data-testid="text-article-title">
-            How payout cycles work in a multi-vendor marketplace
+            How eCommerce payouts and settlements work
           </h1>
 
           <p className="text-sm text-muted-foreground mb-6" data-testid="text-article-meta">
-            Finance & Payouts · 7 min read
+            Operations · 7 min read
           </p>
 
           <div className="prose prose-lg max-w-none">
           <p className="text-lg text-foreground leading-relaxed mb-6">
-            Payout cycles might sound like a boring back-office detail, but they decide how much your sellers trust you—and how stable your cashflow feels. Let's unpack how marketplace payout cycles work and how Kaartx Kloud helps you manage them.
-          </p>
-
-          <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            What is a payout cycle?
-          </h2>
-          <p className="text-foreground leading-relaxed mb-4">
-            A payout cycle is the period between when a customer pays for an order and when the seller receives their funds.
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            In a traditional retail model, the seller gets paid immediately when they make a sale. But in a marketplace, you (the platform) collect payment from the customer, hold it for a set period, then release it to the seller after deducting your commission and fees.
+            Money in eCommerce doesn't move in a straight line. When a customer pays, that money doesn't instantly land in your bank account—or your sellers'. Between payment gateways, commissions, refunds, holding periods, and settlement cycles, there's a financial workflow happening behind the scenes.
           </p>
           <p className="text-foreground leading-relaxed mb-6">
-            This holding period is the payout cycle. It protects both you and the seller from fraud, chargebacks, and refund complications.
+            Understanding how payouts and settlements work is critical whether you're running a brand store or a multi-vendor marketplace.
           </p>
 
           <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            Why marketplaces don't pay sellers instantly
+            The payment flow: what happens after checkout?
           </h2>
           <p className="text-foreground leading-relaxed mb-4">
-            Instant payouts sound great in theory. But they create serious risks:
+            When a customer completes payment, it typically follows this path:
           </p>
           <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li><strong>Refund windows:</strong> If a customer returns a product after the seller has been paid, you're stuck covering the refund yourself</li>
-            <li><strong>Chargebacks:</strong> Payment gateways can reverse transactions days or weeks later if fraud is detected</li>
-            <li><strong>COD settlements:</strong> Cash-on-delivery orders need time to be collected, verified, and reconciled</li>
-            <li><strong>Fraud checks:</strong> Suspicious orders or new sellers need review before funds are released</li>
+            <li>Customer pays via card / wallet / bank transfer</li>
+            <li>Payment gateway authorises and captures the transaction</li>
+            <li>Funds enter the merchant account (or payment balance)</li>
+            <li>Fees and deductions are calculated</li>
+            <li>The remaining amount becomes eligible for settlement</li>
           </ul>
           <p className="text-foreground leading-relaxed mb-6">
-            Holding funds for a short period gives you time to confirm everything is legitimate before paying sellers.
+            At this point, the money is "collected"—but not yet "paid out" to sellers (or even to you, depending on the gateway timing).
           </p>
 
           <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            Common payout models in GCC marketplaces
+            Gross vs net revenue (the part founders confuse)
           </h2>
           <p className="text-foreground leading-relaxed mb-4">
-            There are three common payout frequencies we see across GCC marketplaces:
-          </p>
-
-          <p className="text-foreground leading-relaxed mb-2 font-semibold">
-            1. Weekly payouts
+            Gross revenue is the order value the customer paid.
           </p>
           <p className="text-foreground leading-relaxed mb-4">
-            Sellers get paid every 7 days. This is fast and builds seller trust, but it creates more admin work and tighter cashflow windows for the platform.
-          </p>
-          <p className="text-foreground leading-relaxed mb-2">
-            <strong>Best for:</strong> Established sellers with proven track records.
-          </p>
-
-          <p className="text-foreground leading-relaxed mb-2 mt-6 font-semibold">
-            2. Bi-weekly payouts (12–14 days)
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            This is the most common model in the GCC. It balances seller satisfaction with practical cashflow management.
-          </p>
-          <p className="text-foreground leading-relaxed mb-2">
-            <strong>Best for:</strong> Most marketplaces as a default policy.
-          </p>
-
-          <p className="text-foreground leading-relaxed mb-2 mt-6 font-semibold">
-            3. Monthly payouts
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            Sellers get paid once per month. This gives you maximum cushion for refunds and chargebacks, but can frustrate sellers who need faster access to their earnings.
-          </p>
-          <p className="text-foreground leading-relaxed mb-6">
-            <strong>Best for:</strong> High-risk categories or new/unproven sellers.
-          </p>
-
-          <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            Key elements of a solid payout policy
-          </h2>
-          <p className="text-foreground leading-relaxed mb-4">
-            A good payout policy isn't just about timing. It's about clarity and fairness. Here's what to define:
-          </p>
-
-          <p className="text-foreground leading-relaxed mb-2 font-semibold">
-            1. Minimum payout threshold
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            Set a minimum amount before payouts are released (e.g. OMR 10 or OMR 20). This reduces transaction fees and prevents tiny, inefficient payouts.
-          </p>
-
-          <p className="text-foreground leading-relaxed mb-2 font-semibold">
-            2. Handling refunds and returns
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            Clearly state how refunds are deducted. Common practice: if a customer returns a product, the refund amount is deducted from the seller's next payout.
-          </p>
-
-          <p className="text-foreground leading-relaxed mb-2 font-semibold">
-            3. Delays for high-risk categories
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            Some product categories (electronics, luxury goods, high-ticket items) have higher fraud or return rates. Consider longer holding periods for these.
-          </p>
-
-          <p className="text-foreground leading-relaxed mb-2 font-semibold">
-            4. Transparent payout statements
-          </p>
-          <p className="text-foreground leading-relaxed mb-6">
-            Sellers should be able to see exactly what's been paid, what's pending, and what's on hold. No surprises. No guesswork.
-          </p>
-
-          <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
-            How Kaartx Kloud simplifies payout cycles
-          </h2>
-          <p className="text-foreground leading-relaxed mb-4">
-            Managing payouts manually is messy. You're juggling spreadsheets, bank transfers, refund calculations, and seller queries.
-          </p>
-          <p className="text-foreground leading-relaxed mb-4">
-            Kaartx Kloud automates the entire flow:
+            Net revenue is what remains after deductions such as:
           </p>
           <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
-            <li><strong>Configurable payout frequency:</strong> Set weekly, bi-weekly, or monthly cycles—or even custom frequencies per seller plan</li>
-            <li><strong>Clear transaction history:</strong> Sellers see every order, commission deduction, refund, and payout in one dashboard</li>
-            <li><strong>Automatic balance calculations:</strong> The system tracks what's pending, what's on hold, and what's ready to release</li>
-            <li><strong>Exportable reports:</strong> Finance teams can pull payout reports for reconciliation and accounting</li>
+            <li>Payment gateway fees</li>
+            <li>Platform commissions (marketplace)</li>
+            <li>Shipping charges (if collected by platform)</li>
+            <li>Refunds and cancellations</li>
+            <li>Chargebacks / disputes</li>
+            <li>Taxes (if applicable)</li>
           </ul>
           <p className="text-foreground leading-relaxed mb-6">
-            You define the rules once. The platform handles the rest.
+            For marketplaces, net revenue has to be calculated per seller, per order, not just per day.
+          </p>
+
+          <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
+            What a settlement cycle actually means
+          </h2>
+          <p className="text-foreground leading-relaxed mb-4">
+            A settlement cycle is your payout schedule—how often money moves out.
+          </p>
+          <p className="text-foreground leading-relaxed mb-4">
+            Common cycles:
+          </p>
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
+            <li>7-day rolling cycle</li>
+            <li>12–14 day payout cycle</li>
+            <li>Monthly settlements</li>
+            <li>Hybrid (some sellers weekly, some monthly)</li>
+          </ul>
+          <p className="text-foreground leading-relaxed mb-4">
+            Holding periods exist because:
+          </p>
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
+            <li>Customers may request refunds</li>
+            <li>COD orders may fail</li>
+            <li>Chargebacks can occur days later</li>
+            <li>Fulfilment needs confirmation</li>
+          </ul>
+          <p className="text-foreground leading-relaxed mb-6">
+            A strong platform makes these rules predictable and automated.
+          </p>
+
+          <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
+            Single-brand store vs marketplace payouts
+          </h2>
+          <p className="text-foreground leading-relaxed mb-2 font-semibold">
+            Brand store payouts (simple)
+          </p>
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
+            <li>Customer pays</li>
+            <li>Gateway deducts fees</li>
+            <li>Remaining amount settles to the brand on the gateway's schedule</li>
+          </ul>
+          <p className="text-foreground leading-relaxed mb-2 mt-6 font-semibold">
+            Marketplace payouts (structured)
+          </p>
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
+            <li>Platform collects full order amount</li>
+            <li>Commission + platform fees are deducted</li>
+            <li>Net balance is allocated to each seller</li>
+            <li>Seller payout is released based on the settlement cycle</li>
+          </ul>
+          <p className="text-foreground leading-relaxed mb-6">
+            This requires seller wallets/ledgers, payout statements, and transparent order-level breakdowns.
+          </p>
+
+          <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
+            Refunds, disputes, and payout adjustments
+          </h2>
+          <p className="text-foreground leading-relaxed mb-4">
+            Your system must handle:
+          </p>
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
+            <li>Full refunds</li>
+            <li>Partial refunds</li>
+            <li>Cancellations after payment</li>
+            <li>Chargebacks/disputes</li>
+            <li>Manual adjustments (e.g., penalty, correction)</li>
+          </ul>
+          <p className="text-foreground leading-relaxed mb-4">
+            A proper settlement system separates balances into:
+          </p>
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
+            <li>Pending balance (not eligible yet)</li>
+            <li>Available balance (ready for payout)</li>
+            <li>On-hold balance (risk/verification)</li>
+            <li>Paid out (completed settlement)</li>
+          </ul>
+          <p className="text-foreground leading-relaxed mb-6">
+            This visibility reduces seller complaints and support tickets.
+          </p>
+
+          <h2 className="text-2xl font-bold text-foreground mt-12 mb-4">
+            Why payout automation is non-negotiable at scale
+          </h2>
+          <p className="text-foreground leading-relaxed mb-4">
+            Manual payout operations might work for 5 sellers. It breaks at 50. It becomes impossible at 500.
+          </p>
+          <p className="text-foreground leading-relaxed mb-4">
+            Automation enables:
+          </p>
+          <ul className="list-disc pl-6 mb-4 text-foreground [&>li]:mt-0 [&>li]:mb-0 [&>li+li]:mt-2">
+            <li>Accurate payouts without spreadsheet work</li>
+            <li>Less reconciliation errors</li>
+            <li>Faster finance operations</li>
+            <li>Higher seller trust</li>
+            <li>Scalable growth without chaos</li>
+          </ul>
+          <p className="text-foreground leading-relaxed mb-6">
+            If payout logic isn't structured early, every increase in sellers increases financial risk.
           </p>
         </div>
 
         <div className="mt-12 mb-16">
           <p className="text-foreground leading-relaxed mb-4 italic">
-            Here's how Kaartx Kloud helps marketplace founders move faster:
+            Here's how Kaartx Kloud helps brands and marketplace founders manage payouts with clarity:
           </p>
           <h3 className="text-2xl font-bold text-foreground mb-4">
-            Simplify your GCC payout cycles with Kaartx Kloud
+            Predictable payouts. Transparent settlements.
           </h3>
           <p className="text-foreground leading-relaxed mb-6">
-            Configure payout rules, holding periods, and statements effortlessly. Kaartx Kloud brings clarity, automation, and predictability to marketplace payouts.
+            Kaartx Kloud supports structured settlement cycles, seller payout logic, automated deductions, and clear payout statements—so you can scale without messy financial operations.
           </p>
           <div className="mt-6">
             <a href="/#booking">

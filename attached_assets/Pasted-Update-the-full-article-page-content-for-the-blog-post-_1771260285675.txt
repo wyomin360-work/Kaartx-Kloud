@@ -1,0 +1,178 @@
+Update the full article page content for the blog post card:
+
+Title (card): “How eCommerce payouts and settlements work”
+
+Do NOT change:
+
+layout, styling, spacing, fonts, header/footer, navigation, buttons
+
+the card design on the articles grid
+
+Only replace the article page body content (text inside when user clicks Read article) with the content below.
+
+Keep the same article style used in the first blog:
+
+Show the meta line under title like: Operations · 7 min read
+
+Use clean section headings (not “Step 1/2/3”)
+
+Keep bullet points simple
+
+End with the italic transition line + closing headline + short paragraph + keep existing CTA button as-is
+
+Now paste this exact article content:
+
+✅ Full Article Content (Paste Inside Article Page)
+
+Operations · 7 min read
+
+How eCommerce payouts and settlements work
+
+Money in eCommerce doesn’t move in a straight line. When a customer pays, that money doesn’t instantly land in your bank account—or your sellers’. Between payment gateways, commissions, refunds, holding periods, and settlement cycles, there’s a financial workflow happening behind the scenes.
+
+Understanding how payouts and settlements work is critical whether you're running a brand store or a multi-vendor marketplace.
+
+The payment flow: what happens after checkout?
+
+When a customer completes payment, it typically follows this path:
+
+Customer pays via card / wallet / bank transfer
+
+Payment gateway authorises and captures the transaction
+
+Funds enter the merchant account (or payment balance)
+
+Fees and deductions are calculated
+
+The remaining amount becomes eligible for settlement
+
+At this point, the money is “collected”—but not yet “paid out” to sellers (or even to you, depending on the gateway timing).
+
+Gross vs net revenue (the part founders confuse)
+
+Gross revenue is the order value the customer paid.
+
+Net revenue is what remains after deductions such as:
+
+Payment gateway fees
+
+Platform commissions (marketplace)
+
+Shipping charges (if collected by platform)
+
+Refunds and cancellations
+
+Chargebacks / disputes
+
+Taxes (if applicable)
+
+For marketplaces, net revenue has to be calculated per seller, per order, not just per day.
+
+What a settlement cycle actually means
+
+A settlement cycle is your payout schedule—how often money moves out.
+
+Common cycles:
+
+7-day rolling cycle
+
+12–14 day payout cycle
+
+Monthly settlements
+
+Hybrid (some sellers weekly, some monthly)
+
+Holding periods exist because:
+
+Customers may request refunds
+
+COD orders may fail
+
+Chargebacks can occur days later
+
+Fulfilment needs confirmation
+
+A strong platform makes these rules predictable and automated.
+
+Single-brand store vs marketplace payouts
+Brand store payouts (simple)
+
+Customer pays
+
+Gateway deducts fees
+
+Remaining amount settles to the brand on the gateway’s schedule
+
+Marketplace payouts (structured)
+
+Platform collects full order amount
+
+Commission + platform fees are deducted
+
+Net balance is allocated to each seller
+
+Seller payout is released based on the settlement cycle
+
+This requires:
+
+Seller wallets/ledgers
+
+Payout statements
+
+Transparent order-level breakdowns
+
+Refunds, disputes, and payout adjustments
+
+Your system must handle:
+
+Full refunds
+
+Partial refunds
+
+Cancellations after payment
+
+Chargebacks/disputes
+
+Manual adjustments (e.g., penalty, correction)
+
+A proper settlement system separates balances into:
+
+Pending balance (not eligible yet)
+
+Available balance (ready for payout)
+
+On-hold balance (risk/verification)
+
+Paid out (completed settlement)
+
+This visibility reduces seller complaints and support tickets.
+
+Why payout automation is non-negotiable at scale
+
+Manual payout operations might work for 5 sellers.
+
+It breaks at 50.
+
+It becomes impossible at 500.
+
+Automation enables:
+
+Accurate payouts without spreadsheet work
+
+Less reconciliation errors
+
+Faster finance operations
+
+Higher seller trust
+
+Scalable growth without chaos
+
+If payout logic isn’t structured early, every increase in sellers increases financial risk.
+
+Here’s how Kaartx Kloud helps brands and marketplace founders manage payouts with clarity:
+
+Predictable payouts. Transparent settlements.
+
+Kaartx Kloud supports structured settlement cycles, seller payout logic, automated deductions, and clear payout statements—so you can scale without messy financial operations.
+
+(Keep the existing CTA button below this section: Get Started with Kaartx Kloud)

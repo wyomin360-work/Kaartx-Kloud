@@ -35,7 +35,7 @@ export default function Blog() {
     {
       slug: 'how-payout-cycles-work',
       title: 'How eCommerce payouts and settlements work',
-      summary: 'Understand revenue flow, commissions, and automated payouts for brands and multi-vendor platforms.',
+      summary: 'Money in eCommerce doesn\'t move in a straight line. When a customer pays, that money doesn\'t instantly land in your bank account—or your sellers\'. Between payment gateways, commissions, refunds, holding periods, and settlement cycles, there\'s a financial workflow happening behind the scenes.',
     },
     {
       slug: 'automated-seller-subscriptions',
