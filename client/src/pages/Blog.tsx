@@ -24,23 +24,23 @@ export default function Blog() {
     },
     {
       slug: 'kaartx-kloud-vs-custom-development',
-      title: 'Kaartx Kloud vs custom development: what\'s faster and more affordable?',
-      summary: 'Discover why SaaS marketplaces reduce time, cost, and risk by up to 80% compared to building everything from scratch.',
+      title: 'How to launch your own branded eCommerce store with full control',
+      summary: 'Build an independent online store with full ownership of checkout, data, and operations.',
     },
     {
       slug: 'marketplace-mistakes-to-avoid',
-      title: '5 mistakes every marketplace owner makes — and how to avoid them',
-      summary: 'Most founders fail not because of technology, but workflow mistakes. Fix these five and you\'ll scale faster.',
+      title: '5 eCommerce mistakes founders make — and how to avoid them',
+      summary: 'Avoid costly workflow and scaling mistakes whether you\'re building a brand store or marketplace.',
     },
     {
       slug: 'how-payout-cycles-work',
-      title: 'How payout cycles work in a multi-vendor marketplace',
-      summary: 'Understand settlement cycles, seller payouts, escrow flow, and how Kaartx Kloud automates the entire process.',
+      title: 'How payout cycles and settlements work in eCommerce platforms',
+      summary: 'Understand revenue flow, commissions, and automated payouts for brands and multi-vendor platforms.',
     },
     {
       slug: 'automated-seller-subscriptions',
-      title: 'Why your marketplace needs automated seller subscriptions',
-      summary: 'Recurring seller billing is the backbone of predictable revenue. Here\'s how Kaartx Kloud handles it seamlessly.',
+      title: 'From single store to full marketplace — scaling the smart way',
+      summary: 'Start as a brand. Expand into a marketplace later without rebuilding your system.',
     },
   ];
 
