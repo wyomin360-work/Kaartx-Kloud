@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Check } from 'lucide-react';
+import { Check, Info } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import type { PlanSelection } from '@/components/SignupModal';
 
@@ -47,11 +46,10 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
         'Basic branding (logo + colors)',
         'Standard payout cycle',
         'Email & WhatsApp support',
-        'Seller subscriptions (monthly/yearly billing support)',
+        'Seller subscriptions logic',
       ],
-      cta: 'Request Starter Setup',
+      cta: 'Request Setup',
       highlighted: false,
-      savingsPercent: '~20%',
     },
     {
       name: 'Growth',
@@ -63,15 +61,14 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
         'Up to 600 sellers',
         'Up to 10,000 orders / month',
         'Advanced analytics dashboards',
-        'White-label (Domain + SSL add-on)',
+        'White-label (Domain + SSL)',
         'Configurable payout cycles',
         'Priority email & WhatsApp support',
-        'Bulk product uploads + workflow automations',
+        'Bulk product + automations',
       ],
-      cta: 'Request Growth Setup',
+      cta: 'Get Growth',
       highlighted: true,
       mostPopular: true,
-      savingsPercent: '~25%',
     },
     {
       name: 'Pro (Enterprise)',
@@ -86,214 +83,193 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
         'Full white-label included',
         'Custom payout workflows',
         'Dedicated account manager',
-        'Custom integrations & enterprise support',
+        'Custom integrations API',
       ],
       cta: 'Talk to Sales',
       highlighted: false,
-      savingsPercent: '~15%',
     },
   ];
 
   const addons = [
-    { name: 'Custom domain & SSL', price: 10, availability: 'Starter, Growth — Included in Pro', comingSoon: false },
-    { name: 'Extra marketplace instance', price: 20, availability: 'Growth, Pro', comingSoon: false },
-    { name: 'Extra admin user (per seat)', price: 5, availability: 'All plans', comingSoon: false },
-    { name: 'Extra sellers (per 100 sellers)', price: 5, availability: 'Growth, Pro — Available on request for Starter', comingSoon: false },
+    { name: 'Custom domain & SSL', price: 10, availability: 'Starter, Growth — Included in Pro' },
+    { name: 'Extra marketplace instance', price: 20, availability: 'Growth, Pro' },
+    { name: 'Extra admin user (per seat)', price: 5, availability: 'All plans' },
+    { name: 'Extra sellers (per 100 sellers)', price: 5, availability: 'Available on request' },
   ];
 
   const upcomingAddons = [
-    { name: 'AI Insights Suite', price: 15, availability: 'All plans', comingSoon: true },
+    { name: 'AI Insights Suite', price: 15, availability: 'All plans' },
   ];
 
   return (
-    <section id="pricing" className="py-12 sm:py-20 md:py-32 bg-background scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
+    <section id="pricing" className="py-24 sm:py-32 bg-background scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div 
           ref={titleAnimation.ref}
-          className={`text-center mb-8 sm:mb-12 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+          className={`text-center max-w-3xl mx-auto mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
-          <h2 className="section-title text-foreground mb-3 sm:mb-4" data-testid="text-pricing-title">
-            Plans & <span className="gradient-text">pricing</span> for GCC
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-foreground mb-6">
+            Simple, transparent pricing
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto font-normal" data-testid="text-pricing-subtitle">
-            Choose a plan that fits your needs. Upgrade anytime.
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Whether you're testing the waters or scaling an empire, we have a plan designed to fit your unique needs. No hidden fees.
           </p>
         </div>
 
         <div 
           ref={toggleAnimation.ref}
-          className={`flex justify-center items-center gap-3 mb-10 sm:mb-16 animate-on-scroll ${toggleAnimation.isVisible ? 'visible' : ''}`}
+          className={`flex justify-center items-center mb-16 animate-on-scroll ${toggleAnimation.isVisible ? 'visible' : ''}`}
         >
-          <Button
-            onClick={() => setBillingPeriod('yearly')}
-            variant={billingPeriod === 'yearly' ? 'default' : 'outline'}
-            className="rounded-2xl font-bold text-sm sm:text-base"
-            data-testid="button-billing-yearly"
-          >
-            Yearly {billingPeriod === 'yearly' && <span className="ml-2 text-xs">(Save up to 25%)</span>}
-          </Button>
-          <Button
-            onClick={() => setBillingPeriod('monthly')}
-            variant={billingPeriod === 'monthly' ? 'default' : 'outline'}
-            className="rounded-2xl font-bold text-sm sm:text-base"
-            data-testid="button-billing-monthly"
-          >
-            Monthly
-          </Button>
+          <div className="inline-flex items-center p-1.5 bg-muted/60 backdrop-blur-md rounded-full border border-border shadow-inner">
+            <button
+              onClick={() => setBillingPeriod('monthly')}
+              className={`relative px-6 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 ${billingPeriod === 'monthly' ? 'bg-background text-foreground shadow-sm ring-1 ring-border shadow-black/5' : 'text-muted-foreground hover:text-foreground'}`}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setBillingPeriod('yearly')}
+              className={`relative px-6 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 ${billingPeriod === 'yearly' ? 'bg-background text-foreground shadow-sm ring-1 ring-border shadow-black/5' : 'text-muted-foreground hover:text-foreground'}`}
+            >
+              Annually <span className={billingPeriod === 'yearly' ? 'text-primary ml-1' : 'opacity-70 ml-1'}>-20%</span>
+            </button>
+          </div>
         </div>
 
         <div 
           ref={cardsAnimation.ref}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto mb-10 sm:mb-12"
+          className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16"
         >
           {plans.map((plan, index) => {
             const stagger = ['', 'stagger-1', 'stagger-2'];
             const price = billingPeriod === 'yearly' ? plan.yearlyPrice : plan.monthlyPrice;
-            const monthlyEquivalent = billingPeriod === 'yearly' ? (plan.yearlyPrice / 12).toFixed(2) : null;
+            const monthlyEquivalent = billingPeriod === 'yearly' ? (plan.yearlyPrice / 12).toFixed(0) : null;
+            const isHighlighted = plan.highlighted;
             
             return (
-              <Card
+              <div
                 key={index}
-                className={`relative p-6 sm:p-8 !rounded-3xl !border-2 flex flex-col ${
-                  plan.highlighted
-                    ? 'gradient-border shadow-playful md:scale-105 gradient-bg-blue'
-                    : 'hover-elevate !border-border'
-                } animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
-                data-testid={`pricing-card-${index}`}
+                className={`relative flex flex-col p-6 sm:p-7 rounded-[2rem] bg-card transition-all duration-500 animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''} ${
+                  isHighlighted 
+                    ? 'border-2 border-primary shadow-2xl lg:-translate-y-2 ring-4 ring-primary/5 z-10' 
+                    : 'border border-border/80 shadow-lg hover:shadow-xl'
+                }`}
               >
-                {billingPeriod === 'yearly' && (
-                  <Badge 
-                    className="absolute top-4 right-4 bg-card text-primary border-primary/20 font-bold no-default-hover-elevate"
-                    data-testid={`badge-savings-${index}`}
-                  >
-                    Save {plan.savingsPercent}
-                  </Badge>
-                )}
-                
-                {plan.mostPopular && (
-                  <Badge 
-                    className="absolute top-4 left-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 font-bold shadow-playful no-default-hover-elevate"
-                    data-testid="badge-most-popular"
-                  >
-                    Most Popular
-                  </Badge>
+                {isHighlighted && (
+                  <div className="absolute -top-3.5 left-0 right-0 flex justify-center">
+                    <span className="bg-primary text-primary-foreground text-[10px] font-bold tracking-widest uppercase py-1 px-4 rounded-full shadow-md">
+                      Most Popular
+                    </span>
+                  </div>
                 )}
 
-                <div className="mb-3 sm:mb-4 mt-4">
-                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2" data-testid={`text-plan-name-${index}`}>
+                <div className="mb-5">
+                  <h3 className="text-xl font-bold tracking-tight text-foreground mb-1.5">
                     {plan.name}
                   </h3>
-                  <p className="text-muted-foreground text-sm font-medium" data-testid={`text-plan-description-${index}`}>
+                  <p className="text-[13px] text-muted-foreground leading-snug">
                     {plan.description}
                   </p>
                 </div>
 
-                <div className="mb-5 sm:mb-6">
-                  <div className="flex items-baseline gap-1 flex-nowrap">
-                    <span className="text-4xl sm:text-5xl font-black gradient-text leading-none whitespace-nowrap" data-testid={`text-plan-price-${index}`}>
-                      OMR {price}
+                <div className="mb-6">
+                  <div className="flex items-end gap-1.5 flex-nowrap">
+                    <span className="text-4xl font-extrabold tracking-tighter text-foreground leading-none">
+                      <span className="text-xl font-bold align-top mr-1">OMR</span>{price}
                     </span>
-                    <span className="text-muted-foreground font-medium text-sm whitespace-nowrap">
-                      / {billingPeriod === 'yearly' ? 'year' : 'month'}
+                    <span className="text-sm text-muted-foreground font-medium pb-0.5 whitespace-nowrap">
+                      / {billingPeriod === 'yearly' ? 'year' : 'mo'}
                     </span>
                   </div>
                   {monthlyEquivalent && (
-                    <p className="text-xs text-muted-foreground mt-1.5" data-testid={`text-monthly-equiv-${index}`}>
-                      (≈ OMR {monthlyEquivalent} / mo)
+                    <p className="text-xs text-primary font-semibold tracking-tight mt-2">
+                      Works out to OMR {monthlyEquivalent} / month
                     </p>
                   )}
                 </div>
-
-                <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8 flex-1">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center gap-3" data-testid={`feature-${index}-${featureIndex}`}>
-                      <div className="h-5 w-5 rounded-full bg-card flex items-center justify-center flex-shrink-0">
-                        <Check className="h-3 w-3 text-primary" />
-                      </div>
-                      <span className={`text-sm text-muted-foreground${feature.startsWith('White-label') ? ' whitespace-nowrap' : ''}`}>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
 
                 <Button
                   onClick={
                     plan.name === 'Starter' || plan.name === 'Growth'
                       ? () => onOpenSignup?.({
-                          planId: `${plan.name.toLowerCase()}-${billingPeriod}`,
-                          planName: plan.name as 'Starter' | 'Growth',
+                          planId: `${plan.name.split(' ')[0].toLowerCase()}-${billingPeriod}`,
+                          planName: plan.name.split(' ')[0] as 'Starter' | 'Growth',
                           billingCycle: billingPeriod,
                           price: price,
                           currency: 'OMR',
                         })
                       : scrollToBooking
                   }
-                  className={`w-full rounded-2xl font-bold text-sm sm:text-base py-5 sm:py-6 hover:scale-[1.02] transition-transform ${plan.highlighted ? 'shadow-playful' : ''}`}
-                  variant={plan.highlighted ? 'default' : 'outline'}
-                  data-testid={`button-plan-${index}`}
+                  className={`w-full rounded-xl font-bold text-sm py-5 transition-all ${
+                    isHighlighted 
+                      ? 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg hover:-translate-y-0.5' 
+                      : 'bg-secondary/40 text-foreground hover:bg-secondary border border-border/50 hover:-translate-y-0.5'
+                  }`}
+                  variant={isHighlighted ? 'default' : 'secondary'}
                 >
                   {plan.cta}
                 </Button>
-              </Card>
+
+                <div className="mt-6 pt-5 border-t border-border/50 flex-1">
+                  <p className="text-xs font-bold text-foreground mb-4 uppercase tracking-wider">What's included</p>
+                  <ul className="space-y-2.5">
+                    {plan.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start gap-3">
+                        <Check className={`h-4 w-4 mt-0.5 shrink-0 ${isHighlighted ? 'text-primary' : 'text-foreground/40'}`} strokeWidth={3} />
+                        <span className="text-[13px] leading-snug text-muted-foreground font-medium">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             );
           })}
         </div>
 
-        <div className="max-w-5xl mx-auto mt-16 sm:mt-20 mb-10 sm:mb-12">
-          <h3 className="text-center text-lg sm:text-xl font-semibold text-foreground mb-6 sm:mb-8" data-testid="text-addons-title">
-            Add-ons
-          </h3>
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-5 addon-container">
+        {/* Add-ons Section */}
+        <div className="max-w-4xl mx-auto bg-card rounded-[2rem] border border-border/80 p-8 sm:p-10 shadow-xl">
+          <div className="flex items-center gap-2 mb-8">
+            <h3 className="text-xl font-bold tracking-tight text-foreground">
+              Optional Add-ons
+            </h3>
+            <Info className="h-4 w-4 text-muted-foreground" />
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {addons.map((addon, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-4 md:gap-2 px-5 py-2.5 rounded-full border border-border bg-background hover-elevate"
-                data-testid={`badge-addon-${index}`}
-              >
-                <span className="addon-title text-sm font-medium text-foreground">
-                  {addon.name}
-                </span>
-                <div className="addon-price-slot flex items-center justify-center">
-                  <span className="text-sm font-medium text-foreground whitespace-nowrap">
-                    OMR {addon.price} / month
-                  </span>
+              <div key={index} className="flex flex-col p-5 rounded-2xl bg-secondary/30 border border-border/40 hover:bg-secondary/60 transition-colors group">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="font-bold text-sm text-foreground">{addon.name}</span>
+                  <span className="font-extrabold text-sm text-primary group-hover:scale-105 transition-transform">OMR {addon.price} <span className="text-xs text-muted-foreground font-medium">/mo</span></span>
                 </div>
-                <span className="addon-availability text-xs text-muted-foreground font-normal">({addon.availability})</span>
+                <span className="text-xs text-muted-foreground font-medium leading-relaxed">{addon.availability}</span>
               </div>
             ))}
           </div>
 
-          {/* Upcoming add-ons */}
-          <div className="flex justify-center mt-4 sm:mt-5">
-            {upcomingAddons.map((addon, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-background"
-                data-testid={`badge-addon-upcoming-${index}`}
-              >
-                <span className="text-sm font-medium text-foreground">
-                  {addon.name}
-                </span>
-                <Badge className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 font-bold shadow-sm no-default-hover-elevate">
-                  Coming Soon
-                </Badge>
-              </div>
-            ))}
-          </div>
+          {upcomingAddons.length > 0 && (
+            <div className="mt-8 pt-6 border-t border-border/50">
+              {upcomingAddons.map((addon, index) => (
+                <div key={index} className="flex items-center justify-between p-5 rounded-2xl border border-dashed border-border/80 bg-background/50">
+                  <span className="font-semibold text-sm text-muted-foreground">{addon.name}</span>
+                  <Badge variant="outline" className="text-xs font-bold uppercase tracking-widest text-muted-foreground shadow-sm">Coming Soon</Badge>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
-        <p className="text-center text-xs text-muted-foreground max-w-2xl mx-auto mt-8" data-testid="text-pricing-footnote">
-          Prices exclude VAT where applicable. Billing via TAP Payments.
-        </p>
-
-        <div className="text-center text-xs text-muted-foreground max-w-2xl mx-auto mt-6 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-0" data-testid="text-pricing-bridge-cta">
-          <span>Looking for a fully branded, dedicated deployment?</span>
-          <button 
-            onClick={openWhatsApp}
-            className="text-primary font-medium cursor-pointer hover:underline transition-colors sm:ml-1 py-2 sm:py-0 px-4 sm:px-0 bg-transparent border-none"
-            data-testid="link-talk-to-us"
-          >
-            Talk to us
-          </button>
+        <div className="text-center mt-16">
+          <p className="text-sm font-medium text-muted-foreground mb-6">Prices exclude VAT where applicable. Secure billing via TAP Payments.</p>
+          <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 bg-secondary/20 px-6 py-4 rounded-full border border-border/30">
+            <span className="text-sm text-foreground font-bold">Looking for a custom enterprise deployment?</span>
+            <button 
+              onClick={openWhatsApp}
+              className="text-sm text-primary font-bold hover:text-primary/80 transition-colors relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-primary/30 hover:after:bg-primary"
+            >
+              Talk to sales
+            </button>
+          </div>
         </div>
       </div>
     </section>
