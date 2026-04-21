@@ -71,12 +71,12 @@ const StackedSection = ({
     >
       <div
         className={`
-          w-[calc(100%-1rem)] sm:w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] lg:max-w-6xl 
+          w-[calc(100%-1rem)] sm:w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] lg:max-w-7xl 
           bg-background overflow-hidden
           ${
             disableSticky
               ? ''
-              : 'border border-border/50 shadow-[0_-12px_45px_rgb(0,0,0,0.15)] rounded-[2rem] sm:rounded-[3rem]'
+              : ' shadow-[0_-12px_45px_rgb(0,0,0,0.15)]  '
           }
         `}
       >
