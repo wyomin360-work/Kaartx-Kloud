@@ -377,12 +377,12 @@ body[data-scroll-locked] {
   .animate-on-scroll {
     opacity: 0;
     will-change: opacity, transform;
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .animate-on-scroll.visible {
-    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeInUp 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .animate-fade-in {
@@ -391,7 +391,7 @@ body[data-scroll-locked] {
   }
 
   .animate-fade-in.visible {
-    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .animate-scale-in {
@@ -400,7 +400,7 @@ body[data-scroll-locked] {
   }
 
   .animate-scale-in.visible {
-    animation: scaleIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .animate-slide-left {
@@ -409,7 +409,7 @@ body[data-scroll-locked] {
   }
 
   .animate-slide-left.visible {
-    animation: slideInLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: slideInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   .animate-slide-right {
@@ -418,20 +418,20 @@ body[data-scroll-locked] {
   }
 
   .animate-slide-right.visible {
-    animation: slideInRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: slideInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  /* Refined stagger delays for natural cascading effect */
+  /* Rapid stagger delays for lighting-fast cascading effect */
   .stagger-1 {
-    animation-delay: 0.08s;
+    animation-delay: 0.04s;
   }
 
   .stagger-2 {
-    animation-delay: 0.16s;
+    animation-delay: 0.08s;
   }
 
   .stagger-3 {
-    animation-delay: 0.24s;
+    animation-delay: 0.12s;
   }
 
   .stagger-4 {
@@ -1017,210 +1017,6 @@ body.mobile-menu-open {
     width: 16px !important;
   }
 
-  /* ========================================
-     DeepFeatures - Stacked Cards with Accordion (Mobile)
-     STRICT RULES:
-     - First card always visible, height: auto
-     - Second card: only 8-12px peek
-     - Cards 3+: completely hidden
-     - Never absolute on first card
-     - Standard section spacing only
-     ======================================== */
-  
-  /* Section: reduced mobile padding for standard gap */
-  #features {
-    padding-bottom: 24px !important;
-  }
-
-  /* Stack wrapper: no extra margins */
-  #features .grid,
-  [data-testid="deep-features-container"] {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    position: relative !important;
-    margin: 0 !important;
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  }
-
-  /* Collapsed: overflow hidden to clip cards 3+ */
-  [data-testid="deep-features-container"][data-expanded="false"] {
-    overflow: hidden !important;
-  }
-
-  /* Expanded: natural flow */
-  [data-testid="deep-features-container"][data-expanded="true"] {
-    overflow: visible !important;
-  }
-
-  /* Base card styles: match FeatureGrid card background & border, NO transitions on non-first cards */
-  [data-testid^="deep-feature-"],
-  .deep-feature-card {
-    background: hsl(var(--card) / 0.6) !important;
-    background-color: hsl(var(--card) / 0.6) !important;
-    background-image: none !important;
-    border: 2px solid hsl(var(--primary) / 0.2) !important;
-    border-radius: 16px !important;
-    box-shadow: none !important;
-    overflow: hidden !important;
-    transition: none !important;
-  }
-
-  /* Disable ALL interactive states on non-first cards */
-  [data-testid="deep-feature-1"],
-  [data-testid="deep-feature-2"],
-  [data-testid="deep-feature-3"],
-  [data-testid="deep-feature-4"],
-  [data-testid="deep-feature-5"] {
-    pointer-events: none !important;
-    outline: none !important;
-  }
-
-  /* Prevent focus/hover/active states on non-first cards */
-  [data-testid="deep-feature-1"]:focus,
-  [data-testid="deep-feature-1"]:hover,
-  [data-testid="deep-feature-1"]:active,
-  [data-testid="deep-feature-2"]:focus,
-  [data-testid="deep-feature-2"]:hover,
-  [data-testid="deep-feature-2"]:active,
-  [data-testid="deep-feature-3"]:focus,
-  [data-testid="deep-feature-3"]:hover,
-  [data-testid="deep-feature-3"]:active,
-  [data-testid="deep-feature-4"]:focus,
-  [data-testid="deep-feature-4"]:hover,
-  [data-testid="deep-feature-4"]:active,
-  [data-testid="deep-feature-5"]:focus,
-  [data-testid="deep-feature-5"]:hover,
-  [data-testid="deep-feature-5"]:active {
-    border: 1px solid hsl(var(--border)) !important;
-    box-shadow: none !important;
-    outline: none !important;
-    transform: none !important;
-  }
-
-  /* ===== FIRST CARD: ALWAYS VISIBLE, INTERACTIVE ===== */
-  /* position: relative (NEVER absolute), height: auto, full opacity */
-  [data-testid="deep-feature-0"] {
-    position: relative !important;
-    z-index: 10 !important;
-    height: auto !important;
-    opacity: 1 !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
-    cursor: pointer !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    pointer-events: auto !important;
-    transition: box-shadow 0.2s ease !important;
-  }
-
-  /* Show expand indicator on first card */
-  [data-testid="deep-feature-0"] .deep-features-expand-indicator {
-    display: block !important;
-  }
-
-  /* ===== COLLAPSED STATE ===== */
-  /* Second card: show only 10px peek, no extra margin */
-  [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-1"] {
-    position: relative !important;
-    height: 10px !important;
-    margin-top: 8px !important;
-    margin-bottom: 0 !important;
-    overflow: hidden !important;
-    z-index: 9 !important;
-    opacity: 0.6 !important;
-    pointer-events: none !important;
-  }
-
-  /* Cards 3-6: completely hidden via clip-path and opacity */
-  [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-2"],
-  [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-3"],
-  [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-4"],
-  [data-testid="deep-features-container"][data-expanded="false"] [data-testid="deep-feature-5"] {
-    position: relative !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-    clip-path: inset(100% 0 0 0) !important;
-    z-index: 1 !important;
-  }
-
-  /* ===== EXPANDED STATE ===== */
-  /* All cards visible, vertical list with spacing */
-  [data-testid="deep-features-container"][data-expanded="true"] [data-testid^="deep-feature-"] {
-    position: relative !important;
-    height: auto !important;
-    margin-top: 12px !important;
-    clip-path: none !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-    border: 2px solid hsl(var(--primary) / 0.2) !important;
-  }
-
-  /* First card in expanded: no top margin */
-  [data-testid="deep-features-container"][data-expanded="true"] [data-testid="deep-feature-0"] {
-    margin-top: 0 !important;
-  }
-
-  /* Progressive z-index in expanded */
-  [data-testid="deep-features-container"][data-expanded="true"] [data-testid="deep-feature-1"] { z-index: 9 !important; }
-  [data-testid="deep-features-container"][data-expanded="true"] [data-testid="deep-feature-2"] { z-index: 8 !important; }
-  [data-testid="deep-features-container"][data-expanded="true"] [data-testid="deep-feature-3"] { z-index: 7 !important; }
-  [data-testid="deep-features-container"][data-expanded="true"] [data-testid="deep-feature-4"] { z-index: 6 !important; }
-  [data-testid="deep-features-container"][data-expanded="true"] [data-testid="deep-feature-5"] { z-index: 5 !important; }
-
-  /* Inner container: vertical text-only layout */
-  [data-testid^="deep-feature-"] > div {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    padding: 20px !important;
-    padding-bottom: 28px !important;
-    gap: 0 !important;
-  }
-
-  /* Hide icons completely */
-  [data-testid^="deep-feature-"] .h-14 {
-    display: none !important;
-  }
-
-  /* Title: prominent, left-aligned */
-  [data-testid^="deep-feature-"] .text-xl {
-    font-size: 1rem !important;
-    font-weight: 600 !important;
-    margin-bottom: 6px !important;
-    line-height: 1.3 !important;
-    color: hsl(var(--foreground)) !important;
-  }
-
-  /* Description: compact */
-  [data-testid^="deep-feature-"] .mb-6:not(.h-14) {
-    margin-bottom: 0 !important;
-    font-size: 0.85rem !important;
-    line-height: 1.5 !important;
-    color: hsl(var(--muted-foreground)) !important;
-  }
-
-  /* Hide feature checklist on mobile */
-  [data-testid^="deep-feature-"] .space-y-3 {
-    display: none !important;
-  }
-
-  /* Disable hover elevation on cards */
-  [data-testid^="deep-feature-"]::after {
-    display: none !important;
-  }
-
-  [data-testid^="deep-feature-"]:hover,
-  [data-testid^="deep-feature-"]:focus {
-    transform: none !important;
-  }
 
   /* UseCases section - compact mobile layout */
   [data-testid="tabs-use-cases"] {
@@ -2593,5 +2389,35 @@ body.mobile-menu-open {
   /* Disclaimer text */
   [data-testid="dialog-signup"] .text-\[11px\] {
     font-size: 9px !important;
+  }
+}
+@layer utilities {
+  /* High-Visibility SaaS Grid */
+  .body {
+    background-size: 50px 50px; /* Adjusted to 40px cells to feel more technical */
+    background-image: 
+      linear-gradient(to right, hsl(var(--foreground) / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--foreground) / 0.06) 1px, transparent 1px);
+    background-position: center center;
+  }
+
+  /* Optional: Dot Grid variant */
+  .bg-dot-grid {
+    background-size: 24px 24px;
+    background-image: radial-gradient(hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+  }
+
+  /* Add a subtle radial mask so the grid fades out toward the edges */
+  .mask-radial-fade {
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  }
+}
+
+@layer utilities {
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 }

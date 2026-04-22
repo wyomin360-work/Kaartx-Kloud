@@ -1,4 +1,6 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { Separator } from '@radix-ui/react-context-menu';
+import { Divide } from 'lucide-react';
 
 export default function StatsBar() {
   const stats = [
@@ -18,7 +20,7 @@ export default function StatsBar() {
       className={`text-center group relative overflow-visible ${isMobile ? 'flex-shrink-0 stat-card-mobile' : ''}`}
       data-testid={`stat-${index % 4}`}
     >
-      <div className={`relative h-40 flex flex-col justify-center bg-card/60 ${!isMobile ? 'backdrop-blur-md' : ''} rounded-3xl p-6 ${!isMobile ? 'sm:p-7 lg:p-8' : ''} border-2 border-primary/20 shadow-lg ${!isMobile ? 'hover:shadow-2xl hover:border-primary/30' : ''} transition-all duration-300 overflow-visible`}>
+      <div className={`relative h-40 flex flex-col justify-center bg-card/60 ${!isMobile ? 'backdrop-blur-md' : ''} rounded-3xl p-6 ${!isMobile ? 'sm:p-7 lg:p-8' : ''} border-2 border-primary/20  ${!isMobile ? 'hover:border-primary/30' : ''} transition-all duration-300 overflow-visible`}>
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent rounded-3xl" />
         <div className="absolute inset-0 bg-gradient-to-t from-background/10 to-transparent rounded-3xl" />
         
@@ -35,7 +37,7 @@ export default function StatsBar() {
   );
 
   return (
-    <section className="relative py-24 sm:py-32 md:pt-24 md:pb-40 overflow-hidden" data-testid="stats-section">
+    <section className="relative pt-27 md:pt-32 pb-7 md:pb-24 overflow-hidden" data-testid="stats-section">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/10 to-background" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/15 via-transparent to-transparent opacity-60" />
       
@@ -59,6 +61,7 @@ export default function StatsBar() {
             ))}
           </div>
         </div>
+      <Separator/>
       </div>
     </section>
   );
