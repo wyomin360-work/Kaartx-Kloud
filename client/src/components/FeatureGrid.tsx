@@ -1,4 +1,4 @@
-import { Users, ListChecks, CreditCard, Settings } from 'lucide-react';
+import { Users, ListChecks, CreditCard, Settings, Package } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -30,18 +30,37 @@ export default function FeatureGrid() {
   const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
   return (
-    <section id="feature-grid" className="py-12 sm:py-20 md:py-32 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
+    <section id="feature-grid" className="relative sm:pb-8 overflow-hidden">
+      <div className="absolute inset-0 bg-grid-subtle mask-radial-fade opacity-60 pointer-events-none" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-5 md:px-6 z-10 border-x border-border/10">
         <div 
           ref={titleAnimation.ref}
-          className={`text-center mb-10 sm:mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+          className={`flex flex-col md:flex-row justify-between items-start gap-8 md:gap-16 mb-12 sm:mb-20 pt-8 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
-          <h2 className="section-title text-foreground mb-3 sm:mb-4" data-testid="text-features-title">
-            Everything to run your<br /><span className="gradient-text">commerce business</span>
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto font-normal" data-testid="text-features-subtitle">
-            From product management to payouts — all the tools you need in one platform
-          </p>
+          {/* Left Column: Prominent Title */}
+          <div className="w-full md:w-[55%]">
+            <h2 
+              className="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-foreground tracking-tight leading-[1.15]" 
+              data-testid="text-features-title"
+            >
+              Everything to run your<br className="hidden md:block" />
+              <span className="gradient-text"> commerce business</span>
+            </h2>
+          </div>
+
+          {/* Right Column: Pill & Subtitle */}
+          <div className="w-full md:w-[40%] flex flex-col items-start pt-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/80 bg-background/50 shadow-sm mb-5">
+              <Package className="w-[14px] h-[14px] text-muted-foreground" />
+              <span className="text-[11px] sm:text-xs font-semibold text-foreground tracking-wide uppercase">Key features</span>
+            </div>
+            <p 
+              className="text-base sm:text-sm md:text-base text-muted-foreground font-medium leading-relaxed" 
+              data-testid="text-features-subtitle"
+            >
+              From product management to payouts, all the tools you need in one powerful platform to scale your entire marketplace flawlessly.
+            </p>
+          </div>
         </div>
 
         <div 

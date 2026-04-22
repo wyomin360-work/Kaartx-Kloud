@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ShoppingCart, FileText, Truck, Wallet, Tag, BarChart3, Check, ChevronDown } from 'lucide-react';
+import { ShoppingCart, FileText, Truck, Wallet, Tag, BarChart3, Check, ChevronDown, Wrench } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -55,80 +55,86 @@ export default function DeepFeatures() {
   const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
   return (
-    <section id="features" className="py-12 sm:py-20 md:py-32 bg-background scroll-mt-20">
+    <section id="features" className="bg-background scroll-mt-20  pt-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Modern Two-Column Header */}
         <div 
           ref={titleAnimation.ref}
-          className={`text-center mb-12 sm:mb-16 md:mb-20 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+          className={`flex flex-col md:flex-row justify-between items-start gap-8 md:gap-16 mb-16 pt-8 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
         >
-          <h2 className="section-title text-foreground mb-5 tracking-tight" data-testid="text-deep-features-title">
-            Powerful tools to manage<br />your entire ecosystem
-          </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto font-normal" data-testid="text-deep-features-subtitle">
-            From subscriptions to shipping automation — everything you need, built-in.
-          </p>
+          {/* Left Column */}
+          <div className="w-full md:w-[55%]">
+            <h2 className="text-4xl sm:text-5xl lg:text-5xl font-extrabold text-foreground tracking-tight leading-[1.15]" data-testid="text-deep-features-title">
+              Powerful tools to manage<br className="hidden md:block" />
+              <span className="gradient-text">your entire ecosystem</span>
+            </h2>
+          </div>
+          
+          {/* Right Column */}
+          <div className="w-full md:w-[40%] flex flex-col items-start pt-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/80 bg-background/50 shadow-sm mb-5">
+              <Wrench className="w-[14px] h-[14px] text-muted-foreground" />
+              <span className="text-[11px] sm:text-xs font-semibold text-foreground tracking-wide uppercase">Core Platform</span>
+            </div>
+            <p className="text-base sm:text-lg text-muted-foreground font-medium leading-relaxed" data-testid="text-deep-features-subtitle">
+              From subscriptions to shipping automation — everything you need, built-in.
+            </p>
+          </div>
         </div>
         
         <div 
           ref={cardsAnimation.ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 lg:gap-8"
+          className="flex flex-col relative  "
           data-expanded={isExpanded}
           data-testid="deep-features-container"
         >
           {features.map((feature, index) => {
             const Icon = feature.icon;
-            const stagger = ['', 'stagger-1', 'stagger-2', 'stagger-3', 'stagger-4', 'stagger-5'];
-
-            // First card is clickable on mobile to toggle expansion
             const isFirstCard = index === 0;
-            const handleCardClick = () => {
-              if (isFirstCard && window.matchMedia('(max-width: 768px)').matches) {
-                setIsExpanded(!isExpanded);
-              }
-            };
 
             return (
               <Card
                 key={index}
                 data-testid={`deep-feature-${index}`}
-                className={`group hover-elevate transition-all duration-300 rounded-2xl border-2 border-primary/20 overflow-visible deep-feature-card animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
-                tabIndex={0}
-                onClick={handleCardClick}
-                role={isFirstCard ? 'button' : undefined}
-                aria-expanded={isFirstCard ? isExpanded : undefined}
+                // IMPORTANT: Use 'bg-white' or 'bg-background' (Solid color)
+                // Added a shadow that increases as cards stack to give depth
+                className="group sticky w-full max-w-5xl mx-auto rounded-[2.5rem] border-[1.5px] border-border overflow-hidden bg-background shadow-[0_-5px_25px_-5px_rgba(0,0,0,0.07)] transition-all duration-500"
+                style={{ 
+                  // 100px is the initial gap from top, 24px is the visible "tab" of the previous card
+                  top: `calc(100px + ${index * 24}px)`,
+                  // Increasing margin bottom ensures the container has enough height to scroll through all cards
+                  marginBottom: index === features.length - 1 ? '0' : '100px'
+                }}
               >
-                <div className="relative p-8">
-                  {/* Icon with Hover Animation */}
-                  <div className="h-14 w-14 rounded-2xl bg-white shadow-playful flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
-                    <Icon className="h-7 w-7 text-primary" aria-hidden="true" strokeWidth={1.75} />
+                <div className="flex flex-col md:flex-row min-h-[450px]">
+                  {/* Left Side */}
+                  <div className="w-full md:w-[55%] p-8 sm:p-12 lg:p-16 flex flex-col justify-center bg-background">
+                    <div className="h-16 w-16 rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-center mb-8 shadow-sm">
+                      <Icon className="h-8 w-8 text-primary" strokeWidth={1.5} />
+                    </div>
+                    
+                    <h3 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 tracking-tight">
+                      {feature.title}
+                    </h3>
+                    
+                    <p className="text-lg text-muted-foreground leading-relaxed font-medium">
+                      {feature.description}
+                    </p>
                   </div>
                   
-                  <h3 className="text-xl font-semibold text-foreground mb-4 tracking-tight">
-                    {feature.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    {feature.description}
-                  </p>
-                  
-                  {/* Feature List with Checkmarks */}
-                  <ul className="space-y-3">
-                    {feature.features.map((item, i) => (
-                      <li key={i} className="flex items-center text-sm text-muted-foreground leading-relaxed">
-                        <Check className={`h-4 w-4 ${feature.checkGradient} mr-3 flex-shrink-0`} strokeWidth={3} />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Mobile expand indicator on first card */}
-                  {isFirstCard && (
-                    <div className="deep-features-expand-indicator absolute bottom-3 left-1/2 -translate-x-1/2 hidden">
-                      <ChevronDown 
-                        className={`h-5 w-5 text-muted-foreground transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} 
-                      />
-                    </div>
-                  )}
+                  {/* Right Side */}
+                  <div className="w-full md:w-[45%] p-8 sm:p-12 lg:p-16 bg-slate-700 flex flex-col justify-center border-t md:border-t-0 md:border-l border-border/50">
+                    <ul className="space-y-6">
+                      {feature.features.map((item, i) => (
+                        <li key={i} className="flex items-center text-base sm:text-lg text-slate-300 font-medium">
+                          <div className="mr-4 rounded-full bg-slate-900 border border-slate-700/50 p-1.5 flex-shrink-0 shadow-sm">
+                            <Check className={`h-4 w-4 ${feature.checkGradient}`} strokeWidth={3} />
+                          </div>
+                          <span className="leading-snug text-slate-100">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </Card>
             );

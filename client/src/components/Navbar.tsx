@@ -102,9 +102,8 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   return (
     <Portal.Root>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[900ms] ${
-          isScrolled ? 'py-2' : 'py-4'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[900ms] ${isScrolled ? 'py-2' : 'py-4'
+          }`}
         style={{
           transform: isScrolled
             ? 'translateY(8px) scale(0.98)'
@@ -114,11 +113,10 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
         <div className="px-2 flex justify-center">
           {/* PAPER CONTAINER */}
           <div
-            className={`w-full transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              isScrolled
+            className={`w-full transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isScrolled
                 ? 'bg-background/80 backdrop-blur-lg border border-border rounded-2xl shadow-lg px-8 max-w-7xl'
                 : 'bg-transparent border-transparent px-2 max-w-7xl'
-            }`}
+              }`}
           >
             {/* NAV CONTENT */}
             <div className="flex items-center justify-between h-16 w-full">
@@ -176,7 +174,7 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
               </div>
             </div>
           </div>
-        </div>
+          </div>
 
         <MobileMenuOverlay
           isOpen={isMobileMenuOpen}
