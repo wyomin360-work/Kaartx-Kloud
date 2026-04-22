@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { ExternalLink } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { ExternalLink } from "lucide-react";
 
 export default function APISection() {
   const codeExample = `{
@@ -27,28 +27,44 @@ export default function APISection() {
 }`;
 
   return (
-    <section id="api" className="py-12 sm:py-20 md:py-32 bg-card/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
-        <div className="text-center mb-10 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4" data-testid="text-api-title">
+    <section id="api" className="bg-card/30 py-12 sm:py-20 md:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-6">
+        <div className="mb-10 text-center sm:mb-16">
+          <h2
+            className="mb-3 text-2xl font-bold text-foreground sm:mb-4 sm:text-3xl md:text-4xl"
+            data-testid="text-api-title"
+          >
             Built for developers
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-api-subtitle">
-            Comprehensive REST API to build custom integrations and automate your workflows
+          <p
+            className="mx-auto max-w-2xl text-base text-muted-foreground sm:text-lg"
+            data-testid="text-api-subtitle"
+          >
+            Comprehensive REST API to build custom integrations and automate
+            your workflows
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="mx-auto max-w-4xl">
           <Card className="p-6 sm:p-8">
             <div className="mb-4 flex items-center justify-between">
-              <span className="text-sm text-muted-foreground font-mono">GET /api/sellers/:id/stats</span>
-              <Button variant="outline" size="sm" data-testid="button-view-docs">
-                <ExternalLink className="h-4 w-4 mr-2" />
+              <span className="font-mono text-sm text-muted-foreground">
+                GET /api/sellers/:id/stats
+              </span>
+              <Button
+                variant="outline"
+                size="sm"
+                data-testid="button-view-docs"
+              >
+                <ExternalLink className="mr-2 h-4 w-4" />
                 View API Docs
               </Button>
             </div>
-            <pre className="bg-background p-6 rounded-lg overflow-x-auto">
-              <code className="text-sm text-foreground font-mono" data-testid="code-api-example">
+            <pre className="overflow-x-auto rounded-lg bg-background p-6">
+              <code
+                className="font-mono text-sm text-foreground"
+                data-testid="code-api-example"
+              >
                 {codeExample}
               </code>
             </pre>

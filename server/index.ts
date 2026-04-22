@@ -5,10 +5,10 @@ import { setupVite, serveStatic, log } from "./vite";
 const app = express();
 
 // Production-only redirect: *.replit.app → kloud.kaartx.com
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   app.use((req, res, next) => {
-    const host = req.get('host') || '';
-    if (host.endsWith('.replit.app')) {
+    const host = req.get("host") || "";
+    if (host.endsWith(".replit.app")) {
       const targetUrl = `https://kloud.kaartx.com${req.originalUrl}`;
       return res.redirect(301, targetUrl);
     }
@@ -73,12 +73,15 @@ app.use((req, res, next) => {
   // Other ports are firewalled. Default to 5000 if not specified.
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || '5001', 10);
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    log(`serving on port ${port}`);
-  });
+  const port = parseInt(process.env.PORT || "5001", 10);
+  server.listen(
+    {
+      port,
+      host: "0.0.0.0",
+      reusePort: true,
+    },
+    () => {
+      log(`serving on port ${port} ,link:http://localhost:${port}`);
+    },
+  );
 })();

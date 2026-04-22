@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 export function useScrollAnimation<T extends HTMLElement = HTMLElement>(
-  threshold = 0.15, 
-  rootMargin = '-50px'
+  threshold = 0.15,
+  rootMargin = "-50px",
 ) {
   const ref = useRef<T>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -19,7 +19,7 @@ export function useScrollAnimation<T extends HTMLElement = HTMLElement>(
       {
         threshold,
         rootMargin,
-      }
+      },
     );
 
     const currentRef = ref.current;

@@ -3,83 +3,109 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion';
+} from "@/components/ui/accordion";
 
 export default function FAQ() {
   const faqs = [
     {
-      question: 'How quickly can I launch my store or marketplace?',
-      answer: 'Most customers launch within 2–4 weeks. Whether you\'re launching a single-brand store or a full marketplace, we help you configure branding, categories, seller setup if applicable, and integrations to go live fast.',
+      question: "How quickly can I launch my store or marketplace?",
+      answer:
+        "Most customers launch within 2–4 weeks. Whether you're launching a single-brand store or a full marketplace, we help you configure branding, categories, seller setup if applicable, and integrations to go live fast.",
     },
     {
-      question: 'What is the 12-day payout system?',
-      answer: 'Kaartx Kloud uses a default 12-day payout cycle for seller earnings, calculated after an order is successfully delivered. This window allows time for returns, disputes, and quality checks.\n\nFor businesses running their own store, payouts are handled directly via the connected payment gateway. Growth and Pro plans can customize payout cycles from the admin dashboard.',
+      question: "What is the 12-day payout system?",
+      answer:
+        "Kaartx Kloud uses a default 12-day payout cycle for seller earnings, calculated after an order is successfully delivered. This window allows time for returns, disputes, and quality checks.\n\nFor businesses running their own store, payouts are handled directly via the connected payment gateway. Growth and Pro plans can customize payout cycles from the admin dashboard.",
     },
     {
-      question: 'Do you support GCC payment gateways?',
-      answer: 'Yes! TAP Payments integration is built-in with support for OMR, AED, SAR, and other GCC currencies.',
+      question: "Do you support GCC payment gateways?",
+      answer:
+        "Yes! TAP Payments integration is built-in with support for OMR, AED, SAR, and other GCC currencies.",
     },
     {
-      question: 'Can I white-label the platform?',
-      answer: 'Absolutely. All plans include basic branding customization. Growth and Enterprise plans offer full white-labeling, including custom domains, whether you\'re running a standalone store or a multi-vendor marketplace.',
+      question: "Can I white-label the platform?",
+      answer:
+        "Absolutely. All plans include basic branding customization. Growth and Enterprise plans offer full white-labeling, including custom domains, whether you're running a standalone store or a multi-vendor marketplace.",
     },
     {
-      question: 'How does seller subscription work?',
-      answer: 'If you run a marketplace, you can create seller subscription plans (monthly or yearly) and collect payments via TAP. Auto-renewals are handled automatically, and you can suspend or reactivate sellers as needed. If you\'re running a single store, seller subscriptions are simply not used.',
+      question: "How does seller subscription work?",
+      answer:
+        "If you run a marketplace, you can create seller subscription plans (monthly or yearly) and collect payments via TAP. Auto-renewals are handled automatically, and you can suspend or reactivate sellers as needed. If you're running a single store, seller subscriptions are simply not used.",
     },
     {
-      question: 'Is Asyad shipping integrated?',
-      answer: 'Yes. Asyad shipping is ready out of the box for Oman-based businesses. It supports both store orders and marketplace orders, with automated shipping labels, tracking, and returns.',
+      question: "Is Asyad shipping integrated?",
+      answer:
+        "Yes. Asyad shipping is ready out of the box for Oman-based businesses. It supports both store orders and marketplace orders, with automated shipping labels, tracking, and returns.",
     },
     {
-      question: 'Can sellers upload products in bulk?',
-      answer: 'Yes. In marketplaces, sellers can download an Excel template and bulk upload products. All listings pass through your admin approval workflow.\n\nStore owners can also use bulk uploads to manage large product catalogs internally.',
+      question: "Can sellers upload products in bulk?",
+      answer:
+        "Yes. In marketplaces, sellers can download an Excel template and bulk upload products. All listings pass through your admin approval workflow.\n\nStore owners can also use bulk uploads to manage large product catalogs internally.",
     },
     {
-      question: 'What kind of support do you offer?',
-      answer: 'Starter plans include email and WhatsApp support. Growth plans get priority email and WhatsApp support with faster response times. Enterprise customers receive a dedicated account manager with SLA-backed support.',
+      question: "What kind of support do you offer?",
+      answer:
+        "Starter plans include email and WhatsApp support. Growth plans get priority email and WhatsApp support with faster response times. Enterprise customers receive a dedicated account manager with SLA-backed support.",
     },
     {
-      question: 'Can I manage multiple marketplaces?',
-      answer: 'Yes. Enterprise plans support managing multiple marketplaces or stores from a single dashboard. This is especially useful for agencies, franchises, and businesses operating multiple brands.',
+      question: "Can I manage multiple marketplaces?",
+      answer:
+        "Yes. Enterprise plans support managing multiple marketplaces or stores from a single dashboard. This is especially useful for agencies, franchises, and businesses operating multiple brands.",
     },
     {
-      question: 'Do you provide API access?',
-      answer: 'Not yet. API access is under development and will be available in future releases. The goal is to offer REST APIs for integrations, automation, and custom workflows across both stores and marketplaces.',
+      question: "Do you provide API access?",
+      answer:
+        "Not yet. API access is under development and will be available in future releases. The goal is to offer REST APIs for integrations, automation, and custom workflows across both stores and marketplaces.",
     },
   ];
 
   return (
-    <section id="faq" className="py-12 sm:py-20 md:py-32 bg-background scroll-mt-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-5 md:px-6">
-        <div className="text-center mb-10 sm:mb-16">
-          <h2 className="section-title text-primary mb-3 sm:mb-4" data-testid="text-faq-title">
+    <section
+      id="faq"
+      className="scroll-mt-20 bg-background py-12 sm:py-20 md:py-32"
+    >
+      <div className="mx-auto max-w-4xl px-4 sm:px-5 md:px-6">
+        <div className="mb-10 text-center sm:mb-16">
+          <h2
+            className="section-title mb-3 text-primary sm:mb-4"
+            data-testid="text-faq-title"
+          >
             Frequently asked questions
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground font-normal" data-testid="text-faq-subtitle">
+          <p
+            className="text-base font-normal text-muted-foreground sm:text-lg"
+            data-testid="text-faq-subtitle"
+          >
             Everything you need to know about Kaartx Kloud
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="space-y-4" data-testid="accordion-faq">
+        <Accordion
+          type="single"
+          collapsible
+          className="space-y-4"
+          data-testid="accordion-faq"
+        >
           {faqs.map((faq, index) => (
-            <AccordionItem 
-              key={index} 
-              value={`item-${index}`} 
-              className="border border-border/40 rounded-2xl px-6 bg-card/30 hover-elevate transition-all"
+            <AccordionItem
+              key={index}
+              value={`item-${index}`}
+              className="hover-elevate rounded-2xl border border-border/40 bg-card/30 px-6 transition-all"
             >
-              <AccordionTrigger 
-                className="hover:no-underline font-bold text-base py-5 text-left" 
+              <AccordionTrigger
+                className="py-5 text-left text-base font-bold hover:no-underline"
                 data-testid={`faq-question-${index}`}
               >
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent 
-                className="text-muted-foreground font-medium leading-relaxed pb-5" 
+              <AccordionContent
+                className="pb-5 font-medium leading-relaxed text-muted-foreground"
                 data-testid={`faq-answer-${index}`}
               >
-                {faq.answer.split('\n\n').map((paragraph, i) => (
-                  <p key={i} className={i > 0 ? 'mt-3' : ''}>{paragraph}</p>
+                {faq.answer.split("\n\n").map((paragraph, i) => (
+                  <p key={i} className={i > 0 ? "mt-3" : ""}>
+                    {paragraph}
+                  </p>
                 ))}
               </AccordionContent>
             </AccordionItem>

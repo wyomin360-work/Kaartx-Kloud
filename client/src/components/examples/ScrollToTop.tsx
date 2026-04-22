@@ -1,4 +1,4 @@
-import ScrollToTop from '../ScrollToTop';
+import ScrollToTop from "../ScrollToTop";
 
 export default function ScrollToTopExample() {
   return <ScrollToTop />;

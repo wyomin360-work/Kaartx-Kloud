@@ -6,9 +6,9 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        lg: ".5625rem", /* 9px */
-        md: ".375rem", /* 6px */
-        sm: ".1875rem", /* 3px */
+        lg: ".5625rem" /* 9px */,
+        md: ".375rem" /* 6px */,
+        sm: ".1875rem" /* 3px */,
       },
       colors: {
         // Flat / base colors (regular buttons)
@@ -73,7 +73,7 @@ export default {
         "sidebar-accent": {
           DEFAULT: "hsl(var(--sidebar-accent) / <alpha-value>)",
           foreground: "hsl(var(--sidebar-accent-foreground) / <alpha-value>)",
-          border: "var(--sidebar-accent-border)"
+          border: "var(--sidebar-accent-border)",
         },
         status: {
           online: "rgb(34 197 94)",
@@ -84,32 +84,33 @@ export default {
       },
       fontFamily: {
         sans: ["Inter", "var(--font-sans)"],
+        display: ["Outfit", "var(--font-display)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
       },
       boxShadow: {
-        'soft': '0 10px 30px rgba(0,0,0,0.35)',
-        'glow': '0 0 20px rgba(19, 23, 66, 0.5)',
+        soft: "0 10px 30px rgba(0,0,0,0.35)",
+        glow: "0 0 20px rgba(19, 23, 66, 0.5)",
       },
       keyframes: {
         "accordion-down": {
-          from: { 
+          from: {
             height: "0",
-            opacity: "0"
+            opacity: "0",
           },
-          to: { 
+          to: {
             height: "var(--radix-accordion-content-height)",
-            opacity: "1"
+            opacity: "1",
           },
         },
         "accordion-up": {
-          from: { 
+          from: {
             height: "var(--radix-accordion-content-height)",
-            opacity: "1"
+            opacity: "1",
           },
-          to: { 
+          to: {
             height: "0",
-            opacity: "0"
+            opacity: "0",
           },
         },
       },

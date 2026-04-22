@@ -1,11 +1,11 @@
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || 'smtppro.zoho.in',
-  port: parseInt(process.env.SMTP_PORT || '465'),
+  host: process.env.SMTP_HOST || "smtppro.zoho.in",
+  port: parseInt(process.env.SMTP_PORT || "465"),
   secure: true,
   auth: {
-    user: process.env.SMTP_USER || 'noreply@kloud.kaartx.com',
+    user: process.env.SMTP_USER || "noreply@kloud.kaartx.com",
     pass: process.env.SMTP_PASSWORD,
   },
 });
@@ -17,13 +17,15 @@ interface MarketplaceRequestData {
   billingCycle: string;
 }
 
-export async function sendUserAcknowledgmentEmail(data: MarketplaceRequestData): Promise<void> {
+export async function sendUserAcknowledgmentEmail(
+  data: MarketplaceRequestData,
+): Promise<void> {
   const { email } = data;
 
   await transporter.sendMail({
-    from: `"Kaartx Kloud" <${process.env.SMTP_USER || 'noreply@kloud.kaartx.com'}>`,
+    from: `"Kaartx Kloud" <${process.env.SMTP_USER || "noreply@kloud.kaartx.com"}>`,
     to: email,
-    subject: 'Your Kaartx Kloud Marketplace Request Has Been Received',
+    subject: "Your Kaartx Kloud Marketplace Request Has Been Received",
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
         <p>Hi there,</p>
@@ -47,17 +49,19 @@ export async function sendUserAcknowledgmentEmail(data: MarketplaceRequestData):
   });
 }
 
-export async function sendAdminNotificationEmail(data: MarketplaceRequestData): Promise<void> {
+export async function sendAdminNotificationEmail(
+  data: MarketplaceRequestData,
+): Promise<void> {
   const { marketplaceName, email, plan, billingCycle } = data;
-  const timestamp = new Date().toLocaleString('en-US', {
-    dateStyle: 'full',
-    timeStyle: 'long',
+  const timestamp = new Date().toLocaleString("en-US", {
+    dateStyle: "full",
+    timeStyle: "long",
   });
 
   await transporter.sendMail({
-    from: `"Kaartx Kloud" <${process.env.SMTP_USER || 'noreply@kloud.kaartx.com'}>`,
-    to: 'support@kloud.kaartx.com',
-    subject: 'New Marketplace Request – Action Required',
+    from: `"Kaartx Kloud" <${process.env.SMTP_USER || "noreply@kloud.kaartx.com"}>`,
+    to: "support@kloud.kaartx.com",
+    subject: "New Marketplace Request – Action Required",
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
         <p>A new marketplace request has been submitted.</p>
@@ -74,15 +78,19 @@ export async function sendAdminNotificationEmail(data: MarketplaceRequestData): 
   });
 }
 
-export async function sendMarketplaceRequestEmails(data: MarketplaceRequestData): Promise<void> {
+export async function sendMarketplaceRequestEmails(
+  data: MarketplaceRequestData,
+): Promise<void> {
   try {
     await Promise.all([
       sendUserAcknowledgmentEmail(data),
       sendAdminNotificationEmail(data),
     ]);
-    console.log(`Emails sent successfully for marketplace request: ${data.marketplaceName}`);
+    console.log(
+      `Emails sent successfully for marketplace request: ${data.marketplaceName}`,
+    );
   } catch (error) {
-    console.error('Error sending emails:', error);
+    console.error("Error sending emails:", error);
     throw error;
   }
 }

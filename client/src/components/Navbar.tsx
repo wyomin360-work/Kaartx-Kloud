@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
-import { useLocation } from 'wouter';
-import { Button } from '@/components/ui/button';
-import logoImage from '@assets/kloud_plain_blue_1770616738294.png';
-import { Link } from 'wouter';
-import * as Portal from '@radix-ui/react-portal';
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import { useLocation } from "wouter";
+import { Button } from "@/components/ui/button";
+import logoImage from "@assets/kloud_plain_blue_1770616738294.png";
+import { Link } from "wouter";
+import * as Portal from "@radix-ui/react-portal";
 
 interface NavbarProps {
   onOpenSignup?: () => void;
@@ -13,18 +13,18 @@ interface NavbarProps {
 type NavItem = {
   label: string;
   target: string;
-  type: 'scroll' | 'link';
+  type: "scroll" | "link";
   testId: string;
 };
 
 function lockScrollForMobileMenu() {
-  document.documentElement.classList.add('mobile-menu-open');
-  document.body.classList.add('mobile-menu-open');
+  document.documentElement.classList.add("mobile-menu-open");
+  document.body.classList.add("mobile-menu-open");
 }
 
 function unlockScrollForMobileMenu() {
-  document.documentElement.classList.remove('mobile-menu-open');
-  document.body.classList.remove('mobile-menu-open');
+  document.documentElement.classList.remove("mobile-menu-open");
+  document.body.classList.remove("mobile-menu-open");
 }
 
 export default function Navbar({ onOpenSignup }: NavbarProps) {
@@ -33,32 +33,57 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   const [location] = useLocation();
 
   const navItems: NavItem[] = [
-    { label: 'Features', target: 'features', type: 'scroll', testId: 'link-features' },
-    { label: 'Integrations', target: 'integrations', type: 'scroll', testId: 'link-integrations' },
-    { label: 'Pricing', target: 'pricing', type: 'scroll', testId: 'link-pricing' },
-    { label: 'FAQs', target: 'faq', type: 'scroll', testId: 'link-faq' },
-    { label: 'Contact', target: 'booking', type: 'scroll', testId: 'link-contact' },
-    { label: 'About', target: 'about', type: 'scroll', testId: 'link-about' },
+    {
+      label: "Features",
+      target: "features",
+      type: "scroll",
+      testId: "link-features",
+    },
+    {
+      label: "Integrations",
+      target: "integrations",
+      type: "scroll",
+      testId: "link-integrations",
+    },
+    {
+      label: "Pricing",
+      target: "pricing",
+      type: "scroll",
+      testId: "link-pricing",
+    },
+    { label: "FAQs", target: "faq", type: "scroll", testId: "link-faq" },
+    {
+      label: "Contact",
+      target: "booking",
+      type: "scroll",
+      testId: "link-contact",
+    },
+    { label: "About", target: "about", type: "scroll", testId: "link-about" },
   ];
 
   const mobileOnlyNavItems: NavItem[] = [
-    { label: 'Blog', target: '/blog', type: 'link', testId: 'link-blog' },
-    { label: 'Careers', target: '/careers', type: 'link', testId: 'link-careers' },
+    { label: "Blog", target: "/blog", type: "link", testId: "link-blog" },
+    {
+      label: "Careers",
+      target: "/careers",
+      type: "link",
+      testId: "link-careers",
+    },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      if (document.body.classList.contains('modal-open-mobile')) return;
+      if (document.body.classList.contains("modal-open-mobile")) return;
       setIsScrolled(window.scrollY > 20);
     };
 
     handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
     if (!isMobile) return;
 
     if (isMobileMenuOpen) lockScrollForMobileMenu();
@@ -68,13 +93,13 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   const navigateToSection = (id: string) => {
     setIsMobileMenuOpen(false);
 
-    if (location !== '/') {
+    if (location !== "/") {
       window.location.href = `/#${id}`;
     } else {
       const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        history.pushState(null, '', `#${id}`);
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.pushState(null, "", `#${id}`);
       }
     }
   };
@@ -82,18 +107,18 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   const navigateToHome = () => {
     setIsMobileMenuOpen(false);
 
-    if (location !== '/') {
-      window.location.href = '/';
+    if (location !== "/") {
+      window.location.href = "/";
     } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      history.pushState(null, '', '/');
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      history.pushState(null, "", "/");
     }
   };
 
   const handleNavClick = (item: NavItem, e?: React.MouseEvent) => {
     setIsMobileMenuOpen(false);
 
-    if (item.type === 'scroll') {
+    if (item.type === "scroll") {
       e?.preventDefault();
       navigateToSection(item.target);
     }
@@ -102,40 +127,40 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   return (
     <Portal.Root>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[900ms] ${isScrolled ? 'py-2' : 'py-4'
-          }`}
+        className={`duration-[900ms] fixed left-0 right-0 top-0 z-50 transition-all ${
+          isScrolled ? "py-2" : "py-4"
+        }`}
         style={{
-          transform: isScrolled
-            ? 'translateY(8px) scale(0.98)'
-            : 'translateY(0) scale(1)',
+          transform: isScrolled ? "translateY(12px)" : "translateY(0)",
         }}
       >
-        <div className="px-2 flex justify-center">
+        <div className="flex justify-center px-2">
           {/* PAPER CONTAINER */}
           <div
-            className={`w-full transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isScrolled
-                ? 'bg-background/80 backdrop-blur-lg border border-border rounded-2xl shadow-lg px-8 max-w-7xl'
-                : 'bg-transparent border-transparent px-2 max-w-7xl'
-              }`}
+            className={`w-full transition-all duration-500 ease-out ${
+              isScrolled
+                ? "max-w-5xl rounded-full border border-slate-200/50 bg-white/80 px-6 shadow-sm backdrop-blur-xl"
+                : "max-w-7xl border-transparent bg-transparent px-2"
+            }`}
           >
             {/* NAV CONTENT */}
-            <div className="flex items-center justify-between h-16 w-full">
+            <div className="flex h-16 w-full items-center justify-between">
               {/* LOGO */}
               <button
                 onClick={navigateToHome}
-                className="hover-elevate rounded-md transition-all shrink-0"
+                className="hover-elevate shrink-0 rounded-md transition-all"
               >
                 <img src={logoImage} alt="Kloud" className="h-8 w-auto" />
               </button>
 
               {/* DESKTOP NAV */}
-              <div className="hidden md:flex items-center space-x-8 shrink-0">
+              <div className="hidden shrink-0 items-center space-x-8 md:flex">
                 {navItems.map((item) =>
-                  item.type === 'link' ? (
+                  item.type === "link" ? (
                     <Link
                       key={item.testId}
                       href={item.target}
-                      className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-[13px] font-semibold tracking-tight text-slate-600 transition-colors hover:text-slate-900"
                     >
                       {item.label}
                     </Link>
@@ -143,23 +168,23 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
                     <button
                       key={item.testId}
                       onClick={(e) => handleNavClick(item, e)}
-                      className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-[13px] font-semibold tracking-tight text-slate-600 transition-colors hover:text-slate-900"
                     >
                       {item.label}
                     </button>
-                  )
+                  ),
                 )}
 
                 <Button
                   onClick={onOpenSignup}
-                  className="shadow-glow hover:scale-[1.02] transition-transform rounded-full px-6"
+                  className="rounded-full bg-slate-900 px-6 py-2 text-xs font-bold text-white shadow-none transition-all hover:scale-[1.02] hover:bg-slate-800 active:scale-[0.98]"
                 >
                   Get Started
                 </Button>
               </div>
 
               {/* MOBILE BUTTON */}
-              <div className="md:hidden flex items-center">
+              <div className="flex items-center md:hidden">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -174,7 +199,7 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
               </div>
             </div>
           </div>
-          </div>
+        </div>
 
         <MobileMenuOverlay
           isOpen={isMobileMenuOpen}
@@ -207,19 +232,19 @@ function MobileMenuOverlay({
   return (
     <Portal.Root>
       <div
-        className="md:hidden fixed inset-0 top-16 bg-black/50 z-[100]"
+        className="fixed inset-0 top-16 z-[100] bg-black/50 md:hidden"
         onClick={onClose}
       />
 
-      <div className="md:hidden fixed left-0 right-0 top-16 bg-background border-t border-border shadow-md z-[101]">
-        <div className="px-5 py-4 space-y-1">
+      <div className="fixed left-0 right-0 top-16 z-[101] border-t border-border bg-background shadow-md md:hidden">
+        <div className="space-y-1 px-5 py-4">
           {navItems.map((item) =>
-            item.type === 'link' ? (
+            item.type === "link" ? (
               <Link
                 key={item.testId}
                 href={item.target}
                 onClick={onClose}
-                className="block px-4 py-2.5 text-base text-muted-foreground hover:text-foreground rounded-lg"
+                className="block rounded-lg px-4 py-2.5 text-base text-muted-foreground hover:text-foreground"
               >
                 {item.label}
               </Link>
@@ -227,11 +252,11 @@ function MobileMenuOverlay({
               <button
                 key={item.testId}
                 onClick={(e) => onNavClick(item, e)}
-                className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground rounded-lg"
+                className="block w-full rounded-lg px-4 py-2.5 text-left text-base text-muted-foreground hover:text-foreground"
               >
                 {item.label}
               </button>
-            )
+            ),
           )}
 
           {mobileOnlyNavItems.map((item) => (
@@ -239,7 +264,7 @@ function MobileMenuOverlay({
               key={item.testId}
               href={item.target}
               onClick={onClose}
-              className="block px-4 py-2.5 text-base text-muted-foreground hover:text-foreground rounded-lg"
+              className="block rounded-lg px-4 py-2.5 text-base text-muted-foreground hover:text-foreground"
             >
               {item.label}
             </Link>

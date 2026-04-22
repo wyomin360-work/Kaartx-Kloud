@@ -1,8 +1,8 @@
-import { useEffect, useRef, useLayoutEffect } from 'react';
-import * as Portal from '@radix-ui/react-portal';
-import { FocusScope } from '@radix-ui/react-focus-scope';
-import { X } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { useEffect, useRef, useLayoutEffect } from "react";
+import * as Portal from "@radix-ui/react-portal";
+import { FocusScope } from "@radix-ui/react-focus-scope";
+import { X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface CustomModalProps {
   open: boolean;
@@ -19,51 +19,52 @@ let touchMoveHandler: ((e: TouchEvent) => void) | null = null;
 
 // DESKTOP: Simple scroll lock with scrollbar compensation
 function lockBodyScrollDesktop() {
-  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-  document.body.style.overflow = 'hidden';
+  const scrollbarWidth =
+    window.innerWidth - document.documentElement.clientWidth;
+  document.body.style.overflow = "hidden";
   document.body.style.paddingRight = `${scrollbarWidth}px`;
 }
 
 function unlockBodyScrollDesktop() {
-  document.body.style.overflow = '';
-  document.body.style.paddingRight = '';
+  document.body.style.overflow = "";
+  document.body.style.paddingRight = "";
 }
 
 // MOBILE: Scroll lock WITHOUT position changes - prevents header jitter
 function lockBodyScrollMobile() {
   // Save current scroll position
   scrollY = window.scrollY;
-  
+
   // Add class for CSS-based lock (NO position: fixed on body)
-  document.documentElement.classList.add('modal-open-mobile');
-  document.body.classList.add('modal-open-mobile');
-  
+  document.documentElement.classList.add("modal-open-mobile");
+  document.body.classList.add("modal-open-mobile");
+
   // Prevent touchmove on body (but allow on modal content)
   touchMoveHandler = (e: TouchEvent) => {
     const target = e.target as HTMLElement;
     // Allow scroll inside modal content
-    if (target.closest('[data-modal-content]')) {
+    if (target.closest("[data-modal-content]")) {
       return;
     }
     e.preventDefault();
   };
-  document.addEventListener('touchmove', touchMoveHandler, { passive: false });
+  document.addEventListener("touchmove", touchMoveHandler, { passive: false });
 }
 
 function unlockBodyScrollMobile() {
   // Remove touch handler
   if (touchMoveHandler) {
-    document.removeEventListener('touchmove', touchMoveHandler);
+    document.removeEventListener("touchmove", touchMoveHandler);
     touchMoveHandler = null;
   }
-  
+
   // Remove classes - no scroll restoration needed since we didn't change position
-  document.documentElement.classList.remove('modal-open-mobile');
-  document.body.classList.remove('modal-open-mobile');
+  document.documentElement.classList.remove("modal-open-mobile");
+  document.body.classList.remove("modal-open-mobile");
 }
 
 function lockBodyScroll() {
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
   if (isMobile) {
     lockBodyScrollMobile();
   } else {
@@ -72,7 +73,7 @@ function lockBodyScroll() {
 }
 
 function unlockBodyScroll() {
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
   if (isMobile) {
     unlockBodyScrollMobile();
   } else {
@@ -94,13 +95,13 @@ export function CustomModal({
     if (!open) return;
 
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         onOpenChange(false);
       }
     };
 
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, [open, onOpenChange]);
 
   useEffect(() => {
@@ -127,14 +128,14 @@ export function CustomModal({
     if (contentRef.current?.contains(e.target as Node)) {
       return; // Click inside modal, allow it
     }
-    
+
     // Click was outside modal (on backdrop)
     if (preventOutsideClick) {
       e.preventDefault();
       e.stopPropagation();
       return;
     }
-    
+
     // Close modal if outside clicks are allowed
     onOpenChange(false);
   };
@@ -146,8 +147,8 @@ export function CustomModal({
         onClick={handleBackdropClick}
       >
         {/* Backdrop */}
-        <div 
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm" 
+        <div
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm"
           aria-hidden="true"
         />
 
@@ -157,10 +158,10 @@ export function CustomModal({
             ref={contentRef}
             data-modal-content
             className={cn(
-              "relative z-50 bg-background border rounded-lg shadow-lg",
-              "animate-in fade-in-0 zoom-in-95 duration-200",
-              "[&_*:focus]:outline-none [&_*:focus-visible]:outline-none [&_*:focus]:ring-0 [&_*:focus-visible]:ring-0",
-              className
+              "relative z-50 rounded-lg border bg-background shadow-lg",
+              "duration-200 animate-in fade-in-0 zoom-in-95",
+              "[&_*:focus-visible]:outline-none [&_*:focus-visible]:ring-0 [&_*:focus]:outline-none [&_*:focus]:ring-0",
+              className,
             )}
             role="dialog"
             aria-modal="true"
@@ -207,7 +208,12 @@ export function CustomModalTitle({
   className?: string;
 }) {
   return (
-    <h2 className={cn("text-lg font-semibold leading-none tracking-tight", className)}>
+    <h2
+      className={cn(
+        "text-lg font-semibold leading-none tracking-tight",
+        className,
+      )}
+    >
       {children}
     </h2>
   );
@@ -221,8 +227,6 @@ export function CustomModalDescription({
   className?: string;
 }) {
   return (
-    <p className={cn("text-sm text-muted-foreground", className)}>
-      {children}
-    </p>
+    <p className={cn("text-sm text-muted-foreground", className)}>{children}</p>
   );
 }
