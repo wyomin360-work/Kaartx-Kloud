@@ -1,3 +1,4 @@
+import { Wallet } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 export default function BookingSection() {
@@ -83,23 +84,28 @@ export default function BookingSection() {
       className="scroll-mt-20 bg-background pb-12 pt-8 sm:pb-20 sm:pt-12 md:pb-32 md:pt-16"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-6">
-        {/* Header */}
-        <div className="mb-10 text-center sm:mb-16">
-          <h2
-            className="section-title mb-3 text-foreground sm:mb-4"
-            data-testid="text-booking-title"
-          >
-            Book a Sales Call
-          </h2>
-          <p
-            className="mx-auto max-w-2xl text-base font-normal text-muted-foreground sm:text-lg"
-            data-testid="text-booking-subtitle"
-          >
-            Schedule a personalized demo with our team. See how Kaartx Kloud
-            adapts to your business—whether you're launching a store, a
-            marketplace, or both.
-          </p>
+         {/* Header - Fixed to match Pricing Page Split Layout */}
+        <div className="mb-12 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end sm:mb-16">
+          <div className="w-full flex-col md:w-[55%]">
+            <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+              Ready to grow? <span className="gradient-text">Book a call</span>
+            </h2>
+          </div>
+          
+          <div className="flex w-full flex-col items-start pt-2 md:w-[40%]">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/50 px-3 py-1.5 shadow-sm">
+              <Wallet className="h-[14px] w-[14px] text-muted-foreground" />
+              <span className="text-[11px] font-semibold uppercase tracking-wide text-foreground sm:text-xs">
+                Sales Demo
+              </span>
+            </div>
+            <p className="text-base font-medium leading-relaxed text-muted-foreground sm:text-lg">
+              Schedule a personalized demo with our team. See how Kaartx Kloud 
+              adapts to your business needs.
+            </p>
+          </div>
         </div>
+
 
         {/* Cal.com Booking Widget */}
         <div className="mx-auto max-w-4xl">

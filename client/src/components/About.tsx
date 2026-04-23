@@ -42,7 +42,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="scroll-mt-20 bg-background py-12 sm:py-20 md:py-32"
+      className="scroll-mt-20 bg-background"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
