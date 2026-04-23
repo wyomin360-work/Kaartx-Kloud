@@ -1,44 +1,58 @@
 import { Card } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { Users } from "lucide-react";
 
 export default function Testimonials() {
   const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
   const cardAnimation = useScrollAnimation<HTMLDivElement>(0.2);
 
   return (
-    <section className="bg-background py-12 sm:py-20 md:py-32">
-      <div className="mx-auto max-w-5xl px-4 sm:px-5 md:px-6">
+    <section className="bg-background ">
+      <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-6">
         <div
           ref={titleAnimation.ref}
-          className={`animate-on-scroll mb-8 text-center sm:mb-12 ${titleAnimation.isVisible ? "visible" : ""}`}
+          className={`animate-on-scroll mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center sm:mb-16 ${titleAnimation.isVisible ? "visible" : ""}`}
         >
-          <h2
-            className="section-title mb-3 text-foreground sm:mb-4"
-            data-testid="text-testimonials-title"
-          >
-            Designed for modern commerce builders
-          </h2>
-          <p
-            className="mx-auto max-w-3xl text-base text-muted-foreground sm:text-lg"
-            data-testid="text-testimonials-subtitle"
-          >
-            From single-brand stores to multi-vendor platforms — Kaartx Kloud
-            provides the infrastructure to run, control, and scale commerce
-            without complexity.
-          </p>
+          <div className="w-full md:w-[55%]">
+            <h2
+              className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl"
+              data-testid="text-testimonials-title"
+            >
+              <span className="gradient-text">Designed for</span> modern commerce builders
+            </h2>
+          </div>
+          <div className="flex w-full flex-col items-start pt-2 md:w-[40%]">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/50 px-3 py-1.5 shadow-sm">
+              <Users className="h-[14px] w-[14px] text-muted-foreground" />
+              <span className="text-[11px] font-semibold uppercase tracking-wide text-foreground sm:text-xs">
+                Community
+              </span>
+            </div>
+            <p
+              className="text-base font-medium leading-relaxed text-muted-foreground sm:text-lg"
+              data-testid="text-testimonials-subtitle"
+            >
+              From single-brand stores to multi-vendor platforms — Kaartx Kloud
+              provides the infrastructure to run, control, and scale commerce
+              without complexity.
+            </p>
+          </div>
         </div>
 
         <div
           ref={cardAnimation.ref}
-          className={`animate-on-scroll ${cardAnimation.isVisible ? "visible" : ""}`}
+          className={`animate-on-scroll mx-auto max-w-5xl ${cardAnimation.isVisible ? "visible" : ""}`}
         >
           <Card
-            className="rounded-xl p-8 shadow-lg sm:p-10 md:p-12"
+            className="group relative overflow-hidden rounded-[24px] border border-slate-200/60 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-10 md:p-12 dark:border-slate-800 dark:bg-card"
             data-testid="card-builder-quote"
           >
-            <div className="space-y-6 text-center">
+            {/* MUI-like hover ripple effect background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-slate-50/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:to-slate-800/20" />
+            
+            <div className="relative z-10 space-y-6 text-center">
               <p
-                className="text-base leading-relaxed text-foreground sm:text-lg md:text-xl"
+                className="text-lg font-medium leading-relaxed text-slate-900 sm:text-xl md:text-2xl dark:text-slate-100"
                 data-testid="text-builder-quote"
               >
                 "Kaartx Kloud is built as flexible commerce infrastructure —
@@ -46,7 +60,7 @@ export default function Testimonials() {
                 models, all managed from one unified system."
               </p>
               <p
-                className="text-sm text-muted-foreground"
+                className="text-sm font-medium text-slate-500 dark:text-slate-400"
                 data-testid="text-coming-soon"
               >
                 Coming soon: verified customer stories and success showcases

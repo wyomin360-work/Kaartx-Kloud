@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Check, Info } from "lucide-react";
+import { Check, Info, Wallet } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import type { PlanSelection } from "@/components/SignupModal";
 
@@ -127,49 +127,54 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div
           ref={titleAnimation.ref}
-          className={`animate-on-scroll mx-auto mb-16 max-w-3xl text-center ${titleAnimation.isVisible ? "visible" : ""}`}
+          className={`animate-on-scroll mb-12 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end sm:mb-16 ${titleAnimation.isVisible ? "visible" : ""}`}
         >
-          <h2 className="mb-6 text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-            Simple, transparent pricing
-          </h2>
-          <p className="text-lg leading-relaxed text-muted-foreground">
-            Whether you're testing the waters or scaling an empire, we have a
-            plan designed to fit your unique needs. No hidden fees.
-          </p>
-        </div>
-
-        <div
-          ref={toggleAnimation.ref}
-          className={`animate-on-scroll mb-16 flex items-center justify-center ${toggleAnimation.isVisible ? "visible" : ""}`}
-        >
-          <div className="inline-flex items-center rounded-full border border-border bg-muted/60 p-1.5 shadow-inner backdrop-blur-md">
-            <button
-              onClick={() => setBillingPeriod("monthly")}
-              className={`relative rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${billingPeriod === "monthly" ? "bg-background text-foreground shadow-sm shadow-black/5 ring-1 ring-border" : "text-muted-foreground hover:text-foreground"}`}
-            >
-              Monthly
-            </button>
-            <button
-              onClick={() => setBillingPeriod("yearly")}
-              className={`relative rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${billingPeriod === "yearly" ? "bg-background text-foreground shadow-sm shadow-black/5 ring-1 ring-border" : "text-muted-foreground hover:text-foreground"}`}
-            >
-              Annually{" "}
-              <span
-                className={
-                  billingPeriod === "yearly"
-                    ? "ml-1 text-primary"
-                    : "ml-1 opacity-70"
-                }
+          <div className="w-full flex-col md:w-[55%]">
+            <h2 className="mb-8 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+              Simple, transparent <span className="gradient-text">pricing</span>
+            </h2>
+            <div className="inline-flex flex-wrap items-center rounded-full border border-border bg-muted/60 p-1.5 shadow-inner backdrop-blur-md">
+              <button
+                onClick={() => setBillingPeriod("monthly")}
+                className={`relative rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${billingPeriod === "monthly" ? "bg-background text-foreground shadow-sm shadow-black/5 ring-1 ring-border" : "text-muted-foreground hover:text-foreground"}`}
               >
-                -20%
+                Monthly
+              </button>
+              <button
+                onClick={() => setBillingPeriod("yearly")}
+                className={`relative rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${billingPeriod === "yearly" ? "bg-background text-foreground shadow-sm shadow-black/5 ring-1 ring-border" : "text-muted-foreground hover:text-foreground"}`}
+              >
+                Annually{" "}
+                <span
+                  className={
+                    billingPeriod === "yearly"
+                      ? "ml-1 text-primary"
+                      : "ml-1 opacity-70"
+                  }
+                >
+                  -20%
+                </span>
+              </button>
+            </div>
+          </div>
+          
+          <div className="flex w-full flex-col items-start pt-2 md:w-[40%]">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/50 px-3 py-1.5 shadow-sm">
+              <Wallet className="h-[14px] w-[14px] text-muted-foreground" />
+              <span className="text-[11px] font-semibold uppercase tracking-wide text-foreground sm:text-xs">
+                Plans
               </span>
-            </button>
+            </div>
+            <p className="text-base font-medium leading-relaxed text-muted-foreground sm:text-lg">
+              Whether you're testing the waters or scaling an empire, we have a
+              plan designed to fit your unique needs. No hidden fees.
+            </p>
           </div>
         </div>
 
         <div
           ref={cardsAnimation.ref}
-          className="mx-auto mb-16 grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-3"
+          className="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-3"
         >
           {plans.map((plan, index) => {
             const stagger = ["", "stagger-1", "stagger-2"];
@@ -184,13 +189,19 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
             return (
               <div
                 key={index}
-                className={`animate-on-scroll relative flex flex-col rounded-[2rem] bg-card p-6 transition-all duration-500 sm:p-7 ${stagger[index]} ${cardsAnimation.isVisible ? "visible" : ""} ${
+                className={`animate-on-scroll group relative flex flex-col rounded-[24px] bg-white p-7 transition-all duration-300 hover:-translate-y-1 ${stagger[index]} ${cardsAnimation.isVisible ? "visible" : ""} ${
                   isHighlighted
-                    ? "z-10 border-2 border-primary shadow-2xl ring-4 ring-primary/5 lg:-translate-y-2"
-                    : "border border-border/80 shadow-lg hover:shadow-xl"
+                    ? "z-10 border-2 border-primary shadow-2xl ring-4 ring-primary/5 dark:bg-card"
+                    : "border border-slate-200/60 shadow-md hover:shadow-xl dark:border-slate-800 dark:bg-card"
                 }`}
               >
-                {isHighlighted && (
+                {/* Elevated MUI ripple emulation */}
+                {!isHighlighted && (
+                  <div className="absolute inset-0 rounded-[24px] bg-gradient-to-br from-transparent to-slate-50/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:to-slate-800/10" />
+                )}
+                
+                <div className="relative z-10">
+                  {isHighlighted && (
                   <div className="absolute -top-3.5 left-0 right-0 flex justify-center">
                     <span className="rounded-full bg-primary px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-primary-foreground shadow-md">
                       Most Popular
@@ -268,6 +279,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
                       </li>
                     ))}
                   </ul>
+                </div>
                 </div>
               </div>
             );

@@ -12,7 +12,8 @@ html {
   --badge-outline: rgba(0, 0, 0, 0.05);
 
   /* Automatic computation of border around primary / danger buttons */
-  --opaque-button-border-intensity: -8; /* In terms of percentages */
+  --opaque-button-border-intensity: -8;
+  /* In terms of percentages */
 
   /* Backgrounds applied on top of other backgrounds when hovered/active */
   --elevate-1: rgba(0, 0, 0, 0.03);
@@ -84,7 +85,8 @@ html {
   --font-display: "Outfit", sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Menlo, monospace;
-  --radius: 0.5rem; /* 8px */
+  --radius: 0.5rem;
+  /* 8px */
   --shadow-2xs: 0px 2px 0px 0px hsl(0 0% 0% / 0.03);
   --shadow-xs: 0px 2px 0px 0px hsl(0 0% 0% / 0.05);
   --shadow-sm:
@@ -105,59 +107,39 @@ html {
 
   /* Fallback for older browsers */
   --sidebar-primary-border: hsl(var(--sidebar-primary));
-  --sidebar-primary-border: hsl(
-    from hsl(var(--sidebar-primary)) h s
-      calc(l + var(--opaque-button-border-intensity)) / alpha
-  );
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --sidebar-accent-border: hsl(var(--sidebar-accent));
-  --sidebar-accent-border: hsl(
-    from hsl(var(--sidebar-accent)) h s
-      calc(l + var(--opaque-button-border-intensity)) / alpha
-  );
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --primary-border: hsl(var(--primary));
-  --primary-border: hsl(
-    from hsl(var(--primary)) h s
-      calc(l + var(--opaque-button-border-intensity)) / alpha
-  );
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --secondary-border: hsl(var(--secondary));
-  --secondary-border: hsl(
-    from hsl(var(--secondary)) h s
-      calc(l + var(--opaque-button-border-intensity)) / alpha
-  );
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --muted-border: hsl(var(--muted));
-  --muted-border: hsl(
-    from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) /
-      alpha
-  );
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --accent-border: hsl(var(--accent));
-  --accent-border: hsl(
-    from hsl(var(--accent)) h s
-      calc(l + var(--opaque-button-border-intensity)) / alpha
-  );
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --destructive-border: hsl(var(--destructive));
-  --destructive-border: hsl(
-    from hsl(var(--destructive)) h s
-      calc(l + var(--opaque-button-border-intensity)) / alpha
-  );
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
 .dark {
   --button-outline: rgba(255, 255, 255, 0.1);
   --badge-outline: rgba(255, 255, 255, 0.05);
 
-  --opaque-button-border-intensity: 9; /* In terms of percentages */
+  --opaque-button-border-intensity: 9;
+  /* In terms of percentages */
 
   /* Backgrounds applied on top of other backgrounds when hovered/active */
   --elevate-1: rgba(255, 255, 255, 0.04);
@@ -241,52 +223,31 @@ html {
 
   /* Fallback for older browsers */
   --sidebar-primary-border: hsl(var(--sidebar-primary));
-  --sidebar-primary-border: hsl(
-    from hsl(var(--sidebar-primary)) h s
-      calc(l + var(--opaque-button-border-intensity)) / alpha
-  );
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --sidebar-accent-border: hsl(var(--sidebar-accent));
-  --sidebar-accent-border: hsl(
-    from hsl(var(--sidebar-accent)) h s
-      calc(l + var(--opaque-button-border-intensity)) / alpha
-  );
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --primary-border: hsl(var(--primary));
-  --primary-border: hsl(
-    from hsl(var(--primary)) h s
-      calc(l + var(--opaque-button-border-intensity)) / alpha
-  );
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --secondary-border: hsl(var(--secondary));
-  --secondary-border: hsl(
-    from hsl(var(--secondary)) h s
-      calc(l + var(--opaque-button-border-intensity)) / alpha
-  );
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --muted-border: hsl(var(--muted));
-  --muted-border: hsl(
-    from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) /
-      alpha
-  );
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --accent-border: hsl(var(--accent));
-  --accent-border: hsl(
-    from hsl(var(--accent)) h s
-      calc(l + var(--opaque-button-border-intensity)) / alpha
-  );
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 
   /* Fallback for older browsers */
   --destructive-border: hsl(var(--destructive));
-  --destructive-border: hsl(
-    from hsl(var(--destructive)) h s
-      calc(l + var(--opaque-button-border-intensity)) / alpha
-  );
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
 /* Prevent layout shift when Radix Dialog opens */
@@ -333,19 +294,15 @@ body[data-scroll-locked] {
 
   /* Vibrant Gradient Backgrounds */
   .gradient-bg-purple {
-    background: linear-gradient(
-      135deg,
-      rgba(79, 70, 229, 0.1) 0%,
-      rgba(139, 92, 246, 0.05) 100%
-    );
+    background: linear-gradient(135deg,
+        rgba(79, 70, 229, 0.1) 0%,
+        rgba(139, 92, 246, 0.05) 100%);
   }
 
   .gradient-bg-blue {
-    background: linear-gradient(
-      135deg,
-      rgba(6, 182, 212, 0.1) 0%,
-      rgba(30, 42, 94, 0.05) 100%
-    );
+    background: linear-gradient(135deg,
+        rgba(6, 182, 212, 0.1) 0%,
+        rgba(30, 42, 94, 0.05) 100%);
   }
 
   /* Glass Morphism Effect */
@@ -361,21 +318,17 @@ body[data-scroll-locked] {
   [data-testid="deep-feature-0"],
   [data-testid="deep-feature-2"],
   [data-testid="deep-feature-4"] {
-    background: linear-gradient(
-      135deg,
-      rgba(6, 182, 212, 0.1) 0%,
-      rgba(30, 42, 94, 0.05) 100%
-    ) !important;
+    background: linear-gradient(135deg,
+        rgba(6, 182, 212, 0.1) 0%,
+        rgba(30, 42, 94, 0.05) 100%) !important;
   }
 
   [data-testid="deep-feature-1"],
   [data-testid="deep-feature-3"],
   [data-testid="deep-feature-5"] {
-    background: linear-gradient(
-      135deg,
-      rgba(79, 70, 229, 0.1) 0%,
-      rgba(139, 92, 246, 0.05) 100%
-    ) !important;
+    background: linear-gradient(135deg,
+        rgba(79, 70, 229, 0.1) 0%,
+        rgba(139, 92, 246, 0.05) 100%) !important;
   }
 
   /* Desktop: hide icons completely */
@@ -411,6 +364,7 @@ body[data-scroll-locked] {
       opacity: 0;
       transform: translateY(24px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -421,6 +375,7 @@ body[data-scroll-locked] {
     from {
       opacity: 0;
     }
+
     to {
       opacity: 1;
     }
@@ -431,6 +386,7 @@ body[data-scroll-locked] {
       opacity: 0;
       transform: scale(0.96);
     }
+
     to {
       opacity: 1;
       transform: scale(1);
@@ -442,6 +398,7 @@ body[data-scroll-locked] {
       opacity: 0;
       transform: translateX(-24px);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
@@ -453,6 +410,7 @@ body[data-scroll-locked] {
       opacity: 0;
       transform: translateX(24px);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
@@ -555,6 +513,7 @@ body[data-scroll-locked] {
  * need to be distinguished from eachother visually.
  */
 @layer utilities {
+
   /* Hide ugly search cancel button in Chrome until we can style it properly */
   input[type="search"]::-webkit-search-cancel-button {
     @apply hidden;
@@ -570,11 +529,9 @@ body[data-scroll-locked] {
   /* .no-default-hover-elevate/no-default-active-elevate is an escape hatch so consumers of
    * buttons/badges can remove the automatic brightness adjustment on interactions
    * and program their own. */
-  .no-default-hover-elevate {
-  }
+  .no-default-hover-elevate {}
 
-  .no-default-active-elevate {
-  }
+  .no-default-active-elevate {}
 
   /**
    * Toggleable backgrounds go behind the content. Hoverable/active goes on top.
@@ -738,6 +695,7 @@ body.mobile-menu-open {
 
   /* Disable hover effects on touch devices */
   @media (hover: none) {
+
     .hover-elevate:hover::after,
     .hover-elevate-2:hover::after {
       background-color: transparent !important;
@@ -836,7 +794,7 @@ body.mobile-menu-open {
     scroll-padding-right: calc((100vw - 80vw) / 2) !important;
   }
 
-  .feature-carousel > * {
+  .feature-carousel>* {
     scroll-snap-align: center !important;
   }
 
@@ -873,24 +831,25 @@ body.mobile-menu-open {
   /* Hero section - remove flex centering, add standard gap above, pure white background */
   #hero {
     display: block !important;
-    margin-top: 96px !important; /* Standard section gap ABOVE hero (48px gap + navbar offset) */
+    margin-top: 96px !important;
+    /* Standard section gap ABOVE hero (48px gap + navbar offset) */
     background: #ffffff !important;
   }
 
   /* Hide hero gradient overlays on mobile */
-  #hero > div:first-child,
-  #hero > div:nth-child(2) {
+  #hero>div:first-child,
+  #hero>div:nth-child(2) {
     display: none !important;
   }
 
   /* Hero inner container - reset padding to let section padding handle it */
-  #hero > div:nth-child(3) {
+  #hero>div:nth-child(3) {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
   }
 
   /* Hero text container - remove margin-bottom */
-  #hero > div:nth-child(3) > div {
+  #hero>div:nth-child(3)>div {
     margin-bottom: 0 !important;
   }
 
@@ -949,7 +908,7 @@ body.mobile-menu-open {
   }
 
   /* Upcoming add-ons container - full width on mobile, match addon-container gap */
-  .addon-container + div {
+  .addon-container+div {
     width: 100% !important;
     margin-top: 8px !important;
     padding-left: 0 !important;
@@ -957,7 +916,7 @@ body.mobile-menu-open {
   }
 
   /* Ensure upcoming add-on inner content matches */
-  [data-testid^="badge-addon-upcoming-"] > span {
+  [data-testid^="badge-addon-upcoming-"]>span {
     font-size: 0.875rem !important;
     font-weight: 500 !important;
   }
@@ -993,7 +952,7 @@ body.mobile-menu-open {
     padding: 20px 16px !important;
   }
 
-  [data-testid^="metric-card-"] > div {
+  [data-testid^="metric-card-"]>div {
     gap: 12px !important;
   }
 
@@ -1030,7 +989,7 @@ body.mobile-menu-open {
     padding: 0 !important;
   }
 
-  [data-testid^="card-feature-"] > div {
+  [data-testid^="card-feature-"]>div {
     padding: 16px !important;
   }
 
@@ -1058,7 +1017,7 @@ body.mobile-menu-open {
   }
 
   /* HowItWorks section - compact mobile steps */
-  [data-testid^="step-"] > div:first-child {
+  [data-testid^="step-"]>div:first-child {
     padding: 12px 16px 16px 16px !important;
     padding-top: 40px !important;
   }
@@ -1172,7 +1131,7 @@ body.mobile-menu-open {
   }
 
   /* Tighter header row */
-  [data-testid^="integration-card-"] > div:first-child {
+  [data-testid^="integration-card-"]>div:first-child {
     margin-bottom: 10px !important;
   }
 
@@ -1251,7 +1210,7 @@ body.mobile-menu-open {
     gap: 12px !important;
   }
 
-  [data-testid="card-builder-quote"] .space-y-6 > * + * {
+  [data-testid="card-builder-quote"] .space-y-6>*+* {
     margin-top: 12px !important;
   }
 
@@ -1261,7 +1220,7 @@ body.mobile-menu-open {
     padding-bottom: 48px !important;
   }
 
-  #pricing > div > div:first-child {
+  #pricing>div>div:first-child {
     margin-bottom: 16px !important;
   }
 
@@ -1276,7 +1235,7 @@ body.mobile-menu-open {
     padding-bottom: 48px !important;
   }
 
-  #faq > div > div:first-child {
+  #faq>div>div:first-child {
     margin-bottom: 20px !important;
   }
 
@@ -1285,7 +1244,7 @@ body.mobile-menu-open {
     gap: 8px !important;
   }
 
-  [data-testid="accordion-faq"] > div {
+  [data-testid="accordion-faq"]>div {
     padding-left: 16px !important;
     padding-right: 16px !important;
     border-radius: 12px !important;
@@ -1334,13 +1293,13 @@ body.mobile-menu-open {
   }
 
   /* Closed state - collapsed */
-  [data-testid="accordion-faq"] [data-state="closed"] > [role="region"] {
+  [data-testid="accordion-faq"] [data-state="closed"]>[role="region"] {
     max-height: 0 !important;
     opacity: 0 !important;
   }
 
   /* Open state - expanded with generous max-height */
-  [data-testid="accordion-faq"] [data-state="open"] > [role="region"] {
+  [data-testid="accordion-faq"] [data-state="open"]>[role="region"] {
     max-height: 500px !important;
     opacity: 1 !important;
   }
@@ -1353,17 +1312,11 @@ body.mobile-menu-open {
     -webkit-transform: translateZ(0);
   }
 
-  [data-testid="accordion-faq"]
-    [data-state="open"]
-    [data-testid^="faq-question-"]
-    svg {
+  [data-testid="accordion-faq"] [data-state="open"] [data-testid^="faq-question-"] svg {
     transform: translateZ(0) rotate(180deg) !important;
   }
 
-  [data-testid="accordion-faq"]
-    [data-state="closed"]
-    [data-testid^="faq-question-"]
-    svg {
+  [data-testid="accordion-faq"] [data-state="closed"] [data-testid^="faq-question-"] svg {
     transform: translateZ(0) rotate(0deg) !important;
   }
 
@@ -1373,7 +1326,7 @@ body.mobile-menu-open {
     padding-bottom: 48px !important;
   }
 
-  #booking > div > div:first-child {
+  #booking>div>div:first-child {
     margin-bottom: 20px !important;
   }
 
@@ -1403,7 +1356,7 @@ body.mobile-menu-open {
   }
 
   /* Reduce title area margin */
-  #about > div > div:first-child {
+  #about>div>div:first-child {
     margin-bottom: 32px !important;
   }
 
@@ -1421,7 +1374,7 @@ body.mobile-menu-open {
     gap: 20px !important;
   }
 
-  #about .max-w-\[740px\] .space-y-5 > * + * {
+  #about .max-w-\[740px\] .space-y-5>*+* {
     margin-top: 20px !important;
   }
 
@@ -1465,7 +1418,7 @@ body.mobile-menu-open {
     margin-bottom: 24px !important;
   }
 
-  #about .grid.gap-5 > div {
+  #about .grid.gap-5>div {
     padding: 14px !important;
   }
 
@@ -1520,7 +1473,7 @@ body.mobile-menu-open {
 
   /* StatsBar - auto-scrolling marquee on mobile */
   /* Remove section gradient overlays on mobile */
-  [data-testid="stats-section"] > div.absolute {
+  [data-testid="stats-section"]>div.absolute {
     display: none !important;
   }
 
@@ -1549,6 +1502,7 @@ body.mobile-menu-open {
     0% {
       transform: translate3d(0, 0, 0);
     }
+
     100% {
       transform: translate3d(-50%, 0, 0);
     }
@@ -1568,7 +1522,7 @@ body.mobile-menu-open {
   }
 
   /* Remove outer shadow from stat cards on mobile */
-  .stat-card-mobile > div {
+  .stat-card-mobile>div {
     box-shadow: none !important;
   }
 
@@ -1583,7 +1537,7 @@ body.mobile-menu-open {
     overflow: visible !important;
   }
 
-  #feature-grid > div {
+  #feature-grid>div {
     overflow: visible !important;
     padding-right: 0 !important;
   }
@@ -1628,12 +1582,10 @@ body.mobile-menu-open {
     content: "" !important;
     position: absolute !important;
     inset: 0 !important;
-    background: linear-gradient(
-      to bottom right,
-      hsl(var(--primary) / 0.05),
-      transparent,
-      transparent
-    ) !important;
+    background: linear-gradient(to bottom right,
+        hsl(var(--primary) / 0.05),
+        transparent,
+        transparent) !important;
     border-radius: 24px !important;
     pointer-events: none !important;
   }
@@ -1642,11 +1594,9 @@ body.mobile-menu-open {
     content: "" !important;
     position: absolute !important;
     inset: 0 !important;
-    background: linear-gradient(
-      to top,
-      hsl(var(--background) / 0.1),
-      transparent
-    ) !important;
+    background: linear-gradient(to top,
+        hsl(var(--background) / 0.1),
+        transparent) !important;
     border-radius: 24px !important;
     pointer-events: none !important;
   }
@@ -1663,12 +1613,12 @@ body.mobile-menu-open {
   }
 
   /* Card header adjustments - remove icon padding */
-  [data-testid^="card-feature-"] > div {
+  [data-testid^="card-feature-"]>div {
     padding: 0 !important;
   }
 
   /* Hide icon containers completely */
-  [data-testid^="card-feature-"] > div > div:first-child {
+  [data-testid^="card-feature-"]>div>div:first-child {
     display: none !important;
   }
 
@@ -1723,14 +1673,14 @@ body.mobile-menu-open {
   }
 
   /* Plan name block - reduce margins */
-  [data-testid^="pricing-card-"] > div:nth-child(2),
-  [data-testid^="pricing-card-"] > div.mb-3 {
+  [data-testid^="pricing-card-"]>div:nth-child(2),
+  [data-testid^="pricing-card-"]>div.mb-3 {
     margin-bottom: 8px !important;
     margin-top: 8px !important;
   }
 
   /* Price block - reduce bottom margin */
-  [data-testid^="pricing-card-"] > div.mb-5 {
+  [data-testid^="pricing-card-"]>div.mb-5 {
     margin-bottom: 12px !important;
   }
 
@@ -1743,7 +1693,7 @@ body.mobile-menu-open {
     margin-bottom: 6px !important;
   }
 
-  [data-testid^="pricing-card-"] ul.space-y-2\.5 > * + * {
+  [data-testid^="pricing-card-"] ul.space-y-2\.5>*+* {
     margin-top: 6px !important;
   }
 
@@ -1810,11 +1760,11 @@ body.mobile-menu-open {
     line-height: 1.55 !important;
   }
 
-  [data-testid="text-founder-note-content"] > p {
+  [data-testid="text-founder-note-content"]>p {
     margin-bottom: 10px !important;
   }
 
-  [data-testid="text-founder-note-content"] > p:last-child {
+  [data-testid="text-founder-note-content"]>p:last-child {
     margin-bottom: 0 !important;
   }
 
@@ -1851,7 +1801,7 @@ body.mobile-menu-open {
     min-height: auto !important;
   }
 
-  [data-testid^="card-why-work-"] > div {
+  [data-testid^="card-why-work-"]>div {
     padding: 14px !important;
     min-height: 100px !important;
   }
@@ -1896,7 +1846,7 @@ body.mobile-menu-open {
     gap: 10px !important;
   }
 
-  .culture-code-list > div {
+  .culture-code-list>div {
     margin-bottom: 0 !important;
   }
 
@@ -1934,7 +1884,7 @@ body.mobile-menu-open {
     margin-bottom: 48px !important;
   }
 
-  .how-we-work-section > div {
+  .how-we-work-section>div {
     padding-left: 16px !important;
     padding-right: 16px !important;
   }
@@ -1944,7 +1894,7 @@ body.mobile-menu-open {
     gap: 10px !important;
   }
 
-  .how-we-work-list > div {
+  .how-we-work-list>div {
     margin-bottom: 0 !important;
   }
 
@@ -1961,7 +1911,7 @@ body.mobile-menu-open {
     margin-bottom: 48px !important;
   }
 
-  .open-roles-section > div {
+  .open-roles-section>div {
     padding-left: 16px !important;
     padding-right: 16px !important;
   }
@@ -1986,7 +1936,7 @@ body.mobile-menu-open {
   }
 
   /* Role cards - compact on mobile */
-  .role-card > div {
+  .role-card>div {
     padding: 14px !important;
     min-height: auto !important;
   }
@@ -2042,7 +1992,7 @@ body.mobile-menu-open {
     margin-bottom: 48px !important;
   }
 
-  .no-role-section > div {
+  .no-role-section>div {
     padding-left: 16px !important;
     padding-right: 16px !important;
   }
@@ -2075,7 +2025,7 @@ body.mobile-menu-open {
     margin-bottom: 0 !important;
   }
 
-  .blog-hero-section > div {
+  .blog-hero-section>div {
     padding-left: 16px !important;
     padding-right: 16px !important;
   }
@@ -2100,7 +2050,7 @@ body.mobile-menu-open {
     margin-bottom: 48px !important;
   }
 
-  .blog-posts-section > div {
+  .blog-posts-section>div {
     padding-left: 16px !important;
     padding-right: 16px !important;
   }
@@ -2111,7 +2061,7 @@ body.mobile-menu-open {
   }
 
   /* Blog post cards - compact on mobile */
-  [data-testid^="blog-post-"] > div {
+  [data-testid^="blog-post-"]>div {
     padding: 16px !important;
     min-height: auto !important;
   }
@@ -2145,8 +2095,8 @@ body.mobile-menu-open {
     padding-bottom: 24px !important;
   }
 
-  article.article-section > div,
-  .article-section > div {
+  article.article-section>div,
+  .article-section>div {
     padding-left: 16px !important;
     padding-right: 16px !important;
     max-width: 100% !important;
@@ -2227,8 +2177,8 @@ body.mobile-menu-open {
   }
 
   /* Intro paragraph - extra spacing before first heading */
-  .article-content > p:first-child,
-  .prose > p:first-child {
+  .article-content>p:first-child,
+  .prose>p:first-child {
     margin-bottom: 20px !important;
   }
 
@@ -2394,8 +2344,8 @@ body.mobile-menu-open {
   }
 
   /* Modal description text */
-  [data-testid="dialog-signup"] > div > div > p,
-  [data-testid="dialog-signup"] .text-center > p {
+  [data-testid="dialog-signup"]>div>div>p,
+  [data-testid="dialog-signup"] .text-center>p {
     font-size: 12px !important;
     line-height: 1.4 !important;
   }
@@ -2414,7 +2364,7 @@ body.mobile-menu-open {
   }
 
   /* Form item spacing */
-  [data-testid="dialog-signup"] form > .space-y-3 > div,
+  [data-testid="dialog-signup"] form>.space-y-3>div,
   [data-testid="dialog-signup"] form .space-y-1\.5 {
     margin-bottom: 10px !important;
   }
@@ -2457,7 +2407,7 @@ body.mobile-menu-open {
 
   /* Terms text - single line, no wrap, centered */
   [data-testid="text-terms-agreement"],
-  [data-testid="dialog-signup"] form > p {
+  [data-testid="dialog-signup"] form>p {
     font-size: 9px !important;
     margin-top: 10px !important;
     white-space: nowrap !important;
@@ -2473,7 +2423,7 @@ body.mobile-menu-open {
     margin-bottom: 16px !important;
   }
 
-  [data-testid="dialog-signup"] .grid > div {
+  [data-testid="dialog-signup"] .grid>div {
     padding: 10px 12px !important;
   }
 
@@ -2503,31 +2453,28 @@ body.mobile-menu-open {
     font-size: 9px !important;
   }
 }
+
 @layer utilities {
+
   /* High-Visibility SaaS Grid */
   .body {
-    background-size: 50px 50px; /* Adjusted to 40px cells to feel more technical */
+    background-size: 50px 50px;
+    /* Adjusted to 40px cells to feel more technical */
     background-image:
-      linear-gradient(
-        to right,
+      linear-gradient(to right,
         hsl(var(--foreground) / 0.06) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        to bottom,
+        transparent 1px),
+      linear-gradient(to bottom,
         hsl(var(--foreground) / 0.06) 1px,
-        transparent 1px
-      );
+        transparent 1px);
     background-position: center center;
   }
 
   /* Optional: Dot Grid variant */
   .bg-dot-grid {
     background-size: 24px 24px;
-    background-image: radial-gradient(
-      hsl(var(--foreground) / 0.08) 1px,
-      transparent 1px
-    );
+    background-image: radial-gradient(hsl(var(--foreground) / 0.08) 1px,
+        transparent 1px);
   }
 
   /* Add a subtle radial mask so the grid fades out toward the edges */

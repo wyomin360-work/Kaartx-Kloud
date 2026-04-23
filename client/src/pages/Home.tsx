@@ -102,10 +102,10 @@ export default function Home() {
         <Security />
         {/* <APISection /> */}
         {/* <Showcase /> */}
+        <Pricing onOpenSignup={handleOpenSignup} />
         <Testimonials />
         {/* TEMPORARILY HIDDEN – TO REVISIT */}
         {/* <CaseStudy /> */}
-        <Pricing onOpenSignup={handleOpenSignup} />
         <FAQ />
         <BookingSection />
         <About />

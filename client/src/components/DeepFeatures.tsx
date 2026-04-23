@@ -103,10 +103,10 @@ export default function DeepFeatures() {
   return (
     <section id="features" className="scroll-mt-20 bg-background pt-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Modern Two-Column Header */}
+        {/* Modern Two-Column Header made Sticky */}
         <div
           ref={titleAnimation.ref}
-          className={`animate-on-scroll mb-16 flex flex-col items-start justify-between gap-8 pt-8 md:flex-row md:gap-16 ${titleAnimation.isVisible ? "visible" : ""}`}
+          className={`sticky top-[70px] z-30 -mx-4 bg-background/95 px-4 pb-8 pt-10 backdrop-blur-xl sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 mb-10 flex flex-col items-start justify-between gap-6 md:flex-row md:gap-16 transition-opacity duration-700 ${titleAnimation.isVisible ? "opacity-100" : "opacity-0"}`}
         >
           {/* Left Column */}
           <div className="w-full md:w-[55%]">
@@ -122,7 +122,7 @@ export default function DeepFeatures() {
 
           {/* Right Column */}
           <div className="flex w-full flex-col items-start pt-2 md:w-[40%]">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/50 px-3 py-1.5 shadow-sm">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/50 px-3 py-1.5 ">
               <Wrench className="h-[14px] w-[14px] text-muted-foreground" />
               <span className="text-[11px] font-semibold uppercase tracking-wide text-foreground sm:text-xs">
                 Core Platform
@@ -154,18 +154,19 @@ export default function DeepFeatures() {
                 data-testid={`deep-feature-${index}`}
                 // IMPORTANT: Use 'bg-white' or 'bg-background' (Solid color)
                 // Added a shadow that increases as cards stack to give depth
-                className="group sticky mx-auto w-full max-w-5xl overflow-hidden rounded-[2.5rem] border-[1.5px] border-border bg-background shadow-[0_-5px_25px_-5px_rgba(0,0,0,0.07)] transition-all duration-500"
+                // Enforcing a fixed responsive height to prevent variable content from causing overlap clipping
+                className="group sticky mx-auto w-full max-w-5xl overflow-hidden rounded-[2.5rem] border-[1.5px] border-border bg-background transition-all duration-500 h-[700px] sm:h-[600px] md:h-[500px] lg:h-[480px]"
                 style={{
-                  // 100px is the initial gap from top, 24px is the visible "tab" of the previous card
-                  top: `calc(100px + ${index * 24}px)`,
-                  // Increasing margin bottom ensures the container has enough height to scroll through all cards
-                  marginBottom: index === features.length - 1 ? "0" : "100px",
+                  // Constant top position so each card perfectly and completely overlays the previous one
+                  top: "280px",
+                  // No margin bottom on the last card ensures the section immediately scrolls up when it hits the stack
+                  marginBottom: index === features.length - 1 ? "50px" : "150px",
                 }}
               >
-                <div className="flex min-h-[450px] flex-col md:flex-row">
+                <div className="flex h-full flex-col md:flex-row">
                   {/* Left Side */}
                   <div className="flex w-full flex-col justify-center bg-background p-8 sm:p-12 md:w-[55%] lg:p-16">
-                    <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl border border-primary/10 bg-primary/5 shadow-sm">
+                    <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl border border-primary/10 bg-primary/5 ">
                       <Icon
                         className="h-8 w-8 text-primary"
                         strokeWidth={1.5}
@@ -189,7 +190,7 @@ export default function DeepFeatures() {
                           key={i}
                           className="flex items-center text-base font-medium text-slate-300 sm:text-lg"
                         >
-                          <div className="mr-4 flex-shrink-0 rounded-full border border-slate-700/50 bg-slate-900 p-1.5 shadow-sm">
+                          <div className="mr-4 flex-shrink-0 rounded-full border border-slate-700/50 bg-slate-900 p-1.5">
                             <Check
                               className={`h-4 w-4 ${feature.checkGradient}`}
                               strokeWidth={3}
