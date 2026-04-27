@@ -15,23 +15,12 @@ import KaartxVsCustomDev from "@/pages/articles/KaartxVsCustomDev";
 import MarketplaceMistakes from "@/pages/articles/MarketplaceMistakes";
 import PayoutCycles from "@/pages/articles/PayoutCycles";
 import SellerSubscriptions from "@/pages/articles/SellerSubscriptions";
-import NotFound from "@/pages/not-found";
+import Maintenance from "@/pages/Maintenance";
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home}/>
-      <Route path="/create-marketplace" component={CreateMarketplace}/>
-      <Route path="/blog" component={Blog}/>
-      <Route path="/careers" component={Careers}/>
-      <Route path="/terms" component={TermsOfService}/>
-      <Route path="/privacy" component={PrivacyPolicy}/>
-      <Route path="/blog/launch-multi-vendor-marketplace-gcc" component={LaunchMarketplaceGCC}/>
-      <Route path="/blog/kaartx-kloud-vs-custom-development" component={KaartxVsCustomDev}/>
-      <Route path="/blog/marketplace-mistakes-to-avoid" component={MarketplaceMistakes}/>
-      <Route path="/blog/how-payout-cycles-work" component={PayoutCycles}/>
-      <Route path="/blog/automated-seller-subscriptions" component={SellerSubscriptions}/>
-      <Route component={NotFound} />
+      <Route component={Maintenance} />
     </Switch>
   );
 }
