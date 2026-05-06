@@ -1,112 +1,247 @@
-import {
-  ArrowRight,
-  MessageCircle,
-  BarChart3,
-  ShoppingBag,
-  Users,
-  DollarSign,
-  Settings,
-  Bell,
-  Search,
-  Package,
-  TrendingUp,
-  TrendingDown,
-  LayoutDashboard,
-  ChevronDown,
-  CheckCircle2,
-  Clock,
-  Globe,
-  Smartphone,
-  ShoppingCart,
-  Activity,
-  RefreshCw,
-  Heart,
-  ChevronLeft,
-  Share2,
-  Grid3X3,
-  User,
-  Home,
-  X,
-} from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { useEffect, useState } from "react";
+import { Star } from "lucide-react";
+import { motion } from "framer-motion";
+import { useMemo, type ReactNode } from "react";
 import { Button } from "./ui/button";
 
-export default function Hero({ onOpenSignup }: any) {
-  const titleAnimation = useScrollAnimation<HTMLHeadingElement>(0.1);
-  const subtitleAnimation = useScrollAnimation<HTMLParagraphElement>(0.1);
-  const buttonsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
-  const dashboardAnimation = useScrollAnimation<HTMLDivElement>(0.1);
+import hero203511 from "@heroimages/Screenshot from 2026-04-29 20-35-11.png";
+import hero203531 from "@heroimages/Screenshot from 2026-04-29 20-35-31.png";
+import hero203548 from "@heroimages/Screenshot from 2026-04-29 20-35-48.png";
+import hero203601 from "@heroimages/Screenshot from 2026-04-29 20-36-01.png";
+import hero203631 from "@heroimages/Screenshot from 2026-04-29 20-36-31.png";
 
-  // Floating Sync Labels Config
-  const labels = [
-    { text: "Inventory Syncing", target: "web", color: "blue", icon: Package },
-    {
-      text: "Order Fulfillment",
-      target: "app",
-      color: "emerald",
-      icon: CheckCircle2,
-    },
-    {
-      text: "Payout Management",
-      target: "web",
-      color: "blue",
-      icon: DollarSign,
-    },
-    {
-      text: "Real-time Tracking",
-      target: "app",
-      color: "emerald",
-      icon: Activity,
-    },
-  ];
+/** All screenshots in repo root `heroimages/` (bundled URLs). */
+export const HERO_SCREENSHOTS = [
+  hero203511,
+  hero203531,
+  hero203548,
+  hero203601,
+  hero203631,
+] as const;
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [webGlow, setWebGlow] = useState(false);
-  const [appGlow, setAppGlow] = useState(false);
+/** Three-window hero: catalog / storefront / checkout. */
+const STACK_LEFT = {
+  src: hero203631,
+  urlHint: "kaartx — catalog",
+  alt: "Kaartx categories",
+};
+const STACK_CENTER = {
+  src: hero203511,
+  urlHint: "kaartx kloud — storefront",
+  alt: "Kaartx storefront",
+};
+const STACK_RIGHT = {
+  src: hero203548,
+  urlHint: "kaartx — checkout",
+  alt: "Kaartx cart",
+};
 
-  useEffect(() => {
-    const cycleInterval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % labels.length);
-    }, 2800);
+/** Center / mobile: full screenshot strip height. */
+const HERO_IMAGE_FRAME =
+  "relative h-[260px] w-full overflow-hidden bg-white rounded-xl border border-black/10 sm:h-[400px] md:h-[440px] lg:h-[480px]";
 
-    return () => clearInterval(cycleInterval);
-  }, []);
+/** Side panels: ~20% shorter image area than center; row uses items-center so they align to the middle card. */
+const HERO_SIDE_IMAGE_FRAME =
+  "relative h-[208px] w-full overflow-hidden bg-white rounded-xl border border-black/10 sm:h-[320px] md:h-[352px] lg:h-[384px]";
 
-  // Sync Node Glow with Label Impact (at 2.2s of the 2.8s cycle)
-  useEffect(() => {
-    const impactTimer = setTimeout(() => {
-      if (labels[currentIndex].target === "web") {
-        setWebGlow(true);
-        setTimeout(() => setWebGlow(false), 800);
-      } else {
-        setAppGlow(true);
-        setTimeout(() => setAppGlow(false), 800);
-      }
-    }, 2200);
+const HERO_DOT_CLOUD_COUNT = 96;
 
-    return () => clearTimeout(impactTimer);
-  }, [currentIndex]);
+/** Dots drift from a loose field into soft “cloud” puffs (Kloud), hold, then scatter again. */
+function HeroDotCloudBackdrop() {
+  const dots = useMemo(
+    () =>
+      Array.from({ length: HERO_DOT_CLOUD_COUNT }, (_, i) => {
+        const scatterL = ((i * 37 + (i * i) % 17) % 880) / 10 + 3;
+        const scatterT = ((i * 59 + (i * 23) % 19) % 820) / 10 + 5;
+        const hubs = [
+          { lx: 36, ty: 46 },
+          { lx: 48, ty: 42 },
+          { lx: 58, ty: 48 },
+          { lx: 46, ty: 56 },
+        ] as const;
+        const hub = hubs[i % 4];
+        const cloudL = Math.min(93, Math.max(7, hub.lx + Math.sin(i * 0.52) * 18));
+        const cloudT = Math.min(90, Math.max(10, hub.ty + Math.cos(i * 0.44) * 14 + (i % 4) * 2.5));
+        return {
+          scatterL,
+          scatterT,
+          cloudL,
+          cloudT,
+          duration: 14 + (i % 9) * 0.35,
+          delay: (i % 18) * 0.08,
+          sizePx: 2 + (i % 3),
+        };
+      }),
+    [],
+  );
 
-  const [scrollY, setScrollY] = useState(0);
-  const [vh, setVh] = useState(1000);
+  return (
+    <div
+      className="pointer-events-none absolute inset-0 z-[1] overflow-hidden"
+      aria-hidden
+    >
+      {dots.map((d, i) => (
+        <motion.span
+          key={i}
+          className="absolute rounded-full bg-sky-500/[0.42] shadow-[0_0_6px_rgba(14,165,233,0.25)]"
+          style={{
+            width: d.sizePx,
+            height: d.sizePx,
+            left: `${d.scatterL}%`,
+            top: `${d.scatterT}%`,
+          }}
+          animate={{
+            left: [`${d.scatterL}%`, `${d.cloudL}%`, `${d.cloudL}%`, `${d.scatterL}%`],
+            top: [`${d.scatterT}%`, `${d.cloudT}%`, `${d.cloudT}%`, `${d.scatterT}%`],
+            scale: [1, 1.35, 1.2, 1],
+            opacity: [0.22, 0.55, 0.5, 0.22],
+          }}
+          transition={{
+            duration: d.duration,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: d.delay,
+            times: [0, 0.32, 0.52, 1],
+          }}
+        />
+      ))}
+    </div>
+  );
+}
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    const handleResize = () => setVh(window.innerHeight);
+function StarRow() {
+  return (
+    <div className="flex gap-0.5">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star
+          key={i}
+          className="h-4 w-4 fill-amber-400 text-amber-400 sm:h-[1.125rem] sm:w-[1.125rem]"
+          strokeWidth={0}
+        />
+      ))}
+    </div>
+  );
+}
 
-    handleScroll();
-    handleResize();
+function TrustBadge({
+  logo,
+  score,
+  label,
+}: {
+  logo: ReactNode;
+  score: string;
+  label: string;
+}) {
+  return (
+    <div className="flex flex-col items-center gap-1.5 sm:flex-row sm:gap-2">
+      <div className="flex shrink-0 items-center gap-2">
+        {logo}
+        <StarRow />
+      </div>
+      <span className="text-center text-sm font-medium text-slate-600 sm:text-left sm:text-base">
+        {score} on {label}
+      </span>
+    </div>
+  );
+}
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleResize, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+/** Large “Kloud” filled with a tight dot halftone (reads as many dots forming the word). */
+function KloudDotWordmark() {
+  const dotGridStyle = {
+    backgroundImage:
+      "radial-gradient(circle at 50% 50%, rgb(14 165 233) 1.35px, transparent 1.4px), radial-gradient(circle at 50% 50%, rgb(56 189 248) 0.85px, transparent 0.9px)",
+    backgroundSize: "5px 5px, 3px 3px",
+    backgroundPosition: "0 0, 2.5px 2.5px",
+    WebkitBackgroundClip: "text" as const,
+    backgroundClip: "text" as const,
+  };
 
+  return (
+    <motion.div
+      className="relative mx-auto w-full max-w-[min(100%,28rem)] shrink-0 px-2 text-center md:mx-0 md:max-w-none md:text-left"
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.55, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <span
+        className="font-display pointer-events-none absolute left-1/2 top-1/2 block -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[clamp(3rem,14vw,7.5rem)] font-black leading-none tracking-tighter text-sky-400/30 blur-md md:left-0 md:translate-x-0"
+        aria-hidden
+      >
+        Kloud
+      </span>
+      <span
+        className="font-display relative block whitespace-nowrap text-[clamp(3rem,14vw,7.5rem)] font-black leading-none tracking-tighter text-transparent"
+        style={dotGridStyle}
+        data-testid="text-kloud-wordmark"
+      >
+        Kloud
+      </span>
+      {/* Extra floating specks around the word for a denser “cloud of dots” feel */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-visible" aria-hidden>
+        {[
+          [12, 8, 0.35],
+          [88, 18, 0.28],
+          [6, 72, 0.32],
+          [94, 65, 0.25],
+          [48, 4, 0.3],
+          [52, 96, 0.28],
+        ].map(([lx, ty, op], i) => (
+          <motion.span
+            key={i}
+            className="absolute h-1 w-1 rounded-full bg-sky-500"
+            style={{
+              left: `${lx}%`,
+              top: `${ty}%`,
+              opacity: op,
+            }}
+            animate={{ scale: [1, 1.6, 1], opacity: [op, op + 0.25, op] }}
+            transition={{
+              duration: 3.2 + i * 0.2,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.25,
+            }}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
+function StackWindow({
+  src,
+  alt,
+  objectPosition = "object-center",
+  imageAreaClassName,
+  imageObjectFit = "contain",
+}: {
+  src: string;
+  alt: string;
+  objectPosition?: string;
+  /** When set, replaces default aspect/min-height mobile frame (e.g. desktop triptych). */
+  imageAreaClassName?: string;
+  /** All images use cover to fill the view completely. */
+  imageObjectFit?: "contain" | "cover";
+}) {
+  const frameClass =
+    imageAreaClassName ??
+    "relative aspect-[16/11] w-full min-h-[220px] overflow-hidden bg-white sm:min-h-[260px] md:min-h-[280px]";
+
+  const objectFitClass = imageObjectFit === "cover" ? "object-cover" : "object-contain";
+
+  return (
+    <div className={frameClass}>
+      <img
+        src={src}
+        alt={alt}
+        className={`absolute inset-0 h-full w-full ${objectFitClass} ${objectPosition}`}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  );
+}
+
+export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
   const scrollToBooking = () => {
     const element = document.getElementById("booking");
     if (element) {
@@ -114,410 +249,168 @@ export default function Hero({ onOpenSignup }: any) {
     }
   };
 
-  const fadeStart = vh * 0.15;
-  const fadeDistance = vh * 0.85;
-  const heroOpacity =
-    scrollY < fadeStart
-      ? 1
-      : Math.max(1 - (scrollY - fadeStart) / fadeDistance, 0);
-
-  const heroTranslateY = scrollY * 0.35;
-
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden bg-white"
+      className="relative overflow-x-clip overflow-y-visible bg-white pt-12 sm:pt-16 md:pt-24"
     >
-      <div className="premium-grid absolute inset-0 z-0 opacity-40" />
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background:
-            "radial-gradient(circle at 60% 50%, rgba(37, 99, 235, 0.08), transparent 50%), radial-gradient(circle at 40% 50%, rgba(147, 51, 234, 0.05), transparent 50%)",
-        }}
-      />
+      {/* Soft animated backdrop — slow gradient drift + floating orbs (standard landing-page motion) */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+        <motion.div
+          className="absolute inset-0 bg-white"
+          animate={{
+            background: [
+              "radial-gradient(ellipse 92% 72% at 50% 100%, rgba(56, 189, 248, 0.14), transparent 58%), radial-gradient(ellipse 56% 46% at 50% 0%, rgba(147, 197, 253, 0.12), transparent 55%)",
+              "radial-gradient(ellipse 92% 72% at 48% 99%, rgba(56, 189, 248, 0.16), transparent 58%), radial-gradient(ellipse 56% 46% at 52% 1%, rgba(147, 197, 253, 0.14), transparent 55%)",
+              "radial-gradient(ellipse 92% 72% at 52% 101%, rgba(56, 189, 248, 0.15), transparent 58%), radial-gradient(ellipse 56% 46% at 48% -1%, rgba(147, 197, 253, 0.13), transparent 55%)",
+              "radial-gradient(ellipse 92% 72% at 50% 100%, rgba(56, 189, 248, 0.14), transparent 58%), radial-gradient(ellipse 56% 46% at 50% 0%, rgba(147, 197, 253, 0.12), transparent 55%)",
+            ],
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute -left-[18%] top-[22%] h-[min(55vw,28rem)] w-[min(70vw,36rem)] rounded-full bg-sky-300/25 blur-3xl"
+          animate={{ x: [0, 28, 0], y: [0, -18, 0], scale: [1, 1.06, 1] }}
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute -right-[12%] top-[35%] h-[min(50vw,26rem)] w-[min(65vw,34rem)] rounded-full bg-blue-200/30 blur-3xl"
+          animate={{ x: [0, -22, 0], y: [0, 14, 0], scale: [1, 1.05, 1] }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
+      </div>
 
-      <div
-        className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-12 px-4 py-20 sm:px-5 md:px-6 lg:flex-row lg:gap-8"
-        style={{
-          opacity: heroOpacity,
-          transform: `translateY(${heroTranslateY}px)`,
-          pointerEvents: heroOpacity < 0.1 ? "none" : "auto",
-        }}
-      >
-        {/* Left Column (Text & CTAs) */}
-        <div className="mb-10 flex w-full flex-col text-left lg:mb-0 lg:w-[45%] xl:pr-10">
+      <HeroDotCloudBackdrop />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mx-auto mt-14 max-w-5xl text-center sm:mt-16"
+        >
           <h1
-            ref={titleAnimation.ref}
-            className={`animate-on-scroll mb-6 font-display text-4xl font-medium leading-[1.1] text-slate-900 sm:text-5xl md:text-[52px] ${titleAnimation.isVisible ? "visible" : ""}`}
+            className="mb-7 px-2 font-display text-4xl font-black leading-[1.1] tracking-tight text-slate-900 sm:text-5xl md:text-6xl"
             data-testid="text-hero-title"
           >
-            Launch your <span className="text-blue-600">multi-vendor</span>{" "}
-            <br className="hidden md:block" /> marketplace in days.
+            Choose{" "}
+            <span className="bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 bg-clip-text text-transparent">
+              Kaartx
+            </span>{" "}
+            as your powerful
+            <span className="mt-3 block bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 bg-clip-text text-transparent sm:mt-4 lg:mt-5">
+              B2B/B2C Marketplace Builder
+            </span>
           </h1>
-          <p
-            ref={subtitleAnimation.ref}
-            className={`animate-on-scroll stagger-1 mb-10 max-w-lg text-sm font-normal leading-relaxed text-slate-500 sm:text-base ${subtitleAnimation.isVisible ? "visible" : ""}`}
-            data-testid="text-hero-subtitle"
-          >
-            The complete commerce infrastructure for the GCC. Scaling brands and
-            marketplaces with automated payouts, unified inventory, and
-            localized workflows.
-          </p>
-          <div
-            ref={buttonsAnimation.ref}
-            className={`animate-on-scroll stagger-2 flex flex-col items-stretch justify-start gap-4 sm:flex-row sm:items-center ${buttonsAnimation.isVisible ? "visible" : ""}`}
-          >
+
+          <div className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
             <Button
               onClick={onOpenSignup}
               size="lg"
-              className="group h-14 w-full rounded-full bg-slate-900 px-8 font-bold text-white shadow-xl shadow-slate-200 transition-all hover:scale-[1.02] hover:bg-slate-800 hover:shadow-2xl active:scale-[0.98] sm:w-auto"
+              className="h-14 min-w-[220px] rounded-xl bg-blue-500 px-10 text-lg font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:bg-blue-600 hover:shadow-blue-500/35"
               data-testid="button-hero-get-started"
             >
-              <span>Get Started</span>
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              Try for Free
             </Button>
             <Button
               size="lg"
               variant="outline"
               onClick={scrollToBooking}
-              className="h-14 w-full rounded-full border-slate-200 bg-white px-8 font-bold text-slate-900 transition-all hover:border-slate-300 hover:bg-slate-50 sm:w-auto"
+              className="h-14 rounded-xl border-blue-200 bg-white px-8 text-lg font-semibold text-blue-600 hover:bg-blue-50"
               data-testid="button-hero-whatsapp"
             >
-              Talk to Sales
+              Contact us
             </Button>
           </div>
-        </div>
 
-        {/* Right Column (SaaS Dashboard Mockup) */}
-        <div
-          ref={dashboardAnimation.ref}
-          className={`animate-on-scroll stagger-3 relative h-[700px] w-full md:h-[800px] lg:w-[65%] ${dashboardAnimation.isVisible ? "visible" : ""}`}
+          <div
+            className="mx-auto mb-16 flex max-w-4xl flex-col flex-wrap items-center justify-center gap-7 border-y border-slate-100 py-9 sm:flex-row sm:gap-12 md:gap-16"
+            data-testid="text-hero-subtitle"
+          >
+            <TrustBadge
+              logo={
+                <div className="flex h-10 w-16 items-center justify-center rounded-full bg-[#ff492c] text-[11px] font-black text-white">
+                  Appstore
+                </div>
+              }
+              score="4.8/5"
+              label="Appstore"
+            />
+            <TrustBadge
+              logo={
+                <div className="flex h-10 w-16 items-center justify-center rounded-md bg-[#f58220] text-[10px] font-black text-white">
+                  Playstore
+                </div>
+              }
+              score="4.7/5"
+              label="Playstore"
+            />
+           
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="relative z-10 mx-auto mt-4 w-full max-w-4xl sm:hidden"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* SVG Connection Layer */}
-          <svg
-            className="pointer-events-none absolute inset-0 z-0 h-full w-full"
-            viewBox="0 0 700 700"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <motion.path
-              id="path-web"
-              d="M 220 350 Q 320 200 480 200"
-              stroke="#e2e8f0"
-              strokeWidth="2"
-              strokeDasharray="4 4"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 1.5, delay: 0.5 }}
-            />
-            <motion.path
-              id="path-app"
-              d="M 220 350 Q 320 500 480 500"
-              stroke="#e2e8f0"
-              strokeWidth="2"
-              strokeDasharray="4 4"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 1.5, delay: 0.7 }}
-            />
-          </svg>
+          <StackWindow {...STACK_CENTER} imageAreaClassName={HERO_IMAGE_FRAME} imageObjectFit="contain" objectPosition="object-center" />
+        </motion.div>
 
-          {/* Floating Label System (Sequential & Coordinated) */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{
-                opacity: [0, 1, 1, 0],
-                scale: [0.8, 1, 1, 0.8],
-                offsetDistance: ["0%", "5%", "95%", "100%"],
-              }}
-              transition={{
-                duration: 2.8,
-                ease: "linear",
-                times: [0, 0.1, 0.8, 1],
-              }}
-              className={`absolute z-40 flex items-center gap-2 whitespace-nowrap rounded-full border-2 bg-white/90 px-3.5 py-2 text-[10px] font-semibold tracking-tight shadow-xl backdrop-blur-md ${
-                labels[currentIndex].color === "blue"
-                  ? "border-blue-400/30 text-blue-700 shadow-blue-500/20"
-                  : "border-emerald-400/30 text-emerald-700 shadow-emerald-500/20"
-              }`}
-              style={{
-                offsetPath: `path("${labels[currentIndex].target === "web" ? "M 220 350 Q 320 200 480 200" : "M 220 350 Q 320 500 480 500"}")`,
-                offsetRotate: "0deg",
-                boxShadow:
-                  labels[currentIndex].color === "blue"
-                    ? "0 0 15px rgba(59, 130, 246, 0.3)"
-                    : "0 0 15px rgba(16, 185, 129, 0.3)",
-              }}
-            >
-              {(() => {
-                const Icon = labels[currentIndex].icon;
-                return (
-                  <Icon
-                    size={12}
-                    className={
-                      labels[currentIndex].color === "blue"
-                        ? "text-blue-500"
-                        : "text-emerald-500"
-                    }
-                  />
-                );
-              })()}
-              {labels[currentIndex].text}
-            </motion.div>
-          </AnimatePresence>
-
-          {/* NODE 1: Admin Dashboard (High Fidelity) */}
+        {/* Desktop triptych: sides ease further under center after mount; center rises in */}
+        <div className="relative mx-auto mt-4 hidden w-full max-w-[min(100%,88rem)] flex-row items-center justify-center overflow-x-hidden px-0 pb-6 sm:flex sm:overflow-x-visible sm:px-2 sm:pb-10 md:px-4">
           <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="absolute left-[-5%] top-1/2 z-20 w-80 origin-left -translate-y-1/2 scale-90 overflow-hidden rounded-3xl border border-slate-200 bg-[#f8f9fa] shadow-2xl sm:scale-100"
-          >
-            <div className="flex items-center justify-between border-b border-slate-100 bg-white p-4">
-              <div className="flex items-center gap-2">
-                <div className="flex h-6 w-6 items-center justify-center rounded bg-blue-600 text-[10px] font-bold tracking-tighter text-white">
-                  K
-                </div>
-                <span className="text-[10px] font-bold text-slate-900">
-                  Kaartx Admin
-                </span>
-              </div>
-              <div className="flex gap-2">
-                <div className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                <div className="h-1.5 w-1.5 rounded-full bg-slate-200" />
-              </div>
-            </div>
-            <div className="space-y-4 p-4">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="rounded-2xl border border-slate-100 bg-white p-3">
-                  <div className="mb-2 flex items-start justify-between">
-                    <span className="text-[9px] font-bold text-[#1e3a3a]">
-                      Sales
-                    </span>
-                    <ShoppingBag size={10} className="text-emerald-500" />
-                  </div>
-                  <div className="text-[11px] font-bold text-slate-900">
-                    OMR 167.620
-                  </div>
-                  <div className="text-[7px] text-slate-400">Inprocess</div>
-                </div>
-                <div className="rounded-2xl border border-slate-100 bg-white p-3">
-                  <div className="mb-2 flex items-start justify-between">
-                    <span className="text-[9px] font-bold text-[#1e3a3a]">
-                      Orders
-                    </span>
-                    <ShoppingCart size={10} className="text-emerald-500" />
-                  </div>
-                  <div className="text-[11px] font-bold text-slate-900">1</div>
-                  <div className="text-[7px] text-slate-400">Pending</div>
-                </div>
-              </div>
+            className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[85%] w-[min(100%,72rem)] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
+            style={{
+              background:
+                "radial-gradient(ellipse 100% 80% at 50% 50%, rgba(59, 130, 246, 0.2), rgba(125, 211, 252, 0.08) 45%, transparent 72%)",
+            }}
+            initial={{ opacity: 0.65, scale: 0.92 }}
+            animate={{ opacity: [0.65, 0.9, 0.75, 0.65], scale: [0.92, 1, 0.96, 0.92] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          />
 
-              <div className="rounded-2xl border border-slate-100 bg-white p-3">
-                <div className="mb-3 flex items-center justify-between">
-                  <span className="text-[9px] font-bold text-slate-900">
-                    Recent Orders
-                  </span>
-                  <ChevronDown size={10} className="text-slate-400" />
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between border-b border-slate-50 pb-1.5 text-[8px]">
-                    <div className="flex items-center gap-2">
-                      <div className="flex h-5 w-5 items-center justify-center rounded-md bg-blue-100 font-bold text-blue-600">
-                        P
-                      </div>
-                      <div>
-                        <div className="font-bold text-slate-900">
-                          Prince Roy
-                        </div>
-                        <div className="text-slate-400">KRTX-103775</div>
-                      </div>
-                    </div>
-                    <div className="rounded bg-emerald-50 px-1.5 py-0.5 text-[6px] font-bold uppercase text-emerald-600">
-                      Ready
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <motion.div
+            className="z-10 w-[min(44%,440px)] max-w-[480px] shrink-0"
+            initial={{ opacity: 0, x: -36 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ type: "spring", stiffness: 220, damping: 26, delay: 0.08 }}
+          >
+            <StackWindow
+              {...STACK_LEFT}
+              imageAreaClassName={HERO_SIDE_IMAGE_FRAME}
+              imageObjectFit="cover"
+              objectPosition="object-left"
+            />
           </motion.div>
 
-          {/* NODE 2: Client Web (High Fidelity) */}
           <motion.div
-            initial={{ y: -50, opacity: 0 }}
-            animate={{
-              y: 0,
-              opacity: 1,
-              scale: webGlow ? 1.008 : 1,
-              boxShadow: webGlow
-                ? "0 0 25px rgba(59, 130, 246, 0.2), 0 10px 25px rgba(0,0,0,0.03)"
-                : "0 4px 20px rgba(0,0,0,0.04)",
-            }}
-            transition={{
-              boxShadow: { duration: 0.2 },
-              scale: { duration: 0.2 },
-              y: { duration: 0.8, delay: 0.8 },
-              opacity: { duration: 0.8, delay: 0.8 },
-            }}
-            className="absolute right-[5%] top-[2%] z-10 w-[420px] transform overflow-hidden rounded-2xl border border-slate-100 bg-white"
+            initial={{ opacity: 0, y: 28, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ type: "spring", stiffness: 260, damping: 28, delay: 0.12 }}
+            className="z-30 -mx-5 w-[min(82%,760px)] max-w-[800px] shrink-0 sm:-mx-6 md:w-[min(80%,820px)] md:max-w-[840px] lg:-mx-8 lg:max-w-[880px]"
           >
-            {/* Detailed Web Header */}
-            <div className="border-b border-slate-100 p-3">
-              <div className="mb-3 flex items-center justify-between px-1">
-                <div className="text-xs font-black tracking-tighter text-slate-900">
-                  Kaartx
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="flex gap-2.5">
-                    <Home size={10} className="text-slate-900" />
-                    <Heart size={10} className="text-slate-400" />
-                    <Grid3X3 size={10} className="text-slate-400" />
-                    <ShoppingCart size={10} className="text-slate-400" />
-                    <User size={10} className="text-slate-400" />
-                    <Bell size={10} className="text-slate-400" />
-                  </div>
-                  <div className="relative">
-                    <Search
-                      size={8}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 text-slate-400"
-                    />
-                    <div className="h-5 w-24 rounded-md border border-slate-200 bg-slate-100" />
-                  </div>
-                </div>
-              </div>
-              <div className="border-t border-slate-50 py-1 text-center text-[8px] font-bold uppercase tracking-widest text-slate-900">
-                The Icons Everyone's Watching
-              </div>
-            </div>
-
-            {/* Web Product Grid */}
-            <div className="bg-[#fafafa] p-3">
-              <div className="grid grid-cols-4 gap-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <div
-                    key={i}
-                    className="relative aspect-[3/4] rounded-lg border border-slate-100 bg-white p-1 shadow-sm"
-                  >
-                    <div className="relative h-full w-full overflow-hidden rounded-md bg-slate-50">
-                      <div className="absolute inset-0 flex items-center justify-center bg-slate-100">
-                        <ShoppingBag size={12} className="text-slate-300" />
-                      </div>
-                      <Heart
-                        size={8}
-                        className="absolute right-1 top-1 text-slate-300"
-                      />
-                    </div>
-                    <div className="mt-1 space-y-0.5">
-                      <div className="h-1.5 w-8 rounded bg-slate-200" />
-                      <div className="h-1 w-full rounded bg-slate-100" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-3 text-center text-[7px] font-bold uppercase tracking-tighter text-slate-400">
-                Today's Top Picks
-              </div>
-            </div>
+            <StackWindow
+              {...STACK_CENTER}
+              imageAreaClassName={HERO_IMAGE_FRAME}
+              imageObjectFit="contain"
+              objectPosition="object-center"
+            />
           </motion.div>
 
-          {/* NODE 3: Mobile App (High Fidelity PDP) */}
           <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            animate={{
-              y: 0,
-              opacity: 1,
-              scale: appGlow ? 1.01 : 1,
-              boxShadow: appGlow
-                ? "0 0 25px rgba(16, 185, 129, 0.2), 0 10px 25px rgba(0,0,0,0.03)"
-                : "0 4px 20px rgba(0,0,0,0.04)",
-            }}
-            transition={{
-              boxShadow: { duration: 0.2 },
-              scale: { duration: 0.2 },
-              y: { duration: 0.8, delay: 1.1 },
-              opacity: { duration: 0.8, delay: 1.1 },
-            }}
-            className="absolute bottom-[-2%] right-[12%] z-30 w-60 origin-bottom transform overflow-hidden rounded-[2.5rem] border-[5px] border-[#0f172a] bg-white"
+            className="z-10 w-[min(44%,440px)] max-w-[480px] shrink-0"
+            initial={{ opacity: 0, x: 36 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ type: "spring", stiffness: 220, damping: 26, delay: 0.08 }}
           >
-            <div className="flex h-full flex-col bg-white pt-2">
-              <div className="flex items-center justify-between px-4 py-2">
-                <ChevronLeft size={16} className="text-slate-900" />
-                <div className="flex items-center gap-3">
-                  <Heart size={16} className="text-slate-300" />
-                  <div className="relative">
-                    <ShoppingCart size={16} className="text-slate-900" />
-                    <div className="absolute -right-1 -top-1 flex h-2.5 w-2.5 items-center justify-center rounded-full border border-white bg-red-500 text-[5px] text-white">
-                      1
-                    </div>
-                  </div>
-                  <Share2 size={16} className="text-slate-900" />
-                </div>
-              </div>
-
-              <div className="px-5 py-2">
-                <div className="relative mb-3 flex aspect-square items-center justify-center overflow-hidden rounded-3xl bg-[#fcfcfc]">
-                  <div className="relative h-32 w-32 skew-x-6 transform rounded-3xl bg-emerald-500 shadow-xl">
-                    <div className="absolute left-2 top-2 text-[8px] font-black uppercase tracking-tighter text-emerald-200">
-                      Xocoi
-                    </div>
-                  </div>
-                  <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-1">
-                    <div className="h-1 w-1 rounded-full bg-slate-900" />
-                    {[1, 2, 3].map((i) => (
-                      <div
-                        key={i}
-                        className="h-1 w-1 rounded-full bg-slate-200"
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mb-3 space-y-1">
-                  <div className="flex items-center gap-1">
-                    <span className="text-[10px] font-black text-slate-900">
-                      Xocoi
-                    </span>
-                    <ArrowRight size={8} className="text-slate-400" />
-                  </div>
-                  <h4 className="text-[10px] font-medium leading-tight text-slate-500">
-                    XOCOI Sandals
-                  </h4>
-                  <div className="pt-1">
-                    <div className="text-xs font-black text-slate-900">
-                      OMR 48.721
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mb-3 grid grid-cols-2 gap-2">
-                  <div className="flex h-8 flex-col items-center justify-center rounded-lg border border-slate-100">
-                    <span className="text-[6px] font-bold uppercase text-slate-300">
-                      Color
-                    </span>
-                    <span className="text-[8px] font-bold text-slate-400">
-                      Green
-                    </span>
-                  </div>
-                  <div className="flex h-8 flex-col items-center justify-center rounded-lg border border-slate-100">
-                    <span className="text-[6px] font-bold uppercase text-[#2e3192]">
-                      Size
-                    </span>
-                    <span className="text-[8px] font-bold text-[#2e3192]">
-                      37
-                    </span>
-                  </div>
-                </div>
-
-                <div className="pb-4">
-                  <div className="flex h-10 w-full items-center justify-center rounded-xl bg-[#0f172a] text-[10px] font-black text-white shadow-lg">
-                    Add To Cart
-                  </div>
-                </div>
-              </div>
-            </div>
+            <StackWindow
+              {...STACK_RIGHT}
+              imageAreaClassName={HERO_SIDE_IMAGE_FRAME}
+              imageObjectFit="cover"
+              objectPosition="object-right"
+            />
           </motion.div>
         </div>
       </div>

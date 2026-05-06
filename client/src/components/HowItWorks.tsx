@@ -1,165 +1,263 @@
-import { Settings, Users, Rocket, ArrowDown, ChevronRight } from "lucide-react";
+import type { ReactNode } from "react";
+import { useId } from "react";
+import {
+  Play,
+  Settings,
+  Users,
+  Rocket,
+  Package,
+  LayoutGrid,
+  Tags,
+  CreditCard,
+  Store,
+  Truck,
+} from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { cn } from "@/lib/utils";
 
-export default function HowItWorks() {
-  const steps = [
-    {
-      icon: Settings,
-      title: "Configure",
-      description:
-        "Set up branding, products, categories, and pricing instantly.",
-      badgeGradient: "bg-gradient-to-br from-cyan-400 to-blue-500",
-      iconGradient: "bg-gradient-to-br from-cyan-500/10 to-blue-500/10",
-      iconColor: "text-blue-500",
-    },
-    {
-      icon: Users,
-      title: "Onboard Sellers",
-      description:
-        "Add products or onboard sellers, approve instantly and start listing.",
-      badgeGradient: "bg-gradient-to-br from-violet-400 to-purple-500",
-      iconGradient: "bg-gradient-to-br from-violet-500/10 to-purple-500/10",
-      iconColor: "text-purple-500",
-    },
-    {
-      icon: Rocket,
-      title: "Launch & Earn",
-      description:
-        "Go live, start selling, and manage payouts completely seamlessly.",
-      badgeGradient: "bg-gradient-to-br from-emerald-400 to-teal-500",
-      iconGradient: "bg-gradient-to-br from-emerald-500/10 to-teal-500/10",
-      iconColor: "text-teal-500",
-    },
-  ];
-
-  const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
-  const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
+/** Thick ribbon with three tangled regions; fades at both ends. */
+function ContextRibbon() {
+  const uid = useId().replace(/:/g, "");
+  const tubeId = `howit-tube-${uid}`;
+  const fadeId = `howit-fade-${uid}`;
+  const shadowId = `howit-shadow-${uid}`;
+  const maskId = `howit-mask-${uid}`;
 
   return (
-    <section className="relative overflow-hidden bg-background pb-3">
-      {/* Background ambient light */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-primary/5 via-background to-background" />
-
-      <div className="relative z-10 mx-auto max-w-7xl border-x border-border/10 px-6 lg:px-8">
-        <div
-          ref={titleAnimation.ref}
-          className={`animate-on-scroll mb-20 pt-8 ${titleAnimation.isVisible ? "visible" : ""}`}
+    <svg
+      className="h-[min(12rem,28vw)] w-full max-w-6xl select-none"
+      viewBox="0 0 1000 160"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <defs>
+        <linearGradient id={tubeId} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#f3f3f3" />
+          <stop offset="45%" stopColor="#e8e8e8" />
+          <stop offset="100%" stopColor="#d6d6d6" />
+        </linearGradient>
+        <linearGradient id={fadeId} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="white" stopOpacity="0" />
+          <stop offset="8%" stopColor="white" stopOpacity="1" />
+          <stop offset="92%" stopColor="white" stopOpacity="1" />
+          <stop offset="100%" stopColor="white" stopOpacity="0" />
+        </linearGradient>
+        <filter
+          id={shadowId}
+          x="-20%"
+          y="-20%"
+          width="140%"
+          height="140%"
         >
-          {/* Centered Pill element with Animating Arrow */}
-          <div className="relative mb-10 flex w-full flex-col items-center justify-center sm:mb-16">
-            <div className="pt-4inline-flex z-10 items-center gap-2 rounded-full border border-border/80 bg-background/50 px-3 py-1.5 shadow-sm">
-              <Rocket className="h-[14px] w-[14px] text-muted-foreground" />
-              <span className="text-[11px] font-semibold uppercase tracking-wide text-foreground sm:text-xs">
-                Simple Process
+          <feDropShadow
+            dx="0"
+            dy="3"
+            stdDeviation="5"
+            floodColor="#000000"
+            floodOpacity="0.12"
+          />
+        </filter>
+        <mask id={maskId}>
+          <rect width="1000" height="160" fill={`url(#${fadeId})`} />
+        </mask>
+      </defs>
+      <g mask={`url(#${maskId})`} filter={`url(#${shadowId})`}>
+        <path
+          d="M -40 88 C 60 88 85 52 160 72 C 235 92 255 48 330 68 C 405 88 430 42 500 62 C 570 82 595 38 670 58 C 745 78 770 44 840 60 C 910 76 940 58 1040 68"
+          stroke="#c8c8c8"
+          strokeWidth="38"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M -40 88 C 60 88 85 52 160 72 C 235 92 255 48 330 68 C 405 88 430 42 500 62 C 570 82 595 38 670 58 C 745 78 770 44 840 60 C 910 76 940 58 1040 68"
+          stroke={`url(#${tubeId})`}
+          strokeWidth="30"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+    </svg>
+  );
+}
+
+function FloatingIconCard({
+  className,
+  children,
+}: {
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      className={`flex h-11 w-11 items-center justify-center rounded-xl bg-white shadow-[0_4px_14px_rgba(0,0,0,0.08)] ring-1 ring-black/[0.06] sm:h-12 sm:w-12 ${className ?? ""}`}
+    >
+      {children}
+    </div>
+  );
+}
+
+const STEPS = [
+  {
+    title: "Configure",
+    description:
+      "Set up branding, products, categories, and pricing instantly.",
+  },
+  {
+    title: "Onboard Sellers",
+    description:
+      "Add products or onboard sellers, approve instantly and start listing.",
+  },
+  {
+    title: "Launch & Earn",
+    description:
+      "Go live, start selling, and manage payouts completely seamlessly.",
+  },
+] as const;
+
+export default function HowItWorks() {
+  const headerAnim = useScrollAnimation<HTMLDivElement>(0.15);
+  const visualAnim = useScrollAnimation<HTMLDivElement>(0.1);
+  const pillarsAnim = useScrollAnimation<HTMLDivElement>(0.08);
+
+  return (
+    <section className="relative overflow-hidden bg-white pb-16 pt-12 sm:pb-24 sm:pt-16">
+      <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
+        <div
+          ref={headerAnim.ref}
+          className={`animate-on-scroll mx-auto mb-12 max-w-4xl text-center sm:mb-16 ${headerAnim.isVisible ? "visible" : ""}`}
+        >
+          <div className="mb-5 flex justify-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-black/[0.08] bg-white/80 px-3 py-1.5 shadow-sm backdrop-blur-sm">
+              <Rocket className="h-[14px] w-[14px] text-[#666666]" />
+              <span className="text-[11px] font-semibold uppercase tracking-wide text-[#1A1A1A] sm:text-xs">
+                Simple process
               </span>
             </div>
-
-            {/* Connecting line to Bouncing Arrow */}
-            <div className="absolute top-full mt-2 flex flex-col items-center">
-              <div className="h-6 w-[1px] bg-gradient-to-b from-border/80 to-transparent sm:h-8" />
-              <ArrowDown
-                className="-mt-1 h-5 w-5 animate-bounce text-muted-foreground/60"
-                strokeWidth={1.5}
-              />
-            </div>
           </div>
-
-          {/* Two-column layout matching FeatureGrid */}
-          <div className="mt-4 flex flex-col items-start justify-between gap-8 md:flex-row md:gap-16">
-            {/* Left Column: Prominent Title */}
-            <div className="w-full md:w-[55%]">
-              <h2 className="text-4xl font-extrabold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-5xl">
-                Launch in
-                <span className="gradient-text"> 3 simple steps</span>
-              </h2>
-            </div>
-
-            {/* Right Column: Description Text */}
-            <div className="flex w-full flex-col items-start pt-2 md:w-[40%]">
-              <p className="text-base font-medium leading-relaxed text-muted-foreground sm:text-sm md:text-base">
-                From idea to live store faster than you think. No technical
-                skills required. We handle the complexity so you can focus on
-                building your brand and driving sales securely.
-              </p>
-            </div>
-          </div>
+          <h2
+            className="text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"
+            data-testid="text-how-it-works-title"
+          >
+            Launch in <span className="gradient-text">3 simple steps</span>
+          </h2>
+          <p
+            className="mx-auto mt-4 max-w-2xl text-pretty text-base text-[#666666] sm:text-lg"
+            data-testid="text-how-it-works-lead"
+          >
+            From idea to live store faster than you think. No technical skills
+            required. We handle the complexity so you can focus on building your
+            brand and driving sales securely.
+          </p>
         </div>
 
         <div
-          ref={cardsAnimation.ref}
-          className="relative mx-auto max-w-5xl pb-10"
+          ref={visualAnim.ref}
+          className={`animate-on-scroll relative mx-auto mb-10 max-w-5xl sm:mb-14 ${visualAnim.isVisible ? "visible" : ""}`}
         >
-          {/* Desktop connecting horizontal line - Aligned to intersect the top badges (top padding 2.5rem + half badge 1.5rem = 4rem top) */}
-          <div className="absolute left-[16%] right-[16%] top-[4rem] z-0 hidden h-[2px] bg-gradient-to-r from-blue-500/0 via-border/60 to-teal-500/0 md:block" />
-
-          <div className="relative z-10 grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-8 lg:gap-10">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
-              const stagger = ["", "stagger-1", "stagger-2"];
-
-              return (
-                <div
-                  key={index}
-                  className="relative flex h-full flex-col items-stretch"
-                >
-                  <div
-                    className={`animate-on-scroll group relative flex h-full w-full flex-col rounded-[2.5rem] border border-border/60 bg-card/50 p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_8px_40px_rgb(0,0,0,0.08)] sm:p-10 ${stagger[index]} ${cardsAnimation.isVisible ? "visible" : ""}`}
-                  >
-                    {/* Top Row: Number Badge and Icon arranged inside the card */}
-                    <div className="relative z-10 mb-8 flex w-full items-center justify-between">
-                      {/* Integrated Number Badge */}
-                      <div
-                        className={`flex h-12 w-12 items-center justify-center rounded-2xl ${step.badgeGradient} transform text-xl font-black text-white shadow-md ring-4 ring-background/50 transition-transform duration-300 group-hover:scale-110`}
-                      >
-                        0{index + 1}
-                      </div>
-
-                      {/* Integrated Icon */}
-                      <div
-                        className={`flex h-14 w-14 items-center justify-center rounded-2xl ${step.iconGradient} shadow-inner ring-1 ring-white/10 transition-transform duration-500 group-hover:rotate-12`}
-                      >
-                        <Icon
-                          className={`h-6 w-6 ${step.iconColor}`}
-                          strokeWidth={2}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-grow flex-col text-left">
-                      {/* Title */}
-                      <h3 className="mb-4 text-2xl font-bold tracking-tight text-foreground">
-                        {step.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-base font-medium leading-relaxed text-muted-foreground">
-                        {step.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Mobile Connecting Arrow */}
-                  {index < steps.length - 1 && (
-                    <div className="relative z-0 flex justify-center py-6 md:hidden">
-                      <ArrowDown
-                        className="h-8 w-8 animate-bounce text-border"
-                        strokeWidth={1.5}
-                      />
-                    </div>
-                  )}
-
-                  {/* Desktop Connecting Chevron - Positioned on the connecting line */}
-                  {index < steps.length - 1 && (
-                    <div className="absolute -right-4 top-[3rem] z-20 hidden items-center justify-center rounded-full border border-border/80 bg-background p-2 text-muted-foreground/50 shadow-sm md:flex lg:-right-5">
-                      <ChevronRight className="h-4 w-4" strokeWidth={3} />
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+          <div className="relative flex justify-center px-2">
+            <ContextRibbon />
           </div>
+
+          {/* Icon clusters aligned to three ribbon knots */}
+          <div className="pointer-events-none absolute inset-0 grid grid-cols-3 items-start pt-[8%] sm:pt-[6%]">
+            <div className="relative h-32 sm:h-40">
+              <FloatingIconCard className="absolute left-[8%] top-[12%] animate-[float_5s_ease-in-out_infinite] text-blue-600">
+                <Package className="h-5 w-5" strokeWidth={2} />
+              </FloatingIconCard>
+              <FloatingIconCard className="absolute left-[38%] top-0 animate-[float_6s_ease-in-out_infinite_0.3s] bg-blue-600 text-white">
+                <Settings className="h-5 w-5" strokeWidth={2} />
+              </FloatingIconCard>
+              <FloatingIconCard className="absolute right-[12%] top-[18%] animate-[float_5.5s_ease-in-out_infinite_0.5s]">
+                <Tags className="h-5 w-5 text-[#E01E5A]" strokeWidth={2} />
+              </FloatingIconCard>
+              <FloatingIconCard className="absolute bottom-[8%] left-[22%] animate-[float_6.5s_ease-in-out_infinite_0.2s]">
+                <LayoutGrid
+                  className="h-5 w-5 text-orange-500"
+                  strokeWidth={2}
+                />
+              </FloatingIconCard>
+              <FloatingIconCard className="absolute bottom-[4%] right-[18%] animate-[float_5s_ease-in-out_infinite_0.7s] bg-[#6264A7] text-white">
+                <Store className="h-4 w-4" strokeWidth={2} />
+              </FloatingIconCard>
+            </div>
+
+            <div className="relative h-32 sm:h-40">
+              <FloatingIconCard className="absolute left-[6%] top-[8%] animate-[float_5.5s_ease-in-out_infinite] bg-gradient-to-br from-violet-500 to-indigo-600 text-white">
+                <Rocket className="h-5 w-5" strokeWidth={2} />
+              </FloatingIconCard>
+              <FloatingIconCard className="absolute left-[40%] top-0 animate-[float_6s_ease-in-out_infinite_0.4s]">
+                <span className="text-xs font-semibold text-[#1A1A1A]">
+                  B2B
+                </span>
+              </FloatingIconCard>
+              <FloatingIconCard className="absolute right-[8%] top-[14%] animate-[float_5s_ease-in-out_infinite_0.6s] bg-[#1A1A1A] text-white">
+                <CreditCard className="h-4 w-4" strokeWidth={2} />
+              </FloatingIconCard>
+              <FloatingIconCard className="absolute bottom-[6%] left-[18%] animate-[float_6.5s_ease-in-out_infinite_0.1s] text-violet-600">
+                <Users className="h-5 w-5" strokeWidth={2} />
+              </FloatingIconCard>
+              <FloatingIconCard className="absolute bottom-[2%] right-[22%] animate-[float_5.5s_ease-in-out_infinite_0.5s] bg-white">
+                <Truck className="h-5 w-5 text-[#1A1A1A]" strokeWidth={2} />
+              </FloatingIconCard>
+            </div>
+
+            <div className="relative h-32 sm:h-40">
+              <div className="absolute left-[4%] top-0 animate-[float_5.5s_ease-in-out_infinite] rounded-2xl bg-white px-3 py-2 text-[11px] font-medium leading-snug text-[#1A1A1A] shadow-[0_4px_14px_rgba(0,0,0,0.08)] ring-1 ring-black/[0.06] sm:text-xs">
+                Where&apos;s my order?
+              </div>
+              <div className="absolute right-[6%] top-[26%] animate-[float_6s_ease-in-out_infinite_0.35s] rounded-2xl bg-white px-3 py-2 text-[11px] font-medium leading-snug text-[#1A1A1A] shadow-[0_4px_14px_rgba(0,0,0,0.08)] ring-1 ring-black/[0.06] sm:text-xs">
+                Payout status?
+              </div>
+              <div className="absolute bottom-[4%] left-[20%] animate-[float_5s_ease-in-out_infinite_0.6s] rounded-2xl bg-white px-3 py-2 text-[11px] font-medium leading-snug text-[#1A1A1A] shadow-[0_4px_14px_rgba(0,0,0,0.08)] ring-1 ring-black/[0.06] sm:text-xs">
+                Stock synced?
+              </div>
+            </div>
+          </div>
+
+         
+        </div>
+
+        <div
+          ref={pillarsAnim.ref}
+          className={`animate-on-scroll grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-6 lg:gap-10 ${pillarsAnim.isVisible ? "visible" : ""}`}
+        >
+          {STEPS.map((step, index) => (
+            <div
+              key={step.title}
+              className="flex flex-col items-center text-center md:items-center"
+              data-testid={`step-${index}`}
+            >
+              <div
+                className={cn(
+                  "mb-5 hidden h-10 w-px origin-bottom bg-[#E5E5E5] md:block",
+                  index === 0 && "md:-rotate-[12deg]",
+                  index === 2 && "md:rotate-[12deg]",
+                )}
+                aria-hidden
+              />
+              <div
+                className="mb-5 h-8 w-px bg-[#E5E5E5] md:hidden"
+                aria-hidden
+              />
+              <h3 className="text-lg font-bold text-[#1A1A1A] sm:text-xl">
+                {step.title}
+              </h3>
+              <p className="mt-2 max-w-xs text-sm leading-relaxed text-[#666666] sm:text-base">
+                {step.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
+      `}</style>
     </section>
   );
 }

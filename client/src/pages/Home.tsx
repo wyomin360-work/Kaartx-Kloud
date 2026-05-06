@@ -98,8 +98,8 @@ export default function Home() {
         <HowItWorks />
         <DeepFeatures />
         <UseCases />
-        <IntegrationsMarquee />
-        <Security />
+        {/* <IntegrationsMarquee /> */}
+        {/* <Security /> */}
         {/* <APISection /> */}
         {/* <Showcase /> */}
         <Pricing onOpenSignup={handleOpenSignup} />

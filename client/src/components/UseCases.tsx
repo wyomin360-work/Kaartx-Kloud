@@ -1,6 +1,4 @@
-import { useState, useEffect, useRef } from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Card } from "@/components/ui/card";
+import { useRef } from "react";
 import {
   Building2,
   Rocket,
@@ -8,10 +6,30 @@ import {
   Users,
   Building,
   Target,
+  Layers,
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
+import Security from "./Security";
+
 const USE_CASES = {
+  enterprises: {
+    title: "Enterprise",
+    icon: Building,
+    description:
+      "Enterprise-grade commerce infrastructure with full customization.",
+    benefits: [
+      "Dedicated infrastructure (on request)",
+      "Custom integrations & workflows",
+      "Priority support & SLA",
+      "Advanced analytics & reporting",
+      "Custom API & webhooks",
+      "Compliance & security certifications",
+      "Dedicated account manager",
+      "Custom development services",
+    ],
+    color: "text-emerald-600",
+  },
   brands: {
     title: "Brands",
     icon: Building2,
@@ -22,6 +40,8 @@ const USE_CASES = {
       "Maintain brand standards with approval workflows",
       "Earn commissions from partner sellers",
       "Own your customer relationships",
+      "Custom domain & branding",
+      "Advanced inventory management",
     ],
     color: "text-indigo-600",
   },
@@ -35,6 +55,8 @@ const USE_CASES = {
       "Subscription-based pricing",
       "Grow without re-platforming",
       "GCC payment integrations ready",
+      "Built-in analytics dashboard",
+      "Scalable infrastructure",
     ],
     color: "text-cyan-600",
   },
@@ -48,6 +70,8 @@ const USE_CASES = {
       "Automated payments & settlements",
       "Tap & Asyad integrations included",
       "Mobile-ready storefronts",
+      "Multi-channel selling",
+      "Real-time order tracking",
     ],
     color: "text-purple-600",
   },
@@ -61,178 +85,110 @@ const USE_CASES = {
       "White-label for each client",
       "Revenue sharing & commission-ready architecture",
       "Centralized client management",
+      "Client performance reports",
+      "Dedicated support team",
     ],
     color: "text-rose-600",
   },
-  enterprises: {
-    title: "Enterprise",
-    icon: Building,
+  marketplaces: {
+    title: "Marketplaces",
+    icon: Layers,
     description:
-      "Enterprise-grade commerce infrastructure with full customization.",
+      "Create multi-vendor marketplaces with seller onboarding and commission controls.",
     benefits: [
-      "Dedicated infrastructure (on request)",
-      "Custom integrations & workflows",
-      "Priority support & SLA",
-      "Advanced analytics & reporting",
+      "Built-in seller onboarding",
+      "Custom commission rules",
+      "Marketplace storefront management",
+      "Seller performance analytics",
+      "Product syndication across vendors",
+      "Scalable multi-seller workflows",
     ],
-    color: "text-emerald-600",
+    color: "text-fuchsia-600",
   },
 };
 
 export default function UseCases() {
-  const useCaseKeys = Object.keys(USE_CASES);
-  const [activeTab, setActiveTab] = useState(useCaseKeys[0]);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isCentered, setIsCentered] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-
-      const rect = sectionRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-
-      // Determine if the center of the section is near the center of the screen
-      const sectionCenter = rect.top + rect.height / 2;
-      const viewportCenter = viewportHeight / 2;
-
-      // Stop if section center is within 150px of viewport center
-      const threshold = 150;
-      const centered = Math.abs(sectionCenter - viewportCenter) < threshold;
-
-      setIsCentered(centered);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    // Condition: ONLY rotate if NOT hovered AND NOT centered
-    if (isHovered || isCentered) return;
-
-    const intervalId = setInterval(() => {
-      setActiveTab((currentTab) => {
-        const currentIndex = useCaseKeys.indexOf(currentTab);
-        const nextIndex = (currentIndex + 1) % useCaseKeys.length;
-        return useCaseKeys[nextIndex];
-      });
-    }, 1000); // 1 second per tab as requested
-
-    return () => clearInterval(intervalId);
-  }, [isHovered, isCentered, useCaseKeys]);
-
   const animation = useScrollAnimation<HTMLDivElement>(0.2);
 
   return (
-    <section ref={sectionRef} className="bg-background pt-12">
-      <div className="mx-auto max-w-7xl border-x border-border/10 px-4 sm:px-6 lg:px-8">
+    <section ref={sectionRef} className="relative overflow-hidden bg-gradient-to-b from-background via-blue-50/40 to-purple-50/40 pb-16 pt-12">
+      {/* Super Noticeable Background Gradient Orbs */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute -left-[10%] top-0 h-[500px] w-[500px] animate-pulse rounded-full bg-blue-400/20 blur-[100px]" style={{ animationDuration: '8s' }} />
+        <div className="absolute -right-[10%] top-[20%] h-[600px] w-[600px] animate-pulse rounded-full bg-purple-400/20 blur-[100px]" style={{ animationDuration: '10s', animationDelay: '1s' }} />
+        <div className="absolute bottom-[-10%] left-[30%] h-[700px] w-[700px] animate-pulse rounded-full bg-cyan-400/20 blur-[100px]" style={{ animationDuration: '12s', animationDelay: '2s' }} />
+      </div>
+      
+      <div className="relative z-10 w-full">
+        
+        {/* Centered Header */}
         <div
           ref={animation.ref}
-          className={`animate-on-scroll mb-16 flex flex-col items-start justify-between gap-8 pt-8 md:flex-row md:gap-16 ${animation.isVisible ? "visible" : ""}`}
+          className={`animate-on-scroll mx-auto mb-10 flex max-w-2xl flex-col items-center text-center transition-opacity duration-1000 ${animation.isVisible ? "opacity-100" : "opacity-0"}`}
         >
-          <div className="w-full md:w-[55%]">
-            <h2 className="text-4xl font-extrabold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-5xl">
-              Built for <br className="hidden md:block" />
-              <span className="gradient-text">every business model</span>
-            </h2>
+          <div className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-background/50 px-2.5 py-1 shadow-sm">
+            <Target className="h-3 w-3 text-muted-foreground" />
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-foreground sm:text-[12px]">
+              Use Cases
+            </span>
           </div>
-
-          <div className="flex w-full flex-col items-start pt-2 md:w-[40%]">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/50 px-3 py-1.5 shadow-sm">
-              <Target className="h-[14px] w-[14px] text-muted-foreground" />
-              <span className="text-[11px] font-semibold uppercase tracking-wide text-foreground sm:text-xs">
-                Use Cases
-              </span>
-            </div>
-            <p className="text-base font-medium leading-relaxed text-muted-foreground sm:text-lg">
-              Whether you're a startup testing traction or an enterprise scaling
-              operations, the infrastructure adapts to your specific
-              requirements.
-            </p>
-          </div>
+          <h2 className="mb-4 font-display text-4xl font-extrabold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            Built for <span className="gradient-text">every business</span>
+          </h2>
+          <p className="text-lg font-medium leading-relaxed text-muted-foreground sm:text-xl">
+            Whether you're a startup testing traction or an enterprise scaling
+            operations, the infrastructure adapts to your specific requirements.
+          </p>
         </div>
 
-        <div
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <Tabs
-            value={activeTab}
-            onValueChange={setActiveTab}
-            className="mx-auto max-w-6xl"
-          >
-            <div className="no-scrollbar mb-8 flex justify-start overflow-x-auto pb-4 sm:mb-12 md:justify-center">
-              <TabsList className="inline-flex h-14 min-w-max flex-nowrap items-center gap-2 rounded-full border border-border bg-muted/50 p-1.5 shadow-sm backdrop-blur-md sm:gap-4 md:min-w-0 md:flex-wrap">
-                {Object.entries(USE_CASES).map(([key, useCase]) => {
-                  const Icon = useCase.icon;
-                  return (
-                    <TabsTrigger
-                      key={key}
-                      value={key}
-                      className="flex items-center gap-2.5 rounded-full border border-transparent px-5 py-2.5 transition-all duration-300 data-[state=active]:border-border/80 data-[state=active]:bg-background data-[state=active]:shadow-md"
-                    >
-                      <Icon className="h-4 w-4" />
-                      <span className="text-sm font-semibold tracking-wide">
-                        {useCase.title}
-                      </span>
-                    </TabsTrigger>
-                  );
-                })}
-              </TabsList>
-            </div>
+        {/* Dynamic Bento Grid - Use Cases */}
+        <div className="grid grid-cols-1 items-start gap-5 px-14 sm:gap-5 sm:px-20 md:grid-cols-2 lg:grid-cols-2 lg:px-28 mb-6">
+          {Object.entries(USE_CASES).map(([key, useCase]) => {
+            const Icon = useCase.icon;
+            const spanClass = "col-span-1";
+            const listCols = "sm:grid-cols-1 md:grid-cols-2";
 
-            <div className="relative min-h-[450px]">
-              {Object.entries(USE_CASES).map(([key, useCase]) => (
-                <TabsContent
-                  key={key}
-                  value={key}
-                  className="absolute inset-0 mt-0 transition-all duration-500 data-[state=active]:z-10 data-[state=inactive]:-z-10 data-[state=active]:translate-y-0 data-[state=inactive]:translate-y-4 data-[state=active]:opacity-100 data-[state=inactive]:opacity-0"
-                >
-                  <Card className="h-full overflow-hidden rounded-[2.5rem] border-[1.5px] border-border/80 bg-background shadow-xl">
-                    <div className="flex h-full flex-col md:flex-row">
-                      <div className="flex w-full flex-col justify-center border-b border-border/50 bg-muted/20 p-8 sm:p-12 md:w-[45%] md:border-b-0 md:border-r lg:p-16">
-                        <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl border border-border bg-background shadow-sm">
-                          <useCase.icon
-                            className={`h-8 w-8 ${useCase.color}`}
-                            strokeWidth={1.5}
-                          />
+            return (
+              <div 
+                key={key} 
+                className={`group relative flex flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/70 p-6 shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-blue-200/60 hover:shadow-xl sm:p-8 md:p-7 lg:p-8 ${spanClass}`}
+              >
+                <div className="mb-4 flex items-center gap-3.5">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-border/50 transition-transform duration-300 group-hover:scale-105 group-hover:shadow-md">
+                    <Icon className={`h-7 w-7 ${useCase.color}`} strokeWidth={1.5} />
+                  </div>
+                  <h3 className="font-display text-2xl font-bold tracking-tight text-slate-800 sm:text-3xl">
+                    {useCase.title}
+                  </h3>
+                </div>
+                
+                <p className="mb-6 text-base font-medium leading-relaxed text-slate-600 sm:text-lg">
+                  {useCase.description}
+                </p>
+
+                <div className="mt-auto rounded-xl bg-slate-50/50 p-5 ring-1 ring-border/50">
+                  <h4 className="mb-3 text-[13px] font-bold uppercase tracking-wider text-slate-400">
+                    Key Advantages
+                  </h4>
+                  <ul className={`grid grid-cols-1 gap-x-4 gap-y-2.5 ${listCols}`}>
+                    {useCase.benefits.map((benefit, i) => (
+                      <li key={i} className="flex items-start gap-2.5">
+                        <div className="mt-1 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-blue-100/80">
+                          <div className="h-1 w-1 rounded-full bg-blue-600" />
                         </div>
-                        <h3 className="mb-4 text-3xl font-bold text-foreground sm:text-4xl">
-                          For {useCase.title}
-                        </h3>
-                        <p className="text-lg font-medium leading-relaxed text-muted-foreground">
-                          {useCase.description}
-                        </p>
-                      </div>
-
-                      <div className="flex w-full flex-col justify-center bg-background p-8 sm:p-12 md:w-[55%] lg:p-16">
-                        <h4 className="mb-8 text-xl font-bold text-foreground">
-                          Key Advantages
-                        </h4>
-                        <ul className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-                          {useCase.benefits.map((benefit, index) => (
-                            <li key={index} className="flex items-start gap-3">
-                              <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                                <div className="h-2 w-2 rounded-full bg-primary" />
-                              </div>
-                              <span className="text-base font-medium text-muted-foreground">
-                                {benefit}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </Card>
-                </TabsContent>
-              ))}
-            </div>
-          </Tabs>
+                        <span className="text-base font-medium leading-snug text-slate-600 sm:text-lg">
+                          {benefit}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            );
+          })}
         </div>
+
       </div>
     </section>
   );

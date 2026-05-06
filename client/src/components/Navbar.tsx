@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import { useLocation } from "wouter";
-import { Button } from "@/components/ui/button";
-import logoImage from "@assets/kloud_plain_blue_1770616738294.png";
-import { Link } from "wouter";
-import * as Portal from "@radix-ui/react-portal";
+import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import { useLocation } from 'wouter';
+import { Button } from '@/components/ui/button';
+import logoImage from '@assets/kloud_plain_blue_1770616738294.png';
+import { Link } from 'wouter';
+import * as Portal from '@radix-ui/react-portal';
 
 interface NavbarProps {
   onOpenSignup?: () => void;
@@ -13,18 +13,20 @@ interface NavbarProps {
 type NavItem = {
   label: string;
   target: string;
-  type: "scroll" | "link";
+  type: 'scroll' | 'link';
   testId: string;
 };
 
+// Mobile menu scroll lock - simple overflow: hidden approach
+// Content stays visible at current scroll position
 function lockScrollForMobileMenu() {
-  document.documentElement.classList.add("mobile-menu-open");
-  document.body.classList.add("mobile-menu-open");
+  document.documentElement.classList.add('mobile-menu-open');
+  document.body.classList.add('mobile-menu-open');
 }
 
 function unlockScrollForMobileMenu() {
-  document.documentElement.classList.remove("mobile-menu-open");
-  document.body.classList.remove("mobile-menu-open");
+  document.documentElement.classList.remove('mobile-menu-open');
+  document.body.classList.remove('mobile-menu-open');
 }
 
 export default function Navbar({ onOpenSignup }: NavbarProps) {
@@ -33,92 +35,80 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   const [location] = useLocation();
 
   const navItems: NavItem[] = [
-    {
-      label: "Features",
-      target: "features",
-      type: "scroll",
-      testId: "link-features",
-    },
-    {
-      label: "Integrations",
-      target: "integrations",
-      type: "scroll",
-      testId: "link-integrations",
-    },
-    {
-      label: "Pricing",
-      target: "pricing",
-      type: "scroll",
-      testId: "link-pricing",
-    },
-    { label: "FAQs", target: "faq", type: "scroll", testId: "link-faq" },
-    {
-      label: "Contact",
-      target: "booking",
-      type: "scroll",
-      testId: "link-contact",
-    },
-    { label: "About", target: "about", type: "scroll", testId: "link-about" },
+    { label: 'Features', target: 'features', type: 'scroll', testId: 'link-features' },
+    { label: 'Integrations', target: 'integrations', type: 'scroll', testId: 'link-integrations' },
+    { label: 'Pricing', target: 'pricing', type: 'scroll', testId: 'link-pricing' },
+    { label: 'FAQs', target: 'faq', type: 'scroll', testId: 'link-faq' },
+    { label: 'Contact', target: 'booking', type: 'scroll', testId: 'link-contact' },
+    { label: 'About', target: 'about', type: 'scroll', testId: 'link-about' },
   ];
 
+  // Mobile-only additional nav items (placed after About)
   const mobileOnlyNavItems: NavItem[] = [
-    { label: "Blog", target: "/blog", type: "link", testId: "link-blog" },
-    {
-      label: "Careers",
-      target: "/careers",
-      type: "link",
-      testId: "link-careers",
-    },
+    { label: 'Blog', target: '/blog', type: 'link', testId: 'link-blog' },
+    { label: 'Careers', target: '/careers', type: 'link', testId: 'link-careers' },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      if (document.body.classList.contains("modal-open-mobile")) return;
+      // Don't update state during modal transitions to prevent visual jitter
+      if (document.body.classList.contains('modal-open-mobile')) {
+        return;
+      }
       setIsScrolled(window.scrollY > 20);
     };
 
+    // Check initial state
     handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle mobile menu scroll lock
   useEffect(() => {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
     if (!isMobile) return;
 
-    if (isMobileMenuOpen) lockScrollForMobileMenu();
-    else unlockScrollForMobileMenu();
+    if (isMobileMenuOpen) {
+      lockScrollForMobileMenu();
+    } else {
+      unlockScrollForMobileMenu();
+    }
   }, [isMobileMenuOpen]);
 
   const navigateToSection = (id: string) => {
     setIsMobileMenuOpen(false);
-
-    if (location !== "/") {
+    
+    if (location !== '/') {
       window.location.href = `/#${id}`;
     } else {
       const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-        history.pushState(null, "", `#${id}`);
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.pushState(null, '', `#${id}`);
       }
     }
   };
 
+  // Force scroll to top when clicking logo - always goes to homepage top
   const navigateToHome = () => {
     setIsMobileMenuOpen(false);
-
-    if (location !== "/") {
-      window.location.href = "/";
+    
+    if (location !== '/') {
+      // Navigate to homepage and scroll to top
+      window.location.href = '/';
     } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      history.pushState(null, "", "/");
+      // Already on homepage - force scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.pushState(null, '', '/');
     }
   };
 
   const handleNavClick = (item: NavItem, e?: React.MouseEvent) => {
     setIsMobileMenuOpen(false);
-
-    if (item.type === "scroll") {
+    
+    if (item.type === 'scroll') {
       e?.preventDefault();
       navigateToSection(item.target);
     }
@@ -127,93 +117,84 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   return (
     <Portal.Root>
       <nav
-        className={`duration-[900ms] fixed left-0 right-0 top-0 z-50 transition-all ${
-          isScrolled ? "py-2" : "py-4"
+        className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-300 ${
+          isScrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent border-b border-transparent'
         }`}
-        style={{
-          transform: isScrolled ? "translateY(12px)" : "translateY(0)",
-        }}
+        style={{ transform: 'translate3d(0,0,0)' }}
       >
-        <div className="flex justify-center px-2">
-          {/* PAPER CONTAINER */}
-          <div
-            className={`w-full transition-all duration-500 ease-out ${
-              isScrolled
-                ? "max-w-5xl rounded-full border border-slate-200/50 bg-white/80 px-6 shadow-sm backdrop-blur-xl"
-                : "max-w-7xl border-transparent bg-transparent px-2"
-            }`}
-          >
-            {/* NAV CONTENT */}
-            <div className="flex h-16 w-full items-center justify-between">
-              {/* LOGO */}
-              <button
-                onClick={navigateToHome}
-                className="hover-elevate shrink-0 rounded-md transition-all"
-              >
-                <img src={logoImage} alt="Kloud" className="h-8 w-auto" />
-              </button>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between gap-4">
+          <div className="flex-shrink-0">
+            <button
+              onClick={navigateToHome}
+              className="hover-elevate rounded-md transition-all"
+              data-testid="link-logo"
+            >
+              <img 
+                src={logoImage} 
+                alt="Kloud" 
+                className="h-8 w-auto"
+              />
+            </button>
+          </div>
 
-              {/* DESKTOP NAV */}
-              <div className="hidden shrink-0 items-center space-x-8 md:flex">
-                {navItems.map((item) =>
-                  item.type === "link" ? (
-                    <Link
-                      key={item.testId}
-                      href={item.target}
-                      className="text-[13px] font-semibold tracking-tight text-slate-600 transition-colors hover:text-slate-900"
-                    >
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <button
-                      key={item.testId}
-                      onClick={(e) => handleNavClick(item, e)}
-                      className="text-[13px] font-semibold tracking-tight text-slate-600 transition-colors hover:text-slate-900"
-                    >
-                      {item.label}
-                    </button>
-                  ),
-                )}
-
-                <Button
-                  onClick={onOpenSignup}
-                  className="rounded-full bg-slate-900 px-6 py-2 text-xs font-bold text-white shadow-none transition-all hover:scale-[1.02] hover:bg-slate-800 active:scale-[0.98]"
+          <div className="hidden items-center gap-6 lg:gap-8 md:flex">
+            {navItems.map((item) => (
+              item.type === 'link' ? (
+                <Link
+                  key={item.testId}
+                  href={item.target}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  data-testid={item.testId}
                 >
-                  Get Started
-                </Button>
-              </div>
-
-              {/* MOBILE BUTTON */}
-              <div className="flex items-center md:hidden">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  key={item.testId}
+                  onClick={(e) => handleNavClick(item, e)}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  data-testid={item.testId}
                 >
-                  {isMobileMenuOpen ? (
-                    <X className="h-5 w-5" />
-                  ) : (
-                    <Menu className="h-5 w-5" />
-                  )}
-                </Button>
-              </div>
-            </div>
+                  {item.label}
+                </button>
+              )
+            ))}
+            <Button
+              onClick={onOpenSignup}
+              className="shadow-glow hover:scale-[1.02] transition-transform"
+              data-testid="button-get-started"
+            >
+              Get Started
+            </Button>
+          </div>
+
+          <div className="md:hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              data-testid="button-mobile-menu"
+            >
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
           </div>
         </div>
+      </div>
 
-        <MobileMenuOverlay
-          isOpen={isMobileMenuOpen}
-          onClose={() => setIsMobileMenuOpen(false)}
-          navItems={navItems}
-          mobileOnlyNavItems={mobileOnlyNavItems}
-          onNavClick={handleNavClick}
-        />
+      <MobileMenuOverlay
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+        navItems={navItems}
+        mobileOnlyNavItems={mobileOnlyNavItems}
+        onNavClick={handleNavClick}
+      />
       </nav>
     </Portal.Root>
   );
 }
 
-/* MOBILE MENU (UNCHANGED) */
+// Mobile menu rendered via Portal for proper z-index stacking
 function MobileMenuOverlay({
   isOpen,
   onClose,
@@ -231,20 +212,27 @@ function MobileMenuOverlay({
 
   return (
     <Portal.Root>
-      <div
-        className="fixed inset-0 top-16 z-[100] bg-black/50 md:hidden"
+      {/* Backdrop - click to close */}
+      <div 
+        className="md:hidden fixed inset-0 top-16 bg-black/50 z-[100]"
         onClick={onClose}
+        data-testid="mobile-menu-backdrop"
+        aria-hidden="true"
       />
-
-      <div className="fixed left-0 right-0 top-16 z-[101] border-t border-border bg-background shadow-md md:hidden">
-        <div className="space-y-1 px-5 py-4">
-          {navItems.map((item) =>
-            item.type === "link" ? (
+      {/* Menu panel */}
+      <div 
+        className="md:hidden fixed left-0 right-0 top-16 bg-background border-t border-border shadow-md z-[101]"
+        data-testid="mobile-menu-overlay"
+      >
+        <div className="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6 lg:px-8">
+          {navItems.map((item) => (
+            item.type === 'link' ? (
               <Link
                 key={item.testId}
                 href={item.target}
                 onClick={onClose}
-                className="block rounded-lg px-4 py-2.5 text-base text-muted-foreground hover:text-foreground"
+                className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
+                data-testid={`mobile-${item.testId}`}
               >
                 {item.label}
               </Link>
@@ -252,19 +240,21 @@ function MobileMenuOverlay({
               <button
                 key={item.testId}
                 onClick={(e) => onNavClick(item, e)}
-                className="block w-full rounded-lg px-4 py-2.5 text-left text-base text-muted-foreground hover:text-foreground"
+                className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
+                data-testid={`mobile-${item.testId}`}
               >
                 {item.label}
               </button>
-            ),
-          )}
-
+            )
+          ))}
+          {/* Mobile-only: Blog and Careers links */}
           {mobileOnlyNavItems.map((item) => (
             <Link
               key={item.testId}
               href={item.target}
               onClick={onClose}
-              className="block rounded-lg px-4 py-2.5 text-base text-muted-foreground hover:text-foreground"
+              className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
+              data-testid={`mobile-${item.testId}`}
             >
               {item.label}
             </Link>
