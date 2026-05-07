@@ -67,7 +67,7 @@ export default function IntegrationsMarquee({ compact = false }: { compact?: boo
         >
           <div className={compact ? "w-full" : "w-full md:w-[55%]"}>
             <h2
-              className={`${compact ? "text-2xl font-bold tracking-tight text-foreground sm:text-3xl" : "text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl"}`}
+              className={`${compact ? "text-balance text-xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-2xl" : "text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"}`}
             >
               <span className="gradient-text">GCC-ready</span> integrations
             </h2>

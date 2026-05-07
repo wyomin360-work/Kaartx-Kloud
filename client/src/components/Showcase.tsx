@@ -26,7 +26,7 @@ export default function Showcase() {
       <div className="mx-auto max-w-7xl px-4 sm:px-5 md:px-6">
         <div className="mb-10 text-center sm:mb-16 md:mb-20">
           <h2
-            className="mb-3 text-3xl font-extrabold text-foreground sm:mb-4 sm:text-4xl md:text-5xl lg:text-6xl"
+            className="mb-3 text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:mb-4 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"
             data-testid="text-showcase-title"
           >
             Powerful dashboards

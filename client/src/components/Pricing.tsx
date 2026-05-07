@@ -130,7 +130,7 @@ export default function Pricing({ onOpenSignup }: PricingProps) {
           className={`animate-on-scroll mb-12 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end sm:mb-16 ${titleAnimation.isVisible ? "visible" : ""}`}
         >
           <div className="w-full flex-col md:w-[55%]">
-            <h2 className="mb-8 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+            <h2 className="mb-8 text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]">
               Simple, transparent <span className="gradient-text">pricing</span>
             </h2>
             <div className="inline-flex flex-wrap items-center rounded-full border border-border bg-muted/60 p-1.5 shadow-inner backdrop-blur-md">

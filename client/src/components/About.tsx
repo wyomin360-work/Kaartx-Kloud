@@ -56,7 +56,7 @@ export default function About() {
             About Us
           </p>
           <h2
-            className="section-title mb-6 text-foreground"
+            className="mb-6 text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"
             data-testid="text-about-title"
           >
             About Kaartx Kloud

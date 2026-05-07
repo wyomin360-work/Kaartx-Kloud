@@ -122,7 +122,7 @@ export default function DeepFeatures() {
           {/* Left Column */}
           <div className="w-full md:w-[55%]">
             <h2
-              className="text-4xl font-extrabold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-5xl"
+              className="text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"
               data-testid="text-deep-features-title"
             >
               Powerful tools to manage

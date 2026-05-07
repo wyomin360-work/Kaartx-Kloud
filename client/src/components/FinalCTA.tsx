@@ -12,7 +12,7 @@ export default function FinalCTA({ onOpenSignup }: FinalCTAProps) {
 
       <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-5 md:px-6">
         <h2
-          className="section-title gradient-text mb-4 text-foreground sm:mb-6"
+          className="mb-4 text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:mb-6 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"
           data-testid="text-final-cta-title"
         >
           Ready to launch your eCommerce platform?

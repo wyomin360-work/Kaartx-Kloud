@@ -87,7 +87,7 @@ export default function BookingSection() {
          {/* Header - Fixed to match Pricing Page Split Layout */}
         <div className="mb-12 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end sm:mb-16">
           <div className="w-full flex-col md:w-[55%]">
-            <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+            <h2 className="mb-4 text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]">
               Ready to grow? <span className="gradient-text">Book a call</span>
             </h2>
           </div>

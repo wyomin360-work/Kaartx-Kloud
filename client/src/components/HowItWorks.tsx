@@ -122,7 +122,7 @@ export default function HowItWorks() {
   const pillarsAnim = useScrollAnimation<HTMLDivElement>(0.08);
 
   return (
-    <section className="relative overflow-hidden bg-white pb-16 pt-12 sm:pb-24 sm:pt-16">
+    <section className="relative overflow-hidden bg-white pb-16 pt-12 sm:pb-24 sm:pt-16 pb-8">
       <div className="relative z-10 mx-auto max-w-6xl px-5 sm:px-8">
         <div
           ref={headerAnim.ref}

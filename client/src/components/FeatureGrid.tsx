@@ -34,10 +34,10 @@ import { cn } from "@/lib/utils";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const FEATURE_GRADIENTS = [
-  "gradient-bg-purple",
-  "gradient-bg-blue",
-  "gradient-bg-purple",
-  "gradient-bg-blue",
+  "bg-gradient-to-br from-blue-50 to-sky-100/60",
+  "bg-gradient-to-br from-sky-100/60 to-blue-50",
+  "bg-gradient-to-br from-blue-50 to-sky-100/60",
+  "bg-gradient-to-br from-sky-100/60 to-blue-50",
 ] as const;
 
 function BentoMiniCell({
@@ -61,10 +61,10 @@ function BentoMiniCell({
       )}
     >
       <Icon
-        className="h-4 w-4 shrink-0 text-slate-400 transition-colors group-hover:text-slate-700"
+        className="h-4 w-4 shrink-0 text-slate-500 transition-colors group-hover:text-slate-800"
         strokeWidth={1.75}
       />
-      <span className="max-w-[5.5rem] text-[10px] font-medium leading-tight text-slate-500 transition-colors group-hover:text-slate-800 sm:max-w-none sm:text-[11px]">
+      <span className="max-w-[5.5rem] text-[10px] font-medium leading-tight text-slate-600 transition-colors group-hover:text-slate-900 sm:max-w-none sm:text-[11px]">
         {label}
       </span>
     </button>
@@ -91,7 +91,7 @@ function BentoFeatureBlock({
   return (
     <div
       className={cn(
-        "flex h-full min-h-[9rem] flex-col justify-between rounded-xl border border-white/30 p-4 shadow-sm transition-all duration-300 sm:min-h-[10.5rem] sm:p-5",
+        "flex h-full min-h-[9rem] flex-col justify-between text-center rounded-xl border border-white/30 p-4 shadow-sm transition-all duration-300 sm:min-h-[10.5rem] sm:p-5",
         gradientClass,
         "animate-on-scroll",
         stagger,
@@ -99,8 +99,11 @@ function BentoFeatureBlock({
       )}
       data-testid={`card-feature-${index}`}
     >
-      <div className="shadow-playful flex h-11 w-11 items-center justify-center rounded-xl bg-white/95 sm:h-14 sm:w-14">
-        <Icon className="h-5 w-5 text-primary sm:h-7 sm:w-7" />
+      <div 
+        className="shadow-playful mx-auto flex h-10 w-10 items-center justify-center bg-white/95 sm:h-12 sm:w-12"
+        style={{ borderRadius: "43% 57% 68% 32% / 46% 38% 62% 54%" }}
+      >
+        <Icon className="h-4 w-4 text-primary sm:h-5 sm:w-5" />
       </div>
       <div className="mt-3">
         <h3 className="mb-1.5 text-base font-bold leading-snug text-foreground sm:text-xl">
@@ -175,7 +178,7 @@ export default function FeatureGrid() {
   const stagger = ["", "stagger-1", "stagger-2", "stagger-3"];
 
   return (
-    <section id="feature-grid" className="relative overflow-hidden sm:pb-8">
+    <section id="feature-grid" className="relative overflow-hidden sm:pb-10">
       <div className="pointer-events-none absolute inset-0 opacity-60 mask-radial-fade">
         <div className="absolute inset-0 bg-grid-pattern" />
       </div>
@@ -186,7 +189,7 @@ export default function FeatureGrid() {
         >
           <div className="w-full md:w-[55%]">
             <h2
-              className="text-4xl font-extrabold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-5xl"
+              className="text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"
               data-testid="text-features-title"
             >
               Everything to run your
@@ -224,15 +227,18 @@ export default function FeatureGrid() {
                 <div
                   key={index}
                   className={cn(
-                    "hover-elevate w-[82vw] max-w-sm flex-shrink-0 snap-center rounded-2xl border-2 p-4 transition-all duration-300",
+                    "hover-elevate w-[82vw] max-w-sm flex-shrink-0 snap-center flex flex-col items-center text-center rounded-2xl border-2 p-4 transition-all duration-300",
                     FEATURE_GRADIENTS[index],
                     "animate-on-scroll",
                     stagger[index],
                   )}
                   data-testid={`card-feature-${index}`}
                 >
-                  <div className="shadow-playful mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-white">
-                    <Icon className="h-6 w-6 text-primary" />
+                  <div 
+                    className="shadow-playful mb-3 mx-auto flex h-10 w-10 items-center justify-center bg-white"
+                    style={{ borderRadius: "43% 57% 68% 32% / 46% 38% 62% 54%" }}
+                  >
+                    <Icon className="h-5 w-5 text-primary" />
                   </div>
                   <h3 className="mb-1 text-lg font-bold">{feature.title}</h3>
                   <p className="text-sm font-medium text-muted-foreground">
@@ -242,8 +248,8 @@ export default function FeatureGrid() {
               );
             })}
           </div>
-          <div className="rounded-2xl bg-slate-200/50 p-px shadow-inner">
-            <div className="grid grid-cols-4 gap-px rounded-2xl bg-slate-200/60">
+          <div className="rounded-2xl bg-slate-300 p-px shadow-inner">
+            <div className="grid grid-cols-4 gap-px rounded-2xl bg-slate-300">
               {miniSurround.map((cell, i) => (
                 <BentoMiniCell key={i} icon={cell.icon} label={cell.label} />
               ))}
@@ -259,14 +265,14 @@ export default function FeatureGrid() {
           )}
           aria-label="Feature map"
         >
-          <div className="overflow-hidden rounded-2xl border border-slate-200/70 bg-slate-200/45 p-px shadow-sm">
+          <div className="overflow-hidden rounded-2xl border border-slate-300 bg-slate-300 p-px shadow-sm">
             <div className="flex flex-col gap-px">
-              <div className="grid grid-cols-8 gap-px bg-slate-200/60">
+              <div className="grid grid-cols-8 gap-px bg-slate-300">
                 {miniSurround.slice(0, 8).map((cell, i) => (
                   <BentoMiniCell key={`r1-${i}`} icon={cell.icon} label={cell.label} />
                 ))}
               </div>
-              <div className="grid grid-cols-8 gap-px bg-slate-200/60">
+              <div className="grid grid-cols-8 gap-px bg-slate-300">
                 {miniSurround.slice(8, 10).map((cell, i) => (
                   <BentoMiniCell key={`r2-l-${i}`} icon={cell.icon} label={cell.label} />
                 ))}
@@ -294,7 +300,7 @@ export default function FeatureGrid() {
                   <BentoMiniCell key={`r2-r-${i}`} icon={cell.icon} label={cell.label} />
                 ))}
               </div>
-              <div className="grid grid-cols-8 gap-px bg-slate-200/60">
+              <div className="grid grid-cols-8 gap-px bg-slate-300">
                 {miniSurround.slice(12, 14).map((cell, i) => (
                   <BentoMiniCell key={`r3-l-${i}`} icon={cell.icon} label={cell.label} />
                 ))}
@@ -322,7 +328,7 @@ export default function FeatureGrid() {
                   <BentoMiniCell key={`r3-r-${i}`} icon={cell.icon} label={cell.label} />
                 ))}
               </div>
-              <div className="grid grid-cols-8 gap-px bg-slate-200/60">
+              <div className="grid grid-cols-8 gap-px bg-slate-300">
                 {miniSurround.slice(16, 24).map((cell, i) => (
                   <BentoMiniCell key={`r4-${i}`} icon={cell.icon} label={cell.label} />
                 ))}

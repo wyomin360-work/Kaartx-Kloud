@@ -67,7 +67,7 @@ export default function FAQ() {
       <div className="mx-auto max-w-4xl px-4 sm:px-5 md:px-6">
         <div className="mb-10 text-center sm:mb-16">
           <h2
-            className="section-title mb-3 text-primary sm:mb-4"
+            className="mb-3 text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:mb-4 sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"
             data-testid="text-faq-title"
           >
             Frequently asked questions

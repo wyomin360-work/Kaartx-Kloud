@@ -2,6 +2,7 @@ import { Star } from "lucide-react";
 import { motion } from "framer-motion";
 import { useMemo, type ReactNode } from "react";
 import { Button } from "./ui/button";
+import { FaApple, FaGooglePlay } from "react-icons/fa";
 
 import hero203511 from "@heroimages/Screenshot from 2026-04-29 20-35-11.png";
 import hero203531 from "@heroimages/Screenshot from 2026-04-29 20-35-31.png";
@@ -37,11 +38,11 @@ const STACK_RIGHT = {
 
 /** Center / mobile: full screenshot strip height. */
 const HERO_IMAGE_FRAME =
-  "relative h-[260px] w-full overflow-hidden bg-white rounded-xl border border-black/10 sm:h-[400px] md:h-[440px] lg:h-[480px]";
+  "relative h-[200px] w-full overflow-hidden bg-white rounded-xl border border-black/10 sm:h-[300px] md:h-[340px] lg:h-[360px]";
 
 /** Side panels: ~20% shorter image area than center; row uses items-center so they align to the middle card. */
 const HERO_SIDE_IMAGE_FRAME =
-  "relative h-[208px] w-full overflow-hidden bg-white rounded-xl border border-black/10 sm:h-[320px] md:h-[352px] lg:h-[384px]";
+  "relative h-[160px] w-full overflow-hidden bg-white rounded-xl border border-black/10 sm:h-[240px] md:h-[272px] lg:h-[288px]";
 
 const HERO_DOT_CLOUD_COUNT = 96;
 
@@ -252,7 +253,7 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
   return (
     <section
       id="hero"
-      className="relative overflow-x-clip overflow-y-visible bg-white pt-12 sm:pt-16 md:pt-24"
+      className="relative overflow-x-clip overflow-y-visible bg-white pt-12 sm:pt-16 md:pt-24 pb-5"
     >
       {/* Soft animated backdrop — slow gradient drift + floating orbs (standard landing-page motion) */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
@@ -290,15 +291,15 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
           className="mx-auto mt-14 max-w-5xl text-center sm:mt-16"
         >
           <h1
-            className="mb-7 px-2 font-display text-4xl font-black leading-[1.1] tracking-tight text-slate-900 sm:text-5xl md:text-6xl"
+            className="mb-7 px-2 text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"
             data-testid="text-hero-title"
           >
             Choose{" "}
-            <span className="bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 bg-clip-text text-transparent">
+            <span className="gradient-text">
               Kaartx
             </span>{" "}
             as your powerful
-            <span className="mt-3 block bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 bg-clip-text text-transparent sm:mt-4 lg:mt-5">
+            <span className="mt-3 block gradient-text sm:mt-4 lg:mt-5">
               B2B/B2C Marketplace Builder
             </span>
           </h1>
@@ -329,23 +330,23 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
           >
             <TrustBadge
               logo={
-                <div className="flex h-10 w-16 items-center justify-center rounded-full bg-[#ff492c] text-[11px] font-black text-white">
-                  Appstore
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-black text-white shadow-sm">
+                  <FaApple className="h-6 w-6 pb-0.5" />
                 </div>
               }
               score="4.8/5"
-              label="Appstore"
+              label="App Store"
             />
             <TrustBadge
               logo={
-                <div className="flex h-10 w-16 items-center justify-center rounded-md bg-[#f58220] text-[10px] font-black text-white">
-                  Playstore
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white border border-slate-200 text-emerald-500 shadow-sm">
+                  <FaGooglePlay className="h-5 w-5 ml-0.5" />
                 </div>
               }
               score="4.7/5"
-              label="Playstore"
+              label="Play Store"
             />
-           
+
           </div>
         </motion.div>
 
@@ -372,7 +373,7 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
           />
 
           <motion.div
-            className="z-10 w-[min(44%,440px)] max-w-[480px] shrink-0"
+            className="z-10 w-[min(38%,380px)] max-w-[400px] shrink-0"
             initial={{ opacity: 0, x: -36 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ type: "spring", stiffness: 220, damping: 26, delay: 0.08 }}
@@ -389,7 +390,7 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
             initial={{ opacity: 0, y: 28, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ type: "spring", stiffness: 260, damping: 28, delay: 0.12 }}
-            className="z-30 -mx-5 w-[min(82%,760px)] max-w-[800px] shrink-0 sm:-mx-6 md:w-[min(80%,820px)] md:max-w-[840px] lg:-mx-8 lg:max-w-[880px]"
+            className="z-30 -mx-5 w-[min(78%,660px)] max-w-[700px] shrink-0 sm:-mx-6 md:w-[min(76%,720px)] md:max-w-[740px] lg:-mx-8 lg:max-w-[760px]"
           >
             <StackWindow
               {...STACK_CENTER}
@@ -400,7 +401,7 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
           </motion.div>
 
           <motion.div
-            className="z-10 w-[min(44%,440px)] max-w-[480px] shrink-0"
+            className="z-10 w-[min(38%,380px)] max-w-[400px] shrink-0"
             initial={{ opacity: 0, x: 36 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ type: "spring", stiffness: 220, damping: 26, delay: 0.08 }}

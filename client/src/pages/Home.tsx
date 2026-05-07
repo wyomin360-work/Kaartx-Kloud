@@ -89,28 +89,30 @@ export default function Home() {
           to hide content as it vertically scrolls up past the floating pill bounds. 
           This is z-40 so the Navbar (z-50) stays on top, and content slides under.
         */}
-        <div className="duration-[10ms] pointer-events-none fixed left-0 right-0 top-0 z-40 h-[88px] bg-background transition-all" />
+        <div className="duration-[10ms] pointer-events-none fixed left-0 right-0 top-0 z-40 h-[88px] bg-background transition-all " />
 
         <Navbar onOpenSignup={() => handleOpenSignup()} />
-        <Hero onOpenSignup={() => handleOpenSignup()} />
-        <StatsBar />
-        <FeatureGrid />
-        <HowItWorks />
-        <DeepFeatures />
-        <UseCases />
-        {/* <IntegrationsMarquee /> */}
-        {/* <Security /> */}
-        {/* <APISection /> */}
-        {/* <Showcase /> */}
-        <Pricing onOpenSignup={handleOpenSignup} />
-        <Testimonials />
-        {/* TEMPORARILY HIDDEN – TO REVISIT */}
-        {/* <CaseStudy /> */}
-        <FAQ />
-        <BookingSection />
-        <About />
-        <FinalCTA onOpenSignup={() => handleOpenSignup()} />
-        <Footer />
+        <div className="flex flex-col gap-5">
+          <Hero onOpenSignup={() => handleOpenSignup()} />
+          <StatsBar />
+          <FeatureGrid />
+          <HowItWorks />
+          <DeepFeatures />
+          <UseCases />
+          {/* <IntegrationsMarquee /> */}
+          {/* <Security /> */}
+          {/* <APISection /> */}
+          {/* <Showcase /> */}
+          <Pricing onOpenSignup={handleOpenSignup} />
+          <Testimonials />
+          {/* TEMPORARILY HIDDEN – TO REVISIT */}
+          {/* <CaseStudy /> */}
+          <FAQ />
+          <BookingSection />
+          <About />
+          <FinalCTA onOpenSignup={() => handleOpenSignup()} />
+          <Footer />
+        </div>
         <WhatsAppButton />
       </div>
       <SignupModal

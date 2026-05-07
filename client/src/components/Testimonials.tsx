@@ -15,7 +15,7 @@ export default function Testimonials() {
         >
           <div className="w-full md:w-[55%]">
             <h2
-              className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl"
+              className="text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"
               data-testid="text-testimonials-title"
             >
               <span className="gradient-text">Designed for</span> modern commerce builders
