@@ -1,120 +1,269 @@
-import { SiShopify, SiFirebase, SiStripe } from 'react-icons/si';
-import { CreditCard, Package, Boxes, Plug } from 'lucide-react';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { SiShopify, SiFirebase, SiStripe } from "react-icons/si";
+import { CreditCard, Package, Boxes, Plug } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-export default function IntegrationsMarquee() {
+export default function IntegrationsMarquee({ compact = false }: { compact?: boolean }) {
   const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
   const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.2);
 
   const integrations = [
-    { 
-      name: 'TAP Payments', 
-      icon: CreditCard, 
+    {
+      name: "TAP Payments",
+      icon: CreditCard,
       featured: true,
-      description: 'MENA payment gateway',
-      category: 'Payments'
+      description: "MENA payment gateway",
+      category: "Payments",
     },
-    { 
-      name: 'Asyad Express', 
-      icon: Package, 
+    {
+      name: "Asyad Express",
+      icon: Package,
       featured: true,
-      description: 'Complete GCC shipping solution',
-      category: 'Logistics'
+      description: "Complete GCC shipping solution",
+      category: "Logistics",
     },
-    { 
-      name: 'Shopify', 
+    {
+      name: "Shopify",
       icon: SiShopify,
       comingSoon: true,
-      description: 'Single-brand & catalog sync integration',
-      category: 'Platform'
+      description: "Single-brand & catalog sync integration",
+      category: "Platform",
     },
-    { 
-      name: 'Stripe', 
+    {
+      name: "Stripe",
       icon: SiStripe,
       comingSoon: true,
-      description: 'Global payment processing',
-      category: 'Payments'
+      description: "Global payment processing",
+      category: "Payments",
     },
-    { 
-      name: 'Firebase', 
+    {
+      name: "Firebase",
       icon: SiFirebase,
       comingSoon: true,
-      description: 'Backend & authentication',
-      category: 'Infrastructure'
+      description: "Backend & authentication",
+      category: "Infrastructure",
     },
-    { 
-      name: 'Custom APIs', 
+    {
+      name: "Custom APIs",
       icon: Plug,
       comingSoon: true,
-      description: 'Connect ERPs, CRMs, and internal systems',
-      category: 'Custom'
+      description: "Connect ERPs, CRMs, and internal systems",
+      category: "Custom",
     },
   ];
 
+  const displayIntegrations = integrations;
+
   return (
-    <section id="integrations" className="py-12 sm:py-20 md:py-32 bg-background scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
-        <div 
+    <section
+      id="integrations"
+      className={compact ? "w-full" : "scroll-mt-20 bg-background py-12 sm:py-20 md:py-32"}
+    >
+      <div className={compact ? "w-full" : "mx-auto max-w-7xl px-4 sm:px-5 md:px-6"}>
+        <div
           ref={titleAnimation.ref}
-          className={`text-center mb-10 sm:mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+          className={`animate-on-scroll flex ${compact ? "mb-6 flex-col items-start gap-4" : "mb-12 flex-col items-start justify-between gap-6 md:flex-row md:items-center sm:mb-16"} ${titleAnimation.isVisible ? "visible" : ""}`}
         >
-          <h2 className="section-title text-foreground mb-3 sm:mb-4" data-testid="text-integrations-title">
-            GCC-ready integrations
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-integrations-subtitle">
-            Payments and logistics integrations built for GCC commerce — ready out of the box
-          </p>
+          <div className={compact ? "w-full" : "w-full md:w-[55%]"}>
+            <h2
+              className={`${compact ? "text-balance text-xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-2xl" : "text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"}`}
+            >
+              <span className="gradient-text">GCC-ready</span> integrations
+            </h2>
+          </div>
+          <div className={`flex w-full flex-col items-start ${compact ? "" : "pt-2 md:w-[40%]"}`}>
+            <div className={`${compact ? "mb-3" : "mb-5"} inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/50 px-3 py-1.5 shadow-sm`}>
+              <Plug className="h-[14px] w-[14px] text-muted-foreground dark:text-slate-400" />
+              <span className="text-[11px] font-semibold uppercase tracking-wide text-foreground dark:text-slate-200 sm:text-xs">
+                Integrations
+              </span>
+            </div>
+            <p
+              className={`${compact ? "text-sm leading-relaxed" : "text-base leading-relaxed sm:text-lg"} font-medium text-muted-foreground`}
+            >
+              Payments and logistics integrations built for GCC commerce — ready
+              out of the box
+            </p>
+          </div>
         </div>
 
-        <div 
+        <div
           ref={cardsAnimation.ref}
-          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-on-scroll ${cardsAnimation.isVisible ? 'visible' : ''}`}
+          className={`animate-on-scroll relative w-full overflow-hidden ${compact ? "py-2" : "py-4"} ${cardsAnimation.isVisible ? "visible" : ""}`}
         >
-          {integrations.map((integration, index) => {
-            const Icon = integration.icon;
-            return (
-              <Card
-                key={index}
-                className="p-6 hover-elevate transition-all duration-300 border-border/50"
-                data-testid={`integration-card-${index}`}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className={`p-3 rounded-md ${integration.featured ? 'bg-primary/10' : 'bg-muted'}`}>
-                    <Icon className={`h-6 w-6 ${integration.featured ? 'text-primary' : 'text-foreground'}`} />
-                  </div>
-                  {integration.featured && (
-                    <Badge variant="default" className="text-xs" data-testid={`badge-featured-${index}`}>
-                      Featured
-                    </Badge>
-                  )}
-                  {integration.comingSoon && (
-                    <Badge variant="secondary" className="text-xs" data-testid={`badge-coming-soon-${index}`}>
-                      Coming Soon
-                    </Badge>
-                  )}
-                </div>
-                
-                <h3 className="text-lg font-semibold text-foreground mb-2" data-testid={`text-integration-name-${index}`}>
-                  {integration.name}
-                </h3>
-                
-                <p className="text-sm text-muted-foreground mb-3" data-testid={`text-integration-description-${index}`}>
-                  {integration.description}
-                </p>
-                
-                <div className="flex items-center gap-2">
-                  <Boxes className="h-3.5 w-3.5 text-muted-foreground" />
-                  <span className="text-xs text-muted-foreground" data-testid={`text-integration-category-${index}`}>
-                    {integration.category}
-                  </span>
-                </div>
-              </Card>
-            );
-          })}
+          {/* Gradient masks for fading edges */}
+          <div className="pointer-events-none absolute bottom-0 left-0 top-0 z-20 w-8 sm:w-20 bg-gradient-to-r from-background to-transparent" />
+          <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-20 w-8 sm:w-20 bg-gradient-to-l from-background to-transparent" />
+
+          <div className="pause-marquee group flex w-max" style={{ gap: compact ? "16px" : "24px" }}>
+            <div className="animate-marquee flex shrink-0 items-start" style={{ gap: compact ? "16px" : "24px" }}>
+              {displayIntegrations.map((integration, index) => {
+                const Icon = integration.icon;
+                return (
+                  <Card
+                    key={index}
+                    className={`group relative overflow-hidden rounded-[20px] border border-slate-200/60 bg-white ${compact ? "p-4 sm:p-5" : "p-6 sm:p-7"} shadow-sm transition-all duration-300 hover:shadow-md dark:border-slate-800 dark:bg-card w-[260px] sm:w-[320px] shrink-0`}
+                  >
+                    {/* MUI-like hover ripple effect background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent to-slate-50/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:to-slate-800/20" />
+                    
+                    <div className="relative z-10 flex flex-col justify-center">
+                      <div className="flex items-center gap-4 transition-all duration-300">
+                        <div
+                          className={`rounded-2xl ${compact ? "p-2.5" : "p-3"} shadow-sm transition-transform duration-300 group-hover:scale-105 ${integration.featured ? "bg-primary/10" : "bg-slate-100 dark:bg-slate-800"}`}
+                        >
+                          <Icon
+                            className={`${compact ? "h-5 w-5" : "h-6 w-6"} ${integration.featured ? "text-primary" : "text-slate-600 dark:text-slate-300"}`}
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <h3
+                            className={`${compact ? "text-[15px] sm:text-base" : "text-lg sm:text-xl"} font-bold tracking-tight text-slate-900 dark:text-slate-100`}
+                          >
+                            {integration.name}
+                          </h3>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                        <div className="overflow-hidden">
+                          <div className="pt-4 sm:pt-5">
+                            <p
+                              className={`${compact ? "mb-3 text-[12px] sm:text-[13px]" : "mb-4 text-[14px] sm:text-[15px]"} font-medium leading-relaxed text-slate-500 dark:text-slate-400`}
+                            >
+                              {integration.description}
+                            </p>
+
+                            <div className={`flex items-center justify-between border-t border-slate-100 ${compact ? "pt-2.5" : "pt-3.5"} dark:border-slate-800`}>
+                              <div className="flex items-center gap-2">
+                                <Boxes className="h-3.5 w-3.5 text-slate-400" />
+                                <span
+                                  className="text-[12px] font-semibold text-slate-500 dark:text-slate-400"
+                                >
+                                  {integration.category}
+                                </span>
+                              </div>
+                              
+                              <div className="flex items-center gap-1.5">
+                                {integration.featured && (
+                                  <Badge
+                                    variant="default"
+                                    className={`rounded-full px-2 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider shadow-sm`}
+                                  >
+                                    Featured
+                                  </Badge>
+                                )}
+                                {integration.comingSoon && (
+                                  <Badge
+                                    variant="secondary"
+                                    className={`rounded-full bg-slate-100 px-2 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:bg-slate-800 dark:text-slate-300`}
+                                  >
+                                    Soon
+                                  </Badge>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
+            
+            <div className="animate-marquee flex shrink-0 items-start" aria-hidden="true" style={{ gap: compact ? "16px" : "24px" }}>
+              {displayIntegrations.map((integration, index) => {
+                const Icon = integration.icon;
+                return (
+                  <Card
+                    key={index}
+                    className={`group relative overflow-hidden rounded-[20px] border border-slate-200/60 bg-white ${compact ? "p-4 sm:p-5" : "p-6 sm:p-7"} shadow-sm transition-all duration-300 hover:shadow-md dark:border-slate-800 dark:bg-card w-[260px] sm:w-[320px] shrink-0`}
+                  >
+                    {/* MUI-like hover ripple effect background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent to-slate-50/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:to-slate-800/20" />
+                    
+                    <div className="relative z-10 flex flex-col justify-center">
+                      <div className="flex items-center gap-4 transition-all duration-300">
+                        <div
+                          className={`rounded-2xl ${compact ? "p-2.5" : "p-3"} shadow-sm transition-transform duration-300 group-hover:scale-105 ${integration.featured ? "bg-primary/10" : "bg-slate-100 dark:bg-slate-800"}`}
+                        >
+                          <Icon
+                            className={`${compact ? "h-5 w-5" : "h-6 w-6"} ${integration.featured ? "text-primary" : "text-slate-600 dark:text-slate-300"}`}
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <h3
+                            className={`${compact ? "text-[15px] sm:text-base" : "text-lg sm:text-xl"} font-bold tracking-tight text-slate-900 dark:text-slate-100`}
+                          >
+                            {integration.name}
+                          </h3>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                        <div className="overflow-hidden">
+                          <div className="pt-4 sm:pt-5">
+                            <p
+                              className={`${compact ? "mb-3 text-[12px] sm:text-[13px]" : "mb-4 text-[14px] sm:text-[15px]"} font-medium leading-relaxed text-slate-500 dark:text-slate-400`}
+                            >
+                              {integration.description}
+                            </p>
+
+                            <div className={`flex items-center justify-between border-t border-slate-100 ${compact ? "pt-2.5" : "pt-3.5"} dark:border-slate-800`}>
+                              <div className="flex items-center gap-2">
+                                <Boxes className="h-3.5 w-3.5 text-slate-400" />
+                                <span
+                                  className="text-[12px] font-semibold text-slate-500 dark:text-slate-400"
+                                >
+                                  {integration.category}
+                                </span>
+                              </div>
+                              
+                              <div className="flex items-center gap-1.5">
+                                {integration.featured && (
+                                  <Badge
+                                    variant="default"
+                                    className={`rounded-full px-2 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider shadow-sm`}
+                                  >
+                                    Featured
+                                  </Badge>
+                                )}
+                                {integration.comingSoon && (
+                                  <Badge
+                                    variant="secondary"
+                                    className={`rounded-full bg-slate-100 px-2 py-0.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:bg-slate-800 dark:text-slate-300`}
+                                  >
+                                    Soon
+                                  </Badge>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes integrationsMarquee {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(calc(-100% - ${compact ? "16px" : "24px"})); }
+        }
+        .animate-marquee {
+          animation: integrationsMarquee 25s linear infinite;
+        }
+        .pause-marquee:hover .animate-marquee {
+          animation-play-state: paused;
+        }
+      `}} />
     </section>
   );
 }

@@ -122,8 +122,8 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
         }`}
         style={{ transform: 'translate3d(0,0,0)' }}
       >
-      <div className="px-6">
-        <div className="flex items-center justify-between h-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between gap-4">
           <div className="flex-shrink-0">
             <button
               onClick={navigateToHome}
@@ -138,7 +138,7 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
             </button>
           </div>
 
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden items-center gap-6 lg:gap-8 md:flex">
             {navItems.map((item) => (
               item.type === 'link' ? (
                 <Link
@@ -224,7 +224,7 @@ function MobileMenuOverlay({
         className="md:hidden fixed left-0 right-0 top-16 bg-background border-t border-border shadow-md z-[101]"
         data-testid="mobile-menu-overlay"
       >
-        <div className="px-5 py-4 space-y-1">
+        <div className="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6 lg:px-8">
           {navItems.map((item) => (
             item.type === 'link' ? (
               <Link

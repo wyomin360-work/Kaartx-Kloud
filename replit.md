@@ -5,6 +5,7 @@ Kaartx Kloud is a premium SaaS platform for launching and managing multi-vendor 
 ## Recent Changes
 
 **December 26, 2025 - Manual Activation Mode (Backend Refactor):**
+
 - **Changed from tenant creation to marketplace_requests collection**
 - **New business flow:**
   - Form submissions now create `marketplace_requests` with status: "pending"
@@ -28,6 +29,7 @@ Kaartx Kloud is a premium SaaS platform for launching and managing multi-vendor 
   - `client/src/pages/CreateMarketplace.tsx` - Updated to use new API
 
 **December 24, 2025 - Email Notifications for Marketplace Requests:**
+
 - **Implemented automated email system** using Nodemailer with Zoho SMTP
 - **SMTP Configuration:**
   - Host: smtppro.zoho.in (port 465, SSL)
@@ -36,6 +38,7 @@ Kaartx Kloud is a premium SaaS platform for launching and managing multi-vendor 
 - **Files Added:** `server/email.ts` - Email service with HTML templates
 
 **December 17, 2025 - Request Setup Flow Implementation:**
+
 - **Changed from self-serve to guided setup flow** - No more instant trial or payment
 - **Pricing CTAs Updated:**
   - Starter: "Request Starter Marketplace"
@@ -57,6 +60,7 @@ Kaartx Kloud is a premium SaaS platform for launching and managing multi-vendor 
   - `server/routes.ts` - Updated uniqueness validation
 
 **November 12, 2025 - Navbar Navigation Restructure:**
+
 - **Updated Navigation Order:** Features · Integrations · Pricing · FAQs · Contact · Login · Get Started
 - **Section ID Mapping:**
   - Features → `id="features"` (DeepFeatures: "Powerful tools to manage your entire ecosystem")
@@ -73,6 +77,7 @@ Kaartx Kloud is a premium SaaS platform for launching and managing multi-vendor 
 - **Result:** Clean, maintainable navbar with correct navigation targets matching user expectations
 
 **November 9, 2025 - Cal.com Always-Available with Deterministic Scroll Guard:**
+
 - **FIXED:** Cal.com now loads immediately on page mount (always available) without causing page jumps
 - **Implementation:** Surgical scroll-blocker that intercepts Cal.com widget's initialization scrollIntoView
 - **Key Feature:** Deterministic restoration after first blocked scroll attempt (not timing-based)
@@ -135,19 +140,24 @@ Preferred communication style: Simple, everyday language.
 ## External Dependencies
 
 **Payment Processing:**
+
 - **TAP Payments:** Primary gateway for GCC markets (OMR, AED, SAR) for subscription billing and payouts.
 - **Stripe:** Planned for global payments.
 
 **Shipping & Logistics:**
+
 - **Asyad Express:** Oman-based shipping integration.
 
 **E-commerce Integrations:**
+
 - **Shopify:** Planned for product catalog synchronization.
 
 **Development Tools:**
+
 - Replit-specific plugins (cartographer, dev-banner, runtime-error-modal).
 
 **Third-party Libraries:**
+
 - **React Icons (react-icons/si):** Brand logos.
 - **Lucide React:** UI icons.
 - **date-fns:** Date manipulation.
@@ -156,5 +166,6 @@ Preferred communication style: Simple, everyday language.
 - **class-variance-authority and clsx:** Dynamic className generation.
 
 **Analytics & Monitoring:**
+
 - Google Analytics.
 - Firebase (integration capabilities).

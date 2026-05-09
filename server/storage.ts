@@ -1,9 +1,14 @@
-import { type User, type InsertUser, type MarketplaceRequest, type InsertMarketplaceRequest } from "@shared/schema";
+import {
+  type User,
+  type InsertUser,
+  type MarketplaceRequest,
+  type InsertMarketplaceRequest,
+} from "@shared/schema";
 import { randomUUID, randomBytes, scryptSync } from "crypto";
 
 function hashPassword(password: string): string {
-  const salt = randomBytes(16).toString('hex');
-  const hash = scryptSync(password, salt, 64).toString('hex');
+  const salt = randomBytes(16).toString("hex");
+  const hash = scryptSync(password, salt, 64).toString("hex");
   return `scrypt:${salt}:${hash}`;
 }
 
@@ -11,9 +16,13 @@ export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  createMarketplaceRequest(request: InsertMarketplaceRequest): Promise<MarketplaceRequest>;
+  createMarketplaceRequest(
+    request: InsertMarketplaceRequest,
+  ): Promise<MarketplaceRequest>;
   getRequestByEmail(email: string): Promise<MarketplaceRequest | undefined>;
-  getRequestByMarketplaceName(name: string): Promise<MarketplaceRequest | undefined>;
+  getRequestByMarketplaceName(
+    name: string,
+  ): Promise<MarketplaceRequest | undefined>;
 }
 
 export class MemStorage implements IStorage {
@@ -42,7 +51,9 @@ export class MemStorage implements IStorage {
     return user;
   }
 
-  async createMarketplaceRequest(insertRequest: InsertMarketplaceRequest): Promise<MarketplaceRequest> {
+  async createMarketplaceRequest(
+    insertRequest: InsertMarketplaceRequest,
+  ): Promise<MarketplaceRequest> {
     const id = randomUUID();
     const hashedPassword = hashPassword(insertRequest.password);
 
@@ -61,13 +72,17 @@ export class MemStorage implements IStorage {
     return request;
   }
 
-  async getRequestByEmail(email: string): Promise<MarketplaceRequest | undefined> {
+  async getRequestByEmail(
+    email: string,
+  ): Promise<MarketplaceRequest | undefined> {
     return Array.from(this.marketplaceRequests.values()).find(
       (request) => request.email === email,
     );
   }
 
-  async getRequestByMarketplaceName(name: string): Promise<MarketplaceRequest | undefined> {
+  async getRequestByMarketplaceName(
+    name: string,
+  ): Promise<MarketplaceRequest | undefined> {
     return Array.from(this.marketplaceRequests.values()).find(
       (request) => request.marketplaceName.toLowerCase() === name.toLowerCase(),
     );

@@ -1,73 +1,341 @@
-import { Users, ListChecks, CreditCard, Settings } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import {
+  Users,
+  ListChecks,
+  CreditCard,
+  Settings,
+  Package,
+  Truck,
+  BarChart3,
+  MessageSquare,
+  Shield,
+  Globe2,
+  Wallet,
+  Percent,
+  Tags,
+  Layers,
+  Zap,
+  Store,
+  Users2,
+  PackageSearch,
+  Receipt,
+  CalendarDays,
+  PieChart,
+  LayoutDashboard,
+  Smartphone,
+  TrendingUp,
+  BellRing,
+  Lock,
+  Mail,
+  Share2,
+  Search,
+  type LucideIcon,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
+const FEATURE_GRADIENTS = [
+  "bg-gradient-to-br from-blue-50 to-sky-100/60",
+  "bg-gradient-to-br from-sky-100/60 to-blue-50",
+  "bg-gradient-to-br from-blue-50 to-sky-100/60",
+  "bg-gradient-to-br from-sky-100/60 to-blue-50",
+] as const;
+
+function BentoMiniCell({
+  icon: Icon,
+  label,
+  className,
+}: {
+  icon: LucideIcon;
+  label: string;
+  className?: string;
+}) {
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      className={cn(
+        "group flex min-h-[4.5rem] flex-col items-center justify-center gap-1.5 bg-white/90 px-2 py-3 text-center transition-all duration-200",
+        "border border-transparent hover:z-[1] hover:border-slate-500/45 hover:bg-slate-50 hover:shadow-sm",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+        className,
+      )}
+    >
+      <Icon
+        className="h-4 w-4 shrink-0 text-slate-500 transition-colors group-hover:text-slate-800"
+        strokeWidth={1.75}
+      />
+      <span className="max-w-[5.5rem] text-[10px] font-medium leading-tight text-slate-600 transition-colors group-hover:text-slate-900 sm:max-w-none sm:text-[11px]">
+        {label}
+      </span>
+    </button>
+  );
+}
+
+function BentoFeatureBlock({
+  icon: Icon,
+  title,
+  description,
+  gradientClass,
+  index,
+  visible,
+  stagger,
+}: {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  gradientClass: string;
+  index: number;
+  visible: boolean;
+  stagger: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "flex h-full min-h-[9rem] flex-col justify-between text-center rounded-xl border border-white/30 p-4 shadow-sm transition-all duration-300 sm:min-h-[10.5rem] sm:p-5",
+        gradientClass,
+        "animate-on-scroll",
+        stagger,
+        visible ? "visible" : "",
+      )}
+      data-testid={`card-feature-${index}`}
+    >
+      <div 
+        className="shadow-playful mx-auto flex h-10 w-10 items-center justify-center bg-white/95 sm:h-12 sm:w-12"
+        style={{ borderRadius: "43% 57% 68% 32% / 46% 38% 62% 54%" }}
+      >
+        <Icon className="h-4 w-4 text-primary sm:h-5 sm:w-5" />
+      </div>
+      <div className="mt-3">
+        <h3 className="mb-1.5 text-base font-bold leading-snug text-foreground sm:text-xl">
+          {title}
+        </h3>
+        <p className="text-xs font-medium leading-relaxed text-muted-foreground sm:text-sm">
+          {description}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 export default function FeatureGrid() {
   const features = [
     {
       icon: Users,
-      title: 'Store & Seller Control',
-      description: 'Manage your store or onboard sellers with built-in approvals, subscriptions, and performance tracking.',
+      title: "Store & Seller Control",
+      description:
+        "Manage your store or onboard sellers with built-in approvals, subscriptions, and performance tracking.",
     },
     {
       icon: ListChecks,
-      title: 'Product Listing Flow',
-      description: 'Streamlined product listing system with variants, SKUs, and bulk uploads — ready for any category.',
+      title: "Product Listing Flow",
+      description:
+        "Streamlined product listing system with variants, SKUs, and bulk uploads — ready for any category.",
     },
     {
       icon: CreditCard,
-      title: 'Auto Payouts',
-      description: 'Built-in payout engine with customizable cycles and full TAP integration.',
+      title: "Auto Payouts",
+      description:
+        "Built-in payout engine with customizable cycles and full TAP integration.",
     },
     {
       icon: Settings,
-      title: 'Smart Workflows',
-      description: 'Automate orders, returns, and tracking with real-time updates and smart notifications.',
+      title: "Smart Workflows",
+      description:
+        "Automate orders, returns, and tracking with real-time updates and smart notifications.",
     },
+  ];
+
+  const miniSurround: { icon: LucideIcon; label: string }[] = [
+    { icon: Store, label: "Catalog" },
+    { icon: Tags, label: "Variants" },
+    { icon: Truck, label: "Shipping" },
+    { icon: BarChart3, label: "Analytics" },
+    { icon: MessageSquare, label: "Messages" },
+    { icon: Globe2, label: "Regions" },
+    { icon: LayoutDashboard, label: "Dashboard" },
+    { icon: Smartphone, label: "Mobile" },
+    { icon: Shield, label: "Compliance" },
+    { icon: Wallet, label: "Wallet" },
+    { icon: Percent, label: "Promotions" },
+    { icon: Layers, label: "Bundles" },
+    { icon: Zap, label: "Automation" },
+    { icon: Users2, label: "Teams" },
+    { icon: PackageSearch, label: "Fulfillment" },
+    { icon: Receipt, label: "Invoices" },
+    { icon: CalendarDays, label: "Scheduling" },
+    { icon: PieChart, label: "Insights" },
+    { icon: TrendingUp, label: "Growth" },
+    { icon: BellRing, label: "Alerts" },
+    { icon: Lock, label: "Security" },
+    { icon: Mail, label: "Emails" },
+    { icon: Share2, label: "Social" },
+    { icon: Search, label: "SEO" },
   ];
 
   const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
   const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
+  const visible = cardsAnimation.isVisible;
+  const stagger = ["", "stagger-1", "stagger-2", "stagger-3"];
 
   return (
-    <section id="feature-grid" className="py-12 sm:py-20 md:py-32 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
-        <div 
+    <section id="feature-grid" className="relative overflow-hidden sm:pb-10">
+      <div className="pointer-events-none absolute inset-0 opacity-60 mask-radial-fade">
+        <div className="absolute inset-0 bg-grid-pattern" />
+      </div>
+      <div className="relative z-10 mx-auto max-w-7xl border-x border-border/10 px-4 sm:px-5 md:px-6">
+        <div
           ref={titleAnimation.ref}
-          className={`text-center mb-10 sm:mb-16 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+          className={`animate-on-scroll mb-12 flex flex-col items-start justify-between gap-8 pt-8 sm:mb-16 md:flex-row md:gap-16 ${titleAnimation.isVisible ? "visible" : ""}`}
         >
-          <h2 className="section-title text-foreground mb-3 sm:mb-4" data-testid="text-features-title">
-            Everything to run your<br /><span className="gradient-text">commerce business</span>
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto font-normal" data-testid="text-features-subtitle">
-            From product management to payouts — all the tools you need in one platform
-          </p>
+          <div className="w-full md:w-[55%]">
+            <h2
+              className="text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]"
+              data-testid="text-features-title"
+            >
+              Everything to run your
+              <br className="hidden md:block" />
+              <span className="gradient-text"> commerce business</span>
+            </h2>
+          </div>
+
+          <div className="flex w-full flex-col items-start pt-2 md:w-[40%]">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/50 px-3 py-1.5 shadow-sm">
+              <Package className="h-[14px] w-[14px] text-muted-foreground" />
+              <span className="text-[11px] font-semibold uppercase tracking-wide text-foreground sm:text-xs">
+                Key features
+              </span>
+            </div>
+            <p
+              className="text-base font-medium leading-relaxed text-muted-foreground sm:text-sm md:text-base"
+              data-testid="text-features-subtitle"
+            >
+              From product management to payouts, all the tools you need in one
+              powerful platform to scale your entire marketplace flawlessly.
+            </p>
+          </div>
         </div>
 
-        <div 
-          ref={cardsAnimation.ref}
-          className="feature-carousel flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:pb-0 md:overflow-visible scrollbar-hide"
-        >
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            const gradients = ['gradient-bg-purple', 'gradient-bg-blue', 'gradient-bg-purple', 'gradient-bg-blue'];
-            const stagger = ['', 'stagger-1', 'stagger-2', 'stagger-3'];
-            return (
-              <Card
-                key={index}
-                className={`flex-shrink-0 w-[80vw] snap-center md:w-auto md:flex-shrink hover-elevate transition-all duration-300 hover:scale-105 rounded-2xl border-2 ${gradients[index]} animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
-                data-testid={`card-feature-${index}`}
-              >
-                <CardHeader>
-                  <div className="h-14 w-14 rounded-2xl bg-white shadow-playful flex items-center justify-center mb-4">
-                    <Icon className="h-7 w-7 text-primary" />
+        <div ref={cardsAnimation.ref}>
+          {/* Mobile: featured cards + dense clickable mini grid */}
+          <div
+            className={`mx-auto max-w-lg space-y-5 md:hidden ${visible ? "visible" : ""}`}
+          >
+          <div className="feature-carousel scrollbar-hide flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2">
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <div
+                  key={index}
+                  className={cn(
+                    "hover-elevate w-[82vw] max-w-sm flex-shrink-0 snap-center flex flex-col items-center text-center rounded-2xl border-2 p-4 transition-all duration-300",
+                    FEATURE_GRADIENTS[index],
+                    "animate-on-scroll",
+                    stagger[index],
+                  )}
+                  data-testid={`card-feature-${index}`}
+                >
+                  <div 
+                    className="shadow-playful mb-3 mx-auto flex h-10 w-10 items-center justify-center bg-white"
+                    style={{ borderRadius: "43% 57% 68% 32% / 46% 38% 62% 54%" }}
+                  >
+                    <Icon className="h-5 w-5 text-primary" />
                   </div>
-                  <CardTitle className="text-xl mb-2 font-bold">{feature.title}</CardTitle>
-                  <CardDescription className="font-medium">{feature.description}</CardDescription>
-                </CardHeader>
-              </Card>
-            );
-          })}
+                  <h3 className="mb-1 text-lg font-bold">{feature.title}</h3>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    {feature.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+          <div className="rounded-2xl bg-slate-300 p-px shadow-inner">
+            <div className="grid grid-cols-4 gap-px rounded-2xl bg-slate-300">
+              {miniSurround.map((cell, i) => (
+                <BentoMiniCell key={i} icon={cell.icon} label={cell.label} />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop: ClickUp-style bento — thin dividers, hover ring on minis, 2×2 center */}
+        <div
+          className={cn(
+            "animate-on-scroll mx-auto hidden max-w-5xl md:block",
+            visible ? "visible" : "",
+          )}
+          aria-label="Feature map"
+        >
+          <div className="overflow-hidden rounded-2xl border border-slate-300 bg-slate-300 p-px shadow-sm">
+            <div className="flex flex-col gap-px">
+              <div className="grid grid-cols-8 gap-px bg-slate-300">
+                {miniSurround.slice(0, 8).map((cell, i) => (
+                  <BentoMiniCell key={`r1-${i}`} icon={cell.icon} label={cell.label} />
+                ))}
+              </div>
+              <div className="grid grid-cols-8 gap-px bg-slate-300">
+                {miniSurround.slice(8, 10).map((cell, i) => (
+                  <BentoMiniCell key={`r2-l-${i}`} icon={cell.icon} label={cell.label} />
+                ))}
+                <div className="col-span-2 bg-white/30 p-px">
+                  <BentoFeatureBlock
+                    {...features[0]}
+                    icon={features[0].icon}
+                    gradientClass={FEATURE_GRADIENTS[0]}
+                    index={0}
+                    visible={visible}
+                    stagger={stagger[0]}
+                  />
+                </div>
+                <div className="col-span-2 bg-white/30 p-px">
+                  <BentoFeatureBlock
+                    {...features[1]}
+                    icon={features[1].icon}
+                    gradientClass={FEATURE_GRADIENTS[1]}
+                    index={1}
+                    visible={visible}
+                    stagger={stagger[1]}
+                  />
+                </div>
+                {miniSurround.slice(10, 12).map((cell, i) => (
+                  <BentoMiniCell key={`r2-r-${i}`} icon={cell.icon} label={cell.label} />
+                ))}
+              </div>
+              <div className="grid grid-cols-8 gap-px bg-slate-300">
+                {miniSurround.slice(12, 14).map((cell, i) => (
+                  <BentoMiniCell key={`r3-l-${i}`} icon={cell.icon} label={cell.label} />
+                ))}
+                <div className="col-span-2 bg-white/30 p-px">
+                  <BentoFeatureBlock
+                    {...features[2]}
+                    icon={features[2].icon}
+                    gradientClass={FEATURE_GRADIENTS[2]}
+                    index={2}
+                    visible={visible}
+                    stagger={stagger[2]}
+                  />
+                </div>
+                <div className="col-span-2 bg-white/30 p-px">
+                  <BentoFeatureBlock
+                    {...features[3]}
+                    icon={features[3].icon}
+                    gradientClass={FEATURE_GRADIENTS[3]}
+                    index={3}
+                    visible={visible}
+                    stagger={stagger[3]}
+                  />
+                </div>
+                {miniSurround.slice(14, 16).map((cell, i) => (
+                  <BentoMiniCell key={`r3-r-${i}`} icon={cell.icon} label={cell.label} />
+                ))}
+              </div>
+              <div className="grid grid-cols-8 gap-px bg-slate-300">
+                {miniSurround.slice(16, 24).map((cell, i) => (
+                  <BentoMiniCell key={`r4-${i}`} icon={cell.icon} label={cell.label} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </section>

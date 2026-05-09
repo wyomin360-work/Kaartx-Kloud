@@ -1,299 +1,362 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Check } from 'lucide-react';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import type { PlanSelection } from '@/components/SignupModal';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Check, Info, Wallet } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import type { PlanSelection } from "@/components/SignupModal";
 
 interface PricingProps {
   onOpenSignup?: (plan: PlanSelection) => void;
 }
 
 export default function Pricing({ onOpenSignup }: PricingProps) {
-  const [billingPeriod, setBillingPeriod] = useState<'yearly' | 'monthly'>('yearly');
+  const [billingPeriod, setBillingPeriod] = useState<"yearly" | "monthly">(
+    "yearly",
+  );
   const titleAnimation = useScrollAnimation<HTMLDivElement>(0.2);
   const toggleAnimation = useScrollAnimation<HTMLDivElement>(0.1);
   const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
   const openWhatsApp = () => {
-    const message = 'Hi%20I%20want%20to%20know%20more%20about%20Kaartx%20Kloud';
-    const phone = '96898209353';
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const url = isMobile 
+    const message = "Hi%20I%20want%20to%20know%20more%20about%20Kaartx%20Kloud";
+    const phone = "96898209353";
+    const isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent,
+      );
+    const url = isMobile
       ? `https://wa.me/${phone}?text=${message}`
       : `https://web.whatsapp.com/send?phone=${phone}&text=${message}`;
-    window.open(url, '_blank');
+    window.open(url, "_blank");
   };
 
   const scrollToBooking = () => {
-    const element = document.getElementById('booking');
+    const element = document.getElementById("booking");
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   const plans = [
     {
-      name: 'Starter',
+      name: "Starter",
       yearlyPrice: 290,
       monthlyPrice: 35,
-      description: 'Best for solo founders & small boutiques',
+      description: "Best for solo founders & small boutiques",
       features: [
-        '1 store or marketplace (subdomain)',
-        'Up to 200 sellers',
-        'Up to 1,000 orders / month',
-        'Basic analytics dashboards',
-        'Basic branding (logo + colors)',
-        'Standard payout cycle',
-        'Email & WhatsApp support',
-        'Seller subscriptions (monthly/yearly billing support)',
+        "1 store or marketplace (subdomain)",
+        "Up to 200 sellers",
+        "Up to 1,000 orders / month",
+        "Basic analytics dashboards",
+        "Basic branding (logo + colors)",
+        "Standard payout cycle",
+        "Email & WhatsApp support",
+        "Seller subscriptions logic",
       ],
-      cta: 'Request Starter Setup',
+      cta: "Request Setup",
       highlighted: false,
-      savingsPercent: '~20%',
     },
     {
-      name: 'Growth',
+      name: "Growth",
       yearlyPrice: 990,
       monthlyPrice: 115,
-      description: 'For agencies & fast-growing brands',
+      description: "For agencies & fast-growing brands",
       features: [
-        'Up to 3 stores or marketplaces',
-        'Up to 600 sellers',
-        'Up to 10,000 orders / month',
-        'Advanced analytics dashboards',
-        'White-label (Domain + SSL add-on)',
-        'Configurable payout cycles',
-        'Priority email & WhatsApp support',
-        'Bulk product uploads + workflow automations',
+        "Up to 3 stores or marketplaces",
+        "Up to 600 sellers",
+        "Up to 10,000 orders / month",
+        "Advanced analytics dashboards",
+        "White-label (Domain + SSL)",
+        "Configurable payout cycles",
+        "Priority email & WhatsApp support",
+        "Bulk product + automations",
       ],
-      cta: 'Request Growth Setup',
+      cta: "Get Growth",
       highlighted: true,
       mostPopular: true,
-      savingsPercent: '~25%',
     },
     {
-      name: 'Pro (Enterprise)',
+      name: "Pro (Enterprise)",
       yearlyPrice: 2990,
       monthlyPrice: 349,
-      description: 'For large brands & franchises',
+      description: "For large brands & franchises",
       features: [
-        'Unlimited stores & marketplaces',
-        'Unlimited sellers',
-        'Unlimited orders',
-        'Advanced + enterprise analytics',
-        'Full white-label included',
-        'Custom payout workflows',
-        'Dedicated account manager',
-        'Custom integrations & enterprise support',
+        "Unlimited stores & marketplaces",
+        "Unlimited sellers",
+        "Unlimited orders",
+        "Advanced + enterprise analytics",
+        "Full white-label included",
+        "Custom payout workflows",
+        "Dedicated account manager",
+        "Custom integrations API",
       ],
-      cta: 'Talk to Sales',
+      cta: "Talk to Sales",
       highlighted: false,
-      savingsPercent: '~15%',
     },
   ];
 
   const addons = [
-    { name: 'Custom domain & SSL', price: 10, availability: 'Starter, Growth — Included in Pro', comingSoon: false },
-    { name: 'Extra marketplace instance', price: 20, availability: 'Growth, Pro', comingSoon: false },
-    { name: 'Extra admin user (per seat)', price: 5, availability: 'All plans', comingSoon: false },
-    { name: 'Extra sellers (per 100 sellers)', price: 5, availability: 'Growth, Pro — Available on request for Starter', comingSoon: false },
+    {
+      name: "Custom domain & SSL",
+      price: 10,
+      availability: "Starter, Growth — Included in Pro",
+    },
+    {
+      name: "Extra marketplace instance",
+      price: 20,
+      availability: "Growth, Pro",
+    },
+    {
+      name: "Extra admin user (per seat)",
+      price: 5,
+      availability: "All plans",
+    },
+    {
+      name: "Extra sellers (per 100 sellers)",
+      price: 5,
+      availability: "Available on request",
+    },
   ];
 
   const upcomingAddons = [
-    { name: 'AI Insights Suite', price: 15, availability: 'All plans', comingSoon: true },
+    { name: "AI Insights Suite", price: 15, availability: "All plans" },
   ];
 
   return (
-    <section id="pricing" className="py-12 sm:py-20 md:py-32 bg-background scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6">
-        <div 
+    <section id="pricing" className="scroll-mt-20 bg-background py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div
           ref={titleAnimation.ref}
-          className={`text-center mb-8 sm:mb-12 animate-on-scroll ${titleAnimation.isVisible ? 'visible' : ''}`}
+          className={`animate-on-scroll mb-12 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end sm:mb-16 ${titleAnimation.isVisible ? "visible" : ""}`}
         >
-          <h2 className="section-title text-foreground mb-3 sm:mb-4" data-testid="text-pricing-title">
-            Plans & <span className="gradient-text">pricing</span> for GCC
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto font-normal" data-testid="text-pricing-subtitle">
-            Choose a plan that fits your needs. Upgrade anytime.
-          </p>
+          <div className="w-full flex-col md:w-[55%]">
+            <h2 className="mb-8 text-balance text-2xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-3xl md:text-4xl lg:text-[2.5rem] lg:leading-[1.2]">
+              Simple, transparent <span className="gradient-text">pricing</span>
+            </h2>
+            <div className="inline-flex flex-wrap items-center rounded-full border border-border bg-muted/60 p-1.5 shadow-inner backdrop-blur-md">
+              <button
+                onClick={() => setBillingPeriod("monthly")}
+                className={`relative rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${billingPeriod === "monthly" ? "bg-background text-foreground shadow-sm shadow-black/5 ring-1 ring-border" : "text-muted-foreground hover:text-foreground"}`}
+              >
+                Monthly
+              </button>
+              <button
+                onClick={() => setBillingPeriod("yearly")}
+                className={`relative rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${billingPeriod === "yearly" ? "bg-background text-foreground shadow-sm shadow-black/5 ring-1 ring-border" : "text-muted-foreground hover:text-foreground"}`}
+              >
+                Annually{" "}
+                <span
+                  className={
+                    billingPeriod === "yearly"
+                      ? "ml-1 text-primary"
+                      : "ml-1 opacity-70"
+                  }
+                >
+                  -20%
+                </span>
+              </button>
+            </div>
+          </div>
+          
+          <div className="flex w-full flex-col items-start pt-2 md:w-[40%]">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/80 bg-background/50 px-3 py-1.5 shadow-sm">
+              <Wallet className="h-[14px] w-[14px] text-muted-foreground" />
+              <span className="text-[11px] font-semibold uppercase tracking-wide text-foreground sm:text-xs">
+                Plans
+              </span>
+            </div>
+            <p className="text-base font-medium leading-relaxed text-muted-foreground sm:text-lg">
+              Whether you're testing the waters or scaling an empire, we have a
+              plan designed to fit your unique needs. No hidden fees.
+            </p>
+          </div>
         </div>
 
-        <div 
-          ref={toggleAnimation.ref}
-          className={`flex justify-center items-center gap-3 mb-10 sm:mb-16 animate-on-scroll ${toggleAnimation.isVisible ? 'visible' : ''}`}
-        >
-          <Button
-            onClick={() => setBillingPeriod('yearly')}
-            variant={billingPeriod === 'yearly' ? 'default' : 'outline'}
-            className="rounded-2xl font-bold text-sm sm:text-base"
-            data-testid="button-billing-yearly"
-          >
-            Yearly {billingPeriod === 'yearly' && <span className="ml-2 text-xs">(Save up to 25%)</span>}
-          </Button>
-          <Button
-            onClick={() => setBillingPeriod('monthly')}
-            variant={billingPeriod === 'monthly' ? 'default' : 'outline'}
-            className="rounded-2xl font-bold text-sm sm:text-base"
-            data-testid="button-billing-monthly"
-          >
-            Monthly
-          </Button>
-        </div>
-
-        <div 
+        <div
           ref={cardsAnimation.ref}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto mb-10 sm:mb-12"
+          className="mb-16 grid grid-cols-1 gap-6 lg:grid-cols-3"
         >
           {plans.map((plan, index) => {
-            const stagger = ['', 'stagger-1', 'stagger-2'];
-            const price = billingPeriod === 'yearly' ? plan.yearlyPrice : plan.monthlyPrice;
-            const monthlyEquivalent = billingPeriod === 'yearly' ? (plan.yearlyPrice / 12).toFixed(2) : null;
-            
+            const stagger = ["", "stagger-1", "stagger-2"];
+            const price =
+              billingPeriod === "yearly" ? plan.yearlyPrice : plan.monthlyPrice;
+            const monthlyEquivalent =
+              billingPeriod === "yearly"
+                ? (plan.yearlyPrice / 12).toFixed(0)
+                : null;
+            const isHighlighted = plan.highlighted;
+
             return (
-              <Card
+              <div
                 key={index}
-                className={`relative p-6 sm:p-8 !rounded-3xl !border-2 flex flex-col ${
-                  plan.highlighted
-                    ? 'gradient-border shadow-playful md:scale-105 gradient-bg-blue'
-                    : 'hover-elevate !border-border'
-                } animate-on-scroll ${stagger[index]} ${cardsAnimation.isVisible ? 'visible' : ''}`}
-                data-testid={`pricing-card-${index}`}
+                className={`animate-on-scroll group relative flex flex-col rounded-[24px] bg-white p-7 transition-all duration-300 hover:-translate-y-1 ${stagger[index]} ${cardsAnimation.isVisible ? "visible" : ""} ${
+                  isHighlighted
+                    ? "z-10 border-2 border-primary shadow-2xl ring-4 ring-primary/5 dark:bg-card"
+                    : "border border-slate-200/60 shadow-md hover:shadow-xl dark:border-slate-800 dark:bg-card"
+                }`}
               >
-                {billingPeriod === 'yearly' && (
-                  <Badge 
-                    className="absolute top-4 right-4 bg-card text-primary border-primary/20 font-bold no-default-hover-elevate"
-                    data-testid={`badge-savings-${index}`}
-                  >
-                    Save {plan.savingsPercent}
-                  </Badge>
+                {/* Elevated MUI ripple emulation */}
+                {!isHighlighted && (
+                  <div className="absolute inset-0 rounded-[24px] bg-gradient-to-br from-transparent to-slate-50/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 dark:to-slate-800/10" />
                 )}
                 
-                {plan.mostPopular && (
-                  <Badge 
-                    className="absolute top-4 left-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 font-bold shadow-playful no-default-hover-elevate"
-                    data-testid="badge-most-popular"
-                  >
-                    Most Popular
-                  </Badge>
+                <div className="relative z-10">
+                  {isHighlighted && (
+                  <div className="absolute -top-3.5 left-0 right-0 flex justify-center">
+                    <span className="rounded-full bg-primary px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-primary-foreground shadow-md">
+                      Most Popular
+                    </span>
+                  </div>
                 )}
 
-                <div className="mb-3 sm:mb-4 mt-4">
-                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2" data-testid={`text-plan-name-${index}`}>
+                <div className="mb-5">
+                  <h3 className="mb-1.5 text-xl font-bold tracking-tight text-foreground">
                     {plan.name}
                   </h3>
-                  <p className="text-muted-foreground text-sm font-medium" data-testid={`text-plan-description-${index}`}>
+                  <p className="text-[13px] leading-snug text-muted-foreground">
                     {plan.description}
                   </p>
                 </div>
 
-                <div className="mb-5 sm:mb-6">
-                  <div className="flex items-baseline gap-1 flex-nowrap">
-                    <span className="text-4xl sm:text-5xl font-black gradient-text leading-none whitespace-nowrap" data-testid={`text-plan-price-${index}`}>
-                      OMR {price}
+                <div className="mb-6">
+                  <div className="flex flex-nowrap items-end gap-1.5">
+                    <span className="text-4xl font-extrabold leading-none tracking-tighter text-foreground">
+                      <span className="mr-1 align-top text-xl font-bold">
+                        OMR
+                      </span>
+                      {price}
                     </span>
-                    <span className="text-muted-foreground font-medium text-sm whitespace-nowrap">
-                      / {billingPeriod === 'yearly' ? 'year' : 'month'}
+                    <span className="whitespace-nowrap pb-0.5 text-sm font-medium text-muted-foreground">
+                      / {billingPeriod === "yearly" ? "year" : "mo"}
                     </span>
                   </div>
                   {monthlyEquivalent && (
-                    <p className="text-xs text-muted-foreground mt-1.5" data-testid={`text-monthly-equiv-${index}`}>
-                      (≈ OMR {monthlyEquivalent} / mo)
+                    <p className="mt-2 text-xs font-semibold tracking-tight text-primary">
+                      Works out to OMR {monthlyEquivalent} / month
                     </p>
                   )}
                 </div>
 
-                <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8 flex-1">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center gap-3" data-testid={`feature-${index}-${featureIndex}`}>
-                      <div className="h-5 w-5 rounded-full bg-card flex items-center justify-center flex-shrink-0">
-                        <Check className="h-3 w-3 text-primary" />
-                      </div>
-                      <span className={`text-sm text-muted-foreground${feature.startsWith('White-label') ? ' whitespace-nowrap' : ''}`}>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
                 <Button
                   onClick={
-                    plan.name === 'Starter' || plan.name === 'Growth'
-                      ? () => onOpenSignup?.({
-                          planId: `${plan.name.toLowerCase()}-${billingPeriod}`,
-                          planName: plan.name as 'Starter' | 'Growth',
-                          billingCycle: billingPeriod,
-                          price: price,
-                          currency: 'OMR',
-                        })
+                    plan.name === "Starter" || plan.name === "Growth"
+                      ? () =>
+                          onOpenSignup?.({
+                            planId: `${plan.name.split(" ")[0].toLowerCase()}-${billingPeriod}`,
+                            planName: plan.name.split(" ")[0] as
+                              | "Starter"
+                              | "Growth",
+                            billingCycle: billingPeriod,
+                            price: price,
+                            currency: "OMR",
+                          })
                       : scrollToBooking
                   }
-                  className={`w-full rounded-2xl font-bold text-sm sm:text-base py-5 sm:py-6 hover:scale-[1.02] transition-transform ${plan.highlighted ? 'shadow-playful' : ''}`}
-                  variant={plan.highlighted ? 'default' : 'outline'}
-                  data-testid={`button-plan-${index}`}
+                  className={`w-full rounded-xl py-5 text-sm font-bold transition-all ${
+                    isHighlighted
+                      ? "bg-primary text-primary-foreground shadow-md hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-lg"
+                      : "border border-border/50 bg-secondary/40 text-foreground hover:-translate-y-0.5 hover:bg-secondary"
+                  }`}
+                  variant={isHighlighted ? "default" : "secondary"}
                 >
                   {plan.cta}
                 </Button>
-              </Card>
+
+                <div className="mt-6 flex-1 border-t border-border/50 pt-5">
+                  <p className="mb-4 text-xs font-bold uppercase tracking-wider text-foreground">
+                    What's included
+                  </p>
+                  <ul className="space-y-2.5">
+                    {plan.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start gap-3">
+                        <Check
+                          className={`mt-0.5 h-4 w-4 shrink-0 ${isHighlighted ? "text-primary" : "text-foreground/40"}`}
+                          strokeWidth={3}
+                        />
+                        <span className="text-[13px] font-medium leading-snug text-muted-foreground">
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                </div>
+              </div>
             );
           })}
         </div>
 
-        <div className="max-w-5xl mx-auto mt-16 sm:mt-20 mb-10 sm:mb-12">
-          <h3 className="text-center text-lg sm:text-xl font-semibold text-foreground mb-6 sm:mb-8" data-testid="text-addons-title">
-            Add-ons
-          </h3>
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-5 addon-container">
+        {/* Add-ons Section */}
+        <div className="mx-auto max-w-4xl rounded-[2rem] border border-border/80 bg-card p-8 shadow-xl sm:p-10">
+          <div className="mb-8 flex items-center gap-2">
+            <h3 className="text-xl font-bold tracking-tight text-foreground">
+              Optional Add-ons
+            </h3>
+            <Info className="h-4 w-4 text-muted-foreground" />
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {addons.map((addon, index) => (
               <div
                 key={index}
-                className="flex items-center gap-4 md:gap-2 px-5 py-2.5 rounded-full border border-border bg-background hover-elevate"
-                data-testid={`badge-addon-${index}`}
+                className="group flex flex-col rounded-2xl border border-border/40 bg-secondary/30 p-5 transition-colors hover:bg-secondary/60"
               >
-                <span className="addon-title text-sm font-medium text-foreground">
-                  {addon.name}
-                </span>
-                <div className="addon-price-slot flex items-center justify-center">
-                  <span className="text-sm font-medium text-foreground whitespace-nowrap">
-                    OMR {addon.price} / month
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="text-sm font-bold text-foreground">
+                    {addon.name}
+                  </span>
+                  <span className="text-sm font-extrabold text-primary transition-transform group-hover:scale-105">
+                    OMR {addon.price}{" "}
+                    <span className="text-xs font-medium text-muted-foreground">
+                      /mo
+                    </span>
                   </span>
                 </div>
-                <span className="addon-availability text-xs text-muted-foreground font-normal">({addon.availability})</span>
+                <span className="text-xs font-medium leading-relaxed text-muted-foreground">
+                  {addon.availability}
+                </span>
               </div>
             ))}
           </div>
 
-          {/* Upcoming add-ons */}
-          <div className="flex justify-center mt-4 sm:mt-5">
-            {upcomingAddons.map((addon, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-background"
-                data-testid={`badge-addon-upcoming-${index}`}
-              >
-                <span className="text-sm font-medium text-foreground">
-                  {addon.name}
-                </span>
-                <Badge className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0 font-bold shadow-sm no-default-hover-elevate">
-                  Coming Soon
-                </Badge>
-              </div>
-            ))}
-          </div>
+          {upcomingAddons.length > 0 && (
+            <div className="mt-8 border-t border-border/50 pt-6">
+              {upcomingAddons.map((addon, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between rounded-2xl border border-dashed border-border/80 bg-background/50 p-5"
+                >
+                  <span className="text-sm font-semibold text-muted-foreground">
+                    {addon.name}
+                  </span>
+                  <Badge
+                    variant="outline"
+                    className="text-xs font-bold uppercase tracking-widest text-muted-foreground shadow-sm"
+                  >
+                    Coming Soon
+                  </Badge>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
-        <p className="text-center text-xs text-muted-foreground max-w-2xl mx-auto mt-8" data-testid="text-pricing-footnote">
-          Prices exclude VAT where applicable. Billing via TAP Payments.
-        </p>
-
-        <div className="text-center text-xs text-muted-foreground max-w-2xl mx-auto mt-6 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-0" data-testid="text-pricing-bridge-cta">
-          <span>Looking for a fully branded, dedicated deployment?</span>
-          <button 
-            onClick={openWhatsApp}
-            className="text-primary font-medium cursor-pointer hover:underline transition-colors sm:ml-1 py-2 sm:py-0 px-4 sm:px-0 bg-transparent border-none"
-            data-testid="link-talk-to-us"
-          >
-            Talk to us
-          </button>
+        <div className="mt-16 text-center">
+          <p className="mb-6 text-sm font-medium text-muted-foreground">
+            Prices exclude VAT where applicable. Secure billing via TAP
+            Payments.
+          </p>
+          <div className="inline-flex flex-col items-center justify-center gap-2 rounded-full border border-border/30 bg-secondary/20 px-6 py-4 sm:flex-row sm:gap-3">
+            <span className="text-sm font-bold text-foreground">
+              Looking for a custom enterprise deployment?
+            </span>
+            <button
+              onClick={openWhatsApp}
+              className="relative text-sm font-bold text-primary transition-colors after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-primary/30 hover:text-primary/80 hover:after:bg-primary"
+            >
+              Talk to sales
+            </button>
+          </div>
         </div>
       </div>
     </section>

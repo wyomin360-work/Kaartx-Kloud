@@ -24,6 +24,7 @@ export default defineConfig({
       "@": path.resolve(import.meta.dirname, "client", "src"),
       "@shared": path.resolve(import.meta.dirname, "shared"),
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
+      "@heroimages": path.resolve(import.meta.dirname, "heroimages"),
     },
   },
   root: path.resolve(import.meta.dirname, "client"),
@@ -35,6 +36,10 @@ export default defineConfig({
     fs: {
       strict: true,
       deny: ["**/.*"],
+      allow: [
+        path.resolve(import.meta.dirname),
+        path.resolve(import.meta.dirname, "heroimages"),
+      ],
     },
   },
 });
