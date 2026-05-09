@@ -43,7 +43,6 @@ function Router() {
         path="/blog/automated-seller-subscriptions"
         component={SellerSubscriptions}
       />
-      <Route component={NotFound} />
     </Switch>
   );
 }
