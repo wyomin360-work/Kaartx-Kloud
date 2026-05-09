@@ -15,7 +15,7 @@ import KaartxVsCustomDev from "@/pages/articles/KaartxVsCustomDev";
 import MarketplaceMistakes from "@/pages/articles/MarketplaceMistakes";
 import PayoutCycles from "@/pages/articles/PayoutCycles";
 import SellerSubscriptions from "@/pages/articles/SellerSubscriptions";
-import NotFound from "@/pages/not-found";
+import Maintenance from "@/pages/Maintenance";
 
 function Router() {
   return (
