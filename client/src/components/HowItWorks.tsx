@@ -216,7 +216,7 @@ export default function HowItWorks() {
             </div>
           </div>
 
-         
+
         </div>
 
         <div

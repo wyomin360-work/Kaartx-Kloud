@@ -117,12 +117,12 @@ export default function UseCases() {
         <div className="absolute -left-[10%] top-0 h-[500px] w-[500px] animate-pulse rounded-full bg-blue-400/20 blur-[100px]" style={{ animationDuration: '8s' }} />
         <div className="absolute -right-[10%] top-[20%] h-[600px] w-[600px] animate-pulse rounded-full bg-purple-400/20 blur-[100px]" style={{ animationDuration: '10s', animationDelay: '1s' }} />
       </div>
-      
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 md:px-12 lg:px-16">
-        
+
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-8 sm:px-12 md:px-20 lg:px-24 xl:px-32">
+
         {/* Header */}
-        <div className="mb-24 flex max-w-2xl flex-col items-center text-center mx-auto">
-          <motion.div 
+        <div className="mb-24 flex max-w-2xl flex-col items-center text-center mx-auto px-6 sm:px-0">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -133,7 +133,7 @@ export default function UseCases() {
               Use Cases
             </span>
           </motion.div>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -142,7 +142,7 @@ export default function UseCases() {
           >
             Built for <span className="gradient-text">every business</span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -154,60 +154,55 @@ export default function UseCases() {
           </motion.p>
         </div>
 
-        {/* Stacked Cards Area */}
-        <div className="relative flex flex-col gap-12 pb-[10vh]">
-          {useCasesList.map((useCase, index) => {
-            // Calculate sticky top offset for the stacking effect
-            const topOffset = `calc(6rem + ${index * 2}rem)`;
-
-            return (
-              <motion.div
-                key={useCase.id}
-                initial={{ opacity: 0, y: 150 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{ type: "spring", stiffness: 60, damping: 20 }}
-                className="sticky w-full"
-                style={{ top: topOffset }}
-              >
-                <div className="relative flex flex-col items-stretch rounded-[2.5rem] border-[1.5px] border-border/80 bg-background shadow-xl overflow-hidden min-h-[450px]">
-                  
-                  {/* Top Info */}
-                  <div className="flex w-full flex-col items-start p-8 sm:p-12 lg:px-16 lg:py-12 border-b border-border/50 justify-center bg-muted/20">
-                    <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-background border border-border shadow-sm">
-                      <useCase.icon className={`h-8 w-8 ${useCase.color}`} strokeWidth={1.5} />
-                    </div>
-                    <h3 className="mb-4 font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                      {useCase.title}
-                    </h3>
-                    <p className="text-lg font-medium leading-relaxed text-muted-foreground">
-                      {useCase.description}
-                    </p>
+        {/* Grid Area */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 pb-16">
+          {useCasesList.map((useCase, index) => (
+            <motion.div
+              key={useCase.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-5%" }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="group relative flex flex-col items-start"
+            >
+              {/* Top Info */}
+              <div className="w-full flex flex-col items-start mb-8">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-background shadow-sm ring-1 ring-border/50">
+                    <useCase.icon className={`h-6 w-6 ${useCase.color}`} strokeWidth={1.5} />
                   </div>
-
-                  {/* Bottom Benefits */}
-                  <div className="w-full p-8 sm:p-12 lg:px-16 lg:py-12 flex flex-col justify-center">
-                    <h4 className="mb-6 text-xl font-bold text-foreground">
-                      Key Advantages
-                    </h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
-                      {useCase.benefits.map((benefit, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                            <div className="h-2 w-2 rounded-full bg-primary" />
-                          </div>
-                          <span className="text-base font-medium text-muted-foreground">
-                            {benefit}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
+                  <h3 className="font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+                    {useCase.title}
+                  </h3>
                 </div>
-              </motion.div>
-            );
-          })}
+                
+                <div className="w-full rounded-2xl bg-white/50 dark:bg-muted/30 p-5 sm:p-6 shadow-sm border border-border/40 backdrop-blur-md">
+                  <p className="text-base font-medium leading-relaxed text-muted-foreground">
+                    {useCase.description}
+                  </p>
+                </div>
+              </div>
+
+              {/* Bottom Benefits */}
+              <div className="w-full flex flex-col justify-start">
+                <h4 className="mb-6 text-lg font-bold text-foreground">
+                  Key Advantages
+                </h4>
+                <ul className="flex flex-col gap-4">
+                  {useCase.benefits.map((benefit, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <div className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                        <div className="h-1.5 w-1.5 rounded-full bg-primary" />
+                      </div>
+                      <span className="text-sm sm:text-base font-medium text-muted-foreground leading-snug">
+                        {benefit}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
       </div>
