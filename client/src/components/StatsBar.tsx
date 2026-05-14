@@ -1,18 +1,48 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Separator } from "@radix-ui/react-context-menu";
-import { Divide } from "lucide-react";
+import { cn } from "@/lib/utils";
+import {
+  BadgeCheck,
+  CircleDollarSign,
+  CloudCog,
+  Gauge,
+  type LucideIcon,
+} from "lucide-react";
 
 export default function StatsBar() {
-  const stats = [
-    { value: "Automated", label: "Payouts & Settlements" },
-    { value: "GCC", label: "Ready" },
-    { value: "99.9%", label: "Uptime" },
-    { value: "White-label", label: "Ready" },
+  const stats: {
+    value: string;
+    label: string;
+    accent: string;
+    icon: LucideIcon;
+  }[] = [
+    {
+      value: "Automated",
+      label: "Payouts & Settlements",
+      accent: "bg-emerald-500",
+      icon: CircleDollarSign,
+    },
+    {
+      value: "GCC",
+      label: "Market Ready",
+      accent: "bg-sky-500",
+      icon: BadgeCheck,
+    },
+    {
+      value: "99.9%",
+      label: "Platform Uptime",
+      accent: "bg-violet-500",
+      icon: Gauge,
+    },
+    {
+      value: "White-label",
+      label: "Brand Ready",
+      accent: "bg-amber-500",
+      icon: CloudCog,
+    },
   ];
 
   const sectionAnimation = useScrollAnimation<HTMLDivElement>(0.2);
 
-  // Duplicate stats for seamless looping on mobile
   const allStats = [...stats, ...stats];
 
   const StatCard = ({
@@ -23,40 +53,74 @@ export default function StatsBar() {
     stat: (typeof stats)[0];
     index: number;
     isMobile?: boolean;
-  }) => (
-    <div
-      className={`group relative overflow-visible text-center ${isMobile ? "w-64 flex-shrink-0" : ""}`}
-      data-testid={`stat-${index % 4}`}
-    >
+  }) => {
+    const Icon = stat.icon;
+
+    return (
       <div
-        className={`relative flex h-32 flex-col justify-center rounded-3xl border border-slate-100 bg-white p-6 ${!isMobile ? "hover:-translate-y-1 hover:shadow-xl" : ""} overflow-visible transition-all duration-500`}
+        className={cn(
+          "group relative overflow-visible",
+          isMobile ? "w-[15.5rem] flex-shrink-0" : "",
+        )}
+        data-testid={`stat-${index % 4}`}
       >
-        <div className="relative flex h-full flex-col justify-center overflow-visible">
+        <div
+          className={cn(
+            "relative flex h-32 flex-col justify-between overflow-hidden rounded-lg border border-slate-200/80 bg-white p-5 shadow-sm transition-all duration-300",
+            !isMobile &&
+              "hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-lg",
+          )}
+        >
           <div
-            className={`${isMobile ? "text-3xl" : "text-3xl lg:text-4xl"} mb-2 font-display font-bold leading-none tracking-tight text-slate-900`}
-          >
-            {stat.value}
+            className={cn(
+              "absolute inset-x-0 top-0 h-1 opacity-90 transition-opacity duration-300 group-hover:opacity-100",
+              stat.accent,
+            )}
+            aria-hidden
+          />
+
+          <div className="flex items-center justify-between">
+            <div className="flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 bg-slate-50 text-slate-700 transition-colors duration-300 group-hover:border-slate-300 group-hover:bg-white">
+              <Icon className="h-4 w-4" strokeWidth={1.8} />
+            </div>
+            <span className="text-[10px] font-semibold uppercase leading-none tracking-[0.16em] text-slate-400">
+              0{(index % 4) + 1}
+            </span>
           </div>
-          <div className="text-[10px] font-bold uppercase leading-relaxed tracking-[0.2em] text-slate-400">
-            {stat.label}
+
+          <div>
+            <div
+              className={cn(
+                "mb-2 font-display text-3xl font-bold leading-none tracking-normal text-slate-950",
+                !isMobile && "lg:text-[2rem]",
+              )}
+            >
+              {stat.value}
+            </div>
+            <div className="text-xs font-semibold uppercase leading-relaxed tracking-[0.14em] text-slate-500">
+              {stat.label}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <section
-      className="relative overflow-hidden bg-white py-12 md:py-24"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50/80 to-white py-12 md:py-20"
       data-testid="stats-section"
     >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6">
-        {/* Desktop: 4-column grid */}
         <div
           ref={sectionAnimation.ref}
-          className={`animate-fade-in hidden grid-cols-4 items-stretch gap-6 sm:gap-8 md:grid lg:gap-10 ${sectionAnimation.isVisible ? "visible" : ""}`}
+          className={cn(
+            "animate-fade-in hidden grid-cols-4 items-stretch gap-4 md:grid lg:gap-5",
+            sectionAnimation.isVisible ? "visible" : "",
+          )}
           data-testid="stats-grid-desktop"
         >
           {stats.map((stat, index) => (
@@ -64,18 +128,28 @@ export default function StatsBar() {
           ))}
         </div>
 
-        {/* Mobile: auto-scroll marquee with ALL cards in ONE track */}
         <div
-          className="auto-scroll-wrapper md:hidden"
+          className="relative -mx-5 overflow-hidden px-5 md:hidden"
           data-testid="stats-marquee-wrapper"
         >
-          <div className="auto-scroll-track" data-testid="stats-marquee-track">
+          <div
+            className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-slate-50 to-transparent"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-slate-50 to-transparent"
+            aria-hidden
+          />
+
+          <div
+            className="flex w-max gap-4 py-1 [animation:stats-marquee_24s_linear_infinite]"
+            data-testid="stats-marquee-track"
+          >
             {allStats.map((stat, index) => (
               <StatCard key={index} stat={stat} index={index} isMobile={true} />
             ))}
           </div>
         </div>
-        <Separator />
       </div>
     </section>
   );

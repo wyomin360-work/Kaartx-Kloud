@@ -417,6 +417,16 @@ body[data-scroll-locked] {
     }
   }
 
+  @keyframes stats-marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-50% - 0.5rem));
+    }
+  }
+
   /* Professional cubic-bezier easing for smooth, natural motion */
   .animate-on-scroll {
     opacity: 0;

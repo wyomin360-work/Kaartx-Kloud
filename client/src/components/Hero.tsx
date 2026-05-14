@@ -1,13 +1,13 @@
 import { 
   Star,
   Monitor, Shirt, ShoppingCart, Gamepad2, 
-  Smartphone, Globe, Building2,
+  Globe, Building2,
   Cloud, Cpu, Zap, Database, Truck, Code, Boxes,
   Coffee, Heart, BookOpen, Wrench, Store, LayoutDashboard,
   User, Lightbulb
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { useMemo, type ReactNode } from "react";
+import { useMemo, type ComponentType, type ReactNode } from "react";
 import { Button } from "./ui/button";
 import { FaApple, FaGooglePlay } from "react-icons/fa";
 
@@ -259,6 +259,7 @@ const HEX_MAP: Record<string, string> = {
   blue: "#3b82f6",
   teal: "#14b8a6",
   purple: "#9333ea",
+  rose: "#f43f5e",
 };
 
 const SOLID_COLOR_MAP: Record<string, string> = {
@@ -269,65 +270,137 @@ const SOLID_COLOR_MAP: Record<string, string> = {
   blue: "bg-blue-500",
   teal: "bg-teal-500",
   purple: "bg-purple-500",
+  rose: "bg-rose-500",
 };
 
-function MiniStorefront({ color }: { color: string }) {
+function MiniStorefront({ color, sourceTitle }: { color: string; sourceTitle?: string }) {
+  const accent = getColor(color);
+
   return (
-    <div className="flex flex-col gap-1 w-full h-full p-2">
-      <div className="flex items-center justify-between border-b border-slate-100 pb-1">
-        <div className={`w-12 h-2 rounded-sm ${SOLID_COLOR_MAP[color]} opacity-60`} />
-        <div className="flex gap-1">
-           <div className="w-3 h-1.5 rounded-sm bg-slate-200" />
-           <div className="w-3 h-1.5 rounded-sm bg-slate-200" />
+    <div className="flex h-full w-full flex-col overflow-hidden bg-white">
+      <div className="flex h-5 shrink-0 items-center gap-1 border-b border-slate-100 bg-white px-1.5">
+        <span className="h-1.5 w-1.5 rounded-full bg-rose-300" />
+        <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
+        <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
+        <div className="ml-1 h-1.5 flex-1 rounded-full bg-slate-100" />
+      </div>
+      <div
+        className="relative flex h-12 shrink-0 flex-col justify-center overflow-hidden px-2"
+        style={{ background: `linear-gradient(135deg, ${accent}24, ${accent}08 58%, #ffffff)` }}
+      >
+        <div className="h-1.5 w-16 max-w-[70%] rounded-full" style={{ backgroundColor: `${accent}80` }} />
+        <div className="mt-1 h-1 w-10 rounded-full bg-white/80" />
+        <div className="absolute right-2 top-2 grid h-8 w-8 grid-cols-2 gap-0.5">
+          {[0, 1, 2, 3].map((i) => (
+            <span key={i} className="rounded-sm bg-white/75 shadow-sm" />
+          ))}
         </div>
       </div>
-      <div className="w-full h-8 rounded-md mt-1 relative overflow-hidden" style={{ background: `linear-gradient(90deg, ${HEX_MAP[color]}33, ${HEX_MAP[color]}0D)` }}>
-         <div className={`absolute left-2 top-2 w-1/3 h-1.5 rounded-sm ${SOLID_COLOR_MAP[color]} opacity-50`} />
-         <div className={`absolute left-2 top-4 w-1/4 h-1.5 rounded-sm ${SOLID_COLOR_MAP[color]} opacity-30`} />
+      <div className="grid min-h-0 flex-1 grid-cols-3 gap-1 p-1.5">
+        {[0, 1, 2].map((i) => (
+          <div key={i} className="flex min-h-0 flex-col overflow-hidden rounded bg-slate-50 ring-1 ring-slate-100">
+            <div className="flex-1" style={{ background: `linear-gradient(145deg, ${accent}${i === 1 ? "30" : "1F"}, #f8fafc)` }} />
+            <div className="space-y-0.5 p-1">
+              <div className="h-1 rounded-full bg-slate-200" />
+              <div className="h-1 w-2/3 rounded-full bg-slate-100" />
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="grid grid-cols-3 gap-1.5 mt-1.5 flex-1">
-        {[1,2,3].map(i => <div key={i} className="bg-slate-100 rounded-md h-full w-full" />)}
+      <div className="flex h-4 shrink-0 items-center justify-between border-t border-slate-100 px-2">
+        <span className="truncate text-[6px] font-black uppercase tracking-wide text-slate-400">{sourceTitle ?? "Store"}</span>
+        <span className="h-1.5 w-5 rounded-full" style={{ backgroundColor: accent }} />
       </div>
     </div>
   )
 }
 
-function MiniAdminPanel({ color }: { color: string }) {
+function MiniAdminPanel({ color, sourceTitle }: { color: string; sourceTitle?: string }) {
+  const accent = getColor(color);
+
   return (
-    <div className="flex w-full h-full p-1.5 gap-1.5 bg-slate-50">
-      <div className="w-1/4 h-full bg-white border border-slate-200/60 rounded flex flex-col gap-1.5 p-1.5 shadow-sm">
-        <div className={`w-full h-2 rounded-sm ${SOLID_COLOR_MAP[color]} opacity-60 mb-1`} />
-        {[1,2,3,4].map(i => <div key={i} className="w-full h-1.5 rounded-[1px] bg-slate-100" />)}
+    <div className="flex h-full w-full overflow-hidden bg-slate-50">
+      <div className="flex w-[22%] shrink-0 flex-col gap-1 border-r border-slate-200/70 bg-white p-1">
+        <div className="mb-1 h-2 rounded-sm" style={{ backgroundColor: accent }} />
+        {[0, 1, 2, 3].map((i) => (
+          <div key={i} className="h-1.5 rounded-sm bg-slate-100" />
+        ))}
       </div>
-      <div className="flex-1 flex flex-col gap-1.5">
-        <div className="flex justify-between items-center bg-white border border-slate-200/60 rounded p-1 shadow-sm h-5">
-          <div className="w-1/3 h-1.5 rounded-[1px] bg-slate-200" />
-          <div className="w-4 h-4 rounded-full bg-slate-100" />
+      <div className="flex min-w-0 flex-1 flex-col gap-1 p-1.5">
+        <div className="flex h-5 shrink-0 items-center justify-between rounded bg-white px-1.5 shadow-sm ring-1 ring-slate-100">
+          <div className="h-1.5 w-12 max-w-[55%] rounded-full bg-slate-200" />
+          <div className="h-3 w-3 rounded-full" style={{ backgroundColor: `${accent}26` }} />
         </div>
-        <div className="flex gap-1.5 h-10">
-          <div className="flex-1 rounded bg-white border border-slate-200/60 shadow-sm flex items-end p-1">
-             <div className={`w-full h-[60%] ${SOLID_COLOR_MAP[color]} opacity-40 rounded-[2px]`} />
+        <div className="grid h-9 shrink-0 grid-cols-3 gap-1">
+          {[58, 74, 42].map((h, i) => (
+            <div key={i} className="flex items-end rounded bg-white p-1 shadow-sm ring-1 ring-slate-100">
+              <div className="w-full rounded-sm" style={{ height: `${h}%`, backgroundColor: `${accent}${i === 1 ? "8A" : "55"}` }} />
+            </div>
+          ))}
+        </div>
+        <div className="flex min-h-0 flex-1 flex-col gap-0.5 rounded bg-white p-1 shadow-sm ring-1 ring-slate-100">
+          <div className="mb-0.5 flex items-center justify-between">
+            <span className="h-1.5 w-8 rounded-full bg-slate-200" />
+            <span className="h-1.5 w-3 rounded-full" style={{ backgroundColor: `${accent}70` }} />
           </div>
-          <div className="flex-[1.5] rounded bg-white border border-slate-200/60 shadow-sm flex items-end p-1 gap-0.5">
-             {[30, 60, 40, 80, 50, 70].map((h, i) => <div key={i} className={`flex-1 ${SOLID_COLOR_MAP[color]} opacity-50 rounded-[1px]`} style={{ height: `${h}%` }} />)}
-          </div>
+          {[0, 1, 2].map((i) => (
+            <div key={i} className="grid grid-cols-[1fr_0.7fr_0.45fr] gap-1">
+              <span className="h-1 rounded-full bg-slate-100" />
+              <span className="h-1 rounded-full bg-slate-100" />
+              <span className="h-1 rounded-full" style={{ backgroundColor: `${accent}${i === 0 ? "55" : "24"}` }} />
+            </div>
+          ))}
         </div>
-        <div className="flex-1 bg-white border border-slate-200/60 rounded shadow-sm flex flex-col gap-1 p-1">
-           <div className="w-1/4 h-1.5 rounded-[1px] bg-slate-200" />
-           <div className="w-full h-1 rounded-[1px] bg-slate-100" />
-           <div className="w-full h-1 rounded-[1px] bg-slate-100" />
-        </div>
+        <span className="truncate pl-0.5 text-[6px] font-black uppercase tracking-wide text-slate-400">{sourceTitle ?? "Admin"}</span>
       </div>
     </div>
   )
 }
 
-function MiniMobileApp({ color }: { color: string }) {
+function MiniMobileApp({ color, dense, sourceTitle }: { color: string; dense?: boolean; sourceTitle?: string }) {
+  const accent = SOLID_COLOR_MAP[color] ?? SOLID_COLOR_MAP.sky;
+  const accentHex = getColor(color);
+
+  if (dense) {
+    return (
+      <div className="flex h-full min-h-0 w-full flex-col overflow-hidden bg-white">
+        <div className="flex h-5 shrink-0 items-center justify-between px-2 text-[6px] font-black text-slate-700">
+          <span>9:41</span>
+          <span className="h-1.5 w-5 rounded-full bg-slate-200" />
+        </div>
+        <div
+          className="mx-1.5 flex h-10 shrink-0 items-end justify-between rounded-lg px-2 pb-2"
+          style={{ background: `linear-gradient(135deg, ${accentHex}30, ${accentHex}0D)` }}
+        >
+          <div>
+            <div className="h-1.5 w-12 rounded-full" style={{ backgroundColor: accentHex }} />
+            <div className="mt-1 h-1 w-8 rounded-full bg-white/90" />
+          </div>
+          <div className="h-5 w-5 rounded-full bg-white/70 shadow-sm" />
+        </div>
+        <div className="grid min-h-0 flex-1 grid-cols-2 gap-1 p-1.5">
+          {[0, 1, 2, 3].map((i) => (
+            <div key={i} className="flex min-h-0 flex-col rounded bg-slate-50 p-1 ring-1 ring-slate-100">
+              <div className="flex-1 rounded-sm" style={{ backgroundColor: `${accentHex}${i === 0 ? "38" : "20"}` }} />
+              <div className="mt-1 h-1 rounded-full bg-slate-200" />
+            </div>
+          ))}
+        </div>
+        <div className="flex h-5 shrink-0 items-center justify-around border-t border-slate-100 px-2">
+          {[0, 1, 2].map((i) => (
+            <span key={i} className={`h-1.5 rounded-full ${i === 1 ? "w-5" : "w-1.5"}`} style={{ backgroundColor: i === 1 ? accentHex : "#cbd5e1" }} />
+          ))}
+        </div>
+        <span className="sr-only">{sourceTitle}</span>
+      </div>
+    );
+  }
+
   return (
     <div className="flex justify-center items-center w-full h-full py-1.5 bg-slate-50/50">
       <div className="w-16 sm:w-20 h-full bg-white border-[3px] border-slate-800 rounded-xl sm:rounded-[1.25rem] shadow-md flex flex-col overflow-hidden relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-1.5 bg-slate-800 rounded-b-md z-10" />
-        <div className={`h-8 sm:h-10 w-full ${SOLID_COLOR_MAP[color]} opacity-20`} />
+        <div className={`h-8 sm:h-10 w-full ${accent} opacity-20`} />
         <div className="flex-1 flex flex-col gap-1.5 p-1.5">
           <div className="w-full h-8 sm:h-10 rounded-md bg-slate-100 flex items-center justify-center">
              <div className="w-1/2 h-1.5 bg-slate-200 rounded-full" />
@@ -345,22 +418,25 @@ function MiniMobileApp({ color }: { color: string }) {
   )
 }
 
-const RAW_INPUTS = [
-  { icon: ShoppingCart, title: 'Grocery Store', top: 15, delay: 0, duration: 12 },
-  { icon: Shirt, title: 'Fashion Brand', top: 28, delay: -10, duration: 12 },
-  { icon: Building2, title: 'B2B Supplier', top: 41, delay: -8, duration: 12 },
-  { icon: Coffee, title: 'Restaurant', top: 54, delay: -6, duration: 12 },
-  { icon: Monitor, title: 'Electronics', top: 67, delay: -4, duration: 12 },
-  { icon: Heart, title: 'Pharmacy', top: 80, delay: -2, duration: 12 },
-];
+type CommerceFlowItem = {
+  icon: ComponentType<{ className?: string }>;
+  inputTitle: string;
+  top: number;
+  delay: number;
+  duration: number;
+  type: "mobile" | "storefront" | "admin";
+  outputTitle: string;
+  subtitle: string;
+  color: string;
+};
 
-const STRUCTURED_OUTPUTS = [
-  { type: 'mobile', title: 'Grocery App', subtitle: 'Mobile iOS', color: 'emerald', delay: 0, duration: 12 },
-  { type: 'storefront', title: 'Fashion Web', subtitle: 'Storefront', color: 'violet', delay: -10, duration: 12 },
-  { type: 'admin', title: 'B2B Dashboard', subtitle: 'Admin Panel', color: 'indigo', delay: -8, duration: 12 },
-  { type: 'mobile', title: 'Food Delivery', subtitle: 'Delivery App', color: 'teal', delay: -6, duration: 12 },
-  { type: 'storefront', title: 'Tech Store', subtitle: 'Marketplace', color: 'blue', delay: -4, duration: 12 },
-  { type: 'admin', title: 'Pharmacy B2B', subtitle: 'Vendor System', color: 'rose', delay: -2, duration: 12 },
+const COMMERCE_FLOW_ITEMS: CommerceFlowItem[] = [
+  { icon: ShoppingCart, inputTitle: "Grocery Store", top: 15, delay: 0, duration: 12, type: "mobile", outputTitle: "Grocery App", subtitle: "Mobile iOS", color: "emerald" },
+  { icon: Shirt, inputTitle: "Fashion Brand", top: 28, delay: -10, duration: 12, type: "storefront", outputTitle: "Fashion Web", subtitle: "Storefront", color: "violet" },
+  { icon: Building2, inputTitle: "B2B Supplier", top: 41, delay: -8, duration: 12, type: "admin", outputTitle: "B2B Dashboard", subtitle: "Admin Panel", color: "indigo" },
+  { icon: Coffee, inputTitle: "Restaurant", top: 54, delay: -6, duration: 12, type: "mobile", outputTitle: "Food Delivery", subtitle: "Delivery App", color: "teal" },
+  { icon: Monitor, inputTitle: "Electronics", top: 67, delay: -4, duration: 12, type: "storefront", outputTitle: "Tech Store", subtitle: "Marketplace", color: "blue" },
+  { icon: Heart, inputTitle: "Pharmacy", top: 80, delay: -2, duration: 12, type: "admin", outputTitle: "Pharmacy B2B", subtitle: "Vendor System", color: "rose" },
 ];
 
 function getColor(name: string) {
@@ -369,7 +445,7 @@ function getColor(name: string) {
 
 function MultiVendorAnimation() {
   return (
-    <div className="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-auto lg:w-[900px] xl:w-[1000px] lg:h-[650px] xl:h-[700px] flex items-center justify-center pointer-events-none select-none overflow-visible lg:translate-x-[5%] xl:translate-x-[10%]">
+    <div className="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-auto lg:w-[1040px] xl:w-[1160px] lg:h-[650px] xl:h-[700px] flex items-center justify-center pointer-events-none select-none overflow-visible lg:translate-x-[1%] xl:translate-x-[2%]">
        
        {/* Left Side Label */}
        <div className="absolute top-20 left-4 hidden lg:flex items-center gap-3 z-0 opacity-80">
@@ -377,24 +453,79 @@ function MultiVendorAnimation() {
           <div className="h-[1px] w-16 bg-slate-300" />
        </div>
 
-       {/* Showcase Container Panel */}
-       <div className="absolute top-[30px] bottom-[30px] right-0 w-[420px] xl:w-[460px] bg-slate-50/70 border border-slate-200/80 rounded-l-3xl backdrop-blur-xl shadow-[0_0_40px_rgba(0,0,0,0.06)] hidden lg:flex flex-col p-6 xl:p-8 z-20 border-r-0 pointer-events-auto">
-          <div className="flex items-center gap-3 mb-5 xl:mb-6 border-b border-slate-200/80 pb-4 shrink-0">
-             <div className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.6)]" />
-             <div className="text-[10px] xl:text-[11px] font-black uppercase tracking-widest text-slate-700 whitespace-nowrap">Generated Commerce Applications</div>
-          </div>
-          <div className="grid grid-cols-2 gap-4 xl:gap-5 w-full">
-             {STRUCTURED_OUTPUTS.map((p, i) => (
-                <StaticStructuredOutput key={`out-${i}`} type={p.type} title={p.title} subtitle={p.subtitle} color={p.color} delay={p.delay} duration={p.duration} index={i} />
-             ))}
+       {/* Showcase: wider portrait handset; fixed 2×3 grid — no inner scroll */}
+       <div className="pointer-events-none absolute inset-y-5 right-0 z-20 hidden lg:flex xl:inset-y-4 xl:right-1 items-center justify-center">
+          <div className="aspect-[11.8/19.5] h-[min(682px,calc(100%-1.5rem))] w-auto min-w-[350px] max-h-[94%] shrink-0 xl:min-w-[390px]">
+            <div className="pointer-events-auto relative flex h-full w-full min-h-0 flex-col overflow-hidden rounded-[1.85rem] border-[3px] border-zinc-900 bg-gradient-to-b from-zinc-800 via-zinc-900 to-zinc-950 p-[3px] shadow-[0_24px_55px_rgba(0,0,0,0.28)] ring-1 ring-black/25">
+              <div
+                className="pointer-events-none absolute left-0 top-[22%] z-40 h-9 w-[2px] -translate-x-[3px] rounded-l-sm bg-gradient-to-b from-zinc-500 to-zinc-800 shadow-sm"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute left-0 top-[32%] z-40 h-14 w-[2px] -translate-x-[3px] rounded-l-sm bg-gradient-to-b from-zinc-500 to-zinc-800 shadow-sm"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute right-0 top-[26%] z-40 h-16 w-[2px] translate-x-[3px] rounded-r-sm bg-gradient-to-b from-zinc-500 to-zinc-800 shadow-sm"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute left-1/2 top-[5px] z-30 h-[6px] w-[min(34%,4.25rem)] -translate-x-1/2 rounded-full bg-black shadow-[inset_0_1px_2px_rgba(255,255,255,0.12)]"
+                aria-hidden
+              />
+              <div className="mx-[3px] mb-[3px] mt-[12px] flex min-h-0 flex-1 flex-col overflow-hidden rounded-[1.45rem] bg-white shadow-[inset_0_0_0_1px_rgba(15,23,42,0.04)]">
+                <div className="flex shrink-0 items-center justify-between border-b border-slate-100 bg-white px-2.5 py-1.5">
+                  <span className="text-[10px] font-semibold tabular-nums text-slate-900">9:41</span>
+                  <div className="flex items-center gap-1 text-slate-800" aria-hidden>
+                    <div className="flex items-end gap-px pb-px">
+                      {[3, 4, 5, 6].map((h) => (
+                        <span key={h} className="block w-px rounded-sm bg-current" style={{ height: `${h}px` }} />
+                      ))}
+                    </div>
+                    <div className="ml-0.5 flex h-2.5 w-3.5 items-center rounded-[3px] border border-current/45 p-px">
+                      <span className="block h-full w-[55%] rounded-[1px] bg-emerald-500" />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex shrink-0 items-center gap-2 border-b border-slate-200/90 bg-slate-50/95 px-3 py-2.5 backdrop-blur-sm">
+                  <div className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.65)]" />
+                  <p className="min-w-0 flex-1 text-[9px] font-black uppercase leading-snug tracking-[0.12em] text-slate-700">
+                    Ideas converted to apps
+                  </p>
+                </div>
+                <div className="flex min-h-0 flex-1 flex-col overflow-hidden bg-gradient-to-b from-slate-50/95 to-white px-3 py-3">
+                  <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-3 gap-2">
+                    {COMMERCE_FLOW_ITEMS.map((p, i) => (
+                      <StaticStructuredOutput
+                        key={`out-${i}`}
+                        type={p.type}
+                        title={p.outputTitle}
+                        subtitle={p.subtitle}
+                        sourceTitle={p.inputTitle}
+                        icon={p.icon}
+                        color={p.color}
+                        delay={p.delay}
+                        duration={p.duration}
+                        index={i}
+                        compact
+                        phoneTile
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className="flex shrink-0 justify-center bg-white px-2 pb-2 pt-1">
+                  <div className="h-1 w-[4.25rem] rounded-full bg-slate-900/15" aria-hidden />
+                </div>
+              </div>
+            </div>
           </div>
        </div>
 
-       {RAW_INPUTS.map((p, i) => (
-         <RawInput key={`raw-${i}`} icon={p.icon} title={p.title} top={p.top} delay={p.delay} duration={p.duration} />
+       {COMMERCE_FLOW_ITEMS.map((p, i) => (
+         <RawInput key={`raw-${i}`} icon={p.icon} title={p.inputTitle} top={p.top} delay={p.delay} duration={p.duration} color={p.color} />
        ))}
 
-       <div className="absolute top-1/2 left-[15%] z-30 flex h-64 w-64 lg:h-[300px] lg:w-[300px] xl:h-[320px] xl:w-[320px] -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+       <div className="absolute top-1/2 left-[11%] z-30 flex h-64 w-64 sm:left-[12%] lg:left-[13%] lg:h-[300px] lg:w-[300px] xl:left-[14%] xl:h-[320px] xl:w-[320px] -translate-x-1/2 -translate-y-1/2 items-center justify-center">
          {/* Label */}
          <div className="absolute -top-6 lg:-top-8 text-[9px] lg:text-[11px] font-black uppercase tracking-widest text-blue-600 bg-white/95 px-4 py-1.5 rounded-full border border-blue-200/60 shadow-lg backdrop-blur-md whitespace-nowrap z-40">Kaartx Kloud Infrastructure </div>
          
@@ -422,77 +553,224 @@ function MultiVendorAnimation() {
   )
 }
 
-function RawInput({ icon: Icon, title, top, delay, duration }: any) {
+function RawInput({
+  icon: Icon,
+  title,
+  top,
+  delay,
+  duration,
+  color,
+}: {
+  icon: ComponentType<{ className?: string }>;
+  title: string;
+  top: number;
+  delay: number;
+  duration: number;
+  color: string;
+}) {
+  const accent = getColor(color);
+
   return (
     <motion.div
       className="absolute z-10 flex items-center gap-2 lg:gap-3"
       initial={{ left: "-25%", top: `${top}%`, opacity: 0, scale: 0.6, x: "-50%", y: "-50%" }}
       animate={{ 
-         left: ["-25%", "-10%", "5%", "15%"], 
-         top: [`${top}%`, `${top}%`, "50%", "50%"], 
-         opacity: [0, 1, 1, 0], 
-         scale: [0.6, 1, 0.8, 0.2] 
+         left: ["-25%", "-10%", "5%", "13%", "13%"],
+         top: [`${top}%`, `${top}%`, "50%", "50%", "50%"],
+         opacity: [0, 1, 1, 1, 0],
+         scale: [0.6, 1, 0.88, 0.56, 0.12],
       }}
-      transition={{ duration, repeat: Infinity, delay, ease: "easeInOut", times: [0, 0.1, 0.85, 1] }}
+      transition={{ duration, repeat: Infinity, delay, ease: "easeInOut", times: [0, 0.1, 0.72, 0.86, 1] }}
     >
-      <div className="flex h-7 w-7 lg:h-8 lg:w-8 shrink-0 items-center justify-center rounded-full bg-slate-50 border border-slate-200/80 shadow-sm text-slate-500 relative">
+      <motion.div
+        className="flex h-7 w-7 lg:h-8 lg:w-8 shrink-0 items-center justify-center rounded-full border bg-slate-50 shadow-sm text-slate-500 relative"
+        animate={{
+          borderColor: ["rgba(226,232,240,0.8)", "rgba(226,232,240,0.8)", accent, accent, "rgba(226,232,240,0)"],
+          boxShadow: [
+            "0 1px 2px rgba(15,23,42,0.08)",
+            "0 1px 2px rgba(15,23,42,0.08)",
+            `0 0 0 5px ${accent}1F, 0 8px 24px ${accent}30`,
+            `0 0 0 12px ${accent}12, 0 12px 32px ${accent}36`,
+            `0 0 0 18px ${accent}00`,
+          ],
+        }}
+        transition={{ duration, repeat: Infinity, delay, ease: "easeInOut", times: [0, 0.1, 0.72, 0.86, 1] }}
+      >
         <User className="h-3.5 w-3.5 lg:h-4 lg:w-4" />
         <div className="absolute -top-1 -right-1 bg-amber-100 text-amber-500 rounded-full p-0.5 shadow-sm border border-amber-200">
            <Lightbulb className="h-2 w-2" />
         </div>
-      </div>
-      <div className="relative rounded-lg border border-slate-200/60 bg-white/95 px-2.5 py-1.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
+      </motion.div>
+      <motion.div
+        className="relative rounded-lg border border-slate-200/60 bg-white/95 px-2.5 py-1.5 shadow-sm backdrop-blur-sm flex items-center gap-2"
+        animate={{
+          y: [0, 0, -1, -3, -8],
+          borderColor: ["rgba(226,232,240,0.6)", "rgba(226,232,240,0.6)", `${accent}55`, `${accent}80`, "rgba(226,232,240,0)"],
+          boxShadow: [
+            "0 1px 2px rgba(15,23,42,0.08)",
+            "0 1px 2px rgba(15,23,42,0.08)",
+            `0 10px 26px ${accent}20`,
+            `0 14px 36px ${accent}28`,
+            `0 0 0 ${accent}00`,
+          ],
+        }}
+        transition={{ duration, repeat: Infinity, delay, ease: "easeInOut", times: [0, 0.1, 0.72, 0.86, 1] }}
+      >
         {/* Chat bubble tail */}
         <div className="absolute top-1/2 -left-1 h-2 w-2 -translate-y-1/2 rotate-45 border-b border-l border-slate-200/60 bg-white/95" />
         <div className="flex items-center gap-1.5 relative z-10 text-[9px] lg:text-[10px] font-bold text-slate-700">
            <Icon className="h-3 w-3 text-blue-500" />
            <span>{title}</span>
         </div>
-      </div>
+        <motion.span
+          className="absolute -right-3 -top-3 rounded-full bg-blue-600 px-1.5 py-0.5 text-[7px] font-black uppercase tracking-wide text-white shadow-lg shadow-blue-500/30"
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: [0, 0, 0, 1, 0], scale: [0.7, 0.7, 0.7, 1, 0.78] }}
+          transition={{ duration, repeat: Infinity, delay, ease: "easeInOut", times: [0, 0.1, 0.72, 0.86, 1] }}
+        >
+          Build
+        </motion.span>
+      </motion.div>
     </motion.div>
   )
 }
 
-function StaticStructuredOutput({ type, title, subtitle, color, delay, duration, index }: any) {
-  const startX = index % 2 === 0 ? -480 : -700;
-  
+function StaticStructuredOutput({
+  type,
+  title,
+  subtitle,
+  sourceTitle,
+  icon: Icon,
+  color,
+  delay,
+  duration,
+  index,
+  compact,
+  phoneTile,
+}: {
+  type: string;
+  title: string;
+  subtitle: string;
+  sourceTitle?: string;
+  icon?: ComponentType<{ className?: string }>;
+  color: string;
+  delay: number;
+  duration: number;
+  index: number;
+  compact?: boolean;
+  /** Fills a grid cell inside the handset — no fixed row height, no scroll */
+  phoneTile?: boolean;
+}) {
+  const startX = compact ? -160 - index * 24 : index % 2 === 0 ? -480 : -700;
+  const accent = getColor(color);
+  const dot = SOLID_COLOR_MAP[color] ?? SOLID_COLOR_MAP.sky;
+
+  if (compact) {
+    const tileHeight = phoneTile ? "h-full min-h-0" : "h-[88px]";
+
+    return (
+      <motion.div
+        className={`relative z-10 w-full shrink-0 origin-center ${phoneTile ? "h-full min-h-0" : ""}`}
+        initial={{ opacity: 0, x: startX, scale: 0.86 }}
+        animate={{
+          opacity: [0, 1, 1, 0],
+          x: [startX, 0, 0, 0],
+          scale: [0.86, 1.02, 1, 0.98],
+        }}
+        transition={{
+          duration,
+          repeat: Infinity,
+          delay,
+          ease: "easeInOut",
+          times: [0, 0.24, 0.9, 1],
+        }}
+      >
+        <motion.div
+          className={`flex w-full flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-sm hover:shadow-md ${tileHeight}`}
+          animate={{
+            borderColor: ["rgba(226,232,240,0.8)", "rgba(226,232,240,0.8)", `${accent}55`, "rgba(226,232,240,0.8)"],
+            boxShadow: [
+              "0 1px 2px rgba(15,23,42,0.06)",
+              `0 12px 28px ${accent}20`,
+              `0 10px 24px ${accent}18`,
+              "0 1px 2px rgba(15,23,42,0.06)",
+            ],
+          }}
+          whileHover={{ y: -2 }}
+          transition={{ duration, repeat: Infinity, delay, ease: "easeInOut", times: [0, 0.24, 0.9, 1] }}
+        >
+          <div className="relative h-[66%] min-h-0 shrink-0 overflow-hidden border-b border-slate-100 bg-slate-50/70">
+            {type === "storefront" && <MiniStorefront color={color} sourceTitle={sourceTitle} />}
+            {type === "admin" && <MiniAdminPanel color={color} sourceTitle={sourceTitle} />}
+            {type === "mobile" && <MiniMobileApp color={color} dense sourceTitle={sourceTitle} />}
+          </div>
+          <div className="flex min-h-0 min-w-0 flex-1 flex-col justify-center gap-0.5 px-2 py-1.5 sm:px-2.5">
+            {sourceTitle && Icon && (
+              <div className="flex min-w-0 items-center gap-1.5 text-[7px] font-black uppercase leading-tight tracking-wide text-slate-400">
+                <Icon className="h-2.5 w-2.5 shrink-0 text-slate-400" />
+                <span className="truncate">{sourceTitle}</span>
+              </div>
+            )}
+            <div className="flex min-w-0 items-center gap-1">
+              <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${dot}`} />
+              <span
+                className={`truncate font-bold leading-tight tracking-tight text-slate-800 ${phoneTile ? "text-[9px]" : "text-[10px]"}`}
+              >
+                {title}
+              </span>
+            </div>
+            <span
+              className={`truncate pl-2.5 font-bold uppercase leading-tight tracking-wide text-slate-500 ${phoneTile ? "text-[7px]" : "text-[7px]"}`}
+            >
+              {subtitle}
+            </span>
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
-      className="flex flex-col w-full h-[136px] xl:h-[160px] origin-center z-10 relative"
+      className="relative z-10 flex h-[136px] w-full origin-center flex-col xl:h-[160px]"
       initial={{ opacity: 0, x: startX, scale: 0.2 }}
-      animate={{ 
-         opacity: [0, 1, 1, 0], 
-         x: [startX, 0, 0, 0], 
-         scale: [0.2, 1, 1, 0.95] 
+      animate={{
+        opacity: [0, 1, 1, 0],
+        x: [startX, 0, 0, 0],
+        scale: [0.2, 1, 1, 0.95],
       }}
-      transition={{ 
-         duration, 
-         repeat: Infinity, 
-         delay, 
-         ease: "easeOut", 
-         times: [0, 0.15, 0.9, 1] 
+      transition={{
+        duration,
+        repeat: Infinity,
+        delay,
+        ease: "easeOut",
+        times: [0, 0.15, 0.9, 1],
       }}
     >
-      <motion.div 
-         className="flex flex-col w-full h-full rounded-xl border border-slate-200/80 bg-white shadow-sm hover:shadow-xl hover:shadow-slate-200/50 backdrop-blur-md overflow-hidden cursor-pointer"
-         whileHover={{ y: -4, scale: 1.02 }}
-         transition={{ duration: 0.2 }}
+      <motion.div
+        className="flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-sm backdrop-blur-md hover:shadow-xl hover:shadow-slate-200/50"
+        whileHover={{ y: -4, scale: 1.02 }}
+        transition={{ duration: 0.2 }}
       >
-        <div className="flex flex-col px-2 py-1.5 border-b border-slate-100/80 bg-slate-50/80 shrink-0">
-        <div className="flex items-center gap-2">
-           <div className={`w-2 h-2 rounded-full ${SOLID_COLOR_MAP[color]}`} />
-           <div className="text-[10px] font-bold text-slate-800 tracking-tight truncate leading-none">{title}</div>
+        <div className="flex shrink-0 flex-col border-b border-slate-100/80 bg-slate-50/80 px-2 py-1.5">
+          <div className="flex items-center gap-2">
+            <div className={`h-2 w-2 rounded-full ${dot}`} />
+            <div className="truncate text-[10px] font-bold leading-none tracking-tight text-slate-800">
+              {title}
+            </div>
+          </div>
+          <div className="mt-1 text-[8px] font-bold uppercase tracking-wider text-slate-500 ml-4">
+            {subtitle}
+          </div>
         </div>
-        <div className="text-[8px] text-slate-500 font-bold uppercase tracking-wider mt-1 ml-4">{subtitle}</div>
-      </div>
-      <div className="flex-1 bg-white relative overflow-hidden">
-        {type === 'storefront' && <MiniStorefront color={color} />}
-        {type === 'admin' && <MiniAdminPanel color={color} />}
-        {type === 'mobile' && <MiniMobileApp color={color} />}
-      </div>
+        <div className="relative flex-1 overflow-hidden bg-white">
+          {type === "storefront" && <MiniStorefront color={color} />}
+          {type === "admin" && <MiniAdminPanel color={color} />}
+          {type === "mobile" && <MiniMobileApp color={color} />}
+        </div>
       </motion.div>
     </motion.div>
-  )
+  );
 }
 
 export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
@@ -545,8 +823,13 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
             transition={{ duration: 0.5 }}
             className="w-full max-w-3xl text-left"
           >
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-200/80 bg-white/85 px-4 py-2 text-sm font-semibold text-sky-700 shadow-sm shadow-sky-100/70 backdrop-blur">
+              <span className="h-2 w-2 rounded-full bg-sky-500 shadow-[0_0_14px_rgba(14,165,233,0.75)]" />
+              Commerce infrastructure for modern marketplaces
+            </div>
+
             <h1
-              className="mb-6 text-balance text-4xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-5xl lg:text-[3.5rem] xl:text-6xl"
+              className="text-balance text-4xl font-bold leading-[1.08] tracking-tight text-[#111827] sm:text-5xl lg:text-[3.45rem] xl:text-6xl"
               data-testid="text-hero-title"
             >
               Choose{" "}
@@ -556,15 +839,19 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
               as your powerful commerce infrastructure platform
             </h1>
 
-            <p className="mb-8 text-lg text-slate-600 sm:text-xl max-w-xl">
-              Launch your own marketplace or SaaS applications in minutes. Kaartx Kloud powers vendors, storefronts, and commerce infrastructure with a scalable ecosystem.
-            </p>
+            <div className="mt-7 max-w-2xl space-y-4 text-lg leading-8 text-slate-600 sm:mt-8 sm:text-xl sm:leading-9">
+              <p>
+                Launch your own marketplace or SaaS applications in minutes. Kaartx Kloud powers vendors, storefronts, and commerce infrastructure with a scalable ecosystem.
+              </p>
+            </div>
 
-            <div className="mb-10 flex flex-col sm:flex-row gap-4">
+          
+
+            <div className="mt-9 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
               <Button
                 onClick={onOpenSignup}
                 size="lg"
-                className="h-14 w-full sm:w-auto min-w-[200px] rounded-xl bg-blue-500 px-8 text-lg font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:bg-blue-600 hover:shadow-blue-500/35"
+                className="h-14 w-full min-w-[200px] rounded-xl bg-blue-500 px-8 text-lg font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:bg-blue-600 hover:shadow-blue-500/35 sm:w-auto"
                 data-testid="button-hero-get-started"
               >
                 Try for Free
@@ -573,7 +860,7 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
                 size="lg"
                 variant="outline"
                 onClick={scrollToBooking}
-                className="h-14 w-full sm:w-auto min-w-[160px] rounded-xl border-blue-200 bg-white px-8 text-lg font-semibold text-blue-600 hover:bg-blue-50"
+                className="h-14 w-full min-w-[160px] rounded-xl border-blue-200 bg-white px-8 text-lg font-semibold text-blue-600 shadow-sm transition-all hover:bg-blue-50 hover:shadow-blue-100/80 sm:w-auto"
                 data-testid="button-hero-whatsapp"
               >
                 Contact us
