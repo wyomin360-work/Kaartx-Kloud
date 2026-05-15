@@ -363,13 +363,14 @@ function MiniMobileApp({ color, dense, sourceTitle }: { color: string; dense?: b
 
   if (dense) {
     return (
-      <div className="flex h-full min-h-0 w-full flex-col overflow-hidden bg-white">
-        <div className="flex h-5 shrink-0 items-center justify-between px-2 text-[6px] font-black text-slate-700">
-          <span>9:41</span>
-          <span className="h-1.5 w-5 rounded-full bg-slate-200" />
+      <div className="relative flex h-full min-h-0 w-full flex-col overflow-hidden bg-white">
+        <IphoneDynamicIsland className="top-1.5 h-[5px] w-[min(42%,2.75rem)] max-w-[2.75rem] rounded-[5px]" />
+        <div className="flex h-[22px] shrink-0 items-end justify-between px-2 pb-0.5 pt-[14px]">
+          <span className="text-[7px] font-semibold tabular-nums tracking-tight text-slate-900">9:41</span>
+          <IphoneStatusCluster className="scale-[0.85] origin-right text-slate-900" />
         </div>
         <div
-          className="mx-1.5 flex h-10 shrink-0 items-end justify-between rounded-lg px-2 pb-2"
+          className="mx-1.5 flex h-10 shrink-0 items-end justify-between rounded-xl px-2 pb-2"
           style={{ background: `linear-gradient(135deg, ${accentHex}30, ${accentHex}0D)` }}
         >
           <div>
@@ -380,16 +381,23 @@ function MiniMobileApp({ color, dense, sourceTitle }: { color: string; dense?: b
         </div>
         <div className="grid min-h-0 flex-1 grid-cols-2 gap-1 p-1.5">
           {[0, 1, 2, 3].map((i) => (
-            <div key={i} className="flex min-h-0 flex-col rounded bg-slate-50 p-1 ring-1 ring-slate-100">
-              <div className="flex-1 rounded-sm" style={{ backgroundColor: `${accentHex}${i === 0 ? "38" : "20"}` }} />
+            <div key={i} className="flex min-h-0 flex-col rounded-lg bg-slate-50 p-1 ring-1 ring-slate-100/90">
+              <div className="flex-1 rounded-md" style={{ backgroundColor: `${accentHex}${i === 0 ? "38" : "20"}` }} />
               <div className="mt-1 h-1 rounded-full bg-slate-200" />
             </div>
           ))}
         </div>
-        <div className="flex h-5 shrink-0 items-center justify-around border-t border-slate-100 px-2">
+        <div className="flex h-5 shrink-0 items-center justify-around border-t border-slate-100/90 bg-white/80 px-2 pb-0.5 backdrop-blur-[2px]">
           {[0, 1, 2].map((i) => (
-            <span key={i} className={`h-1.5 rounded-full ${i === 1 ? "w-5" : "w-1.5"}`} style={{ backgroundColor: i === 1 ? accentHex : "#cbd5e1" }} />
+            <span
+              key={i}
+              className={`h-1.5 rounded-full ${i === 1 ? "w-5" : "w-1.5"}`}
+              style={{ backgroundColor: i === 1 ? accentHex : "#cbd5e1" }}
+            />
           ))}
+        </div>
+        <div className="flex shrink-0 justify-center pb-1 pt-0.5">
+          <div className="h-[3px] w-7 rounded-full bg-slate-900/12" aria-hidden />
         </div>
         <span className="sr-only">{sourceTitle}</span>
       </div>
@@ -397,25 +405,38 @@ function MiniMobileApp({ color, dense, sourceTitle }: { color: string; dense?: b
   }
 
   return (
-    <div className="flex justify-center items-center w-full h-full py-1.5 bg-slate-50/50">
-      <div className="w-16 sm:w-20 h-full bg-white border-[3px] border-slate-800 rounded-xl sm:rounded-[1.25rem] shadow-md flex flex-col overflow-hidden relative">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-1.5 bg-slate-800 rounded-b-md z-10" />
-        <div className={`h-8 sm:h-10 w-full ${accent} opacity-20`} />
-        <div className="flex-1 flex flex-col gap-1.5 p-1.5">
-          <div className="w-full h-8 sm:h-10 rounded-md bg-slate-100 flex items-center justify-center">
-             <div className="w-1/2 h-1.5 bg-slate-200 rounded-full" />
+    <div className="flex h-full w-full items-center justify-center bg-gradient-to-b from-slate-200/40 to-slate-100/50 py-1">
+      <div className="relative flex aspect-[9/19.5] h-full max-h-full w-auto max-w-[5.25rem] flex-col overflow-hidden rounded-[1.45rem] border border-white/30 bg-gradient-to-b from-[#c8c8cc] via-[#7c7c82] to-[#2c2c2e] p-[2px] shadow-[0_12px_28px_rgba(0,0,0,0.28)] ring-1 ring-black/10 sm:max-w-[5.75rem]">
+        <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-[1.3rem] bg-[#0c0c0e] p-[2px]">
+          <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-[1.15rem] bg-white shadow-[inset_0_0_0_1px_rgba(15,23,42,0.04)]">
+            <IphoneDynamicIsland className="top-2 h-[5px] w-[min(40%,3.25rem)] rounded-[5px]" />
+            <div className="flex shrink-0 items-end justify-between px-2 pb-1 pt-[15px]">
+              <span className="text-[8px] font-semibold tabular-nums text-slate-900">9:41</span>
+              <IphoneStatusCluster className="scale-90 origin-right" />
+            </div>
+            <div className={`h-7 w-full shrink-0 ${accent} opacity-[0.22]`} />
+            <div className="flex min-h-0 flex-1 flex-col gap-1.5 p-1.5">
+              <div className="flex h-8 w-full shrink-0 items-center justify-center rounded-lg bg-slate-100">
+                <div className="h-1 w-1/2 max-w-[3rem] rounded-full bg-slate-300" />
+              </div>
+              <div className="flex min-h-0 flex-1 gap-1.5">
+                <div className="w-1/2 min-h-0 rounded-lg bg-slate-100" />
+                <div className="w-1/2 min-h-0 rounded-lg bg-slate-100" />
+              </div>
+            </div>
+            <div className="flex h-4 shrink-0 items-center justify-around border-t border-slate-100/90 px-1 pb-0.5">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="h-1.5 w-1.5 rounded-full bg-slate-300/90" />
+              ))}
+            </div>
+            <div className="flex shrink-0 justify-center pb-1">
+              <div className="mb-0.5 h-[2.5px] w-6 rounded-full bg-slate-900/12" aria-hidden />
+            </div>
           </div>
-          <div className="flex gap-1.5">
-            <div className="w-1/2 h-8 sm:h-10 rounded-md bg-slate-100" />
-            <div className="w-1/2 h-8 sm:h-10 rounded-md bg-slate-100" />
-          </div>
-        </div>
-        <div className="h-4 sm:h-5 border-t border-slate-100 flex justify-around items-center px-1">
-          {[1,2,3,4].map(i => <div key={i} className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-slate-200" />)}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 type CommerceFlowItem = {
@@ -443,6 +464,35 @@ function getColor(name: string) {
   return HEX_MAP[name] || "#3b82f6";
 }
 
+/** Status cluster (cellular bars + battery) — reads like modern iPhone status icons */
+function IphoneStatusCluster({ className }: { className?: string }) {
+  return (
+    <div className={`flex items-center gap-[3px] text-slate-900 ${className ?? ""}`} aria-hidden>
+      <div className="flex items-end gap-px pb-px opacity-90">
+        {[3, 4, 5, 6].map((h) => (
+          <span key={h} className="block w-[1.5px] rounded-[0.5px] bg-current" style={{ height: `${h}px` }} />
+        ))}
+      </div>
+      <div className="relative ml-0.5 flex h-[11px] w-[17px] items-center rounded-[2.5px] border-[1.5px] border-current/50 p-[1px] opacity-90">
+        <span className="block h-full w-[62%] rounded-[1px] bg-emerald-500" />
+      </div>
+    </div>
+  );
+}
+
+/** Dynamic Island – elongated pill like iPhone 15 Pro+ / “17” generation */
+function IphoneDynamicIsland({ className }: { className?: string }) {
+  return (
+    <div
+      className={`pointer-events-none absolute left-1/2 z-30 -translate-x-1/2 rounded-[10px] bg-[#0a0a0a] shadow-[inset_0_1px_1px_rgba(255,255,255,0.14),inset_0_-1px_2px_rgba(0,0,0,0.85),0_6px_16px_rgba(0,0,0,0.35)] ring-1 ring-white/[0.06] ${className ?? ""}`}
+      aria-hidden
+    >
+      <div className="absolute left-[22%] top-1/2 h-[2px] w-[2px] -translate-y-1/2 rounded-full bg-neutral-700/90" />
+      <div className="absolute right-[20%] top-1/2 h-[2px] w-[2px] -translate-y-1/2 rounded-full bg-neutral-800/80" />
+    </div>
+  );
+}
+
 function MultiVendorAnimation() {
   return (
     <div className="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-auto lg:w-[1040px] xl:w-[1160px] lg:h-[650px] xl:h-[700px] flex items-center justify-center pointer-events-none select-none overflow-visible lg:translate-x-[1%] xl:translate-x-[2%]">
@@ -453,68 +503,62 @@ function MultiVendorAnimation() {
           <div className="h-[1px] w-16 bg-slate-300" />
        </div>
 
-       {/* Showcase: wider portrait handset; fixed 2×3 grid — no inner scroll */}
+       {/* Showcase: iPhone Pro–style (titanium bezel, OLED lip, Dynamic Island) */}
        <div className="pointer-events-none absolute inset-y-5 right-0 z-20 hidden lg:flex xl:inset-y-4 xl:right-1 items-center justify-center">
           <div className="aspect-[11.8/19.5] h-[min(682px,calc(100%-1.5rem))] w-auto min-w-[350px] max-h-[94%] shrink-0 xl:min-w-[390px]">
-            <div className="pointer-events-auto relative flex h-full w-full min-h-0 flex-col overflow-hidden rounded-[1.85rem] border-[3px] border-zinc-900 bg-gradient-to-b from-zinc-800 via-zinc-900 to-zinc-950 p-[3px] shadow-[0_24px_55px_rgba(0,0,0,0.28)] ring-1 ring-black/25">
+            <div className="pointer-events-auto relative flex h-full w-full min-h-0 flex-col overflow-hidden rounded-[2.65rem] border border-white/25 bg-gradient-to-b from-[#d6d6da] via-[#8e8e93] to-[#3a3a3c] p-[2.5px] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.45)] ring-1 ring-black/20">
               <div
-                className="pointer-events-none absolute left-0 top-[22%] z-40 h-9 w-[2px] -translate-x-[3px] rounded-l-sm bg-gradient-to-b from-zinc-500 to-zinc-800 shadow-sm"
+                className="pointer-events-none absolute inset-x-4 top-1 z-[5] h-[28%] rounded-t-[2.35rem] bg-gradient-to-b from-white/30 to-transparent"
                 aria-hidden
               />
               <div
-                className="pointer-events-none absolute left-0 top-[32%] z-40 h-14 w-[2px] -translate-x-[3px] rounded-l-sm bg-gradient-to-b from-zinc-500 to-zinc-800 shadow-sm"
+                className="pointer-events-none absolute left-0 top-[20%] z-40 h-10 w-[2.5px] -translate-x-[2.5px] rounded-l-md bg-gradient-to-b from-neutral-400 via-neutral-600 to-neutral-800 shadow-[1px_0_1px_rgba(255,255,255,0.25)]"
                 aria-hidden
               />
               <div
-                className="pointer-events-none absolute right-0 top-[26%] z-40 h-16 w-[2px] translate-x-[3px] rounded-r-sm bg-gradient-to-b from-zinc-500 to-zinc-800 shadow-sm"
+                className="pointer-events-none absolute left-0 top-[30%] z-40 h-16 w-[2.5px] -translate-x-[2.5px] rounded-l-md bg-gradient-to-b from-neutral-400 via-neutral-600 to-neutral-800 shadow-[1px_0_1px_rgba(255,255,255,0.2)]"
                 aria-hidden
               />
               <div
-                className="pointer-events-none absolute left-1/2 top-[5px] z-30 h-[6px] w-[min(34%,4.25rem)] -translate-x-1/2 rounded-full bg-black shadow-[inset_0_1px_2px_rgba(255,255,255,0.12)]"
+                className="pointer-events-none absolute right-0 top-[24%] z-40 h-[4.5rem] w-[2.5px] translate-x-[2.5px] rounded-r-md bg-gradient-to-b from-neutral-500 via-neutral-700 to-neutral-900 shadow-[-1px_0_1px_rgba(255,255,255,0.15)]"
                 aria-hidden
               />
-              <div className="mx-[3px] mb-[3px] mt-[12px] flex min-h-0 flex-1 flex-col overflow-hidden rounded-[1.45rem] bg-white shadow-[inset_0_0_0_1px_rgba(15,23,42,0.04)]">
-                <div className="flex shrink-0 items-center justify-between border-b border-slate-100 bg-white px-2.5 py-1.5">
-                  <span className="text-[10px] font-semibold tabular-nums text-slate-900">9:41</span>
-                  <div className="flex items-center gap-1 text-slate-800" aria-hidden>
-                    <div className="flex items-end gap-px pb-px">
-                      {[3, 4, 5, 6].map((h) => (
-                        <span key={h} className="block w-px rounded-sm bg-current" style={{ height: `${h}px` }} />
+              <div className="relative mx-[2px] mb-[2px] mt-[2px] flex min-h-0 flex-1 flex-col overflow-hidden rounded-[2.45rem] bg-[#09090b] p-[2px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]">
+                <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-[2.3rem] bg-white shadow-[inset_0_0_0_1px_rgba(15,23,42,0.04)]">
+                  <IphoneDynamicIsland className="top-3 h-[7px] w-[min(36%,5.75rem)] rounded-[7px]" />
+                  <div className="flex shrink-0 items-end justify-between border-b border-slate-100/90 bg-white px-3 pb-1.5 pt-[22px]">
+                    <span className="text-[11px] font-semibold tabular-nums tracking-tight text-slate-900">9:41</span>
+                    <IphoneStatusCluster />
+                  </div>
+                  <div className="flex shrink-0 items-center gap-2 border-b border-slate-200/90 bg-slate-50/95 px-3 py-2.5 backdrop-blur-sm">
+                    <div className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.65)]" />
+                    <p className="min-w-0 flex-1 text-[9px] font-black uppercase leading-snug tracking-[0.12em] text-slate-700">
+                      Ideas converted to apps
+                    </p>
+                  </div>
+                  <div className="flex min-h-0 flex-1 flex-col overflow-hidden bg-gradient-to-b from-slate-50/95 to-white px-3 py-3">
+                    <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-3 gap-2">
+                      {COMMERCE_FLOW_ITEMS.map((p, i) => (
+                        <StaticStructuredOutput
+                          key={`out-${i}`}
+                          type={p.type}
+                          title={p.outputTitle}
+                          subtitle={p.subtitle}
+                          sourceTitle={p.inputTitle}
+                          icon={p.icon}
+                          color={p.color}
+                          delay={p.delay}
+                          duration={p.duration}
+                          index={i}
+                          compact
+                          phoneTile
+                        />
                       ))}
                     </div>
-                    <div className="ml-0.5 flex h-2.5 w-3.5 items-center rounded-[3px] border border-current/45 p-px">
-                      <span className="block h-full w-[55%] rounded-[1px] bg-emerald-500" />
-                    </div>
                   </div>
-                </div>
-                <div className="flex shrink-0 items-center gap-2 border-b border-slate-200/90 bg-slate-50/95 px-3 py-2.5 backdrop-blur-sm">
-                  <div className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.65)]" />
-                  <p className="min-w-0 flex-1 text-[9px] font-black uppercase leading-snug tracking-[0.12em] text-slate-700">
-                    Ideas converted to apps
-                  </p>
-                </div>
-                <div className="flex min-h-0 flex-1 flex-col overflow-hidden bg-gradient-to-b from-slate-50/95 to-white px-3 py-3">
-                  <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-3 gap-2">
-                    {COMMERCE_FLOW_ITEMS.map((p, i) => (
-                      <StaticStructuredOutput
-                        key={`out-${i}`}
-                        type={p.type}
-                        title={p.outputTitle}
-                        subtitle={p.subtitle}
-                        sourceTitle={p.inputTitle}
-                        icon={p.icon}
-                        color={p.color}
-                        delay={p.delay}
-                        duration={p.duration}
-                        index={i}
-                        compact
-                        phoneTile
-                      />
-                    ))}
+                  <div className="flex shrink-0 justify-center bg-white px-2 pb-2 pt-1">
+                    <div className="h-[3.5px] w-[5.5rem] rounded-full bg-slate-900/12" aria-hidden />
                   </div>
-                </div>
-                <div className="flex shrink-0 justify-center bg-white px-2 pb-2 pt-1">
-                  <div className="h-1 w-[4.25rem] rounded-full bg-slate-900/15" aria-hidden />
                 </div>
               </div>
             </div>
