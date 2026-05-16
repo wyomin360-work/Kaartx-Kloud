@@ -93,8 +93,12 @@ export default function Home() {
 
         <Navbar onOpenSignup={() => handleOpenSignup()} />
         <div className="flex flex-col gap-5">
-          <Hero onOpenSignup={() => handleOpenSignup()} />
-          <StatsBar />
+          <div className="relative">
+            <Hero onOpenSignup={() => handleOpenSignup()} />
+            <div className="sticky bottom-0 z-40 w-full shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+              <StatsBar />
+            </div>
+          </div>
           <FeatureGrid />
           <HowItWorks />
           <DeepFeatures />

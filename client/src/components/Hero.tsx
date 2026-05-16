@@ -455,7 +455,7 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
         {/* DESKTOP TOP TITLE (Line 1) */}
         <div className="hidden lg:block w-full mb-2 relative z-20">
            <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-4xl md:text-5xl lg:leading-[1.1]">
-             Build and Scale Your Own
+             Launch Your Own Multi‑Vendor Commerce Platform 
            </h1>
         </div>
 
@@ -472,14 +472,13 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
              {/* DESKTOP TITLE PART 2 */}
              <div className="mb-8 hidden lg:block w-full">
                 <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-4xl md:text-5xl lg:leading-[1.1]">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Commerce<br />Ecosystem.</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">in Days<br />Not Months.</span>
                 </h1>
              </div>
 
             <div className="flex w-full flex-col">
               <p className="max-w-md text-lg leading-relaxed  pt-10 text-slate-900 sm:text-xl lg:pl-2">
-                Launch branded marketplaces, seller platforms, mobile commerce apps, and multi-vendor operations from one powerful infrastructure platform.
-              </p>
+We help businesses create fully branded e‑commerce ecosystems with their own domain, admin panel, seller dashboards, customer apps, and scalable infrastructure — all powered by a single multi‑tenant platform.              </p>
 
               <div className="mt-10 flex w-full flex-col gap-4 sm:flex-row lg:pl-2">
                 <Button
