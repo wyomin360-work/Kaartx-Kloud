@@ -122,7 +122,7 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
         }`}
         style={{ transform: 'translate3d(0,0,0)' }}
       >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1400px]">
         <div className="flex h-16 items-center justify-between gap-4">
           <div className="flex-shrink-0">
             <button

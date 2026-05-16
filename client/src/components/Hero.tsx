@@ -1,819 +1,431 @@
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import { 
-  Star,
-  Monitor, Shirt, ShoppingCart, Gamepad2, 
-  Globe, Building2,
-  Cloud, Cpu, Zap, Database, Truck, Code, Boxes,
-  Coffee, Heart, BookOpen, Wrench, Store, LayoutDashboard,
-  User, Lightbulb
+  Lightbulb, Cloud, Store, LayoutDashboard, 
+  BarChart3, Smartphone, ShieldCheck, ChevronDown,
+  Users, ShoppingCart, Settings, RotateCcw,
+  ShoppingBag, Download, Package, Activity, MonitorSmartphone, LayoutGrid
 } from "lucide-react";
-import { motion } from "framer-motion";
-import { useMemo, type ComponentType, type ReactNode } from "react";
 import { Button } from "./ui/button";
-import { FaApple, FaGooglePlay } from "react-icons/fa";
 
-import hero203511 from "@heroimages/Screenshot from 2026-04-29 20-35-11.png";
-import hero203531 from "@heroimages/Screenshot from 2026-04-29 20-35-31.png";
-import hero203548 from "@heroimages/Screenshot from 2026-04-29 20-35-48.png";
-import hero203601 from "@heroimages/Screenshot from 2026-04-29 20-36-01.png";
-import hero203631 from "@heroimages/Screenshot from 2026-04-29 20-36-31.png";
 
-/** All screenshots in repo root `heroimages/` (bundled URLs). */
-export const HERO_SCREENSHOTS = [
-  hero203511,
-  hero203531,
-  hero203548,
-  hero203601,
-  hero203631,
-] as const;
 
-/** Three-window hero: catalog / storefront / checkout. */
-const STACK_LEFT = {
-  src: hero203631,
-  urlHint: "kaartx — catalog",
-  alt: "Kaartx categories",
-};
-const STACK_CENTER = {
-  src: hero203511,
-  urlHint: "kaartx kloud — storefront",
-  alt: "Kaartx storefront",
-};
-const STACK_RIGHT = {
-  src: hero203548,
-  urlHint: "kaartx — checkout",
-  alt: "Kaartx cart",
-};
 
-/** Center / mobile: full screenshot strip height. */
-const HERO_IMAGE_FRAME =
-  "relative h-[200px] w-full overflow-hidden bg-white rounded-xl border border-black/10 sm:h-[300px] md:h-[340px] lg:h-[360px]";
+// --- MAIN ECOSYSTEM GENERATOR ---
+function LiveEcosystemGenerator() {
+  const [activeIdea, setActiveIdea] = useState<number | null>(null);
+  const [activeTheme, setActiveTheme] = useState<number>(0);
+  const [pulseKey, setPulseKey] = useState<number>(0);
 
-/** Side panels: ~20% shorter image area than center; row uses items-center so they align to the middle card. */
-const HERO_SIDE_IMAGE_FRAME =
-  "relative h-[160px] w-full overflow-hidden bg-white rounded-xl border border-black/10 sm:h-[240px] md:h-[272px] lg:h-[288px]";
+  useEffect(() => {
+    let timeouts: NodeJS.Timeout[] = [];
+    const runSequence = () => {
+      setActiveTheme(0);
+      setActiveIdea(null);
+      
+      // Idea 1: Pharmacy
+      timeouts.push(setTimeout(() => setActiveIdea(0), 500));
+      timeouts.push(setTimeout(() => { setActiveIdea(null); setActiveTheme(1); setPulseKey(Date.now()); }, 3000));
 
-const HERO_DOT_CLOUD_COUNT = 96;
+      // Idea 2: Food Delivery
+      timeouts.push(setTimeout(() => setActiveIdea(1), 5500));
+      timeouts.push(setTimeout(() => { setActiveIdea(null); setActiveTheme(2); setPulseKey(Date.now()+1); }, 8000));
 
-/** Dots drift from a loose field into soft “cloud” puffs (Kloud), hold, then scatter again. */
-function HeroDotCloudBackdrop() {
-  const dots = useMemo(
-    () =>
-      Array.from({ length: HERO_DOT_CLOUD_COUNT }, (_, i) => {
-        const scatterL = ((i * 37 + (i * i) % 17) % 880) / 10 + 3;
-        const scatterT = ((i * 59 + (i * 23) % 19) % 820) / 10 + 5;
-        const hubs = [
-          { lx: 36, ty: 46 },
-          { lx: 48, ty: 42 },
-          { lx: 58, ty: 48 },
-          { lx: 46, ty: 56 },
-        ] as const;
-        const hub = hubs[i % 4];
-        const cloudL = Math.min(93, Math.max(7, hub.lx + Math.sin(i * 0.52) * 18));
-        const cloudT = Math.min(90, Math.max(10, hub.ty + Math.cos(i * 0.44) * 14 + (i % 4) * 2.5));
-        return {
-          scatterL,
-          scatterT,
-          cloudL,
-          cloudT,
-          duration: 14 + (i % 9) * 0.35,
-          delay: (i % 18) * 0.08,
-          sizePx: 2 + (i % 3),
-        };
-      }),
-    [],
-  );
+      // Idea 3: B2B Wholesale
+      timeouts.push(setTimeout(() => setActiveIdea(2), 10500));
+      timeouts.push(setTimeout(() => { setActiveIdea(null); setActiveTheme(3); setPulseKey(Date.now()+2); }, 13000));
+
+      // Idea 4: Fashion
+      timeouts.push(setTimeout(() => setActiveIdea(3), 15500));
+      timeouts.push(setTimeout(() => { setActiveIdea(null); setActiveTheme(4); setPulseKey(Date.now()+3); }, 18000));
+
+      // Idea 5: Digital
+      timeouts.push(setTimeout(() => setActiveIdea(4), 20500));
+      timeouts.push(setTimeout(() => { setActiveIdea(null); setActiveTheme(5); setPulseKey(Date.now()+4); }, 23000));
+    };
+
+    runSequence();
+    const interval = setInterval(runSequence, 26000);
+
+    return () => {
+      clearInterval(interval);
+      timeouts.forEach(clearTimeout);
+    };
+  }, []);
+
+  const ideas = [
+    { title: "Pharmacy Ecommerce", desc: "Healthcare Platform", icon: ShieldCheck, color: "text-emerald-600 bg-emerald-100", border: "border-emerald-200", shadow: "shadow-emerald-500/30", startY: -100 },
+    { title: "Food Delivery", desc: "Logistics App", icon: Smartphone, color: "text-orange-600 bg-orange-100", border: "border-orange-200", shadow: "shadow-orange-500/30", startY: 0 },
+    { title: "B2B Wholesale", desc: "Global Marketplace", icon: Store, color: "text-blue-600 bg-blue-100", border: "border-blue-200", shadow: "shadow-blue-500/30", startY: 100 },
+    { title: "Fashion Retail", desc: "Clothing Brand", icon: ShoppingBag, color: "text-rose-600 bg-rose-100", border: "border-rose-200", shadow: "shadow-rose-500/30", startY: -50 },
+    { title: "Digital Products", desc: "Software Sales", icon: Download, color: "text-purple-600 bg-purple-100", border: "border-purple-200", shadow: "shadow-purple-500/30", startY: 50 },
+  ];
+
+  const themes = [
+    { // 0: Default
+      border: "rgba(226, 232, 240, 0.8)",
+      shadow: "0px 40px 80px -20px rgba(0,0,0,0.15)",
+      pulse: "bg-slate-400",
+      accent: "bg-slate-800",
+      accentText: "text-slate-800",
+      title: "Kaartx Infrastructure",
+      sidebarBg: "bg-slate-50/50",
+      metrics: ["$0.00", "0", "$0.00"],
+      chart: "from-slate-50 to-slate-100",
+      mobileLayout: "standard",
+      mobileTitle: "App Preview",
+      transactions: [
+        { id: "#TRX-001", store: "Pharmacy Station", amount: "$1,299", status: "Completed", color: "text-emerald-700 bg-emerald-50 ring-emerald-200" },
+        { id: "#TRX-002", store: "Fresh Foods Inc", amount: "$145", status: "Processing", color: "text-blue-700 bg-blue-50 ring-blue-200" },
+        { id: "#TRX-003", store: "Global Meds", amount: "$320", status: "Completed", color: "text-emerald-700 bg-emerald-50 ring-emerald-200" },
+        { id: "#TRX-004", store: "Urban Grocers", amount: "$89", status: "Pending", color: "text-amber-700 bg-amber-50 ring-amber-200" },
+      ]
+    },
+    { // 1: Pharmacy
+      border: "rgba(16, 185, 129, 0.6)",
+      shadow: "0px 20px 80px -10px rgba(16, 185, 129, 0.25)",
+      pulse: "bg-emerald-500",
+      accent: "bg-emerald-600",
+      accentText: "text-emerald-700",
+      title: "PharmaCare Operations",
+      sidebarBg: "bg-emerald-50/30",
+      metrics: ["$244.5K", "1,840", "$45.20"],
+      chart: "from-emerald-50 to-teal-50",
+      mobileLayout: "grid",
+      mobileTitle: "Patient Portal",
+      transactions: [
+        { id: "#RX-8921", store: "Dr. Smith Clinic", amount: "$450", status: "Dispensed", color: "text-emerald-700 bg-emerald-50 ring-emerald-200" },
+        { id: "#RX-8922", store: "City Hospital", amount: "$1,200", status: "Processing", color: "text-teal-700 bg-teal-50 ring-teal-200" },
+        { id: "#RX-8923", store: "Walk-in Patient", amount: "$45", status: "Completed", color: "text-emerald-700 bg-emerald-50 ring-emerald-200" },
+        { id: "#RX-8924", store: "Care Center", amount: "$890", status: "Pending", color: "text-amber-700 bg-amber-50 ring-amber-200" },
+      ]
+    },
+    { // 2: Food Delivery
+      border: "rgba(249, 115, 22, 0.6)",
+      shadow: "0px 20px 80px -10px rgba(249, 115, 22, 0.25)",
+      pulse: "bg-orange-500",
+      accent: "bg-orange-600",
+      accentText: "text-orange-700",
+      title: "CraveDelivery Fleet",
+      sidebarBg: "bg-orange-50/30",
+      metrics: ["$89.2K", "4,200", "$21.50"],
+      chart: "from-orange-50 to-amber-50",
+      mobileLayout: "standard",
+      mobileTitle: "Rider App",
+      transactions: [
+        { id: "#ORD-401", store: "Burger Joint", amount: "$24.50", status: "Delivered", color: "text-orange-700 bg-orange-50 ring-orange-200" },
+        { id: "#ORD-402", store: "Sushi Express", amount: "$89.00", status: "On Route", color: "text-amber-700 bg-amber-50 ring-amber-200" },
+        { id: "#ORD-403", store: "Pizza Hut", amount: "$45.20", status: "Cooking", color: "text-blue-700 bg-blue-50 ring-blue-200" },
+        { id: "#ORD-404", store: "Taco Stand", amount: "$15.00", status: "Pending", color: "text-slate-700 bg-slate-50 ring-slate-200" },
+      ]
+    },
+    { // 3: B2B Wholesale
+      border: "rgba(59, 130, 246, 0.6)",
+      shadow: "0px 20px 80px -10px rgba(59, 130, 246, 0.25)",
+      pulse: "bg-blue-500",
+      accent: "bg-blue-600",
+      accentText: "text-blue-700",
+      title: "GlobalB2B Network",
+      sidebarBg: "bg-blue-50/30",
+      metrics: ["$1.2M", "340", "$3,500"],
+      chart: "from-blue-50 to-indigo-50",
+      mobileLayout: "list",
+      mobileTitle: "Vendor Terminal",
+      transactions: [
+        { id: "#INV-9001", store: "TechCorp Inc", amount: "$12,400", status: "Paid", color: "text-blue-700 bg-blue-50 ring-blue-200" },
+        { id: "#INV-9002", store: "MegaRetailers", amount: "$45,000", status: "Net 30", color: "text-indigo-700 bg-indigo-50 ring-indigo-200" },
+        { id: "#INV-9003", store: "Global Supply", amount: "$8,900", status: "Paid", color: "text-blue-700 bg-blue-50 ring-blue-200" },
+        { id: "#INV-9004", store: "Local Dist", amount: "$3,200", status: "Overdue", color: "text-red-700 bg-red-50 ring-red-200" },
+      ]
+    },
+    { // 4: Fashion Retail
+      border: "rgba(244, 63, 94, 0.6)",
+      shadow: "0px 20px 80px -10px rgba(244, 63, 94, 0.25)",
+      pulse: "bg-rose-500",
+      accent: "bg-rose-600",
+      accentText: "text-rose-700",
+      title: "StyleHouse Boutique",
+      sidebarBg: "bg-rose-50/30",
+      metrics: ["$125K", "8,900", "$145.00"],
+      chart: "from-rose-50 to-pink-50",
+      mobileLayout: "grid",
+      mobileTitle: "Storefront UI",
+      transactions: [
+        { id: "#ORD-881", store: "Summer Collection", amount: "$240", status: "Shipped", color: "text-rose-700 bg-rose-50 ring-rose-200" },
+        { id: "#ORD-882", store: "Accessories", amount: "$45", status: "Processing", color: "text-pink-700 bg-pink-50 ring-pink-200" },
+        { id: "#ORD-883", store: "Winter Coats", amount: "$590", status: "Delivered", color: "text-rose-700 bg-rose-50 ring-rose-200" },
+        { id: "#ORD-884", store: "Footwear", amount: "$120", status: "Pending", color: "text-amber-700 bg-amber-50 ring-amber-200" },
+      ]
+    },
+    { // 5: Digital Products
+      border: "rgba(168, 85, 247, 0.6)",
+      shadow: "0px 20px 80px -10px rgba(168, 85, 247, 0.25)",
+      pulse: "bg-purple-500",
+      accent: "bg-purple-600",
+      accentText: "text-purple-700",
+      title: "CloudSoft Downloads",
+      sidebarBg: "bg-purple-50/30",
+      metrics: ["$450K", "12,400", "$89.99"],
+      chart: "from-purple-50 to-fuchsia-50",
+      mobileLayout: "list",
+      mobileTitle: "Customer Portal",
+      transactions: [
+        { id: "#DL-001", store: "Pro License", amount: "$299", status: "Active", color: "text-purple-700 bg-purple-50 ring-purple-200" },
+        { id: "#DL-002", store: "Cloud Storage", amount: "$15/mo", status: "Subscribed", color: "text-fuchsia-700 bg-fuchsia-50 ring-fuchsia-200" },
+        { id: "#DL-003", store: "Design Assets", amount: "$49", status: "Downloaded", color: "text-purple-700 bg-purple-50 ring-purple-200" },
+        { id: "#DL-004", store: "API Access", amount: "$890", status: "Renewing", color: "text-blue-700 bg-blue-50 ring-blue-200" },
+      ]
+    }
+  ];
+
+  const activeT = themes[activeTheme];
 
   return (
-    <div
-      className="pointer-events-none absolute inset-0 z-[1] overflow-hidden"
-      aria-hidden
-    >
-      {dots.map((d, i) => (
-        <motion.span
-          key={i}
-          className="absolute rounded-full bg-sky-500/[0.42] shadow-[0_0_6px_rgba(14,165,233,0.25)]"
-          style={{
-            width: d.sizePx,
-            height: d.sizePx,
-            left: `${d.scatterL}%`,
-            top: `${d.scatterT}%`,
-          }}
-          animate={{
-            left: [`${d.scatterL}%`, `${d.cloudL}%`, `${d.cloudL}%`, `${d.scatterL}%`],
-            top: [`${d.scatterT}%`, `${d.cloudT}%`, `${d.cloudT}%`, `${d.scatterT}%`],
-            scale: [1, 1.35, 1.2, 1],
-            opacity: [0.22, 0.55, 0.5, 0.22],
-          }}
-          transition={{
-            duration: d.duration,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: d.delay,
-            times: [0, 0.32, 0.52, 1],
-          }}
-        />
-      ))}
-    </div>
-  );
-}
+    <div className="relative mx-auto flex h-[650px] w-full items-center justify-center pt-4 perspective-[1000px]">
+      
+      {/* Background Soft Grid */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2YxZjVmOSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)]" />
 
-function StarRow() {
-  return (
-    <div className="flex gap-0.5">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Star
-          key={i}
-          className="h-4 w-4 fill-amber-400 text-amber-400 sm:h-[1.125rem] sm:w-[1.125rem]"
-          strokeWidth={0}
-        />
-      ))}
-    </div>
-  );
-}
-
-function TrustBadge({
-  logo,
-  score,
-  label,
-}: {
-  logo: ReactNode;
-  score: string;
-  label: string;
-}) {
-  return (
-    <div className="flex flex-row items-center gap-3">
-      <div className="flex shrink-0 items-center justify-center">
-        {logo}
-      </div>
-      <div className="flex flex-col justify-center gap-0.5">
-        <StarRow />
-        <span className="text-left text-sm font-medium text-slate-600">
-          {score} on {label}
-        </span>
-      </div>
-    </div>
-  );
-}
-
-/** Large “Kloud” filled with a tight dot halftone (reads as many dots forming the word). */
-function KloudDotWordmark() {
-  const dotGridStyle = {
-    backgroundImage:
-      "radial-gradient(circle at 50% 50%, rgb(14 165 233) 1.35px, transparent 1.4px), radial-gradient(circle at 50% 50%, rgb(56 189 248) 0.85px, transparent 0.9px)",
-    backgroundSize: "5px 5px, 3px 3px",
-    backgroundPosition: "0 0, 2.5px 2.5px",
-    WebkitBackgroundClip: "text" as const,
-    backgroundClip: "text" as const,
-  };
-
-  return (
-    <motion.div
-      className="relative mx-auto w-full max-w-[min(100%,28rem)] shrink-0 px-2 text-center md:mx-0 md:max-w-none md:text-left"
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.55, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <span
-        className="font-display pointer-events-none absolute left-1/2 top-1/2 block -translate-x-1/2 -translate-y-1/2 whitespace-nowrap text-[clamp(3rem,14vw,7.5rem)] font-black leading-none tracking-tighter text-sky-400/30 blur-md md:left-0 md:translate-x-0"
-        aria-hidden
-      >
-        Kloud
-      </span>
-      <span
-        className="font-display relative block whitespace-nowrap text-[clamp(3rem,14vw,7.5rem)] font-black leading-none tracking-tighter text-transparent"
-        style={dotGridStyle}
-        data-testid="text-kloud-wordmark"
-      >
-        Kloud
-      </span>
-      {/* Extra floating specks around the word for a denser “cloud of dots” feel */}
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-visible" aria-hidden>
-        {[
-          [12, 8, 0.35],
-          [88, 18, 0.28],
-          [6, 72, 0.32],
-          [94, 65, 0.25],
-          [48, 4, 0.3],
-          [52, 96, 0.28],
-        ].map(([lx, ty, op], i) => (
-          <motion.span
-            key={i}
-            className="absolute h-1 w-1 rounded-full bg-sky-500"
-            style={{
-              left: `${lx}%`,
-              top: `${ty}%`,
-              opacity: op,
+      {/* Entering Idea */}
+      <AnimatePresence>
+        {activeIdea !== null && (
+          <motion.div
+            key={activeIdea}
+            initial={{ x: -750, y: ideas[activeIdea].startY, opacity: 0, scale: 0.8, rotate: -15 }}
+            animate={{ 
+              x: [-750, -300, 0, 0], 
+              y: [ideas[activeIdea].startY, ideas[activeIdea].startY * 0.5, 0, 0], 
+              opacity: [0, 1, 1, 0], 
+              scale: [0.8, 1, 1.2, 0.2], 
+              rotate: [-15, 5, 0, 0] 
             }}
-            animate={{ scale: [1, 1.6, 1], opacity: [op, op + 0.25, op] }}
-            transition={{
-              duration: 3.2 + i * 0.2,
-              repeat: Infinity,
+            transition={{ 
+              duration: 2.5, 
+              times: [0, 0.3, 0.8, 1],
               ease: "easeInOut",
-              delay: i * 0.25,
             }}
-          />
-        ))}
-      </div>
-    </motion.div>
-  );
-}
+            className={`absolute left-1/2 top-1/2 z-50 flex items-center gap-3 rounded-xl border bg-white/95 p-2.5 shadow-2xl backdrop-blur-md ${ideas[activeIdea].border}`}
+            style={{ marginLeft: '-70px', marginTop: '-30px' }}
+          >
+            {(() => {
+               const Icon = ideas[activeIdea].icon;
+               return (
+                 <div className={`flex h-10 w-10 items-center justify-center rounded-lg shadow-lg ${ideas[activeIdea].color} ${ideas[activeIdea].shadow}`}>
+                   <Icon className="h-5 w-5" />
+                 </div>
+               );
+            })()}
+            <div className="pr-2">
+              <div className="whitespace-nowrap text-[13px] font-bold text-slate-800">{ideas[activeIdea].title}</div>
+              <div className="whitespace-nowrap text-[11px] text-slate-500">{ideas[activeIdea].desc}</div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-function StackWindow({
-  src,
-  alt,
-  objectPosition = "object-center",
-  imageAreaClassName,
-  imageObjectFit = "contain",
-}: {
-  src: string;
-  alt: string;
-  objectPosition?: string;
-  /** When set, replaces default aspect/min-height mobile frame (e.g. desktop triptych). */
-  imageAreaClassName?: string;
-  /** All images use cover to fill the view completely. */
-  imageObjectFit?: "contain" | "cover";
-}) {
-  const frameClass =
-    imageAreaClassName ??
-    "relative aspect-[16/11] w-full min-h-[220px] overflow-hidden bg-white sm:min-h-[260px] md:min-h-[280px]";
-
-  const objectFitClass = imageObjectFit === "cover" ? "object-cover" : "object-contain";
-
-  return (
-    <div className={frameClass}>
-      <img
-        src={src}
-        alt={alt}
-        className={`absolute inset-0 h-full w-full ${objectFitClass} ${objectPosition}`}
-        loading="lazy"
-        decoding="async"
-      />
-    </div>
-  );
-}
-
-const HEX_MAP: Record<string, string> = {
-  indigo: "#4f46e5",
-  violet: "#7c3aed",
-  emerald: "#10b981",
-  sky: "#0ea5e9",
-  blue: "#3b82f6",
-  teal: "#14b8a6",
-  purple: "#9333ea",
-  rose: "#f43f5e",
-};
-
-const SOLID_COLOR_MAP: Record<string, string> = {
-  indigo: "bg-indigo-500",
-  violet: "bg-violet-500",
-  emerald: "bg-emerald-500",
-  sky: "bg-sky-500",
-  blue: "bg-blue-500",
-  teal: "bg-teal-500",
-  purple: "bg-purple-500",
-  rose: "bg-rose-500",
-};
-
-function MiniStorefront({ color, sourceTitle }: { color: string; sourceTitle?: string }) {
-  const accent = getColor(color);
-
-  return (
-    <div className="flex h-full w-full flex-col overflow-hidden bg-white">
-      <div className="flex h-5 shrink-0 items-center gap-1 border-b border-slate-100 bg-white px-1.5">
-        <span className="h-1.5 w-1.5 rounded-full bg-rose-300" />
-        <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
-        <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
-        <div className="ml-1 h-1.5 flex-1 rounded-full bg-slate-100" />
-      </div>
-      <div
-        className="relative flex h-12 shrink-0 flex-col justify-center overflow-hidden px-2"
-        style={{ background: `linear-gradient(135deg, ${accent}24, ${accent}08 58%, #ffffff)` }}
+      {/* Central Application Window */}
+      <motion.div 
+        layout
+        animate={{
+          boxShadow: activeT.shadow,
+          borderColor: activeT.border
+        }}
+        transition={{ duration: 0.8 }}
+        className="relative z-20 flex h-[540px] w-full max-w-[1050px] overflow-hidden rounded-[24px] bg-white"
+        style={{ borderWidth: "2px" }}
       >
-        <div className="h-1.5 w-16 max-w-[70%] rounded-full" style={{ backgroundColor: `${accent}80` }} />
-        <div className="mt-1 h-1 w-10 rounded-full bg-white/80" />
-        <div className="absolute right-2 top-2 grid h-8 w-8 grid-cols-2 gap-0.5">
-          {[0, 1, 2, 3].map((i) => (
-            <span key={i} className="rounded-sm bg-white/75 shadow-sm" />
-          ))}
-        </div>
-      </div>
-      <div className="grid min-h-0 flex-1 grid-cols-3 gap-1 p-1.5">
-        {[0, 1, 2].map((i) => (
-          <div key={i} className="flex min-h-0 flex-col overflow-hidden rounded bg-slate-50 ring-1 ring-slate-100">
-            <div className="flex-1" style={{ background: `linear-gradient(145deg, ${accent}${i === 1 ? "30" : "1F"}, #f8fafc)` }} />
-            <div className="space-y-0.5 p-1">
-              <div className="h-1 rounded-full bg-slate-200" />
-              <div className="h-1 w-2/3 rounded-full bg-slate-100" />
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="flex h-4 shrink-0 items-center justify-between border-t border-slate-100 px-2">
-        <span className="truncate text-[6px] font-black uppercase tracking-wide text-slate-400">{sourceTitle ?? "Store"}</span>
-        <span className="h-1.5 w-5 rounded-full" style={{ backgroundColor: accent }} />
-      </div>
-    </div>
-  )
-}
-
-function MiniAdminPanel({ color, sourceTitle }: { color: string; sourceTitle?: string }) {
-  const accent = getColor(color);
-
-  return (
-    <div className="flex h-full w-full overflow-hidden bg-slate-50">
-      <div className="flex w-[22%] shrink-0 flex-col gap-1 border-r border-slate-200/70 bg-white p-1">
-        <div className="mb-1 h-2 rounded-sm" style={{ backgroundColor: accent }} />
-        {[0, 1, 2, 3].map((i) => (
-          <div key={i} className="h-1.5 rounded-sm bg-slate-100" />
-        ))}
-      </div>
-      <div className="flex min-w-0 flex-1 flex-col gap-1 p-1.5">
-        <div className="flex h-5 shrink-0 items-center justify-between rounded bg-white px-1.5 shadow-sm ring-1 ring-slate-100">
-          <div className="h-1.5 w-12 max-w-[55%] rounded-full bg-slate-200" />
-          <div className="h-3 w-3 rounded-full" style={{ backgroundColor: `${accent}26` }} />
-        </div>
-        <div className="grid h-9 shrink-0 grid-cols-3 gap-1">
-          {[58, 74, 42].map((h, i) => (
-            <div key={i} className="flex items-end rounded bg-white p-1 shadow-sm ring-1 ring-slate-100">
-              <div className="w-full rounded-sm" style={{ height: `${h}%`, backgroundColor: `${accent}${i === 1 ? "8A" : "55"}` }} />
-            </div>
-          ))}
-        </div>
-        <div className="flex min-h-0 flex-1 flex-col gap-0.5 rounded bg-white p-1 shadow-sm ring-1 ring-slate-100">
-          <div className="mb-0.5 flex items-center justify-between">
-            <span className="h-1.5 w-8 rounded-full bg-slate-200" />
-            <span className="h-1.5 w-3 rounded-full" style={{ backgroundColor: `${accent}70` }} />
-          </div>
-          {[0, 1, 2].map((i) => (
-            <div key={i} className="grid grid-cols-[1fr_0.7fr_0.45fr] gap-1">
-              <span className="h-1 rounded-full bg-slate-100" />
-              <span className="h-1 rounded-full bg-slate-100" />
-              <span className="h-1 rounded-full" style={{ backgroundColor: `${accent}${i === 0 ? "55" : "24"}` }} />
-            </div>
-          ))}
-        </div>
-        <span className="truncate pl-0.5 text-[6px] font-black uppercase tracking-wide text-slate-400">{sourceTitle ?? "Admin"}</span>
-      </div>
-    </div>
-  )
-}
-
-function MiniMobileApp({ color, dense, sourceTitle }: { color: string; dense?: boolean; sourceTitle?: string }) {
-  const accent = SOLID_COLOR_MAP[color] ?? SOLID_COLOR_MAP.sky;
-  const accentHex = getColor(color);
-
-  if (dense) {
-    return (
-      <div className="relative flex h-full min-h-0 w-full flex-col overflow-hidden bg-white">
-        <IphoneDynamicIsland className="top-1.5 h-[5px] w-[min(42%,2.75rem)] max-w-[2.75rem] rounded-[5px]" />
-        <div className="flex h-[22px] shrink-0 items-end justify-between px-2 pb-0.5 pt-[14px]">
-          <span className="text-[7px] font-semibold tabular-nums tracking-tight text-slate-900">9:41</span>
-          <IphoneStatusCluster className="scale-[0.85] origin-right text-slate-900" />
-        </div>
-        <div
-          className="mx-1.5 flex h-10 shrink-0 items-end justify-between rounded-xl px-2 pb-2"
-          style={{ background: `linear-gradient(135deg, ${accentHex}30, ${accentHex}0D)` }}
-        >
-          <div>
-            <div className="h-1.5 w-12 rounded-full" style={{ backgroundColor: accentHex }} />
-            <div className="mt-1 h-1 w-8 rounded-full bg-white/90" />
-          </div>
-          <div className="h-5 w-5 rounded-full bg-white/70 shadow-sm" />
-        </div>
-        <div className="grid min-h-0 flex-1 grid-cols-2 gap-1 p-1.5">
-          {[0, 1, 2, 3].map((i) => (
-            <div key={i} className="flex min-h-0 flex-col rounded-lg bg-slate-50 p-1 ring-1 ring-slate-100/90">
-              <div className="flex-1 rounded-md" style={{ backgroundColor: `${accentHex}${i === 0 ? "38" : "20"}` }} />
-              <div className="mt-1 h-1 rounded-full bg-slate-200" />
-            </div>
-          ))}
-        </div>
-        <div className="flex h-5 shrink-0 items-center justify-around border-t border-slate-100/90 bg-white/80 px-2 pb-0.5 backdrop-blur-[2px]">
-          {[0, 1, 2].map((i) => (
-            <span
-              key={i}
-              className={`h-1.5 rounded-full ${i === 1 ? "w-5" : "w-1.5"}`}
-              style={{ backgroundColor: i === 1 ? accentHex : "#cbd5e1" }}
+        {/* Pulse Wave Center on each Idea arrival */}
+        <AnimatePresence mode="wait">
+          {pulseKey > 0 && (
+            <motion.div
+              key={`pulse-${pulseKey}`}
+              initial={{ scale: 0.5, opacity: 0.8 }}
+              animate={{ scale: 6, opacity: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className={`absolute left-1/2 top-1/2 z-40 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[30px] ${activeT.pulse}`}
             />
-          ))}
-        </div>
-        <div className="flex shrink-0 justify-center pb-1 pt-0.5">
-          <div className="h-[3px] w-7 rounded-full bg-slate-900/12" aria-hidden />
-        </div>
-        <span className="sr-only">{sourceTitle}</span>
-      </div>
-    );
-  }
+          )}
+        </AnimatePresence>
 
-  return (
-    <div className="flex h-full w-full items-center justify-center bg-gradient-to-b from-slate-200/40 to-slate-100/50 py-1">
-      <div className="relative flex aspect-[9/19.5] h-full max-h-full w-auto max-w-[5.25rem] flex-col overflow-hidden rounded-[1.45rem] border border-white/30 bg-gradient-to-b from-[#c8c8cc] via-[#7c7c82] to-[#2c2c2e] p-[2px] shadow-[0_12px_28px_rgba(0,0,0,0.28)] ring-1 ring-black/10 sm:max-w-[5.75rem]">
-        <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-[1.3rem] bg-[#0c0c0e] p-[2px]">
-          <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-[1.15rem] bg-white shadow-[inset_0_0_0_1px_rgba(15,23,42,0.04)]">
-            <IphoneDynamicIsland className="top-2 h-[5px] w-[min(40%,3.25rem)] rounded-[5px]" />
-            <div className="flex shrink-0 items-end justify-between px-2 pb-1 pt-[15px]">
-              <span className="text-[8px] font-semibold tabular-nums text-slate-900">9:41</span>
-              <IphoneStatusCluster className="scale-90 origin-right" />
-            </div>
-            <div className={`h-7 w-full shrink-0 ${accent} opacity-[0.22]`} />
-            <div className="flex min-h-0 flex-1 flex-col gap-1.5 p-1.5">
-              <div className="flex h-8 w-full shrink-0 items-center justify-center rounded-lg bg-slate-100">
-                <div className="h-1 w-1/2 max-w-[3rem] rounded-full bg-slate-300" />
-              </div>
-              <div className="flex min-h-0 flex-1 gap-1.5">
-                <div className="w-1/2 min-h-0 rounded-lg bg-slate-100" />
-                <div className="w-1/2 min-h-0 rounded-lg bg-slate-100" />
-              </div>
-            </div>
-            <div className="flex h-4 shrink-0 items-center justify-around border-t border-slate-100/90 px-1 pb-0.5">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="h-1.5 w-1.5 rounded-full bg-slate-300/90" />
-              ))}
-            </div>
-            <div className="flex shrink-0 justify-center pb-1">
-              <div className="mb-0.5 h-[2.5px] w-6 rounded-full bg-slate-900/12" aria-hidden />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-type CommerceFlowItem = {
-  icon: ComponentType<{ className?: string }>;
-  inputTitle: string;
-  top: number;
-  delay: number;
-  duration: number;
-  type: "mobile" | "storefront" | "admin";
-  outputTitle: string;
-  subtitle: string;
-  color: string;
-};
-
-const COMMERCE_FLOW_ITEMS: CommerceFlowItem[] = [
-  { icon: ShoppingCart, inputTitle: "Grocery Store", top: 15, delay: 0, duration: 12, type: "mobile", outputTitle: "Grocery App", subtitle: "Mobile iOS", color: "emerald" },
-  { icon: Shirt, inputTitle: "Fashion Brand", top: 28, delay: -10, duration: 12, type: "storefront", outputTitle: "Fashion Web", subtitle: "Storefront", color: "violet" },
-  { icon: Building2, inputTitle: "B2B Supplier", top: 41, delay: -8, duration: 12, type: "admin", outputTitle: "B2B Dashboard", subtitle: "Admin Panel", color: "indigo" },
-  { icon: Coffee, inputTitle: "Restaurant", top: 54, delay: -6, duration: 12, type: "mobile", outputTitle: "Food Delivery", subtitle: "Delivery App", color: "teal" },
-  { icon: Monitor, inputTitle: "Electronics", top: 67, delay: -4, duration: 12, type: "storefront", outputTitle: "Tech Store", subtitle: "Marketplace", color: "blue" },
-  { icon: Heart, inputTitle: "Pharmacy", top: 80, delay: -2, duration: 12, type: "admin", outputTitle: "Pharmacy B2B", subtitle: "Vendor System", color: "rose" },
-];
-
-function getColor(name: string) {
-  return HEX_MAP[name] || "#3b82f6";
-}
-
-/** Status cluster (cellular bars + battery) — reads like modern iPhone status icons */
-function IphoneStatusCluster({ className }: { className?: string }) {
-  return (
-    <div className={`flex items-center gap-[3px] text-slate-900 ${className ?? ""}`} aria-hidden>
-      <div className="flex items-end gap-px pb-px opacity-90">
-        {[3, 4, 5, 6].map((h) => (
-          <span key={h} className="block w-[1.5px] rounded-[0.5px] bg-current" style={{ height: `${h}px` }} />
-        ))}
-      </div>
-      <div className="relative ml-0.5 flex h-[11px] w-[17px] items-center rounded-[2.5px] border-[1.5px] border-current/50 p-[1px] opacity-90">
-        <span className="block h-full w-[62%] rounded-[1px] bg-emerald-500" />
-      </div>
-    </div>
-  );
-}
-
-/** Dynamic Island – elongated pill like iPhone 15 Pro+ / “17” generation */
-function IphoneDynamicIsland({ className }: { className?: string }) {
-  return (
-    <div
-      className={`pointer-events-none absolute left-1/2 z-30 -translate-x-1/2 rounded-[10px] bg-[#0a0a0a] shadow-[inset_0_1px_1px_rgba(255,255,255,0.14),inset_0_-1px_2px_rgba(0,0,0,0.85),0_6px_16px_rgba(0,0,0,0.35)] ring-1 ring-white/[0.06] ${className ?? ""}`}
-      aria-hidden
-    >
-      <div className="absolute left-[22%] top-1/2 h-[2px] w-[2px] -translate-y-1/2 rounded-full bg-neutral-700/90" />
-      <div className="absolute right-[20%] top-1/2 h-[2px] w-[2px] -translate-y-1/2 rounded-full bg-neutral-800/80" />
-    </div>
-  );
-}
-
-function MultiVendorAnimation() {
-  return (
-    <div className="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-auto lg:w-[1040px] xl:w-[1160px] lg:h-[650px] xl:h-[700px] flex items-center justify-center pointer-events-none select-none overflow-visible lg:translate-x-[1%] xl:translate-x-[2%]">
-       
-       {/* Left Side Label */}
-       <div className="absolute top-20 left-4 hidden lg:flex items-center gap-3 z-0 opacity-80">
-          <div className="text-[11px] font-black uppercase tracking-widest text-slate-500 bg-white/60 px-3 py-1.5 rounded-full border border-slate-200/80 shadow-sm backdrop-blur-sm">Business Types</div>
-          <div className="h-[1px] w-16 bg-slate-300" />
-       </div>
-
-       {/* Showcase: iPhone Pro–style (titanium bezel, OLED lip, Dynamic Island) */}
-       <div className="pointer-events-none absolute inset-y-5 right-0 z-20 hidden lg:flex xl:inset-y-4 xl:right-1 items-center justify-center">
-          <div className="aspect-[11.8/19.5] h-[min(682px,calc(100%-1.5rem))] w-auto min-w-[350px] max-h-[94%] shrink-0 xl:min-w-[390px]">
-            <div className="pointer-events-auto relative flex h-full w-full min-h-0 flex-col overflow-hidden rounded-[2.65rem] border border-white/25 bg-gradient-to-b from-[#d6d6da] via-[#8e8e93] to-[#3a3a3c] p-[2.5px] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.48),inset_0_1px_0_rgba(255,255,255,0.45)] ring-1 ring-black/20">
-              <div
-                className="pointer-events-none absolute inset-x-4 top-1 z-[5] h-[28%] rounded-t-[2.35rem] bg-gradient-to-b from-white/30 to-transparent"
-                aria-hidden
-              />
-              <div
-                className="pointer-events-none absolute left-0 top-[20%] z-40 h-10 w-[2.5px] -translate-x-[2.5px] rounded-l-md bg-gradient-to-b from-neutral-400 via-neutral-600 to-neutral-800 shadow-[1px_0_1px_rgba(255,255,255,0.25)]"
-                aria-hidden
-              />
-              <div
-                className="pointer-events-none absolute left-0 top-[30%] z-40 h-16 w-[2.5px] -translate-x-[2.5px] rounded-l-md bg-gradient-to-b from-neutral-400 via-neutral-600 to-neutral-800 shadow-[1px_0_1px_rgba(255,255,255,0.2)]"
-                aria-hidden
-              />
-              <div
-                className="pointer-events-none absolute right-0 top-[24%] z-40 h-[4.5rem] w-[2.5px] translate-x-[2.5px] rounded-r-md bg-gradient-to-b from-neutral-500 via-neutral-700 to-neutral-900 shadow-[-1px_0_1px_rgba(255,255,255,0.15)]"
-                aria-hidden
-              />
-              <div className="relative mx-[2px] mb-[2px] mt-[2px] flex min-h-0 flex-1 flex-col overflow-hidden rounded-[2.45rem] bg-[#09090b] p-[2px] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]">
-                <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-[2.3rem] bg-white shadow-[inset_0_0_0_1px_rgba(15,23,42,0.04)]">
-                  <IphoneDynamicIsland className="top-3 h-[7px] w-[min(36%,5.75rem)] rounded-[7px]" />
-                  <div className="flex shrink-0 items-end justify-between border-b border-slate-100/90 bg-white px-3 pb-1.5 pt-[22px]">
-                    <span className="text-[11px] font-semibold tabular-nums tracking-tight text-slate-900">9:41</span>
-                    <IphoneStatusCluster />
-                  </div>
-                  <div className="flex shrink-0 items-center gap-2 border-b border-slate-200/90 bg-slate-50/95 px-3 py-2.5 backdrop-blur-sm">
-                    <div className="h-2 w-2 shrink-0 animate-pulse rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.65)]" />
-                    <p className="min-w-0 flex-1 text-[9px] font-black uppercase leading-snug tracking-[0.12em] text-slate-700">
-                      Ideas converted to apps
-                    </p>
-                  </div>
-                  <div className="flex min-h-0 flex-1 flex-col overflow-hidden bg-gradient-to-b from-slate-50/95 to-white px-3 py-3">
-                    <div className="grid min-h-0 flex-1 grid-cols-2 grid-rows-3 gap-2">
-                      {COMMERCE_FLOW_ITEMS.map((p, i) => (
-                        <StaticStructuredOutput
-                          key={`out-${i}`}
-                          type={p.type}
-                          title={p.outputTitle}
-                          subtitle={p.subtitle}
-                          sourceTitle={p.inputTitle}
-                          icon={p.icon}
-                          color={p.color}
-                          delay={p.delay}
-                          duration={p.duration}
-                          index={i}
-                          compact
-                          phoneTile
-                        />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="flex shrink-0 justify-center bg-white px-2 pb-2 pt-1">
-                    <div className="h-[3.5px] w-[5.5rem] rounded-full bg-slate-900/12" aria-hidden />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-       </div>
-
-       {COMMERCE_FLOW_ITEMS.map((p, i) => (
-         <RawInput key={`raw-${i}`} icon={p.icon} title={p.inputTitle} top={p.top} delay={p.delay} duration={p.duration} color={p.color} />
-       ))}
-
-       <div className="absolute top-1/2 left-[11%] z-30 flex h-64 w-64 sm:left-[12%] lg:left-[13%] lg:h-[300px] lg:w-[300px] xl:left-[14%] xl:h-[320px] xl:w-[320px] -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-         {/* Label */}
-         <div className="absolute -top-6 lg:-top-8 text-[9px] lg:text-[11px] font-black uppercase tracking-widest text-blue-600 bg-white/95 px-4 py-1.5 rounded-full border border-blue-200/60 shadow-lg backdrop-blur-md whitespace-nowrap z-40">Kaartx Kloud Infrastructure </div>
-         
-         <motion.div className="absolute inset-[-10%] rounded-full bg-blue-500/10 blur-[40px]" animate={{ opacity: [0.4, 0.8, 0.4], scale: [1, 1.2, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} />
-         <motion.div className="absolute inset-[10%] rounded-full bg-sky-400/20 blur-2xl" animate={{ opacity: [0.3, 0.7, 0.3], scale: [0.9, 1.1, 0.9] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }} />
-         
-         <div className="relative flex h-48 w-48 lg:h-[220px] lg:w-[220px] xl:h-[240px] xl:w-[240px] flex-col items-center justify-center rounded-full border border-slate-200/80 bg-white/95 p-4 shadow-2xl shadow-blue-900/10 backdrop-blur-xl">
-           <motion.div className="absolute inset-[-10%] rounded-full border-[2px] border-dashed border-sky-400/40" animate={{ rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} />
-           <motion.div className="absolute inset-[-20%] rounded-full border border-blue-300/30" animate={{ rotate: -360 }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} />
-           <motion.div className="absolute inset-[-30%] rounded-full border-[2px] border-dotted border-indigo-400/20" animate={{ rotate: 360 }} transition={{ duration: 50, repeat: Infinity, ease: "linear" }} />
-           
-           <div className="z-20 flex flex-col items-center justify-center text-center gap-3 lg:gap-4">
-             <div className="flex h-16 w-16 lg:h-16 lg:w-16 xl:h-20 xl:w-20 items-center justify-center rounded-3xl bg-gradient-to-tr from-blue-600 via-blue-500 to-sky-400 text-white shadow-2xl shadow-blue-500/40">
-               <Cloud className="h-8 w-8 xl:h-10 xl:w-10" />
-             </div>
-             <div>
-               <div className="text-sm lg:text-xl font-black tracking-tight text-slate-800 leading-none mt-1">Kaartx Kloud</div>
-
-             </div>
-           </div>
-         </div>
-       </div>
-
-    </div>
-  )
-}
-
-function RawInput({
-  icon: Icon,
-  title,
-  top,
-  delay,
-  duration,
-  color,
-}: {
-  icon: ComponentType<{ className?: string }>;
-  title: string;
-  top: number;
-  delay: number;
-  duration: number;
-  color: string;
-}) {
-  const accent = getColor(color);
-
-  return (
-    <motion.div
-      className="absolute z-10 flex items-center gap-2 lg:gap-3"
-      initial={{ left: "-25%", top: `${top}%`, opacity: 0, scale: 0.6, x: "-50%", y: "-50%" }}
-      animate={{ 
-         left: ["-25%", "-10%", "5%", "13%", "13%"],
-         top: [`${top}%`, `${top}%`, "50%", "50%", "50%"],
-         opacity: [0, 1, 1, 1, 0],
-         scale: [0.6, 1, 0.88, 0.56, 0.12],
-      }}
-      transition={{ duration, repeat: Infinity, delay, ease: "easeInOut", times: [0, 0.1, 0.72, 0.86, 1] }}
-    >
-      <motion.div
-        className="flex h-7 w-7 lg:h-8 lg:w-8 shrink-0 items-center justify-center rounded-full border bg-slate-50 shadow-sm text-slate-500 relative"
-        animate={{
-          borderColor: ["rgba(226,232,240,0.8)", "rgba(226,232,240,0.8)", accent, accent, "rgba(226,232,240,0)"],
-          boxShadow: [
-            "0 1px 2px rgba(15,23,42,0.08)",
-            "0 1px 2px rgba(15,23,42,0.08)",
-            `0 0 0 5px ${accent}1F, 0 8px 24px ${accent}30`,
-            `0 0 0 12px ${accent}12, 0 12px 32px ${accent}36`,
-            `0 0 0 18px ${accent}00`,
-          ],
-        }}
-        transition={{ duration, repeat: Infinity, delay, ease: "easeInOut", times: [0, 0.1, 0.72, 0.86, 1] }}
-      >
-        <User className="h-3.5 w-3.5 lg:h-4 lg:w-4" />
-        <div className="absolute -top-1 -right-1 bg-amber-100 text-amber-500 rounded-full p-0.5 shadow-sm border border-amber-200">
-           <Lightbulb className="h-2 w-2" />
-        </div>
-      </motion.div>
-      <motion.div
-        className="relative rounded-lg border border-slate-200/60 bg-white/95 px-2.5 py-1.5 shadow-sm backdrop-blur-sm flex items-center gap-2"
-        animate={{
-          y: [0, 0, -1, -3, -8],
-          borderColor: ["rgba(226,232,240,0.6)", "rgba(226,232,240,0.6)", `${accent}55`, `${accent}80`, "rgba(226,232,240,0)"],
-          boxShadow: [
-            "0 1px 2px rgba(15,23,42,0.08)",
-            "0 1px 2px rgba(15,23,42,0.08)",
-            `0 10px 26px ${accent}20`,
-            `0 14px 36px ${accent}28`,
-            `0 0 0 ${accent}00`,
-          ],
-        }}
-        transition={{ duration, repeat: Infinity, delay, ease: "easeInOut", times: [0, 0.1, 0.72, 0.86, 1] }}
-      >
-        {/* Chat bubble tail */}
-        <div className="absolute top-1/2 -left-1 h-2 w-2 -translate-y-1/2 rotate-45 border-b border-l border-slate-200/60 bg-white/95" />
-        <div className="flex items-center gap-1.5 relative z-10 text-[9px] lg:text-[10px] font-bold text-slate-700">
-           <Icon className="h-3 w-3 text-blue-500" />
-           <span>{title}</span>
-        </div>
-        <motion.span
-          className="absolute -right-3 -top-3 rounded-full bg-blue-600 px-1.5 py-0.5 text-[7px] font-black uppercase tracking-wide text-white shadow-lg shadow-blue-500/30"
-          initial={{ opacity: 0, scale: 0.7 }}
-          animate={{ opacity: [0, 0, 0, 1, 0], scale: [0.7, 0.7, 0.7, 1, 0.78] }}
-          transition={{ duration, repeat: Infinity, delay, ease: "easeInOut", times: [0, 0.1, 0.72, 0.86, 1] }}
+        {/* Sidebar */}
+        <motion.div 
+          layout
+          className={`relative w-[220px] shrink-0 border-r border-slate-100 transition-colors duration-700 ${activeT.sidebarBg} flex flex-col p-5`}
         >
-          Build
-        </motion.span>
-      </motion.div>
-    </motion.div>
-  )
-}
-
-function StaticStructuredOutput({
-  type,
-  title,
-  subtitle,
-  sourceTitle,
-  icon: Icon,
-  color,
-  delay,
-  duration,
-  index,
-  compact,
-  phoneTile,
-}: {
-  type: string;
-  title: string;
-  subtitle: string;
-  sourceTitle?: string;
-  icon?: ComponentType<{ className?: string }>;
-  color: string;
-  delay: number;
-  duration: number;
-  index: number;
-  compact?: boolean;
-  /** Fills a grid cell inside the handset — no fixed row height, no scroll */
-  phoneTile?: boolean;
-}) {
-  const startX = compact ? -160 - index * 24 : index % 2 === 0 ? -480 : -700;
-  const accent = getColor(color);
-  const dot = SOLID_COLOR_MAP[color] ?? SOLID_COLOR_MAP.sky;
-
-  if (compact) {
-    const tileHeight = phoneTile ? "h-full min-h-0" : "h-[88px]";
-
-    return (
-      <motion.div
-        className={`relative z-10 w-full shrink-0 origin-center ${phoneTile ? "h-full min-h-0" : ""}`}
-        initial={{ opacity: 0, x: startX, scale: 0.86 }}
-        animate={{
-          opacity: [0, 1, 1, 0],
-          x: [startX, 0, 0, 0],
-          scale: [0.86, 1.02, 1, 0.98],
-        }}
-        transition={{
-          duration,
-          repeat: Infinity,
-          delay,
-          ease: "easeInOut",
-          times: [0, 0.24, 0.9, 1],
-        }}
-      >
-        <motion.div
-          className={`flex w-full flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-sm hover:shadow-md ${tileHeight}`}
-          animate={{
-            borderColor: ["rgba(226,232,240,0.8)", "rgba(226,232,240,0.8)", `${accent}55`, "rgba(226,232,240,0.8)"],
-            boxShadow: [
-              "0 1px 2px rgba(15,23,42,0.06)",
-              `0 12px 28px ${accent}20`,
-              `0 10px 24px ${accent}18`,
-              "0 1px 2px rgba(15,23,42,0.06)",
-            ],
-          }}
-          whileHover={{ y: -2 }}
-          transition={{ duration, repeat: Infinity, delay, ease: "easeInOut", times: [0, 0.24, 0.9, 1] }}
-        >
-          <div className="relative h-[66%] min-h-0 shrink-0 overflow-hidden border-b border-slate-100 bg-slate-50/70">
-            {type === "storefront" && <MiniStorefront color={color} sourceTitle={sourceTitle} />}
-            {type === "admin" && <MiniAdminPanel color={color} sourceTitle={sourceTitle} />}
-            {type === "mobile" && <MiniMobileApp color={color} dense sourceTitle={sourceTitle} />}
-          </div>
-          <div className="flex min-h-0 min-w-0 flex-1 flex-col justify-center gap-0.5 px-2 py-1.5 sm:px-2.5">
-            {sourceTitle && Icon && (
-              <div className="flex min-w-0 items-center gap-1.5 text-[7px] font-black uppercase leading-tight tracking-wide text-slate-400">
-                <Icon className="h-2.5 w-2.5 shrink-0 text-slate-400" />
-                <span className="truncate">{sourceTitle}</span>
-              </div>
-            )}
-            <div className="flex min-w-0 items-center gap-1">
-              <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${dot}`} />
-              <span
-                className={`truncate font-bold leading-tight tracking-tight text-slate-800 ${phoneTile ? "text-[9px]" : "text-[10px]"}`}
-              >
-                {title}
-              </span>
-            </div>
-            <span
-              className={`truncate pl-2.5 font-bold uppercase leading-tight tracking-wide text-slate-500 ${phoneTile ? "text-[7px]" : "text-[7px]"}`}
+          <div className="mb-8 flex items-center gap-3 px-1">
+            <motion.div 
+              layout
+              className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl shadow-md ${activeT.accent} text-white transition-colors duration-700`}
             >
-              {subtitle}
-            </span>
+              <Cloud className="h-4 w-4" />
+            </motion.div>
+            <span className="text-[17px] font-extrabold tracking-tight text-slate-800">Kaartx</span>
+          </div>
+          <div className="space-y-2">
+            {[
+              { icon: LayoutDashboard, label: "Overview", active: true },
+              { icon: ShoppingCart, label: "Orders", active: false },
+              { icon: Users, label: "Customers", active: false },
+              { icon: Store, label: "Products", active: false },
+              { icon: Settings, label: "Settings", active: false },
+            ].map((item, i) => (
+              <div key={i} className={`flex items-center gap-3 rounded-xl px-3.5 py-3 transition-colors ${item.active ? `bg-white shadow-sm ring-1 ring-slate-200/50 ${activeT.accentText}` : 'text-slate-500 hover:bg-slate-100/50'}`}>
+                <item.icon className={`h-4 w-4 shrink-0 ${item.active ? '' : 'text-slate-400'}`} />
+                <span className={`text-[13px] font-bold ${item.active ? '' : 'text-slate-500'}`}>{item.label}</span>
+              </div>
+            ))}
           </div>
         </motion.div>
-      </motion.div>
-    );
-  }
 
-  return (
-    <motion.div
-      className="relative z-10 flex h-[136px] w-full origin-center flex-col xl:h-[160px]"
-      initial={{ opacity: 0, x: startX, scale: 0.2 }}
-      animate={{
-        opacity: [0, 1, 1, 0],
-        x: [startX, 0, 0, 0],
-        scale: [0.2, 1, 1, 0.95],
-      }}
-      transition={{
-        duration,
-        repeat: Infinity,
-        delay,
-        ease: "easeOut",
-        times: [0, 0.15, 0.9, 1],
-      }}
-    >
-      <motion.div
-        className="flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-sm backdrop-blur-md hover:shadow-xl hover:shadow-slate-200/50"
-        whileHover={{ y: -4, scale: 1.02 }}
-        transition={{ duration: 0.2 }}
-      >
-        <div className="flex shrink-0 flex-col border-b border-slate-100/80 bg-slate-50/80 px-2 py-1.5">
-          <div className="flex items-center gap-2">
-            <div className={`h-2 w-2 rounded-full ${dot}`} />
-            <div className="truncate text-[10px] font-bold leading-none tracking-tight text-slate-800">
-              {title}
-            </div>
-          </div>
-          <div className="mt-1 text-[8px] font-bold uppercase tracking-wider text-slate-500 ml-4">
-            {subtitle}
-          </div>
-        </div>
-        <div className="relative flex-1 overflow-hidden bg-white">
-          {type === "storefront" && <MiniStorefront color={color} />}
-          {type === "admin" && <MiniAdminPanel color={color} />}
-          {type === "mobile" && <MiniMobileApp color={color} />}
+        {/* Main Dashboard Area */}
+        <div className="flex min-w-0 flex-1 flex-col bg-white p-7">
+           
+           {/* Header */}
+           <div className="mb-8 flex w-full items-center justify-between">
+              <div>
+                <motion.h2 
+                  key={activeT.title}
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-[24px] font-extrabold tracking-tight text-slate-800"
+                >
+                  {activeT.title}
+                </motion.h2>
+                <p className="mt-1.5 text-[14px] font-medium text-slate-500">Live infrastructure overview for your ecosystem.</p>
+              </div>
+              <div className="flex items-center gap-4">
+                 <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-[12px] font-bold text-slate-600 shadow-sm">
+                   Last 30 Days <ChevronDown className="h-4 w-4" />
+                 </div>
+                 <div className={`h-10 w-10 rounded-full bg-gradient-to-tr ${activeT.chart} shadow-sm ring-2 ring-slate-50`} />
+              </div>
+           </div>
+
+           {/* Metrics */}
+           <div className="mb-6 grid h-[100px] grid-cols-3 gap-5">
+              <div className={`rounded-xl border border-slate-100 p-4 shadow-sm transition-colors duration-700 ${activeT.sidebarBg}`}>
+                <div className="mb-2 text-[11px] font-bold uppercase tracking-wider text-slate-500">Gross Volume</div>
+                <div className="flex items-end gap-2">
+                  <motion.div key={activeT.metrics[0]} initial={{ opacity:0, y:5 }} animate={{ opacity:1, y:0 }} className="text-3xl font-black text-slate-900">{activeT.metrics[0]}</motion.div>
+                </div>
+              </div>
+              <div className={`rounded-xl border border-slate-100 p-4 shadow-sm transition-colors duration-700 ${activeT.sidebarBg}`}>
+                <div className="mb-2 text-[11px] font-bold uppercase tracking-wider text-slate-500">Active Nodes</div>
+                <div className="flex items-end gap-2">
+                  <motion.div key={activeT.metrics[1]} initial={{ opacity:0, y:5 }} animate={{ opacity:1, y:0 }} className="text-3xl font-black text-slate-900">{activeT.metrics[1]}</motion.div>
+                </div>
+              </div>
+              <div className={`rounded-xl border border-slate-100 p-4 shadow-sm transition-colors duration-700 ${activeT.sidebarBg}`}>
+                <div className="mb-2 text-[11px] font-bold uppercase tracking-wider text-slate-500">Avg. Transaction</div>
+                <div className="flex items-end gap-2">
+                  <motion.div key={activeT.metrics[2]} initial={{ opacity:0, y:5 }} animate={{ opacity:1, y:0 }} className="text-3xl font-black text-slate-900">{activeT.metrics[2]}</motion.div>
+                </div>
+              </div>
+           </div>
+
+           {/* Transactions & Mobile View Container */}
+           <div className="flex min-h-0 flex-1 gap-6">
+              <div className="flex flex-[2] flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white p-5 shadow-sm ring-1 ring-slate-900/[0.02]">
+                <div className="mb-4 text-[14px] font-extrabold text-slate-800">Recent Activity</div>
+                <div className="flex flex-1 flex-col gap-3.5">
+                  {activeT.transactions.map((order, i) => (
+                     <div key={i} className="flex items-center justify-between rounded-xl border border-slate-100/60 bg-slate-50/50 p-3 transition-colors hover:bg-slate-50">
+                       <div className="flex items-center gap-4">
+                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white shadow-sm ring-1 ring-slate-200/50">
+                           <ShoppingCart className="h-4 w-4 text-slate-400" />
+                         </div>
+                         <div>
+                           <div className="text-[13px] font-bold text-slate-800">{order.store}</div>
+                           <div className="text-[11px] font-semibold text-slate-500">{order.id}</div>
+                         </div>
+                       </div>
+                       <div className="flex items-center gap-4">
+                         <div className="text-[13px] font-black text-slate-700">{order.amount}</div>
+                         <div className={`rounded-md px-2.5 py-1 text-[10px] font-bold ring-1 ${order.color}`}>
+                           {order.status}
+                         </div>
+                       </div>
+                     </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className={`relative flex w-[180px] shrink-0 flex-col items-center overflow-hidden rounded-2xl border border-slate-100 transition-colors duration-700 ${activeT.sidebarBg} p-4`}>
+                 <div className="mb-4 w-full text-center text-[11px] font-bold uppercase tracking-widest text-slate-500">{activeT.mobileTitle}</div>
+                 
+                 <div className="flex w-full flex-1 flex-col rounded-[22px] border-[5px] border-slate-200/80 bg-white p-2.5 shadow-md">
+                   <div className="mx-auto mb-2.5 h-[3px] w-10 rounded-full bg-slate-200" />
+                   
+                   <div className="mb-3.5 flex items-center justify-between px-1">
+                     <div className="h-3 w-3 rounded-full bg-slate-200" />
+                     <div className="h-2 w-14 rounded-full bg-slate-200" />
+                     <div className="h-3 w-3 rounded-full bg-slate-200" />
+                   </div>
+
+                   {activeT.mobileLayout === 'standard' && (
+                     <>
+                       <div className={`relative mb-4 flex h-28 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`}>
+                         <Smartphone className={`h-8 w-8 opacity-70 ${activeT.accentText}`} />
+                       </div>
+                       <div className="flex flex-1 flex-col space-y-3 px-1 pb-2">
+                         <div className="space-y-2">
+                           <div className="h-3 w-[85%] rounded-full bg-slate-700" />
+                           <div className="h-3 w-[60%] rounded-full bg-slate-300" />
+                         </div>
+                         <div className={`mt-auto flex h-8 w-full items-center justify-center rounded-lg shadow-sm transition-colors duration-700 ${activeT.accent}`}>
+                           <div className="h-1.5 w-10 rounded-full bg-white/90" />
+                         </div>
+                       </div>
+                     </>
+                   )}
+
+                   {activeT.mobileLayout === 'grid' && (
+                     <>
+                        <div className="grid grid-cols-2 gap-2 mb-3">
+                           <div className={`h-12 rounded-lg bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
+                           <div className={`h-12 rounded-lg bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
+                           <div className={`h-12 rounded-lg bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
+                           <div className={`h-12 rounded-lg bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
+                        </div>
+                        <div className="mt-auto space-y-2 px-1 pb-2">
+                          <div className="h-2 w-full rounded-full bg-slate-200" />
+                          <div className="h-2 w-[70%] rounded-full bg-slate-200" />
+                        </div>
+                     </>
+                   )}
+
+                   {activeT.mobileLayout === 'list' && (
+                     <>
+                        <div className="space-y-2 mb-4">
+                           <div className="flex items-center gap-2">
+                              <div className={`h-8 w-8 rounded-lg shrink-0 bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
+                              <div className="space-y-1.5 flex-1">
+                                <div className="h-2 w-full rounded-full bg-slate-200" />
+                                <div className="h-2 w-[60%] rounded-full bg-slate-100" />
+                              </div>
+                           </div>
+                           <div className="flex items-center gap-2">
+                              <div className={`h-8 w-8 rounded-lg shrink-0 bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
+                              <div className="space-y-1.5 flex-1">
+                                <div className="h-2 w-full rounded-full bg-slate-200" />
+                                <div className="h-2 w-[80%] rounded-full bg-slate-100" />
+                              </div>
+                           </div>
+                        </div>
+                        <div className={`mt-auto flex h-8 w-full items-center justify-center rounded-lg shadow-sm transition-colors duration-700 ${activeT.accent}`}>
+                           <div className="h-1.5 w-10 rounded-full bg-white/90" />
+                        </div>
+                     </>
+                   )}
+                 </div>
+              </div>
+           </div>
+
         </div>
       </motion.div>
-    </motion.div>
+
+
+    </div>
   );
 }
 
@@ -828,99 +440,79 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
   return (
     <section
       id="hero"
-      className="relative overflow-x-clip overflow-y-visible bg-white pt-12 sm:pt-16 md:pt-24 pb-5"
+      className="relative overflow-hidden bg-white pt-24 md:pb-2 md:pt-32 lg:pb-3 lg:pt-36"
     >
-      {/* Soft animated backdrop — slow gradient drift + floating orbs (standard landing-page motion) */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-        <motion.div
-          className="absolute inset-0 bg-white"
-          animate={{
-            background: [
-              "radial-gradient(ellipse 92% 72% at 50% 100%, rgba(56, 189, 248, 0.14), transparent 58%), radial-gradient(ellipse 56% 46% at 50% 0%, rgba(147, 197, 253, 0.12), transparent 55%)",
-              "radial-gradient(ellipse 92% 72% at 48% 99%, rgba(56, 189, 248, 0.16), transparent 58%), radial-gradient(ellipse 56% 46% at 52% 1%, rgba(147, 197, 253, 0.14), transparent 55%)",
-              "radial-gradient(ellipse 92% 72% at 52% 101%, rgba(56, 189, 248, 0.15), transparent 58%), radial-gradient(ellipse 56% 46% at 48% -1%, rgba(147, 197, 253, 0.13), transparent 55%)",
-              "radial-gradient(ellipse 92% 72% at 50% 100%, rgba(56, 189, 248, 0.14), transparent 58%), radial-gradient(ellipse 56% 46% at 50% 0%, rgba(147, 197, 253, 0.12), transparent 55%)",
-            ],
-          }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute -left-[18%] top-[22%] h-[min(55vw,28rem)] w-[min(70vw,36rem)] rounded-full bg-sky-300/25 blur-3xl"
-          animate={{ x: [0, 28, 0], y: [0, -18, 0], scale: [1, 1.06, 1] }}
-          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute -right-[12%] top-[35%] h-[min(50vw,26rem)] w-[min(65vw,34rem)] rounded-full bg-blue-200/30 blur-3xl"
-          animate={{ x: [0, -22, 0], y: [0, 14, 0], scale: [1, 1.05, 1] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        />
-      </div>
+      <div className="relative z-10 mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-10">
+        
+        {/* MOBILE TITLE */}
+        <div className="mb-8 block w-full text-left sm:text-center lg:hidden">
+          <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-4xl md:text-5xl lg:leading-[1.1]">
+            Build and Scale Your Own <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Commerce Ecosystem.</span>
+          </h1>
+        </div>
 
-      <HeroDotCloudBackdrop />
+        {/* DESKTOP TOP TITLE (Line 1) */}
+        <div className="hidden lg:block w-full mb-2 relative z-20">
+           <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-4xl md:text-5xl lg:leading-[1.1]">
+             Build and Scale Your Own
+           </h1>
+        </div>
 
-      <div className="relative z-10 mx-auto w-full px-4 sm:px-8 lg:px-12 xl:px-20 2xl:px-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center mt-12 sm:mt-16 md:mt-20 lg:pb-16">
+        {/* TWO COLUMN ROW */}
+        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-0 relative">
           
+          {/* LEFT: TEXT & BUTTONS */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="w-full max-w-3xl text-left"
-          >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-200/80 bg-white/85 px-4 py-2 text-sm font-semibold text-sky-700 shadow-sm shadow-sky-100/70 backdrop-blur">
-              <span className="h-2 w-2 rounded-full bg-sky-500 shadow-[0_0_14px_rgba(14,165,233,0.75)]" />
-              Commerce infrastructure for modern marketplaces
-            </div>
-
-            <h1
-              className="text-balance text-4xl font-bold leading-[1.08] tracking-tight text-[#111827] sm:text-5xl lg:text-[3.45rem] xl:text-6xl"
-              data-testid="text-hero-title"
-            >
-              Choose{" "}
-              <span className="gradient-text">
-                Kaartx Kloud
-              </span>{" "}
-              as your powerful commerce infrastructure platform
-            </h1>
-
-            <div className="mt-7 max-w-2xl space-y-4 text-lg leading-8 text-slate-600 sm:mt-8 sm:text-xl sm:leading-9">
-              <p>
-                Launch your own marketplace or SaaS applications in minutes. Kaartx Kloud powers vendors, storefronts, and commerce infrastructure with a scalable ecosystem.
-              </p>
-            </div>
-
-          
-
-            <div className="mt-9 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
-              <Button
-                onClick={onOpenSignup}
-                size="lg"
-                className="h-14 w-full min-w-[200px] rounded-xl bg-blue-500 px-8 text-lg font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:bg-blue-600 hover:shadow-blue-500/35 sm:w-auto"
-                data-testid="button-hero-get-started"
-              >
-                Try for Free
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={scrollToBooking}
-                className="h-14 w-full min-w-[160px] rounded-xl border-blue-200 bg-white px-8 text-lg font-semibold text-blue-600 shadow-sm transition-all hover:bg-blue-50 hover:shadow-blue-100/80 sm:w-auto"
-                data-testid="button-hero-whatsapp"
-              >
-                Contact us
-              </Button>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="relative mx-auto w-full max-w-2xl lg:max-w-none mt-8 lg:mt-0 flex items-center justify-center"
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex w-full flex-col items-start text-left lg:w-[45%] xl:w-[40%] relative z-0"
           >
-             <MultiVendorAnimation />
-             <div className="absolute left-1/2 top-1/2 -z-10 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-tr from-blue-100/40 to-sky-100/40 blur-3xl pointer-events-none" />
+             {/* DESKTOP TITLE PART 2 */}
+             <div className="mb-8 hidden lg:block w-full">
+                <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-4xl md:text-5xl lg:leading-[1.1]">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Commerce<br />Ecosystem.</span>
+                </h1>
+             </div>
+
+            <div className="flex w-full flex-col">
+              <p className="max-w-md text-lg leading-relaxed  pt-10 text-slate-900 sm:text-xl lg:pl-2">
+                Launch branded marketplaces, seller platforms, mobile commerce apps, and multi-vendor operations from one powerful infrastructure platform.
+              </p>
+
+              <div className="mt-10 flex w-full flex-col gap-4 sm:flex-row lg:pl-2">
+                <Button
+                  onClick={onOpenSignup}
+                  className="h-14 rounded-xl bg-slate-900 px-8 text-base font-semibold text-white shadow-lg shadow-slate-900/20 transition-all hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/30 sm:w-auto"
+                >
+                  Start Building
+                </Button>
+                <Button
+                  onClick={scrollToBooking}
+                  variant="outline"
+                  className="h-14 rounded-xl border-slate-200 bg-white px-8 text-base font-semibold text-slate-900 shadow-sm transition-all hover:bg-slate-50 sm:w-auto"
+                >
+                  Book a Demo
+                </Button>
+              </div>
+              
+              <div className="mt-8 flex items-center gap-3 text-sm font-semibold text-slate-500 lg:pl-2">
+                 <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 ring-1 ring-blue-100/50">
+                   <ShieldCheck className="h-4 w-4" />
+                 </div>
+                 <span>Trusted scalable infrastructure.</span>
+              </div>
+            </div>
           </motion.div>
+
+          {/* RIGHT: DESIGN */}
+          <div className="relative z-10 flex w-full flex-col lg:w-[65%] xl:w-[70%] lg:-mt-4">
+             <div className="relative mx-auto flex w-full justify-center">
+               <LiveEcosystemGenerator />
+             </div>
+          </div>
+
         </div>
       </div>
     </section>
