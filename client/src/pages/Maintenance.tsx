@@ -18,7 +18,7 @@ export default function Maintenance() {
           <p className="text-lg sm:text-xl md:text-2xl font-medium text-[#111111] mb-3 md:mb-4">
             We're giving the landing page a little makeover.
           </p>
-          <p className="text-sm text-slate-400 font-medium leading-relaxed">
+          <p className="text-sm text-slate-600 font-medium leading-relaxed">
             Come back later for the big reveal.{' '}
             The dashboard and all active marketplaces remain fully operational.
           </p>
@@ -26,7 +26,7 @@ export default function Maintenance() {
 
         <div className="flex flex-row md:flex-col items-start md:items-end justify-between md:justify-start gap-5 md:text-right">
           <div className="space-y-1">
-            <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-300">Contact</p>
+            <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#111111]">Contact</p>
             <p className="text-sm font-bold text-[#111111]">official@kloud.kaartx.com</p>
             <p className="text-sm font-bold text-[#111111]">+968 9820 9353</p>
           </div>
