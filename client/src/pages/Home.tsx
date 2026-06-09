@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
+import Hero from "@/components/hero/Hero";
 import StatsBar from "@/components/StatsBar";
 import FeatureGrid from "@/components/FeatureGrid";
 import HowItWorks from "@/components/HowItWorks";
@@ -22,6 +22,7 @@ import BookingSection from "@/components/BookingSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SignupModal, { type PlanSelection } from "@/components/SignupModal";
+import HeroV2 from "@/components/hero/Hero_v2";
 
 const defaultStarterPlan: PlanSelection = {
   planId: "starter-monthly",
@@ -79,9 +80,8 @@ export default function Home() {
   return (
     <>
       <div
-        className={`min-h-screen transition-[filter] duration-200 ${
-          signupModalOpen ? "pointer-events-none blur-sm" : ""
-        }`}
+        className={`min-h-screen transition-[filter] duration-200 ${signupModalOpen ? "pointer-events-none blur-sm" : ""
+          }`}
       >
         {/* 
           Anti-scroll bleed overlay: 
@@ -93,29 +93,30 @@ export default function Home() {
 
         <Navbar onOpenSignup={() => handleOpenSignup()} />
         <div className="flex flex-col gap-5">
+            <HeroV2 />
           <div className="relative">
-            <Hero onOpenSignup={() => handleOpenSignup()} />
-            <div className="sticky bottom-0 z-40 w-full shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+            {/* <Hero onOpenSignup={() => handleOpenSignup()} /> */}
+            <div className="sticky bottom-0 z-40 w-full ">
               <StatsBar />
             </div>
           </div>
-          <FeatureGrid />
-          <HowItWorks />
-          <DeepFeatures />
-          <UseCases />
+          {/* <FeatureGrid /> */}
+          {/* <HowItWorks /> */}
+          {/* <DeepFeatures /> */}
+          {/* <UseCases /> */}
           {/* <IntegrationsMarquee /> */}
           {/* <Security /> */}
           {/* <APISection /> */}
           {/* <Showcase /> */}
-          <Pricing onOpenSignup={handleOpenSignup} />
-          <Testimonials />
+          {/* <Pricing onOpenSignup={handleOpenSignup} /> */}
+          {/* <Testimonials /> */}
           {/* TEMPORARILY HIDDEN – TO REVISIT */}
           {/* <CaseStudy /> */}
-          <FAQ />
-          <BookingSection />
-          <About />
-          <FinalCTA onOpenSignup={() => handleOpenSignup()} />
-          <Footer />
+          {/* <FAQ /> */}
+          {/* <BookingSection /> */}
+          {/* <About /> */}
+          {/* <FinalCTA onOpenSignup={() => handleOpenSignup()} /> */}
+          {/* <Footer /> */}
         </div>
         <WhatsAppButton />
       </div>

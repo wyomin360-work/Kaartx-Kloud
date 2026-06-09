@@ -65,11 +65,8 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle mobile menu scroll lock
+  // Handle menu scroll lock (applied to all screen sizes now)
   useEffect(() => {
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if (!isMobile) return;
-
     if (isMobileMenuOpen) {
       lockScrollForMobileMenu();
     } else {
@@ -79,7 +76,7 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
 
   const navigateToSection = (id: string) => {
     setIsMobileMenuOpen(false);
-    
+
     if (location !== '/') {
       window.location.href = `/#${id}`;
     } else {
@@ -94,7 +91,7 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   // Force scroll to top when clicking logo - always goes to homepage top
   const navigateToHome = () => {
     setIsMobileMenuOpen(false);
-    
+
     if (location !== '/') {
       // Navigate to homepage and scroll to top
       window.location.href = '/';
@@ -107,7 +104,7 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
 
   const handleNavClick = (item: NavItem, e?: React.MouseEvent) => {
     setIsMobileMenuOpen(false);
-    
+
     if (item.type === 'scroll') {
       e?.preventDefault();
       navigateToSection(item.target);
@@ -117,85 +114,63 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   return (
     <Portal.Root>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-300 ${
-           'bg-transparent border-b border-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-[105] transition-[background-color,backdrop-filter,border-color] duration-300 py-3 `}
         style={{ transform: 'translate3d(0,0,0)' }}
       >
-      <div className="mx-auto max-w-[1400px]">
-        <div className="flex h-16 items-center justify-between gap-4">
-          <div className="flex-shrink-0">
-            <button
-              onClick={navigateToHome}
-              className="hover-elevate rounded-md transition-all"
-              data-testid="link-logo"
-            >
-              <img 
-                src={logoImage} 
-                alt="Kloud" 
-                className="h-8 w-auto"
-              />
-            </button>
-          </div>
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-8">
+          <div className="flex h-12 items-center justify-between">
+            <div className="flex-shrink-0 flex items-center">
+              <button
+                onClick={navigateToHome}
+                className="hover-elevate rounded-md transition-all"
+              // data-testid="link-logo"
+              >
+                <img
+                  src={logoImage}
+                  alt="Kloud"
+                  className="h-4 md:h-6 w-auto object-contain"
+                />
+              </button>
+            </div>
 
-          <div className="hidden items-center gap-6 lg:gap-8 md:flex">
-            {navItems.map((item) => (
-              item.type === 'link' ? (
-                <Link
-                  key={item.testId}
-                  href={item.target}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  data-testid={item.testId}
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <button
-                  key={item.testId}
-                  onClick={(e) => handleNavClick(item, e)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  data-testid={item.testId}
-                >
-                  {item.label}
-                </button>
-              )
-            ))}
-            <Button
-              onClick={onOpenSignup}
-              className="shadow-glow hover:scale-[1.02] transition-transform"
-              data-testid="button-get-started"
-            >
-              Get Started
-            </Button>
-          </div>
-
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              data-testid="button-mobile-menu"
-            >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+            <div className="flex items-center justify-end">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="hover:bg-primary/10 transition-colors p-2 rounded-full relative h-11 w-11 flex items-center justify-center"
+                data-testid="button-mobile-menu"
+              >
+                <Menu
+                  className="h-7 w-7 stroke-[1.5] absolute transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  style={{
+                    opacity: isMobileMenuOpen ? 0 : 1,
+                    transform: isMobileMenuOpen ? 'rotate(90deg) scale(0.5)' : 'rotate(0deg) scale(1)',
+                  }}
+                />
+                <X
+                  className="h-7 w-7 stroke-[1.5] absolute transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  style={{
+                    opacity: isMobileMenuOpen ? 1 : 0,
+                    transform: isMobileMenuOpen ? 'rotate(0deg) scale(1)' : 'rotate(-90deg) scale(0.5)',
+                  }}
+                />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </nav>
 
-      <MobileMenuOverlay
+      <FullScreenMenuOverlay
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
         navItems={navItems}
         mobileOnlyNavItems={mobileOnlyNavItems}
         onNavClick={handleNavClick}
       />
-      </nav>
     </Portal.Root>
   );
 }
 
-// Mobile menu rendered via Portal for proper z-index stacking
-function MobileMenuOverlay({
+function FullScreenMenuOverlay({
   isOpen,
   onClose,
   navItems,
@@ -208,57 +183,52 @@ function MobileMenuOverlay({
   mobileOnlyNavItems: NavItem[];
   onNavClick: (item: NavItem, e?: React.MouseEvent) => void;
 }) {
-  if (!isOpen) return null;
+  const allItems = [...navItems, ...mobileOnlyNavItems];
 
   return (
     <Portal.Root>
-      {/* Backdrop - click to close */}
-      <div 
-        className="md:hidden fixed inset-0 top-16 bg-black/50 z-[100]"
-        onClick={onClose}
-        data-testid="mobile-menu-backdrop"
-        aria-hidden="true"
-      />
-      {/* Menu panel */}
-      <div 
-        className="md:hidden fixed left-0 right-0 top-16 bg-background border-t border-border shadow-md z-[101]"
-        data-testid="mobile-menu-overlay"
+      <div
+        className={`fixed inset-0 z-[100] bg-background/95 backdrop-blur-xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] flex flex-col justify-center ${isOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-4'
+          }`}
+        data-testid="fullscreen-menu-overlay"
       >
-        <div className="mx-auto max-w-7xl space-y-1 px-4 py-4 sm:px-6 lg:px-8">
-          {navItems.map((item) => (
-            item.type === 'link' ? (
-              <Link
+        <div className="mx-auto max-w-[1400px] w-full px-6 lg:px-12 pt-28 pb-10 flex flex-col justify-start h-full">
+          <div className="flex flex-col w-full max-w-xs sm:max-w-sm md:max-w-md">
+            {allItems.map((item, i) => (
+              <div
                 key={item.testId}
-                href={item.target}
-                onClick={onClose}
-                className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-                data-testid={`mobile-${item.testId}`}
+                className="overflow-hidden border-b border-foreground/10 last:border-b-0"
               >
-                {item.label}
-              </Link>
-            ) : (
-              <button
-                key={item.testId}
-                onClick={(e) => onNavClick(item, e)}
-                className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-                data-testid={`mobile-${item.testId}`}
-              >
-                {item.label}
-              </button>
-            )
-          ))}
-          {/* Mobile-only: Blog and Careers links */}
-          {mobileOnlyNavItems.map((item) => (
-            <Link
-              key={item.testId}
-              href={item.target}
-              onClick={onClose}
-              className="block w-full text-left px-4 py-2.5 text-base text-muted-foreground hover:text-foreground hover-elevate rounded-lg transition-colors"
-              data-testid={`mobile-${item.testId}`}
-            >
-              {item.label}
-            </Link>
-          ))}
+                <div
+                  className="transform transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  style={{
+                    transform: isOpen ? 'translateY(0)' : 'translateY(100%)',
+                    transitionDelay: isOpen ? `${i * 50 + 100}ms` : '0ms'
+                  }}
+                >
+                  {item.type === 'link' ? (
+                    <Link
+                      href={item.target}
+                      onClick={onClose}
+                      className="py-5 sm:py-6 text-sm sm:text-base font-medium tracking-[0.2em] text-muted-foreground/70 hover:text-foreground transition-all duration-300 uppercase block hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.6)] w-full text-left"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={(e) => {
+                        onClose();
+                        onNavClick(item, e);
+                      }}
+                      className="py-5 sm:py-6 text-sm sm:text-base font-medium tracking-[0.2em] text-muted-foreground/70 hover:text-foreground transition-all duration-300 uppercase block hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.6)] w-full text-left"
+                    >
+                      {item.label}
+                    </button>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </Portal.Root>

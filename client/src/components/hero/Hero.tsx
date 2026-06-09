@@ -1,12 +1,12 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { 
-  Lightbulb, Cloud, Store, LayoutDashboard, 
+import {
+  Lightbulb, Cloud, Store, LayoutDashboard,
   BarChart3, Smartphone, ShieldCheck, ChevronDown,
   Users, ShoppingCart, Settings, RotateCcw,
   ShoppingBag, Download, Package, Activity, MonitorSmartphone, LayoutGrid
 } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 
 
@@ -22,26 +22,26 @@ function LiveEcosystemGenerator() {
     const runSequence = () => {
       setActiveTheme(0);
       setActiveIdea(null);
-      
+
       // Idea 1: Pharmacy
       timeouts.push(setTimeout(() => setActiveIdea(0), 500));
       timeouts.push(setTimeout(() => { setActiveIdea(null); setActiveTheme(1); setPulseKey(Date.now()); }, 3000));
 
       // Idea 2: Food Delivery
       timeouts.push(setTimeout(() => setActiveIdea(1), 5500));
-      timeouts.push(setTimeout(() => { setActiveIdea(null); setActiveTheme(2); setPulseKey(Date.now()+1); }, 8000));
+      timeouts.push(setTimeout(() => { setActiveIdea(null); setActiveTheme(2); setPulseKey(Date.now() + 1); }, 8000));
 
       // Idea 3: B2B Wholesale
       timeouts.push(setTimeout(() => setActiveIdea(2), 10500));
-      timeouts.push(setTimeout(() => { setActiveIdea(null); setActiveTheme(3); setPulseKey(Date.now()+2); }, 13000));
+      timeouts.push(setTimeout(() => { setActiveIdea(null); setActiveTheme(3); setPulseKey(Date.now() + 2); }, 13000));
 
       // Idea 4: Fashion
       timeouts.push(setTimeout(() => setActiveIdea(3), 15500));
-      timeouts.push(setTimeout(() => { setActiveIdea(null); setActiveTheme(4); setPulseKey(Date.now()+3); }, 18000));
+      timeouts.push(setTimeout(() => { setActiveIdea(null); setActiveTheme(4); setPulseKey(Date.now() + 3); }, 18000));
 
       // Idea 5: Digital
       timeouts.push(setTimeout(() => setActiveIdea(4), 20500));
-      timeouts.push(setTimeout(() => { setActiveIdea(null); setActiveTheme(5); setPulseKey(Date.now()+4); }, 23000));
+      timeouts.push(setTimeout(() => { setActiveIdea(null); setActiveTheme(5); setPulseKey(Date.now() + 4); }, 23000));
     };
 
     runSequence();
@@ -182,7 +182,7 @@ function LiveEcosystemGenerator() {
 
   return (
     <div className="relative mx-auto flex h-[650px] w-full items-center justify-center pt-4 perspective-[1000px]">
-      
+
       {/* Background Soft Grid */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2YxZjVmOSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)]" />
 
@@ -192,15 +192,15 @@ function LiveEcosystemGenerator() {
           <motion.div
             key={activeIdea}
             initial={{ x: -750, y: ideas[activeIdea].startY, opacity: 0, scale: 0.8, rotate: -15 }}
-            animate={{ 
-              x: [-750, -300, 0, 0], 
-              y: [ideas[activeIdea].startY, ideas[activeIdea].startY * 0.5, 0, 0], 
-              opacity: [0, 1, 1, 0], 
-              scale: [0.8, 1, 1.2, 0.2], 
-              rotate: [-15, 5, 0, 0] 
+            animate={{
+              x: [-750, -300, 0, 0],
+              y: [ideas[activeIdea].startY, ideas[activeIdea].startY * 0.5, 0, 0],
+              opacity: [0, 1, 1, 0],
+              scale: [0.8, 1, 1.2, 0.2],
+              rotate: [-15, 5, 0, 0]
             }}
-            transition={{ 
-              duration: 2.5, 
+            transition={{
+              duration: 2.5,
               times: [0, 0.3, 0.8, 1],
               ease: "easeInOut",
             }}
@@ -208,12 +208,12 @@ function LiveEcosystemGenerator() {
             style={{ marginLeft: '-70px', marginTop: '-30px' }}
           >
             {(() => {
-               const Icon = ideas[activeIdea].icon;
-               return (
-                 <div className={`flex h-10 w-10 items-center justify-center rounded-lg shadow-lg ${ideas[activeIdea].color} ${ideas[activeIdea].shadow}`}>
-                   <Icon className="h-5 w-5" />
-                 </div>
-               );
+              const Icon = ideas[activeIdea].icon;
+              return (
+                <div className={`flex h-10 w-10 items-center justify-center rounded-lg shadow-lg ${ideas[activeIdea].color} ${ideas[activeIdea].shadow}`}>
+                  <Icon className="h-5 w-5" />
+                </div>
+              );
             })()}
             <div className="pr-2">
               <div className="whitespace-nowrap text-[13px] font-bold text-slate-800">{ideas[activeIdea].title}</div>
@@ -224,7 +224,7 @@ function LiveEcosystemGenerator() {
       </AnimatePresence>
 
       {/* Central Application Window */}
-      <motion.div 
+      <motion.div
         layout
         animate={{
           boxShadow: activeT.shadow,
@@ -248,12 +248,12 @@ function LiveEcosystemGenerator() {
         </AnimatePresence>
 
         {/* Sidebar */}
-        <motion.div 
+        <motion.div
           layout
           className={`relative w-[220px] shrink-0 border-r border-slate-100 transition-colors duration-700 ${activeT.sidebarBg} flex flex-col p-5`}
         >
           <div className="mb-8 flex items-center gap-3 px-1">
-            <motion.div 
+            <motion.div
               layout
               className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl shadow-md ${activeT.accent} text-white transition-colors duration-700`}
             >
@@ -279,147 +279,147 @@ function LiveEcosystemGenerator() {
 
         {/* Main Dashboard Area */}
         <div className="flex min-w-0 flex-1 flex-col bg-white p-7">
-           
-           {/* Header */}
-           <div className="mb-8 flex w-full items-center justify-between">
-              <div>
-                <motion.h2 
-                  key={activeT.title}
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-[24px] font-extrabold tracking-tight text-slate-800"
-                >
-                  {activeT.title}
-                </motion.h2>
-                <p className="mt-1.5 text-[14px] font-medium text-slate-500">Live infrastructure overview for your ecosystem.</p>
-              </div>
-              <div className="flex items-center gap-4">
-                 <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-[12px] font-bold text-slate-600 shadow-sm">
-                   Last 30 Days <ChevronDown className="h-4 w-4" />
-                 </div>
-                 <div className={`h-10 w-10 rounded-full bg-gradient-to-tr ${activeT.chart} shadow-sm ring-2 ring-slate-50`} />
-              </div>
-           </div>
 
-           {/* Metrics */}
-           <div className="mb-6 grid h-[100px] grid-cols-3 gap-5">
-              <div className={`rounded-xl border border-slate-100 p-4 shadow-sm transition-colors duration-700 ${activeT.sidebarBg}`}>
-                <div className="mb-2 text-[11px] font-bold uppercase tracking-wider text-slate-500">Gross Volume</div>
-                <div className="flex items-end gap-2">
-                  <motion.div key={activeT.metrics[0]} initial={{ opacity:0, y:5 }} animate={{ opacity:1, y:0 }} className="text-3xl font-black text-slate-900">{activeT.metrics[0]}</motion.div>
+          {/* Header */}
+          <div className="mb-8 flex w-full items-center justify-between">
+            <div>
+              <motion.h2
+                key={activeT.title}
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-[24px] font-extrabold tracking-tight text-slate-800"
+              >
+                {activeT.title}
+              </motion.h2>
+              <p className="mt-1.5 text-[14px] font-medium text-slate-500">Live infrastructure overview for your ecosystem.</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3.5 py-2 text-[12px] font-bold text-slate-600 shadow-sm">
+                Last 30 Days <ChevronDown className="h-4 w-4" />
+              </div>
+              <div className={`h-10 w-10 rounded-full bg-gradient-to-tr ${activeT.chart} shadow-sm ring-2 ring-slate-50`} />
+            </div>
+          </div>
+
+          {/* Metrics */}
+          <div className="mb-6 grid h-[100px] grid-cols-3 gap-5">
+            <div className={`rounded-xl border border-slate-100 p-4 shadow-sm transition-colors duration-700 ${activeT.sidebarBg}`}>
+              <div className="mb-2 text-[11px] font-bold uppercase tracking-wider text-slate-500">Gross Volume</div>
+              <div className="flex items-end gap-2">
+                <motion.div key={activeT.metrics[0]} initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="text-3xl font-black text-slate-900">{activeT.metrics[0]}</motion.div>
+              </div>
+            </div>
+            <div className={`rounded-xl border border-slate-100 p-4 shadow-sm transition-colors duration-700 ${activeT.sidebarBg}`}>
+              <div className="mb-2 text-[11px] font-bold uppercase tracking-wider text-slate-500">Active Nodes</div>
+              <div className="flex items-end gap-2">
+                <motion.div key={activeT.metrics[1]} initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="text-3xl font-black text-slate-900">{activeT.metrics[1]}</motion.div>
+              </div>
+            </div>
+            <div className={`rounded-xl border border-slate-100 p-4 shadow-sm transition-colors duration-700 ${activeT.sidebarBg}`}>
+              <div className="mb-2 text-[11px] font-bold uppercase tracking-wider text-slate-500">Avg. Transaction</div>
+              <div className="flex items-end gap-2">
+                <motion.div key={activeT.metrics[2]} initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} className="text-3xl font-black text-slate-900">{activeT.metrics[2]}</motion.div>
+              </div>
+            </div>
+          </div>
+
+          {/* Transactions & Mobile View Container */}
+          <div className="flex min-h-0 flex-1 gap-6">
+            <div className="flex flex-[2] flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white p-5 shadow-sm ring-1 ring-slate-900/[0.02]">
+              <div className="mb-4 text-[14px] font-extrabold text-slate-800">Recent Activity</div>
+              <div className="flex flex-1 flex-col gap-3.5">
+                {activeT.transactions.map((order, i) => (
+                  <div key={i} className="flex items-center justify-between rounded-xl border border-slate-100/60 bg-slate-50/50 p-3 transition-colors hover:bg-slate-50">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white shadow-sm ring-1 ring-slate-200/50">
+                        <ShoppingCart className="h-4 w-4 text-slate-400" />
+                      </div>
+                      <div>
+                        <div className="text-[13px] font-bold text-slate-800">{order.store}</div>
+                        <div className="text-[11px] font-semibold text-slate-500">{order.id}</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="text-[13px] font-black text-slate-700">{order.amount}</div>
+                      <div className={`rounded-md px-2.5 py-1 text-[10px] font-bold ring-1 ${order.color}`}>
+                        {order.status}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className={`relative flex w-[180px] shrink-0 flex-col items-center overflow-hidden rounded-2xl border border-slate-100 transition-colors duration-700 ${activeT.sidebarBg} p-4`}>
+              <div className="mb-4 w-full text-center text-[11px] font-bold uppercase tracking-widest text-slate-500">{activeT.mobileTitle}</div>
+
+              <div className="flex w-full flex-1 flex-col rounded-[22px] border-[5px] border-slate-200/80 bg-white p-2.5 shadow-md">
+                <div className="mx-auto mb-2.5 h-[3px] w-10 rounded-full bg-slate-200" />
+
+                <div className="mb-3.5 flex items-center justify-between px-1">
+                  <div className="h-3 w-3 rounded-full bg-slate-200" />
+                  <div className="h-2 w-14 rounded-full bg-slate-200" />
+                  <div className="h-3 w-3 rounded-full bg-slate-200" />
                 </div>
-              </div>
-              <div className={`rounded-xl border border-slate-100 p-4 shadow-sm transition-colors duration-700 ${activeT.sidebarBg}`}>
-                <div className="mb-2 text-[11px] font-bold uppercase tracking-wider text-slate-500">Active Nodes</div>
-                <div className="flex items-end gap-2">
-                  <motion.div key={activeT.metrics[1]} initial={{ opacity:0, y:5 }} animate={{ opacity:1, y:0 }} className="text-3xl font-black text-slate-900">{activeT.metrics[1]}</motion.div>
-                </div>
-              </div>
-              <div className={`rounded-xl border border-slate-100 p-4 shadow-sm transition-colors duration-700 ${activeT.sidebarBg}`}>
-                <div className="mb-2 text-[11px] font-bold uppercase tracking-wider text-slate-500">Avg. Transaction</div>
-                <div className="flex items-end gap-2">
-                  <motion.div key={activeT.metrics[2]} initial={{ opacity:0, y:5 }} animate={{ opacity:1, y:0 }} className="text-3xl font-black text-slate-900">{activeT.metrics[2]}</motion.div>
-                </div>
-              </div>
-           </div>
 
-           {/* Transactions & Mobile View Container */}
-           <div className="flex min-h-0 flex-1 gap-6">
-              <div className="flex flex-[2] flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white p-5 shadow-sm ring-1 ring-slate-900/[0.02]">
-                <div className="mb-4 text-[14px] font-extrabold text-slate-800">Recent Activity</div>
-                <div className="flex flex-1 flex-col gap-3.5">
-                  {activeT.transactions.map((order, i) => (
-                     <div key={i} className="flex items-center justify-between rounded-xl border border-slate-100/60 bg-slate-50/50 p-3 transition-colors hover:bg-slate-50">
-                       <div className="flex items-center gap-4">
-                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white shadow-sm ring-1 ring-slate-200/50">
-                           <ShoppingCart className="h-4 w-4 text-slate-400" />
-                         </div>
-                         <div>
-                           <div className="text-[13px] font-bold text-slate-800">{order.store}</div>
-                           <div className="text-[11px] font-semibold text-slate-500">{order.id}</div>
-                         </div>
-                       </div>
-                       <div className="flex items-center gap-4">
-                         <div className="text-[13px] font-black text-slate-700">{order.amount}</div>
-                         <div className={`rounded-md px-2.5 py-1 text-[10px] font-bold ring-1 ${order.color}`}>
-                           {order.status}
-                         </div>
-                       </div>
-                     </div>
-                  ))}
-                </div>
-              </div>
+                {activeT.mobileLayout === 'standard' && (
+                  <>
+                    <div className={`relative mb-4 flex h-28 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`}>
+                      <Smartphone className={`h-8 w-8 opacity-70 ${activeT.accentText}`} />
+                    </div>
+                    <div className="flex flex-1 flex-col space-y-3 px-1 pb-2">
+                      <div className="space-y-2">
+                        <div className="h-3 w-[85%] rounded-full bg-slate-700" />
+                        <div className="h-3 w-[60%] rounded-full bg-slate-300" />
+                      </div>
+                      <div className={`mt-auto flex h-8 w-full items-center justify-center rounded-lg shadow-sm transition-colors duration-700 ${activeT.accent}`}>
+                        <div className="h-1.5 w-10 rounded-full bg-white/90" />
+                      </div>
+                    </div>
+                  </>
+                )}
 
-              <div className={`relative flex w-[180px] shrink-0 flex-col items-center overflow-hidden rounded-2xl border border-slate-100 transition-colors duration-700 ${activeT.sidebarBg} p-4`}>
-                 <div className="mb-4 w-full text-center text-[11px] font-bold uppercase tracking-widest text-slate-500">{activeT.mobileTitle}</div>
-                 
-                 <div className="flex w-full flex-1 flex-col rounded-[22px] border-[5px] border-slate-200/80 bg-white p-2.5 shadow-md">
-                   <div className="mx-auto mb-2.5 h-[3px] w-10 rounded-full bg-slate-200" />
-                   
-                   <div className="mb-3.5 flex items-center justify-between px-1">
-                     <div className="h-3 w-3 rounded-full bg-slate-200" />
-                     <div className="h-2 w-14 rounded-full bg-slate-200" />
-                     <div className="h-3 w-3 rounded-full bg-slate-200" />
-                   </div>
+                {activeT.mobileLayout === 'grid' && (
+                  <>
+                    <div className="grid grid-cols-2 gap-2 mb-3">
+                      <div className={`h-12 rounded-lg bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
+                      <div className={`h-12 rounded-lg bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
+                      <div className={`h-12 rounded-lg bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
+                      <div className={`h-12 rounded-lg bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
+                    </div>
+                    <div className="mt-auto space-y-2 px-1 pb-2">
+                      <div className="h-2 w-full rounded-full bg-slate-200" />
+                      <div className="h-2 w-[70%] rounded-full bg-slate-200" />
+                    </div>
+                  </>
+                )}
 
-                   {activeT.mobileLayout === 'standard' && (
-                     <>
-                       <div className={`relative mb-4 flex h-28 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`}>
-                         <Smartphone className={`h-8 w-8 opacity-70 ${activeT.accentText}`} />
-                       </div>
-                       <div className="flex flex-1 flex-col space-y-3 px-1 pb-2">
-                         <div className="space-y-2">
-                           <div className="h-3 w-[85%] rounded-full bg-slate-700" />
-                           <div className="h-3 w-[60%] rounded-full bg-slate-300" />
-                         </div>
-                         <div className={`mt-auto flex h-8 w-full items-center justify-center rounded-lg shadow-sm transition-colors duration-700 ${activeT.accent}`}>
-                           <div className="h-1.5 w-10 rounded-full bg-white/90" />
-                         </div>
-                       </div>
-                     </>
-                   )}
-
-                   {activeT.mobileLayout === 'grid' && (
-                     <>
-                        <div className="grid grid-cols-2 gap-2 mb-3">
-                           <div className={`h-12 rounded-lg bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
-                           <div className={`h-12 rounded-lg bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
-                           <div className={`h-12 rounded-lg bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
-                           <div className={`h-12 rounded-lg bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
-                        </div>
-                        <div className="mt-auto space-y-2 px-1 pb-2">
+                {activeT.mobileLayout === 'list' && (
+                  <>
+                    <div className="space-y-2 mb-4">
+                      <div className="flex items-center gap-2">
+                        <div className={`h-8 w-8 rounded-lg shrink-0 bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
+                        <div className="space-y-1.5 flex-1">
                           <div className="h-2 w-full rounded-full bg-slate-200" />
-                          <div className="h-2 w-[70%] rounded-full bg-slate-200" />
+                          <div className="h-2 w-[60%] rounded-full bg-slate-100" />
                         </div>
-                     </>
-                   )}
-
-                   {activeT.mobileLayout === 'list' && (
-                     <>
-                        <div className="space-y-2 mb-4">
-                           <div className="flex items-center gap-2">
-                              <div className={`h-8 w-8 rounded-lg shrink-0 bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
-                              <div className="space-y-1.5 flex-1">
-                                <div className="h-2 w-full rounded-full bg-slate-200" />
-                                <div className="h-2 w-[60%] rounded-full bg-slate-100" />
-                              </div>
-                           </div>
-                           <div className="flex items-center gap-2">
-                              <div className={`h-8 w-8 rounded-lg shrink-0 bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
-                              <div className="space-y-1.5 flex-1">
-                                <div className="h-2 w-full rounded-full bg-slate-200" />
-                                <div className="h-2 w-[80%] rounded-full bg-slate-100" />
-                              </div>
-                           </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className={`h-8 w-8 rounded-lg shrink-0 bg-gradient-to-br transition-colors duration-700 ${activeT.chart}`} />
+                        <div className="space-y-1.5 flex-1">
+                          <div className="h-2 w-full rounded-full bg-slate-200" />
+                          <div className="h-2 w-[80%] rounded-full bg-slate-100" />
                         </div>
-                        <div className={`mt-auto flex h-8 w-full items-center justify-center rounded-lg shadow-sm transition-colors duration-700 ${activeT.accent}`}>
-                           <div className="h-1.5 w-10 rounded-full bg-white/90" />
-                        </div>
-                     </>
-                   )}
-                 </div>
+                      </div>
+                    </div>
+                    <div className={`mt-auto flex h-8 w-full items-center justify-center rounded-lg shadow-sm transition-colors duration-700 ${activeT.accent}`}>
+                      <div className="h-1.5 w-10 rounded-full bg-white/90" />
+                    </div>
+                  </>
+                )}
               </div>
-           </div>
+            </div>
+          </div>
 
         </div>
       </motion.div>
@@ -443,7 +443,7 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
       className="relative overflow-hidden bg-white pt-24 md:pb-2 md:pt-32 lg:pb-3 lg:pt-36"
     >
       <div className="relative z-10 mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-10">
-        
+
         {/* MOBILE TITLE */}
         <div className="mb-8 block w-full text-left sm:text-center lg:hidden">
           <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-4xl md:text-5xl lg:leading-[1.1]">
@@ -454,14 +454,14 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
 
         {/* DESKTOP TOP TITLE (Line 1) */}
         <div className="hidden lg:block w-full mb-2 relative z-20">
-           <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-4xl md:text-5xl lg:leading-[1.1]">
-             Launch Your Own Multi‑Vendor Commerce Platform 
-           </h1>
+          <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-4xl md:text-5xl lg:leading-[1.1]">
+            Launch Your Own Multi‑Vendor Commerce Platform
+          </h1>
         </div>
 
         {/* TWO COLUMN ROW */}
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between lg:gap-0 relative">
-          
+
           {/* LEFT: TEXT & BUTTONS */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -469,16 +469,16 @@ export default function Hero({ onOpenSignup }: { onOpenSignup?: () => void }) {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="flex w-full flex-col items-start text-left lg:w-[45%] xl:w-[40%] relative z-0"
           >
-             {/* DESKTOP TITLE PART 2 */}
-             <div className="mb-8 hidden lg:block w-full">
-                <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-4xl md:text-5xl lg:leading-[1.1]">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">in Days<br />Not Months.</span>
-                </h1>
-             </div>
+            {/* DESKTOP TITLE PART 2 */}
+            <div className="mb-8 hidden lg:block w-full">
+              <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight text-[#1A1A1A] sm:text-4xl md:text-5xl lg:leading-[1.1]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">in Days<br />Not Months.</span>
+              </h1>
+            </div>
 
             <div className="flex w-full flex-col">
               <p className="max-w-md text-lg leading-relaxed  pt-10 text-slate-900 sm:text-xl lg:pl-2">
-We help businesses create fully branded e‑commerce ecosystems with their own domain, admin panel, seller dashboards, customer apps, and scalable infrastructure — all powered by a single multi‑tenant platform.              </p>
+                We help businesses create fully branded e‑commerce ecosystems with their own domain, admin panel, seller dashboards, customer apps, and scalable infrastructure — all powered by a single multi‑tenant platform.              </p>
 
               <div className="mt-10 flex w-full flex-col gap-4 sm:flex-row lg:pl-2">
                 <Button
@@ -495,21 +495,21 @@ We help businesses create fully branded e‑commerce ecosystems with their own d
                   Book a Demo
                 </Button>
               </div>
-              
+
               <div className="mt-8 flex items-center gap-3 text-sm font-semibold text-slate-500 lg:pl-2">
-                 <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 ring-1 ring-blue-100/50">
-                   <ShieldCheck className="h-4 w-4" />
-                 </div>
-                 <span>Trusted scalable infrastructure.</span>
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 ring-1 ring-blue-100/50">
+                  <ShieldCheck className="h-4 w-4" />
+                </div>
+                <span>Trusted scalable infrastructure.</span>
               </div>
             </div>
           </motion.div>
 
           {/* RIGHT: DESIGN */}
           <div className="relative z-10 flex w-full flex-col lg:w-[65%] xl:w-[70%] lg:-mt-4">
-             <div className="relative mx-auto flex w-full justify-center">
-               <LiveEcosystemGenerator />
-             </div>
+            <div className="relative mx-auto flex w-full justify-center">
+              <LiveEcosystemGenerator />
+            </div>
           </div>
 
         </div>
