@@ -22,7 +22,8 @@ import BookingSection from "@/components/BookingSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SignupModal, { type PlanSelection } from "@/components/SignupModal";
-import HeroV2 from "@/components/hero/Hero_v2";
+import HeroV2 from "@/components/hero/v2/Hero_v2";
+import HeroV2_2 from "@/components/hero/v2/Hero_v2.2";
 
 const defaultStarterPlan: PlanSelection = {
   planId: "starter-monthly",
@@ -89,11 +90,11 @@ export default function Home() {
           to hide content as it vertically scrolls up past the floating pill bounds. 
           This is z-40 so the Navbar (z-50) stays on top, and content slides under.
         */}
-        <div className="duration-[10ms] pointer-events-none fixed left-0 right-0 top-0 z-40 h-[88px] bg-background transition-all " />
+        {/* <div className="duration-[10ms] pointer-events-none fixed left-0 right-0 top-0 z-40 h-[88px] bg-background transition-all " /> */}
 
         <Navbar onOpenSignup={() => handleOpenSignup()} />
         <div className="flex flex-col gap-5">
-            <HeroV2 />
+            <HeroV2_2 />
           <div className="relative">
             {/* <Hero onOpenSignup={() => handleOpenSignup()} /> */}
             <div className="sticky bottom-0 z-40 w-full ">
