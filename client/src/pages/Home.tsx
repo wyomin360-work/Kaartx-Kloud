@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/InlineNavbar";
 import Hero from "@/components/hero/Hero";
 import StatsBar from "@/components/StatsBar";
 import FeatureGrid from "@/components/FeatureGrid";
