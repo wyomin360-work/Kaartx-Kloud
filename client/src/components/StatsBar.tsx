@@ -20,55 +20,55 @@ export default function StatsBar() {
     accent: string;
     icon: LucideIcon;
   }[] = [
-    {
-      value: "Automated",
-      label: "Payouts & Settlements",
-      accent: "bg-emerald-500",
-      icon: CircleDollarSign,
-    },
-    {
-      value: "GCC",
-      label: "Market Ready",
-      accent: "bg-sky-500",
-      icon: BadgeCheck,
-    },
-    {
-      value: "99.9%",
-      label: "Platform Uptime",
-      accent: "bg-violet-500",
-      icon: Gauge,
-    },
-    {
-      value: "White-label",
-      label: "Brand Ready",
-      accent: "bg-amber-500",
-      icon: CloudCog,
-    },
-    {
-      value: "Bank-Grade",
-      label: "Data Security",
-      accent: "bg-blue-500",
-      icon: ShieldCheck,
-    },
-    {
-      value: "Real-time",
-      label: "Live Analytics",
-      accent: "bg-rose-500",
-      icon: BarChart3,
-    },
-    {
-      value: "Scalable",
-      label: "Global API",
-      accent: "bg-indigo-500",
-      icon: Activity,
-    },
-    {
-      value: "Zero-lag",
-      label: "Fast Performance",
-      accent: "bg-orange-500",
-      icon: Zap,
-    },
-  ];
+      {
+        value: "Automated",
+        label: "Payouts & Settlements",
+        accent: "bg-emerald-500",
+        icon: CircleDollarSign,
+      },
+      {
+        value: "GCC",
+        label: "Market Ready",
+        accent: "bg-sky-500",
+        icon: BadgeCheck,
+      },
+      {
+        value: "99.9%",
+        label: "Platform Uptime",
+        accent: "bg-violet-500",
+        icon: Gauge,
+      },
+      {
+        value: "White-label",
+        label: "Brand Ready",
+        accent: "bg-amber-500",
+        icon: CloudCog,
+      },
+      {
+        value: "Bank-Grade",
+        label: "Data Security",
+        accent: "bg-blue-500",
+        icon: ShieldCheck,
+      },
+      {
+        value: "Real-time",
+        label: "Live Analytics",
+        accent: "bg-rose-500",
+        icon: BarChart3,
+      },
+      {
+        value: "Scalable",
+        label: "Global API",
+        accent: "bg-indigo-500",
+        icon: Activity,
+      },
+      {
+        value: "Zero-lag",
+        label: "Fast Performance",
+        accent: "bg-orange-500",
+        icon: Zap,
+      },
+    ];
 
   const sectionAnimation = useScrollAnimation<HTMLDivElement>(0.2);
   const [isUnstuck, setIsUnstuck] = useState(false);

@@ -38,12 +38,21 @@ export default function InlineNavbar({ onOpenSignup }: InlineNavbarProps) {
   ];
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      // Don't update state during modal transitions to prevent visual jitter
-      if (document.body.classList.contains('modal-open-mobile')) {
-        return;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (!document.body.classList.contains('modal-open-mobile')) {
+            setIsScrolled((prev) => {
+              const scrolled = window.scrollY > 20;
+              return prev !== scrolled ? scrolled : prev;
+            });
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
-      setIsScrolled(window.scrollY > 20);
     };
 
     // Check initial state
@@ -61,32 +70,41 @@ export default function InlineNavbar({ onOpenSignup }: InlineNavbarProps) {
     }
 
     const sectionIds = ['features', 'integrations', 'pricing', 'faq', 'booking', 'about'];
+    let ticking = false;
     
     const handleScrollspy = () => {
-      // Check if user is at the top of the page
-      if (window.scrollY < 100) {
-        setActiveSection('');
-        return;
-      }
-
-      // Check if user has scrolled to the very bottom
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
-        setActiveSection('about'); // The last section
-        return;
-      }
-
-      const scrollPosition = window.scrollY + 250; // Offset for viewport target
-
-      for (const id of sectionIds) {
-        const el = document.getElementById(id);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(id);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          // Check if user is at the top of the page
+          if (window.scrollY < 100) {
+            setActiveSection((prev) => prev !== '' ? '' : prev);
+            ticking = false;
             return;
           }
-        }
+
+          // Check if user has scrolled to the very bottom
+          if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
+            setActiveSection((prev) => prev !== 'about' ? 'about' : prev);
+            ticking = false;
+            return;
+          }
+
+          const scrollPosition = window.scrollY + 250; // Offset for viewport target
+
+          for (const id of sectionIds) {
+            const el = document.getElementById(id);
+            if (el) {
+              const top = el.offsetTop;
+              const height = el.offsetHeight;
+              if (scrollPosition >= top && scrollPosition < top + height) {
+                setActiveSection((prev) => prev !== id ? id : prev);
+                break;
+              }
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -153,10 +171,10 @@ export default function InlineNavbar({ onOpenSignup }: InlineNavbarProps) {
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-6xl z-[105] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] rounded-full flex items-center justify-between overflow-hidden ${
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-6xl z-[105] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] rounded-full flex items-center justify-between overflow-hidden py-2 px-4 sm:px-6 backdrop-blur-xl ${
           isScrolled
-            ? 'py-2 px-4 sm:px-6 bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-white/50 dark:border-white/10 shadow-lg shadow-black/[0.04]'
-            : 'py-3 px-5 sm:px-7 bg-white/45 dark:bg-black/20 backdrop-blur-lg border border-white/30 dark:border-white/5 shadow-xs shadow-black/[0.01]'
+            ? 'bg-white/80 dark:bg-black/45 border-white/50 dark:border-white/10 shadow-lg shadow-black/[0.04]'
+            : 'bg-white/55 dark:bg-black/25 border-white/35 dark:border-white/5 shadow-none'
         }`}
       >
         {/* Glossy spotlight glow overlay */}
