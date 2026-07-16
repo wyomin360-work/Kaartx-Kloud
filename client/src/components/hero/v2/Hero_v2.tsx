@@ -12,10 +12,7 @@ export default function Hero_V2() {
 
             {/* ── Layer 1: Brand snake animation ─────────────────────── */}
             <BrandSnake />
-
-            {/* ── Layer 2: Liquid glass material ─────────────────────── */}
-            {/* <LiquidGlass /> */}
-
+            
             {/* ── Layer 3: Content (etched onto the glass surface) ───── */}
             <style>{`
                 @keyframes fadeUp {
@@ -25,7 +22,7 @@ export default function Hero_V2() {
                 .hero-fadein { animation: fadeUp 0.6s ease both; }
             `}</style>
 
-            <div className="relative flex min-h-[100dvh] flex-col items-center justify-center px-5 sm:px-8 text-center backdrop-blur-sm" style={{ zIndex: 10 }}>
+            <div className="relative flex min-h-[100dvh] flex-col items-center justify-center px-5 sm:px-8 text-center" style={{ zIndex: 10 }}>
                 {/* Headline with animated C→K letter swap */}
                 <HeroHeadline />
             </div>

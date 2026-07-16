@@ -1,7 +1,14 @@
 /** Ambient background layer — brand-gradient blobs + dot texture. */
 export default function BackgroundOverlay() {
     return (
-        <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div 
+            className="fixed inset-0 overflow-hidden pointer-events-none z-0"
+            style={{
+                background: 'linear-gradient(145deg, rgba(238,62,40,0.045) 0%, #fafaf8 28%, #fafaf8 68%, rgba(40,166,222,0.04) 100%)',
+                transform: 'translateZ(0)',
+                WebkitTransform: 'translateZ(0)',
+            }}
+        >
             {/* Brand-gradient atmosphere — same four stops as the snake stroke */}
             <div className="absolute right-[-60px] top-[-80px]  h-[500px] w-[500px] rounded-full blur-[180px]" style={{ background: 'rgba(238, 63, 40, 0.1)' }} />
             <div className="absolute left-[20%]  top-[10%]      h-[420px] w-[420px] rounded-full blur-[200px]" style={{ background: 'rgba(249, 173, 66, 0.1)' }} />

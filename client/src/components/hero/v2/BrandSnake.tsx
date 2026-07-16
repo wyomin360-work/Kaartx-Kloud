@@ -46,6 +46,9 @@ export default function BrandSnake() {
             strokeDasharray: `${segmentLength} ${totalDash}`,
             strokeDashoffset: segmentLength + 10,
             animation: 'heroSnake 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
+            transform: 'translate3d(0, 0, 0)',
+            WebkitTransform: 'translate3d(0, 0, 0)',
+            willChange: 'stroke-dashoffset',
         };
     };
 
@@ -59,6 +62,9 @@ export default function BrandSnake() {
             strokeDasharray: `${segmentLength} ${totalDash}`,
             strokeDashoffset: segmentLength + 10,
             animation: 'heroSnakeMobile 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
+            transform: 'translate3d(0, 0, 0)',
+            WebkitTransform: 'translate3d(0, 0, 0)',
+            willChange: 'stroke-dashoffset',
         };
     };
 

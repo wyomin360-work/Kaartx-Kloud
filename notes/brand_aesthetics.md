@@ -57,3 +57,18 @@ className="bg-gradient-to-r from-black to-[#F9AC42] bg-clip-text text-transparen
   * Titles/Headlines: Extra Bold or Black (font weight 800/900) with tight leading (e.g., 1.1 or 1.2).
   * Body Text: Medium font weight (500) for readability on clean light backgrounds.
 * **Buttons**: Prominent, highly rounded (`rounded-2xl` / `rounded-3xl`), with a subtle scale-up and vibrant colored glow shadow on hover.
+
+---
+
+## 6. Optimized Micro-Animations
+Micro-animations are a key part of the brand identity, giving a modern, responsive feel. However, they must be highly optimized:
+* **Snappy Transitions**: Keep animations quick (typically between `150ms` and `250ms`). Use standard transitions such as `transition-all duration-200 ease-out` or custom spring properties.
+* **GPU-Accelerated Properties**: Only animate properties that do not trigger layouts or repaints:
+  * **Do animate**: `transform` (scaling, rotating, translating) and `opacity`.
+  * **Do not animate**: Layout-affecting properties like `width`, `height`, `top`, `left`, `margin`, `padding` (use CSS transforms instead to move elements).
+* **Framer Motion Best Practices**:
+  * Use pure CSS transitions for simple hover states to minimize JavaScript load.
+  * Use spring physics for physical interactions: `{ type: "spring", stiffness: 350, damping: 25 }`.
+  * Avoid excessive usage of Framer Motion's `layout` prop on large component trees, as it triggers multiple layout measurements.
+* **Accessibility (Reduced Motion)**: Respect the user's system preferences by utilizing media queries or hooks for `@media (prefers-reduced-motion: reduce)` to simplify or disable motion.
+

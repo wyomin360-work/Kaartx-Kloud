@@ -53,13 +53,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div
-          className="min-h-screen relative text-foreground antialiased"
-          style={{
-            background: 'linear-gradient(145deg, rgba(238,62,40,0.045) 0%, #fafaf8 28%, #fafaf8 68%, rgba(40,166,222,0.04) 100%)',
-            backgroundAttachment: 'fixed',
-          }}
-        >
+        <div className="min-h-screen relative text-foreground antialiased">
           {/* Ambient Background Overlay (Atmosphere & Dots) */}
           <BackgroundOverlay />
            <LiquidGlass />

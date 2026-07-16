@@ -24,10 +24,10 @@ export default function LiquidGlass() {
                 style={{
                     position: 'absolute',
                     inset: 0,
-                    backdropFilter: 'blur(9px) saturate(1.55) brightness(1.05)',
-                    WebkitBackdropFilter: 'blur(9px) saturate(1.55) brightness(1.05)',
                     background: 'linear-gradient(152deg, rgba(255,255,255,0.44) 0%, rgba(245,253,255,0.16) 48%, rgba(255,255,255,0.30) 100%)',
                     willChange: 'transform',
+                    transform: 'translateZ(0)',
+                    WebkitTransform: 'translateZ(0)',
                 }}
             />
 
