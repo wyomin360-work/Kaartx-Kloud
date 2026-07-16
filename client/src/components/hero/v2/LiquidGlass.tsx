@@ -11,7 +11,6 @@
  *   4. Edge glints    – left/right thin highlights (refracted light from sides)
  *   5. Iridescent tint – brand-coloured chromatic sheen (screen blend)
  *   6. Vignette       – soft radial darkening at corners for depth/curvature
- *   7. Shimmer sweep  – animated diagonal highlight that drifts slowly
  */
 export default function LiquidGlass() {
     return (
@@ -107,29 +106,6 @@ export default function LiquidGlass() {
                         'radial-gradient(ellipse 105% 85% at 50% 38%, transparent 45%, rgba(0,0,0,0.04) 100%)',
                 }}
             />
-
-            {/* ── 7. Animated shimmer sweep ─────────────────────────────── */}
-            {/* A slow diagonal band of light drifts across the surface,
-                imitating the way natural light sweeps across glass.       */}
-            <div
-                className="glass-shimmer"
-                style={{
-                    position: 'absolute',
-                    inset: '-50%',
-                    background:
-                        'linear-gradient(108deg, transparent 35%, rgba(255,255,255,0.09) 48%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.09) 52%, transparent 65%)',
-                    animation: 'glassShimmer 8s ease-in-out infinite',
-                    willChange: 'transform',
-                }}
-            />
-
-            <style>{`
-                @keyframes glassShimmer {
-                    0%   { transform: translateX(-60%) translateY(0); }
-                    50%  { transform: translateX(60%) translateY(-10%); }
-                    100% { transform: translateX(-60%) translateY(0); }
-                }
-            `}</style>
         </div>
     );
 }

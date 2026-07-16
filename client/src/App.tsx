@@ -17,7 +17,7 @@ import PayoutCycles from "@/pages/articles/PayoutCycles";
 import SellerSubscriptions from "@/pages/articles/SellerSubscriptions";
 import Maintenance from "@/pages/Maintenance";
 import BackgroundOverlay from "@/components/hero/v2/HeroBackground";
-import LiquidGlass from "@/components/hero/v2/LiquidGlass";
+import LiquidGlass from "./components/hero/v2/LiquidGlass";
 
 function Router() {
   return (
@@ -62,12 +62,11 @@ function App() {
         >
           {/* Ambient Background Overlay (Atmosphere & Dots) */}
           <BackgroundOverlay />
-
-          {/* Liquid glass material */}
-          <LiquidGlass />
-
+           <LiquidGlass />
           <Toaster />
-          <Router />
+          <div className="relative z-10">
+            <Router />
+          </div>
           <ScrollToTop />
         </div>
       </TooltipProvider>

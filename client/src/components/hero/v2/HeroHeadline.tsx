@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 // Kept in sync with the heroSnake animation duration in BrandSnake.tsx
 const DURATION = 7000;
-const FADE_MS  = DURATION * 0.06; // ~420 ms cross-fade
+const FADE_MS = DURATION * 0.06; // ~420 ms cross-fade
 
 export default function HeroHeadline() {
     // K is the resting state; C appears only during the ¼ → ¾ window of each cycle
@@ -14,7 +14,7 @@ export default function HeroHeadline() {
 
         const runCycle = () => {
             t1 = setTimeout(() => setShowK(false), DURATION * 0.25);
-            t2 = setTimeout(() => setShowK(true),  DURATION * 0.75);
+            t2 = setTimeout(() => setShowK(true), DURATION * 0.75);
         };
 
         runCycle();
@@ -51,9 +51,9 @@ export default function HeroHeadline() {
                             aria-hidden={showK}
                             style={{
                                 ...letterTransition,
-                                opacity:   showK ? 0 : 1,
+                                opacity: showK ? 0 : 1,
                                 transform: showK ? 'translateY(-6px) scale(0.88)' : 'translateY(0) scale(1)',
-                                position:  showK ? 'absolute' : 'relative',
+                                position: showK ? 'absolute' : 'relative',
                                 left: 0,
                             }}
                         >
@@ -65,9 +65,9 @@ export default function HeroHeadline() {
                             aria-hidden={!showK}
                             style={{
                                 ...letterTransition,
-                                opacity:   showK ? 1 : 0,
+                                opacity: showK ? 1 : 0,
                                 transform: showK ? 'translateY(0) scale(1)' : 'translateY(6px) scale(0.88)',
-                                position:  showK ? 'relative' : 'absolute',
+                                position: showK ? 'relative' : 'absolute',
                                 left: 0,
                                 background: 'linear-gradient(135deg, #EE3E28 0%, #F9AC42 35%, #28deb4 62%, #28A6DE 100%)',
                                 WebkitBackgroundClip: 'text',

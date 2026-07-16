@@ -1,5 +1,6 @@
 import StatsBar from '@/components/StatsBar';
 import BrandSnake from './BrandSnake';
+import LiquidGlass from './LiquidGlass';
 import HeroHeadline from './HeroHeadline';
 
 export default function Hero_V2() {
@@ -11,6 +12,9 @@ export default function Hero_V2() {
 
             {/* ── Layer 1: Brand snake animation ─────────────────────── */}
             <BrandSnake />
+
+            {/* ── Layer 2: Liquid glass material ─────────────────────── */}
+            {/* <LiquidGlass /> */}
 
             {/* ── Layer 3: Content (etched onto the glass surface) ───── */}
             <style>{`
@@ -27,9 +31,9 @@ export default function Hero_V2() {
             </div>
 
             {/* Stats pinned to bottom of hero */}
-            {/* <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-8" style={{ zIndex: 10 }}>
+            <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-8" style={{ zIndex: 10 }}>
                 <StatsBar />
-            </div> */}
+            </div>
         </section>
     );
 }
