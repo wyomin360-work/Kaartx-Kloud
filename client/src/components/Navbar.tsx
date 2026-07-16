@@ -114,7 +114,7 @@ export default function Navbar({ onOpenSignup }: NavbarProps) {
   return (
     <Portal.Root>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[105] transition-[background-color,backdrop-filter,border-color] duration-300 py-3 `}
+        className={`absolute top-0 left-0 right-0 z-[105] transition-[background-color,backdrop-filter,border-color] duration-300 py-3 `}
         style={{ transform: 'translate3d(0,0,0)' }}
       >
         <div className="mx-auto max-w-[1400px] px-6 lg:px-8">

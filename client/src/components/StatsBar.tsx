@@ -119,15 +119,15 @@ export default function StatsBar() {
         className="group relative flex w-[18rem] shrink-0 items-center gap-4"
         data-testid={`stat-${index % 4}`}
       >
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200/60 bg-white text-slate-600 transition-colors duration-300 group-hover:border-slate-300 group-hover:text-slate-900 shadow-sm">
-          <Icon className="h-5 w-5" strokeWidth={2} />
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200/60  text-slate-600 transition-colors duration-300 group-hover:border-slate-300 group-hover:text-slate-900 shadow-sm">
+          <Icon className="h-5 w-5" strokeWidth={2} stroke="black" />
         </div>
 
         <div className="flex flex-col text-left">
-          <div className="font-display text-xl font-bold leading-none tracking-tight text-slate-900">
+          <div className="font-display text-xl font-medium leading-none tracking-tight text-slate-900">
             {stat.value}
           </div>
-          <div className="mt-1 text-[11px] font-bold uppercase leading-none tracking-[0.12em] text-slate-500">
+          <div className="mt-1 text-[10px] sm:text-[11px] uppercase tracking-[0.06em] text-neutral-400">
             {stat.label}
           </div>
         </div>
@@ -139,10 +139,7 @@ export default function StatsBar() {
     <section
       ref={barRef}
       className={cn(
-        "relative overflow-hidden bg-white/80 backdrop-blur-xl py-4 md:py-6 border-slate-200/60 transition-all duration-700 ease-in-out w-full",
-        isUnstuck 
-          ? "my-8 border-y shadow-sm" 
-          : "border-t my-0"
+        "relative overflow-hidden bg-transparent  py-4 md:py-6 transition-all duration-700 ease-in-out w-full",
       )}
       data-testid="stats-section"
     >

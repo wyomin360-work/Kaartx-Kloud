@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 // Path: top-right arm (red) → gentle arc → crossing at center (700,400) → tight left loop (teal) → crossing → gentle arc → bottom-right arm (blue)
 const PATH = `
-    M 1140 -200
+    M 1140 -1200
     C 1100 100, 950 220, 800 340
     C 665 430, 558 472, 476 456
     C 398 442, 402 370, 476 350
@@ -13,12 +13,12 @@ const PATH = `
 // Mobile path: same shape scaled/shifted so the K loop lands at x≈200 (center of 400-wide viewport)
 // Original loop center ≈ x:476, y:400  →  remapped to x:200, y:350 inside a 400×700 viewBox
 const MOBILE_PATH = `
-  M 540 -100
+  M 540 -300
   C 510 60, 390 170, 320 240
-  C 250 310, 218 328, 180 318
-  C 145 308, 147 268, 180 258
-  C 213 248, 263 272, 285 280
-  C 310 286, 425 358, 540 520
+  C 250 310, 168 328, 130 318
+  C 92 308, 97 268, 130 258
+  C 163 248, 213 272, 235 280
+  C 257 288, 390 360, 540 520
 `;
 
 export default function BrandSnake() {
@@ -45,7 +45,7 @@ export default function BrandSnake() {
             ...(blur ? { filter: `blur(${blur}px)` } : {}),
             strokeDasharray: `${segmentLength} ${totalDash}`,
             strokeDashoffset: segmentLength + 10,
-            animation: 'heroSnake 5.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
+            animation: 'heroSnake 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
         };
     };
 
@@ -58,7 +58,7 @@ export default function BrandSnake() {
             ...(blur ? { filter: `blur(${blur}px)` } : {}),
             strokeDasharray: `${segmentLength} ${totalDash}`,
             strokeDashoffset: segmentLength + 10,
-            animation: 'heroSnakeMobile 5.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
+            animation: 'heroSnakeMobile 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite',
         };
     };
 
@@ -130,8 +130,8 @@ export default function BrandSnake() {
                 <style>{`
                     @keyframes heroSnake {
                         0%   { stroke-dashoffset: ${pathLength * 0.23 + 20}; opacity: 0; }
-                        7%   { opacity: 1; }
-                        87%  { opacity: 1; }
+                        3%   { opacity: 1; }
+                        93%  { opacity: 1; }
                         100% { stroke-dashoffset: ${-(pathLength + pathLength * 0.23 + 20)}; opacity: 0; }
                     }
                 `}</style>
@@ -142,8 +142,8 @@ export default function BrandSnake() {
                 <style>{`
                     @keyframes heroSnakeMobile {
                         0%   { stroke-dashoffset: ${mobilePathLength * 0.23 + 20}; opacity: 0; }
-                        7%   { opacity: 1; }
-                        87%  { opacity: 1; }
+                        3%   { opacity: 1; }
+                        93%  { opacity: 1; }
                         100% { stroke-dashoffset: ${-(mobilePathLength + mobilePathLength * 0.23 + 20)}; opacity: 0; }
                     }
                 `}</style>
