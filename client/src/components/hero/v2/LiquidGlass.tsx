@@ -17,7 +17,7 @@ export default function LiquidGlass() {
     return (
         <div
             aria-hidden="true"
-            className="absolute inset-0 pointer-events-none overflow-hidden"
+            className="fixed inset-0 pointer-events-none overflow-hidden"
             style={{ zIndex: 6 }}
         >
             {/* ── 1. Primary glass material ────────────────────────────── */}

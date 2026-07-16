@@ -50,10 +50,10 @@ export default function Blog() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <Navbar onOpenSignup={() => setSignupModalOpen(true)} />
       {/* Hero Section */}
-      <section className="blog-hero-section bg-background pb-16 pt-32 sm:pb-24 sm:pt-40 md:pb-32 md:pt-48">
+      <section className="blog-hero-section bg-transparent pb-16 pt-32 sm:pb-24 sm:pt-40 md:pb-32 md:pt-48">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div
             ref={titleAnimation.ref}
@@ -77,7 +77,7 @@ export default function Blog() {
       </section>
 
       {/* Blog Posts Grid */}
-      <section className="blog-posts-section bg-background pb-16 sm:pb-24 md:pb-32">
+      <section className="blog-posts-section bg-transparent pb-16 sm:pb-24 md:pb-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div
             ref={cardsAnimation.ref}

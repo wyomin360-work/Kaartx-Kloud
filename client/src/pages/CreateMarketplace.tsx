@@ -110,7 +110,7 @@ export default function CreateMarketplace() {
     return (
       <>
         <Navbar />
-        <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12 pt-24">
+        <div className="flex min-h-screen items-center justify-center bg-transparent px-4 py-12 pt-24">
           <Card className="w-full max-w-3xl">
             <CardHeader className="pb-8 text-center">
               <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-50 dark:bg-green-950">
@@ -194,7 +194,7 @@ export default function CreateMarketplace() {
   return (
     <>
       <Navbar />
-      <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12 pt-24">
+      <div className="flex min-h-screen items-center justify-center bg-transparent px-4 py-12 pt-24">
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl sm:text-3xl">

@@ -17,7 +17,7 @@ export default function SellerSubscriptions() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <Navbar onOpenSignup={() => setSignupModalOpen(true)} />
       <div
         className="mx-auto px-4 pb-10 pt-24 sm:px-6 sm:pb-12 sm:pt-28 md:pb-16 md:pt-28 lg:px-8"

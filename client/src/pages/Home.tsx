@@ -96,11 +96,11 @@ export default function Home() {
           <Hero_V2 />
             {/* <Hero /> */}
           <FeatureGrid />
-          {/* <HowItWorks /> */}
-          {/* <DeepFeatures /> */}
-          {/* <UseCases /> */}
-          {/* <IntegrationsMarquee /> */}
-          {/* <Security /> */}
+          <HowItWorks />
+          <DeepFeatures />
+          <UseCases />
+          <IntegrationsMarquee />
+          <Security />
           {/* <APISection /> */}
           {/* <Showcase /> */}
           {/* <Pricing onOpenSignup={handleOpenSignup} /> */}

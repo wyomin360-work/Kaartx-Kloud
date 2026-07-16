@@ -16,6 +16,8 @@ import MarketplaceMistakes from "@/pages/articles/MarketplaceMistakes";
 import PayoutCycles from "@/pages/articles/PayoutCycles";
 import SellerSubscriptions from "@/pages/articles/SellerSubscriptions";
 import Maintenance from "@/pages/Maintenance";
+import BackgroundOverlay from "@/components/hero/v2/HeroBackground";
+import LiquidGlass from "@/components/hero/v2/LiquidGlass";
 
 function Router() {
   return (
@@ -51,9 +53,23 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Router />
-        <ScrollToTop />
+        <div
+          className="min-h-screen relative text-foreground antialiased"
+          style={{
+            background: 'linear-gradient(145deg, rgba(238,62,40,0.045) 0%, #fafaf8 28%, #fafaf8 68%, rgba(40,166,222,0.04) 100%)',
+            backgroundAttachment: 'fixed',
+          }}
+        >
+          {/* Ambient Background Overlay (Atmosphere & Dots) */}
+          <BackgroundOverlay />
+
+          {/* Liquid glass material */}
+          <LiquidGlass />
+
+          <Toaster />
+          <Router />
+          <ScrollToTop />
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   );

@@ -104,7 +104,7 @@ export default function DeepFeatures() {
   const cardsAnimation = useScrollAnimation<HTMLDivElement>(0.1);
 
   return (
-    <section id="features" className="relative scroll-mt-20 overflow-hidden bg-background pb-16 pt-10">
+    <section id="features" className="relative scroll-mt-20 overflow-hidden bg-transparent pb-16 pt-10">
       {/* Subtle background gradient to make the section pop */}
       <div
         className="pointer-events-none absolute inset-0 z-0"

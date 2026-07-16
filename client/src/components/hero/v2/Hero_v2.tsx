@@ -1,26 +1,16 @@
 import StatsBar from '@/components/StatsBar';
 import BrandSnake from './BrandSnake';
-import LiquidGlass from './LiquidGlass';
 import HeroHeadline from './HeroHeadline';
-import BackgroundOverlay from './HeroBackground';
 
 export default function Hero_V2() {
     return (
         <section
             id="hero"
             className="relative overflow-hidden h-[100dvh]"
-            style={{
-                background: 'linear-gradient(145deg, rgba(238,62,40,0.045) 0%, #fafaf8 28%, #fafaf8 68%, rgba(40,166,222,0.04) 100%)',
-            }}
         >
-            {/* ── Layer 0: Background atmosphere ─────────────────────── */}
-            <BackgroundOverlay />
 
             {/* ── Layer 1: Brand snake animation ─────────────────────── */}
             <BrandSnake />
-
-            {/* ── Layer 2: Liquid glass material ─────────────────────── */}
-            <LiquidGlass />
 
             {/* ── Layer 3: Content (etched onto the glass surface) ───── */}
             <style>{`
@@ -37,9 +27,9 @@ export default function Hero_V2() {
             </div>
 
             {/* Stats pinned to bottom of hero */}
-            <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-8" style={{ zIndex: 10 }}>
+            {/* <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-8" style={{ zIndex: 10 }}>
                 <StatsBar />
-            </div>
+            </div> */}
         </section>
     );
 }

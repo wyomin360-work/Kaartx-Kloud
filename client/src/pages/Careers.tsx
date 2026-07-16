@@ -115,11 +115,11 @@ export default function Careers() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <Navbar onOpenSignup={() => setSignupModalOpen(true)} />
 
       {/* SECTION 1 - Hero */}
-      <section className="careers-hero-section bg-background pb-12 pt-28 sm:pb-20 sm:pt-32 md:pb-32 md:pt-36">
+      <section className="careers-hero-section bg-transparent pb-12 pt-28 sm:pb-20 sm:pt-32 md:pb-32 md:pt-36">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div
             ref={heroAnimation.ref}
@@ -169,7 +169,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 2 - Founder's Note */}
-      <section className="bg-background py-12 sm:py-20 md:py-32">
+      <section className="bg-transparent py-12 sm:py-20 md:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div
             ref={founderAnimation.ref}
@@ -222,7 +222,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 3 - Why Work at Kaartx Kloud */}
-      <section className="why-work-section bg-background py-12 sm:py-20 md:py-32">
+      <section className="why-work-section bg-transparent py-12 sm:py-20 md:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2
             className="section-title mb-10 tracking-tight text-foreground sm:mb-12"
@@ -255,7 +255,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 4 - Kaartx Culture Code */}
-      <section className="culture-code-section bg-background py-12 sm:py-20 md:py-32">
+      <section className="culture-code-section bg-transparent py-12 sm:py-20 md:py-32">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div
             ref={cultureAnimation.ref}
@@ -293,7 +293,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 5 - How We Work */}
-      <section className="how-we-work-section bg-background py-12 sm:py-20 md:py-32">
+      <section className="how-we-work-section bg-transparent py-12 sm:py-20 md:py-32">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div
             ref={howWeWorkAnimation.ref}
@@ -344,7 +344,7 @@ export default function Careers() {
       {/* SECTION 6 - Open Roles */}
       <section
         id="open-roles"
-        className="open-roles-section scroll-mt-20 bg-background py-12 sm:py-20 md:py-32"
+        className="open-roles-section scroll-mt-20 bg-transparent py-12 sm:py-20 md:py-32"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2
@@ -435,7 +435,7 @@ export default function Careers() {
       </section>
 
       {/* SECTION 7 - Don't See Your Role */}
-      <section className="no-role-section bg-background py-12 sm:py-20 md:py-32">
+      <section className="no-role-section bg-transparent py-12 sm:py-20 md:py-32">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <h2
             className="section-title mb-4 tracking-tight text-foreground sm:mb-5"
