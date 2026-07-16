@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
@@ -15,7 +15,12 @@ interface InlineNavbarProps {
 export default function InlineNavbar({ onOpenSignup }: InlineNavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('');
   const [location] = useLocation();
+
+  // Mouse tracking states for glossy spotlight
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
 
   const navItems: NavItem[] = [
     { label: 'Features', target: 'features', type: 'scroll', testId: 'link-features' },
@@ -47,6 +52,49 @@ export default function InlineNavbar({ onOpenSignup }: InlineNavbarProps) {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Handle active section tracking (Scrollspy)
+  useEffect(() => {
+    if (location !== '/') {
+      setActiveSection('');
+      return;
+    }
+
+    const sectionIds = ['features', 'integrations', 'pricing', 'faq', 'booking', 'about'];
+    
+    const handleScrollspy = () => {
+      // Check if user is at the top of the page
+      if (window.scrollY < 100) {
+        setActiveSection('');
+        return;
+      }
+
+      // Check if user has scrolled to the very bottom
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
+        setActiveSection('about'); // The last section
+        return;
+      }
+
+      const scrollPosition = window.scrollY + 250; // Offset for viewport target
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(id);
+            return;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScrollspy, { passive: true });
+    handleScrollspy();
+
+    return () => window.removeEventListener('scroll', handleScrollspy);
+  }, [location]);
 
   // Handle menu scroll lock
   useEffect(() => {
@@ -91,92 +139,124 @@ export default function InlineNavbar({ onOpenSignup }: InlineNavbarProps) {
     }
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   return (
     <Portal.Root>
       <nav
-        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-6xl z-[105] transition-all duration-300 py-1.5 px-4 sm:px-6 bg-white/60 shadow-xs dark:bg-black/30 backdrop-blur-xl border border-white/40 dark:border-white/5 rounded-full flex items-center justify-between`}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className={`fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-6xl z-[105] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] rounded-full flex items-center justify-between overflow-hidden ${
+          isScrolled
+            ? 'py-2 px-4 sm:px-6 bg-white/70 dark:bg-black/40 backdrop-blur-xl border border-white/50 dark:border-white/10 shadow-lg shadow-black/[0.04]'
+            : 'py-3 px-5 sm:px-7 bg-white/45 dark:bg-black/20 backdrop-blur-lg border border-white/30 dark:border-white/5 shadow-xs shadow-black/[0.01]'
+        }`}
       >
-        {/* Left: Logo */}
-        <div className="flex-shrink-0 flex items-center">
-          <button
-            onClick={navigateToHome}
-            className="hover-elevate rounded-md transition-all py-1.5"
-          >
-            <img
-              src={logoImage}
-              alt="Kloud"
-              className="h-4 md:h-5 w-auto object-contain"
-            />
-          </button>
-        </div>
+        {/* Glossy spotlight glow overlay */}
+        <div
+          className="absolute inset-0 rounded-full pointer-events-none transition-opacity duration-500 ease-out"
+          style={{
+            opacity: isHovered ? 1 : 0,
+            background: `radial-gradient(130px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 255, 255, 0.35), transparent 80%)`,
+            mixBlendMode: 'overlay',
+            zIndex: 0,
+          }}
+        />
 
-        {/* Center: Desktop Inline Links */}
-        <div className="hidden lg:flex items-center gap-6 ">
-          {navItems.map((item) => (
-            <div key={item.testId} className="relative group">
-              {item.type === 'link' ? (
-                <Link
-                  href={item.target}
-                  className="text-[11px] font-semibold tracking-wider text-muted-foreground hover:text-foreground transition-all duration-300 uppercase py-1.5 block relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 group-hover:after:origin-left group-hover:after:scale-x-100"
+        {/* Content wrapper with relative z-index so text remains readable above the spotlight */}
+        <div className="relative z-10 w-full flex items-center justify-between">
+          {/* Left: Logo */}
+          <div className="flex-shrink-0 flex items-center">
+            <button
+              onClick={navigateToHome}
+              className="hover-elevate rounded-md transition-all py-1.5"
+            >
+              <img
+                src={logoImage}
+                alt="Kloud"
+                className="h-4 md:h-5 w-auto object-contain"
+              />
+            </button>
+          </div>
+
+          {/* Center: Desktop Inline Links */}
+          <div className="hidden lg:flex items-center gap-6">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.target;
+              return (
+                <div key={item.testId} className="relative group">
+                  {item.type === 'link' ? (
+                    <Link
+                      href={item.target}
+                      className={`text-[11px] font-semibold tracking-wider transition-all duration-300 uppercase py-1.5 block relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-primary after:transition-transform after:duration-300 ${
+                        isActive
+                          ? 'text-primary after:scale-x-100 after:origin-left'
+                          : 'text-muted-foreground hover:text-foreground after:scale-x-0 after:origin-right group-hover:after:origin-left group-hover:after:scale-x-100'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={(e) => handleNavClick(item, e)}
+                      className={`text-[11px] font-semibold tracking-wider transition-all duration-300 uppercase py-1.5 block relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-primary after:transition-transform after:duration-300 ${
+                        isActive
+                          ? 'text-primary after:scale-x-100 after:origin-left'
+                          : 'text-muted-foreground hover:text-foreground after:scale-x-0 after:origin-right group-hover:after:origin-left group-hover:after:scale-x-100'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Right: Desktop CTA & Mobile Toggle */}
+          <div className="flex items-center gap-3">
+            {onOpenSignup && (
+              <>
+                {/* Get Started Button */}
+                <Button
+                  onClick={onOpenSignup}
+                  className="hidden lg:inline-flex rounded-full px-5 py-2 text-[11px] font-bold tracking-wider uppercase bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 items-center gap-1.5 min-h-0 h-9 group/btn"
                 >
-                  {item.label}
-                </Link>
-              ) : (
-                <button
-                  onClick={(e) => handleNavClick(item, e)}
-                  className="text-[11px] font-semibold tracking-wider text-muted-foreground hover:text-foreground transition-all duration-300 uppercase py-1.5 block relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 group-hover:after:origin-left group-hover:after:scale-x-100"
-                >
-                  {item.label}
-                </button>
-              )}
-            </div>
-          ))}
-        </div>
+                  Get Started
+                  <span className="transition-transform duration-300 group-hover/btn:translate-x-0.5 text-xs font-normal">→</span>
+                </Button>
+              </>
+            )}
 
-        {/* Right: Desktop CTA & Mobile Toggle */}
-        <div className="flex items-center gap-3">
-          {onOpenSignup && (
-            <>
-              {/* Log In Text Link */}
-              {/* <button
-                onClick={onOpenSignup}
-                className="hidden lg:inline-block text-xs font-semibold tracking-wider text-muted-foreground hover:text-foreground transition-colors mr-2 cursor-pointer"
-              >
-                Log in
-              </button> */}
-
-              {/* Get Started Button */}
-              <Button
-                onClick={onOpenSignup}
-                className="hidden lg:inline-flex rounded-full px-5 py-2 text-[11px] font-bold tracking-wider uppercase bg-foreground text-background hover:bg-foreground/90 transition-all duration-300 items-center gap-1.5 min-h-0 h-9 group/btn"
-              >
-                Get Started
-                <span className="transition-transform duration-300 group-hover/btn:translate-x-0.5 text-xs font-normal">→</span>
-              </Button>
-            </>
-          )}
-
-          {/* Hamburger Menu Toggle for Mobile/Tablet */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden hover:bg-primary/10 transition-colors p-1.5 rounded-full relative h-9 w-9 flex items-center justify-center"
-            data-testid="button-mobile-menu"
-          >
-            <Menu
-              className="h-5.5 w-5.5 stroke-[1.5] absolute transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-              style={{
-                opacity: isMobileMenuOpen ? 0 : 1,
-                transform: isMobileMenuOpen ? 'rotate(90deg) scale(0.5)' : 'rotate(0deg) scale(1)',
-              }}
-            />
-            <X
-              className="h-5.5 w-5.5 stroke-[1.5] absolute transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-              style={{
-                opacity: isMobileMenuOpen ? 1 : 0,
-                transform: isMobileMenuOpen ? 'rotate(0deg) scale(1)' : 'rotate(-90deg) scale(0.5)',
-              }}
-            />
-          </button>
+            {/* Hamburger Menu Toggle for Mobile/Tablet */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden hover:bg-primary/10 transition-colors p-1.5 rounded-full relative h-9 w-9 flex items-center justify-center"
+              data-testid="button-mobile-menu"
+            >
+              <Menu
+                className="h-5.5 w-5.5 stroke-[1.5] absolute transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                style={{
+                  opacity: isMobileMenuOpen ? 0 : 1,
+                  transform: isMobileMenuOpen ? 'rotate(90deg) scale(0.5)' : 'rotate(0deg) scale(1)',
+                }}
+              />
+              <X
+                className="h-5.5 w-5.5 stroke-[1.5] absolute transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                style={{
+                  opacity: isMobileMenuOpen ? 1 : 0,
+                  transform: isMobileMenuOpen ? 'rotate(0deg) scale(1)' : 'rotate(-90deg) scale(0.5)',
+                }}
+              />
+            </button>
+          </div>
         </div>
       </nav>
 

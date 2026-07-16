@@ -116,18 +116,18 @@ export default function StatsBar() {
 
     return (
       <div
-        className="group relative flex w-[18rem] shrink-0 items-center gap-4"
+        className="group relative flex w-[18rem] shrink-0 items-center gap-4 hover:scale-102 transition-all duration-300 ease-out cursor-default"
         data-testid={`stat-${index % 4}`}
       >
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200/60  text-slate-600 transition-colors duration-300 group-hover:border-slate-300 group-hover:text-slate-900 shadow-sm">
-          <Icon className="h-5 w-5" strokeWidth={2} stroke="black" />
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-slate-200/60 text-slate-600 transition-all duration-300 group-hover:border-slate-400/80 group-hover:text-slate-950 shadow-sm group-hover:shadow group-hover:scale-105 bg-background/50 backdrop-blur-xs">
+          <Icon className="h-5 w-5 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-12 group-hover:scale-110" strokeWidth={2} stroke="black" />
         </div>
 
         <div className="flex flex-col text-left">
-          <div className="font-display text-xl font-medium leading-none tracking-tight text-slate-900">
+          <div className="font-display text-xl font-medium leading-none tracking-tight text-slate-900 transition-colors duration-300 group-hover:text-primary">
             {stat.value}
           </div>
-          <div className="mt-1 text-[10px] sm:text-[11px] uppercase tracking-[0.06em] text-neutral-400">
+          <div className="mt-1 text-[10px] sm:text-[11px] uppercase tracking-[0.06em] text-neutral-400 transition-colors duration-300 group-hover:text-slate-600">
             {stat.label}
           </div>
         </div>
