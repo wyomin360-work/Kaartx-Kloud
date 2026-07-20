@@ -92,8 +92,9 @@ export default function SellerMachine() {
         return () => observer.disconnect();
     }, []);
 
-    const WHEEL_THRESHOLD = 35;
-    const TOUCH_THRESHOLD = 400; // Increased swipe distance to prevent accidental touch triggers
+    const WHEEL_PIN_THRESHOLD = 120;
+    const WHEEL_STEP_THRESHOLD = 350; // Increased to require more scroll distance to step selection
+    const TOUCH_THRESHOLD = 10; // Increased swipe distance to prevent accidental touch triggers
 
     const triggerCenteringScroll = () => {
         if (!containerRef.current) return;
@@ -136,7 +137,7 @@ export default function SellerMachine() {
                 }, 150);
 
                 deltaAccumulatorRef.current += e.deltaY;
-                const stepThreshold = 100; // Increased scrolling step transition threshold for smoothness
+                const stepThreshold = WHEEL_STEP_THRESHOLD; // Use configured wheel step threshold
 
                 if (stepTimeoutRef.current) {
                     e.preventDefault();
@@ -187,15 +188,9 @@ export default function SellerMachine() {
                     
                     if (isNearTrigger) {
                         deltaAccumulatorRef.current += e.deltaY;
-                        const pinThreshold = 120; // Increased pinning activation threshold
+                        const pinThreshold = WHEEL_PIN_THRESHOLD; // Use configured wheel pin threshold
 
                         if (deltaAccumulatorRef.current > pinThreshold && currentScrollStep < 6) {
-                            e.preventDefault();
-                            deltaAccumulatorRef.current = 0;
-                            isPinnedRef.current = true;
-                            setIsPinned(true);
-                            triggerCenteringScroll();
-                        } else if (deltaAccumulatorRef.current < -pinThreshold && currentScrollStep > 0) {
                             e.preventDefault();
                             deltaAccumulatorRef.current = 0;
                             isPinnedRef.current = true;
@@ -272,11 +267,6 @@ export default function SellerMachine() {
                     
                     if (isNearTrigger) {
                         if (deltaY > TOUCH_THRESHOLD && currentScrollStep < 6) {
-                            e.preventDefault();
-                            isPinnedRef.current = true;
-                            setIsPinned(true);
-                            triggerCenteringScroll();
-                        } else if (deltaY < -TOUCH_THRESHOLD && currentScrollStep > 0) {
                             e.preventDefault();
                             isPinnedRef.current = true;
                             setIsPinned(true);
