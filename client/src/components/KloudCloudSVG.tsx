@@ -2,7 +2,7 @@ import React from 'react';
 
 interface KloudCloudSVGProps {
     activeColor: string | null;
-    centerRef: React.RefObject<SVGSVGElement | null>;
+    centerRef: React.RefObject<SVGSVGElement>;
     label?: string;
     className?: string;
     style?: React.CSSProperties;
@@ -10,16 +10,21 @@ interface KloudCloudSVGProps {
 
 export default function KloudCloudSVG({ activeColor, centerRef, label, className, style }: KloudCloudSVGProps) {
     const isAct = !!activeColor;
-    const strokeColor = '#979797ff'; // static
-    const extrusionColor = '#c8caccff'; // static
-    const extrusionOpacity = 0.75; // static
+    const strokeColor = isAct ? activeColor : '#cbd5e1';
+    const strokeDasharray = isAct ? 'none' : '3,3';
+    const extrusionColor = isAct ? activeColor : '#e2e8f0';
+    const extrusionOpacity = isAct ? 0.35 : 0.5;
     
     // Cloud remains dynamically colored based on hover/active state
-    const cloudStrokeColor = activeColor || strokeColor;
-    const cloudFillColor = activeColor || '#edf0f7';
+    const cloudStrokeColor = isAct ? activeColor : '#94a3b8';
+    const cloudFillColor = isAct ? activeColor : '#edf0f7';
     const cloudFillOpacity = isAct ? 0.15 : 1.0;
-    const cloudExtrusionColor = activeColor || extrusionColor;
+    const cloudExtrusionColor = isAct ? activeColor : '#cbd5e1';
     const cloudExtrusionOpacity = isAct ? 0.75 : 0.85;
+
+    // Pin base and cap
+    const pinBaseColor = isAct ? activeColor : '#cbd5e1';
+    const pinEllipseColor = isAct ? '#ffffff' : '#f8fafc';
 
     return (
         <svg
@@ -66,6 +71,27 @@ export default function KloudCloudSVG({ activeColor, centerRef, label, className
                 );
             })}
 
+            {/* ==================== 3D OUTLINES (BOTTOM & EDGES) ==================== */}
+            {/* Bottom face outline */}
+            <g transform="matrix(0.866, 0.5, -0.866, 0.5, 300, 196)">
+                <rect
+                    x="-100"
+                    y="-100"
+                    width="200"
+                    height="200"
+                    rx="16"
+                    fill="none"
+                    stroke={strokeColor}
+                    strokeDasharray={strokeDasharray}
+                    strokeWidth="1.8"
+                    className="transition-all-colors"
+                />
+            </g>
+            {/* Vertical corner edges */}
+            <line x1="126.8" y1="180" x2="126.8" y2="196" stroke={strokeColor} strokeDasharray={strokeDasharray} strokeWidth="1.8" className="transition-all-colors" />
+            <line x1="473.2" y1="180" x2="473.2" y2="196" stroke={strokeColor} strokeDasharray={strokeDasharray} strokeWidth="1.8" className="transition-all-colors" />
+            <line x1="300" y1="280" x2="300" y2="296" stroke={strokeColor} strokeDasharray={strokeDasharray} strokeWidth="1.8" className="transition-all-colors" />
+
             {/* ==================== TOP SURFACE ==================== */}
             <g transform="matrix(0.866, 0.5, -0.866, 0.5, 300, 180)">
                 <rect
@@ -83,17 +109,17 @@ export default function KloudCloudSVG({ activeColor, centerRef, label, className
             </g>
 
             {/* ==================== CORNER PINS / RIVETS ==================== */}
-            <path d="M 150 180 A 4 2.2 0 0 0 158 180 L 158 182 A 4 2.2 0 0 1 150 182 Z" fill={extrusionColor} className="transition-all-colors" />
-            <ellipse cx="154" cy="180" rx="4" ry="2.2" fill="#edf0f7" stroke={extrusionColor} strokeWidth="1" className="transition-all-colors" />
+            <path d="M 150 180 A 4 2.2 0 0 0 158 180 L 158 182 A 4 2.2 0 0 1 150 182 Z" fill={pinBaseColor} className="transition-all-colors" />
+            <ellipse cx="154" cy="180" rx="4" ry="2.2" fill={pinEllipseColor} stroke={pinBaseColor} strokeWidth="1" className="transition-all-colors" />
 
-            <path d="M 442 180 A 4 2.2 0 0 0 450 180 L 450 182 A 4 2.2 0 0 1 442 182 Z" fill={extrusionColor} className="transition-all-colors" />
-            <ellipse cx="446" cy="180" rx="4" ry="2.2" fill="#edf0f7" stroke={extrusionColor} strokeWidth="1" className="transition-all-colors" />
+            <path d="M 442 180 A 4 2.2 0 0 0 450 180 L 450 182 A 4 2.2 0 0 1 442 182 Z" fill={pinBaseColor} className="transition-all-colors" />
+            <ellipse cx="446" cy="180" rx="4" ry="2.2" fill={pinEllipseColor} stroke={pinBaseColor} strokeWidth="1" className="transition-all-colors" />
 
-            <path d="M 296 96 A 4 2.2 0 0 0 304 96 L 304 98 A 4 2.2 0 0 1 296 98 Z" fill={extrusionColor} className="transition-all-colors" />
-            <ellipse cx="300" cy="96" rx="4" ry="2.2" fill="#edf0f7" stroke={extrusionColor} strokeWidth="1" className="transition-all-colors" />
+            <path d="M 296 96 A 4 2.2 0 0 0 304 96 L 304 98 A 4 2.2 0 0 1 296 98 Z" fill={pinBaseColor} className="transition-all-colors" />
+            <ellipse cx="300" cy="96" rx="4" ry="2.2" fill={pinEllipseColor} stroke={pinBaseColor} strokeWidth="1" className="transition-all-colors" />
 
-            <path d="M 296 264 A 4 2.2 0 0 0 304 264 L 304 266 A 4 2.2 0 0 1 296 266 Z" fill={extrusionColor} className="transition-all-colors" />
-            <ellipse cx="300" cy="264" rx="4" ry="2.2" fill="#edf0f7" stroke={extrusionColor} strokeWidth="1" className="transition-all-colors" />
+            <path d="M 296 264 A 4 2.2 0 0 0 304 264 L 304 266 A 4 2.2 0 0 1 296 266 Z" fill={pinBaseColor} className="transition-all-colors" />
+            <ellipse cx="300" cy="264" rx="4" ry="2.2" fill={pinEllipseColor} stroke={pinBaseColor} strokeWidth="1" className="transition-all-colors" />
 
             {/* ==================== CLOUD ICON (3D) + LABEL ==================== */}
             <g transform="matrix(0.866, 0.5, -0.866, 0.5, 300, 180)">

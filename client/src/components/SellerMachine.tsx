@@ -34,6 +34,298 @@ interface OutputCard {
 export default function SellerMachine() {
     const [hoveredInput, setHoveredInput] = useState<string | null>(null);
     const [activeInput, setActiveInput] = useState<string | null>(null);
+    const [scrollActiveInput, setScrollActiveInput] = useState<string | null>(null);
+    const [scrollStep, setScrollStep] = useState<number>(0);
+    const [isPinned, setIsPinned] = useState<boolean>(false);
+    const [isNearCenter, setIsNearCenter] = useState<boolean>(false);
+    
+    const isPinnedRef = useRef<boolean>(false);
+    const scrollStepRef = useRef<number>(0);
+    const stepTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const touchStartRef = useRef<number | null>(null);
+    const deltaAccumulatorRef = useRef<number>(0);
+    const resetAccumulatorTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const isAnimatingRef = useRef<boolean>(false);
+    const isNearCenterRef = useRef<boolean>(false);
+
+    const stepToFeature: Record<number, string | null> = {
+        0: null,
+        1: 'inventory',
+        2: 'payouts',
+        3: 'delivery',
+        4: 'payments',
+        5: 'sellers',
+        6: null
+    };
+
+    useEffect(() => {
+        scrollStepRef.current = scrollStep;
+        setScrollActiveInput(stepToFeature[scrollStep]);
+    }, [scrollStep]);
+
+    useEffect(() => {
+        isPinnedRef.current = isPinned;
+        if (!isPinned) {
+            deltaAccumulatorRef.current = 0;
+        }
+    }, [isPinned]);
+
+    useEffect(() => {
+        isNearCenterRef.current = isNearCenter;
+    }, [isNearCenter]);
+
+    useEffect(() => {
+        if (!containerRef.current) return;
+        const sectionEl = containerRef.current.closest('section');
+        if (!sectionEl) return;
+        
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsNearCenter(entry.isIntersecting);
+            },
+            {
+                // Trigger when the section enters viewport relative to top navbar (approx 80px)
+                rootMargin: "-20px 0px 0px 0px"
+            }
+        );
+        observer.observe(sectionEl);
+        return () => observer.disconnect();
+    }, []);
+
+    const WHEEL_THRESHOLD = 35;
+    const TOUCH_THRESHOLD = 400; // Increased swipe distance to prevent accidental touch triggers
+
+    const triggerCenteringScroll = () => {
+        if (!containerRef.current) return;
+        const sectionEl = containerRef.current.closest('section');
+        if (!sectionEl) return;
+
+        const rect = sectionEl.getBoundingClientRect();
+        
+        // Dynamic sticky navbar check
+        const navbar = document.querySelector('header') || document.querySelector('nav');
+        const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 80;
+
+        // Align top of section with bottom of sticky navbar
+        const targetScrollY = window.scrollY + rect.top - navbarHeight;
+
+        isAnimatingRef.current = true;
+        window.scrollTo({ top: targetScrollY, behavior: 'smooth' });
+
+        setTimeout(() => {
+            isAnimatingRef.current = false;
+        }, 600); // Lock out resets during transition duration
+    };
+
+    useEffect(() => {
+        const handleWheel = (e: WheelEvent) => {
+            if (!containerRef.current) return;
+            const currentIsPinned = isPinnedRef.current;
+            const currentScrollStep = scrollStepRef.current;
+            const currentIsNearCenter = isNearCenterRef.current;
+
+            if (currentIsPinned) {
+                let shouldPrevent = true;
+                
+                // Clear reset timer and reset accumulator if user stops scrolling for 150ms
+                if (resetAccumulatorTimeoutRef.current) {
+                    clearTimeout(resetAccumulatorTimeoutRef.current);
+                }
+                resetAccumulatorTimeoutRef.current = setTimeout(() => {
+                    deltaAccumulatorRef.current = 0;
+                }, 150);
+
+                deltaAccumulatorRef.current += e.deltaY;
+                const stepThreshold = 100; // Increased scrolling step transition threshold for smoothness
+
+                if (stepTimeoutRef.current) {
+                    e.preventDefault();
+                    return;
+                }
+
+                if (deltaAccumulatorRef.current > stepThreshold) {
+                    deltaAccumulatorRef.current = 0;
+                    stepTimeoutRef.current = setTimeout(() => {
+                        stepTimeoutRef.current = null;
+                    }, 100); // Fluid 100ms cooldown
+                    
+                    if (currentScrollStep < 6) {
+                        setScrollStep(prev => prev + 1);
+                    } else {
+                        isPinnedRef.current = false;
+                        setIsPinned(false);
+                        shouldPrevent = false; // Allow this unpinning scroll tick to pass through
+                    }
+                } else if (deltaAccumulatorRef.current < -stepThreshold) {
+                    deltaAccumulatorRef.current = 0;
+                    stepTimeoutRef.current = setTimeout(() => {
+                        stepTimeoutRef.current = null;
+                    }, 100); // Fluid 100ms cooldown
+
+                    if (currentScrollStep > 0) {
+                        setScrollStep(prev => prev - 1);
+                    } else {
+                        isPinnedRef.current = false;
+                        setIsPinned(false);
+                        shouldPrevent = false; // Allow this unpinning scroll tick to pass through
+                    }
+                }
+
+                if (shouldPrevent) {
+                    e.preventDefault();
+                }
+            } else {
+                // Accumulate delta when unpinned in center zone to trigger pinning smoothly
+                const sectionEl = containerRef.current.closest('section');
+                const sectionRect = sectionEl ? sectionEl.getBoundingClientRect() : null;
+                const navbar = document.querySelector('header') || document.querySelector('nav');
+                const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 80;
+
+                if (sectionRect && currentIsNearCenter && !isAnimatingRef.current) {
+                    // Lock in when the top of the feature section touches or is close to the navbar
+                    const isNearTrigger = sectionRect.top <= navbarHeight + 150 && sectionRect.top >= navbarHeight - 250;
+                    
+                    if (isNearTrigger) {
+                        deltaAccumulatorRef.current += e.deltaY;
+                        const pinThreshold = 120; // Increased pinning activation threshold
+
+                        if (deltaAccumulatorRef.current > pinThreshold && currentScrollStep < 6) {
+                            e.preventDefault();
+                            deltaAccumulatorRef.current = 0;
+                            isPinnedRef.current = true;
+                            setIsPinned(true);
+                            triggerCenteringScroll();
+                        } else if (deltaAccumulatorRef.current < -pinThreshold && currentScrollStep > 0) {
+                            e.preventDefault();
+                            deltaAccumulatorRef.current = 0;
+                            isPinnedRef.current = true;
+                            setIsPinned(true);
+                            triggerCenteringScroll();
+                        }
+                    } else {
+                        deltaAccumulatorRef.current = 0;
+                    }
+                }
+            }
+        };
+
+        const handleTouchStart = (e: TouchEvent) => {
+            if (e.touches.length === 1) {
+                touchStartRef.current = e.touches[0].clientY;
+            }
+        };
+
+        const handleTouchMove = (e: TouchEvent) => {
+            if (!containerRef.current || touchStartRef.current === null) return;
+            const currentY = e.touches[0].clientY;
+            const deltaY = touchStartRef.current - currentY; 
+
+            const currentIsPinned = isPinnedRef.current;
+            const currentScrollStep = scrollStepRef.current;
+            const currentIsNearCenter = isNearCenterRef.current;
+
+            if (currentIsPinned) {
+                let shouldPrevent = true;
+                
+                if (stepTimeoutRef.current) {
+                    e.preventDefault();
+                    return;
+                }
+
+                if (deltaY > TOUCH_THRESHOLD) { // swipe up -> scroll down
+                    stepTimeoutRef.current = setTimeout(() => {
+                        stepTimeoutRef.current = null;
+                    }, 100); // 100ms touch cooldown
+                    if (currentScrollStep < 6) {
+                        setScrollStep(prev => prev + 1);
+                        touchStartRef.current = currentY;
+                    } else {
+                        isPinnedRef.current = false;
+                        setIsPinned(false);
+                        shouldPrevent = false;
+                    }
+                } else if (deltaY < -TOUCH_THRESHOLD) { // swipe down -> scroll up
+                    stepTimeoutRef.current = setTimeout(() => {
+                        stepTimeoutRef.current = null;
+                    }, 100); // 100ms touch cooldown
+                    if (currentScrollStep > 0) {
+                        setScrollStep(prev => prev - 1);
+                        touchStartRef.current = currentY;
+                    } else {
+                        isPinnedRef.current = false;
+                        setIsPinned(false);
+                        shouldPrevent = false;
+                    }
+                }
+
+                if (shouldPrevent) {
+                    e.preventDefault();
+                }
+            } else {
+                const sectionEl = containerRef.current.closest('section');
+                const sectionRect = sectionEl ? sectionEl.getBoundingClientRect() : null;
+                const navbar = document.querySelector('header') || document.querySelector('nav');
+                const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 80;
+
+                if (sectionRect && currentIsNearCenter && !isAnimatingRef.current) {
+                    const isNearTrigger = sectionRect.top <= navbarHeight + 150 && sectionRect.top >= navbarHeight - 250;
+                    
+                    if (isNearTrigger) {
+                        if (deltaY > TOUCH_THRESHOLD && currentScrollStep < 6) {
+                            e.preventDefault();
+                            isPinnedRef.current = true;
+                            setIsPinned(true);
+                            triggerCenteringScroll();
+                        } else if (deltaY < -TOUCH_THRESHOLD && currentScrollStep > 0) {
+                            e.preventDefault();
+                            isPinnedRef.current = true;
+                            setIsPinned(true);
+                            triggerCenteringScroll();
+                        }
+                    }
+                }
+            }
+        };
+
+        const handleTouchEnd = () => {
+            touchStartRef.current = null;
+        };
+
+        const handleScrollReset = () => {
+            if (isAnimatingRef.current) return;
+            if (!containerRef.current) return;
+            const rect = containerRef.current.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            
+            if (rect.bottom < 0 || rect.top > viewportHeight) {
+                isPinnedRef.current = false;
+                setIsPinned(false);
+                setScrollStep(rect.top > viewportHeight ? 0 : 6);
+            }
+        };
+
+        window.addEventListener('wheel', handleWheel, { passive: false });
+        window.addEventListener('touchstart', handleTouchStart, { passive: true });
+        window.addEventListener('touchmove', handleTouchMove, { passive: false });
+        window.addEventListener('touchend', handleTouchEnd, { passive: true });
+        window.addEventListener('scroll', handleScrollReset, { passive: true });
+
+        return () => {
+            window.removeEventListener('wheel', handleWheel);
+            window.removeEventListener('touchstart', handleTouchStart);
+            window.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchend', handleTouchEnd);
+            window.removeEventListener('scroll', handleScrollReset);
+            if (stepTimeoutRef.current) {
+                clearTimeout(stepTimeoutRef.current);
+                stepTimeoutRef.current = null;
+            }
+            if (resetAccumulatorTimeoutRef.current) {
+                clearTimeout(resetAccumulatorTimeoutRef.current);
+                resetAccumulatorTimeoutRef.current = null;
+            }
+        };
+    }, []);
 
     const inputs: InputCard[] = [
         {
@@ -88,33 +380,37 @@ export default function SellerMachine() {
     const [coords, setCoords] = useState<{
         inputs: Record<string, { x: number; y: number }>;
         outputs: Record<string, { x: number; y: number }>;
-        centerLeft: { x: number; y: number };
-        centerRight: { x: number; y: number };
+        centerLeft: { x: number; y: number }[];
+        centerRight: { x: number; y: number }[];
     }>({
         inputs: {},
         outputs: {},
-        centerLeft: { x: 0, y: 0 },
-        centerRight: { x: 0, y: 0 }
+        centerLeft: Array(5).fill({ x: 0, y: 0 }),
+        centerRight: Array(5).fill({ x: 0, y: 0 })
     });
 
     const containerRef = useRef<HTMLDivElement>(null);
-    const centerRef = useRef<SVGSVGElement>(null);
+    const centerRefs = [
+        useRef<SVGSVGElement>(null),
+        useRef<SVGSVGElement>(null),
+        useRef<SVGSVGElement>(null),
+        useRef<SVGSVGElement>(null),
+        useRef<SVGSVGElement>(null)
+    ];
     const inputRefs = useRef<Record<string, HTMLDivElement | null>>({});
     const outputRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
-    const updateCoords = () => {
-        if (!containerRef.current || !centerRef.current) return;
-        const containerRect = containerRef.current.getBoundingClientRect();
-        const centerRect = centerRef.current.getBoundingClientRect();
+    const staticCoordsRef = useRef<{
+        inputs: Record<string, { x: number; y: number }>;
+        outputs: Record<string, { x: number; y: number }>;
+    }>({
+        inputs: {},
+        outputs: {}
+    });
 
-        const centerLeft = {
-            x: centerRect.left - containerRect.left,
-            y: centerRect.top - containerRect.top + centerRect.height / 2
-        };
-        const centerRight = {
-            x: centerRect.right - containerRect.left,
-            y: centerRect.top - containerRect.top + centerRect.height / 2
-        };
+    const updateStaticCoords = () => {
+        if (!containerRef.current) return;
+        const containerRect = containerRef.current.getBoundingClientRect();
 
         const inputsData: Record<string, { x: number; y: number }> = {};
         inputs.forEach(item => {
@@ -140,18 +436,48 @@ export default function SellerMachine() {
             }
         });
 
-        setCoords({
+        staticCoordsRef.current = {
             inputs: inputsData,
-            outputs: outputsData,
+            outputs: outputsData
+        };
+    };
+
+    const updateCoords = () => {
+        if (!containerRef.current) return;
+        const containerRect = containerRef.current.getBoundingClientRect();
+
+        const centerLeft = centerRefs.map(ref => {
+            if (!ref.current) return { x: 0, y: 0 };
+            const rect = ref.current.getBoundingClientRect();
+            return {
+                x: rect.left - containerRect.left,
+                y: rect.top - containerRect.top + rect.height / 2
+            };
+        });
+
+        const centerRight = centerRefs.map(ref => {
+            if (!ref.current) return { x: 0, y: 0 };
+            const rect = ref.current.getBoundingClientRect();
+            return {
+                x: rect.right - containerRect.left,
+                y: rect.top - containerRect.top + rect.height / 2
+            };
+        });
+
+        setCoords({
+            inputs: staticCoordsRef.current.inputs,
+            outputs: staticCoordsRef.current.outputs,
             centerLeft,
             centerRight
         });
     };
 
     useEffect(() => {
+        updateStaticCoords();
         updateCoords();
 
         const observer = new ResizeObserver(() => {
+            updateStaticCoords();
             updateCoords();
         });
 
@@ -159,27 +485,64 @@ export default function SellerMachine() {
             observer.observe(containerRef.current);
         }
 
-        window.addEventListener('resize', updateCoords);
+        const handleResizeOrScroll = () => {
+            updateStaticCoords();
+            updateCoords();
+        };
+
+        window.addEventListener('resize', handleResizeOrScroll);
+        window.addEventListener('scroll', handleResizeOrScroll, { passive: true });
 
         return () => {
             observer.disconnect();
-            window.removeEventListener('resize', updateCoords);
+            window.removeEventListener('resize', handleResizeOrScroll);
+            window.removeEventListener('scroll', handleResizeOrScroll);
         };
     }, []);
 
     useEffect(() => {
-        updateCoords();
-    }, [hoveredInput, activeInput]);
+        let startTime = performance.now();
+        let frameId: number;
+        
+        const animate = (time: number) => {
+            updateCoords();
+            if (time - startTime < 400) {
+                frameId = requestAnimationFrame(animate);
+            }
+        };
+        
+        frameId = requestAnimationFrame(animate);
+        return () => cancelAnimationFrame(frameId);
+    }, [hoveredInput, activeInput, scrollActiveInput]);
+
+    const activeFeatureId = hoveredInput || activeInput || scrollActiveInput;
 
     const getConnectorColor = (inputId: string) => {
-        if (hoveredInput === inputId || activeInput === inputId) {
+        if (activeFeatureId === inputId) {
             const matched = inputs.find(i => i.id === inputId);
             return matched ? matched.gradientStop : '#c8caccff';
         }
         return '#c8caccff';
     };
 
-    const isAnyFocused = hoveredInput !== null || activeInput !== null;
+    const isAnyFocused = activeFeatureId !== null;
+
+    const getInputTargetCoord = (inputId: string) => {
+        if (!isAnyFocused) return coords.centerLeft[2];
+        const idx = inputs.findIndex(i => i.id === inputId);
+        if (idx !== -1) {
+            return coords.centerLeft[idx] || coords.centerLeft[2];
+        }
+        return coords.centerLeft[2];
+    };
+
+    const getOutputTargetCoord = (outputId: string) => {
+        if (!isAnyFocused) return coords.centerRight[2];
+        const activeCardIdx = activeFeatureId
+            ? inputs.findIndex(i => i.id === activeFeatureId)
+            : 2;
+        return coords.centerRight[activeCardIdx] || coords.centerRight[2];
+    };
 
     return (
         <div ref={containerRef} className="w-full max-w-5xl mx-auto px-4 mt-20 relative">
@@ -220,7 +583,7 @@ export default function SellerMachine() {
             <svg className="absolute inset-0 w-full h-full pointer-events-none hidden lg:block" fill="none">
                 {inputs.map(item => {
                     const start = coords.inputs[item.id];
-                    const end = coords.centerLeft;
+                    const end = getInputTargetCoord(item.id);
                     if (!start || !end) return null;
 
                     const cp1x = start.x + (end.x - start.x) / 2;
@@ -233,14 +596,14 @@ export default function SellerMachine() {
                             key={`line-in-${item.id}`}
                             d={`M ${start.x} ${start.y} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${end.x} ${end.y}`}
                             stroke={getConnectorColor(item.id)}
-                            strokeWidth={hoveredInput === item.id || activeInput === item.id ? '1.5' : '1'}
-                            className={hoveredInput === item.id || activeInput === item.id ? 'flow-line-active' : 'flow-line'}
+                            strokeWidth={activeFeatureId === item.id ? '1.5' : '1'}
+                            className={activeFeatureId === item.id ? 'flow-line-active' : 'flow-line'}
                         />
                     );
                 })}
 
                 {outputs.map(out => {
-                    const start = coords.centerRight;
+                    const start = getOutputTargetCoord(out.id);
                     const end = coords.outputs[out.id];
                     if (!start || !end) return null;
 
@@ -249,28 +612,21 @@ export default function SellerMachine() {
                     const cp2x = start.x + (end.x - start.x) / 2;
                     const cp2y = end.y;
 
-                    const isFocused = hoveredInput
-                        ? inputs.find(i => i.id === hoveredInput)?.gradientStop
-                        : activeInput
-                        ? inputs.find(i => i.id === activeInput)?.gradientStop
+                    const activeColor = activeFeatureId
+                        ? inputs.find(i => i.id === activeFeatureId)?.gradientStop
                         : null;
 
-                    let strokeColor = '#28deb4'; // default for oman (idx 0)
-                    if (out.id === 'riyadh') strokeColor = '#28A6DE';
-                    if (out.id === 'dubai') strokeColor = '#F9AC42';
-                    if (out.id === 'india') strokeColor = '#9442f9cb';
-
-                    if (isFocused) {
-                        strokeColor = isFocused;
-                    }
+                    const strokeColor = activeColor || '#c8caccff';
+                    const strokeWidth = isAnyFocused ? '1.5' : '1';
+                    const className = isAnyFocused ? 'flow-line-active' : 'flow-line';
 
                     return (
                         <path
                             key={`line-out-${out.id}`}
                             d={`M ${start.x} ${start.y} C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${end.x} ${end.y}`}
                             stroke={strokeColor}
-                            strokeWidth="1"
-                            className="flow-line"
+                            strokeWidth={strokeWidth}
+                            className={className}
                         />
                     );
                 })}
@@ -285,7 +641,7 @@ export default function SellerMachine() {
                         <h4 className="text-sm font-semibold text-slate-800">Operational Ingestion</h4>
                     </div>
                     {inputs.map((item) => {
-                        const isFocused = hoveredInput === item.id || activeInput === item.id;
+                        const isFocused = activeFeatureId === item.id;
                         const opacityClass = isAnyFocused
                             ? (isFocused ? 'opacity-100 scale-[1.015] border-slate-350 bg-white shadow-xs' : 'opacity-35')
                             : 'opacity-100';
@@ -317,37 +673,63 @@ export default function SellerMachine() {
                 <div className="hidden lg:block col-span-1" />
 
                 {/* ── COLUMN 3: The Kaartx Kloud Engine Core ── */}
-                <div className="col-span-1 lg:col-span-2 flex flex-col items-center justify-center p-5">
-                    <KloudCloudSVG
-                        activeColor={
-                            hoveredInput
-                                ? inputs.find(i => i.id === hoveredInput)?.gradientStop || null
-                                : activeInput
-                                ? inputs.find(i => i.id === activeInput)?.gradientStop || null
-                                : null
-                        }
-                        centerRef={centerRef}
-                    />
-                    <KloudCloudSVG
-                        activeColor={
-                            hoveredInput
-                                ? inputs.find(i => i.id === hoveredInput)?.gradientStop || null
-                                : activeInput
-                                ? inputs.find(i => i.id === activeInput)?.gradientStop || null
-                                : null
-                        }
-                        centerRef={centerRef}
-                    />
-                    <KloudCloudSVG
-                        activeColor={
-                            hoveredInput
-                                ? inputs.find(i => i.id === hoveredInput)?.gradientStop || null
-                                : activeInput
-                                ? inputs.find(i => i.id === activeInput)?.gradientStop || null
-                                : null
-                        }
-                        centerRef={centerRef}
-                    />
+                <div className="col-span-1 lg:col-span-2 flex items-center justify-center p-5 h-[340px] relative">
+                    <div className="relative w-full max-w-[280px] h-[224px] flex items-center justify-center">
+                        {[
+                            { id: 'inventory', label: 'INVENTORY HUB' },
+                            { id: 'payouts', label: 'SETTLEMENT CORE' },
+                            { id: 'delivery', label: 'LOGISTICS PATH' },
+                            { id: 'payments', label: 'TRANSACTIONS' },
+                            { id: 'sellers', label: 'SELLER DASHBOARD' }
+                        ].map((module, idx) => {
+                            const isFocused = activeFeatureId === module.id;
+                            
+                            // Determine color
+                            let activeColor: string | null = null;
+                            if (isFocused) {
+                                activeColor = inputs.find(i => i.id === module.id)?.gradientStop || null;
+                            }
+
+                            // Determine translateY positions:
+                            // Collapsed: -16px, -8px, 0px, 8px, 16px
+                            // Expanded: -100px, -50px, 0px, 50px, 100px
+                            // If this card is hovered/active, we elevate it up by -20px for a 3D float look
+                            const collapsedOffset = (idx - 2) * 8;
+                            let expandedOffset = (idx - 2) * 52;
+                            if (isFocused) {
+                                expandedOffset -= 20;
+                            }
+                            const offset = isAnyFocused ? expandedOffset : collapsedOffset;
+
+                            // Stacking order (zIndex):
+                            // Top card in stack (idx 0) gets highest zIndex so it overlays cards below it.
+                            // Active card floats to absolute front (zIndex 50).
+                            const zIndex = isFocused ? 50 : 30 - idx;
+                            const opacity = isAnyFocused ? (isFocused ? 1 : 0.35) : 1;
+
+                            const style: React.CSSProperties = {
+                                position: 'absolute',
+                                transform: `translateY(${offset}px)`,
+                                zIndex,
+                                opacity,
+                                transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                                width: '100%',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            };
+
+                            return (
+                                <div key={module.id} style={style}>
+                                    <KloudCloudSVG
+                                        activeColor={activeColor}
+                                        centerRef={centerRefs[idx]}
+                                        label={isAnyFocused ? module.label : 'KAARTX KLOUD'}
+                                    />
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
 
                 {/* ── COLUMN 4: Right Diverging Connectors Spacer ── */}
